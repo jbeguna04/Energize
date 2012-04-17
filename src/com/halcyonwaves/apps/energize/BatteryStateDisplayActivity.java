@@ -25,7 +25,7 @@ public class BatteryStateDisplayActivity extends Activity {
 		super.onCreate( savedInstanceState );
 		this.setContentView( R.layout.activity_batterystatedisplay );
 
-		//
+		// get the handles to controls we want to modify
 		this.batteryPercentage = (TextView) this.findViewById( R.id.tv_battery_pct );
 
 		// now we can update the battery information for displaying them
