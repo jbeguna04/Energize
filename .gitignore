@@ -1,6 +1,8 @@
 bin/
 gen/
+proguard/
 *~
 *.swp
 *.bak
 .settings/
+.DS_Store
