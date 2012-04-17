@@ -14,7 +14,7 @@ import android.widget.TextView;
  * or she started the application through the launcher entry or by clicking the
  * item in the status bar of the device.
  * 
- * @author Tim Hütz
+ * @author Tim Huetz
  */
 public class BatteryStateDisplayActivity extends Activity {
 

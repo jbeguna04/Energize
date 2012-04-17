@@ -10,7 +10,7 @@ import android.content.Intent;
  * powered (e.g. the user plugs or unplugs the device from a USB or charging
  * device.
  * 
- * @author Tim Hütz
+ * @author Tim Huetz
  */
 public class PowerConnectionReceiver extends BroadcastReceiver {
 

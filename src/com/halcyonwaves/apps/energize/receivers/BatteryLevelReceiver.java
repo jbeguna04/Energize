@@ -10,7 +10,7 @@ import android.os.BatteryManager;
  * battery charging level. As soon as the battery charging level changes up or
  * downwards, this receiver gets called.
  * 
- * @author Tim Hütz
+ * @author Tim Huetz
  */
 public class BatteryLevelReceiver extends BroadcastReceiver {
 
