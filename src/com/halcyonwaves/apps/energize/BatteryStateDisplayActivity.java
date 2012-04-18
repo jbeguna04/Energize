@@ -5,8 +5,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.DatabaseErrorHandler;
+import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.os.BatteryManager;
 import android.os.Bundle;
+import android.view.Menu;
 import android.widget.TextView;
 
 /**
@@ -30,6 +33,12 @@ public class BatteryStateDisplayActivity extends Activity {
 
 		// now we can update the battery information for displaying them
 		this.updateBatteryInformation();
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu( Menu menu ) {
+		this.getMenuInflater().inflate( R.menu.menu_main, menu );
+		return true;
 	}
 
 	private void updateBatteryInformation() {
