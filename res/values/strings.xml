@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Energize</string>
-
+    <string-array name="pref_list_theme_names">
+        <item>Dark theme</item>
+        <item>Light theme</item>
+    </string-array>
+    <string-array name="pref_list_theme_values">
+        <item>holo.dark</item>
+        <item>holo.light</item>
+    </string-array>
 </resources>
