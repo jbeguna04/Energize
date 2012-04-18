@@ -16,9 +16,8 @@ public class BatteryLevelReceiver extends BroadcastReceiver {
 
 	@Override
 	public void onReceive( final Context context, final Intent batteryIntent ) {
-		// get the raw information about the battery level and scale
-		final int batteryLevel = batteryIntent.getIntExtra( BatteryManager.EXTRA_LEVEL, -1 );
-		final int batteryScale = batteryIntent.getIntExtra( BatteryManager.EXTRA_SCALE, -1 );
+		batteryIntent.getIntExtra( BatteryManager.EXTRA_LEVEL, -1 );
+		batteryIntent.getIntExtra( BatteryManager.EXTRA_SCALE, -1 );
 
 		// TODO: store the value inside of the database
 	}
