@@ -1,8 +1,13 @@
 package com.halcyonwaves.apps.energize.database;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteQueryBuilder;
 
 public class BatteryStatisticsDatabase extends SQLiteOpenHelper {
 
@@ -14,15 +19,28 @@ public class BatteryStatisticsDatabase extends SQLiteOpenHelper {
 	}
 
 	@Override
-	public void onCreate( final SQLiteDatabase arg0 ) {
-		// TODO Auto-generated method stub
+	public void onCreate( final SQLiteDatabase database ) {
+		RawBatteryStatisicsTable.onCreate( database );
 
 	}
 
 	@Override
 	public void onUpgrade( final SQLiteDatabase db, final int oldVersion, final int newVersion ) {
-		// TODO Auto-generated method stub
+		RawBatteryStatisicsTable.onUpgrade( db, oldVersion, newVersion );
 
 	}
 
+	public void storeBatteryLevelChange( final int rawBatteryLevel, final int batteryScale, final int batteryLevel ) {
+		//
+		SimpleDateFormat s = new SimpleDateFormat("yyyyMMddhhmmss");
+		String format = s.format(new Date());
+		
+		//
+		ContentValues valuesToInsert = new ContentValues();
+		valuesToInsert.put( RawBatteryStatisicsTable.COLUMN_CHARGING_PCT, batteryLevel );
+		valuesToInsert.put( RawBatteryStatisicsTable.COLUMN_EVENT_TIME, format );
+		
+		//
+		this.getWritableDatabase().insert( RawBatteryStatisicsTable.TABLE_NAME, null, valuesToInsert );
+	}
 }

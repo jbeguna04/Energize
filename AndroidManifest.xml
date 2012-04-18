@@ -30,8 +30,7 @@
         <!-- tell Android that we want to be informed about battery level changes -->
 		<receiver android:name="com.halcyonwaves.apps.energize.receivers.BatteryLevelReceiver">
 			<intent-filter>
-				<action android:name="android.intent.action.ACTION_BATTERY_LOW"/>
-				<action android:name="android.intent.action.ACTION_BATTERY_OKAY"/>
+				<action android:name="android.intent.action.ACTION_BATTERY_CHANGED" />
 			</intent-filter>
 		</receiver>
 		
