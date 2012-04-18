@@ -1,21 +1,16 @@
 package com.halcyonwaves.apps.energize.database;
 
 import android.content.Context;
-import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class BatteryStatisticsDatabase extends SQLiteOpenHelper {
 
-	public BatteryStatisticsDatabase( Context context, String name, CursorFactory factory, int version ) {
-		super( context, name, factory, version );
-		// TODO Auto-generated constructor stub
-	}
+	private static final int DATABASE_VERSION = 1;
+	private static final String DATABASE_NAME = "batteryStatistics.db";
 
-	public BatteryStatisticsDatabase( Context context, String name, CursorFactory factory, int version, DatabaseErrorHandler errorHandler ) {
-		super( context, name, factory, version, errorHandler );
-		// TODO Auto-generated constructor stub
+	public BatteryStatisticsDatabase( Context context ) {
+		super( context, BatteryStatisticsDatabase.DATABASE_NAME, null, BatteryStatisticsDatabase.DATABASE_VERSION );
 	}
 
 	@Override
