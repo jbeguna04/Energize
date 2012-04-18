@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.os.BatteryManager;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 /**
@@ -39,6 +40,18 @@ public class BatteryStateDisplayActivity extends Activity {
 	public boolean onCreateOptionsMenu( Menu menu ) {
 		this.getMenuInflater().inflate( R.menu.menu_main, menu );
 		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected( MenuItem item ) {
+		switch( item.getItemId() ) {
+			case R.id.menu_preferences:
+				Intent myIntent = new Intent( BatteryStateDisplayActivity.this, SettingsActivity.class );
+				BatteryStateDisplayActivity.this.startActivity( myIntent );
+				return true;
+			default:
+				return false;
+		}
 	}
 
 	private void updateBatteryInformation() {
