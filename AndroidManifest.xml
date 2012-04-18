@@ -15,6 +15,9 @@
 				<category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- define the preference activity we want to show -->
+        <activity android:name="com.halcyonwaves.apps.energize.SettingsActivity" android:theme="@android:style/Theme.Holo" />
         
         <!-- tell Android that we want to be informed about power connection changes -->
 		<receiver android:name="com.halcyonwaves.apps.energize.receivers.PowerConnectionReceiver">
