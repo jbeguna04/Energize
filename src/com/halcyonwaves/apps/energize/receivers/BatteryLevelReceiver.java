@@ -20,9 +20,6 @@ public class BatteryLevelReceiver extends BroadcastReceiver {
 		final int batteryLevel = batteryIntent.getIntExtra( BatteryManager.EXTRA_LEVEL, -1 );
 		final int batteryScale = batteryIntent.getIntExtra( BatteryManager.EXTRA_SCALE, -1 );
 
-		// calculate the charging percentage of the battery
-		final float batteryPct = batteryLevel / (float) batteryScale;
-
 		// TODO: store the value inside of the database
 	}
 }

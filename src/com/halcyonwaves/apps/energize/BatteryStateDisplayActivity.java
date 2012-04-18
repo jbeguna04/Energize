@@ -5,8 +5,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.database.DatabaseErrorHandler;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.os.BatteryManager;
 import android.os.Bundle;
 import android.view.Menu;
@@ -37,16 +35,16 @@ public class BatteryStateDisplayActivity extends Activity {
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu( Menu menu ) {
+	public boolean onCreateOptionsMenu( final Menu menu ) {
 		this.getMenuInflater().inflate( R.menu.menu_main, menu );
 		return true;
 	}
 
 	@Override
-	public boolean onOptionsItemSelected( MenuItem item ) {
+	public boolean onOptionsItemSelected( final MenuItem item ) {
 		switch( item.getItemId() ) {
 			case R.id.menu_preferences:
-				Intent myIntent = new Intent( BatteryStateDisplayActivity.this, SettingsActivity.class );
+				final Intent myIntent = new Intent( BatteryStateDisplayActivity.this, SettingsActivity.class );
 				BatteryStateDisplayActivity.this.startActivity( myIntent );
 				return true;
 			default:
@@ -55,20 +53,21 @@ public class BatteryStateDisplayActivity extends Activity {
 	}
 
 	private void updateBatteryInformation() {
-		BroadcastReceiver batteryLevelReceiver = new BroadcastReceiver() {
+		final BroadcastReceiver batteryLevelReceiver = new BroadcastReceiver() {
 
-			public void onReceive( Context context, Intent intent ) {
+			@Override
+			public void onReceive( final Context context, final Intent intent ) {
 				context.unregisterReceiver( this );
-				int rawlevel = intent.getIntExtra( BatteryManager.EXTRA_LEVEL, -1 );
-				int scale = intent.getIntExtra( BatteryManager.EXTRA_SCALE, -1 );
+				final int rawlevel = intent.getIntExtra( BatteryManager.EXTRA_LEVEL, -1 );
+				final int scale = intent.getIntExtra( BatteryManager.EXTRA_SCALE, -1 );
 				int level = -1;
-				if( rawlevel >= 0 && scale > 0 ) {
+				if( (rawlevel >= 0) && (scale > 0) ) {
 					level = (rawlevel * 100) / scale;
 				}
-				batteryPercentage.setText( level + "" );
+				BatteryStateDisplayActivity.this.batteryPercentage.setText( level + "" );
 			}
 		};
-		IntentFilter batteryLevelFilter = new IntentFilter( Intent.ACTION_BATTERY_CHANGED );
-		registerReceiver( batteryLevelReceiver, batteryLevelFilter );
+		final IntentFilter batteryLevelFilter = new IntentFilter( Intent.ACTION_BATTERY_CHANGED );
+		this.registerReceiver( batteryLevelReceiver, batteryLevelFilter );
 	}
 }
