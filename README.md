@@ -2,8 +2,12 @@
 
 TODO
 
-## Application icon
-The application icon was designed by [Alessandro Rei][1] and is licensed under the terms of the GPL. It can be found on [FindIcons][2].
+## Translations
+As soon as the used strings is nearly fixed, you can help us on our project page of [GetLocalization][3] to translate the app in many languages.
 
- [1]: http://www.mentalrey.it
- [2]: http://findicons.com/icon/254648/energy?id=255555
+## Application icon
+The application icon was designed by [Alessandro Rei][2] and is licensed under the terms of the GPL. It can be found on [FindIcons][3].
+
+ [1]: http://www.getlocalization.com/energize
+ [2]: http://www.mentalrey.it
+ [3]: http://findicons.com/icon/254648/energy?id=255555
