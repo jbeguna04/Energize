@@ -7,8 +7,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.database.sqlite.SQLiteQueryBuilder;
 
+@SuppressWarnings( "unused" )
 public class BatteryStatisticsDatabase extends SQLiteOpenHelper {
 
 	private static final String DATABASE_NAME = "batteryStatistics.db";
@@ -32,14 +32,14 @@ public class BatteryStatisticsDatabase extends SQLiteOpenHelper {
 
 	public void storeBatteryLevelChange( final int rawBatteryLevel, final int batteryScale, final int batteryLevel ) {
 		//
-		SimpleDateFormat s = new SimpleDateFormat("yyyyMMddhhmmss");
-		String format = s.format(new Date());
-		
+		final SimpleDateFormat s = new SimpleDateFormat( "yyyyMMddhhmmss" );
+		final String format = s.format( new Date() );
+
 		//
-		ContentValues valuesToInsert = new ContentValues();
+		final ContentValues valuesToInsert = new ContentValues();
 		valuesToInsert.put( RawBatteryStatisicsTable.COLUMN_CHARGING_PCT, batteryLevel );
 		valuesToInsert.put( RawBatteryStatisicsTable.COLUMN_EVENT_TIME, format );
-		
+
 		//
 		this.getWritableDatabase().insert( RawBatteryStatisicsTable.TABLE_NAME, null, valuesToInsert );
 	}
