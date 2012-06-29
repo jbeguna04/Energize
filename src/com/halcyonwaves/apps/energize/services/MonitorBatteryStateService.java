@@ -18,25 +18,40 @@
 
 package com.halcyonwaves.apps.energize.services;
 
+import com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper;
+import com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable;
+import com.halcyonwaves.apps.energize.receivers.BatteryChangedReceiver;
+
 import android.app.Service;
-import android.content.BroadcastReceiver;
-import android.content.Context;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.os.BatteryManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.IBinder;
 import android.util.Log;
 
 public class MonitorBatteryStateService extends Service {
 
-	private final BroadcastReceiver powerStateChangedReceiver = new BroadcastReceiver() {
+	private BatteryChangedReceiver batteryChangedReceiver = null;
+	private BatteryStatisticsDatabaseOpenHelper batteryDbOpenHelper = null;
+	private SQLiteDatabase batteryStatisticsDatabase = null;
 
-		@Override
-		public void onReceive( Context context, Intent intent ) {
-			Log.v( "MonitorBatteryStateService", "Value: " + intent.getIntExtra( BatteryManager.EXTRA_LEVEL, -1 ) );
-		}
+	public void insertPowerValue( int powerSource, int batteryCapacity ) {
+		long currentUnixTime = (long) (System.currentTimeMillis() / 1000);
 
-	};
+		ContentValues values = new ContentValues();
+		values.put( RawBatteryStatisicsTable.COLUMN_EVENT_TIME, currentUnixTime );
+		values.put( RawBatteryStatisicsTable.COLUMN_CHARGING_STATE, powerSource );
+		values.put( RawBatteryStatisicsTable.COLUMN_CHARGING_PCT, batteryCapacity );
+
+		this.batteryStatisticsDatabase.insert( RawBatteryStatisicsTable.TABLE_NAME, null, values );
+	}
+
+	@Override
+	public void onDestroy() {
+		this.batteryDbOpenHelper.close();
+		super.onDestroy();
+	}
 
 	@Override
 	public int onStartCommand( Intent intent, int flags, int startid ) {
@@ -44,7 +59,12 @@ public class MonitorBatteryStateService extends Service {
 		Log.v( "MonitorBatteryStateService", "Starting service for collecting battery statistics..." );
 
 		//
-		this.registerReceiver( this.powerStateChangedReceiver, new IntentFilter( Intent.ACTION_BATTERY_CHANGED ) );
+		this.batteryDbOpenHelper = new BatteryStatisticsDatabaseOpenHelper( this.getApplicationContext() );
+		this.batteryStatisticsDatabase = this.batteryDbOpenHelper.getWritableDatabase();
+
+		//
+		this.batteryChangedReceiver = new BatteryChangedReceiver( this );
+		this.registerReceiver( this.batteryChangedReceiver, new IntentFilter( Intent.ACTION_BATTERY_CHANGED ) );
 
 		//
 		Log.v( "MonitorBatteryStateService", "Service successfully started" );

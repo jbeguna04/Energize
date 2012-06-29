@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class BatteryStatisticsDatabaseOpenHelper extends SQLiteOpenHelper {
 	
-	public static final String DATABASE_NAME = "_id";
+	public static final String DATABASE_NAME = "batteryUsageStatistics.db";
 	public static final int DATABASE_VERSION = 1;
 
 	public BatteryStatisticsDatabaseOpenHelper( Context context ) {
