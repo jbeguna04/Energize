@@ -1,7 +1,7 @@
 Change Log
 ===============================================================================
 
-Version 0.1 *(2012-??-??)*
+Version 0.1 *(2012-06-29)*
 --------------------------
 * Added code to obtain statistics about the battery charings
 * Added GPL header to all source files
