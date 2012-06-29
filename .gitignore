@@ -23,6 +23,9 @@ local.properties
 .classpath
 .project
 
+# Eclipse settings
+.settings
+
 #
 # MacOS X Stuff
 #
