@@ -4,8 +4,6 @@ Change Log
 Version 0.1 *(2012-??-??)*
 --------------------------
 * Added code to obtain statistics about the battery charings
-* Added a preference dialog for clearing the obtained battery statistics
-* Added the license text to the application (see About settings)
 * Added GPL header to all source files
 * Moved all strings to the resource file (for supporting localization)
 
