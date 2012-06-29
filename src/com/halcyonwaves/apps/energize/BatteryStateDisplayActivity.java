@@ -75,6 +75,7 @@ public class BatteryStateDisplayActivity extends Activity {
 	private void updateBatteryInformation() {
 		final BroadcastReceiver batteryLevelReceiver = new BroadcastReceiver() {
 
+			// TODO: query the service: http://developer.android.com/reference/android/support/v4/content/LocalBroadcastManager.html
 			@Override
 			public void onReceive( final Context context, final Intent intent ) {
 				context.unregisterReceiver( this );
