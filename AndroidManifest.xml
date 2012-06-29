@@ -15,7 +15,7 @@
         <service android:name="com.halcyonwaves.apps.energize.services.MonitorBatteryStateService" android:exported="false" />
 
         <!-- register a receiver which gets called after the device booted up -->
-		<receiver android:name="com.halcyonwaves.apps.energize.receivers.BootCompletedReceiver">
+		<receiver android:name="com.halcyonwaves.apps.energize.receivers.BootCompletedReceiver" android:exported="false">
 			<intent-filter >
 				<action android:name="android.intent.action.BOOT_COMPLETED" />
 			</intent-filter>            
