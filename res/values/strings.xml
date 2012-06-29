@@ -9,4 +9,23 @@
         <item>DarkTheme</item>
         <item>LightTheme</item>
     </string-array>
+    <string name="percentage_indicator">%</string>
+    <string name="not_available">N/A</string>
+    <string name="icon_by">Icon by</string>
+    <string name="app_version">Application version</string>
+    
+    <string name="pref_title_clearstatsdb">Clear statistics database</string>
+    <string name="pref_summary_clearstatsdb">Clears the recorded battery events</string>
+    
+    <string name="pref_title_theme">Theme</string>
+    <string name="pref_summary_theme">Select the theme for the application</string>
+    
+    <string name="pref_header_title_display">Display settings</string>
+    <string name="pref_header_summary_display">Visual appearance of the app</string>
+    
+    <string name="pref_header_title_batstats">Battery statistics</string>
+    <string name="pref_header_summary_batstats">Settings for the battery statistics</string>
+    
+    <string name="pref_header_title_about">About Energize</string>
+    <string name="pref_header_summary_about">Show information about the application</string>
 </resources>

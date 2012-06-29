@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-	<ListPreference android:key="display.theme" android:title="Theme" android:summary="Select the theme for the application" android:entries="@array/pref_list_theme_names" android:entryValues="@array/pref_list_theme_values" android:defaultValue="holo.dark" />
+	<ListPreference android:key="display.theme" android:title="@string/pref_title_theme" android:summary="@string/pref_summary_theme" android:entries="@array/pref_list_theme_names" android:entryValues="@array/pref_list_theme_values" android:defaultValue="DarkTheme" />
 </PreferenceScreen>
