@@ -18,21 +18,6 @@
 
         <!-- define the preference activity we want to show -->
         <activity android:name="com.halcyonwaves.apps.energize.SettingsActivity" />
-        
-        <!-- tell Android that we want to be informed about power connection changes -->
-		<receiver android:name="com.halcyonwaves.apps.energize.receivers.PowerConnectionReceiver">
-			<intent-filter>
-				<action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
-				<action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
-			</intent-filter>
-		</receiver>
-        
-        <!-- tell Android that we want to be informed about battery level changes -->
-		<receiver android:name="com.halcyonwaves.apps.energize.receivers.BatteryLevelReceiver">
-			<intent-filter>
-				<action android:name="android.intent.action.ACTION_BATTERY_CHANGED" />
-			</intent-filter>
-		</receiver>
 		
     </application>
 
