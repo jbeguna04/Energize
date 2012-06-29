@@ -28,30 +28,31 @@ import android.os.IBinder;
 import android.util.Log;
 
 public class MonitorBatteryStateService extends Service {
-	private final BroadcastReceiver powerStateChangedReceiver = new BroadcastReceiver()  {
+
+	private final BroadcastReceiver powerStateChangedReceiver = new BroadcastReceiver() {
 
 		@Override
-		public void onReceive(Context context, Intent intent) {
-			Log.v( "MonitorBatteryStateService", "Value: " + intent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1) );
+		public void onReceive( Context context, Intent intent ) {
+			Log.v( "MonitorBatteryStateService", "Value: " + intent.getIntExtra( BatteryManager.EXTRA_LEVEL, -1 ) );
 		}
-		
+
 	};
-	
+
 	@Override
-	public int onStartCommand(Intent intent, int flags, int startid) {
+	public int onStartCommand( Intent intent, int flags, int startid ) {
 		//
 		Log.v( "MonitorBatteryStateService", "Starting service for collecting battery statistics..." );
-		
+
 		//
-		this.registerReceiver(this.powerStateChangedReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
-		
+		this.registerReceiver( this.powerStateChangedReceiver, new IntentFilter( Intent.ACTION_BATTERY_CHANGED ) );
+
 		//
 		Log.v( "MonitorBatteryStateService", "Service successfully started" );
 		return START_STICKY;
 	}
 
 	@Override
-	public IBinder onBind(Intent intent) {
+	public IBinder onBind( Intent intent ) {
 		return null;
 	}
 

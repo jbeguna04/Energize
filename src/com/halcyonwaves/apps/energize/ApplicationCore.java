@@ -18,13 +18,43 @@
 
 package com.halcyonwaves.apps.energize;
 
+import java.util.Iterator;
+import java.util.List;
+
+import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
+
+import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
 public class ApplicationCore extends Application {
+
+	@Override
+	public void onCreate() {
+		if( !this.isServiceRunning( MonitorBatteryStateService.class.getName() ) ) {
+			this.getApplicationContext().startService( new Intent( this.getApplicationContext(), MonitorBatteryStateService.class ) );
+		}
+		super.onCreate();
+	}
+
+	private boolean isServiceRunning( String serviceName ) {
+		boolean serviceRunning = false;
+		ActivityManager am = (ActivityManager) this.getSystemService( ACTIVITY_SERVICE );
+		List< ActivityManager.RunningServiceInfo > l = am.getRunningServices( 50 );
+		Iterator< ActivityManager.RunningServiceInfo > i = l.iterator();
+		while( i.hasNext() ) {
+			ActivityManager.RunningServiceInfo runningServiceInfo = (ActivityManager.RunningServiceInfo) i.next();
+
+			if( runningServiceInfo.service.getClassName().equals( serviceName ) ) {
+				serviceRunning = true;
+			}
+		}
+		return serviceRunning;
+	}
 
 	public static int getSelectedThemeId( final Context context ) {
 		final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences( context );
