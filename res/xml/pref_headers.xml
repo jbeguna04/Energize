@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <preference-headers xmlns:android="http://schemas.android.com/apk/res/android">
     <header android:fragment="com.halcyonwaves.apps.energize.fragments.DisplayPreferenceFragment" android:title="@string/pref_header_title_display" android:summary="@string/pref_header_summary_display" />
-    <header android:fragment="com.halcyonwaves.apps.energize.fragments.BatteryStatisticsPreferenceFragment" android:title="@string/pref_header_title_batstats" android:summary="@string/pref_header_summary_batstats" />
+    <!-- <header android:fragment="com.halcyonwaves.apps.energize.fragments.BatteryStatisticsPreferenceFragment" android:title="@string/pref_header_title_batstats" android:summary="@string/pref_header_summary_batstats" />  -->
     <header android:fragment="com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment" android:title="@string/pref_header_title_about" android:summary="@string/pref_header_summary_about" />
 </preference-headers>
