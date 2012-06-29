@@ -19,15 +19,34 @@
 package com.halcyonwaves.apps.energize.services;
 
 import android.app.Service;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.BatteryManager;
 import android.os.IBinder;
 import android.util.Log;
 
 public class MonitorBatteryStateService extends Service {
+	private final BroadcastReceiver powerStateChangedReceiver = new BroadcastReceiver()  {
+
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			Log.v( "MonitorBatteryStateService", "Value: " + intent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1) );
+		}
+		
+	};
 	
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startid) {
-		Log.v( "MonitorBatteryStateService", "Service started and ready to collect battery information" );
+		//
+		Log.v( "MonitorBatteryStateService", "Starting service for collecting battery statistics..." );
+		
+		//
+		this.registerReceiver(this.powerStateChangedReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+		
+		//
+		Log.v( "MonitorBatteryStateService", "Service successfully started" );
 		return START_STICKY;
 	}
 
