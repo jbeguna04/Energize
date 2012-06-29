@@ -18,6 +18,8 @@
 
 package com.halcyonwaves.apps.energize;
 
+import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
+
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -25,6 +27,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.BatteryManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -46,6 +49,12 @@ public class BatteryStateDisplayActivity extends Activity {
 
 		this.setTheme( ApplicationCore.getSelectedThemeId( this.getApplicationContext() ) );
 		this.setContentView( R.layout.activity_batterystatedisplay );
+		
+		// check if the service is running, if not start it
+		if( !ApplicationCore.isServiceRunning( this, MonitorBatteryStateService.class.getName() ) ) {
+			Log.v( "BatteryStateDisplayActivity", "Monitoring service is not running, starting it..." );
+			this.getApplicationContext().startService( new Intent( this.getApplicationContext(), MonitorBatteryStateService.class ) );
+		}
 
 		// get the handles to controls we want to modify
 		this.batteryPercentage = (TextView) this.findViewById( R.id.tv_battery_pct );

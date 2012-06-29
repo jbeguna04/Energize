@@ -21,29 +21,19 @@ package com.halcyonwaves.apps.energize;
 import java.util.Iterator;
 import java.util.List;
 
-import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
-
 import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
 public class ApplicationCore extends Application {
 
-	@Override
-	public void onCreate() {
-		if( !this.isServiceRunning( MonitorBatteryStateService.class.getName() ) ) {
-			this.getApplicationContext().startService( new Intent( this.getApplicationContext(), MonitorBatteryStateService.class ) );
-		}
-		super.onCreate();
-	}
-
-	private boolean isServiceRunning( String serviceName ) {
+	public static boolean isServiceRunning( Context ctx, String serviceName ) {
+		Log.v( "ApplicationCore", "Checking if the monitoring service is running or not..." );
 		boolean serviceRunning = false;
-		ActivityManager am = (ActivityManager) this.getSystemService( ACTIVITY_SERVICE );
+		ActivityManager am = (ActivityManager) ctx.getSystemService( ACTIVITY_SERVICE );
 		List< ActivityManager.RunningServiceInfo > l = am.getRunningServices( 50 );
 		Iterator< ActivityManager.RunningServiceInfo > i = l.iterator();
 		while( i.hasNext() ) {
