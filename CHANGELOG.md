@@ -5,7 +5,6 @@ Version 0.1 *(2012-??-??)*
 --------------------------
 * Added code to obtain statistics about the battery charings
 * Added GPL header to all source files
-* Added an indicator if the service is running or not
 * Moved all strings to the resource file (for supporting localization)
 
 Version 0.0.2 *(2012-04-22)*
