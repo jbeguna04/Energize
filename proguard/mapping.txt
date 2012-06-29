@@ -1,0 +1,35 @@
+com.halcyonwaves.apps.energize.ApplicationCore -> com.halcyonwaves.apps.energize.a:
+    boolean isServiceRunning(android.content.Context,java.lang.String) -> a
+    int getSelectedThemeId(android.content.Context) -> a
+com.halcyonwaves.apps.energize.BatteryStateDisplayActivity -> com.halcyonwaves.apps.energize.BatteryStateDisplayActivity:
+    android.widget.TextView batteryPercentage -> a
+    void onCreate(android.os.Bundle) -> onCreate
+    boolean onCreateOptionsMenu(android.view.Menu) -> onCreateOptionsMenu
+    boolean onOptionsItemSelected(android.view.MenuItem) -> onOptionsItemSelected
+    void updateBatteryInformation() -> a
+    android.widget.TextView access$0(com.halcyonwaves.apps.energize.BatteryStateDisplayActivity) -> a
+com.halcyonwaves.apps.energize.BatteryStateDisplayActivity$1 -> com.halcyonwaves.apps.energize.b:
+    com.halcyonwaves.apps.energize.BatteryStateDisplayActivity this$0 -> a
+    void onReceive(android.content.Context,android.content.Intent) -> onReceive
+com.halcyonwaves.apps.energize.SettingsActivity -> com.halcyonwaves.apps.energize.SettingsActivity:
+    void onBuildHeaders(java.util.List) -> onBuildHeaders
+    void onCreate(android.os.Bundle) -> onCreate
+com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper -> com.halcyonwaves.apps.energize.a.a:
+    void onCreate(android.database.sqlite.SQLiteDatabase) -> onCreate
+    void onUpgrade(android.database.sqlite.SQLiteDatabase,int,int) -> onUpgrade
+com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable -> com.halcyonwaves.apps.energize.a.b:
+    void onCreate(android.database.sqlite.SQLiteDatabase) -> a
+    void onUpgrade(android.database.sqlite.SQLiteDatabase,int,int) -> a
+com.halcyonwaves.apps.energize.receivers.BatteryChangedReceiver -> com.halcyonwaves.apps.energize.receivers.a:
+    com.halcyonwaves.apps.energize.services.MonitorBatteryStateService service -> a
+    void onReceive(android.content.Context,android.content.Intent) -> onReceive
+com.halcyonwaves.apps.energize.receivers.BootCompletedReceiver -> com.halcyonwaves.apps.energize.receivers.BootCompletedReceiver:
+    void onReceive(android.content.Context,android.content.Intent) -> onReceive
+com.halcyonwaves.apps.energize.services.MonitorBatteryStateService -> com.halcyonwaves.apps.energize.services.MonitorBatteryStateService:
+    com.halcyonwaves.apps.energize.receivers.BatteryChangedReceiver batteryChangedReceiver -> a
+    com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper batteryDbOpenHelper -> b
+    android.database.sqlite.SQLiteDatabase batteryStatisticsDatabase -> c
+    void insertPowerValue(int,int) -> a
+    void onDestroy() -> onDestroy
+    int onStartCommand(android.content.Intent,int,int) -> onStartCommand
+    android.os.IBinder onBind(android.content.Intent) -> onBind

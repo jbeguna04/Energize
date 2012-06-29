@@ -1,0 +1,1425 @@
+_____________________________________________________________________
++ Program class: com/halcyonwaves/apps/energize/a
+  Superclass:    android/app/Application
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x21
+    = public class com.halcyonwaves.apps.energize.a extends android.app.Application
+
+Interfaces (count = 0):
+
+Constant Pool (count = 115):
+  + Integer [2131165184]
+  + Integer [2131165185]
+  + String ['), returning default theme!]
+  + String [ApplicationCore]
+  + String [BatteryStateDisplayActivity.Theme]
+  + String [Checking if the monitoring service is running or not...]
+  + String [DarkTheme]
+  + String [LightTheme]
+  + String [The selected theme is unknown (']
+  + String [UnknownTheme]
+  + String [activity]
+  + String [display.theme]
+  + Class [android/app/ActivityManager]
+  + Class [android/app/ActivityManager$RunningServiceInfo]
+  + Class [android/app/Application]
+  + Class [android/content/ComponentName]
+  + Class [android/content/Context]
+  + Class [android/content/SharedPreferences]
+  + Class [android/preference/PreferenceManager]
+  + Class [android/util/Log]
+  + Class [com/halcyonwaves/apps/energize/a]
+  + Class [java/lang/String]
+  + Class [java/lang/StringBuilder]
+  + Class [java/util/Iterator]
+  + Class [java/util/List]
+  + Fieldref [android/app/ActivityManager$RunningServiceInfo.service Landroid/content/ComponentName;]
+  + Methodref [android/app/ActivityManager.getRunningServices (I)Ljava/util/List;]
+  + Methodref [android/content/ComponentName.getClassName ()Ljava/lang/String;]
+  + Methodref [android/content/Context.getSystemService (Ljava/lang/String;)Ljava/lang/Object;]
+  + Methodref [android/preference/PreferenceManager.getDefaultSharedPreferences (Landroid/content/Context;)Landroid/content/SharedPreferences;]
+  + Methodref [android/util/Log.v (Ljava/lang/String;Ljava/lang/String;)I]
+  + Methodref [android/util/Log.w (Ljava/lang/String;Ljava/lang/String;)I]
+  + Methodref [java/lang/String.compareTo (Ljava/lang/String;)I]
+  + Methodref [java/lang/String.equals (Ljava/lang/Object;)Z]
+  + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
+  + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+  + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
+  + InterfaceMethodref [android/content/SharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
+  + InterfaceMethodref [java/util/Iterator.hasNext ()Z]
+  + InterfaceMethodref [java/util/Iterator.next ()Ljava/lang/Object;]
+  + InterfaceMethodref [java/util/List.iterator ()Ljava/util/Iterator;]
+  + NameAndType [<init> (Ljava/lang/String;)V]
+  + NameAndType [append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+  + NameAndType [compareTo (Ljava/lang/String;)I]
+  + NameAndType [equals (Ljava/lang/Object;)Z]
+  + NameAndType [getClassName ()Ljava/lang/String;]
+  + NameAndType [getDefaultSharedPreferences (Landroid/content/Context;)Landroid/content/SharedPreferences;]
+  + NameAndType [getRunningServices (I)Ljava/util/List;]
+  + NameAndType [getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
+  + NameAndType [getSystemService (Ljava/lang/String;)Ljava/lang/Object;]
+  + NameAndType [hasNext ()Z]
+  + NameAndType [iterator ()Ljava/util/Iterator;]
+  + NameAndType [next ()Ljava/lang/Object;]
+  + NameAndType [service Landroid/content/ComponentName;]
+  + NameAndType [toString ()Ljava/lang/String;]
+  + NameAndType [v (Ljava/lang/String;Ljava/lang/String;)I]
+  + NameAndType [w (Ljava/lang/String;Ljava/lang/String;)I]
+  + Utf8 ['), returning default theme!]
+  + Utf8 [()Ljava/lang/Object;]
+  + Utf8 [()Ljava/lang/String;]
+  + Utf8 [()Ljava/util/Iterator;]
+  + Utf8 [()Z]
+  + Utf8 [(I)Ljava/util/List;]
+  + Utf8 [(Landroid/content/Context;)I]
+  + Utf8 [(Landroid/content/Context;)Landroid/content/SharedPreferences;]
+  + Utf8 [(Landroid/content/Context;Ljava/lang/String;)Z]
+  + Utf8 [(Ljava/lang/Object;)Z]
+  + Utf8 [(Ljava/lang/String;)I]
+  + Utf8 [(Ljava/lang/String;)Ljava/lang/Object;]
+  + Utf8 [(Ljava/lang/String;)Ljava/lang/StringBuilder;]
+  + Utf8 [(Ljava/lang/String;)V]
+  + Utf8 [(Ljava/lang/String;Ljava/lang/String;)I]
+  + Utf8 [(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
+  + Utf8 [<init>]
+  + Utf8 [ApplicationCore]
+  + Utf8 [BatteryStateDisplayActivity.Theme]
+  + Utf8 [Checking if the monitoring service is running or not...]
+  + Utf8 [Code]
+  + Utf8 [DarkTheme]
+  + Utf8 [Landroid/content/ComponentName;]
+  + Utf8 [LightTheme]
+  + Utf8 [The selected theme is unknown (']
+  + Utf8 [UnknownTheme]
+  + Utf8 [a]
+  + Utf8 [activity]
+  + Utf8 [android/app/ActivityManager]
+  + Utf8 [android/app/ActivityManager$RunningServiceInfo]
+  + Utf8 [android/app/Application]
+  + Utf8 [android/content/ComponentName]
+  + Utf8 [android/content/Context]
+  + Utf8 [android/content/SharedPreferences]
+  + Utf8 [android/preference/PreferenceManager]
+  + Utf8 [android/util/Log]
+  + Utf8 [append]
+  + Utf8 [com/halcyonwaves/apps/energize/a]
+  + Utf8 [compareTo]
+  + Utf8 [display.theme]
+  + Utf8 [equals]
+  + Utf8 [getClassName]
+  + Utf8 [getDefaultSharedPreferences]
+  + Utf8 [getRunningServices]
+  + Utf8 [getString]
+  + Utf8 [getSystemService]
+  + Utf8 [hasNext]
+  + Utf8 [iterator]
+  + Utf8 [java/lang/String]
+  + Utf8 [java/lang/StringBuilder]
+  + Utf8 [java/util/Iterator]
+  + Utf8 [java/util/List]
+  + Utf8 [next]
+  + Utf8 [service]
+  + Utf8 [toString]
+  + Utf8 [v]
+  + Utf8 [w]
+
+Fields (count = 0):
+
+Methods (count = 2):
+  + Method:       a(Landroid/content/Context;Ljava/lang/String;)Z
+    Access flags: 0x9
+      = public static boolean a(android.content.Context,java.lang.String)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 81, locals = 7, stack = 2):
+      [0] ldc #4
+        + String [ApplicationCore]
+      [2] ldc #6
+        + String [Checking if the monitoring service is running or not...]
+      [4] invokestatic #31
+        + Methodref [android/util/Log.v (Ljava/lang/String;Ljava/lang/String;)I]
+      [7] pop
+      [8] iconst_0
+      [9] istore_2 v2
+      [10] aload_0 v0
+      [11] ldc #11
+        + String [activity]
+      [13] invokevirtual #29
+        + Methodref [android/content/Context.getSystemService (Ljava/lang/String;)Ljava/lang/Object;]
+      [16] checkcast #13
+        + Class [android/app/ActivityManager]
+      [19] astore_3 v3
+      [20] aload_3 v3
+      [21] bipush 50
+      [23] invokevirtual #27
+        + Methodref [android/app/ActivityManager.getRunningServices (I)Ljava/util/List;]
+      [26] astore v4
+      [28] aload v4
+      [30] invokeinterface #41
+        + InterfaceMethodref [java/util/List.iterator ()Ljava/util/Iterator;]
+      [35] astore v5
+      [37] goto +32 (target=69)
+      [40] aload v5
+      [42] invokeinterface #40
+        + InterfaceMethodref [java/util/Iterator.next ()Ljava/lang/Object;]
+      [47] checkcast #14
+        + Class [android/app/ActivityManager$RunningServiceInfo]
+      [50] astore v6
+      [52] aload v6
+      [54] getfield #26
+        + Fieldref [android/app/ActivityManager$RunningServiceInfo.service Landroid/content/ComponentName;]
+      [57] invokevirtual #28
+        + Methodref [android/content/ComponentName.getClassName ()Ljava/lang/String;]
+      [60] aload_1 v1
+      [61] invokevirtual #34
+        + Methodref [java/lang/String.equals (Ljava/lang/Object;)Z]
+      [64] ifeq +5 (target=69)
+      [67] iconst_1
+      [68] istore_2 v2
+      [69] aload v5
+      [71] invokeinterface #39
+        + InterfaceMethodref [java/util/Iterator.hasNext ()Z]
+      [76] ifne -36 (target=40)
+      [79] iload_2 v2
+      [80] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Landroid/content/Context;)I
+    Access flags: 0x9
+      = public static int a(android.content.Context)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 70, locals = 3, stack = 4):
+      [0] aload_0 v0
+      [1] invokestatic #30
+        + Methodref [android/preference/PreferenceManager.getDefaultSharedPreferences (Landroid/content/Context;)Landroid/content/SharedPreferences;]
+      [4] astore_1 v1
+      [5] aload_1 v1
+      [6] ldc #12
+        + String [display.theme]
+      [8] ldc #10
+        + String [UnknownTheme]
+      [10] invokeinterface #38
+        + InterfaceMethodref [android/content/SharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
+      [15] astore_2 v2
+      [16] aload_2 v2
+      [17] ldc #7
+        + String [DarkTheme]
+      [19] invokevirtual #33
+        + Methodref [java/lang/String.compareTo (Ljava/lang/String;)I]
+      [22] ifne +6 (target=28)
+      [25] ldc #2
+        + Integer [2131165185]
+      [27] ireturn
+      [28] aload_2 v2
+      [29] ldc #8
+        + String [LightTheme]
+      [31] invokevirtual #33
+        + Methodref [java/lang/String.compareTo (Ljava/lang/String;)I]
+      [34] ifne +6 (target=40)
+      [37] ldc #1
+        + Integer [2131165184]
+      [39] ireturn
+      [40] ldc #5
+        + String [BatteryStateDisplayActivity.Theme]
+      [42] new #23
+        + Class [java/lang/StringBuilder]
+      [45] dup
+      [46] ldc #9
+        + String [The selected theme is unknown (']
+      [48] invokespecial #35
+        + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
+      [51] aload_2 v2
+      [52] invokevirtual #36
+        + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+      [55] ldc #3
+        + String ['), returning default theme!]
+      [57] invokevirtual #36
+        + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+      [60] invokevirtual #37
+        + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
+      [63] invokestatic #32
+        + Methodref [android/util/Log.w (Ljava/lang/String;Ljava/lang/String;)I]
+      [66] pop
+      [67] ldc #2
+        + Integer [2131165185]
+      [69] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: com/halcyonwaves/apps/energize/BatteryStateDisplayActivity
+  Superclass:    android/app/Activity
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x21
+    = public class com.halcyonwaves.apps.energize.BatteryStateDisplayActivity extends android.app.Activity
+
+Interfaces (count = 0):
+
+Constant Pool (count = 120):
+  + Integer [2130903040]
+  + Integer [2131230720]
+  + Integer [2131296256]
+  + String [BatteryStateDisplayActivity]
+  + String [Monitoring service is not running, starting it...]
+  + String [android.intent.action.BATTERY_CHANGED]
+  + Class [android/app/Activity]
+  + Class [android/content/Context]
+  + Class [android/content/Intent]
+  + Class [android/content/IntentFilter]
+  + Class [android/util/Log]
+  + Class [android/view/MenuInflater]
+  + Class [android/view/MenuItem]
+  + Class [android/widget/TextView]
+  + Class [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity]
+  + Class [com/halcyonwaves/apps/energize/SettingsActivity]
+  + Class [com/halcyonwaves/apps/energize/a]
+  + Class [com/halcyonwaves/apps/energize/b]
+  + Class [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService]
+  + Class [java/lang/Class]
+  + Fieldref [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity.a Landroid/widget/TextView;]
+  + Methodref [android/app/Activity.<init> ()V]
+  + Methodref [android/app/Activity.onCreate (Landroid/os/Bundle;)V]
+  + Methodref [android/content/Context.startService (Landroid/content/Intent;)Landroid/content/ComponentName;]
+  + Methodref [android/content/Intent.<init> (Landroid/content/Context;Ljava/lang/Class;)V]
+  + Methodref [android/content/IntentFilter.<init> (Ljava/lang/String;)V]
+  + Methodref [android/util/Log.v (Ljava/lang/String;Ljava/lang/String;)I]
+  + Methodref [android/view/MenuInflater.inflate (ILandroid/view/Menu;)V]
+  + Methodref [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity.a ()V]
+  + Methodref [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity.findViewById (I)Landroid/view/View;]
+  + Methodref [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity.getApplicationContext ()Landroid/content/Context;]
+  + Methodref [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity.getMenuInflater ()Landroid/view/MenuInflater;]
+  + Methodref [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity.registerReceiver (Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;]
+  + Methodref [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity.setContentView (I)V]
+  + Methodref [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity.setTheme (I)V]
+  + Methodref [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity.startActivity (Landroid/content/Intent;)V]
+  + Methodref [com/halcyonwaves/apps/energize/a.a (Landroid/content/Context;)I]
+  + Methodref [com/halcyonwaves/apps/energize/a.a (Landroid/content/Context;Ljava/lang/String;)Z]
+  + Methodref [com/halcyonwaves/apps/energize/b.<init> (Lcom/halcyonwaves/apps/energize/BatteryStateDisplayActivity;)V]
+  + Methodref [java/lang/Class.getName ()Ljava/lang/String;]
+  + InterfaceMethodref [android/view/MenuItem.getItemId ()I]
+  + NameAndType [<init> ()V]
+  + NameAndType [<init> (Landroid/content/Context;Ljava/lang/Class;)V]
+  + NameAndType [<init> (Lcom/halcyonwaves/apps/energize/BatteryStateDisplayActivity;)V]
+  + NameAndType [<init> (Ljava/lang/String;)V]
+  + NameAndType [a ()V]
+  + NameAndType [a (Landroid/content/Context;)I]
+  + NameAndType [a (Landroid/content/Context;Ljava/lang/String;)Z]
+  + NameAndType [a Landroid/widget/TextView;]
+  + NameAndType [findViewById (I)Landroid/view/View;]
+  + NameAndType [getApplicationContext ()Landroid/content/Context;]
+  + NameAndType [getItemId ()I]
+  + NameAndType [getMenuInflater ()Landroid/view/MenuInflater;]
+  + NameAndType [getName ()Ljava/lang/String;]
+  + NameAndType [inflate (ILandroid/view/Menu;)V]
+  + NameAndType [onCreate (Landroid/os/Bundle;)V]
+  + NameAndType [registerReceiver (Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;]
+  + NameAndType [setContentView (I)V]
+  + NameAndType [setTheme (I)V]
+  + NameAndType [startActivity (Landroid/content/Intent;)V]
+  + NameAndType [startService (Landroid/content/Intent;)Landroid/content/ComponentName;]
+  + NameAndType [v (Ljava/lang/String;Ljava/lang/String;)I]
+  + Utf8 [()I]
+  + Utf8 [()Landroid/content/Context;]
+  + Utf8 [()Landroid/view/MenuInflater;]
+  + Utf8 [()Ljava/lang/String;]
+  + Utf8 [()V]
+  + Utf8 [(I)Landroid/view/View;]
+  + Utf8 [(I)V]
+  + Utf8 [(ILandroid/view/Menu;)V]
+  + Utf8 [(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;]
+  + Utf8 [(Landroid/content/Context;)I]
+  + Utf8 [(Landroid/content/Context;Ljava/lang/Class;)V]
+  + Utf8 [(Landroid/content/Context;Ljava/lang/String;)Z]
+  + Utf8 [(Landroid/content/Intent;)Landroid/content/ComponentName;]
+  + Utf8 [(Landroid/content/Intent;)V]
+  + Utf8 [(Landroid/os/Bundle;)V]
+  + Utf8 [(Landroid/view/Menu;)Z]
+  + Utf8 [(Landroid/view/MenuItem;)Z]
+  + Utf8 [(Lcom/halcyonwaves/apps/energize/BatteryStateDisplayActivity;)Landroid/widget/TextView;]
+  + Utf8 [(Lcom/halcyonwaves/apps/energize/BatteryStateDisplayActivity;)V]
+  + Utf8 [(Ljava/lang/String;)V]
+  + Utf8 [(Ljava/lang/String;Ljava/lang/String;)I]
+  + Utf8 [<init>]
+  + Utf8 [BatteryStateDisplayActivity]
+  + Utf8 [Code]
+  + Utf8 [Landroid/widget/TextView;]
+  + Utf8 [Monitoring service is not running, starting it...]
+  + Utf8 [a]
+  + Utf8 [android.intent.action.BATTERY_CHANGED]
+  + Utf8 [android/app/Activity]
+  + Utf8 [android/content/Context]
+  + Utf8 [android/content/Intent]
+  + Utf8 [android/content/IntentFilter]
+  + Utf8 [android/util/Log]
+  + Utf8 [android/view/MenuInflater]
+  + Utf8 [android/view/MenuItem]
+  + Utf8 [android/widget/TextView]
+  + Utf8 [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity]
+  + Utf8 [com/halcyonwaves/apps/energize/SettingsActivity]
+  + Utf8 [com/halcyonwaves/apps/energize/a]
+  + Utf8 [com/halcyonwaves/apps/energize/b]
+  + Utf8 [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService]
+  + Utf8 [findViewById]
+  + Utf8 [getApplicationContext]
+  + Utf8 [getItemId]
+  + Utf8 [getMenuInflater]
+  + Utf8 [getName]
+  + Utf8 [inflate]
+  + Utf8 [java/lang/Class]
+  + Utf8 [onCreate]
+  + Utf8 [onCreateOptionsMenu]
+  + Utf8 [onOptionsItemSelected]
+  + Utf8 [registerReceiver]
+  + Utf8 [setContentView]
+  + Utf8 [setTheme]
+  + Utf8 [startActivity]
+  + Utf8 [startService]
+  + Utf8 [v]
+
+Fields (count = 1):
+  + Field:        a Landroid/widget/TextView;
+    Access flags: 0x2
+      = private android.widget.TextView a
+
+Methods (count = 6):
+  - Method:       <init>()V
+    Access flags: 0x1
+      = public BatteryStateDisplayActivity()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 1, stack = 2):
+      [0] aload_0 v0
+      [1] invokespecial #22
+        + Methodref [android/app/Activity.<init> ()V]
+      [4] aload_0 v0
+      [5] aconst_null
+      [6] putfield #21
+        + Fieldref [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity.a Landroid/widget/TextView;]
+      [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onCreate(Landroid/os/Bundle;)V
+    Access flags: 0x4
+      = protected void onCreate(android.os.Bundle)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 81, locals = 2, stack = 5):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] invokespecial #23
+        + Methodref [android/app/Activity.onCreate (Landroid/os/Bundle;)V]
+      [5] aload_0 v0
+      [6] aload_0 v0
+      [7] invokevirtual #31
+        + Methodref [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity.getApplicationContext ()Landroid/content/Context;]
+      [10] invokestatic #37
+        + Methodref [com/halcyonwaves/apps/energize/a.a (Landroid/content/Context;)I]
+      [13] invokevirtual #35
+        + Methodref [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity.setTheme (I)V]
+      [16] aload_0 v0
+      [17] ldc #1
+        + Integer [2130903040]
+      [19] invokevirtual #34
+        + Methodref [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity.setContentView (I)V]
+      [22] aload_0 v0
+      [23] ldc #19
+        + Class [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService]
+      [25] invokevirtual #40
+        + Methodref [java/lang/Class.getName ()Ljava/lang/String;]
+      [28] invokestatic #38
+        + Methodref [com/halcyonwaves/apps/energize/a.a (Landroid/content/Context;Ljava/lang/String;)Z]
+      [31] ifne +32 (target=63)
+      [34] ldc #4
+        + String [BatteryStateDisplayActivity]
+      [36] ldc #5
+        + String [Monitoring service is not running, starting it...]
+      [38] invokestatic #27
+        + Methodref [android/util/Log.v (Ljava/lang/String;Ljava/lang/String;)I]
+      [41] pop
+      [42] aload_0 v0
+      [43] invokevirtual #31
+        + Methodref [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity.getApplicationContext ()Landroid/content/Context;]
+      [46] new #9
+        + Class [android/content/Intent]
+      [49] dup
+      [50] aload_0 v0
+      [51] invokevirtual #31
+        + Methodref [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity.getApplicationContext ()Landroid/content/Context;]
+      [54] ldc #19
+        + Class [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService]
+      [56] invokespecial #25
+        + Methodref [android/content/Intent.<init> (Landroid/content/Context;Ljava/lang/Class;)V]
+      [59] invokevirtual #24
+        + Methodref [android/content/Context.startService (Landroid/content/Intent;)Landroid/content/ComponentName;]
+      [62] pop
+      [63] aload_0 v0
+      [64] aload_0 v0
+      [65] ldc #3
+        + Integer [2131296256]
+      [67] invokevirtual #30
+        + Methodref [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity.findViewById (I)Landroid/view/View;]
+      [70] checkcast #14
+        + Class [android/widget/TextView]
+      [73] putfield #21
+        + Fieldref [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity.a Landroid/widget/TextView;]
+      [76] aload_0 v0
+      [77] invokespecial #29
+        + Methodref [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity.a ()V]
+      [80] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onCreateOptionsMenu(Landroid/view/Menu;)Z
+    Access flags: 0x1
+      = public boolean onCreateOptionsMenu(android.view.Menu)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 12, locals = 2, stack = 3):
+      [0] aload_0 v0
+      [1] invokevirtual #32
+        + Methodref [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity.getMenuInflater ()Landroid/view/MenuInflater;]
+      [4] ldc #2
+        + Integer [2131230720]
+      [6] aload_1 v1
+      [7] invokevirtual #28
+        + Methodref [android/view/MenuInflater.inflate (ILandroid/view/Menu;)V]
+      [10] iconst_1
+      [11] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onOptionsItemSelected(Landroid/view/MenuItem;)Z
+    Access flags: 0x1
+      = public boolean onOptionsItemSelected(android.view.MenuItem)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 44, locals = 3, stack = 4):
+      [0] aload_1 v1
+      [1] invokeinterface #41
+        + InterfaceMethodref [android/view/MenuItem.getItemId ()I]
+      [6] tableswitch (1 offsets, default=36) (target=42)
+        2131296258: offset = 18, target = 24
+        default: offset = 36, target = 42
+      [24] new #9
+        + Class [android/content/Intent]
+      [27] dup
+      [28] aload_0 v0
+      [29] ldc #16
+        + Class [com/halcyonwaves/apps/energize/SettingsActivity]
+      [31] invokespecial #25
+        + Methodref [android/content/Intent.<init> (Landroid/content/Context;Ljava/lang/Class;)V]
+      [34] astore_2 v2
+      [35] aload_0 v0
+      [36] aload_2 v2
+      [37] invokevirtual #36
+        + Methodref [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity.startActivity (Landroid/content/Intent;)V]
+      [40] iconst_1
+      [41] ireturn
+      [42] iconst_0
+      [43] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a()V
+    Access flags: 0x2
+      = private void a()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 27, locals = 3, stack = 3):
+      [0] new #18
+        + Class [com/halcyonwaves/apps/energize/b]
+      [3] dup
+      [4] aload_0 v0
+      [5] invokespecial #39
+        + Methodref [com/halcyonwaves/apps/energize/b.<init> (Lcom/halcyonwaves/apps/energize/BatteryStateDisplayActivity;)V]
+      [8] astore_1 v1
+      [9] new #10
+        + Class [android/content/IntentFilter]
+      [12] dup
+      [13] ldc #6
+        + String [android.intent.action.BATTERY_CHANGED]
+      [15] invokespecial #26
+        + Methodref [android/content/IntentFilter.<init> (Ljava/lang/String;)V]
+      [18] astore_2 v2
+      [19] aload_0 v0
+      [20] aload_1 v1
+      [21] aload_2 v2
+      [22] invokevirtual #33
+        + Methodref [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity.registerReceiver (Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;]
+      [25] pop
+      [26] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Lcom/halcyonwaves/apps/energize/BatteryStateDisplayActivity;)Landroid/widget/TextView;
+    Access flags: 0x1008
+      = static synthetic android.widget.TextView a(com.halcyonwaves.apps.energize.BatteryStateDisplayActivity)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #21
+        + Fieldref [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity.a Landroid/widget/TextView;]
+      [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: com/halcyonwaves/apps/energize/b
+  Superclass:    android/content/BroadcastReceiver
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x20
+    = class com.halcyonwaves.apps.energize.b extends android.content.BroadcastReceiver
+
+Interfaces (count = 0):
+
+Constant Pool (count = 59):
+  + String [level]
+  + String [scale]
+  + Class [android/content/BroadcastReceiver]
+  + Class [android/content/Context]
+  + Class [android/content/Intent]
+  + Class [android/widget/TextView]
+  + Class [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity]
+  + Class [com/halcyonwaves/apps/energize/b]
+  + Class [java/lang/String]
+  + Class [java/lang/StringBuilder]
+  + Fieldref [com/halcyonwaves/apps/energize/b.a Lcom/halcyonwaves/apps/energize/BatteryStateDisplayActivity;]
+  + Methodref [android/content/BroadcastReceiver.<init> ()V]
+  + Methodref [android/content/Context.unregisterReceiver (Landroid/content/BroadcastReceiver;)V]
+  + Methodref [android/content/Intent.getIntExtra (Ljava/lang/String;I)I]
+  + Methodref [android/widget/TextView.setText (Ljava/lang/CharSequence;)V]
+  + Methodref [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity.a (Lcom/halcyonwaves/apps/energize/BatteryStateDisplayActivity;)Landroid/widget/TextView;]
+  + Methodref [java/lang/String.valueOf (I)Ljava/lang/String;]
+  + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
+  + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
+  + NameAndType [<init> ()V]
+  + NameAndType [<init> (Ljava/lang/String;)V]
+  + NameAndType [a (Lcom/halcyonwaves/apps/energize/BatteryStateDisplayActivity;)Landroid/widget/TextView;]
+  + NameAndType [a Lcom/halcyonwaves/apps/energize/BatteryStateDisplayActivity;]
+  + NameAndType [getIntExtra (Ljava/lang/String;I)I]
+  + NameAndType [setText (Ljava/lang/CharSequence;)V]
+  + NameAndType [toString ()Ljava/lang/String;]
+  + NameAndType [unregisterReceiver (Landroid/content/BroadcastReceiver;)V]
+  + NameAndType [valueOf (I)Ljava/lang/String;]
+  + Utf8 [()Ljava/lang/String;]
+  + Utf8 [()V]
+  + Utf8 [(I)Ljava/lang/String;]
+  + Utf8 [(Landroid/content/BroadcastReceiver;)V]
+  + Utf8 [(Landroid/content/Context;Landroid/content/Intent;)V]
+  + Utf8 [(Lcom/halcyonwaves/apps/energize/BatteryStateDisplayActivity;)Landroid/widget/TextView;]
+  + Utf8 [(Lcom/halcyonwaves/apps/energize/BatteryStateDisplayActivity;)V]
+  + Utf8 [(Ljava/lang/CharSequence;)V]
+  + Utf8 [(Ljava/lang/String;)V]
+  + Utf8 [(Ljava/lang/String;I)I]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [Lcom/halcyonwaves/apps/energize/BatteryStateDisplayActivity;]
+  + Utf8 [a]
+  + Utf8 [android/content/BroadcastReceiver]
+  + Utf8 [android/content/Context]
+  + Utf8 [android/content/Intent]
+  + Utf8 [android/widget/TextView]
+  + Utf8 [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity]
+  + Utf8 [com/halcyonwaves/apps/energize/b]
+  + Utf8 [getIntExtra]
+  + Utf8 [java/lang/String]
+  + Utf8 [java/lang/StringBuilder]
+  + Utf8 [level]
+  + Utf8 [onReceive]
+  + Utf8 [scale]
+  + Utf8 [setText]
+  + Utf8 [toString]
+  + Utf8 [unregisterReceiver]
+  + Utf8 [valueOf]
+
+Fields (count = 1):
+  + Field:        a Lcom/halcyonwaves/apps/energize/BatteryStateDisplayActivity;
+    Access flags: 0x1010
+      = final synthetic com.halcyonwaves.apps.energize.BatteryStateDisplayActivity a
+
+Methods (count = 2):
+  - Method:       <init>(Lcom/halcyonwaves/apps/energize/BatteryStateDisplayActivity;)V
+    Access flags: 0x0
+      = b(com.halcyonwaves.apps.energize.BatteryStateDisplayActivity)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] putfield #11
+        + Fieldref [com/halcyonwaves/apps/energize/b.a Lcom/halcyonwaves/apps/energize/BatteryStateDisplayActivity;]
+      [5] aload_0 v0
+      [6] invokespecial #12
+        + Methodref [android/content/BroadcastReceiver.<init> ()V]
+      [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onReceive(Landroid/content/Context;Landroid/content/Intent;)V
+    Access flags: 0x1
+      = public void onReceive(android.content.Context,android.content.Intent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 69, locals = 6, stack = 4):
+      [0] aload_1 v1
+      [1] aload_0 v0
+      [2] invokevirtual #13
+        + Methodref [android/content/Context.unregisterReceiver (Landroid/content/BroadcastReceiver;)V]
+      [5] aload_2 v2
+      [6] ldc #1
+        + String [level]
+      [8] iconst_m1
+      [9] invokevirtual #14
+        + Methodref [android/content/Intent.getIntExtra (Ljava/lang/String;I)I]
+      [12] istore_3 v3
+      [13] aload_2 v2
+      [14] ldc #2
+        + String [scale]
+      [16] iconst_m1
+      [17] invokevirtual #14
+        + Methodref [android/content/Intent.getIntExtra (Ljava/lang/String;I)I]
+      [20] istore v4
+      [22] iconst_m1
+      [23] istore v5
+      [25] iload_3 v3
+      [26] iflt +17 (target=43)
+      [29] iload v4
+      [31] ifle +12 (target=43)
+      [34] iload_3 v3
+      [35] bipush 100
+      [37] imul
+      [38] iload v4
+      [40] idiv
+      [41] istore v5
+      [43] aload_0 v0
+      [44] getfield #11
+        + Fieldref [com/halcyonwaves/apps/energize/b.a Lcom/halcyonwaves/apps/energize/BatteryStateDisplayActivity;]
+      [47] invokestatic #16
+        + Methodref [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity.a (Lcom/halcyonwaves/apps/energize/BatteryStateDisplayActivity;)Landroid/widget/TextView;]
+      [50] new #10
+        + Class [java/lang/StringBuilder]
+      [53] dup
+      [54] iload v5
+      [56] invokestatic #17
+        + Methodref [java/lang/String.valueOf (I)Ljava/lang/String;]
+      [59] invokespecial #18
+        + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
+      [62] invokevirtual #19
+        + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
+      [65] invokevirtual #15
+        + Methodref [android/widget/TextView.setText (Ljava/lang/CharSequence;)V]
+      [68] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: com/halcyonwaves/apps/energize/SettingsActivity
+  Superclass:    android/preference/PreferenceActivity
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x21
+    = public class com.halcyonwaves.apps.energize.SettingsActivity extends android.preference.PreferenceActivity
+
+Interfaces (count = 0):
+
+Constant Pool (count = 35):
+  + Integer [2130968579]
+  + Class [android/preference/PreferenceActivity]
+  + Class [com/halcyonwaves/apps/energize/SettingsActivity]
+  + Class [com/halcyonwaves/apps/energize/a]
+  + Methodref [android/preference/PreferenceActivity.<init> ()V]
+  + Methodref [android/preference/PreferenceActivity.onCreate (Landroid/os/Bundle;)V]
+  + Methodref [com/halcyonwaves/apps/energize/SettingsActivity.getApplicationContext ()Landroid/content/Context;]
+  + Methodref [com/halcyonwaves/apps/energize/SettingsActivity.loadHeadersFromResource (ILjava/util/List;)V]
+  + Methodref [com/halcyonwaves/apps/energize/SettingsActivity.setTheme (I)V]
+  + Methodref [com/halcyonwaves/apps/energize/a.a (Landroid/content/Context;)I]
+  + NameAndType [<init> ()V]
+  + NameAndType [a (Landroid/content/Context;)I]
+  + NameAndType [getApplicationContext ()Landroid/content/Context;]
+  + NameAndType [loadHeadersFromResource (ILjava/util/List;)V]
+  + NameAndType [onCreate (Landroid/os/Bundle;)V]
+  + NameAndType [setTheme (I)V]
+  + Utf8 [()Landroid/content/Context;]
+  + Utf8 [()V]
+  + Utf8 [(I)V]
+  + Utf8 [(ILjava/util/List;)V]
+  + Utf8 [(Landroid/content/Context;)I]
+  + Utf8 [(Landroid/os/Bundle;)V]
+  + Utf8 [(Ljava/util/List;)V]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [a]
+  + Utf8 [android/preference/PreferenceActivity]
+  + Utf8 [com/halcyonwaves/apps/energize/SettingsActivity]
+  + Utf8 [com/halcyonwaves/apps/energize/a]
+  + Utf8 [getApplicationContext]
+  + Utf8 [loadHeadersFromResource]
+  + Utf8 [onBuildHeaders]
+  + Utf8 [onCreate]
+  + Utf8 [setTheme]
+
+Fields (count = 0):
+
+Methods (count = 3):
+  - Method:       <init>()V
+    Access flags: 0x1
+      = public SettingsActivity()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] invokespecial #5
+        + Methodref [android/preference/PreferenceActivity.<init> ()V]
+      [4] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onBuildHeaders(Ljava/util/List;)V
+    Access flags: 0x1
+      = public void onBuildHeaders(java.util.List)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 8, locals = 2, stack = 3):
+      [0] aload_0 v0
+      [1] ldc #1
+        + Integer [2130968579]
+      [3] aload_1 v1
+      [4] invokevirtual #8
+        + Methodref [com/halcyonwaves/apps/energize/SettingsActivity.loadHeadersFromResource (ILjava/util/List;)V]
+      [7] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onCreate(Landroid/os/Bundle;)V
+    Access flags: 0x4
+      = protected void onCreate(android.os.Bundle)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 17, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] invokespecial #6
+        + Methodref [android/preference/PreferenceActivity.onCreate (Landroid/os/Bundle;)V]
+      [5] aload_0 v0
+      [6] aload_0 v0
+      [7] invokevirtual #7
+        + Methodref [com/halcyonwaves/apps/energize/SettingsActivity.getApplicationContext ()Landroid/content/Context;]
+      [10] invokestatic #10
+        + Methodref [com/halcyonwaves/apps/energize/a.a (Landroid/content/Context;)I]
+      [13] invokevirtual #9
+        + Methodref [com/halcyonwaves/apps/energize/SettingsActivity.setTheme (I)V]
+      [16] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: com/halcyonwaves/apps/energize/a/a
+  Superclass:    android/database/sqlite/SQLiteOpenHelper
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x21
+    = public class com.halcyonwaves.apps.energize.a.a extends android.database.sqlite.SQLiteOpenHelper
+
+Interfaces (count = 0):
+
+Constant Pool (count = 24):
+  + String [batteryUsageStatistics.db]
+  + Class [android/database/sqlite/SQLiteOpenHelper]
+  + Class [com/halcyonwaves/apps/energize/a/a]
+  + Class [com/halcyonwaves/apps/energize/a/b]
+  + Methodref [android/database/sqlite/SQLiteOpenHelper.<init> (Landroid/content/Context;Ljava/lang/String;Landroid/database/sqlite/SQLiteDatabase$CursorFactory;I)V]
+  + Methodref [com/halcyonwaves/apps/energize/a/b.a (Landroid/database/sqlite/SQLiteDatabase;)V]
+  + Methodref [com/halcyonwaves/apps/energize/a/b.a (Landroid/database/sqlite/SQLiteDatabase;II)V]
+  + NameAndType [<init> (Landroid/content/Context;Ljava/lang/String;Landroid/database/sqlite/SQLiteDatabase$CursorFactory;I)V]
+  + NameAndType [a (Landroid/database/sqlite/SQLiteDatabase;)V]
+  + NameAndType [a (Landroid/database/sqlite/SQLiteDatabase;II)V]
+  + Utf8 [(Landroid/content/Context;)V]
+  + Utf8 [(Landroid/content/Context;Ljava/lang/String;Landroid/database/sqlite/SQLiteDatabase$CursorFactory;I)V]
+  + Utf8 [(Landroid/database/sqlite/SQLiteDatabase;)V]
+  + Utf8 [(Landroid/database/sqlite/SQLiteDatabase;II)V]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [a]
+  + Utf8 [android/database/sqlite/SQLiteOpenHelper]
+  + Utf8 [batteryUsageStatistics.db]
+  + Utf8 [com/halcyonwaves/apps/energize/a/a]
+  + Utf8 [com/halcyonwaves/apps/energize/a/b]
+  + Utf8 [onCreate]
+  + Utf8 [onUpgrade]
+
+Fields (count = 0):
+
+Methods (count = 3):
+  - Method:       <init>(Landroid/content/Context;)V
+    Access flags: 0x1
+      = public a(android.content.Context)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 2, stack = 5):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] ldc #1
+        + String [batteryUsageStatistics.db]
+      [4] aconst_null
+      [5] iconst_1
+      [6] invokespecial #5
+        + Methodref [android/database/sqlite/SQLiteOpenHelper.<init> (Landroid/content/Context;Ljava/lang/String;Landroid/database/sqlite/SQLiteDatabase$CursorFactory;I)V]
+      [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onCreate(Landroid/database/sqlite/SQLiteDatabase;)V
+    Access flags: 0x1
+      = public void onCreate(android.database.sqlite.SQLiteDatabase)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 2, stack = 1):
+      [0] aload_1 v1
+      [1] invokestatic #6
+        + Methodref [com/halcyonwaves/apps/energize/a/b.a (Landroid/database/sqlite/SQLiteDatabase;)V]
+      [4] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onUpgrade(Landroid/database/sqlite/SQLiteDatabase;II)V
+    Access flags: 0x1
+      = public void onUpgrade(android.database.sqlite.SQLiteDatabase,int,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 7, locals = 4, stack = 3):
+      [0] aload_1 v1
+      [1] iload_2 v2
+      [2] iload_3 v3
+      [3] invokestatic #7
+        + Methodref [com/halcyonwaves/apps/energize/a/b.a (Landroid/database/sqlite/SQLiteDatabase;II)V]
+      [6] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: com/halcyonwaves/apps/energize/a/b
+  Superclass:    java/lang/Object
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x31
+    = public final class com.halcyonwaves.apps.energize.a.b extends java.lang.Object
+
+Interfaces (count = 0):
+
+Constant Pool (count = 17):
+  + String [CREATE TABLE rawBatteryStats( _id INTEGER PRIMARY KEY AUTOINCREMENT, eventTime INTEGER, chargingState INTEGER, chargePct INTEGER );]
+  + Class [android/database/sqlite/SQLiteDatabase]
+  + Class [com/halcyonwaves/apps/energize/a/b]
+  + Class [java/lang/Object]
+  + Methodref [android/database/sqlite/SQLiteDatabase.execSQL (Ljava/lang/String;)V]
+  + NameAndType [execSQL (Ljava/lang/String;)V]
+  + Utf8 [(Landroid/database/sqlite/SQLiteDatabase;)V]
+  + Utf8 [(Landroid/database/sqlite/SQLiteDatabase;II)V]
+  + Utf8 [(Ljava/lang/String;)V]
+  + Utf8 [CREATE TABLE rawBatteryStats( _id INTEGER PRIMARY KEY AUTOINCREMENT, eventTime INTEGER, chargingState INTEGER, chargePct INTEGER );]
+  + Utf8 [Code]
+  + Utf8 [a]
+  + Utf8 [android/database/sqlite/SQLiteDatabase]
+  + Utf8 [com/halcyonwaves/apps/energize/a/b]
+  + Utf8 [execSQL]
+  + Utf8 [java/lang/Object]
+
+Fields (count = 0):
+
+Methods (count = 2):
+  + Method:       a(Landroid/database/sqlite/SQLiteDatabase;)V
+    Access flags: 0x9
+      = public static void a(android.database.sqlite.SQLiteDatabase)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 7, locals = 1, stack = 2):
+      [0] aload_0 v0
+      [1] ldc #1
+        + String [CREATE TABLE rawBatteryStats( _id INTEGER PRIMARY KEY AUTOINCREMENT, eventTime INTEGER, chargingState INTEGER, chargePct INTEGER );]
+      [3] invokevirtual #5
+        + Methodref [android/database/sqlite/SQLiteDatabase.execSQL (Ljava/lang/String;)V]
+      [6] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Landroid/database/sqlite/SQLiteDatabase;II)V
+    Access flags: 0x9
+      = public static void a(android.database.sqlite.SQLiteDatabase,int,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 1, locals = 3, stack = 0):
+      [0] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: com/halcyonwaves/apps/energize/receivers/a
+  Superclass:    android/content/BroadcastReceiver
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x21
+    = public class com.halcyonwaves.apps.energize.receivers.a extends android.content.BroadcastReceiver
+
+Interfaces (count = 0):
+
+Constant Pool (count = 32):
+  + String [level]
+  + String [plugged]
+  + Class [android/content/BroadcastReceiver]
+  + Class [android/content/Intent]
+  + Class [com/halcyonwaves/apps/energize/receivers/a]
+  + Class [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService]
+  + Fieldref [com/halcyonwaves/apps/energize/receivers/a.a Lcom/halcyonwaves/apps/energize/services/MonitorBatteryStateService;]
+  + Methodref [android/content/BroadcastReceiver.<init> ()V]
+  + Methodref [android/content/Intent.getIntExtra (Ljava/lang/String;I)I]
+  + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.a (II)V]
+  + NameAndType [<init> ()V]
+  + NameAndType [a (II)V]
+  + NameAndType [a Lcom/halcyonwaves/apps/energize/services/MonitorBatteryStateService;]
+  + NameAndType [getIntExtra (Ljava/lang/String;I)I]
+  + Utf8 [()V]
+  + Utf8 [(II)V]
+  + Utf8 [(Landroid/content/Context;Landroid/content/Intent;)V]
+  + Utf8 [(Lcom/halcyonwaves/apps/energize/services/MonitorBatteryStateService;)V]
+  + Utf8 [(Ljava/lang/String;I)I]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [Lcom/halcyonwaves/apps/energize/services/MonitorBatteryStateService;]
+  + Utf8 [a]
+  + Utf8 [android/content/BroadcastReceiver]
+  + Utf8 [android/content/Intent]
+  + Utf8 [com/halcyonwaves/apps/energize/receivers/a]
+  + Utf8 [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService]
+  + Utf8 [getIntExtra]
+  + Utf8 [level]
+  + Utf8 [onReceive]
+  + Utf8 [plugged]
+
+Fields (count = 1):
+  + Field:        a Lcom/halcyonwaves/apps/energize/services/MonitorBatteryStateService;
+    Access flags: 0x2
+      = private com.halcyonwaves.apps.energize.services.MonitorBatteryStateService a
+
+Methods (count = 2):
+  - Method:       <init>(Lcom/halcyonwaves/apps/energize/services/MonitorBatteryStateService;)V
+    Access flags: 0x1
+      = public a(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 15, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] invokespecial #8
+        + Methodref [android/content/BroadcastReceiver.<init> ()V]
+      [4] aload_0 v0
+      [5] aconst_null
+      [6] putfield #7
+        + Fieldref [com/halcyonwaves/apps/energize/receivers/a.a Lcom/halcyonwaves/apps/energize/services/MonitorBatteryStateService;]
+      [9] aload_0 v0
+      [10] aload_1 v1
+      [11] putfield #7
+        + Fieldref [com/halcyonwaves/apps/energize/receivers/a.a Lcom/halcyonwaves/apps/energize/services/MonitorBatteryStateService;]
+      [14] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onReceive(Landroid/content/Context;Landroid/content/Intent;)V
+    Access flags: 0x1
+      = public void onReceive(android.content.Context,android.content.Intent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 28, locals = 5, stack = 3):
+      [0] aload_2 v2
+      [1] ldc #1
+        + String [level]
+      [3] iconst_m1
+      [4] invokevirtual #9
+        + Methodref [android/content/Intent.getIntExtra (Ljava/lang/String;I)I]
+      [7] istore_3 v3
+      [8] aload_2 v2
+      [9] ldc #2
+        + String [plugged]
+      [11] iconst_m1
+      [12] invokevirtual #9
+        + Methodref [android/content/Intent.getIntExtra (Ljava/lang/String;I)I]
+      [15] istore v4
+      [17] aload_0 v0
+      [18] getfield #7
+        + Fieldref [com/halcyonwaves/apps/energize/receivers/a.a Lcom/halcyonwaves/apps/energize/services/MonitorBatteryStateService;]
+      [21] iload v4
+      [23] iload_3 v3
+      [24] invokevirtual #10
+        + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.a (II)V]
+      [27] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: com/halcyonwaves/apps/energize/receivers/BootCompletedReceiver
+  Superclass:    android/content/BroadcastReceiver
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x21
+    = public class com.halcyonwaves.apps.energize.receivers.BootCompletedReceiver extends android.content.BroadcastReceiver
+
+Interfaces (count = 0):
+
+Constant Pool (count = 25):
+  + Class [android/content/BroadcastReceiver]
+  + Class [android/content/Context]
+  + Class [android/content/Intent]
+  + Class [com/halcyonwaves/apps/energize/receivers/BootCompletedReceiver]
+  + Class [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService]
+  + Methodref [android/content/BroadcastReceiver.<init> ()V]
+  + Methodref [android/content/Context.startService (Landroid/content/Intent;)Landroid/content/ComponentName;]
+  + Methodref [android/content/Intent.<init> (Landroid/content/Context;Ljava/lang/Class;)V]
+  + NameAndType [<init> ()V]
+  + NameAndType [<init> (Landroid/content/Context;Ljava/lang/Class;)V]
+  + NameAndType [startService (Landroid/content/Intent;)Landroid/content/ComponentName;]
+  + Utf8 [()V]
+  + Utf8 [(Landroid/content/Context;Landroid/content/Intent;)V]
+  + Utf8 [(Landroid/content/Context;Ljava/lang/Class;)V]
+  + Utf8 [(Landroid/content/Intent;)Landroid/content/ComponentName;]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [android/content/BroadcastReceiver]
+  + Utf8 [android/content/Context]
+  + Utf8 [android/content/Intent]
+  + Utf8 [com/halcyonwaves/apps/energize/receivers/BootCompletedReceiver]
+  + Utf8 [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService]
+  + Utf8 [onReceive]
+  + Utf8 [startService]
+
+Fields (count = 0):
+
+Methods (count = 2):
+  - Method:       <init>()V
+    Access flags: 0x1
+      = public BootCompletedReceiver()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] invokespecial #6
+        + Methodref [android/content/BroadcastReceiver.<init> ()V]
+      [4] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onReceive(Landroid/content/Context;Landroid/content/Intent;)V
+    Access flags: 0x1
+      = public void onReceive(android.content.Context,android.content.Intent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 16, locals = 3, stack = 5):
+      [0] aload_1 v1
+      [1] new #3
+        + Class [android/content/Intent]
+      [4] dup
+      [5] aload_1 v1
+      [6] ldc #5
+        + Class [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService]
+      [8] invokespecial #8
+        + Methodref [android/content/Intent.<init> (Landroid/content/Context;Ljava/lang/Class;)V]
+      [11] invokevirtual #7
+        + Methodref [android/content/Context.startService (Landroid/content/Intent;)Landroid/content/ComponentName;]
+      [14] pop
+      [15] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: com/halcyonwaves/apps/energize/services/MonitorBatteryStateService
+  Superclass:    android/app/Service
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x21
+    = public class com.halcyonwaves.apps.energize.services.MonitorBatteryStateService extends android.app.Service
+
+Interfaces (count = 0):
+
+Constant Pool (count = 117):
+  + String [MonitorBatteryStateService]
+  + String [Service successfully started]
+  + String [Starting service for collecting battery statistics...]
+  + String [android.intent.action.BATTERY_CHANGED]
+  + String [chargePct]
+  + String [chargingState]
+  + String [eventTime]
+  + String [rawBatteryStats]
+  + Class [android/app/Service]
+  + Class [android/content/ContentValues]
+  + Class [android/content/IntentFilter]
+  + Class [android/database/sqlite/SQLiteDatabase]
+  + Class [android/util/Log]
+  + Class [com/halcyonwaves/apps/energize/a/a]
+  + Class [com/halcyonwaves/apps/energize/receivers/a]
+  + Class [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService]
+  + Class [java/lang/Integer]
+  + Class [java/lang/Long]
+  + Class [java/lang/System]
+  + Long [1000]
+  + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.a Lcom/halcyonwaves/apps/energize/receivers/a;]
+  + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.b Lcom/halcyonwaves/apps/energize/a/a;]
+  + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.c Landroid/database/sqlite/SQLiteDatabase;]
+  + Methodref [android/app/Service.<init> ()V]
+  + Methodref [android/app/Service.onDestroy ()V]
+  + Methodref [android/content/ContentValues.<init> ()V]
+  + Methodref [android/content/ContentValues.put (Ljava/lang/String;Ljava/lang/Integer;)V]
+  + Methodref [android/content/ContentValues.put (Ljava/lang/String;Ljava/lang/Long;)V]
+  + Methodref [android/content/IntentFilter.<init> (Ljava/lang/String;)V]
+  + Methodref [android/database/sqlite/SQLiteDatabase.insert (Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J]
+  + Methodref [android/util/Log.v (Ljava/lang/String;Ljava/lang/String;)I]
+  + Methodref [com/halcyonwaves/apps/energize/a/a.<init> (Landroid/content/Context;)V]
+  + Methodref [com/halcyonwaves/apps/energize/a/a.close ()V]
+  + Methodref [com/halcyonwaves/apps/energize/a/a.getWritableDatabase ()Landroid/database/sqlite/SQLiteDatabase;]
+  + Methodref [com/halcyonwaves/apps/energize/receivers/a.<init> (Lcom/halcyonwaves/apps/energize/services/MonitorBatteryStateService;)V]
+  + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getApplicationContext ()Landroid/content/Context;]
+  + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.registerReceiver (Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;]
+  + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
+  + Methodref [java/lang/Long.valueOf (J)Ljava/lang/Long;]
+  + Methodref [java/lang/System.currentTimeMillis ()J]
+  + NameAndType [<init> ()V]
+  + NameAndType [<init> (Landroid/content/Context;)V]
+  + NameAndType [<init> (Lcom/halcyonwaves/apps/energize/services/MonitorBatteryStateService;)V]
+  + NameAndType [<init> (Ljava/lang/String;)V]
+  + NameAndType [a Lcom/halcyonwaves/apps/energize/receivers/a;]
+  + NameAndType [b Lcom/halcyonwaves/apps/energize/a/a;]
+  + NameAndType [c Landroid/database/sqlite/SQLiteDatabase;]
+  + NameAndType [close ()V]
+  + NameAndType [currentTimeMillis ()J]
+  + NameAndType [getApplicationContext ()Landroid/content/Context;]
+  + NameAndType [getWritableDatabase ()Landroid/database/sqlite/SQLiteDatabase;]
+  + NameAndType [insert (Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J]
+  + NameAndType [onDestroy ()V]
+  + NameAndType [put (Ljava/lang/String;Ljava/lang/Integer;)V]
+  + NameAndType [put (Ljava/lang/String;Ljava/lang/Long;)V]
+  + NameAndType [registerReceiver (Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;]
+  + NameAndType [v (Ljava/lang/String;Ljava/lang/String;)I]
+  + NameAndType [valueOf (I)Ljava/lang/Integer;]
+  + NameAndType [valueOf (J)Ljava/lang/Long;]
+  + Utf8 [()J]
+  + Utf8 [()Landroid/content/Context;]
+  + Utf8 [()Landroid/database/sqlite/SQLiteDatabase;]
+  + Utf8 [()V]
+  + Utf8 [(I)Ljava/lang/Integer;]
+  + Utf8 [(II)V]
+  + Utf8 [(J)Ljava/lang/Long;]
+  + Utf8 [(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;]
+  + Utf8 [(Landroid/content/Context;)V]
+  + Utf8 [(Landroid/content/Intent;)Landroid/os/IBinder;]
+  + Utf8 [(Landroid/content/Intent;II)I]
+  + Utf8 [(Lcom/halcyonwaves/apps/energize/services/MonitorBatteryStateService;)V]
+  + Utf8 [(Ljava/lang/String;)V]
+  + Utf8 [(Ljava/lang/String;Ljava/lang/Integer;)V]
+  + Utf8 [(Ljava/lang/String;Ljava/lang/Long;)V]
+  + Utf8 [(Ljava/lang/String;Ljava/lang/String;)I]
+  + Utf8 [(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [Landroid/database/sqlite/SQLiteDatabase;]
+  + Utf8 [Lcom/halcyonwaves/apps/energize/a/a;]
+  + Utf8 [Lcom/halcyonwaves/apps/energize/receivers/a;]
+  + Utf8 [MonitorBatteryStateService]
+  + Utf8 [Service successfully started]
+  + Utf8 [Starting service for collecting battery statistics...]
+  + Utf8 [a]
+  + Utf8 [android.intent.action.BATTERY_CHANGED]
+  + Utf8 [android/app/Service]
+  + Utf8 [android/content/ContentValues]
+  + Utf8 [android/content/IntentFilter]
+  + Utf8 [android/database/sqlite/SQLiteDatabase]
+  + Utf8 [android/util/Log]
+  + Utf8 [b]
+  + Utf8 [c]
+  + Utf8 [chargePct]
+  + Utf8 [chargingState]
+  + Utf8 [close]
+  + Utf8 [com/halcyonwaves/apps/energize/a/a]
+  + Utf8 [com/halcyonwaves/apps/energize/receivers/a]
+  + Utf8 [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService]
+  + Utf8 [currentTimeMillis]
+  + Utf8 [eventTime]
+  + Utf8 [getApplicationContext]
+  + Utf8 [getWritableDatabase]
+  + Utf8 [insert]
+  + Utf8 [java/lang/Integer]
+  + Utf8 [java/lang/Long]
+  + Utf8 [java/lang/System]
+  + Utf8 [onBind]
+  + Utf8 [onDestroy]
+  + Utf8 [onStartCommand]
+  + Utf8 [put]
+  + Utf8 [rawBatteryStats]
+  + Utf8 [registerReceiver]
+  + Utf8 [v]
+  + Utf8 [valueOf]
+
+Fields (count = 3):
+  + Field:        a Lcom/halcyonwaves/apps/energize/receivers/a;
+    Access flags: 0x2
+      = private com.halcyonwaves.apps.energize.receivers.a a
+  + Field:        b Lcom/halcyonwaves/apps/energize/a/a;
+    Access flags: 0x2
+      = private com.halcyonwaves.apps.energize.a.a b
+  + Field:        c Landroid/database/sqlite/SQLiteDatabase;
+    Access flags: 0x2
+      = private android.database.sqlite.SQLiteDatabase c
+
+Methods (count = 5):
+  - Method:       <init>()V
+    Access flags: 0x1
+      = public MonitorBatteryStateService()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 20, locals = 1, stack = 2):
+      [0] aload_0 v0
+      [1] invokespecial #25
+        + Methodref [android/app/Service.<init> ()V]
+      [4] aload_0 v0
+      [5] aconst_null
+      [6] putfield #22
+        + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.a Lcom/halcyonwaves/apps/energize/receivers/a;]
+      [9] aload_0 v0
+      [10] aconst_null
+      [11] putfield #23
+        + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.b Lcom/halcyonwaves/apps/energize/a/a;]
+      [14] aload_0 v0
+      [15] aconst_null
+      [16] putfield #24
+        + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.c Landroid/database/sqlite/SQLiteDatabase;]
+      [19] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(II)V
+    Access flags: 0x1
+      = public void a(int,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 64, locals = 6, stack = 4):
+      [0] invokestatic #41
+        + Methodref [java/lang/System.currentTimeMillis ()J]
+      [3] ldc2_w #20
+        + Long [1000]
+      [6] ldiv
+      [7] lstore_3 v3
+      [8] new #10
+        + Class [android/content/ContentValues]
+      [11] dup
+      [12] invokespecial #27
+        + Methodref [android/content/ContentValues.<init> ()V]
+      [15] astore v5
+      [17] aload v5
+      [19] ldc #7
+        + String [eventTime]
+      [21] lload_3 v3
+      [22] invokestatic #40
+        + Methodref [java/lang/Long.valueOf (J)Ljava/lang/Long;]
+      [25] invokevirtual #29
+        + Methodref [android/content/ContentValues.put (Ljava/lang/String;Ljava/lang/Long;)V]
+      [28] aload v5
+      [30] ldc #6
+        + String [chargingState]
+      [32] iload_1 v1
+      [33] invokestatic #39
+        + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
+      [36] invokevirtual #28
+        + Methodref [android/content/ContentValues.put (Ljava/lang/String;Ljava/lang/Integer;)V]
+      [39] aload v5
+      [41] ldc #5
+        + String [chargePct]
+      [43] iload_2 v2
+      [44] invokestatic #39
+        + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
+      [47] invokevirtual #28
+        + Methodref [android/content/ContentValues.put (Ljava/lang/String;Ljava/lang/Integer;)V]
+      [50] aload_0 v0
+      [51] getfield #24
+        + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.c Landroid/database/sqlite/SQLiteDatabase;]
+      [54] ldc #8
+        + String [rawBatteryStats]
+      [56] aconst_null
+      [57] aload v5
+      [59] invokevirtual #31
+        + Methodref [android/database/sqlite/SQLiteDatabase.insert (Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J]
+      [62] pop2
+      [63] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onDestroy()V
+    Access flags: 0x1
+      = public void onDestroy()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 12, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #23
+        + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.b Lcom/halcyonwaves/apps/energize/a/a;]
+      [4] invokevirtual #34
+        + Methodref [com/halcyonwaves/apps/energize/a/a.close ()V]
+      [7] aload_0 v0
+      [8] invokespecial #26
+        + Methodref [android/app/Service.onDestroy ()V]
+      [11] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onStartCommand(Landroid/content/Intent;II)I
+    Access flags: 0x1
+      = public int onStartCommand(android.content.Intent,int,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 74, locals = 4, stack = 5):
+      [0] ldc #1
+        + String [MonitorBatteryStateService]
+      [2] ldc #3
+        + String [Starting service for collecting battery statistics...]
+      [4] invokestatic #32
+        + Methodref [android/util/Log.v (Ljava/lang/String;Ljava/lang/String;)I]
+      [7] pop
+      [8] aload_0 v0
+      [9] new #14
+        + Class [com/halcyonwaves/apps/energize/a/a]
+      [12] dup
+      [13] aload_0 v0
+      [14] invokevirtual #37
+        + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getApplicationContext ()Landroid/content/Context;]
+      [17] invokespecial #33
+        + Methodref [com/halcyonwaves/apps/energize/a/a.<init> (Landroid/content/Context;)V]
+      [20] putfield #23
+        + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.b Lcom/halcyonwaves/apps/energize/a/a;]
+      [23] aload_0 v0
+      [24] aload_0 v0
+      [25] getfield #23
+        + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.b Lcom/halcyonwaves/apps/energize/a/a;]
+      [28] invokevirtual #35
+        + Methodref [com/halcyonwaves/apps/energize/a/a.getWritableDatabase ()Landroid/database/sqlite/SQLiteDatabase;]
+      [31] putfield #24
+        + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.c Landroid/database/sqlite/SQLiteDatabase;]
+      [34] aload_0 v0
+      [35] new #15
+        + Class [com/halcyonwaves/apps/energize/receivers/a]
+      [38] dup
+      [39] aload_0 v0
+      [40] invokespecial #36
+        + Methodref [com/halcyonwaves/apps/energize/receivers/a.<init> (Lcom/halcyonwaves/apps/energize/services/MonitorBatteryStateService;)V]
+      [43] putfield #22
+        + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.a Lcom/halcyonwaves/apps/energize/receivers/a;]
+      [46] aload_0 v0
+      [47] aload_0 v0
+      [48] getfield #22
+        + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.a Lcom/halcyonwaves/apps/energize/receivers/a;]
+      [51] new #11
+        + Class [android/content/IntentFilter]
+      [54] dup
+      [55] ldc #4
+        + String [android.intent.action.BATTERY_CHANGED]
+      [57] invokespecial #30
+        + Methodref [android/content/IntentFilter.<init> (Ljava/lang/String;)V]
+      [60] invokevirtual #38
+        + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.registerReceiver (Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;]
+      [63] pop
+      [64] ldc #1
+        + String [MonitorBatteryStateService]
+      [66] ldc #2
+        + String [Service successfully started]
+      [68] invokestatic #32
+        + Methodref [android/util/Log.v (Ljava/lang/String;Ljava/lang/String;)I]
+      [71] pop
+      [72] iconst_1
+      [73] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onBind(Landroid/content/Intent;)Landroid/os/IBinder;
+    Access flags: 0x1
+      = public android.os.IBinder onBind(android.content.Intent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 2, locals = 2, stack = 1):
+      [0] aconst_null
+      [1] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+

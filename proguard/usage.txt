@@ -1,0 +1,33 @@
+android.annotation.SuppressLint
+android.annotation.TargetApi
+com.halcyonwaves.apps.energize.ApplicationCore:
+    31:31:public ApplicationCore()
+com.halcyonwaves.apps.energize.BuildConfig
+com.halcyonwaves.apps.energize.R
+com.halcyonwaves.apps.energize.R$array
+com.halcyonwaves.apps.energize.R$attr
+com.halcyonwaves.apps.energize.R$drawable
+com.halcyonwaves.apps.energize.R$id
+com.halcyonwaves.apps.energize.R$layout
+com.halcyonwaves.apps.energize.R$menu
+com.halcyonwaves.apps.energize.R$string
+com.halcyonwaves.apps.energize.R$style
+com.halcyonwaves.apps.energize.R$xml
+com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper:
+    public static final java.lang.String DATABASE_NAME
+    public static final int DATABASE_VERSION
+com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable:
+    public static final java.lang.String COLUMN_CHARGING_PCT
+    public static final java.lang.String COLUMN_EVENT_TIME
+    public static final java.lang.String COLUMN_CHARGING_STATE
+    public static final java.lang.String COLUMN_ID
+    private static final java.lang.String TABLE_CREATE
+    public static final int CHARGING_STATE_UNCHARGING
+    public static final int CHARGING_STATE_CHARGING_AC
+    public static final int CHARGING_STATE_CHARGING_USB
+    public static final java.lang.String TABLE_NAME
+    23:23:public RawBatteryStatisicsTable()
+com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment
+com.halcyonwaves.apps.energize.fragments.BatteryStatisticsPreferenceFragment
+com.halcyonwaves.apps.energize.fragments.DisplayPreferenceFragment
+com.halcyonwaves.apps.energize.widgets.SimpleWidget

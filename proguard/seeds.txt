@@ -1,0 +1,37 @@
+com.halcyonwaves.apps.energize.BatteryStateDisplayActivity
+com.halcyonwaves.apps.energize.BatteryStateDisplayActivity: BatteryStateDisplayActivity()
+com.halcyonwaves.apps.energize.R$array: int pref_list_theme_names
+com.halcyonwaves.apps.energize.R$array: int pref_list_theme_values
+com.halcyonwaves.apps.energize.R$drawable: int ic_launcher
+com.halcyonwaves.apps.energize.R$id: int menu_preferences
+com.halcyonwaves.apps.energize.R$id: int tv_battery_pct
+com.halcyonwaves.apps.energize.R$id: int tv_percentage_indicator
+com.halcyonwaves.apps.energize.R$layout: int activity_batterystatedisplay
+com.halcyonwaves.apps.energize.R$menu: int menu_main
+com.halcyonwaves.apps.energize.R$string: int app_name
+com.halcyonwaves.apps.energize.R$string: int app_version
+com.halcyonwaves.apps.energize.R$string: int icon_by
+com.halcyonwaves.apps.energize.R$string: int not_available
+com.halcyonwaves.apps.energize.R$string: int percentage_indicator
+com.halcyonwaves.apps.energize.R$string: int pref_header_summary_about
+com.halcyonwaves.apps.energize.R$string: int pref_header_summary_batstats
+com.halcyonwaves.apps.energize.R$string: int pref_header_summary_display
+com.halcyonwaves.apps.energize.R$string: int pref_header_title_about
+com.halcyonwaves.apps.energize.R$string: int pref_header_title_batstats
+com.halcyonwaves.apps.energize.R$string: int pref_header_title_display
+com.halcyonwaves.apps.energize.R$string: int pref_summary_clearstatsdb
+com.halcyonwaves.apps.energize.R$string: int pref_summary_theme
+com.halcyonwaves.apps.energize.R$string: int pref_title_clearstatsdb
+com.halcyonwaves.apps.energize.R$string: int pref_title_theme
+com.halcyonwaves.apps.energize.R$style: int DarkTheme
+com.halcyonwaves.apps.energize.R$style: int LightTheme
+com.halcyonwaves.apps.energize.R$xml: int pref_about
+com.halcyonwaves.apps.energize.R$xml: int pref_batterystatistics
+com.halcyonwaves.apps.energize.R$xml: int pref_display
+com.halcyonwaves.apps.energize.R$xml: int pref_headers
+com.halcyonwaves.apps.energize.SettingsActivity
+com.halcyonwaves.apps.energize.SettingsActivity: SettingsActivity()
+com.halcyonwaves.apps.energize.receivers.BootCompletedReceiver
+com.halcyonwaves.apps.energize.receivers.BootCompletedReceiver: BootCompletedReceiver()
+com.halcyonwaves.apps.energize.services.MonitorBatteryStateService
+com.halcyonwaves.apps.energize.services.MonitorBatteryStateService: MonitorBatteryStateService()
