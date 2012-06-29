@@ -16,22 +16,24 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.halcyonwaves.apps.energize.receivers;
+package com.halcyonwaves.apps.energize.services;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
+import android.app.Service;
 import android.content.Intent;
+import android.os.IBinder;
+import android.util.Log;
 
-/**
- * This class is used as a receiver for broadcasts depending the change of the
- * battery charging level. As soon as the battery charging level changes up or
- * downwards, this receiver gets called.
- * 
- * @author Tim Huetz
- */
-public class BatteryLevelReceiver extends BroadcastReceiver {
+public class MonitorBatteryStateService extends Service {
+	
+	@Override
+	public int onStartCommand(Intent intent, int flags, int startid) {
+		Log.v( "MonitorBatteryStateService", "Service started and ready to collect battery information" );
+		return START_STICKY;
+	}
 
 	@Override
-	public void onReceive( final Context context, final Intent batteryIntent ) {
+	public IBinder onBind(Intent intent) {
+		return null;
 	}
+
 }
