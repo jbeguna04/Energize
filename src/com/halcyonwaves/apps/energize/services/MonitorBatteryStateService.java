@@ -41,6 +41,8 @@ public class MonitorBatteryStateService extends Service {
 	public static final int MSG_REGISTER_CLIENT = 1;
 	public static final int MSG_UNREGISTER_CLIENT = 2;
 	public static final int MSG_REQUEST_LAST_CHARGING_PCT = 3;
+	public static final int MSG_START_MONITORING = 4;
+	public static final int MSG_STOP_MONITORING = 5;
 
 	private BatteryChangedReceiver batteryChangedReceiver = null;
 	private BatteryStatisticsDatabaseOpenHelper batteryDbOpenHelper = null;
@@ -52,12 +54,15 @@ public class MonitorBatteryStateService extends Service {
 	public void insertPowerValue( int powerSource, int batteryCapacity ) {
 		long currentUnixTime = (long) (System.currentTimeMillis() / 1000);
 
-		ContentValues values = new ContentValues();
-		values.put( RawBatteryStatisicsTable.COLUMN_EVENT_TIME, currentUnixTime );
-		values.put( RawBatteryStatisicsTable.COLUMN_CHARGING_STATE, powerSource );
-		values.put( RawBatteryStatisicsTable.COLUMN_CHARGING_PCT, batteryCapacity );
-
-		this.batteryStatisticsDatabase.insert( RawBatteryStatisicsTable.TABLE_NAME, null, values );
+		if( null != this.batteryStatisticsDatabase && this.batteryStatisticsDatabase.isOpen() ) {
+			ContentValues values = new ContentValues();
+			values.put( RawBatteryStatisicsTable.COLUMN_EVENT_TIME, currentUnixTime );
+			values.put( RawBatteryStatisicsTable.COLUMN_CHARGING_STATE, powerSource );
+			values.put( RawBatteryStatisicsTable.COLUMN_CHARGING_PCT, batteryCapacity );
+	
+			this.batteryStatisticsDatabase.insert( RawBatteryStatisicsTable.TABLE_NAME, null, values );
+		}
+		
 		this.lastChargingPercentage = batteryCapacity;
 		MonitorBatteryStateService.this.sendCurrentChargingPctToClients();
 	}
@@ -65,7 +70,17 @@ public class MonitorBatteryStateService extends Service {
 	@Override
 	public void onDestroy() {
 		this.batteryDbOpenHelper.close();
+		this.batteryStatisticsDatabase = null;
 		super.onDestroy();
+	}
+	
+	private void stopMonitoring() {
+		this.batteryDbOpenHelper.close();
+		this.batteryStatisticsDatabase = null;
+	}
+	
+	private void startMonitoring() {
+		this.batteryStatisticsDatabase = this.batteryDbOpenHelper.getWritableDatabase();
 	}
 
 	@Override
@@ -117,6 +132,14 @@ public class MonitorBatteryStateService extends Service {
 				case MonitorBatteryStateService.MSG_REQUEST_LAST_CHARGING_PCT:
 					Log.d( "MonitorBatteryStateService", "Received request of the charging percentage..." );
 					MonitorBatteryStateService.this.sendCurrentChargingPctToClients();
+					break;
+				case MonitorBatteryStateService.MSG_START_MONITORING:
+					Log.d( "MonitorBatteryStateService", "Starting battery monitoring..." );
+					MonitorBatteryStateService.this.startMonitoring();
+					break;
+				case MonitorBatteryStateService.MSG_STOP_MONITORING:
+					Log.d( "MonitorBatteryStateService", "Stopping battery monitoring..." );
+					MonitorBatteryStateService.this.stopMonitoring();
 					break;
 				default:
 					super.handleMessage( msg );
