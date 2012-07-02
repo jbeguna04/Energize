@@ -68,7 +68,8 @@ public class DebugPreferenceFragment extends PreferenceFragment {
 					Log.v( "DebugPreferenceFragment", "Received database path: " + databasePath );
 					try {
 						File outputDir = DebugPreferenceFragment.this.getActivity().getCacheDir();
-						File outputFile = File.createTempFile( "batteryStats", "db", outputDir );
+						File outputFile = File.createTempFile( "batteryStats", ".db", outputDir );
+						Log.d( "DebugPreferenceFragment", "Copying battery stats database to " + outputFile + "..." );
 						this.copyFile( new FileInputStream( new File( databasePath ) ), new FileOutputStream( outputFile ) );
 
 						final Intent emailIntent = new Intent( android.content.Intent.ACTION_SEND );
