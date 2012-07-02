@@ -19,15 +19,30 @@
 package com.halcyonwaves.apps.energize.fragments;
 
 import android.os.Bundle;
+import android.preference.Preference;
+import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceFragment;
+import android.util.Log;
 
 import com.halcyonwaves.apps.energize.R;
 
 public class DebugPreferenceFragment extends PreferenceFragment {
+	
+	private Preference sendDatabasePreference = null;
 
 	@Override
 	public void onCreate( final Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
 		this.addPreferencesFromResource( R.xml.pref_debug );
+		
+		this.sendDatabasePreference = this.findPreference( "debug.send_batterystats_db" );
+		this.sendDatabasePreference.setOnPreferenceClickListener( new OnPreferenceClickListener() {
+			
+			@Override
+			public boolean onPreferenceClick( Preference preference ) {
+				Log.v( "DebugPreferenceFragment", "Prepare battery statistics database for sending via mail..." );
+				return false;
+			}
+		} );
 	}
 }
