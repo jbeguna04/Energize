@@ -33,17 +33,20 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
+import android.os.RemoteException;
 import android.util.Log;
 
 public class MonitorBatteryStateService extends Service {
 
 	public static final int MSG_REGISTER_CLIENT = 1;
 	public static final int MSG_UNREGISTER_CLIENT = 2;
+	public static final int MSG_REQUEST_LAST_CHARGING_PCT = 3;
 
 	private BatteryChangedReceiver batteryChangedReceiver = null;
 	private BatteryStatisticsDatabaseOpenHelper batteryDbOpenHelper = null;
 	private SQLiteDatabase batteryStatisticsDatabase = null;
 	private ArrayList< Messenger > connectedClients = new ArrayList< Messenger >();
+	private int lastChargingPercentage = -1;
 	private final Messenger serviceMessenger = new Messenger( new IncomingHandler() );
 
 	public void insertPowerValue( int powerSource, int batteryCapacity ) {
@@ -55,6 +58,7 @@ public class MonitorBatteryStateService extends Service {
 		values.put( RawBatteryStatisicsTable.COLUMN_CHARGING_PCT, batteryCapacity );
 
 		this.batteryStatisticsDatabase.insert( RawBatteryStatisicsTable.TABLE_NAME, null, values );
+		this.lastChargingPercentage = batteryCapacity;
 	}
 
 	@Override
@@ -85,18 +89,33 @@ public class MonitorBatteryStateService extends Service {
 	public IBinder onBind( Intent intent ) {
 		return this.serviceMessenger.getBinder();
 	}
+	
+	private void sendCurrentChargingPctToClients() {
+		try {
+			for( Messenger msg : this.connectedClients ) {
+				msg.send(Message.obtain(null, MonitorBatteryStateService.MSG_REQUEST_LAST_CHARGING_PCT, this.lastChargingPercentage, 0));
+			}
+		} catch( RemoteException e ) {
+			// nothing
+		}
+	}
 
-	class IncomingHandler extends Handler {
+	private class IncomingHandler extends Handler {
 		@Override
 		public void handleMessage( Message msg ) {
 			switch( msg.what ) {
 				case MonitorBatteryStateService.MSG_REGISTER_CLIENT:
 					Log.d( "MonitorBatteryStateService", "Registering new client to the battery monitoring service..." );
 					MonitorBatteryStateService.this.connectedClients.add( msg.replyTo );
+					MonitorBatteryStateService.this.sendCurrentChargingPctToClients();
 					break;
 				case MonitorBatteryStateService.MSG_UNREGISTER_CLIENT:
 					Log.d( "MonitorBatteryStateService", "Unregistering client from the battery monitoring service..." );
 					MonitorBatteryStateService.this.connectedClients.remove( msg.replyTo );
+					break;
+				case MonitorBatteryStateService.MSG_REQUEST_LAST_CHARGING_PCT:
+					Log.d( "MonitorBatteryStateService", "Received request of the charging percentage..." );
+					MonitorBatteryStateService.this.sendCurrentChargingPctToClients();
 					break;
 				default:
 					super.handleMessage( msg );

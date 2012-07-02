@@ -57,13 +57,9 @@ public class BatteryStateDisplayActivity extends Activity {
 		@Override
 		public void handleMessage( Message msg ) {
 			switch( msg.what ) {
-			/*
-			 * case MyService.MSG_SET_INT_VALUE:
-			 * textIntValue.setText("Int Message: " + msg.arg1); break; case
-			 * MyService.MSG_SET_STRING_VALUE: String str1 =
-			 * msg.getData().getString("str1");
-			 * textStrValue.setText("Str Message: " + str1); break;
-			 */
+				case MonitorBatteryStateService.MSG_REQUEST_LAST_CHARGING_PCT:
+					BatteryStateDisplayActivity.this.batteryPercentage.setText( String.valueOf( msg.arg1 ) );
+					break;
 				default:
 					super.handleMessage( msg );
 			}
@@ -80,15 +76,11 @@ public class BatteryStateDisplayActivity extends Activity {
 				msg.replyTo = BatteryStateDisplayActivity.this.monitorServiceMessanger;
 				BatteryStateDisplayActivity.this.monitorService.send( msg );
 			} catch( RemoteException e ) {
-				// In this case the service has crashed before we could even do
-				// anything with it
 				Log.e( "BatteryStateDisplayActivity", "Failed to connect to the battery monitoring service!" );
 			}
 		}
 
 		public void onServiceDisconnected( ComponentName className ) {
-			// This is called when the connection with the service has been
-			// unexpectedly disconnected - process crashed.
 			BatteryStateDisplayActivity.this.monitorService = null;
 		}
 	};
@@ -104,8 +96,6 @@ public class BatteryStateDisplayActivity extends Activity {
 				msg.replyTo = this.monitorServiceMessanger;
 				this.monitorService.send( msg );
 			} catch( RemoteException e ) {
-				// There is nothing special we need to do if the service has
-				// crashed.
 			}
 		}
 		this.unbindService( this.monitorServiceConnection );
@@ -135,9 +125,6 @@ public class BatteryStateDisplayActivity extends Activity {
 
 		//
 		this.doBindService();
-
-		// now we can update the battery information for displaying them
-		this.updateBatteryInformation();
 	}
 
 	@Override
@@ -156,26 +143,5 @@ public class BatteryStateDisplayActivity extends Activity {
 			default:
 				return false;
 		}
-	}
-
-	private void updateBatteryInformation() {
-		final BroadcastReceiver batteryLevelReceiver = new BroadcastReceiver() {
-
-			// TODO: query the service:
-			// http://developer.android.com/reference/android/support/v4/content/LocalBroadcastManager.html
-			@Override
-			public void onReceive( final Context context, final Intent intent ) {
-				context.unregisterReceiver( this );
-				final int rawlevel = intent.getIntExtra( BatteryManager.EXTRA_LEVEL, -1 );
-				final int scale = intent.getIntExtra( BatteryManager.EXTRA_SCALE, -1 );
-				int level = -1;
-				if( (rawlevel >= 0) && (scale > 0) ) {
-					level = (rawlevel * 100) / scale;
-				}
-				BatteryStateDisplayActivity.this.batteryPercentage.setText( level + "" );
-			}
-		};
-		final IntentFilter batteryLevelFilter = new IntentFilter( Intent.ACTION_BATTERY_CHANGED );
-		this.registerReceiver( batteryLevelReceiver, batteryLevelFilter );
 	}
 }
