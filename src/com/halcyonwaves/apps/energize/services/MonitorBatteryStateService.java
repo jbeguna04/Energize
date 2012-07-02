@@ -26,9 +26,11 @@ import com.halcyonwaves.apps.energize.receivers.BatteryChangedReceiver;
 
 import android.app.Service;
 import android.content.ContentValues;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
@@ -43,6 +45,7 @@ public class MonitorBatteryStateService extends Service {
 	public static final int MSG_REQUEST_LAST_CHARGING_PCT = 3;
 	public static final int MSG_START_MONITORING = 4;
 	public static final int MSG_STOP_MONITORING = 5;
+	public static final int MSG_REQUEST_DB_PATH = 6;
 
 	private BatteryChangedReceiver batteryChangedReceiver = null;
 	private BatteryStatisticsDatabaseOpenHelper batteryDbOpenHelper = null;
@@ -140,6 +143,14 @@ public class MonitorBatteryStateService extends Service {
 				case MonitorBatteryStateService.MSG_STOP_MONITORING:
 					Log.d( "MonitorBatteryStateService", "Stopping battery monitoring..." );
 					MonitorBatteryStateService.this.stopMonitoring();
+					break;
+				case MonitorBatteryStateService.MSG_REQUEST_DB_PATH:
+					Log.d( "MonitorBatteryStateService", "Database path requested, sending it back..." );
+					try {
+						msg.replyTo.send( Message.obtain( null, MonitorBatteryStateService.MSG_REQUEST_DB_PATH, ( new ContextWrapper( MonitorBatteryStateService.this ) ).getDatabasePath( MonitorBatteryStateService.this.batteryDbOpenHelper.getDatabaseName() ).getAbsolutePath() ) );
+					} catch( RemoteException e ) {
+						Log.e( "MonitorBatteryStateService", "Failed to send the databasae path!" );
+					}
 					break;
 				default:
 					super.handleMessage( msg );

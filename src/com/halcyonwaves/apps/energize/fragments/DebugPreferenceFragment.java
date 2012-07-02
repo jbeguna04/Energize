@@ -18,10 +18,18 @@
 
 package com.halcyonwaves.apps.energize.fragments;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -44,9 +52,38 @@ public class DebugPreferenceFragment extends PreferenceFragment {
 
 	class IncomingHandler extends Handler {
 
+		private void copyFile(InputStream in, OutputStream out) throws IOException {
+		    byte[] buffer = new byte[1024];
+		    int read;
+		    while((read = in.read(buffer)) != -1){
+		      out.write(buffer, 0, read);
+		    }
+		}
+		
 		@Override
 		public void handleMessage( Message msg ) {
 			switch( msg.what ) {
+				case MonitorBatteryStateService.MSG_REQUEST_DB_PATH:
+					final String databasePath = (String) msg.obj;
+					Log.v( "DebugPreferenceFragment", "Received database path: " + databasePath );
+					try {
+						File outputDir = DebugPreferenceFragment.this.getActivity().getCacheDir();
+						File outputFile = File.createTempFile( "batteryStats", "db", outputDir );
+						this.copyFile( new FileInputStream( new File( databasePath ) ), new FileOutputStream( outputFile ) );
+
+						final Intent emailIntent = new Intent( android.content.Intent.ACTION_SEND );
+
+						emailIntent.setType( "plain/text" );
+						emailIntent.putExtra( android.content.Intent.EXTRA_EMAIL, new String[] { "energize@halcyonwaves.com" } );
+						emailIntent.putExtra( android.content.Intent.EXTRA_SUBJECT, "Battery Statistic Database" );
+						emailIntent.putExtra( Intent.EXTRA_STREAM, Uri.parse( "file://" + outputFile.getAbsolutePath() ) );
+						emailIntent.putExtra( android.content.Intent.EXTRA_TEXT, "Battery Statistic Database created by HalcyonWaves.com Energize." );
+						DebugPreferenceFragment.this.getActivity().startActivity( Intent.createChooser( emailIntent, "Send mail..." ) );
+
+					} catch( IOException e ) {
+						Log.e( "DebugPreferenceFragment", "Failed to copy a snapshot of the battery stats database." );
+					}
+					break;
 				default:
 					super.handleMessage( msg );
 			}
@@ -106,9 +143,13 @@ public class DebugPreferenceFragment extends PreferenceFragment {
 			public boolean onPreferenceClick( Preference preference ) {
 				Log.v( "DebugPreferenceFragment", "Prepare battery statistics database for sending via mail..." );
 				try {
-					DebugPreferenceFragment.this.monitorServiceMessanger.send(Message.obtain(null, MonitorBatteryStateService.MSG_STOP_MONITORING, 0, 0));
-					// TODO: get the path and copy the file
-					DebugPreferenceFragment.this.monitorServiceMessanger.send(Message.obtain(null, MonitorBatteryStateService.MSG_START_MONITORING, 0, 0));
+					DebugPreferenceFragment.this.monitorService.send(Message.obtain(null, MonitorBatteryStateService.MSG_STOP_MONITORING));
+					
+					Message msg = Message.obtain(null, MonitorBatteryStateService.MSG_REQUEST_DB_PATH);
+					msg.replyTo = DebugPreferenceFragment.this.monitorServiceMessanger;
+					DebugPreferenceFragment.this.monitorService.send( msg );
+					
+					DebugPreferenceFragment.this.monitorService.send(Message.obtain(null, MonitorBatteryStateService.MSG_START_MONITORING));
 				} catch( RemoteException e ) {
 					Log.e( "DebugPreferenceFragment", "Failed to prepare battery statistics database for sending via mail!" );
 				}
