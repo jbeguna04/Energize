@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <Preference android:title="@string/app_version" android:key="about.app_version" android:summary="N/A" />
+    <Preference android:title="@string/app_version" android:key="about.app_version" android:summary="@string/not_available" />
     <Preference android:title="@string/icon_by" android:key="about.app_icon" android:summary="Alessandro Rei" />
 </PreferenceScreen>
