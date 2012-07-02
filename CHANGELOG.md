@@ -1,6 +1,11 @@
 Change Log
 ===============================================================================
 
+Version 0.1.1 *(2012-07-??)*
+----------------------------
+* Fixed a bug which caused that the preferences were not accessible
+* Added a first debug option to send the battery statistic database via mail
+
 Version 0.1 *(2012-06-29)*
 --------------------------
 * Added code to obtain statistics about the battery charings
