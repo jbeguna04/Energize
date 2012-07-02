@@ -31,4 +31,7 @@
     
     <string name="pref_header_title_debug">Debug options</string>
     <string name="pref_header_summary_debug">Options which are useful for debugging</string>
+    
+    <string name="pref_title_send_batterystats_db">Send battery statistics</string>
+    <string name="pref_summary_send_batterystats_db">Send the obtained statistics via mail</string>
 </resources>
