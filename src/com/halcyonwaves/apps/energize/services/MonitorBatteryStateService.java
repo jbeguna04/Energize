@@ -18,6 +18,8 @@
 
 package com.halcyonwaves.apps.energize.services;
 
+import java.util.ArrayList;
+
 import com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper;
 import com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable;
 import com.halcyonwaves.apps.energize.receivers.BatteryChangedReceiver;
@@ -27,14 +29,22 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Message;
+import android.os.Messenger;
 import android.util.Log;
 
 public class MonitorBatteryStateService extends Service {
 
+	public static final int MSG_REGISTER_CLIENT = 1;
+	public static final int MSG_UNREGISTER_CLIENT = 2;
+
 	private BatteryChangedReceiver batteryChangedReceiver = null;
 	private BatteryStatisticsDatabaseOpenHelper batteryDbOpenHelper = null;
 	private SQLiteDatabase batteryStatisticsDatabase = null;
+	private ArrayList< Messenger > connectedClients = new ArrayList< Messenger >();
+	private final Messenger serviceMessenger = new Messenger( new IncomingHandler() );
 
 	public void insertPowerValue( int powerSource, int batteryCapacity ) {
 		long currentUnixTime = (long) (System.currentTimeMillis() / 1000);
@@ -73,7 +83,25 @@ public class MonitorBatteryStateService extends Service {
 
 	@Override
 	public IBinder onBind( Intent intent ) {
-		return null;
+		return this.serviceMessenger.getBinder();
+	}
+
+	class IncomingHandler extends Handler {
+		@Override
+		public void handleMessage( Message msg ) {
+			switch( msg.what ) {
+				case MonitorBatteryStateService.MSG_REGISTER_CLIENT:
+					Log.d( "MonitorBatteryStateService", "Registering new client to the battery monitoring service..." );
+					MonitorBatteryStateService.this.connectedClients.add( msg.replyTo );
+					break;
+				case MonitorBatteryStateService.MSG_UNREGISTER_CLIENT:
+					Log.d( "MonitorBatteryStateService", "Unregistering client from the battery monitoring service..." );
+					MonitorBatteryStateService.this.connectedClients.remove( msg.replyTo );
+					break;
+				default:
+					super.handleMessage( msg );
+			}
+		}
 	}
 
 }

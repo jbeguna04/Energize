@@ -22,11 +22,18 @@ import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.os.BatteryManager;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -42,6 +49,73 @@ import android.widget.TextView;
 public class BatteryStateDisplayActivity extends Activity {
 
 	private TextView batteryPercentage = null;
+	private Messenger monitorService = null;
+	private final Messenger monitorServiceMessanger = new Messenger( new IncomingHandler() );
+
+	class IncomingHandler extends Handler {
+
+		@Override
+		public void handleMessage( Message msg ) {
+			switch( msg.what ) {
+			/*
+			 * case MyService.MSG_SET_INT_VALUE:
+			 * textIntValue.setText("Int Message: " + msg.arg1); break; case
+			 * MyService.MSG_SET_STRING_VALUE: String str1 =
+			 * msg.getData().getString("str1");
+			 * textStrValue.setText("Str Message: " + str1); break;
+			 */
+				default:
+					super.handleMessage( msg );
+			}
+		}
+	}
+
+	private ServiceConnection monitorServiceConnection = new ServiceConnection() {
+
+		public void onServiceConnected( ComponentName className, IBinder service ) {
+			BatteryStateDisplayActivity.this.monitorService = new Messenger( service );
+			try {
+				Log.d( "BatteryStateDisplayActivity", "Trying to connect to the battery monitoring service..." );
+				Message msg = Message.obtain( null, MonitorBatteryStateService.MSG_REGISTER_CLIENT );
+				msg.replyTo = BatteryStateDisplayActivity.this.monitorServiceMessanger;
+				BatteryStateDisplayActivity.this.monitorService.send( msg );
+			} catch( RemoteException e ) {
+				// In this case the service has crashed before we could even do
+				// anything with it
+				Log.e( "BatteryStateDisplayActivity", "Failed to connect to the battery monitoring service!" );
+			}
+		}
+
+		public void onServiceDisconnected( ComponentName className ) {
+			// This is called when the connection with the service has been
+			// unexpectedly disconnected - process crashed.
+			BatteryStateDisplayActivity.this.monitorService = null;
+		}
+	};
+
+	private void doBindService() {
+		this.bindService( new Intent( this, MonitorBatteryStateService.class ), this.monitorServiceConnection, Context.BIND_AUTO_CREATE );
+	}
+
+	private void doUnbindService() {
+		if( this.monitorService != null ) {
+			try {
+				Message msg = Message.obtain( null, MonitorBatteryStateService.MSG_UNREGISTER_CLIENT );
+				msg.replyTo = this.monitorServiceMessanger;
+				this.monitorService.send( msg );
+			} catch( RemoteException e ) {
+				// There is nothing special we need to do if the service has
+				// crashed.
+			}
+		}
+		this.unbindService( this.monitorServiceConnection );
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		this.doUnbindService();
+	}
 
 	@Override
 	protected void onCreate( final Bundle savedInstanceState ) {
@@ -49,7 +123,7 @@ public class BatteryStateDisplayActivity extends Activity {
 
 		this.setTheme( ApplicationCore.getSelectedThemeId( this.getApplicationContext() ) );
 		this.setContentView( R.layout.activity_batterystatedisplay );
-		
+
 		// check if the service is running, if not start it
 		if( !ApplicationCore.isServiceRunning( this, MonitorBatteryStateService.class.getName() ) ) {
 			Log.v( "BatteryStateDisplayActivity", "Monitoring service is not running, starting it..." );
@@ -58,6 +132,9 @@ public class BatteryStateDisplayActivity extends Activity {
 
 		// get the handles to controls we want to modify
 		this.batteryPercentage = (TextView) this.findViewById( R.id.tv_battery_pct );
+
+		//
+		this.doBindService();
 
 		// now we can update the battery information for displaying them
 		this.updateBatteryInformation();
@@ -84,7 +161,8 @@ public class BatteryStateDisplayActivity extends Activity {
 	private void updateBatteryInformation() {
 		final BroadcastReceiver batteryLevelReceiver = new BroadcastReceiver() {
 
-			// TODO: query the service: http://developer.android.com/reference/android/support/v4/content/LocalBroadcastManager.html
+			// TODO: query the service:
+			// http://developer.android.com/reference/android/support/v4/content/LocalBroadcastManager.html
 			@Override
 			public void onReceive( final Context context, final Intent intent ) {
 				context.unregisterReceiver( this );
