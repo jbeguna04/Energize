@@ -68,18 +68,21 @@ public class DebugPreferenceFragment extends PreferenceFragment {
 					Log.v( "DebugPreferenceFragment", "Received database path: " + databasePath );
 					try {
 						File outputDir = DebugPreferenceFragment.this.getActivity().getCacheDir();
-						File outputFile = File.createTempFile( "batteryStats", ".db", outputDir );
-						Log.d( "DebugPreferenceFragment", "Copying battery stats database to " + outputFile + "..." );
-						this.copyFile( new FileInputStream( new File( databasePath ) ), new FileOutputStream( outputFile ) );
+						//File outputFile = File.createTempFile( "batteryStats", ".db", outputDir );
+						FileOutputStream outputFile = DebugPreferenceFragment.this.getActivity().openFileOutput( "batteryStats.db", Context.MODE_WORLD_READABLE|Context.MODE_WORLD_WRITEABLE );
+						String outputFilePath = DebugPreferenceFragment.this.getActivity().getFilesDir().getAbsolutePath() + File.separator + "batteryStats.db";
+						Log.d( "DebugPreferenceFragment", "Copying battery stats database to " + outputFilePath + "..." );
+						//this.copyFile( new FileInputStream( new File( databasePath ) ), new FileOutputStream( outputFile ) );
+						this.copyFile( new FileInputStream( new File( databasePath ) ), outputFile );
 
 						final Intent emailIntent = new Intent( android.content.Intent.ACTION_SEND );
 
 						emailIntent.setType( "plain/text" );
 						emailIntent.putExtra( android.content.Intent.EXTRA_EMAIL, new String[] { "energize@halcyonwaves.com" } );
 						emailIntent.putExtra( android.content.Intent.EXTRA_SUBJECT, "Battery Statistic Database" );
-						emailIntent.putExtra( Intent.EXTRA_STREAM, Uri.parse( "file://" + outputFile.getAbsolutePath() ) );
+						emailIntent.putExtra( Intent.EXTRA_STREAM, Uri.parse( "file://" + outputFilePath ) );
 						emailIntent.putExtra( android.content.Intent.EXTRA_TEXT, "Battery Statistic Database created by HalcyonWaves.com Energize." );
-						DebugPreferenceFragment.this.getActivity().startActivity( Intent.createChooser( emailIntent, "Send mail..." ) );
+						DebugPreferenceFragment.this.getActivity().startActivity( Intent.createChooser( emailIntent, DebugPreferenceFragment.this.getActivity().getText( R.string.send_mail ) ) );
 
 					} catch( IOException e ) {
 						Log.e( "DebugPreferenceFragment", "Failed to copy a snapshot of the battery stats database." );
