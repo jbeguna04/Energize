@@ -28,4 +28,7 @@
     
     <string name="pref_header_title_about">About Energize</string>
     <string name="pref_header_summary_about">Show information about the application</string>
+    
+    <string name="pref_header_title_debug">Debug options</string>
+    <string name="pref_header_summary_debug">Options which are useful for debugging</string>
 </resources>
