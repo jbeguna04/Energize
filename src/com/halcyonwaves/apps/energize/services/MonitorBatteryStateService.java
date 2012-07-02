@@ -59,6 +59,7 @@ public class MonitorBatteryStateService extends Service {
 
 		this.batteryStatisticsDatabase.insert( RawBatteryStatisicsTable.TABLE_NAME, null, values );
 		this.lastChargingPercentage = batteryCapacity;
+		MonitorBatteryStateService.this.sendCurrentChargingPctToClients();
 	}
 
 	@Override
