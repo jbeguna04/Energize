@@ -143,7 +143,7 @@ public class DebugPreferenceFragment extends PreferenceFragment {
 		this.sendDatabasePreference = this.findPreference( "debug.send_batterystats_db" );
 		this.sendDatabasePreference.setOnPreferenceClickListener( new OnPreferenceClickListener() {
 			
-			@Override
+//			@Override
 			public boolean onPreferenceClick( Preference preference ) {
 				Log.v( "DebugPreferenceFragment", "Prepare battery statistics database for sending via mail..." );
 				try {
