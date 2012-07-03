@@ -30,7 +30,6 @@ import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
@@ -54,19 +53,20 @@ public class MonitorBatteryStateService extends Service {
 	private int lastChargingPercentage = -1;
 	private final Messenger serviceMessenger = new Messenger( new IncomingHandler() );
 
-	public void insertPowerValue( int powerSource, int batteryCapacity ) {
+	public void insertPowerValue( int powerSource, int scale, int level ) {
 		long currentUnixTime = (long) (System.currentTimeMillis() / 1000);
 
 		if( null != this.batteryStatisticsDatabase && this.batteryStatisticsDatabase.isOpen() ) {
 			ContentValues values = new ContentValues();
 			values.put( RawBatteryStatisicsTable.COLUMN_EVENT_TIME, currentUnixTime );
 			values.put( RawBatteryStatisicsTable.COLUMN_CHARGING_STATE, powerSource );
-			values.put( RawBatteryStatisicsTable.COLUMN_CHARGING_PCT, batteryCapacity );
+			values.put( RawBatteryStatisicsTable.COLUMN_CHARGING_SCALE, scale );
+			values.put( RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL, level );
 	
 			this.batteryStatisticsDatabase.insert( RawBatteryStatisicsTable.TABLE_NAME, null, values );
 		}
 		
-		this.lastChargingPercentage = batteryCapacity;
+		this.lastChargingPercentage = level;
 		MonitorBatteryStateService.this.sendCurrentChargingPctToClients();
 	}
 

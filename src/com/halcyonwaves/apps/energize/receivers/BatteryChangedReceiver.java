@@ -36,9 +36,10 @@ public class BatteryChangedReceiver extends BroadcastReceiver {
 
 	@Override
 	public void onReceive( Context context, Intent intent ) {
-		int pct = intent.getIntExtra( BatteryManager.EXTRA_LEVEL, -1 );
+		int level = intent.getIntExtra( BatteryManager.EXTRA_LEVEL, -1 );
+		int scale = intent.getIntExtra( BatteryManager.EXTRA_SCALE, -1 );
 		int powerSource = intent.getIntExtra( BatteryManager.EXTRA_PLUGGED, -1 );
-		this.service.insertPowerValue( powerSource, pct );
+		this.service.insertPowerValue( powerSource, scale, level );
 	}
 
 }

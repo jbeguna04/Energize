@@ -22,11 +22,12 @@ import android.database.sqlite.SQLiteDatabase;
 
 public final class RawBatteryStatisicsTable {
 
-	public static final String COLUMN_CHARGING_PCT = "chargePct";
+	public static final String COLUMN_CHARGING_LEVEL = "chargingLevel";
+	public static final String COLUMN_CHARGING_SCALE = "chargingScale";
 	public static final String COLUMN_EVENT_TIME = "eventTime";
 	public static final String COLUMN_CHARGING_STATE = "chargingState";
 	public static final String COLUMN_ID = "_id";
-	private static final String TABLE_CREATE = "CREATE TABLE " + RawBatteryStatisicsTable.TABLE_NAME + "( " + RawBatteryStatisicsTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " INTEGER, " + RawBatteryStatisicsTable.COLUMN_CHARGING_STATE + " INTEGER, " + RawBatteryStatisicsTable.COLUMN_CHARGING_PCT + " INTEGER );";
+	private static final String TABLE_CREATE = "CREATE TABLE " + RawBatteryStatisicsTable.TABLE_NAME + "( " + RawBatteryStatisicsTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " INTEGER, " + RawBatteryStatisicsTable.COLUMN_CHARGING_STATE + " INTEGER, " + RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL + " INTEGER, " + RawBatteryStatisicsTable.COLUMN_CHARGING_SCALE + " INTEGER );";
 	
 	public static final int CHARGING_STATE_UNCHARGING = 0;
 	public static final int CHARGING_STATE_CHARGING_AC = 1;
