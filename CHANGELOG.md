@@ -1,6 +1,10 @@
 Change Log
 ===============================================================================
 
+Version 0.1.3 *(2012-07-03)*
+----------------------------
+* Changed the layout of the battery statistics database
+
 Version 0.1.2 *(2012-07-02)*
 ----------------------------
 * Fixed a bug which caused that the preferences were not accessible
