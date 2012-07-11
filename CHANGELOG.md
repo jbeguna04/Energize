@@ -1,6 +1,17 @@
 Change Log
 ===============================================================================
 
+Version 0.2 *(2012-??-??)*
+--------------------------
+* Added a preference dialog for clearing the obtained battery statistics
+* Added a status bar indicator for the current charging level of the battery
+* Extended the battery statistics database to log information about the number of running apps
+* Added an indicator if the battery is charging or discharging
+
+Version 0.1.3 *(2012-07-03)*
+----------------------------
+* Changed the layout of the battery statistics database
+
 Version 0.1.2 *(2012-07-02)*
 ----------------------------
 * Fixed a bug which caused that the preferences were not accessible

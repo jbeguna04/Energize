@@ -12,7 +12,7 @@ if __name__ == '__main__':
 	#
 	conn = sqlite3.connect( 'batteryStats.db' )
 	c = conn.cursor()
-	for row in c.execute( 'SELECT eventTime, chargePct, chargingState FROM rawBatteryStats ORDER BY eventTime;' ):
+	for row in c.execute( 'SELECT eventTime, chargingLevel, chargingState FROM rawBatteryStats ORDER BY eventTime;' ):
 		if int( row[ 2 ] ) == 0:
 			xUncharging.append( int( row[ 0 ] ) )
 			yUncharging.append( int( row[ 1 ] ) )
