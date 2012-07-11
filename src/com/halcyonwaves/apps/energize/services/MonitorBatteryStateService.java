@@ -96,7 +96,7 @@ public class MonitorBatteryStateService extends Service {
 	}
 
 	private void showNewPercentageNotification( int percentage ) {
-		this.myNotification = new Notification.Builder( this ).setContentTitle( this.getString( R.string.notification_title_remaining, percentage ) ).setContentText( this.getText( R.string.notification_text_estimate ) ).setSmallIcon( R.drawable.ic_stat_30_pct_charged + (percentage-30) ).getNotification();
+		this.myNotification = new Notification.Builder( this ).setContentTitle( this.getString( R.string.notification_title_remaining, percentage ) ).setContentText( this.getText( R.string.notification_text_estimate ) ).setSmallIcon( R.drawable.ic_stat_00_pct_charged + percentage ).getNotification();
 		this.myNotification.flags |= Notification.FLAG_ONGOING_EVENT;
 		notificationManager.notify( MY_NOTIFICATION_ID, myNotification );
 	}
