@@ -35,4 +35,7 @@
     
     <string name="pref_title_send_batterystats_db">Send battery statistics</string>
     <string name="pref_summary_send_batterystats_db">Send the obtained statistics via mail</string>
+    
+    <string name="notification_title_remaining" formatted="false">%d%% remaining</string>
+    <string name="notification_text_estimate">Estimation is currenty not available</string>
 </resources>
