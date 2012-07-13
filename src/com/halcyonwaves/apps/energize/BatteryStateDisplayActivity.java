@@ -21,10 +21,17 @@ package com.halcyonwaves.apps.energize;
 import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Notification.Builder;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.pm.PackageInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -32,8 +39,10 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 /**
@@ -48,6 +57,8 @@ public class BatteryStateDisplayActivity extends Activity {
 	private TextView batteryPercentage = null;
 	private Messenger monitorService = null;
 	private final Messenger monitorServiceMessanger = new Messenger( new IncomingHandler() );
+	private static final String PRIVATE_PREF = "com.halcyonwaves.apps.energize";
+	private static final String VERSION_KEY = "version_number";
 
 	class IncomingHandler extends Handler {
 
@@ -97,7 +108,46 @@ public class BatteryStateDisplayActivity extends Activity {
 		}
 		this.unbindService( this.monitorServiceConnection );
 	}
-	
+
+	private void init() {
+		SharedPreferences sharedPref = getSharedPreferences( PRIVATE_PREF, Context.MODE_PRIVATE );
+		int currentVersionNumber = 0;
+
+		int savedVersionNumber = sharedPref.getInt( VERSION_KEY, 0 );
+
+		try {
+			PackageInfo pi = getPackageManager().getPackageInfo( getPackageName(), 0 );
+			currentVersionNumber = pi.versionCode;
+		} catch( Exception e ) {
+		}
+
+		if( currentVersionNumber > savedVersionNumber ) {
+			showWhatsNewDialog();
+
+			Editor editor = sharedPref.edit();
+
+			editor.putInt( VERSION_KEY, currentVersionNumber );
+			editor.commit();
+		}
+	}
+
+	private void showWhatsNewDialog() {
+		LayoutInflater inflater = LayoutInflater.from( this );
+
+		View view = inflater.inflate( R.layout.dialog_whatsnew, null );
+
+		AlertDialog.Builder builder = new AlertDialog.Builder( this );
+
+		builder.setView( view ).setTitle( "Whats New" ).setPositiveButton( "OK", new OnClickListener() {
+
+			public void onClick( DialogInterface dialog, int which ) {
+				dialog.dismiss();
+			}
+		} );
+
+		builder.create().show();
+	}
+
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
@@ -122,6 +172,9 @@ public class BatteryStateDisplayActivity extends Activity {
 
 		//
 		this.doBindService();
+		
+		//
+		this.init();
 	}
 
 	@Override

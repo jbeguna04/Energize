@@ -5,6 +5,7 @@ Version 0.2 *(2012-07-13)*
 --------------------------
 * Added a preference dialog for clearing the obtained battery statistics
 * Added a status bar indicator for the current charging level of the battery
+* Added a "What's new" dialog on the first startup of a new version
 
 Version 0.1.3 *(2012-07-03)*
 ----------------------------
