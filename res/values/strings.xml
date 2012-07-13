@@ -38,4 +38,7 @@
     
     <string name="notification_title_remaining" formatted="false">%d%% remaining</string>
     <string name="notification_text_estimate">Estimation is currenty not available</string>
+    
+    <string name="dialog_title_cleardb_successfull">Database cleared</string>
+    <string name="dialog_text_cleardb_successfull">The battery statistics were deleted and it will talke some time until the charging estimation will work again.</string>
 </resources>

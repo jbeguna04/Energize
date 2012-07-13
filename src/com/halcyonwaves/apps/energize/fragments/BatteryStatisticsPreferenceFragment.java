@@ -18,24 +18,16 @@
 
 package com.halcyonwaves.apps.energize.fragments;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-
 import com.halcyonwaves.apps.energize.R;
 import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -48,26 +40,27 @@ import android.preference.Preference.OnPreferenceClickListener;
 import android.util.Log;
 
 public class BatteryStatisticsPreferenceFragment extends PreferenceFragment {
+
 	private Preference sendDatabasePreference = null;
 	private Messenger monitorService = null;
 	private final Messenger monitorServiceMessanger = new Messenger( new IncomingHandler() );
 
 	class IncomingHandler extends Handler {
-	
+
 		@Override
 		public void handleMessage( Message msg ) {
 			switch( msg.what ) {
 				case MonitorBatteryStateService.MSG_CLEAR_STATISTICS:
-					AlertDialog.Builder builder         = new AlertDialog.Builder(BatteryStatisticsPreferenceFragment.this.getActivity());
-					 
-			        builder.setTitle("Whats New").setMessage("TODO")
-			        .setPositiveButton("OK", new DialogInterface() {
-						
-			            @Override
-			            public void onClick(DialogInterface dialog, int which) {
-			                dialog.dismiss();
-			            }
-			        });
+					AlertDialog.Builder builder = new AlertDialog.Builder( BatteryStatisticsPreferenceFragment.this.getActivity() );
+
+					builder.setTitle( R.string.dialog_title_cleardb_successfull ).setMessage( R.string.dialog_text_cleardb_successfull ).setPositiveButton( android.R.string.ok, new OnClickListener() {
+
+						public void onClick( DialogInterface dialog, int which ) {
+							dialog.dismiss();
+
+						}
+					} );
+					builder.create().show();
 					// TODO: show notification
 					break;
 				default:
@@ -110,26 +103,26 @@ public class BatteryStatisticsPreferenceFragment extends PreferenceFragment {
 		}
 		this.getActivity().unbindService( this.monitorServiceConnection );
 	}
-	
+
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
 		this.doUnbindService();
 	}
-	
+
 	@Override
 	public void onCreate( final Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
 		this.addPreferencesFromResource( R.xml.pref_batterystatistics );
-		
+
 		this.sendDatabasePreference = this.findPreference( "batstatistics.cleardb" );
 		this.sendDatabasePreference.setOnPreferenceClickListener( new OnPreferenceClickListener() {
-			
-//			@Override
+
+			// @Override
 			public boolean onPreferenceClick( Preference preference ) {
 				Log.v( "BatteryStatisticsPreferenceFragment", "Clearing battery statistics database..." );
-				try {			
-					Message msg = Message.obtain(null, MonitorBatteryStateService.MSG_CLEAR_STATISTICS);
+				try {
+					Message msg = Message.obtain( null, MonitorBatteryStateService.MSG_CLEAR_STATISTICS );
 					msg.replyTo = BatteryStatisticsPreferenceFragment.this.monitorServiceMessanger;
 					BatteryStatisticsPreferenceFragment.this.monitorService.send( msg );
 				} catch( RemoteException e ) {
@@ -138,7 +131,7 @@ public class BatteryStatisticsPreferenceFragment extends PreferenceFragment {
 				return false;
 			}
 		} );
-		
+
 		this.doBindService();
 	}
 }

@@ -178,7 +178,7 @@ public class MonitorBatteryStateService extends Service {
 				case MonitorBatteryStateService.MSG_CLEAR_STATISTICS:
 					Log.d( "MonitorBatteryStateService", "Clearing battery statistics database..." );
 					try {
-						// TODO: implement the clearing
+						MonitorBatteryStateService.this.batteryStatisticsDatabase.delete( RawBatteryStatisicsTable.TABLE_NAME, null, null );
 						msg.replyTo.send( Message.obtain( null, MonitorBatteryStateService.MSG_CLEAR_STATISTICS ) );
 					} catch( RemoteException e ) {
 						Log.e( "MonitorBatteryStateService", "Failed to clear battery statistics database!" );
