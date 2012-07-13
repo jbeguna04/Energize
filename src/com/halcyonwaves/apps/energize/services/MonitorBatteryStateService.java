@@ -49,6 +49,7 @@ public class MonitorBatteryStateService extends Service {
 	public static final int MSG_START_MONITORING = 4;
 	public static final int MSG_STOP_MONITORING = 5;
 	public static final int MSG_REQUEST_DB_PATH = 6;
+	public static final int MSG_CLEAR_STATISTICS = 7;
 
 	private static final int MY_NOTIFICATION_ID = 1;
 
@@ -172,6 +173,15 @@ public class MonitorBatteryStateService extends Service {
 						msg.replyTo.send( Message.obtain( null, MonitorBatteryStateService.MSG_REQUEST_DB_PATH, (new ContextWrapper( MonitorBatteryStateService.this )).getDatabasePath( MonitorBatteryStateService.this.batteryDbOpenHelper.getDatabaseName() ).getAbsolutePath() ) );
 					} catch( RemoteException e ) {
 						Log.e( "MonitorBatteryStateService", "Failed to send the databasae path!" );
+					}
+					break;
+				case MonitorBatteryStateService.MSG_CLEAR_STATISTICS:
+					Log.d( "MonitorBatteryStateService", "Clearing battery statistics database..." );
+					try {
+						// TODO: implement the clearing
+						msg.replyTo.send( Message.obtain( null, MonitorBatteryStateService.MSG_CLEAR_STATISTICS ) );
+					} catch( RemoteException e ) {
+						Log.e( "MonitorBatteryStateService", "Failed to clear battery statistics database!" );
 					}
 					break;
 				default:
