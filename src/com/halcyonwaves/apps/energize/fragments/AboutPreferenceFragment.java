@@ -18,15 +18,40 @@
 
 package com.halcyonwaves.apps.energize.fragments;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
+import android.preference.Preference.OnPreferenceClickListener;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 
 import com.halcyonwaves.apps.energize.R;
 
 public class AboutPreferenceFragment extends PreferenceFragment {
+
+	private Preference whatsNewPreference = null;
+	
+	private void showWhatsNewDialog() {
+		LayoutInflater inflater = LayoutInflater.from( this.getActivity() );
+
+		View view = inflater.inflate( R.layout.dialog_whatsnew, null );
+
+		AlertDialog.Builder builder = new AlertDialog.Builder( this.getActivity() );
+
+		builder.setView( view ).setTitle( R.string.dialog_title_whatsnew ).setPositiveButton( android.R.string.ok, new OnClickListener() {
+
+			public void onClick( DialogInterface dialog, int which ) {
+				dialog.dismiss();
+			}
+		} );
+
+		builder.create().show();
+	}
 
 	@Override
 	public void onCreate( final Bundle savedInstanceState ) {
@@ -39,5 +64,14 @@ public class AboutPreferenceFragment extends PreferenceFragment {
 		} catch( final NameNotFoundException e ) {
 			Log.e( "AboutPreferenceFragment", "Cannot find the preference key for setting up the application version" );
 		}
+
+		this.whatsNewPreference = this.findPreference( "about.whatsnew" );
+		this.whatsNewPreference.setOnPreferenceClickListener( new OnPreferenceClickListener() {
+
+			public boolean onPreferenceClick( Preference preference ) {
+				AboutPreferenceFragment.this.showWhatsNewDialog();
+				return false;
+			}
+		} );
 	}
 }

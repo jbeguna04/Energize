@@ -22,7 +22,6 @@ import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Notification.Builder;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
