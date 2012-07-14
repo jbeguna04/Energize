@@ -18,7 +18,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="25dp"
-        android:text="- Added the first (but simple) remaining time estimation" />
+        android:text="- Added the first (but simple) remaining time estimation\n- Added the license text to the application (see About settings)\n- Added an indicator if the battery is charging or discharging\n- Added a dialog which asks the user if he or she can rate the app" />
     
     <TextView
         android:layout_width="fill_parent"
