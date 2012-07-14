@@ -138,7 +138,7 @@ public class BatteryStateDisplayActivity extends Activity {
 
 		AlertDialog.Builder builder = new AlertDialog.Builder( this );
 
-		builder.setView( view ).setTitle( "Whats New" ).setPositiveButton( "OK", new OnClickListener() {
+		builder.setView( view ).setTitle( R.string.dialog_title_whatsnew ).setPositiveButton( android.R.string.ok, new OnClickListener() {
 
 			public void onClick( DialogInterface dialog, int which ) {
 				dialog.dismiss();
