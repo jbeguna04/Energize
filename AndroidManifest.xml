@@ -6,6 +6,7 @@
 	<supports-screens android:smallScreens="true" android:normalScreens="true" android:largeScreens="true" android:xlargeScreens="true" />
 	
 	<!-- list all permissions we need to run this application -->
+	<uses-permission android:name="com.android.vending.BILLING" />
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
 	<!-- define the content of this application -->
@@ -13,6 +14,7 @@
         
         <!-- define the  services we have implemented -->
         <service android:name="com.halcyonwaves.apps.energize.services.MonitorBatteryStateService" android:exported="false" />
+        <service android:name="com.halcyonwaves.apps.energize.services.BillingService" android:exported="false" />
 
         <!-- register a receiver which gets called after the device booted up -->
 		<receiver android:name="com.halcyonwaves.apps.energize.receivers.BootCompletedReceiver" android:exported="false">
@@ -20,6 +22,15 @@
 				<action android:name="android.intent.action.BOOT_COMPLETED" />
 			</intent-filter>            
 		</receiver>
+		
+		<!-- register a receiver for handling the in-app billing responses -->
+        <receiver android:name="com.halcyonwaves.apps.energize.receivers.BillingReceiver" android:exported="false">
+            <intent-filter>
+                <action android:name="com.android.vending.billing.IN_APP_NOTIFY" />
+                <action android:name="com.android.vending.billing.RESPONSE_CODE" />
+                <action android:name="com.android.vending.billing.PURCHASE_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
         
         <!-- define the main activity which will be displayed if the user selects the launcher item -->
         <activity android:name="com.halcyonwaves.apps.energize.BatteryStateDisplayActivity" android:label="@string/app_name">
