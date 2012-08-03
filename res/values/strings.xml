@@ -9,6 +9,12 @@
         <item>DarkTheme</item>
         <item>LightTheme</item>
     </string-array>
+    <string-array name="pref_list_batteryestimationmethod_names">
+        <item>Last change period (inaccurate)</item>
+    </string-array>
+    <string-array name="pref_list_batteryestimationmethod_values">
+        <item>LastChangeEstimate</item>
+    </string-array>
     <string name="percentage_indicator">%</string>
     <string name="not_available">N/A</string>
     <string name="icon_by">Icon by</string>
@@ -37,6 +43,9 @@
     
     <string name="pref_title_send_batterystats_db">Send battery statistics</string>
     <string name="pref_summary_send_batterystats_db">Send the obtained statistics via mail</string>
+    
+    <string name="pref_title_change_batteryestimation">Battery estimation method</string>
+    <string name="pref_summary_change_batteryestimation">Method used for battery estimation</string>
     
     <string name="notification_title_remaining" formatted="false">%d%% remaining</string>
     <string name="notification_text_estimate">Estimation is currenty not available</string>
