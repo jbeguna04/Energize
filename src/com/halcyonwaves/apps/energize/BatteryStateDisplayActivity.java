@@ -37,6 +37,7 @@ import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -156,6 +157,12 @@ public class BatteryStateDisplayActivity extends Activity {
 	@Override
 	protected void onCreate( final Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
+		
+		// set the default preferences
+		PreferenceManager.setDefaultValues( this, R.xml.pref_display, false );
+		PreferenceManager.setDefaultValues( this, R.xml.pref_debug, false );
+		PreferenceManager.setDefaultValues( this, R.xml.pref_batterystatistics, false );
+		PreferenceManager.setDefaultValues( this, R.xml.pref_about, false );
 
 		this.setTheme( ApplicationCore.getSelectedThemeId( this.getApplicationContext() ) );
 		this.setContentView( R.layout.activity_batterystatedisplay );
