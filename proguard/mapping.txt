@@ -1,16 +1,119 @@
+com.android.vending.billing.IMarketBillingService -> com.android.vending.billing.IMarketBillingService:
+    android.os.Bundle sendBillingRequest(android.os.Bundle) -> a
+com.android.vending.billing.IMarketBillingService$Stub -> com.android.vending.billing.IMarketBillingService$Stub:
+    com.android.vending.billing.IMarketBillingService asInterface(android.os.IBinder) -> a
+    boolean onTransact(int,android.os.Parcel,android.os.Parcel,int) -> onTransact
+com.android.vending.billing.IMarketBillingService$Stub$Proxy -> com.android.vending.billing.IMarketBillingService$Stub$Proxy:
+    android.os.IBinder mRemote -> a
+    android.os.IBinder asBinder() -> asBinder
+    android.os.Bundle sendBillingRequest(android.os.Bundle) -> a
 com.halcyonwaves.apps.energize.ApplicationCore -> com.halcyonwaves.apps.energize.a:
     boolean isServiceRunning(android.content.Context,java.lang.String) -> a
     int getSelectedThemeId(android.content.Context) -> a
 com.halcyonwaves.apps.energize.BatteryStateDisplayActivity -> com.halcyonwaves.apps.energize.BatteryStateDisplayActivity:
     android.widget.TextView batteryPercentage -> a
+    android.os.Messenger monitorService -> b
+    android.os.Messenger monitorServiceMessanger -> c
+    android.content.ServiceConnection monitorServiceConnection -> d
+    void doBindService() -> a
+    void doUnbindService() -> b
+    void init() -> c
+    void showWhatsNewDialog() -> d
+    void onDestroy() -> onDestroy
     void onCreate(android.os.Bundle) -> onCreate
     boolean onCreateOptionsMenu(android.view.Menu) -> onCreateOptionsMenu
     boolean onOptionsItemSelected(android.view.MenuItem) -> onOptionsItemSelected
-    void updateBatteryInformation() -> a
-    android.widget.TextView access$0(com.halcyonwaves.apps.energize.BatteryStateDisplayActivity) -> a
+    void access$0(com.halcyonwaves.apps.energize.BatteryStateDisplayActivity,android.os.Messenger) -> a
+    android.os.Messenger access$1(com.halcyonwaves.apps.energize.BatteryStateDisplayActivity) -> a
+    android.os.Messenger access$2(com.halcyonwaves.apps.energize.BatteryStateDisplayActivity) -> b
+    android.widget.TextView access$3(com.halcyonwaves.apps.energize.BatteryStateDisplayActivity) -> c
 com.halcyonwaves.apps.energize.BatteryStateDisplayActivity$1 -> com.halcyonwaves.apps.energize.b:
     com.halcyonwaves.apps.energize.BatteryStateDisplayActivity this$0 -> a
-    void onReceive(android.content.Context,android.content.Intent) -> onReceive
+    void onServiceConnected(android.content.ComponentName,android.os.IBinder) -> onServiceConnected
+    void onServiceDisconnected(android.content.ComponentName) -> onServiceDisconnected
+com.halcyonwaves.apps.energize.BatteryStateDisplayActivity$2 -> com.halcyonwaves.apps.energize.c:
+    com.halcyonwaves.apps.energize.BatteryStateDisplayActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.halcyonwaves.apps.energize.BatteryStateDisplayActivity$IncomingHandler -> com.halcyonwaves.apps.energize.d:
+    com.halcyonwaves.apps.energize.BatteryStateDisplayActivity this$0 -> a
+    void handleMessage(android.os.Message) -> handleMessage
+com.halcyonwaves.apps.energize.Consts -> com.halcyonwaves.apps.energize.e:
+    long BILLING_RESPONSE_INVALID_REQUEST_ID -> a
+com.halcyonwaves.apps.energize.Consts$PurchaseState -> com.halcyonwaves.apps.energize.f:
+    com.halcyonwaves.apps.energize.Consts$PurchaseState PURCHASED -> a
+    com.halcyonwaves.apps.energize.Consts$PurchaseState CANCELED -> b
+    com.halcyonwaves.apps.energize.Consts$PurchaseState REFUNDED -> c
+    com.halcyonwaves.apps.energize.Consts$PurchaseState[] ENUM$VALUES -> d
+    com.halcyonwaves.apps.energize.Consts$PurchaseState valueOf(int) -> a
+    com.halcyonwaves.apps.energize.Consts$PurchaseState[] values() -> values
+    com.halcyonwaves.apps.energize.Consts$PurchaseState valueOf(java.lang.String) -> valueOf
+com.halcyonwaves.apps.energize.Consts$ResponseCode -> com.halcyonwaves.apps.energize.g:
+    com.halcyonwaves.apps.energize.Consts$ResponseCode RESULT_OK -> a
+    com.halcyonwaves.apps.energize.Consts$ResponseCode RESULT_USER_CANCELED -> b
+    com.halcyonwaves.apps.energize.Consts$ResponseCode RESULT_SERVICE_UNAVAILABLE -> c
+    com.halcyonwaves.apps.energize.Consts$ResponseCode RESULT_BILLING_UNAVAILABLE -> d
+    com.halcyonwaves.apps.energize.Consts$ResponseCode RESULT_ITEM_UNAVAILABLE -> e
+    com.halcyonwaves.apps.energize.Consts$ResponseCode RESULT_DEVELOPER_ERROR -> f
+    com.halcyonwaves.apps.energize.Consts$ResponseCode RESULT_ERROR -> g
+    com.halcyonwaves.apps.energize.Consts$ResponseCode[] ENUM$VALUES -> h
+    com.halcyonwaves.apps.energize.Consts$ResponseCode valueOf(int) -> a
+    com.halcyonwaves.apps.energize.Consts$ResponseCode[] values() -> values
+    com.halcyonwaves.apps.energize.Consts$ResponseCode valueOf(java.lang.String) -> valueOf
+com.halcyonwaves.apps.energize.PurchaseDatabase -> com.halcyonwaves.apps.energize.h:
+    java.lang.String[] HISTORY_COLUMNS -> a
+    java.lang.String[] PURCHASED_COLUMNS -> b
+    android.database.sqlite.SQLiteDatabase mDb -> c
+    com.halcyonwaves.apps.energize.PurchaseDatabase$DatabaseHelper mDatabaseHelper -> d
+    void close() -> a
+    void insertOrder(java.lang.String,java.lang.String,com.halcyonwaves.apps.energize.Consts$PurchaseState,long,java.lang.String) -> b
+    void updatePurchasedItem(java.lang.String,int) -> a
+    int updatePurchase(java.lang.String,java.lang.String,com.halcyonwaves.apps.energize.Consts$PurchaseState,long,java.lang.String) -> a
+com.halcyonwaves.apps.energize.PurchaseDatabase$DatabaseHelper -> com.halcyonwaves.apps.energize.i:
+    com.halcyonwaves.apps.energize.PurchaseDatabase this$0 -> a
+    void onCreate(android.database.sqlite.SQLiteDatabase) -> onCreate
+    void onUpgrade(android.database.sqlite.SQLiteDatabase,int,int) -> onUpgrade
+    void createPurchaseTable(android.database.sqlite.SQLiteDatabase) -> a
+com.halcyonwaves.apps.energize.PurchaseObserver -> com.halcyonwaves.apps.energize.j:
+    android.os.Handler mHandler -> a
+    java.lang.Class[] START_INTENT_SENDER_SIG -> b
+    void onPurchaseStateChange(com.halcyonwaves.apps.energize.Consts$PurchaseState,java.lang.String,int,long,java.lang.String) -> a
+    void postPurchaseStateChange(com.halcyonwaves.apps.energize.Consts$PurchaseState,java.lang.String,int,long,java.lang.String) -> b
+com.halcyonwaves.apps.energize.PurchaseObserver$1 -> com.halcyonwaves.apps.energize.k:
+    com.halcyonwaves.apps.energize.PurchaseObserver this$0 -> a
+    com.halcyonwaves.apps.energize.Consts$PurchaseState val$purchaseState -> b
+    java.lang.String val$itemId -> c
+    int val$quantity -> d
+    long val$purchaseTime -> e
+    java.lang.String val$developerPayload -> f
+    void run() -> run
+com.halcyonwaves.apps.energize.ResponseHandler -> com.halcyonwaves.apps.energize.l:
+    com.halcyonwaves.apps.energize.PurchaseObserver sPurchaseObserver -> a
+    void purchaseResponse(android.content.Context,com.halcyonwaves.apps.energize.Consts$PurchaseState,java.lang.String,java.lang.String,long,java.lang.String) -> a
+    com.halcyonwaves.apps.energize.PurchaseObserver access$0() -> a
+com.halcyonwaves.apps.energize.ResponseHandler$1 -> com.halcyonwaves.apps.energize.m:
+    android.content.Context val$context -> a
+    java.lang.String val$orderId -> b
+    java.lang.String val$productId -> c
+    com.halcyonwaves.apps.energize.Consts$PurchaseState val$purchaseState -> d
+    long val$purchaseTime -> e
+    java.lang.String val$developerPayload -> f
+    void run() -> run
+com.halcyonwaves.apps.energize.Security -> com.halcyonwaves.apps.energize.n:
+    java.security.SecureRandom RANDOM -> a
+    java.util.HashSet sKnownNonces -> b
+    long generateNonce() -> a
+    void removeNonce(long) -> a
+    boolean isNonceKnown(long) -> b
+    java.util.ArrayList verifyPurchase(java.lang.String,java.lang.String) -> a
+    java.security.PublicKey generatePublicKey(java.lang.String) -> a
+    boolean verify(java.security.PublicKey,java.lang.String,java.lang.String) -> a
+com.halcyonwaves.apps.energize.Security$VerifiedPurchase -> com.halcyonwaves.apps.energize.o:
+    com.halcyonwaves.apps.energize.Consts$PurchaseState purchaseState -> a
+    java.lang.String notificationId -> b
+    java.lang.String productId -> c
+    java.lang.String orderId -> d
+    long purchaseTime -> e
+    java.lang.String developerPayload -> f
 com.halcyonwaves.apps.energize.SettingsActivity -> com.halcyonwaves.apps.energize.SettingsActivity:
     void onBuildHeaders(java.util.List) -> onBuildHeaders
     void onCreate(android.os.Bundle) -> onCreate
@@ -20,16 +123,156 @@ com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper -> c
 com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable -> com.halcyonwaves.apps.energize.a.b:
     void onCreate(android.database.sqlite.SQLiteDatabase) -> a
     void onUpgrade(android.database.sqlite.SQLiteDatabase,int,int) -> a
+com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment -> com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment:
+    android.preference.Preference whatsNewPreference -> a
+    void showWhatsNewDialog() -> a
+    void onCreate(android.os.Bundle) -> onCreate
+    void access$0(com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment) -> a
+com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment$1 -> com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment$1:
+    com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment$2 -> com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment$2:
+    com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment this$0 -> a
+    boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
+com.halcyonwaves.apps.energize.fragments.BatteryStatisticsPreferenceFragment -> com.halcyonwaves.apps.energize.fragments.BatteryStatisticsPreferenceFragment:
+    android.preference.Preference sendDatabasePreference -> a
+    android.os.Messenger monitorService -> b
+    android.os.Messenger monitorServiceMessanger -> c
+    android.content.ServiceConnection monitorServiceConnection -> d
+    void doBindService() -> a
+    void doUnbindService() -> b
+    void onDestroy() -> onDestroy
+    void onCreate(android.os.Bundle) -> onCreate
+    void access$0(com.halcyonwaves.apps.energize.fragments.BatteryStatisticsPreferenceFragment,android.os.Messenger) -> a
+    android.os.Messenger access$1(com.halcyonwaves.apps.energize.fragments.BatteryStatisticsPreferenceFragment) -> a
+    android.os.Messenger access$2(com.halcyonwaves.apps.energize.fragments.BatteryStatisticsPreferenceFragment) -> b
+com.halcyonwaves.apps.energize.fragments.BatteryStatisticsPreferenceFragment$1 -> com.halcyonwaves.apps.energize.fragments.BatteryStatisticsPreferenceFragment$1:
+    com.halcyonwaves.apps.energize.fragments.BatteryStatisticsPreferenceFragment this$0 -> a
+    void onServiceConnected(android.content.ComponentName,android.os.IBinder) -> onServiceConnected
+    void onServiceDisconnected(android.content.ComponentName) -> onServiceDisconnected
+com.halcyonwaves.apps.energize.fragments.BatteryStatisticsPreferenceFragment$2 -> com.halcyonwaves.apps.energize.fragments.BatteryStatisticsPreferenceFragment$2:
+    com.halcyonwaves.apps.energize.fragments.BatteryStatisticsPreferenceFragment this$0 -> a
+    boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
+com.halcyonwaves.apps.energize.fragments.BatteryStatisticsPreferenceFragment$IncomingHandler -> com.halcyonwaves.apps.energize.fragments.BatteryStatisticsPreferenceFragment$IncomingHandler:
+    com.halcyonwaves.apps.energize.fragments.BatteryStatisticsPreferenceFragment this$0 -> a
+    void handleMessage(android.os.Message) -> handleMessage
+com.halcyonwaves.apps.energize.fragments.BatteryStatisticsPreferenceFragment$IncomingHandler$1 -> com.halcyonwaves.apps.energize.fragments.BatteryStatisticsPreferenceFragment$IncomingHandler$1:
+    com.halcyonwaves.apps.energize.fragments.BatteryStatisticsPreferenceFragment$IncomingHandler this$1 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.halcyonwaves.apps.energize.fragments.DebugPreferenceFragment -> com.halcyonwaves.apps.energize.fragments.DebugPreferenceFragment:
+    android.preference.Preference sendDatabasePreference -> a
+    android.os.Messenger monitorService -> b
+    android.os.Messenger monitorServiceMessanger -> c
+    android.content.ServiceConnection monitorServiceConnection -> d
+    void doBindService() -> a
+    void doUnbindService() -> b
+    void onDestroy() -> onDestroy
+    void onCreate(android.os.Bundle) -> onCreate
+    void access$0(com.halcyonwaves.apps.energize.fragments.DebugPreferenceFragment,android.os.Messenger) -> a
+    android.os.Messenger access$1(com.halcyonwaves.apps.energize.fragments.DebugPreferenceFragment) -> a
+    android.os.Messenger access$2(com.halcyonwaves.apps.energize.fragments.DebugPreferenceFragment) -> b
+com.halcyonwaves.apps.energize.fragments.DebugPreferenceFragment$1 -> com.halcyonwaves.apps.energize.fragments.DebugPreferenceFragment$1:
+    com.halcyonwaves.apps.energize.fragments.DebugPreferenceFragment this$0 -> a
+    void onServiceConnected(android.content.ComponentName,android.os.IBinder) -> onServiceConnected
+    void onServiceDisconnected(android.content.ComponentName) -> onServiceDisconnected
+com.halcyonwaves.apps.energize.fragments.DebugPreferenceFragment$2 -> com.halcyonwaves.apps.energize.fragments.DebugPreferenceFragment$2:
+    com.halcyonwaves.apps.energize.fragments.DebugPreferenceFragment this$0 -> a
+    boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
+com.halcyonwaves.apps.energize.fragments.DebugPreferenceFragment$IncomingHandler -> com.halcyonwaves.apps.energize.fragments.DebugPreferenceFragment$IncomingHandler:
+    com.halcyonwaves.apps.energize.fragments.DebugPreferenceFragment this$0 -> a
+    void copyFile(java.io.InputStream,java.io.OutputStream) -> a
+    void handleMessage(android.os.Message) -> handleMessage
+com.halcyonwaves.apps.energize.fragments.DisplayPreferenceFragment -> com.halcyonwaves.apps.energize.fragments.DisplayPreferenceFragment:
+    void onCreate(android.os.Bundle) -> onCreate
 com.halcyonwaves.apps.energize.receivers.BatteryChangedReceiver -> com.halcyonwaves.apps.energize.receivers.a:
     com.halcyonwaves.apps.energize.services.MonitorBatteryStateService service -> a
     void onReceive(android.content.Context,android.content.Intent) -> onReceive
+com.halcyonwaves.apps.energize.receivers.BillingReceiver -> com.halcyonwaves.apps.energize.receivers.BillingReceiver:
+    void onReceive(android.content.Context,android.content.Intent) -> onReceive
+    void purchaseStateChanged(android.content.Context,java.lang.String,java.lang.String) -> a
+    void notify(android.content.Context,java.lang.String) -> a
+    void checkResponseCode(android.content.Context,long,int) -> a
 com.halcyonwaves.apps.energize.receivers.BootCompletedReceiver -> com.halcyonwaves.apps.energize.receivers.BootCompletedReceiver:
     void onReceive(android.content.Context,android.content.Intent) -> onReceive
+com.halcyonwaves.apps.energize.services.BillingService -> com.halcyonwaves.apps.energize.services.BillingService:
+    com.android.vending.billing.IMarketBillingService mService -> a
+    java.util.LinkedList mPendingRequests -> b
+    java.util.HashMap mSentRequests -> c
+    android.os.IBinder onBind(android.content.Intent) -> onBind
+    void onStart(android.content.Intent,int) -> onStart
+    void handleCommand(android.content.Intent,int) -> a
+    boolean bindToMarketBillingService() -> d
+    boolean confirmNotifications(int,java.lang.String[]) -> a
+    boolean getPurchaseInformation(int,java.lang.String[]) -> b
+    void purchaseStateChanged(int,java.lang.String,java.lang.String) -> a
+    void checkResponseCode(long,com.halcyonwaves.apps.energize.Consts$ResponseCode) -> a
+    void runPendingRequests() -> e
+    void onServiceConnected(android.content.ComponentName,android.os.IBinder) -> onServiceConnected
+    void onServiceDisconnected(android.content.ComponentName) -> onServiceDisconnected
+    boolean access$0(com.halcyonwaves.apps.energize.services.BillingService) -> a
+    java.util.LinkedList access$1() -> a
+    com.android.vending.billing.IMarketBillingService access$2() -> b
+    java.util.HashMap access$3() -> c
+    void access$4(com.android.vending.billing.IMarketBillingService) -> a
+com.halcyonwaves.apps.energize.services.BillingService$BillingRequest -> com.halcyonwaves.apps.energize.services.a:
+    int mStartId -> c
+    long mRequestId -> a
+    com.halcyonwaves.apps.energize.services.BillingService this$0 -> b
+    int getStartId() -> a
+    boolean runRequest() -> b
+    boolean runIfConnected() -> c
+    void onRemoteException(android.os.RemoteException) -> a
+    long run() -> d
+    void responseCodeReceived(com.halcyonwaves.apps.energize.Consts$ResponseCode) -> a
+    android.os.Bundle makeRequestBundle(java.lang.String) -> a
+    void logResponseCode(java.lang.String,android.os.Bundle) -> a
+com.halcyonwaves.apps.energize.services.BillingService$ConfirmNotifications -> com.halcyonwaves.apps.energize.services.b:
+    java.lang.String[] mNotifyIds -> c
+    com.halcyonwaves.apps.energize.services.BillingService this$0 -> d
+    long run() -> d
+com.halcyonwaves.apps.energize.services.BillingService$GetPurchaseInformation -> com.halcyonwaves.apps.energize.services.c:
+    long mNonce -> c
+    java.lang.String[] mNotifyIds -> d
+    com.halcyonwaves.apps.energize.services.BillingService this$0 -> e
+    long run() -> d
+    void onRemoteException(android.os.RemoteException) -> a
 com.halcyonwaves.apps.energize.services.MonitorBatteryStateService -> com.halcyonwaves.apps.energize.services.MonitorBatteryStateService:
     com.halcyonwaves.apps.energize.receivers.BatteryChangedReceiver batteryChangedReceiver -> a
     com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper batteryDbOpenHelper -> b
     android.database.sqlite.SQLiteDatabase batteryStatisticsDatabase -> c
-    void insertPowerValue(int,int) -> a
+    java.util.ArrayList connectedClients -> d
+    int lastChargingPercentage -> e
+    int lastRemainingMinutes -> f
+    android.os.Messenger serviceMessenger -> g
+    android.app.NotificationManager notificationManager -> h
+    android.app.Notification myNotification -> i
+    void insertPowerValue(int,int,int) -> a
     void onDestroy() -> onDestroy
+    void stopMonitoring() -> a
+    void startMonitoring() -> b
+    void showNewPercentageNotification(int) -> a
     int onStartCommand(android.content.Intent,int,int) -> onStartCommand
     android.os.IBinder onBind(android.content.Intent) -> onBind
+    void sendCurrentChargingPctToClients() -> c
+    void sendRemainingTimeToClients() -> d
+    java.util.ArrayList access$0(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> a
+    void access$1(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> b
+    void access$2(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> c
+    void access$3(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> d
+    void access$4(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> e
+    com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper access$5(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> f
+    android.database.sqlite.SQLiteDatabase access$6(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> g
+com.halcyonwaves.apps.energize.services.MonitorBatteryStateService$IncomingHandler -> com.halcyonwaves.apps.energize.services.d:
+    com.halcyonwaves.apps.energize.services.MonitorBatteryStateService this$0 -> a
+    void handleMessage(android.os.Message) -> handleMessage
+com.halcyonwaves.apps.energize.util.Base64 -> com.halcyonwaves.apps.energize.b.a:
+    byte[] ALPHABET -> b
+    byte[] WEBSAFE_ALPHABET -> c
+    byte[] DECODABET -> d
+    byte[] WEBSAFE_DECODABET -> e
+    boolean $assertionsDisabled -> a
+    int decode4to3(byte[],int,byte[],int,byte[]) -> a
+    byte[] decode(java.lang.String) -> a
+    byte[] decode(byte[],int,int) -> a
+    byte[] decode(byte[],int,int,byte[]) -> a
+com.halcyonwaves.apps.energize.util.Base64DecoderException -> com.halcyonwaves.apps.energize.b.b:

@@ -1,8 +1,70 @@
 android.annotation.SuppressLint
 android.annotation.TargetApi
+com.android.vending.billing.IMarketBillingService$Stub:
+    private static final java.lang.String DESCRIPTOR
+    static final int TRANSACTION_sendBillingRequest
+    34:34:public android.os.IBinder asBinder()
+com.android.vending.billing.IMarketBillingService$Stub$Proxy:
+    82:82:public java.lang.String getInterfaceDescriptor()
 com.halcyonwaves.apps.energize.ApplicationCore:
     31:31:public ApplicationCore()
+com.halcyonwaves.apps.energize.BatteryStateDisplayActivity:
+    private static final java.lang.String PRIVATE_PREF
+    private static final java.lang.String VERSION_KEY
 com.halcyonwaves.apps.energize.BuildConfig
+com.halcyonwaves.apps.energize.Consts:
+    public static final java.lang.String MARKET_BILLING_SERVICE_ACTION
+    public static final java.lang.String ACTION_CONFIRM_NOTIFICATION
+    public static final java.lang.String ACTION_GET_PURCHASE_INFORMATION
+    public static final java.lang.String ACTION_RESTORE_TRANSACTIONS
+    public static final java.lang.String ACTION_NOTIFY
+    public static final java.lang.String ACTION_RESPONSE_CODE
+    public static final java.lang.String ACTION_PURCHASE_STATE_CHANGED
+    public static final java.lang.String NOTIFICATION_ID
+    public static final java.lang.String INAPP_SIGNED_DATA
+    public static final java.lang.String INAPP_SIGNATURE
+    public static final java.lang.String INAPP_REQUEST_ID
+    public static final java.lang.String INAPP_RESPONSE_CODE
+    public static final java.lang.String BILLING_REQUEST_METHOD
+    public static final java.lang.String BILLING_REQUEST_API_VERSION
+    public static final java.lang.String BILLING_REQUEST_PACKAGE_NAME
+    public static final java.lang.String BILLING_REQUEST_ITEM_ID
+    public static final java.lang.String BILLING_REQUEST_ITEM_TYPE
+    public static final java.lang.String BILLING_REQUEST_DEVELOPER_PAYLOAD
+    public static final java.lang.String BILLING_REQUEST_NOTIFY_IDS
+    public static final java.lang.String BILLING_REQUEST_NONCE
+    public static final java.lang.String BILLING_RESPONSE_RESPONSE_CODE
+    public static final java.lang.String BILLING_RESPONSE_PURCHASE_INTENT
+    public static final java.lang.String BILLING_RESPONSE_REQUEST_ID
+    public static final java.lang.String ITEM_TYPE_INAPP
+    public static final java.lang.String ITEM_TYPE_SUBSCRIPTION
+    public static final boolean DEBUG
+    17:17:public Consts()
+com.halcyonwaves.apps.energize.PurchaseDatabase:
+    private static final java.lang.String TAG
+    private static final java.lang.String DATABASE_NAME
+    private static final int DATABASE_VERSION
+    private static final java.lang.String PURCHASE_HISTORY_TABLE_NAME
+    private static final java.lang.String PURCHASED_ITEMS_TABLE_NAME
+    static final java.lang.String HISTORY_ORDER_ID_COL
+    static final java.lang.String HISTORY_STATE_COL
+    static final java.lang.String HISTORY_PRODUCT_ID_COL
+    static final java.lang.String HISTORY_PURCHASE_TIME_COL
+    static final java.lang.String HISTORY_DEVELOPER_PAYLOAD_COL
+    static final java.lang.String PURCHASED_PRODUCT_ID_COL
+    static final java.lang.String PURCHASED_QUANTITY_COL
+    151:151:public android.database.Cursor queryAllPurchasedItems()
+com.halcyonwaves.apps.energize.PurchaseObserver:
+    private static final java.lang.String TAG
+    private final android.app.Activity mActivity
+    private java.lang.reflect.Method mStartIntentSender
+    private java.lang.Object[] mStartIntentSenderArgs
+    38:42:public PurchaseObserver(android.app.Activity,android.os.Handler)
+    public abstract void onBillingSupported(boolean,java.lang.String)
+    public abstract void onRequestPurchaseResponse(com.halcyonwaves.apps.energize.services.BillingService$RequestPurchase,com.halcyonwaves.apps.energize.Consts$ResponseCode)
+    public abstract void onRestoreTransactionsResponse(com.halcyonwaves.apps.energize.services.BillingService$RestoreTransactions,com.halcyonwaves.apps.energize.Consts$ResponseCode)
+    102:108:private void initCompatibilityLayer()
+    111:137:void startBuyPageActivity(android.app.PendingIntent,android.content.Intent)
 com.halcyonwaves.apps.energize.R
 com.halcyonwaves.apps.energize.R$array
 com.halcyonwaves.apps.energize.R$attr
@@ -13,11 +75,25 @@ com.halcyonwaves.apps.energize.R$menu
 com.halcyonwaves.apps.energize.R$string
 com.halcyonwaves.apps.energize.R$style
 com.halcyonwaves.apps.energize.R$xml
+com.halcyonwaves.apps.energize.ResponseHandler:
+    private static final java.lang.String TAG
+    42:43:public static synchronized void register(com.halcyonwaves.apps.energize.PurchaseObserver)
+    50:51:public static synchronized void unregister(com.halcyonwaves.apps.energize.PurchaseObserver)
+    60:63:public static void checkBillingSupportedResponse(boolean,java.lang.String)
+    76:83:public static void buyPageIntentResponse(android.app.PendingIntent,android.content.Intent)
+    143:146:public static void responseCodeReceived(android.content.Context,com.halcyonwaves.apps.energize.services.BillingService$RequestPurchase,com.halcyonwaves.apps.energize.Consts$ResponseCode)
+    158:161:public static void responseCodeReceived(android.content.Context,com.halcyonwaves.apps.energize.services.BillingService$RestoreTransactions,com.halcyonwaves.apps.energize.Consts$ResponseCode)
+com.halcyonwaves.apps.energize.Security:
+    private static final java.lang.String TAG
+    private static final java.lang.String KEY_FACTORY_ALGORITHM
+    private static final java.lang.String SIGNATURE_ALGORITHM
+    37:37:public Security()
 com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper:
     public static final java.lang.String DATABASE_NAME
     public static final int DATABASE_VERSION
 com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable:
-    public static final java.lang.String COLUMN_CHARGING_PCT
+    public static final java.lang.String COLUMN_CHARGING_LEVEL
+    public static final java.lang.String COLUMN_CHARGING_SCALE
     public static final java.lang.String COLUMN_EVENT_TIME
     public static final java.lang.String COLUMN_CHARGING_STATE
     public static final java.lang.String COLUMN_ID
@@ -27,7 +103,45 @@ com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable:
     public static final int CHARGING_STATE_CHARGING_USB
     public static final java.lang.String TABLE_NAME
     23:23:public RawBatteryStatisicsTable()
-com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment
-com.halcyonwaves.apps.energize.fragments.BatteryStatisticsPreferenceFragment
-com.halcyonwaves.apps.energize.fragments.DisplayPreferenceFragment
+com.halcyonwaves.apps.energize.receivers.BillingReceiver:
+    private static final java.lang.String TAG
+com.halcyonwaves.apps.energize.services.BillingService:
+    private static final java.lang.String TAG
+    403:404:public void setContext(android.content.Context)
+    479:479:public boolean checkBillingSupported()
+    489:489:public boolean checkBillingSupported(java.lang.String)
+    505:505:public boolean requestPurchase(java.lang.String,java.lang.String,java.lang.String)
+    515:515:public boolean restoreTransactions()
+    663:667:public void unbind()
+com.halcyonwaves.apps.energize.services.BillingService$CheckBillingSupported
+com.halcyonwaves.apps.energize.services.BillingService$RequestPurchase
+com.halcyonwaves.apps.energize.services.BillingService$RestoreTransactions
+com.halcyonwaves.apps.energize.services.MonitorBatteryStateService:
+    public static final int MSG_REGISTER_CLIENT
+    public static final int MSG_UNREGISTER_CLIENT
+    public static final int MSG_REQUEST_LAST_CHARGING_PCT
+    public static final int MSG_REQUEST_REMAINING_TIME
+    public static final int MSG_START_MONITORING
+    public static final int MSG_STOP_MONITORING
+    public static final int MSG_REQUEST_DB_PATH
+    public static final int MSG_CLEAR_STATISTICS
+    private static final int MY_NOTIFICATION_ID
+com.halcyonwaves.apps.energize.util.Base64:
+    public static final boolean ENCODE
+    public static final boolean DECODE
+    private static final byte EQUALS_SIGN
+    private static final byte NEW_LINE
+    private static final byte WHITE_SPACE_ENC
+    private static final byte EQUALS_SIGN_ENC
+    163:185:private static byte[] encode3to4(byte[],int,int,byte[],int,byte[])
+    198:198:public static java.lang.String encode(byte[])
+    209:209:public static java.lang.String encodeWebSafe(byte[],boolean)
+    224:236:public static java.lang.String encode(byte[],int,int,byte[],boolean)
+    250:291:public static byte[] encode(byte[],int,int,byte[],int)
+    364:365:public static byte[] decodeWebSafe(java.lang.String)
+    378:378:public static byte[] decode(byte[])
+    390:390:public static byte[] decodeWebSafe(byte[])
+    419:419:public static byte[] decodeWebSafe(byte[],int,int)
+com.halcyonwaves.apps.energize.util.Base64DecoderException:
+    private static final long serialVersionUID
 com.halcyonwaves.apps.energize.widgets.SimpleWidget
