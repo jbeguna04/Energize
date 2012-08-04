@@ -5,10 +5,9 @@ Version 0.3 *(2012-??-??)*
 --------------------------
 * Added the first (but simple) remaining time estimation
 * Added the license text to the application (see About settings)
-* Added an indicator if the battery is charging or discharging
-* Added support for user donations using in-app payment
 * Updated the application icon
 * First version which is available on the Google Play store for everyone
+* Prepared the code to be able to handle in-app billing stuff (for easy donations)
 
 Version 0.2 *(2012-07-13)*
 --------------------------

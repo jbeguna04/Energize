@@ -18,7 +18,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="25dp"
-        android:text="- Added the first (but simple) remaining time estimation\n- Added the license text to the application (see About settings)\n- Added an indicator if the battery is charging or discharging\n- Added support for user donations using in-app payment\n- Updated the application icon\n- First version which is available on the Google Play store for everyone" />
+        android:text="- Added the first (but simple) remaining time estimation\n- Added the license text to the application (see About settings)\n- Updated the application icon\n- First version which is available on the Google Play store for everyone\n- Prepared the code to be able to handle in-app billing stuff (for easy donations)" />
     
     <TextView
         android:layout_width="fill_parent"
