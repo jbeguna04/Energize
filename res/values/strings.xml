@@ -50,7 +50,7 @@
     <string name="pref_summary_change_batteryestimation">Method used for battery estimation</string>
     
     <string name="notification_title_remaining" formatted="false">%d%% remaining</string>
-    <string name="notification_text_estimate">Estimation is currenty not available</string>
+    <string name="notification_text_estimate">Remaining time: %d minutes</string>
     
     <string name="dialog_title_whatsnew">What\'s new?</string>
     

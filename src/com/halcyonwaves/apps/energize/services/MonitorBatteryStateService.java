@@ -1,19 +1,11 @@
 /**
- * Energize - An Android battery monitor
- * Copyright (C) 2012 Tim Huetz
+ * Energize - An Android battery monitor Copyright (C) 2012 Tim Huetz
  * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
  * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
  * 
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
 package com.halcyonwaves.apps.energize.services;
@@ -33,6 +25,7 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Handler;
 import android.os.IBinder;
@@ -46,10 +39,11 @@ public class MonitorBatteryStateService extends Service {
 	public static final int MSG_REGISTER_CLIENT = 1;
 	public static final int MSG_UNREGISTER_CLIENT = 2;
 	public static final int MSG_REQUEST_LAST_CHARGING_PCT = 3;
-	public static final int MSG_START_MONITORING = 4;
-	public static final int MSG_STOP_MONITORING = 5;
-	public static final int MSG_REQUEST_DB_PATH = 6;
-	public static final int MSG_CLEAR_STATISTICS = 7;
+	public static final int MSG_REQUEST_REMAINING_TIME = 4;
+	public static final int MSG_START_MONITORING = 5;
+	public static final int MSG_STOP_MONITORING = 6;
+	public static final int MSG_REQUEST_DB_PATH = 7;
+	public static final int MSG_CLEAR_STATISTICS = 8;
 
 	private static final int MY_NOTIFICATION_ID = 1;
 
@@ -58,6 +52,7 @@ public class MonitorBatteryStateService extends Service {
 	private SQLiteDatabase batteryStatisticsDatabase = null;
 	private ArrayList< Messenger > connectedClients = new ArrayList< Messenger >();
 	private int lastChargingPercentage = -1;
+	private int lastRemainingMinutes = -1;
 	private final Messenger serviceMessenger = new Messenger( new IncomingHandler() );
 	private NotificationManager notificationManager = null;
 	private Notification myNotification = null;
@@ -75,8 +70,31 @@ public class MonitorBatteryStateService extends Service {
 			this.batteryStatisticsDatabase.insert( RawBatteryStatisicsTable.TABLE_NAME, null, values );
 		}
 
+		// store the charging level and update the notification about the current charging level
 		this.lastChargingPercentage = level;
 		this.showNewPercentageNotification( level );
+
+		// calculate the remaining time in minutes		
+		Cursor querCursor = this.batteryStatisticsDatabase.query( RawBatteryStatisicsTable.TABLE_NAME, new String[] { RawBatteryStatisicsTable.COLUMN_EVENT_TIME }, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " DESC" );
+		if( querCursor.moveToFirst() ) {
+			long lastEventTime = querCursor.getLong( querCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_EVENT_TIME ) );
+			if( querCursor.moveToNext() ) {
+				long prevEventTime = querCursor.getLong( querCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_EVENT_TIME ) );
+				long diff = Math.abs( lastEventTime - prevEventTime );
+				Log.d( "MonitorBatteryStateService", String.format( "Calculated the time between the last two (%d, %d) events: %d", lastEventTime, prevEventTime, diff ) );
+				if( 0 == powerSource ) { // battery
+					this.lastRemainingMinutes = (int) (Math.round( ( ( this.lastChargingPercentage ) * diff) / 60.0f ) );
+					Log.d( "MonitorBatteryStateService", String.format( "Calculated remaining battery life in minutes: %d", lastRemainingMinutes ) );
+				} else { // ac
+					this.lastRemainingMinutes = (int) (Math.round( ( ( 100.0f - this.lastChargingPercentage ) * diff) / 60.0f ) );
+					Log.d( "MonitorBatteryStateService", String.format( "Calculated remaining charging time in minutes: %d", lastRemainingMinutes ) );
+				}
+			}
+		}
+		querCursor.close();
+
+		// tell all connected clients about the current charging level and the remaining time
+		MonitorBatteryStateService.this.sendRemainingTimeToClients();
 		MonitorBatteryStateService.this.sendCurrentChargingPctToClients();
 	}
 
@@ -100,7 +118,7 @@ public class MonitorBatteryStateService extends Service {
 		if( percentage < 0 || percentage > 100 ) {
 			return;
 		}
-		this.myNotification = new Notification.Builder( this ).setContentTitle( this.getString( R.string.notification_title_remaining, percentage ) ).setContentText( this.getText( R.string.notification_text_estimate ) ).setSmallIcon( R.drawable.ic_stat_00_pct_charged + percentage ).getNotification();
+		this.myNotification = new Notification.Builder( this ).setContentTitle( this.getString( R.string.notification_title_remaining, percentage ) ).setContentText( this.getString( R.string.notification_text_estimate, 1 ) ).setSmallIcon( R.drawable.ic_stat_00_pct_charged + percentage ).getNotification();
 		this.myNotification.flags |= Notification.FLAG_ONGOING_EVENT;
 		notificationManager.notify( MY_NOTIFICATION_ID, myNotification );
 	}
@@ -141,6 +159,16 @@ public class MonitorBatteryStateService extends Service {
 		}
 	}
 
+	private void sendRemainingTimeToClients() {
+		try {
+			for( Messenger msg : this.connectedClients ) {
+				msg.send( Message.obtain( null, MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME, this.lastRemainingMinutes, 0 ) );
+			}
+		} catch( RemoteException e ) {
+			// nothing
+		}
+	}
+
 	private class IncomingHandler extends Handler {
 
 		@Override
@@ -158,6 +186,10 @@ public class MonitorBatteryStateService extends Service {
 				case MonitorBatteryStateService.MSG_REQUEST_LAST_CHARGING_PCT:
 					Log.d( "MonitorBatteryStateService", "Received request of the charging percentage..." );
 					MonitorBatteryStateService.this.sendCurrentChargingPctToClients();
+					break;
+				case MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME:
+					Log.d( "MonitorBatteryStateService", "Received request of the remaining time..." );
+					MonitorBatteryStateService.this.sendRemainingTimeToClients();
 					break;
 				case MonitorBatteryStateService.MSG_START_MONITORING:
 					Log.d( "MonitorBatteryStateService", "Starting battery monitoring..." );
