@@ -14,3 +14,6 @@
 
 # disable obfuscation for the in-app billing service
 -keep class com.android.vending.billing.**
+
+# disable obfuscation for the preference framgents
+-keep class com.halcyonwaves.apps.energize.fragments.**
