@@ -36,6 +36,8 @@ import android.util.Log;
 
 public class MonitorBatteryStateService extends Service {
 
+	private static final String TAG = "MonitorBatteryStateService";
+
 	public static final int MSG_REGISTER_CLIENT = 1;
 	public static final int MSG_UNREGISTER_CLIENT = 2;
 	public static final int MSG_REQUEST_LAST_CHARGING_PCT = 3;
@@ -57,35 +59,57 @@ public class MonitorBatteryStateService extends Service {
 	private Notification myNotification = null;
 
 	public void insertPowerValue( int powerSource, int scale, int level ) {
-		long currentUnixTime = (long) (System.currentTimeMillis() / 1000);
-
-		if( null != this.batteryStatisticsDatabase && this.batteryStatisticsDatabase.isOpen() ) {
-			ContentValues values = new ContentValues();
-			values.put( RawBatteryStatisicsTable.COLUMN_EVENT_TIME, currentUnixTime );
-			values.put( RawBatteryStatisicsTable.COLUMN_CHARGING_STATE, powerSource );
-			values.put( RawBatteryStatisicsTable.COLUMN_CHARGING_SCALE, scale );
-			values.put( RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL, level );
-
-			this.batteryStatisticsDatabase.insert( RawBatteryStatisicsTable.TABLE_NAME, null, values );
+		// if the database is not open, skip the insertion process
+		if( null == this.batteryStatisticsDatabase || !this.batteryStatisticsDatabase.isOpen() ) {
+			Log.e( MonitorBatteryStateService.TAG, "Tried to insert a dataset into a closed database, skipping..." );
+			return;
 		}
+
+		// get the last entry we made on our database, if the entries are the same we want to insert, skip the insertion process
+		Cursor lastEntryMadeCursor = this.batteryStatisticsDatabase.query( RawBatteryStatisicsTable.TABLE_NAME, new String[] { RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL, RawBatteryStatisicsTable.COLUMN_CHARGING_SCALE }, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " DESC" );
+		if( lastEntryMadeCursor.moveToFirst() ) {
+			if( level == lastEntryMadeCursor.getInt( lastEntryMadeCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL ) ) && scale == lastEntryMadeCursor.getInt( lastEntryMadeCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_CHARGING_SCALE ) ) ) {
+				Log.d( MonitorBatteryStateService.TAG, "Tried to insert an already existing dataset, skipping..." );
+				
+				// if it is the first run of the application, the percentage would be -1 if we won't set it here
+				this.lastChargingPercentage = level;
+				
+				// tell all connected clients about the current charging level and the remaining time
+				MonitorBatteryStateService.this.sendCurrentChargingPctToClients();
+				this.showNewPercentageNotification( level, this.lastRemainingMinutes );
+				
+				// skip the insertion process
+				return;
+			}
+		}
+		lastEntryMadeCursor.close();
+
+		// insert the new dataset into our database
+		final long currentUnixTime = (long) (System.currentTimeMillis() / 1000);
+		ContentValues values = new ContentValues();
+		values.put( RawBatteryStatisicsTable.COLUMN_EVENT_TIME, currentUnixTime );
+		values.put( RawBatteryStatisicsTable.COLUMN_CHARGING_STATE, powerSource );
+		values.put( RawBatteryStatisicsTable.COLUMN_CHARGING_SCALE, scale );
+		values.put( RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL, level );
+		this.batteryStatisticsDatabase.insert( RawBatteryStatisicsTable.TABLE_NAME, null, values );
 
 		// store the charging level and update the notification about the current charging level
 		this.lastChargingPercentage = level;
 
-		// calculate the remaining time in minutes		
+		// calculate the remaining time in minutes
 		Cursor querCursor = this.batteryStatisticsDatabase.query( RawBatteryStatisicsTable.TABLE_NAME, new String[] { RawBatteryStatisicsTable.COLUMN_EVENT_TIME }, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " DESC" );
 		if( querCursor.moveToFirst() ) {
 			long lastEventTime = querCursor.getLong( querCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_EVENT_TIME ) );
 			if( querCursor.moveToNext() ) {
 				long prevEventTime = querCursor.getLong( querCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_EVENT_TIME ) );
 				long diff = Math.abs( lastEventTime - prevEventTime );
-				Log.d( "MonitorBatteryStateService", String.format( "Calculated the time between the last two (%d, %d) events: %d", lastEventTime, prevEventTime, diff ) );
-				if( 0 == powerSource ) { // battery
-					this.lastRemainingMinutes = (int) (Math.round( ( ( this.lastChargingPercentage ) * diff) / 60.0f ) );
-					Log.d( "MonitorBatteryStateService", String.format( "Calculated remaining battery life in minutes: %d", lastRemainingMinutes ) );
-				} else { // ac
-					this.lastRemainingMinutes = (int) (Math.round( ( ( 100.0f - this.lastChargingPercentage ) * diff) / 60.0f ) );
-					Log.d( "MonitorBatteryStateService", String.format( "Calculated remaining charging time in minutes: %d", lastRemainingMinutes ) );
+				Log.v( MonitorBatteryStateService.TAG, String.format( "Calculated the time between the last two (%d, %d) events: %d", lastEventTime, prevEventTime, diff ) );
+				if( RawBatteryStatisicsTable.CHARGING_STATE_UNCHARGING == powerSource ) {
+					this.lastRemainingMinutes = (int) (Math.round( ((this.lastChargingPercentage) * diff) / 60.0f ));
+					Log.v( MonitorBatteryStateService.TAG, String.format( "Calculated remaining battery life in minutes: %d", lastRemainingMinutes ) );
+				} else {
+					this.lastRemainingMinutes = (int) (Math.round( ((100.0f - this.lastChargingPercentage) * diff) / 60.0f ));
+					Log.v( MonitorBatteryStateService.TAG, String.format( "Calculated remaining charging time in minutes: %d", lastRemainingMinutes ) );
 				}
 			}
 		}
