@@ -72,7 +72,6 @@ public class MonitorBatteryStateService extends Service {
 
 		// store the charging level and update the notification about the current charging level
 		this.lastChargingPercentage = level;
-		this.showNewPercentageNotification( level );
 
 		// calculate the remaining time in minutes		
 		Cursor querCursor = this.batteryStatisticsDatabase.query( RawBatteryStatisicsTable.TABLE_NAME, new String[] { RawBatteryStatisicsTable.COLUMN_EVENT_TIME }, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " DESC" );
@@ -96,6 +95,7 @@ public class MonitorBatteryStateService extends Service {
 		// tell all connected clients about the current charging level and the remaining time
 		MonitorBatteryStateService.this.sendRemainingTimeToClients();
 		MonitorBatteryStateService.this.sendCurrentChargingPctToClients();
+		this.showNewPercentageNotification( level, this.lastRemainingMinutes );
 	}
 
 	@Override
@@ -114,11 +114,11 @@ public class MonitorBatteryStateService extends Service {
 		this.batteryStatisticsDatabase = this.batteryDbOpenHelper.getWritableDatabase();
 	}
 
-	private void showNewPercentageNotification( int percentage ) {
+	private void showNewPercentageNotification( int percentage, int remainingMinutes ) {
 		if( percentage < 0 || percentage > 100 ) {
 			return;
 		}
-		this.myNotification = new Notification.Builder( this ).setContentTitle( this.getString( R.string.notification_title_remaining, percentage ) ).setContentText( this.getString( R.string.notification_text_estimate, 1 ) ).setSmallIcon( R.drawable.ic_stat_00_pct_charged + percentage ).getNotification();
+		this.myNotification = new Notification.Builder( this ).setContentTitle( this.getString( R.string.notification_title_remaining, percentage ) ).setContentText( this.getString( R.string.notification_text_estimate, remainingMinutes ) ).setSmallIcon( R.drawable.ic_stat_00_pct_charged + percentage ).getNotification();
 		this.myNotification.flags |= Notification.FLAG_ONGOING_EVENT;
 		notificationManager.notify( MY_NOTIFICATION_ID, myNotification );
 	}
