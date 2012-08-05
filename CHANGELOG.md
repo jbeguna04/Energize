@@ -1,7 +1,7 @@
 Change Log
 ===============================================================================
 
-Version 0.3 *(2012-??-??)*
+Version 0.3 *(2012-08-05)*
 --------------------------
 * Added the first (but simple) remaining time estimation
 * Added the license text to the application (see About settings)
