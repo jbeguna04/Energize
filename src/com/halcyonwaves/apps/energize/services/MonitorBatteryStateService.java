@@ -148,7 +148,7 @@ public class MonitorBatteryStateService extends Service {
 	@Override
 	public int onStartCommand( Intent intent, int flags, int startid ) {
 		//
-		Log.v( "MonitorBatteryStateService", "Starting service for collecting battery statistics..." );
+		Log.v( MonitorBatteryStateService.TAG, "Starting service for collecting battery statistics..." );
 
 		//
 		this.notificationManager = (NotificationManager) this.getSystemService( Context.NOTIFICATION_SERVICE );
@@ -162,7 +162,7 @@ public class MonitorBatteryStateService extends Service {
 		this.registerReceiver( this.batteryChangedReceiver, new IntentFilter( Intent.ACTION_BATTERY_CHANGED ) );
 
 		//
-		Log.v( "MonitorBatteryStateService", "Service successfully started" );
+		Log.v( MonitorBatteryStateService.TAG, "Service successfully started" );
 		return START_STICKY;
 	}
 
@@ -187,41 +187,41 @@ public class MonitorBatteryStateService extends Service {
 		public void handleMessage( Message msg ) {
 			switch( msg.what ) {
 				case MonitorBatteryStateService.MSG_REGISTER_CLIENT:
-					Log.d( "MonitorBatteryStateService", "Registering new client to the battery monitoring service..." );
+					Log.d( MonitorBatteryStateService.TAG, "Registering new client to the battery monitoring service..." );
 					MonitorBatteryStateService.this.connectedClients.add( msg.replyTo );
 					MonitorBatteryStateService.this.sendCurrentChargingPctToClients();
 					break;
 				case MonitorBatteryStateService.MSG_UNREGISTER_CLIENT:
-					Log.d( "MonitorBatteryStateService", "Unregistering client from the battery monitoring service..." );
+					Log.d( MonitorBatteryStateService.TAG, "Unregistering client from the battery monitoring service..." );
 					MonitorBatteryStateService.this.connectedClients.remove( msg.replyTo );
 					break;
 				case MonitorBatteryStateService.MSG_REQUEST_LAST_CHARGING_PCT:
-					Log.d( "MonitorBatteryStateService", "Received request of the charging percentage..." );
+					Log.d( MonitorBatteryStateService.TAG, "Received request of the charging percentage..." );
 					MonitorBatteryStateService.this.sendCurrentChargingPctToClients();
 					break;
 				case MonitorBatteryStateService.MSG_START_MONITORING:
-					Log.d( "MonitorBatteryStateService", "Starting battery monitoring..." );
+					Log.d( MonitorBatteryStateService.TAG, "Starting battery monitoring..." );
 					MonitorBatteryStateService.this.startMonitoring();
 					break;
 				case MonitorBatteryStateService.MSG_STOP_MONITORING:
-					Log.d( "MonitorBatteryStateService", "Stopping battery monitoring..." );
+					Log.d( MonitorBatteryStateService.TAG, "Stopping battery monitoring..." );
 					MonitorBatteryStateService.this.stopMonitoring();
 					break;
 				case MonitorBatteryStateService.MSG_REQUEST_DB_PATH:
-					Log.d( "MonitorBatteryStateService", "Database path requested, sending it back..." );
+					Log.d( MonitorBatteryStateService.TAG, "Database path requested, sending it back..." );
 					try {
 						msg.replyTo.send( Message.obtain( null, MonitorBatteryStateService.MSG_REQUEST_DB_PATH, (new ContextWrapper( MonitorBatteryStateService.this )).getDatabasePath( MonitorBatteryStateService.this.batteryDbOpenHelper.getDatabaseName() ).getAbsolutePath() ) );
 					} catch( RemoteException e ) {
-						Log.e( "MonitorBatteryStateService", "Failed to send the databasae path!" );
+						Log.e( MonitorBatteryStateService.TAG, "Failed to send the databasae path!" );
 					}
 					break;
 				case MonitorBatteryStateService.MSG_CLEAR_STATISTICS:
-					Log.d( "MonitorBatteryStateService", "Clearing battery statistics database..." );
+					Log.d( MonitorBatteryStateService.TAG, "Clearing battery statistics database..." );
 					try {
 						MonitorBatteryStateService.this.batteryStatisticsDatabase.delete( RawBatteryStatisicsTable.TABLE_NAME, null, null );
 						msg.replyTo.send( Message.obtain( null, MonitorBatteryStateService.MSG_CLEAR_STATISTICS ) );
 					} catch( RemoteException e ) {
-						Log.e( "MonitorBatteryStateService", "Failed to clear battery statistics database!" );
+						Log.e( MonitorBatteryStateService.TAG, "Failed to clear battery statistics database!" );
 					}
 					break;
 				default:
