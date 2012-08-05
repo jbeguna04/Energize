@@ -39,11 +39,10 @@ public class MonitorBatteryStateService extends Service {
 	public static final int MSG_REGISTER_CLIENT = 1;
 	public static final int MSG_UNREGISTER_CLIENT = 2;
 	public static final int MSG_REQUEST_LAST_CHARGING_PCT = 3;
-	public static final int MSG_REQUEST_REMAINING_TIME = 4;
-	public static final int MSG_START_MONITORING = 5;
-	public static final int MSG_STOP_MONITORING = 6;
-	public static final int MSG_REQUEST_DB_PATH = 7;
-	public static final int MSG_CLEAR_STATISTICS = 8;
+	public static final int MSG_START_MONITORING = 4;
+	public static final int MSG_STOP_MONITORING = 5;
+	public static final int MSG_REQUEST_DB_PATH = 6;
+	public static final int MSG_CLEAR_STATISTICS = 7;
 
 	private static final int MY_NOTIFICATION_ID = 1;
 
@@ -93,7 +92,6 @@ public class MonitorBatteryStateService extends Service {
 		querCursor.close();
 
 		// tell all connected clients about the current charging level and the remaining time
-		MonitorBatteryStateService.this.sendRemainingTimeToClients();
 		MonitorBatteryStateService.this.sendCurrentChargingPctToClients();
 		this.showNewPercentageNotification( level, this.lastRemainingMinutes );
 	}
@@ -159,16 +157,6 @@ public class MonitorBatteryStateService extends Service {
 		}
 	}
 
-	private void sendRemainingTimeToClients() {
-		try {
-			for( Messenger msg : this.connectedClients ) {
-				msg.send( Message.obtain( null, MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME, this.lastRemainingMinutes, 0 ) );
-			}
-		} catch( RemoteException e ) {
-			// nothing
-		}
-	}
-
 	private class IncomingHandler extends Handler {
 
 		@Override
@@ -186,10 +174,6 @@ public class MonitorBatteryStateService extends Service {
 				case MonitorBatteryStateService.MSG_REQUEST_LAST_CHARGING_PCT:
 					Log.d( "MonitorBatteryStateService", "Received request of the charging percentage..." );
 					MonitorBatteryStateService.this.sendCurrentChargingPctToClients();
-					break;
-				case MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME:
-					Log.d( "MonitorBatteryStateService", "Received request of the remaining time..." );
-					MonitorBatteryStateService.this.sendRemainingTimeToClients();
 					break;
 				case MonitorBatteryStateService.MSG_START_MONITORING:
 					Log.d( "MonitorBatteryStateService", "Starting battery monitoring..." );
