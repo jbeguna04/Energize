@@ -117,10 +117,10 @@ com.halcyonwaves.apps.energize.services.BillingService$CheckBillingSupported
 com.halcyonwaves.apps.energize.services.BillingService$RequestPurchase
 com.halcyonwaves.apps.energize.services.BillingService$RestoreTransactions
 com.halcyonwaves.apps.energize.services.MonitorBatteryStateService:
+    private static final java.lang.String TAG
     public static final int MSG_REGISTER_CLIENT
     public static final int MSG_UNREGISTER_CLIENT
     public static final int MSG_REQUEST_LAST_CHARGING_PCT
-    public static final int MSG_REQUEST_REMAINING_TIME
     public static final int MSG_START_MONITORING
     public static final int MSG_STOP_MONITORING
     public static final int MSG_REQUEST_DB_PATH

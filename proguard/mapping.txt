@@ -258,14 +258,12 @@ com.halcyonwaves.apps.energize.services.MonitorBatteryStateService -> com.halcyo
     int onStartCommand(android.content.Intent,int,int) -> onStartCommand
     android.os.IBinder onBind(android.content.Intent) -> onBind
     void sendCurrentChargingPctToClients() -> c
-    void sendRemainingTimeToClients() -> d
     java.util.ArrayList access$0(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> a
     void access$1(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> b
     void access$2(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> c
     void access$3(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> d
-    void access$4(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> e
-    com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper access$5(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> f
-    android.database.sqlite.SQLiteDatabase access$6(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> g
+    com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper access$4(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> e
+    android.database.sqlite.SQLiteDatabase access$5(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> f
 com.halcyonwaves.apps.energize.services.MonitorBatteryStateService$IncomingHandler -> com.halcyonwaves.apps.energize.services.d:
     com.halcyonwaves.apps.energize.services.MonitorBatteryStateService this$0 -> a
     void handleMessage(android.os.Message) -> handleMessage
