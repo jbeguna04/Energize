@@ -125,6 +125,7 @@ com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable -> com.halcyonw
     void onUpgrade(android.database.sqlite.SQLiteDatabase,int,int) -> a
 com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment -> com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment:
     android.preference.Preference whatsNewPreference -> a
+    android.preference.Preference showLicencePreference -> b
     void showWhatsNewDialog() -> a
     void onCreate(android.os.Bundle) -> onCreate
     void access$0(com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment) -> a
@@ -132,6 +133,9 @@ com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment$1 -> com.halcyo
     com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment this$0 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
 com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment$2 -> com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment$2:
+    com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment this$0 -> a
+    boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
+com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment$3 -> com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment$3:
     com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment this$0 -> a
     boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
 com.halcyonwaves.apps.energize.fragments.BatteryStatisticsPreferenceFragment -> com.halcyonwaves.apps.energize.fragments.BatteryStatisticsPreferenceFragment:
@@ -250,7 +254,7 @@ com.halcyonwaves.apps.energize.services.MonitorBatteryStateService -> com.halcyo
     void onDestroy() -> onDestroy
     void stopMonitoring() -> a
     void startMonitoring() -> b
-    void showNewPercentageNotification(int) -> a
+    void showNewPercentageNotification(int,int) -> a
     int onStartCommand(android.content.Intent,int,int) -> onStartCommand
     android.os.IBinder onBind(android.content.Intent) -> onBind
     void sendCurrentChargingPctToClients() -> c

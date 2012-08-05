@@ -4602,7 +4602,7 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 128):
+Constant Pool (count = 136):
   + Integer [17039370]
   + Integer [2130903041]
   + Integer [2130968576]
@@ -4610,6 +4610,7 @@ Constant Pool (count = 128):
   + String [AboutPreferenceFragment]
   + String [Cannot find the preference key for setting up the application version]
   + String [about.app_version]
+  + String [about.licence]
   + String [about.whatsnew]
   + Class [android/app/Activity]
   + Class [android/app/AlertDialog]
@@ -4624,8 +4625,10 @@ Constant Pool (count = 128):
   + Class [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment]
   + Class [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment$1]
   + Class [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment$2]
+  + Class [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment$3]
   + Fieldref [android/content/pm/PackageInfo.versionName Ljava/lang/String;]
   + Fieldref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment.a Landroid/preference/Preference;]
+  + Fieldref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment.b Landroid/preference/Preference;]
   + Methodref [android/app/Activity.getPackageManager ()Landroid/content/pm/PackageManager;]
   + Methodref [android/app/Activity.getPackageName ()Ljava/lang/String;]
   + Methodref [android/app/AlertDialog.show ()V]
@@ -4648,12 +4651,14 @@ Constant Pool (count = 128):
   + Methodref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment.getActivity ()Landroid/app/Activity;]
   + Methodref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment$1.<init> (Lcom/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment;)V]
   + Methodref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment$2.<init> (Lcom/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment;)V]
+  + Methodref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment$3.<init> (Lcom/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment;)V]
   + NameAndType [<init> ()V]
   + NameAndType [<init> (Landroid/content/Context;)V]
   + NameAndType [<init> (Lcom/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment;)V]
   + NameAndType [a ()V]
   + NameAndType [a Landroid/preference/Preference;]
   + NameAndType [addPreferencesFromResource (I)V]
+  + NameAndType [b Landroid/preference/Preference;]
   + NameAndType [create ()Landroid/app/AlertDialog;]
   + NameAndType [e (Ljava/lang/String;Ljava/lang/String;)I]
   + NameAndType [findPreference (Ljava/lang/CharSequence;)Landroid/preference/Preference;]
@@ -4698,6 +4703,7 @@ Constant Pool (count = 128):
   + Utf8 [Ljava/lang/String;]
   + Utf8 [a]
   + Utf8 [about.app_version]
+  + Utf8 [about.licence]
   + Utf8 [about.whatsnew]
   + Utf8 [addPreferencesFromResource]
   + Utf8 [android/app/Activity]
@@ -4710,9 +4716,11 @@ Constant Pool (count = 128):
   + Utf8 [android/preference/PreferenceFragment]
   + Utf8 [android/util/Log]
   + Utf8 [android/view/LayoutInflater]
+  + Utf8 [b]
   + Utf8 [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment]
   + Utf8 [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment$1]
   + Utf8 [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment$2]
+  + Utf8 [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment$3]
   + Utf8 [create]
   + Utf8 [e]
   + Utf8 [findPreference]
@@ -4731,25 +4739,32 @@ Constant Pool (count = 128):
   + Utf8 [show]
   + Utf8 [versionName]
 
-Fields (count = 1):
+Fields (count = 2):
   + Field:        a Landroid/preference/Preference;
     Access flags: 0x2
       = private android.preference.Preference a
+  + Field:        b Landroid/preference/Preference;
+    Access flags: 0x2
+      = private android.preference.Preference b
 
 Methods (count = 4):
   - Method:       <init>()V
     Access flags: 0x1
       = public AboutPreferenceFragment()
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 10, locals = 1, stack = 2):
+    + Code attribute instructions (code length = 15, locals = 1, stack = 2):
       [0] aload_0 v0
-      [1] invokespecial #35
+      [1] invokespecial #38
         + Methodref [android/preference/PreferenceFragment.<init> ()V]
       [4] aload_0 v0
       [5] aconst_null
-      [6] putfield #23
+      [6] putfield #25
         + Fieldref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment.a Landroid/preference/Preference;]
-      [9] return
+      [9] aload_0 v0
+      [10] aconst_null
+      [11] putfield #26
+        + Fieldref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment.b Landroid/preference/Preference;]
+      [14] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
   + Method:       a()V
@@ -4758,50 +4773,50 @@ Methods (count = 4):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 60, locals = 4, stack = 5):
       [0] aload_0 v0
-      [1] invokevirtual #43
+      [1] invokevirtual #46
         + Methodref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment.getActivity ()Landroid/app/Activity;]
-      [4] invokestatic #38
+      [4] invokestatic #41
         + Methodref [android/view/LayoutInflater.from (Landroid/content/Context;)Landroid/view/LayoutInflater;]
       [7] astore_1 v1
       [8] aload_1 v1
       [9] ldc #2
         + Integer [2130903041]
       [11] aconst_null
-      [12] invokevirtual #39
+      [12] invokevirtual #42
         + Methodref [android/view/LayoutInflater.inflate (ILandroid/view/ViewGroup;)Landroid/view/View;]
       [15] astore_2 v2
-      [16] new #11
+      [16] new #12
         + Class [android/app/AlertDialog$Builder]
       [19] dup
       [20] aload_0 v0
-      [21] invokevirtual #43
+      [21] invokevirtual #46
         + Methodref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment.getActivity ()Landroid/app/Activity;]
-      [24] invokespecial #27
+      [24] invokespecial #30
         + Methodref [android/app/AlertDialog$Builder.<init> (Landroid/content/Context;)V]
       [27] astore_3 v3
       [28] aload_3 v3
       [29] aload_2 v2
-      [30] invokevirtual #31
+      [30] invokevirtual #34
         + Methodref [android/app/AlertDialog$Builder.setView (Landroid/view/View;)Landroid/app/AlertDialog$Builder;]
       [33] ldc #4
         + Integer [2131034138]
-      [35] invokevirtual #30
+      [35] invokevirtual #33
         + Methodref [android/app/AlertDialog$Builder.setTitle (I)Landroid/app/AlertDialog$Builder;]
       [38] ldc #1
         + Integer [17039370]
-      [40] new #20
+      [40] new #21
         + Class [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment$1]
       [43] dup
       [44] aload_0 v0
-      [45] invokespecial #44
+      [45] invokespecial #47
         + Methodref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment$1.<init> (Lcom/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment;)V]
-      [48] invokevirtual #29
+      [48] invokevirtual #32
         + Methodref [android/app/AlertDialog$Builder.setPositiveButton (ILandroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;]
       [51] pop
       [52] aload_3 v3
-      [53] invokevirtual #28
+      [53] invokevirtual #31
         + Methodref [android/app/AlertDialog$Builder.create ()Landroid/app/AlertDialog;]
-      [56] invokevirtual #26
+      [56] invokevirtual #29
         + Methodref [android/app/AlertDialog.show ()V]
       [59] return
       Code attribute exceptions (count = 0):
@@ -4810,39 +4825,39 @@ Methods (count = 4):
     Access flags: 0x1
       = public void onCreate(android.os.Bundle)
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 81, locals = 3, stack = 4):
+    + Code attribute instructions (code length = 106, locals = 3, stack = 4):
       [0] aload_0 v0
       [1] aload_1 v1
-      [2] invokespecial #36
+      [2] invokespecial #39
         + Methodref [android/preference/PreferenceFragment.onCreate (Landroid/os/Bundle;)V]
       [5] aload_0 v0
       [6] ldc #3
         + Integer [2130968576]
-      [8] invokevirtual #41
+      [8] invokevirtual #44
         + Methodref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment.addPreferencesFromResource (I)V]
       [11] aload_0 v0
       [12] ldc #7
         + String [about.app_version]
-      [14] invokevirtual #42
+      [14] invokevirtual #45
         + Methodref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment.findPreference (Ljava/lang/CharSequence;)Landroid/preference/Preference;]
       [17] astore_2 v2
       [18] aload_2 v2
       [19] aload_0 v0
-      [20] invokevirtual #43
+      [20] invokevirtual #46
         + Methodref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment.getActivity ()Landroid/app/Activity;]
-      [23] invokevirtual #24
+      [23] invokevirtual #27
         + Methodref [android/app/Activity.getPackageManager ()Landroid/content/pm/PackageManager;]
       [26] aload_0 v0
-      [27] invokevirtual #43
+      [27] invokevirtual #46
         + Methodref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment.getActivity ()Landroid/app/Activity;]
-      [30] invokevirtual #25
+      [30] invokevirtual #28
         + Methodref [android/app/Activity.getPackageName ()Ljava/lang/String;]
       [33] iconst_0
-      [34] invokevirtual #32
+      [34] invokevirtual #35
         + Methodref [android/content/pm/PackageManager.getPackageInfo (Ljava/lang/String;I)Landroid/content/pm/PackageInfo;]
-      [37] getfield #22
+      [37] getfield #24
         + Fieldref [android/content/pm/PackageInfo.versionName Ljava/lang/String;]
-      [40] invokevirtual #34
+      [40] invokevirtual #37
         + Methodref [android/preference/Preference.setSummary (Ljava/lang/CharSequence;)V]
       [43] goto +12 (target=55)
       [46] astore_2 v2
@@ -4850,29 +4865,48 @@ Methods (count = 4):
         + String [AboutPreferenceFragment]
       [49] ldc #6
         + String [Cannot find the preference key for setting up the application version]
-      [51] invokestatic #37
+      [51] invokestatic #40
         + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;)I]
       [54] pop
       [55] aload_0 v0
       [56] aload_0 v0
       [57] ldc #8
-        + String [about.whatsnew]
-      [59] invokevirtual #42
+        + String [about.licence]
+      [59] invokevirtual #45
         + Methodref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment.findPreference (Ljava/lang/CharSequence;)Landroid/preference/Preference;]
-      [62] putfield #23
-        + Fieldref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment.a Landroid/preference/Preference;]
+      [62] putfield #26
+        + Fieldref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment.b Landroid/preference/Preference;]
       [65] aload_0 v0
-      [66] getfield #23
-        + Fieldref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment.a Landroid/preference/Preference;]
-      [69] new #21
+      [66] getfield #26
+        + Fieldref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment.b Landroid/preference/Preference;]
+      [69] new #22
         + Class [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment$2]
       [72] dup
       [73] aload_0 v0
-      [74] invokespecial #45
+      [74] invokespecial #48
         + Methodref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment$2.<init> (Lcom/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment;)V]
-      [77] invokevirtual #33
+      [77] invokevirtual #36
         + Methodref [android/preference/Preference.setOnPreferenceClickListener (Landroid/preference/Preference$OnPreferenceClickListener;)V]
-      [80] return
+      [80] aload_0 v0
+      [81] aload_0 v0
+      [82] ldc #9
+        + String [about.whatsnew]
+      [84] invokevirtual #45
+        + Methodref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment.findPreference (Ljava/lang/CharSequence;)Landroid/preference/Preference;]
+      [87] putfield #25
+        + Fieldref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment.a Landroid/preference/Preference;]
+      [90] aload_0 v0
+      [91] getfield #25
+        + Fieldref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment.a Landroid/preference/Preference;]
+      [94] new #23
+        + Class [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment$3]
+      [97] dup
+      [98] aload_0 v0
+      [99] invokespecial #49
+        + Methodref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment$3.<init> (Lcom/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment;)V]
+      [102] invokevirtual #36
+        + Methodref [android/preference/Preference.setOnPreferenceClickListener (Landroid/preference/Preference$OnPreferenceClickListener;)V]
+      [105] return
       Code attribute exceptions (count = 1):
       - ExceptionInfo (11 -> 43: 46):
       + Class [android/content/pm/PackageManager$NameNotFoundException]
@@ -4883,7 +4917,7 @@ Methods (count = 4):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] invokespecial #40
+      [1] invokespecial #43
         + Methodref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment.a ()V]
       [4] return
       Code attribute exceptions (count = 0):
@@ -4973,29 +5007,50 @@ _____________________________________________________________________
 Interfaces (count = 1):
   + Class [android/preference/Preference$OnPreferenceClickListener]
 
-Constant Pool (count = 23):
+Constant Pool (count = 44):
+  + String [android.intent.action.VIEW]
+  + String [http://www.gnu.org/copyleft/gpl.html]
+  + Class [android/content/Intent]
+  + Class [android/net/Uri]
   + Class [android/preference/Preference$OnPreferenceClickListener]
   + Class [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment]
   + Class [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment$2]
   + Class [java/lang/Object]
   + Fieldref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment$2.a Lcom/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment;]
-  + Methodref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment.a (Lcom/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment;)V]
+  + Methodref [android/content/Intent.<init> (Ljava/lang/String;)V]
+  + Methodref [android/content/Intent.setData (Landroid/net/Uri;)Landroid/content/Intent;]
+  + Methodref [android/net/Uri.parse (Ljava/lang/String;)Landroid/net/Uri;]
+  + Methodref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment.startActivity (Landroid/content/Intent;)V]
   + Methodref [java/lang/Object.<init> ()V]
   + NameAndType [<init> ()V]
-  + NameAndType [a (Lcom/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment;)V]
+  + NameAndType [<init> (Ljava/lang/String;)V]
   + NameAndType [a Lcom/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment;]
+  + NameAndType [parse (Ljava/lang/String;)Landroid/net/Uri;]
+  + NameAndType [setData (Landroid/net/Uri;)Landroid/content/Intent;]
+  + NameAndType [startActivity (Landroid/content/Intent;)V]
   + Utf8 [()V]
+  + Utf8 [(Landroid/content/Intent;)V]
+  + Utf8 [(Landroid/net/Uri;)Landroid/content/Intent;]
   + Utf8 [(Landroid/preference/Preference;)Z]
   + Utf8 [(Lcom/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment;)V]
+  + Utf8 [(Ljava/lang/String;)Landroid/net/Uri;]
+  + Utf8 [(Ljava/lang/String;)V]
   + Utf8 [<init>]
   + Utf8 [Code]
   + Utf8 [Lcom/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment;]
   + Utf8 [a]
+  + Utf8 [android.intent.action.VIEW]
+  + Utf8 [android/content/Intent]
+  + Utf8 [android/net/Uri]
   + Utf8 [android/preference/Preference$OnPreferenceClickListener]
   + Utf8 [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment]
   + Utf8 [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment$2]
+  + Utf8 [http://www.gnu.org/copyleft/gpl.html]
   + Utf8 [java/lang/Object]
   + Utf8 [onPreferenceClick]
+  + Utf8 [parse]
+  + Utf8 [setData]
+  + Utf8 [startActivity]
 
 Fields (count = 1):
   + Field:        a Lcom/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment;
@@ -5010,8 +5065,98 @@ Methods (count = 2):
     + Code attribute instructions (code length = 10, locals = 2, stack = 2):
       [0] aload_0 v0
       [1] aload_1 v1
-      [2] putfield #5
+      [2] putfield #9
         + Fieldref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment$2.a Lcom/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment;]
+      [5] aload_0 v0
+      [6] invokespecial #14
+        + Methodref [java/lang/Object.<init> ()V]
+      [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onPreferenceClick(Landroid/preference/Preference;)Z
+    Access flags: 0x1
+      = public boolean onPreferenceClick(android.preference.Preference)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 30, locals = 3, stack = 3):
+      [0] new #3
+        + Class [android/content/Intent]
+      [3] dup
+      [4] ldc #1
+        + String [android.intent.action.VIEW]
+      [6] invokespecial #10
+        + Methodref [android/content/Intent.<init> (Ljava/lang/String;)V]
+      [9] astore_2 v2
+      [10] aload_2 v2
+      [11] ldc #2
+        + String [http://www.gnu.org/copyleft/gpl.html]
+      [13] invokestatic #12
+        + Methodref [android/net/Uri.parse (Ljava/lang/String;)Landroid/net/Uri;]
+      [16] invokevirtual #11
+        + Methodref [android/content/Intent.setData (Landroid/net/Uri;)Landroid/content/Intent;]
+      [19] pop
+      [20] aload_0 v0
+      [21] getfield #9
+        + Fieldref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment$2.a Lcom/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment;]
+      [24] aload_2 v2
+      [25] invokevirtual #13
+        + Methodref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment.startActivity (Landroid/content/Intent;)V]
+      [28] iconst_0
+      [29] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment$3
+  Superclass:    java/lang/Object
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x20
+    = class com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment$3 extends java.lang.Object
+
+Interfaces (count = 1):
+  + Class [android/preference/Preference$OnPreferenceClickListener]
+
+Constant Pool (count = 23):
+  + Class [android/preference/Preference$OnPreferenceClickListener]
+  + Class [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment]
+  + Class [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment$3]
+  + Class [java/lang/Object]
+  + Fieldref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment$3.a Lcom/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment;]
+  + Methodref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment.a (Lcom/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment;)V]
+  + Methodref [java/lang/Object.<init> ()V]
+  + NameAndType [<init> ()V]
+  + NameAndType [a (Lcom/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment;)V]
+  + NameAndType [a Lcom/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment;]
+  + Utf8 [()V]
+  + Utf8 [(Landroid/preference/Preference;)Z]
+  + Utf8 [(Lcom/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment;)V]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [Lcom/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment;]
+  + Utf8 [a]
+  + Utf8 [android/preference/Preference$OnPreferenceClickListener]
+  + Utf8 [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment]
+  + Utf8 [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment$3]
+  + Utf8 [java/lang/Object]
+  + Utf8 [onPreferenceClick]
+
+Fields (count = 1):
+  + Field:        a Lcom/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment;
+    Access flags: 0x1010
+      = final synthetic com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment a
+
+Methods (count = 2):
+  - Method:       <init>(Lcom/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment;)V
+    Access flags: 0x0
+      = AboutPreferenceFragment$3(com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] putfield #5
+        + Fieldref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment$3.a Lcom/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment;]
       [5] aload_0 v0
       [6] invokespecial #7
         + Methodref [java/lang/Object.<init> ()V]
@@ -5025,7 +5170,7 @@ Methods (count = 2):
     + Code attribute instructions (code length = 9, locals = 2, stack = 1):
       [0] aload_0 v0
       [1] getfield #5
-        + Fieldref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment$2.a Lcom/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment;]
+        + Fieldref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment$3.a Lcom/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment;]
       [4] invokestatic #6
         + Methodref [com/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment.a (Lcom/halcyonwaves/apps/energize/fragments/AboutPreferenceFragment;)V]
       [7] iconst_0
@@ -9226,7 +9371,7 @@ Constant Pool (count = 295):
   + Methodref [com/halcyonwaves/apps/energize/a/a.getWritableDatabase ()Landroid/database/sqlite/SQLiteDatabase;]
   + Methodref [com/halcyonwaves/apps/energize/receivers/a.<init> (Lcom/halcyonwaves/apps/energize/services/MonitorBatteryStateService;)V]
   + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.a ()V]
-  + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.a (I)V]
+  + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.a (II)V]
   + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.b ()V]
   + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.c ()V]
   + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.d ()V]
@@ -9257,7 +9402,7 @@ Constant Pool (count = 295):
   + NameAndType [<init> (Lcom/halcyonwaves/apps/energize/services/MonitorBatteryStateService;Lcom/halcyonwaves/apps/energize/services/d;)V]
   + NameAndType [<init> (Ljava/lang/String;)V]
   + NameAndType [a ()V]
-  + NameAndType [a (I)V]
+  + NameAndType [a (II)V]
   + NameAndType [a Lcom/halcyonwaves/apps/energize/receivers/a;]
   + NameAndType [abs (J)J]
   + NameAndType [b ()V]
@@ -9319,7 +9464,7 @@ Constant Pool (count = 295):
   + Utf8 [(I)J]
   + Utf8 [(I)Landroid/app/Notification$Builder;]
   + Utf8 [(I)Ljava/lang/Integer;]
-  + Utf8 [(I)V]
+  + Utf8 [(II)V]
   + Utf8 [(III)V]
   + Utf8 [(ILandroid/app/Notification;)V]
   + Utf8 [(I[Ljava/lang/Object;)Ljava/lang/String;]
@@ -9536,7 +9681,7 @@ Methods (count = 17):
     Access flags: 0x1
       = public void a(int,int,int)
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 348, locals = 13, stack = 8):
+    + Code attribute instructions (code length = 352, locals = 13, stack = 8):
       [0] invokestatic #96
         + Methodref [java/lang/System.currentTimeMillis ()J]
       [3] ldc2_w #44
@@ -9606,179 +9751,182 @@ Methods (count = 17):
       [95] putfield #51
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.e I]
       [98] aload_0 v0
-      [99] iload_3 v3
-      [100] invokespecial #82
-        + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.a (I)V]
-      [103] aload_0 v0
-      [104] getfield #49
+      [99] getfield #49
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.c Landroid/database/sqlite/SQLiteDatabase;]
-      [107] ldc #19
+      [102] ldc #19
         + String [rawBatteryStats]
-      [109] iconst_1
-      [110] anewarray #40
+      [104] iconst_1
+      [105] anewarray #40
         + Class [java/lang/String]
-      [113] dup
-      [114] iconst_0
-      [115] ldc #16
+      [108] dup
+      [109] iconst_0
+      [110] ldc #16
         + String [eventTime]
-      [117] aastore
-      [118] aconst_null
-      [119] aconst_null
-      [120] aconst_null
-      [121] aconst_null
-      [122] ldc #17
+      [112] aastore
+      [113] aconst_null
+      [114] aconst_null
+      [115] aconst_null
+      [116] aconst_null
+      [117] ldc #17
         + String [eventTime DESC]
-      [124] invokevirtual #70
+      [119] invokevirtual #70
         + Methodref [android/database/sqlite/SQLiteDatabase.query (Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;]
-      [127] astore v6
-      [129] aload v6
-      [131] invokeinterface #102
+      [122] astore v6
+      [124] aload v6
+      [126] invokeinterface #102
         + InterfaceMethodref [android/database/Cursor.moveToFirst ()Z]
-      [136] ifeq +196 (target=332)
-      [139] aload v6
-      [141] aload v6
-      [143] ldc #16
+      [131] ifeq +196 (target=327)
+      [134] aload v6
+      [136] aload v6
+      [138] ldc #16
         + String [eventTime]
-      [145] invokeinterface #100
+      [140] invokeinterface #100
         + InterfaceMethodref [android/database/Cursor.getColumnIndex (Ljava/lang/String;)I]
-      [150] invokeinterface #101
+      [145] invokeinterface #101
         + InterfaceMethodref [android/database/Cursor.getLong (I)J]
-      [155] lstore v7
-      [157] aload v6
-      [159] invokeinterface #103
+      [150] lstore v7
+      [152] aload v6
+      [154] invokeinterface #103
         + InterfaceMethodref [android/database/Cursor.moveToNext ()Z]
-      [164] ifeq +168 (target=332)
-      [167] aload v6
-      [169] aload v6
-      [171] ldc #16
+      [159] ifeq +168 (target=327)
+      [162] aload v6
+      [164] aload v6
+      [166] ldc #16
         + String [eventTime]
-      [173] invokeinterface #100
+      [168] invokeinterface #100
         + InterfaceMethodref [android/database/Cursor.getColumnIndex (Ljava/lang/String;)I]
-      [178] invokeinterface #101
+      [173] invokeinterface #101
         + InterfaceMethodref [android/database/Cursor.getLong (I)J]
-      [183] lstore v9
-      [185] lload v7
-      [187] lload v9
-      [189] lsub
-      [190] invokestatic #93
+      [178] lstore v9
+      [180] lload v7
+      [182] lload v9
+      [184] lsub
+      [185] invokestatic #93
         + Methodref [java/lang/Math.abs (J)J]
-      [193] lstore v11
-      [195] ldc #9
+      [188] lstore v11
+      [190] ldc #9
         + String [MonitorBatteryStateService]
-      [197] ldc #8
+      [192] ldc #8
         + String [Calculated the time between the last two (%d, %d) events: %d]
-      [199] iconst_3
-      [200] anewarray #39
+      [194] iconst_3
+      [195] anewarray #39
         + Class [java/lang/Object]
-      [203] dup
-      [204] iconst_0
-      [205] lload v7
-      [207] invokestatic #92
+      [198] dup
+      [199] iconst_0
+      [200] lload v7
+      [202] invokestatic #92
         + Methodref [java/lang/Long.valueOf (J)Ljava/lang/Long;]
-      [210] aastore
-      [211] dup
-      [212] iconst_1
-      [213] lload v9
-      [215] invokestatic #92
+      [205] aastore
+      [206] dup
+      [207] iconst_1
+      [208] lload v9
+      [210] invokestatic #92
         + Methodref [java/lang/Long.valueOf (J)Ljava/lang/Long;]
-      [218] aastore
-      [219] dup
-      [220] iconst_2
-      [221] lload v11
-      [223] invokestatic #92
+      [213] aastore
+      [214] dup
+      [215] iconst_2
+      [216] lload v11
+      [218] invokestatic #92
         + Methodref [java/lang/Long.valueOf (J)Ljava/lang/Long;]
-      [226] aastore
-      [227] invokestatic #95
+      [221] aastore
+      [222] invokestatic #95
         + Methodref [java/lang/String.format (Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
-      [230] invokestatic #75
+      [225] invokestatic #75
         + Methodref [android/util/Log.d (Ljava/lang/String;Ljava/lang/String;)I]
-      [233] pop
-      [234] iload_1 v1
-      [235] ifne +50 (target=285)
-      [238] aload_0 v0
-      [239] aload_0 v0
-      [240] getfield #51
+      [228] pop
+      [229] iload_1 v1
+      [230] ifne +50 (target=280)
+      [233] aload_0 v0
+      [234] aload_0 v0
+      [235] getfield #51
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.e I]
-      [243] i2l
-      [244] lload v11
-      [246] lmul
-      [247] l2f
-      [248] ldc #4
+      [238] i2l
+      [239] lload v11
+      [241] lmul
+      [242] l2f
+      [243] ldc #4
         + Float [60.0]
-      [250] fdiv
-      [251] invokestatic #94
+      [245] fdiv
+      [246] invokestatic #94
         + Methodref [java/lang/Math.round (F)I]
-      [254] putfield #52
+      [249] putfield #52
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.f I]
-      [257] ldc #9
+      [252] ldc #9
         + String [MonitorBatteryStateService]
-      [259] ldc #6
+      [254] ldc #6
         + String [Calculated remaining battery life in minutes: %d]
-      [261] iconst_1
-      [262] anewarray #39
+      [256] iconst_1
+      [257] anewarray #39
         + Class [java/lang/Object]
-      [265] dup
-      [266] iconst_0
-      [267] aload_0 v0
-      [268] getfield #52
+      [260] dup
+      [261] iconst_0
+      [262] aload_0 v0
+      [263] getfield #52
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.f I]
-      [271] invokestatic #91
+      [266] invokestatic #91
         + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
-      [274] aastore
-      [275] invokestatic #95
+      [269] aastore
+      [270] invokestatic #95
         + Methodref [java/lang/String.format (Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
-      [278] invokestatic #75
+      [273] invokestatic #75
         + Methodref [android/util/Log.d (Ljava/lang/String;Ljava/lang/String;)I]
-      [281] pop
-      [282] goto +50 (target=332)
-      [285] aload_0 v0
-      [286] ldc #5
+      [276] pop
+      [277] goto +50 (target=327)
+      [280] aload_0 v0
+      [281] ldc #5
         + Float [100.0]
-      [288] aload_0 v0
-      [289] getfield #51
+      [283] aload_0 v0
+      [284] getfield #51
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.e I]
-      [292] i2f
-      [293] fsub
-      [294] lload v11
-      [296] l2f
-      [297] fmul
-      [298] ldc #4
+      [287] i2f
+      [288] fsub
+      [289] lload v11
+      [291] l2f
+      [292] fmul
+      [293] ldc #4
         + Float [60.0]
-      [300] fdiv
-      [301] invokestatic #94
+      [295] fdiv
+      [296] invokestatic #94
         + Methodref [java/lang/Math.round (F)I]
-      [304] putfield #52
+      [299] putfield #52
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.f I]
-      [307] ldc #9
+      [302] ldc #9
         + String [MonitorBatteryStateService]
-      [309] ldc #7
+      [304] ldc #7
         + String [Calculated remaining charging time in minutes: %d]
-      [311] iconst_1
-      [312] anewarray #39
+      [306] iconst_1
+      [307] anewarray #39
         + Class [java/lang/Object]
-      [315] dup
-      [316] iconst_0
-      [317] aload_0 v0
-      [318] getfield #52
+      [310] dup
+      [311] iconst_0
+      [312] aload_0 v0
+      [313] getfield #52
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.f I]
-      [321] invokestatic #91
+      [316] invokestatic #91
         + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
-      [324] aastore
-      [325] invokestatic #95
+      [319] aastore
+      [320] invokestatic #95
         + Methodref [java/lang/String.format (Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
-      [328] invokestatic #75
+      [323] invokestatic #75
         + Methodref [android/util/Log.d (Ljava/lang/String;Ljava/lang/String;)I]
-      [331] pop
-      [332] aload v6
-      [334] invokeinterface #99
+      [326] pop
+      [327] aload v6
+      [329] invokeinterface #99
         + InterfaceMethodref [android/database/Cursor.close ()V]
-      [339] aload_0 v0
-      [340] invokespecial #85
+      [334] aload_0 v0
+      [335] invokespecial #85
         + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.d ()V]
-      [343] aload_0 v0
-      [344] invokespecial #84
+      [338] aload_0 v0
+      [339] invokespecial #84
         + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.c ()V]
-      [347] return
+      [342] aload_0 v0
+      [343] iload_3 v3
+      [344] aload_0 v0
+      [345] getfield #52
+        + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.f I]
+      [348] invokespecial #82
+        + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.a (II)V]
+      [351] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
   + Method:       onDestroy()V
@@ -9834,11 +9982,11 @@ Methods (count = 17):
       [11] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
-  + Method:       a(I)V
+  + Method:       a(II)V
     Access flags: 0x2
-      = private void a(int)
+      = private void a(int,int)
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 99, locals = 2, stack = 8):
+    + Code attribute instructions (code length = 99, locals = 3, stack = 8):
       [0] iload_1 v1
       [1] iflt +9 (target=10)
       [4] iload_1 v1
@@ -9876,7 +10024,7 @@ Methods (count = 17):
         + Class [java/lang/Object]
       [47] dup
       [48] iconst_0
-      [49] iconst_1
+      [49] iload_2 v2
       [50] invokestatic #91
         + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
       [53] aastore

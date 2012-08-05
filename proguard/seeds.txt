@@ -160,6 +160,7 @@ com.halcyonwaves.apps.energize.SettingsActivity: SettingsActivity()
 com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment
 com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment$1
 com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment$2
+com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment$3
 com.halcyonwaves.apps.energize.fragments.BatteryStatisticsPreferenceFragment
 com.halcyonwaves.apps.energize.fragments.BatteryStatisticsPreferenceFragment$1
 com.halcyonwaves.apps.energize.fragments.BatteryStatisticsPreferenceFragment$2
