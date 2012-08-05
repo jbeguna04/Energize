@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.halcyonwaves.apps.energize" android:versionCode="28" android:versionName="0.3-pre" android:installLocation="internalOnly">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.halcyonwaves.apps.energize" android:versionCode="30" android:versionName="0.3" android:installLocation="internalOnly">
     
     <!-- define which OS and screen requirement this application has -->
 	<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="15" android:maxSdkVersion="15" />
