@@ -1,6 +1,5 @@
 # Energize
-
-TODO
+This application is designed to monitor your battery state and provide useful information about the current charging level, the estimated time to charge or discharge and some more useful information.
 
 ## Translations
 As soon as the used strings is nearly fixed, you can help us on our project page of [GetLocalization][1] to translate the app in many languages.
