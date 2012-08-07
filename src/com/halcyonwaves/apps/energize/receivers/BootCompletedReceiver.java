@@ -22,12 +22,17 @@ import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		context.startService( new Intent( context, MonitorBatteryStateService.class ) );
+		final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences( context );
+		if( prefs.getBoolean( "advance.start_on_boot", true ) ) {
+			context.startService( new Intent( context, MonitorBatteryStateService.class ) );
+		}
 	}
 
 }
