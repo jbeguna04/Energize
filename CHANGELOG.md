@@ -1,6 +1,12 @@
 Change Log
 ===============================================================================
 
+Version 0.4 *(2012-08-07)*
+--------------------------
+* Basic code cleanup
+* Cleanup of the preference screens
+* Added an option to disable the automatic startup of the boot service
+
 Version 0.3 *(2012-08-05)*
 --------------------------
 * Added the first (but simple) remaining time estimation
