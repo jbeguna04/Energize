@@ -70,14 +70,14 @@ public class MonitorBatteryStateService extends Service {
 		if( lastEntryMadeCursor.moveToFirst() ) {
 			if( level == lastEntryMadeCursor.getInt( lastEntryMadeCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL ) ) && scale == lastEntryMadeCursor.getInt( lastEntryMadeCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_CHARGING_SCALE ) ) ) {
 				Log.d( MonitorBatteryStateService.TAG, "Tried to insert an already existing dataset, skipping..." );
-				
+
 				// if it is the first run of the application, the percentage would be -1 if we won't set it here
 				this.lastChargingPercentage = level;
-				
+
 				// tell all connected clients about the current charging level and the remaining time
 				MonitorBatteryStateService.this.sendCurrentChargingPctToClients();
 				this.showNewPercentageNotification( level, this.lastRemainingMinutes );
-				
+
 				// skip the insertion process
 				return;
 			}
@@ -137,10 +137,18 @@ public class MonitorBatteryStateService extends Service {
 	}
 
 	private void showNewPercentageNotification( int percentage, int remainingMinutes ) {
+		// be sure that it is a valid percentage
 		if( percentage < 0 || percentage > 100 ) {
+			Log.e( MonitorBatteryStateService.TAG, "The application tried to show an invalid loading level." );
 			return;
 		}
-		this.myNotification = new Notification.Builder( this ).setContentTitle( this.getString( R.string.notification_title_remaining, percentage ) ).setContentText( this.getString( R.string.notification_text_estimate, remainingMinutes ) ).setSmallIcon( R.drawable.ic_stat_00_pct_charged + percentage ).getNotification();
+
+		// calculate the estimates for the notification window
+		final int remainingHours = remainingMinutes > 0 ? (int) Math.floor( remainingMinutes / 60.0 ) : 0;
+		final int remainingMinutesNew = remainingMinutes - (60 * remainingHours);
+
+		// show the notification
+		this.myNotification = new Notification.Builder( this ).setContentTitle( this.getString( R.string.notification_title_remaining, percentage ) ).setContentText( this.getString( R.string.notification_text_estimate, remainingHours, remainingMinutesNew ) ).setSmallIcon( R.drawable.ic_stat_00_pct_charged + percentage ).getNotification();
 		this.myNotification.flags |= Notification.FLAG_ONGOING_EVENT;
 		notificationManager.notify( MY_NOTIFICATION_ID, myNotification );
 	}
