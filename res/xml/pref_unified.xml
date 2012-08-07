@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="General">
+        <SwitchPreference android:key="todo" android:title="Start on boot" android:defaultValue="true" />
+		<ListPreference android:key="display.theme" android:title="@string/pref_title_theme" android:summary="@string/pref_summary_theme" android:entries="@array/pref_list_theme_names" android:entryValues="@array/pref_list_theme_values" android:defaultValue="DarkTheme" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Statistics">
+    	<ListPreference android:title="@string/pref_title_change_batteryestimation" android:summary="@string/pref_summary_change_batteryestimation" android:entries="@array/pref_list_batteryestimationmethod_names" android:entryValues="@array/pref_list_batteryestimationmethod_values" android:defaultValue="LastChangeEstimate" />
+		<Preference android:title="@string/pref_title_clearstatsdb" android:key="batstatistics.cleardb" android:summary="@string/pref_summary_clearstatsdb" />
+    </PreferenceCategory>
+	<PreferenceCategory android:title="About...">
+    	<Preference android:title="@string/app_version" android:key="about.app_version" android:summary="@string/not_available" />
+    	<Preference android:title="@string/pref_title_about_whatsnew" android:key="about.whatsnew" />
+    	<Preference android:title="@string/pref_about_title_showlicense" android:key="about.license" android:summary="@string/pref_about_summary_showlicense" />
+	</PreferenceCategory>
+</PreferenceScreen>

@@ -159,10 +159,7 @@ public class BatteryStateDisplayActivity extends Activity {
 		super.onCreate( savedInstanceState );
 		
 		// set the default preferences
-		PreferenceManager.setDefaultValues( this, R.xml.pref_display, false );
-		PreferenceManager.setDefaultValues( this, R.xml.pref_debug, false );
-		PreferenceManager.setDefaultValues( this, R.xml.pref_batterystatistics, false );
-		PreferenceManager.setDefaultValues( this, R.xml.pref_about, false );
+		PreferenceManager.setDefaultValues( this, R.xml.pref_unified, false );
 
 		this.setTheme( ApplicationCore.getSelectedThemeId( this.getApplicationContext() ) );
 		this.setContentView( R.layout.activity_batterystatedisplay );

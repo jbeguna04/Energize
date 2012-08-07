@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListPreference android:title="@string/pref_title_change_batteryestimation" android:summary="@string/pref_summary_change_batteryestimation" android:entries="@array/pref_list_batteryestimationmethod_names" android:entryValues="@array/pref_list_batteryestimationmethod_values" android:defaultValue="LastChangeEstimate" />
-	<Preference android:title="@string/pref_title_clearstatsdb" android:key="batstatistics.cleardb" android:summary="@string/pref_summary_clearstatsdb" />
-</PreferenceScreen>
