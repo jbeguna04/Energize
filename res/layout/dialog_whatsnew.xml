@@ -18,7 +18,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="25dp"
-        android:text="- Basic code cleanup\n- Cleanup of the preference screens\n- Added an option to disable the automatic startup of the boot service" />
+        android:text="- Basic code cleanup\n- Cleanup of the preference screens\n- The remaining time will show hours and minutes instead of just minutes\n- Added an option to disable the automatic startup of the boot service" />
     
     <TextView
         android:layout_width="fill_parent"
