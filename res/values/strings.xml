@@ -20,8 +20,8 @@
     <string name="app_version">Application version</string>
     <string name="send_mail">Send via mail&#8230;</string>
     
-    <string name="pref_about_title_showlicence">Show licence</string>
-    <string name="pref_about_summary_showlicence">Show the application licence</string>
+    <string name="pref_about_title_showlicense">Show license</string>
+    <string name="pref_about_summary_showlicense">Show the application license</string>
     
     <string name="pref_title_about_whatsnew">What\'s new?</string>
     

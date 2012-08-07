@@ -2,5 +2,5 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <Preference android:title="@string/app_version" android:key="about.app_version" android:summary="@string/not_available" />
     <Preference android:title="@string/pref_title_about_whatsnew" android:key="about.whatsnew" />
-    <Preference android:title="@string/pref_about_title_showlicence" android:key="about.licence" android:summary="@string/pref_about_summary_showlicence" />
+    <Preference android:title="@string/pref_about_title_showlicense" android:key="about.license" android:summary="@string/pref_about_summary_showlicense" />
 </PreferenceScreen>

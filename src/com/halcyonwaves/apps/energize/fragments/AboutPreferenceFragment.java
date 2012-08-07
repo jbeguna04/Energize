@@ -60,7 +60,7 @@ public class AboutPreferenceFragment extends PreferenceFragment {
 			Log.e( "AboutPreferenceFragment", "Cannot find the preference key for setting up the application version" );
 		}
 
-		this.showLicencePreference = this.findPreference( "about.licence" );
+		this.showLicencePreference = this.findPreference( "about.license" );
 		this.showLicencePreference.setOnPreferenceClickListener( new OnPreferenceClickListener() {
 
 			public boolean onPreferenceClick( Preference preference ) {
