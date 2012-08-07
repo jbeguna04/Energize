@@ -30,8 +30,10 @@ import android.util.Log;
 
 public class ApplicationCore extends Application {
 
+	private static final String TAG = "ApplicationCore";
+	
 	public static boolean isServiceRunning( Context ctx, String serviceName ) {
-		Log.v( "ApplicationCore", "Checking if the monitoring service is running or not..." );
+		Log.v( ApplicationCore.TAG, "Checking if the monitoring service is running or not..." );
 		boolean serviceRunning = false;
 		ActivityManager am = (ActivityManager) ctx.getSystemService( ACTIVITY_SERVICE );
 		List< ActivityManager.RunningServiceInfo > l = am.getRunningServices( 50 );
@@ -54,7 +56,7 @@ public class ApplicationCore extends Application {
 		} else if( d.compareTo( "LightTheme" ) == 0 ) {
 			return R.style.LightTheme;
 		} else {
-			Log.w( "BatteryStateDisplayActivity.Theme", "The selected theme is unknown ('" + d + "'), returning default theme!" );
+			Log.w( ApplicationCore.TAG, "The selected theme is unknown ('" + d + "'), returning default theme!" );
 			return R.style.DarkTheme;
 		}
 	}
