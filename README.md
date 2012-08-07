@@ -1,4 +1,4 @@
-# Energize
+# Energize - Monitor your Battery
 This application is designed to monitor your battery state and provide useful information about the current charging level, the estimated time to charge or discharge and some more useful information.
 
 ## Translations
