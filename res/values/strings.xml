@@ -1,59 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Energize</string>
-    <string-array name="pref_list_theme_names">
-        <item>Dark theme</item>
-        <item>Light theme</item>
-    </string-array>
-    <string-array name="pref_list_theme_values">
-        <item>DarkTheme</item>
-        <item>LightTheme</item>
-    </string-array>
-    <string-array name="pref_list_batteryestimationmethod_names">
-        <item>Last change period (inaccurate)</item>
-    </string-array>
-    <string-array name="pref_list_batteryestimationmethod_values">
-        <item>LastChangeEstimate</item>
-    </string-array>
-    <string name="percentage_indicator">%</string>
-    <string name="not_available">N/A</string>
-    <string name="app_version">Application version</string>
-    <string name="send_mail">Send via mail&#8230;</string>
+
+    <string name="pref_title_theme">Theme</string>
+    <string name="pref_summary_theme">Using \""%1$s\" as theme</string>
     
-    <string name="pref_about_title_showlicense">Show license</string>
-    <string name="pref_about_summary_showlicense">Show the application license</string>
+    <string name="pref_title_change_batteryestimation">Battery estimation method</string>
+    <string name="pref_summary_change_batteryestimation">Method: %1$s</string>
     
     <string name="pref_title_about_whatsnew">What\'s new?</string>
     
     <string name="pref_title_clearstatsdb">Clear statistics database</string>
     <string name="pref_summary_clearstatsdb">Clears the recorded battery events</string>
     
-    <string name="pref_title_theme">Theme</string>
-    <string name="pref_summary_theme">Select the theme for the application</string>
+    <string name="pref_about_title_showlicense">Show license</string>
+    <string name="pref_about_summary_showlicense">Show the application license</string>
     
-    <string name="pref_header_title_display">Display settings</string>
-    <string name="pref_header_summary_display">Visual appearance of the app</string>
-    
-    <string name="pref_header_title_batstats">Battery statistics</string>
-    <string name="pref_header_summary_batstats">Settings for the battery statistics</string>
-    
-    <string name="pref_header_title_about">About Energize</string>
-    <string name="pref_header_summary_about">Show information about the application</string>
-    
-    <string name="pref_header_title_debug">Debug options</string>
-    <string name="pref_header_summary_debug">Options which are useful for debugging</string>
-    
-    <string name="pref_title_send_batterystats_db">Send battery statistics</string>
-    <string name="pref_summary_send_batterystats_db">Send the obtained statistics via mail</string>
-    
-    <string name="pref_title_change_batteryestimation">Battery estimation method</string>
-    <string name="pref_summary_change_batteryestimation">Method used for battery estimation</string>
-    
-    <string name="notification_title_remaining" formatted="false">%d%% remaining</string>
-    <string name="notification_text_estimate">Remaining time: %d minute(s)</string>
+    <string name="notification_title_remaining" formatted="false">%1$d%% remaining</string>
+    <string name="notification_text_estimate">Remaining time: %1$d minute(s)</string>
     
     <string name="dialog_title_whatsnew">What\'s new?</string>
-    
+
     <string name="dialog_title_cleardb_successfull">Database cleared</string>
     <string name="dialog_text_cleardb_successfull">The battery statistics were deleted and it will talke some time until the charging estimation will work again.</string>
+    
+    <string-array name="pref_list_theme_names">
+        <item>Dark theme</item>
+        <item>Light theme</item>
+    </string-array>
+
+    <string-array name="pref_list_batteryestimationmethod_names">
+        <item>Last change period (inaccurate)</item>
+    </string-array>
+
+    <string name="percentage_indicator">%</string>
+    <string name="not_available">N/A</string>
+    <string name="app_version">Application version</string>
 </resources>
