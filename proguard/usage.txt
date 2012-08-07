@@ -7,6 +7,7 @@ com.android.vending.billing.IMarketBillingService$Stub:
 com.android.vending.billing.IMarketBillingService$Stub$Proxy:
     82:82:public java.lang.String getInterfaceDescriptor()
 com.halcyonwaves.apps.energize.ApplicationCore:
+    private static final java.lang.String TAG
     31:31:public ApplicationCore()
 com.halcyonwaves.apps.energize.BatteryStateDisplayActivity:
     private static final java.lang.String PRIVATE_PREF
@@ -103,6 +104,8 @@ com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable:
     public static final int CHARGING_STATE_CHARGING_USB
     public static final java.lang.String TABLE_NAME
     23:23:public RawBatteryStatisicsTable()
+com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment:
+    private static final java.lang.String TAG
 com.halcyonwaves.apps.energize.receivers.BillingReceiver:
     private static final java.lang.String TAG
 com.halcyonwaves.apps.energize.services.BillingService:

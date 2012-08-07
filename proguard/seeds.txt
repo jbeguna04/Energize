@@ -128,49 +128,28 @@ com.halcyonwaves.apps.energize.R$string: int not_available
 com.halcyonwaves.apps.energize.R$string: int notification_text_estimate
 com.halcyonwaves.apps.energize.R$string: int notification_title_remaining
 com.halcyonwaves.apps.energize.R$string: int percentage_indicator
-com.halcyonwaves.apps.energize.R$string: int pref_about_summary_showlicence
-com.halcyonwaves.apps.energize.R$string: int pref_about_title_showlicence
-com.halcyonwaves.apps.energize.R$string: int pref_header_summary_about
-com.halcyonwaves.apps.energize.R$string: int pref_header_summary_batstats
-com.halcyonwaves.apps.energize.R$string: int pref_header_summary_debug
-com.halcyonwaves.apps.energize.R$string: int pref_header_summary_display
-com.halcyonwaves.apps.energize.R$string: int pref_header_title_about
-com.halcyonwaves.apps.energize.R$string: int pref_header_title_batstats
-com.halcyonwaves.apps.energize.R$string: int pref_header_title_debug
-com.halcyonwaves.apps.energize.R$string: int pref_header_title_display
+com.halcyonwaves.apps.energize.R$string: int pref_about_summary_showlicense
+com.halcyonwaves.apps.energize.R$string: int pref_about_title_showlicense
 com.halcyonwaves.apps.energize.R$string: int pref_summary_change_batteryestimation
 com.halcyonwaves.apps.energize.R$string: int pref_summary_clearstatsdb
-com.halcyonwaves.apps.energize.R$string: int pref_summary_send_batterystats_db
 com.halcyonwaves.apps.energize.R$string: int pref_summary_theme
 com.halcyonwaves.apps.energize.R$string: int pref_title_about_whatsnew
 com.halcyonwaves.apps.energize.R$string: int pref_title_change_batteryestimation
 com.halcyonwaves.apps.energize.R$string: int pref_title_clearstatsdb
-com.halcyonwaves.apps.energize.R$string: int pref_title_send_batterystats_db
 com.halcyonwaves.apps.energize.R$string: int pref_title_theme
-com.halcyonwaves.apps.energize.R$string: int send_mail
 com.halcyonwaves.apps.energize.R$style: int DarkTheme
 com.halcyonwaves.apps.energize.R$style: int LightTheme
-com.halcyonwaves.apps.energize.R$xml: int pref_about
-com.halcyonwaves.apps.energize.R$xml: int pref_batterystatistics
-com.halcyonwaves.apps.energize.R$xml: int pref_debug
-com.halcyonwaves.apps.energize.R$xml: int pref_display
-com.halcyonwaves.apps.energize.R$xml: int pref_headers
+com.halcyonwaves.apps.energize.R$xml: int pref_unified
 com.halcyonwaves.apps.energize.SettingsActivity
 com.halcyonwaves.apps.energize.SettingsActivity: SettingsActivity()
-com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment
-com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment$1
-com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment$2
-com.halcyonwaves.apps.energize.fragments.AboutPreferenceFragment$3
-com.halcyonwaves.apps.energize.fragments.BatteryStatisticsPreferenceFragment
-com.halcyonwaves.apps.energize.fragments.BatteryStatisticsPreferenceFragment$1
-com.halcyonwaves.apps.energize.fragments.BatteryStatisticsPreferenceFragment$2
-com.halcyonwaves.apps.energize.fragments.BatteryStatisticsPreferenceFragment$IncomingHandler
-com.halcyonwaves.apps.energize.fragments.BatteryStatisticsPreferenceFragment$IncomingHandler$1
-com.halcyonwaves.apps.energize.fragments.DebugPreferenceFragment
-com.halcyonwaves.apps.energize.fragments.DebugPreferenceFragment$1
-com.halcyonwaves.apps.energize.fragments.DebugPreferenceFragment$2
-com.halcyonwaves.apps.energize.fragments.DebugPreferenceFragment$IncomingHandler
-com.halcyonwaves.apps.energize.fragments.DisplayPreferenceFragment
+com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment
+com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$1
+com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$2
+com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$3
+com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$4
+com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$5
+com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$IncomingHandler
+com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$IncomingHandler$1
 com.halcyonwaves.apps.energize.receivers.BillingReceiver
 com.halcyonwaves.apps.energize.receivers.BillingReceiver: BillingReceiver()
 com.halcyonwaves.apps.energize.receivers.BootCompletedReceiver
