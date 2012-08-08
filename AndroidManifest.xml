@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.halcyonwaves.apps.energize" android:versionCode="40" android:versionName="0.4" android:installLocation="internalOnly">
     
     <!-- define which OS and screen requirement this application has -->
-	<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="15" android:maxSdkVersion="16" />
+	<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="14" android:maxSdkVersion="16" />
 	<supports-screens android:smallScreens="true" android:normalScreens="true" android:largeScreens="true" android:xlargeScreens="true" />
 	
 	<!-- list all permissions we need to run this application -->
