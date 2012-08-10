@@ -154,7 +154,11 @@ public class MonitorBatteryStateService extends Service {
 		}
 
 		// show the notification
-		this.myNotification = new Notification.Builder( this ).setContentTitle( this.getString( notificationTitleId ) ).setContentText( this.getString( R.string.notification_text_estimate, remainingHours, remainingMinutesNew ) ).setSmallIcon( R.drawable.ic_stat_00_pct_charged + percentage ).getNotification();
+		if( remainingMinutesNew <= -1 ) {
+			this.myNotification = new Notification.Builder( this ).setContentTitle( this.getString( notificationTitleId ) ).setContentText( this.getString( R.string.notification_text_estimate_na ) ).setSmallIcon( R.drawable.ic_stat_00_pct_charged + percentage ).getNotification();
+		} else {
+			this.myNotification = new Notification.Builder( this ).setContentTitle( this.getString( notificationTitleId ) ).setContentText( this.getString( R.string.notification_text_estimate, remainingHours, remainingMinutesNew ) ).setSmallIcon( R.drawable.ic_stat_00_pct_charged + percentage ).getNotification();
+		}
 		this.myNotification.flags |= Notification.FLAG_ONGOING_EVENT;
 		notificationManager.notify( MY_NOTIFICATION_ID, myNotification );
 	}
