@@ -99,7 +99,7 @@ com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable:
     public static final java.lang.String COLUMN_CHARGING_STATE
     public static final java.lang.String COLUMN_ID
     private static final java.lang.String TABLE_CREATE
-    public static final int CHARGING_STATE_UNCHARGING
+    public static final int CHARGING_STATE_DISCHARGING
     public static final int CHARGING_STATE_CHARGING_AC
     public static final int CHARGING_STATE_CHARGING_USB
     public static final java.lang.String TABLE_NAME

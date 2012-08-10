@@ -117,18 +117,25 @@ com.halcyonwaves.apps.energize.R$id: int menu_preferences
 com.halcyonwaves.apps.energize.R$id: int tv_battery_pct
 com.halcyonwaves.apps.energize.R$id: int tv_percentage_indicator
 com.halcyonwaves.apps.energize.R$layout: int activity_batterystatedisplay
+com.halcyonwaves.apps.energize.R$layout: int dialog_license_appicon
 com.halcyonwaves.apps.energize.R$layout: int dialog_whatsnew
 com.halcyonwaves.apps.energize.R$menu: int menu_main
 com.halcyonwaves.apps.energize.R$string: int app_name
 com.halcyonwaves.apps.energize.R$string: int app_version
+com.halcyonwaves.apps.energize.R$string: int dialog_text_appiconlicense
 com.halcyonwaves.apps.energize.R$string: int dialog_text_cleardb_successfull
+com.halcyonwaves.apps.energize.R$string: int dialog_title_appiconlicense
 com.halcyonwaves.apps.energize.R$string: int dialog_title_cleardb_successfull
 com.halcyonwaves.apps.energize.R$string: int dialog_title_whatsnew
 com.halcyonwaves.apps.energize.R$string: int not_available
 com.halcyonwaves.apps.energize.R$string: int notification_text_estimate
-com.halcyonwaves.apps.energize.R$string: int notification_title_remaining
+com.halcyonwaves.apps.energize.R$string: int notification_text_estimate_na
+com.halcyonwaves.apps.energize.R$string: int notification_title_charges
+com.halcyonwaves.apps.energize.R$string: int notification_title_discharges
 com.halcyonwaves.apps.energize.R$string: int percentage_indicator
+com.halcyonwaves.apps.energize.R$string: int pref_about_summary_icon_showlicense
 com.halcyonwaves.apps.energize.R$string: int pref_about_summary_showlicense
+com.halcyonwaves.apps.energize.R$string: int pref_about_title_icon_showlicense
 com.halcyonwaves.apps.energize.R$string: int pref_about_title_showlicense
 com.halcyonwaves.apps.energize.R$string: int pref_summary_change_batteryestimation
 com.halcyonwaves.apps.energize.R$string: int pref_summary_clearstatsdb
@@ -148,6 +155,8 @@ com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$2
 com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$3
 com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$4
 com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$5
+com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$6
+com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$7
 com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$IncomingHandler
 com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$IncomingHandler$1
 com.halcyonwaves.apps.energize.receivers.BillingReceiver

@@ -124,20 +124,23 @@ com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable -> com.halcyonw
     void onUpgrade(android.database.sqlite.SQLiteDatabase,int,int) -> a
 com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment -> com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment:
     android.preference.Preference whatsNewPreference -> a
-    android.preference.Preference showLicencePreference -> b
-    android.preference.Preference sendDatabasePreference -> c
-    android.os.Messenger monitorService -> d
-    android.os.Messenger monitorServiceMessanger -> e
-    android.content.ServiceConnection monitorServiceConnection -> f
+    android.preference.Preference showAppIconLicensePreference -> b
+    android.preference.Preference showLicencePreference -> c
+    android.preference.Preference sendDatabasePreference -> d
+    android.os.Messenger monitorService -> e
+    android.os.Messenger monitorServiceMessanger -> f
+    android.content.ServiceConnection monitorServiceConnection -> g
     void doBindService() -> a
     void doUnbindService() -> b
     void onDestroy() -> onDestroy
     void showWhatsNewDialog() -> c
+    void showAppIconLicensePreference() -> d
     void onCreate(android.os.Bundle) -> onCreate
     void access$0(com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment,android.os.Messenger) -> a
     android.os.Messenger access$1(com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment) -> a
     android.os.Messenger access$2(com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment) -> b
     void access$3(com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment) -> c
+    void access$4(com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment) -> d
 com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$1 -> com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$1:
     com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment this$0 -> a
     void onServiceConnected(android.content.ComponentName,android.os.IBinder) -> onServiceConnected
@@ -147,11 +150,17 @@ com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$2 -> com.halc
     void onClick(android.content.DialogInterface,int) -> onClick
 com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$3 -> com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$3:
     com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment this$0 -> a
-    boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
+    void onClick(android.content.DialogInterface,int) -> onClick
 com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$4 -> com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$4:
     com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment this$0 -> a
     boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
 com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$5 -> com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$5:
+    com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment this$0 -> a
+    boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
+com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$6 -> com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$6:
+    com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment this$0 -> a
+    boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
+com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$7 -> com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$7:
     com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment this$0 -> a
     boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
 com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$IncomingHandler -> com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$IncomingHandler:
@@ -226,7 +235,7 @@ com.halcyonwaves.apps.energize.services.MonitorBatteryStateService -> com.halcyo
     void onDestroy() -> onDestroy
     void stopMonitoring() -> a
     void startMonitoring() -> b
-    void showNewPercentageNotification(int,int) -> a
+    void showNewPercentageNotification(int,int,boolean) -> a
     int onStartCommand(android.content.Intent,int,int) -> onStartCommand
     android.os.IBinder onBind(android.content.Intent) -> onBind
     void sendCurrentChargingPctToClients() -> c
