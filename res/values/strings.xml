@@ -16,7 +16,8 @@
     <string name="pref_about_title_showlicense">Show license</string>
     <string name="pref_about_summary_showlicense">Show the application license</string>
     
-    <string name="notification_title_remaining">%1$d%% remaining</string>
+    <string name="notification_title_charges">Battery charges</string>
+    <string name="notification_title_discharges">Battery discharges</string>
     <string name="notification_text_estimate">%1$d hour(s) and %2$d minute(s) remaining</string>
     
     <string name="dialog_title_whatsnew">What\'s new?</string>

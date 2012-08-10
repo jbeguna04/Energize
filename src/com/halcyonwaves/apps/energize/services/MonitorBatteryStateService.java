@@ -76,7 +76,7 @@ public class MonitorBatteryStateService extends Service {
 
 				// tell all connected clients about the current charging level and the remaining time
 				MonitorBatteryStateService.this.sendCurrentChargingPctToClients();
-				this.showNewPercentageNotification( level, this.lastRemainingMinutes );
+				this.showNewPercentageNotification( level, this.lastRemainingMinutes, RawBatteryStatisicsTable.CHARGING_STATE_UNCHARGING != powerSource );
 
 				// skip the insertion process
 				return;
@@ -117,7 +117,7 @@ public class MonitorBatteryStateService extends Service {
 
 		// tell all connected clients about the current charging level and the remaining time
 		MonitorBatteryStateService.this.sendCurrentChargingPctToClients();
-		this.showNewPercentageNotification( level, this.lastRemainingMinutes );
+		this.showNewPercentageNotification( level, this.lastRemainingMinutes, RawBatteryStatisicsTable.CHARGING_STATE_UNCHARGING != powerSource );
 	}
 
 	@Override
@@ -136,7 +136,7 @@ public class MonitorBatteryStateService extends Service {
 		this.batteryStatisticsDatabase = this.batteryDbOpenHelper.getWritableDatabase();
 	}
 
-	private void showNewPercentageNotification( int percentage, int remainingMinutes ) {
+	private void showNewPercentageNotification( int percentage, int remainingMinutes, boolean charges ) {
 		// be sure that it is a valid percentage
 		if( percentage < 0 || percentage > 100 ) {
 			Log.e( MonitorBatteryStateService.TAG, "The application tried to show an invalid loading level." );
@@ -146,9 +146,15 @@ public class MonitorBatteryStateService extends Service {
 		// calculate the estimates for the notification window
 		final int remainingHours = remainingMinutes > 0 ? (int) Math.floor( remainingMinutes / 60.0 ) : 0;
 		final int remainingMinutesNew = remainingMinutes - (60 * remainingHours);
+		
+		// determine the correct title string for the notification
+		int notificationTitleId = R.string.notification_title_discharges;
+		if( charges ) {
+			notificationTitleId = R.string.notification_title_charges;
+		}
 
 		// show the notification
-		this.myNotification = new Notification.Builder( this ).setContentTitle( this.getString( R.string.notification_title_remaining, percentage ) ).setContentText( this.getString( R.string.notification_text_estimate, remainingHours, remainingMinutesNew ) ).setSmallIcon( R.drawable.ic_stat_00_pct_charged + percentage ).getNotification();
+		this.myNotification = new Notification.Builder( this ).setContentTitle( this.getString( notificationTitleId ) ).setContentText( this.getString( R.string.notification_text_estimate, remainingHours, remainingMinutesNew ) ).setSmallIcon( R.drawable.ic_stat_00_pct_charged + percentage ).getNotification();
 		this.myNotification.flags |= Notification.FLAG_ONGOING_EVENT;
 		notificationManager.notify( MY_NOTIFICATION_ID, myNotification );
 	}
