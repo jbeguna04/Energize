@@ -3,7 +3,8 @@ Change Log
 Version 0.4.1 *(2012-08-10)*
 ----------------------------
 * Added license information for the application icon
-* Applied a fix for the -1 estimation bug (hopefully)
+* Applied a fix for the -1 estimation bug
+* Fixed the bug that clicking the notification item won't show the main activity
 * Added support for API level 14 (which includes plain Android 4.0.0)
 * The notification bar item will now show if the battery is charges or discharges
 
