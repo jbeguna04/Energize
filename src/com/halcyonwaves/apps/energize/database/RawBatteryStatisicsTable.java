@@ -29,7 +29,7 @@ public final class RawBatteryStatisicsTable {
 	public static final String COLUMN_ID = "_id";
 	private static final String TABLE_CREATE = "CREATE TABLE " + RawBatteryStatisicsTable.TABLE_NAME + "( " + RawBatteryStatisicsTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " INTEGER, " + RawBatteryStatisicsTable.COLUMN_CHARGING_STATE + " INTEGER, " + RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL + " INTEGER, " + RawBatteryStatisicsTable.COLUMN_CHARGING_SCALE + " INTEGER );";
 	
-	public static final int CHARGING_STATE_UNCHARGING = 0;
+	public static final int CHARGING_STATE_DISCHARGING = 0;
 	public static final int CHARGING_STATE_CHARGING_AC = 1;
 	public static final int CHARGING_STATE_CHARGING_USB = 2;
 

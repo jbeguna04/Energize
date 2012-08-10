@@ -76,7 +76,7 @@ public class MonitorBatteryStateService extends Service {
 
 				// tell all connected clients about the current charging level and the remaining time
 				MonitorBatteryStateService.this.sendCurrentChargingPctToClients();
-				this.showNewPercentageNotification( level, this.lastRemainingMinutes, RawBatteryStatisicsTable.CHARGING_STATE_UNCHARGING != powerSource );
+				this.showNewPercentageNotification( level, this.lastRemainingMinutes, RawBatteryStatisicsTable.CHARGING_STATE_DISCHARGING != powerSource );
 
 				// skip the insertion process
 				return;
@@ -104,7 +104,7 @@ public class MonitorBatteryStateService extends Service {
 				long prevEventTime = querCursor.getLong( querCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_EVENT_TIME ) );
 				long diff = Math.abs( lastEventTime - prevEventTime );
 				Log.v( MonitorBatteryStateService.TAG, String.format( "Calculated the time between the last two (%d, %d) events: %d", lastEventTime, prevEventTime, diff ) );
-				if( RawBatteryStatisicsTable.CHARGING_STATE_UNCHARGING == powerSource ) {
+				if( RawBatteryStatisicsTable.CHARGING_STATE_DISCHARGING == powerSource ) {
 					this.lastRemainingMinutes = (int) (Math.round( ((this.lastChargingPercentage) * diff) / 60.0f ));
 					Log.v( MonitorBatteryStateService.TAG, String.format( "Calculated remaining battery life in minutes: %d", lastRemainingMinutes ) );
 				} else {
@@ -117,7 +117,7 @@ public class MonitorBatteryStateService extends Service {
 
 		// tell all connected clients about the current charging level and the remaining time
 		MonitorBatteryStateService.this.sendCurrentChargingPctToClients();
-		this.showNewPercentageNotification( level, this.lastRemainingMinutes, RawBatteryStatisicsTable.CHARGING_STATE_UNCHARGING != powerSource );
+		this.showNewPercentageNotification( level, this.lastRemainingMinutes, RawBatteryStatisicsTable.CHARGING_STATE_DISCHARGING != powerSource );
 	}
 
 	@Override
