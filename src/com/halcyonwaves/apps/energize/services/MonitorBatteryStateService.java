@@ -12,6 +12,7 @@ package com.halcyonwaves.apps.energize.services;
 
 import java.util.ArrayList;
 
+import com.halcyonwaves.apps.energize.BatteryStateDisplayActivity;
 import com.halcyonwaves.apps.energize.R;
 import com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper;
 import com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable;
@@ -19,6 +20,7 @@ import com.halcyonwaves.apps.energize.receivers.BatteryChangedReceiver;
 
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.ContentValues;
 import android.content.Context;
@@ -146,7 +148,7 @@ public class MonitorBatteryStateService extends Service {
 		// calculate the estimates for the notification window
 		final int remainingHours = remainingMinutes > 0 ? (int) Math.floor( remainingMinutes / 60.0 ) : 0;
 		final int remainingMinutesNew = remainingMinutes - (60 * remainingHours);
-		
+
 		// determine the correct title string for the notification
 		int notificationTitleId = R.string.notification_title_discharges;
 		if( charges ) {
@@ -160,6 +162,7 @@ public class MonitorBatteryStateService extends Service {
 			this.myNotification = new Notification.Builder( this ).setContentTitle( this.getString( notificationTitleId ) ).setContentText( this.getString( R.string.notification_text_estimate, remainingHours, remainingMinutesNew ) ).setSmallIcon( R.drawable.ic_stat_00_pct_charged + percentage ).getNotification();
 		}
 		this.myNotification.flags |= Notification.FLAG_ONGOING_EVENT;
+		this.myNotification.contentIntent = PendingIntent.getActivity( this.getApplicationContext(), 0, new Intent( this.getApplicationContext(), BatteryStateDisplayActivity.class ), 0 );
 		notificationManager.notify( MY_NOTIFICATION_ID, myNotification );
 	}
 
