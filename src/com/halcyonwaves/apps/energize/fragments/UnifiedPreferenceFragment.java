@@ -29,6 +29,7 @@ public class UnifiedPreferenceFragment extends PreferenceFragment {
 
 	private final static String TAG = "UnifiedPreferenceFragment";
 	private Preference whatsNewPreference = null;
+	private Preference showAppIconLicensePreference = null;
 	private Preference showLicencePreference = null;
 	private Preference sendDatabasePreference = null;
 	private Messenger monitorService = null;
@@ -116,6 +117,23 @@ public class UnifiedPreferenceFragment extends PreferenceFragment {
 		builder.create().show();
 	}
 
+	private void showAppIconLicensePreference() {
+		LayoutInflater inflater = LayoutInflater.from( this.getActivity() );
+
+		View view = inflater.inflate( R.layout.dialog_license_appicon, null );
+
+		AlertDialog.Builder builder = new AlertDialog.Builder( this.getActivity() );
+
+		builder.setView( view ).setTitle( R.string.dialog_title_appiconlicense ).setPositiveButton( android.R.string.ok, new OnClickListener() {
+
+			public void onClick( DialogInterface dialog, int which ) {
+				dialog.dismiss();
+			}
+		} );
+
+		builder.create().show();
+	}
+	
 	@Override
 	public void onCreate( Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
@@ -128,7 +146,7 @@ public class UnifiedPreferenceFragment extends PreferenceFragment {
 			Log.e( UnifiedPreferenceFragment.TAG, "Cannot find the preference key for setting up the application version" );
 		}
 
-		this.showLicencePreference = this.findPreference( "about.license" );
+		this.showLicencePreference = this.findPreference( "about.license.app" );
 		this.showLicencePreference.setOnPreferenceClickListener( new OnPreferenceClickListener() {
 
 			public boolean onPreferenceClick( Preference preference ) {
@@ -138,12 +156,21 @@ public class UnifiedPreferenceFragment extends PreferenceFragment {
 				return false;
 			}
 		} );
-
+		
 		this.whatsNewPreference = this.findPreference( "about.whatsnew" );
 		this.whatsNewPreference.setOnPreferenceClickListener( new OnPreferenceClickListener() {
 
 			public boolean onPreferenceClick( Preference preference ) {
 				UnifiedPreferenceFragment.this.showWhatsNewDialog();
+				return false;
+			}
+		} );
+
+		this.showAppIconLicensePreference = this.findPreference( "about.license.appicon" );
+		this.showAppIconLicensePreference.setOnPreferenceClickListener( new OnPreferenceClickListener() {
+
+			public boolean onPreferenceClick( Preference preference ) {
+				UnifiedPreferenceFragment.this.showAppIconLicensePreference();
 				return false;
 			}
 		} );
