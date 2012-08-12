@@ -75,7 +75,7 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 		// store if the battery is charging or not
 		this.lastTimeCharging = (RawBatteryStatisicsTable.CHARGING_STATE_DISCHARGING != powerSource);
 		
-		// get the last entry we made on our database, if the entries are the same we want to insert, skip the insertion process
+		/*// get the last entry we made on our database, if the entries are the same we want to insert, skip the insertion process
 		Cursor lastEntryMadeCursor = this.batteryStatisticsDatabase.query( RawBatteryStatisicsTable.TABLE_NAME, new String[] { RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL, RawBatteryStatisicsTable.COLUMN_CHARGING_SCALE }, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " DESC" );
 		if( lastEntryMadeCursor.moveToFirst() ) {
 			if( level == lastEntryMadeCursor.getInt( lastEntryMadeCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL ) ) && scale == lastEntryMadeCursor.getInt( lastEntryMadeCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_CHARGING_SCALE ) ) ) {
@@ -92,7 +92,7 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 				return;
 			}
 		}
-		lastEntryMadeCursor.close();
+		lastEntryMadeCursor.close();*/
 
 		// insert the new dataset into our database
 		final long currentUnixTime = (long) (System.currentTimeMillis() / 1000);
