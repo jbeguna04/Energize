@@ -10,6 +10,12 @@
 
 package com.halcyonwaves.apps.energize;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
+import com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper;
+import com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable;
 import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GraphView.GraphViewSeries;
@@ -24,6 +30,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -103,15 +111,91 @@ public class BatteryStateDisplayActivity extends Activity {
 		this.showBatteryGraph();
 		this.init();
 	}
-	
+
 	private GraphViewSeries getBatteryStatisticData() {
-		return new GraphViewSeries( new GraphViewData[] { new GraphViewData( 1, 2.0d ), new GraphViewData( 2, 1.5d ), new GraphViewData( 3, 2.5d ), new GraphViewData( 4, 1.0d ) } );
+		BatteryStatisticsDatabaseOpenHelper batteryDbOpenHelper = new BatteryStatisticsDatabaseOpenHelper( this.getApplicationContext() );
+		SQLiteDatabase batteryStatisticsDatabase = batteryDbOpenHelper.getReadableDatabase();
+		Cursor lastEntryMadeCursor = batteryStatisticsDatabase.query( RawBatteryStatisicsTable.TABLE_NAME, new String[] { RawBatteryStatisicsTable.COLUMN_EVENT_TIME, RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL }, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " ASC" );
+
+		ArrayList< GraphViewData > graphViewData = new ArrayList< GraphView.GraphViewData >();
+
+		//
+		final int columnIndexEventTime = lastEntryMadeCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_EVENT_TIME );
+		final int columnIndexChargingLevel = lastEntryMadeCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL );
+
+		//
+		lastEntryMadeCursor.moveToFirst();
+		while( !lastEntryMadeCursor.isAfterLast() ) {
+			graphViewData.add( new GraphViewData( lastEntryMadeCursor.getInt( columnIndexEventTime ), lastEntryMadeCursor.getInt( columnIndexChargingLevel ) ) );
+			lastEntryMadeCursor.moveToNext();
+		}
+
+		// close our connection to the database
+		lastEntryMadeCursor.close();
+		lastEntryMadeCursor = null;
+		batteryDbOpenHelper.close();
+		batteryStatisticsDatabase = null;
+		batteryDbOpenHelper = null;
+
+		// convert the array to an array and return the view series
+		if( graphViewData.size() == 0 ) {
+			graphViewData.add( new GraphViewData( 0.0, 0.0 ) );
+		}
+		GraphViewData convertedDataset[] = new GraphViewData[ graphViewData.size() ];
+		graphViewData.toArray( convertedDataset );
+		return new GraphViewSeries( convertedDataset );
+	}
+
+	private String[] getBatteryStatisticVerticalLabels() {
+		BatteryStatisticsDatabaseOpenHelper batteryDbOpenHelper = new BatteryStatisticsDatabaseOpenHelper( this.getApplicationContext() );
+		SQLiteDatabase batteryStatisticsDatabase = batteryDbOpenHelper.getReadableDatabase();
+		Cursor lastEntryMadeCursor = batteryStatisticsDatabase.query( RawBatteryStatisicsTable.TABLE_NAME, new String[] { RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL }, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " ASC" );
+
+		//
+		final int columnIndexChargingLevel = lastEntryMadeCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL );
+		int maxLevel = 0;
+		int minLevel = 100;
+
+		//
+		lastEntryMadeCursor.moveToFirst();
+		while( !lastEntryMadeCursor.isAfterLast() ) {
+			if( lastEntryMadeCursor.getInt( columnIndexChargingLevel ) > maxLevel ) {
+				maxLevel = lastEntryMadeCursor.getInt( columnIndexChargingLevel );
+			}
+			if( lastEntryMadeCursor.getInt( columnIndexChargingLevel ) < minLevel ) {
+				minLevel = lastEntryMadeCursor.getInt( columnIndexChargingLevel );
+			}
+			lastEntryMadeCursor.moveToNext();
+		}
+
+		// close our connection to the database
+		lastEntryMadeCursor.close();
+		lastEntryMadeCursor = null;
+		batteryDbOpenHelper.close();
+		batteryStatisticsDatabase = null;
+		batteryDbOpenHelper = null;
+
+		// convert the array to an array and return the view series
+		return new String[] { maxLevel + "%", ((int) Math.round( maxLevel / 2.0 )) + "%", minLevel + "%" };
 	}
 
 	private void showBatteryGraph() {
-		GraphView graphView = new LineGraphView( this, "" );
+		GraphView graphView = new LineGraphView( this, this.getString( R.string.graph_title_batterystatistics ) ) {
+
+			@Override
+			protected String formatLabel( double value, boolean isValueX ) {
+				if( isValueX ) {
+					SimpleDateFormat dateFormat = new SimpleDateFormat( "dd.MM, H:mm" );
+					return dateFormat.format( new Date( (long) value * 1000 ) );
+				} else
+					return super.formatLabel( value, isValueX ); // let the y-value be normal-formatted
+			}
+		};
 		graphView.addSeries( this.getBatteryStatisticData() );
-		graphView.setVerticalLabels( new String[] { "100%", "75%", "50%", "25%", "0%" } );
+		graphView.setVerticalLabels( this.getBatteryStatisticVerticalLabels() );
+		graphView.setScrollable( true );
+		graphView.setScalable( true );
+		//graphView.setViewPort( ((int) (System.currentTimeMillis() / 1000L) - 86400), (int) (System.currentTimeMillis() / 1000L) );
 		LinearLayout layout = (LinearLayout) findViewById( R.id.layout_graph_view );
 		layout.addView( graphView );
 	}
