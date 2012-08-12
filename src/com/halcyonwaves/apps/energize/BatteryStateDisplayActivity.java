@@ -40,6 +40,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 /**
  * This class defines the behavior of the first activity the user sees after he
@@ -51,6 +52,8 @@ import android.widget.LinearLayout;
 public class BatteryStateDisplayActivity extends Activity {
 
 	private static final String VERSION_KEY = "version_number";
+	private TextView textViewCurrentLoadingLevel = null;
+	private TextView textViewCurrentChargingState = null;
 
 	private void init() {
 		final SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences( this.getApplicationContext() );
@@ -101,6 +104,12 @@ public class BatteryStateDisplayActivity extends Activity {
 		this.setTheme( ApplicationCore.getSelectedThemeId( this.getApplicationContext() ) );
 		this.setContentView( R.layout.activity_batterystatedisplay );
 
+		// get the handles to some important controls
+		this.textViewCurrentLoadingLevel = (TextView)this.findViewById( R.id.textview_text_current_charginglvl );
+		this.textViewCurrentChargingState = (TextView)this.findViewById( R.id.textview_text_current_chargingstate );
+		this.textViewCurrentChargingState.setText( "AHAHAH" ); // TODO
+		this.textViewCurrentLoadingLevel.setText( "AHAHAH" ); // TODO
+		
 		// check if the service is running, if not start it
 		if( !ApplicationCore.isServiceRunning( this, MonitorBatteryStateService.class.getName() ) ) {
 			Log.v( "BatteryStateDisplayActivity", "Monitoring service is not running, starting it..." );
