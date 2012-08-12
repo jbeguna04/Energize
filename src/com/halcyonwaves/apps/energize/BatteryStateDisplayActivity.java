@@ -38,11 +38,10 @@ import android.view.View;
  */
 public class BatteryStateDisplayActivity extends Activity {
 
-	private static final String PRIVATE_PREF = "com.halcyonwaves.apps.energize";
 	private static final String VERSION_KEY = "version_number";
 
 	private void init() {
-		SharedPreferences sharedPref = getSharedPreferences( PRIVATE_PREF, Context.MODE_PRIVATE );
+		final SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences( this.getApplicationContext() );
 		int currentVersionNumber = 0;
 
 		int savedVersionNumber = sharedPref.getInt( VERSION_KEY, 0 );
