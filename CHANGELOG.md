@@ -2,9 +2,11 @@ Change Log
 ===============================================================================
 Version 0.5 *(2012-??-??)*
 --------------------------
-* Done some more internal code cleanup
+* Redesigned the main screen of the application
 * Changed the way battery change information are logged
+* Updated the statistics database to store the battery temperature
 * The main screen will show a graph about the charging and discharging process of the battery
+* Done some more internal code cleanup
 
 Version 0.4.1 *(2012-08-10)*
 ----------------------------
