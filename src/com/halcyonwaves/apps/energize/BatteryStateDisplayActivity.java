@@ -24,14 +24,18 @@ import com.jjoe64.graphview.LineGraphView;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.BatteryManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -105,16 +109,47 @@ public class BatteryStateDisplayActivity extends Activity {
 		this.setContentView( R.layout.activity_batterystatedisplay );
 
 		// get the handles to some important controls
-		this.textViewCurrentLoadingLevel = (TextView)this.findViewById( R.id.textview_text_current_charginglvl );
-		this.textViewCurrentChargingState = (TextView)this.findViewById( R.id.textview_text_current_chargingstate );
-		this.textViewCurrentChargingState.setText( "AHAHAH" ); // TODO
-		this.textViewCurrentLoadingLevel.setText( "AHAHAH" ); // TODO
-		
+		this.textViewCurrentLoadingLevel = (TextView) this.findViewById( R.id.textview_text_current_charginglvl );
+		this.textViewCurrentChargingState = (TextView) this.findViewById( R.id.textview_text_current_chargingstate );
+
 		// check if the service is running, if not start it
 		if( !ApplicationCore.isServiceRunning( this, MonitorBatteryStateService.class.getName() ) ) {
 			Log.v( "BatteryStateDisplayActivity", "Monitoring service is not running, starting it..." );
 			this.getApplicationContext().startService( new Intent( this.getApplicationContext(), MonitorBatteryStateService.class ) );
 		}
+
+		// get the current battery state and show it on the main activity
+		BroadcastReceiver batteryLevelReceiver = new BroadcastReceiver() {
+
+			public void onReceive( Context context, Intent intent ) {
+				context.unregisterReceiver( this );
+				int rawlevel = intent.getIntExtra( BatteryManager.EXTRA_LEVEL, -1 );
+				int scale = intent.getIntExtra( BatteryManager.EXTRA_SCALE, -1 );
+				int status = intent.getIntExtra( BatteryManager.EXTRA_STATUS, -1 );
+				int level = -1;
+				if( rawlevel >= 0 && scale > 0 ) {
+					level = (rawlevel * 100) / scale;
+				}
+				switch( status ) {
+					case BatteryManager.BATTERY_STATUS_CHARGING:
+						BatteryStateDisplayActivity.this.textViewCurrentChargingState.setText( BatteryStateDisplayActivity.this.getString( R.string.battery_state_charging ) );
+						break;
+					case BatteryManager.BATTERY_STATUS_DISCHARGING:
+						BatteryStateDisplayActivity.this.textViewCurrentChargingState.setText( BatteryStateDisplayActivity.this.getString( R.string.battery_state_discharging ) );
+						break;
+					case BatteryManager.BATTERY_STATUS_FULL:
+						BatteryStateDisplayActivity.this.textViewCurrentChargingState.setText( BatteryStateDisplayActivity.this.getString( R.string.battery_state_full ) );
+						break;
+					default:
+						BatteryStateDisplayActivity.this.textViewCurrentChargingState.setText( BatteryStateDisplayActivity.this.getString( R.string.battery_state_unknown ) );
+						break;
+				}
+
+				BatteryStateDisplayActivity.this.textViewCurrentLoadingLevel.setText( level + "%" ); // TODO
+			}
+		};
+		IntentFilter batteryLevelFilter = new IntentFilter( Intent.ACTION_BATTERY_CHANGED );
+		this.registerReceiver( batteryLevelReceiver, batteryLevelFilter );
 
 		// render the battery graph and initialize the rest of the application
 		this.showBatteryGraph();
@@ -204,7 +239,7 @@ public class BatteryStateDisplayActivity extends Activity {
 		graphView.setVerticalLabels( this.getBatteryStatisticVerticalLabels() );
 		graphView.setScrollable( true );
 		graphView.setScalable( true );
-		//graphView.setViewPort( ((int) (System.currentTimeMillis() / 1000L) - 86400), (int) (System.currentTimeMillis() / 1000L) );
+		// graphView.setViewPort( ((int) (System.currentTimeMillis() / 1000L) - 86400), (int) (System.currentTimeMillis() / 1000L) );
 		LinearLayout layout = (LinearLayout) findViewById( R.id.layout_graph_view );
 		layout.addView( graphView );
 	}
