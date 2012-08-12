@@ -1,5 +1,10 @@
 Change Log
 ===============================================================================
+Version 0.5 *(2012-??-??)*
+--------------------------
+* Done some more internal code cleanup
+* The main screen will show a graph about the charging and discharging process of the battery
+
 Version 0.4.1 *(2012-08-10)*
 ----------------------------
 * Added license information for the application icon
