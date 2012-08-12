@@ -11,10 +11,13 @@
 package com.halcyonwaves.apps.energize;
 
 import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.GraphView.GraphViewSeries;
+import com.jjoe64.graphview.GraphView.GraphViewData;
+import com.jjoe64.graphview.LineGraphView;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -28,6 +31,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 
 /**
  * This class defines the behavior of the first activity the user sees after he
@@ -95,8 +99,21 @@ public class BatteryStateDisplayActivity extends Activity {
 			this.getApplicationContext().startService( new Intent( this.getApplicationContext(), MonitorBatteryStateService.class ) );
 		}
 
-		//
+		// render the battery graph and initialize the rest of the application
+		this.showBatteryGraph();
 		this.init();
+	}
+	
+	private GraphViewSeries getBatteryStatisticData() {
+		return new GraphViewSeries( new GraphViewData[] { new GraphViewData( 1, 2.0d ), new GraphViewData( 2, 1.5d ), new GraphViewData( 3, 2.5d ), new GraphViewData( 4, 1.0d ) } );
+	}
+
+	private void showBatteryGraph() {
+		GraphView graphView = new LineGraphView( this, "" );
+		graphView.addSeries( this.getBatteryStatisticData() );
+		graphView.setVerticalLabels( new String[] { "100%", "75%", "50%", "25%", "0%" } );
+		LinearLayout layout = (LinearLayout) findViewById( R.id.layout_graph_view );
+		layout.addView( graphView );
 	}
 
 	@Override
