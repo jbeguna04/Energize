@@ -7,6 +7,18 @@
     android:layout_height="fill_parent"
     android:orientation="vertical"
    >
+   
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Version 0.4.1"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="25dp"
+        android:text="- Added license information for the application icon\n- Applied a fix for the -1 estimation bug\n- Fixed the bug that clicking the notification item won't show the main activity\n- Added support for API level 14 (which includes plain Android 4.0.0)\n- The notification bar item will now show if the battery is charges or discharges" />
 
     <TextView
         android:layout_width="fill_parent"

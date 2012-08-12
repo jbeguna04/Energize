@@ -12,6 +12,7 @@ package com.halcyonwaves.apps.energize.services;
 
 import java.util.ArrayList;
 
+import com.halcyonwaves.apps.energize.BatteryStateDisplayActivity;
 import com.halcyonwaves.apps.energize.R;
 import com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper;
 import com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable;
@@ -19,6 +20,7 @@ import com.halcyonwaves.apps.energize.receivers.BatteryChangedReceiver;
 
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.ContentValues;
 import android.content.Context;
@@ -57,6 +59,7 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 	private ArrayList< Messenger > connectedClients = new ArrayList< Messenger >();
 	private int lastChargingPercentage = -1;
 	private int lastRemainingMinutes = -1;
+	private boolean lastTimeCharging = false;
 	private final Messenger serviceMessenger = new Messenger( new IncomingHandler() );
 	private NotificationManager notificationManager = null;
 	private Notification myNotification = null;
@@ -69,6 +72,9 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 			return;
 		}
 
+		// store if the battery is charging or not
+		this.lastTimeCharging = (RawBatteryStatisicsTable.CHARGING_STATE_DISCHARGING != powerSource);
+		
 		// get the last entry we made on our database, if the entries are the same we want to insert, skip the insertion process
 		Cursor lastEntryMadeCursor = this.batteryStatisticsDatabase.query( RawBatteryStatisicsTable.TABLE_NAME, new String[] { RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL, RawBatteryStatisicsTable.COLUMN_CHARGING_SCALE }, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " DESC" );
 		if( lastEntryMadeCursor.moveToFirst() ) {
@@ -80,7 +86,7 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 
 				// tell all connected clients about the current charging level and the remaining time
 				MonitorBatteryStateService.this.sendCurrentChargingPctToClients();
-				this.showNewPercentageNotification( level, this.lastRemainingMinutes );
+				this.showNewPercentageNotification( level, this.lastRemainingMinutes, this.lastTimeCharging );
 
 				// skip the insertion process
 				return;
@@ -108,7 +114,7 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 				long prevEventTime = querCursor.getLong( querCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_EVENT_TIME ) );
 				long diff = Math.abs( lastEventTime - prevEventTime );
 				Log.v( MonitorBatteryStateService.TAG, String.format( "Calculated the time between the last two (%d, %d) events: %d", lastEventTime, prevEventTime, diff ) );
-				if( RawBatteryStatisicsTable.CHARGING_STATE_UNCHARGING == powerSource ) {
+				if( RawBatteryStatisicsTable.CHARGING_STATE_DISCHARGING == powerSource ) {
 					this.lastRemainingMinutes = (int) (Math.round( ((this.lastChargingPercentage) * diff) / 60.0f ));
 					Log.v( MonitorBatteryStateService.TAG, String.format( "Calculated remaining battery life in minutes: %d", lastRemainingMinutes ) );
 				} else {
@@ -121,7 +127,7 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 
 		// tell all connected clients about the current charging level and the remaining time
 		MonitorBatteryStateService.this.sendCurrentChargingPctToClients();
-		this.showNewPercentageNotification( level, this.lastRemainingMinutes );
+		this.showNewPercentageNotification( level, this.lastRemainingMinutes, RawBatteryStatisicsTable.CHARGING_STATE_DISCHARGING != powerSource );
 	}
 
 	@Override
@@ -140,7 +146,7 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 		this.batteryStatisticsDatabase = this.batteryDbOpenHelper.getWritableDatabase();
 	}
 
-	private void showNewPercentageNotification( int percentage, int remainingMinutes ) {
+	private void showNewPercentageNotification( int percentage, int remainingMinutes, boolean charges ) {
 		// be sure that it is a valid percentage
 		if( percentage < 0 || percentage > 100 ) {
 			Log.e( MonitorBatteryStateService.TAG, "The application tried to show an invalid loading level." );
@@ -157,10 +163,20 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 		final int remainingHours = remainingMinutes > 0 ? (int) Math.floor( remainingMinutes / 60.0 ) : 0;
 		final int remainingMinutesNew = remainingMinutes - (60 * remainingHours);
 
+		// determine the correct title string for the notification
+		int notificationTitleId = R.string.notification_title_discharges;
+		if( charges ) {
+			notificationTitleId = R.string.notification_title_charges;
+		}
+
 		// show the notification
-		this.myNotification = null;
-		this.myNotification = new Notification.Builder( this ).setContentTitle( this.getString( R.string.notification_title_remaining, percentage ) ).setContentText( this.getString( R.string.notification_text_estimate, remainingHours, remainingMinutesNew ) ).setSmallIcon( R.drawable.ic_stat_00_pct_charged + percentage ).getNotification();
+		if( remainingMinutesNew <= -1 ) {
+			this.myNotification = new Notification.Builder( this ).setContentTitle( this.getString( notificationTitleId ) ).setContentText( this.getString( R.string.notification_text_estimate_na ) ).setSmallIcon( R.drawable.ic_stat_00_pct_charged + percentage ).getNotification();
+		} else {
+			this.myNotification = new Notification.Builder( this ).setContentTitle( this.getString( notificationTitleId ) ).setContentText( this.getString( R.string.notification_text_estimate, remainingHours, remainingMinutesNew ) ).setSmallIcon( R.drawable.ic_stat_00_pct_charged + percentage ).getNotification();
+		}
 		this.myNotification.flags |= Notification.FLAG_ONGOING_EVENT;
+		this.myNotification.contentIntent = PendingIntent.getActivity( this.getApplicationContext(), 0, new Intent( this.getApplicationContext(), BatteryStateDisplayActivity.class ), 0 );
 		this.notificationManager.notify( MY_NOTIFICATION_ID, myNotification );
 	}
 
@@ -261,7 +277,7 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 				this.notificationManager.cancel( MY_NOTIFICATION_ID );
 				this.myNotification = null;
 			} else {
-				this.showNewPercentageNotification( this.lastChargingPercentage, this.lastRemainingMinutes );
+				this.showNewPercentageNotification( this.lastChargingPercentage, this.lastRemainingMinutes, this.lastTimeCharging );
 			}
 		}
 	}
