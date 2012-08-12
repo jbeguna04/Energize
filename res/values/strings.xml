@@ -2,6 +2,9 @@
 <resources>
     <string name="app_name">Energize</string>
 
+    <string name="pref_title_start_on_boot">Start on boot</string>
+    <string name="pref_title_show_notification_bar">Status bar icon</string>
+    
     <string name="pref_title_theme">Theme</string>
     <string name="pref_summary_theme">Using \""%1$s\" as theme</string>
     

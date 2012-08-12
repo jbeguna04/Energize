@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:title="General">
-        <SwitchPreference android:key="advance.start_on_boot" android:title="Start on boot" android:defaultValue="true" />
+        <SwitchPreference android:key="advance.start_on_boot" android:title="@string/pref_title_start_on_boot" android:defaultValue="true" />
+        <SwitchPreference android:key="advance.show_notification_bar" android:title="@string/pref_title_show_notification_bar" android:defaultValue="true" android:dependency="advance.start_on_boot"/>
 		<ListPreference android:key="display.theme" android:title="@string/pref_title_theme" android:summary="@string/pref_summary_theme" android:entries="@array/pref_list_theme_names" android:entryValues="@array/pref_list_theme_values" android:defaultValue="DarkTheme" />
     </PreferenceCategory>
     <PreferenceCategory android:title="Statistics">

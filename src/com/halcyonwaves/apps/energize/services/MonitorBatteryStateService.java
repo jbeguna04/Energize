@@ -25,6 +25,8 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Handler;
@@ -32,9 +34,10 @@ import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
-public class MonitorBatteryStateService extends Service {
+public class MonitorBatteryStateService extends Service implements OnSharedPreferenceChangeListener {
 
 	private static final String TAG = "MonitorBatteryStateService";
 
@@ -57,6 +60,7 @@ public class MonitorBatteryStateService extends Service {
 	private final Messenger serviceMessenger = new Messenger( new IncomingHandler() );
 	private NotificationManager notificationManager = null;
 	private Notification myNotification = null;
+	private SharedPreferences appPreferences = null;
 
 	public void insertPowerValue( int powerSource, int scale, int level ) {
 		// if the database is not open, skip the insertion process
@@ -143,20 +147,31 @@ public class MonitorBatteryStateService extends Service {
 			return;
 		}
 
+		// if we should not show the notification, skip the method here
+
+		if( !this.appPreferences.getBoolean( "advance.show_notification_bar", true ) ) {
+			return;
+		}
+
 		// calculate the estimates for the notification window
 		final int remainingHours = remainingMinutes > 0 ? (int) Math.floor( remainingMinutes / 60.0 ) : 0;
 		final int remainingMinutesNew = remainingMinutes - (60 * remainingHours);
 
 		// show the notification
+		this.myNotification = null;
 		this.myNotification = new Notification.Builder( this ).setContentTitle( this.getString( R.string.notification_title_remaining, percentage ) ).setContentText( this.getString( R.string.notification_text_estimate, remainingHours, remainingMinutesNew ) ).setSmallIcon( R.drawable.ic_stat_00_pct_charged + percentage ).getNotification();
 		this.myNotification.flags |= Notification.FLAG_ONGOING_EVENT;
-		notificationManager.notify( MY_NOTIFICATION_ID, myNotification );
+		this.notificationManager.notify( MY_NOTIFICATION_ID, myNotification );
 	}
 
 	@Override
 	public int onStartCommand( Intent intent, int flags, int startid ) {
 		//
 		Log.v( MonitorBatteryStateService.TAG, "Starting service for collecting battery statistics..." );
+
+		//
+		this.appPreferences = PreferenceManager.getDefaultSharedPreferences( this.getApplicationContext() );
+		this.appPreferences.registerOnSharedPreferenceChangeListener( this );
 
 		//
 		this.notificationManager = (NotificationManager) this.getSystemService( Context.NOTIFICATION_SERVICE );
@@ -234,6 +249,19 @@ public class MonitorBatteryStateService extends Service {
 					break;
 				default:
 					super.handleMessage( msg );
+			}
+		}
+	}
+
+	public void onSharedPreferenceChanged( SharedPreferences sharedPreferences, String key ) { 
+		if( 0 == key.compareTo( "advance.show_notification_bar" ) ) {
+			final boolean showShowIcon = sharedPreferences.getBoolean( "advance.show_notification_bar", true );
+			Log.v( MonitorBatteryStateService.TAG, "Notification icon setting chaanged to: " + showShowIcon );
+			if( !showShowIcon ) {
+				this.notificationManager.cancel( MY_NOTIFICATION_ID );
+				this.myNotification = null;
+			} else {
+				this.showNewPercentageNotification( this.lastChargingPercentage, this.lastRemainingMinutes );
 			}
 		}
 	}
