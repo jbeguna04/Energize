@@ -65,7 +65,7 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 	private Notification myNotification = null;
 	private SharedPreferences appPreferences = null;
 
-	public void insertPowerValue( int powerSource, int scale, int level ) {
+	public void insertPowerValue( int powerSource, int scale, int level, double temprature ) {
 		// if the database is not open, skip the insertion process
 		if( null == this.batteryStatisticsDatabase || !this.batteryStatisticsDatabase.isOpen() ) {
 			Log.e( MonitorBatteryStateService.TAG, "Tried to insert a dataset into a closed database, skipping..." );
@@ -74,25 +74,6 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 
 		// store if the battery is charging or not
 		this.lastTimeCharging = (RawBatteryStatisicsTable.CHARGING_STATE_DISCHARGING != powerSource);
-		
-		/*// get the last entry we made on our database, if the entries are the same we want to insert, skip the insertion process
-		Cursor lastEntryMadeCursor = this.batteryStatisticsDatabase.query( RawBatteryStatisicsTable.TABLE_NAME, new String[] { RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL, RawBatteryStatisicsTable.COLUMN_CHARGING_SCALE }, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " DESC" );
-		if( lastEntryMadeCursor.moveToFirst() ) {
-			if( level == lastEntryMadeCursor.getInt( lastEntryMadeCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL ) ) && scale == lastEntryMadeCursor.getInt( lastEntryMadeCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_CHARGING_SCALE ) ) ) {
-				Log.d( MonitorBatteryStateService.TAG, "Tried to insert an already existing dataset, skipping..." );
-
-				// if it is the first run of the application, the percentage would be -1 if we won't set it here
-				this.lastChargingPercentage = level;
-
-				// tell all connected clients about the current charging level and the remaining time
-				MonitorBatteryStateService.this.sendCurrentChargingPctToClients();
-				this.showNewPercentageNotification( level, this.lastRemainingMinutes, this.lastTimeCharging );
-
-				// skip the insertion process
-				return;
-			}
-		}
-		lastEntryMadeCursor.close();*/
 
 		// insert the new dataset into our database
 		final long currentUnixTime = (long) (System.currentTimeMillis() / 1000);
@@ -101,6 +82,7 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 		values.put( RawBatteryStatisicsTable.COLUMN_CHARGING_STATE, powerSource );
 		values.put( RawBatteryStatisicsTable.COLUMN_CHARGING_SCALE, scale );
 		values.put( RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL, level );
+		values.put( RawBatteryStatisicsTable.COLUMN_BATTERY_TEMPRATURE, temprature );
 		this.batteryStatisticsDatabase.insert( RawBatteryStatisicsTable.TABLE_NAME, null, values );
 
 		// store the charging level and update the notification about the current charging level
