@@ -11,32 +11,27 @@ com.halcyonwaves.apps.energize.ApplicationCore -> com.halcyonwaves.apps.energize
     boolean isServiceRunning(android.content.Context,java.lang.String) -> a
     int getSelectedThemeId(android.content.Context) -> a
 com.halcyonwaves.apps.energize.BatteryStateDisplayActivity -> com.halcyonwaves.apps.energize.BatteryStateDisplayActivity:
-    android.widget.TextView batteryPercentage -> a
-    android.os.Messenger monitorService -> b
-    android.os.Messenger monitorServiceMessanger -> c
-    android.content.ServiceConnection monitorServiceConnection -> d
-    void doBindService() -> a
-    void doUnbindService() -> b
-    void init() -> c
-    void showWhatsNewDialog() -> d
-    void onDestroy() -> onDestroy
+    android.widget.TextView textViewCurrentLoadingLevel -> a
+    android.widget.TextView textViewCurrentChargingState -> b
+    void init() -> a
+    void showWhatsNewDialog() -> b
     void onCreate(android.os.Bundle) -> onCreate
+    com.jjoe64.graphview.GraphView$GraphViewSeries getBatteryStatisticData() -> c
+    java.lang.String[] getBatteryStatisticVerticalLabels() -> d
+    void showBatteryGraph() -> e
     boolean onCreateOptionsMenu(android.view.Menu) -> onCreateOptionsMenu
     boolean onOptionsItemSelected(android.view.MenuItem) -> onOptionsItemSelected
-    void access$0(com.halcyonwaves.apps.energize.BatteryStateDisplayActivity,android.os.Messenger) -> a
-    android.os.Messenger access$1(com.halcyonwaves.apps.energize.BatteryStateDisplayActivity) -> a
-    android.os.Messenger access$2(com.halcyonwaves.apps.energize.BatteryStateDisplayActivity) -> b
-    android.widget.TextView access$3(com.halcyonwaves.apps.energize.BatteryStateDisplayActivity) -> c
+    android.widget.TextView access$0(com.halcyonwaves.apps.energize.BatteryStateDisplayActivity) -> a
+    android.widget.TextView access$1(com.halcyonwaves.apps.energize.BatteryStateDisplayActivity) -> b
 com.halcyonwaves.apps.energize.BatteryStateDisplayActivity$1 -> com.halcyonwaves.apps.energize.b:
     com.halcyonwaves.apps.energize.BatteryStateDisplayActivity this$0 -> a
-    void onServiceConnected(android.content.ComponentName,android.os.IBinder) -> onServiceConnected
-    void onServiceDisconnected(android.content.ComponentName) -> onServiceDisconnected
+    void onClick(android.content.DialogInterface,int) -> onClick
 com.halcyonwaves.apps.energize.BatteryStateDisplayActivity$2 -> com.halcyonwaves.apps.energize.c:
     com.halcyonwaves.apps.energize.BatteryStateDisplayActivity this$0 -> a
-    void onClick(android.content.DialogInterface,int) -> onClick
-com.halcyonwaves.apps.energize.BatteryStateDisplayActivity$IncomingHandler -> com.halcyonwaves.apps.energize.d:
+    void onReceive(android.content.Context,android.content.Intent) -> onReceive
+com.halcyonwaves.apps.energize.BatteryStateDisplayActivity$3 -> com.halcyonwaves.apps.energize.d:
     com.halcyonwaves.apps.energize.BatteryStateDisplayActivity this$0 -> a
-    void handleMessage(android.os.Message) -> handleMessage
+    java.lang.String formatLabel(double,boolean) -> a
 com.halcyonwaves.apps.energize.Consts -> com.halcyonwaves.apps.energize.e:
     long BILLING_RESPONSE_INVALID_REQUEST_ID -> a
 com.halcyonwaves.apps.energize.Consts$PurchaseState -> com.halcyonwaves.apps.energize.f:
@@ -228,10 +223,12 @@ com.halcyonwaves.apps.energize.services.MonitorBatteryStateService -> com.halcyo
     java.util.ArrayList connectedClients -> d
     int lastChargingPercentage -> e
     int lastRemainingMinutes -> f
-    android.os.Messenger serviceMessenger -> g
-    android.app.NotificationManager notificationManager -> h
-    android.app.Notification myNotification -> i
-    void insertPowerValue(int,int,int) -> a
+    boolean lastTimeCharging -> g
+    android.os.Messenger serviceMessenger -> h
+    android.app.NotificationManager notificationManager -> i
+    android.app.Notification myNotification -> j
+    android.content.SharedPreferences appPreferences -> k
+    void insertPowerValue(int,int,int,double) -> a
     void onDestroy() -> onDestroy
     void stopMonitoring() -> a
     void startMonitoring() -> b
@@ -239,6 +236,7 @@ com.halcyonwaves.apps.energize.services.MonitorBatteryStateService -> com.halcyo
     int onStartCommand(android.content.Intent,int,int) -> onStartCommand
     android.os.IBinder onBind(android.content.Intent) -> onBind
     void sendCurrentChargingPctToClients() -> c
+    void onSharedPreferenceChanged(android.content.SharedPreferences,java.lang.String) -> onSharedPreferenceChanged
     java.util.ArrayList access$0(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> a
     void access$1(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> b
     void access$2(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> c
@@ -259,3 +257,110 @@ com.halcyonwaves.apps.energize.util.Base64 -> com.halcyonwaves.apps.energize.b.a
     byte[] decode(byte[],int,int) -> a
     byte[] decode(byte[],int,int,byte[]) -> a
 com.halcyonwaves.apps.energize.util.Base64DecoderException -> com.halcyonwaves.apps.energize.b.b:
+com.jjoe64.graphview.GraphView -> com.a.a.a:
+    android.graphics.Paint paint -> b
+    java.lang.String[] horlabels -> a
+    java.lang.String[] verlabels -> c
+    java.lang.String title -> d
+    boolean scrollable -> e
+    double viewportStart -> f
+    double viewportSize -> g
+    android.view.View viewVerLabels -> h
+    com.jjoe64.graphview.compatible.ScaleGestureDetector scaleDetector -> i
+    boolean scalable -> j
+    java.text.NumberFormat numberformatter -> k
+    java.util.List graphSeries -> l
+    boolean showLegend -> m
+    float legendWidth -> n
+    com.jjoe64.graphview.GraphView$LegendAlign legendAlign -> o
+    boolean manualYAxis -> p
+    double manualMaxYValue -> q
+    double manualMinYValue -> r
+    int[] $SWITCH_TABLE$com$jjoe64$graphview$GraphView$LegendAlign -> s
+    com.jjoe64.graphview.GraphView$GraphViewData[] _values(int) -> a
+    void addSeries(com.jjoe64.graphview.GraphView$GraphViewSeries) -> a
+    void drawLegend(android.graphics.Canvas,float,float) -> a
+    void drawSeries(android.graphics.Canvas,com.jjoe64.graphview.GraphView$GraphViewData[],float,float,float,double,double,double,double,float) -> a
+    java.lang.String formatLabel(double,boolean) -> a
+    java.lang.String[] generateHorlabels(float) -> a
+    java.lang.String[] generateVerlabels(float) -> b
+    com.jjoe64.graphview.GraphView$LegendAlign getLegendAlign() -> getLegendAlign
+    float getLegendWidth() -> getLegendWidth
+    double getMaxX(boolean) -> a
+    double getMaxY() -> getMaxY
+    double getMinX(boolean) -> b
+    double getMinY() -> getMinY
+    boolean isScrollable() -> a
+    void setHorizontalLabels(java.lang.String[]) -> setHorizontalLabels
+    void setLegendAlign(com.jjoe64.graphview.GraphView$LegendAlign) -> setLegendAlign
+    void setLegendWidth(float) -> setLegendWidth
+    void setManualYAxis(boolean) -> setManualYAxis
+    void setScalable(boolean) -> setScalable
+    void setScrollable(boolean) -> setScrollable
+    void setShowLegend(boolean) -> setShowLegend
+    void setVerticalLabels(java.lang.String[]) -> setVerticalLabels
+    double access$0(com.jjoe64.graphview.GraphView) -> a
+    double access$1(com.jjoe64.graphview.GraphView) -> b
+    double access$2(com.jjoe64.graphview.GraphView,boolean) -> a
+    double access$3(com.jjoe64.graphview.GraphView,boolean) -> b
+    java.lang.String[] access$4(com.jjoe64.graphview.GraphView) -> c
+    java.lang.String[] access$5(com.jjoe64.graphview.GraphView,float) -> a
+    void access$6(com.jjoe64.graphview.GraphView,java.lang.String[]) -> a
+    java.lang.String[] access$7(com.jjoe64.graphview.GraphView) -> d
+    java.lang.String[] access$8(com.jjoe64.graphview.GraphView,float) -> b
+    void access$9(com.jjoe64.graphview.GraphView,java.lang.String[]) -> b
+    java.lang.String access$10(com.jjoe64.graphview.GraphView) -> e
+    java.util.List access$11(com.jjoe64.graphview.GraphView) -> f
+    com.jjoe64.graphview.GraphView$GraphViewData[] access$12(com.jjoe64.graphview.GraphView,int) -> a
+    boolean access$13(com.jjoe64.graphview.GraphView) -> g
+    double access$14(com.jjoe64.graphview.GraphView) -> h
+    double access$15(com.jjoe64.graphview.GraphView) -> i
+    void access$16(com.jjoe64.graphview.GraphView,double) -> a
+    android.view.View access$17(com.jjoe64.graphview.GraphView) -> j
+    boolean access$18(com.jjoe64.graphview.GraphView) -> k
+    com.jjoe64.graphview.compatible.ScaleGestureDetector access$19(com.jjoe64.graphview.GraphView) -> l
+    int[] $SWITCH_TABLE$com$jjoe64$graphview$GraphView$LegendAlign() -> b
+com.jjoe64.graphview.GraphView$1 -> com.a.a.b:
+    com.jjoe64.graphview.GraphView this$0 -> a
+com.jjoe64.graphview.GraphView$GraphViewContentView -> com.a.a.c:
+    float lastTouchEventX -> b
+    float graphwidth -> c
+    com.jjoe64.graphview.GraphView this$0 -> a
+    void onDraw(android.graphics.Canvas) -> onDraw
+    void onMoveGesture(float) -> a
+    boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
+com.jjoe64.graphview.GraphView$GraphViewData -> com.a.a.d:
+    double valueX -> a
+    double valueY -> b
+com.jjoe64.graphview.GraphView$GraphViewSeries -> com.a.a.e:
+    java.lang.String description -> a
+    com.jjoe64.graphview.GraphView$GraphViewStyle style -> b
+    com.jjoe64.graphview.GraphView$GraphViewData[] values -> c
+com.jjoe64.graphview.GraphView$GraphViewStyle -> com.a.a.f:
+    int color -> a
+    int thickness -> b
+com.jjoe64.graphview.GraphView$LegendAlign -> com.a.a.g:
+    com.jjoe64.graphview.GraphView$LegendAlign TOP -> a
+    com.jjoe64.graphview.GraphView$LegendAlign MIDDLE -> b
+    com.jjoe64.graphview.GraphView$LegendAlign BOTTOM -> c
+    com.jjoe64.graphview.GraphView$LegendAlign[] ENUM$VALUES -> d
+    com.jjoe64.graphview.GraphView$LegendAlign[] values() -> values
+    com.jjoe64.graphview.GraphView$LegendAlign valueOf(java.lang.String) -> valueOf
+com.jjoe64.graphview.GraphView$VerLabelsView -> com.a.a.h:
+    com.jjoe64.graphview.GraphView this$0 -> a
+    void onDraw(android.graphics.Canvas) -> onDraw
+com.jjoe64.graphview.LineGraphView -> com.a.a.i:
+    android.graphics.Paint paintBackground -> a
+    boolean drawBackground -> c
+    void drawSeries(android.graphics.Canvas,com.jjoe64.graphview.GraphView$GraphViewData[],float,float,float,double,double,double,double,float) -> a
+    boolean getDrawBackground() -> getDrawBackground
+    void setDrawBackground(boolean) -> setDrawBackground
+com.jjoe64.graphview.compatible.RealScaleGestureDetector -> com.a.a.a.a:
+com.jjoe64.graphview.compatible.ScaleGestureDetector -> com.a.a.a.b:
+    java.lang.Object realScaleGestureDetector -> a
+    java.lang.reflect.Method method_getScaleFactor -> b
+    java.lang.reflect.Method method_isInProgress -> c
+    java.lang.reflect.Method method_onTouchEvent -> d
+    boolean isInProgress() -> a
+    void onTouchEvent(android.view.MotionEvent) -> a
+com.jjoe64.graphview.compatible.ScaleGestureDetector$SimpleOnScaleGestureListener -> com.a.a.a.c:

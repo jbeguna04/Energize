@@ -10,7 +10,6 @@ com.halcyonwaves.apps.energize.ApplicationCore:
     private static final java.lang.String TAG
     31:31:public ApplicationCore()
 com.halcyonwaves.apps.energize.BatteryStateDisplayActivity:
-    private static final java.lang.String PRIVATE_PREF
     private static final java.lang.String VERSION_KEY
 com.halcyonwaves.apps.energize.BuildConfig
 com.halcyonwaves.apps.energize.Consts:
@@ -97,8 +96,10 @@ com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable:
     public static final java.lang.String COLUMN_CHARGING_SCALE
     public static final java.lang.String COLUMN_EVENT_TIME
     public static final java.lang.String COLUMN_CHARGING_STATE
+    public static final java.lang.String COLUMN_BATTERY_TEMPRATURE
     public static final java.lang.String COLUMN_ID
     private static final java.lang.String TABLE_CREATE
+    private static final java.lang.String TABLE_DROP
     public static final int CHARGING_STATE_DISCHARGING
     public static final int CHARGING_STATE_CHARGING_AC
     public static final int CHARGING_STATE_CHARGING_USB
@@ -148,3 +149,27 @@ com.halcyonwaves.apps.energize.util.Base64:
 com.halcyonwaves.apps.energize.util.Base64DecoderException:
     private static final long serialVersionUID
 com.halcyonwaves.apps.energize.widgets.SimpleWidget
+com.jjoe64.graphview.BarGraphView
+com.jjoe64.graphview.GraphView:
+    346:352:public void removeSeries(int)
+    356:357:public void removeSeries(com.jjoe64.graphview.GraphView$GraphViewSeries)
+    530:530:public boolean isShowLegend()
+    564:567:public void setManualYAxisBounds(double,double)
+    641:643:public void setViewPort(double,double)
+    278:278:static synthetic void access$21(com.jjoe64.graphview.GraphView,double)
+    282:282:static synthetic void access$22(com.jjoe64.graphview.GraphView,java.text.NumberFormat)
+com.jjoe64.graphview.GraphView$1:
+    580:609:public boolean onScale(com.jjoe64.graphview.compatible.ScaleGestureDetector)
+com.jjoe64.graphview.GraphView$GraphViewConfig
+com.jjoe64.graphview.GraphView$GraphViewSeries:
+    222:229:public GraphView$GraphViewSeries(java.lang.String,com.jjoe64.graphview.GraphView$GraphViewStyle,com.jjoe64.graphview.GraphView$GraphViewData[])
+com.jjoe64.graphview.GraphView$GraphViewStyle:
+    190:193:public GraphView$GraphViewStyle(int,int)
+com.jjoe64.graphview.GraphViewDemo
+com.jjoe64.graphview.compatible.RealScaleGestureDetector:
+    13:19:public RealScaleGestureDetector(android.content.Context,com.jjoe64.graphview.compatible.ScaleGestureDetector,com.jjoe64.graphview.compatible.ScaleGestureDetector$SimpleOnScaleGestureListener)
+com.jjoe64.graphview.compatible.RealScaleGestureDetector$1
+com.jjoe64.graphview.compatible.ScaleGestureDetector:
+    51:59:public double getScaleFactor()
+com.jjoe64.graphview.compatible.ScaleGestureDetector$SimpleOnScaleGestureListener:
+    public abstract boolean onScale(com.jjoe64.graphview.compatible.ScaleGestureDetector)
