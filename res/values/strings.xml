@@ -16,11 +16,11 @@
     <string name="pref_title_clearstatsdb">Clear statistics database</string>
     <string name="pref_summary_clearstatsdb">Clears the recorded battery events</string>
     
-    <string name="pref_about_title_showlicense">Show license</string>
+    <string name="pref_about_title_showlicense">Show app license</string>
     <string name="pref_about_summary_showlicense">Show the application license</string>
     
-    <string name="pref_about_title_icon_showlicense">Show icon license</string>
-    <string name="pref_about_summary_icon_showlicense">Show the application icon license</string>
+    <string name="pref_about_title_icon_showlicense">Show addional licenses</string>
+    <string name="pref_about_summary_icon_showlicense">Icon and 3rd party licences</string>
     
     <string name="notification_title_charges">Battery charges</string>
     <string name="notification_title_discharges">Battery discharges</string>
@@ -28,8 +28,8 @@
     <string name="notification_text_estimate_na">Estimation currently not available</string>
     
     <string name="dialog_title_whatsnew">What\'s new?</string>
-    <string name="dialog_title_appiconlicense">App icon license</string>
-    <string name="dialog_text_appiconlicense">Portions of the application icon (the Android robot) are modifications based on work created and shared by the Android Open Source Project and used according to terms described in the Creative Commons 2.5 Attribution License.\n\nThe battery icon used in the application icon was designed by the GNOME High contrast icons/authors and is licensed under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either version 2.1 of the License, or (at your option) any later version.</string>
+    <string name="dialog_title_appiconlicense">Addional licenses</string>
+    <string name="dialog_text_appiconlicense">Portions of the application icon (the Android robot) are modifications based on work created and shared by the Android Open Source Project and used according to terms described in the Creative Commons 2.5 Attribution License.\n\nThe battery icon used in the application icon was designed by the GNOME High contrast icons/authors and is licensed under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either version 2.1 of the License, or (at your option) any later version.\n\nGraphView library (for drawing all charts) was developed by Jonas Gehring.</string>
 
     <string name="dialog_title_cleardb_successfull">Database cleared</string>
     <string name="dialog_text_cleardb_successfull">The battery statistics were deleted and it will talke some time until the charging estimation will work again.</string>
