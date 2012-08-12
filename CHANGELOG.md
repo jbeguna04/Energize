@@ -1,6 +1,6 @@
 Change Log
 ===============================================================================
-Version 0.5 *(2012-??-??)*
+Version 0.5 *(2012-08-12)*
 --------------------------
 * Redesigned the main screen of the application
 * Changed the way battery change information are logged
