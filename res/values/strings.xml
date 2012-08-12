@@ -43,7 +43,5 @@
         <item>Last change period (inaccurate)</item>
     </string-array>
 
-    <string name="percentage_indicator">%</string>
-    <string name="not_available">N/A</string>
     <string name="app_version">Application version</string>
 </resources>
