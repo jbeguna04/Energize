@@ -206,6 +206,8 @@ public class BatteryStateDisplayActivity extends Activity {
 		graphView.setVerticalLabels( new String[] { "100%", "90%", "80%", "70%", "60%", "50%", "40%", "30%", "20%", "10%", "0%" } );
 		graphView.setScrollable( true );
 		graphView.setScalable( true );
+		graphView.setManualYAxis( true );
+		graphView.setManualYAxisBounds( 100.0, 0.0 );
 		// graphView.setViewPort( ((int) (System.currentTimeMillis() / 1000L) - 86400), (int) (System.currentTimeMillis() / 1000L) );
 		LinearLayout layout = (LinearLayout) findViewById( R.id.layout_graph_view );
 		layout.addView( graphView );
