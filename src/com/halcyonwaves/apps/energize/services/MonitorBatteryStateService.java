@@ -75,6 +75,25 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 		// store if the battery is charging or not
 		this.lastTimeCharging = (RawBatteryStatisicsTable.CHARGING_STATE_DISCHARGING != powerSource);
 
+		// get the last entry we made on our database, if the entries are the same we want to insert, skip the insertion process
+		Cursor lastEntryMadeCursor = this.batteryStatisticsDatabase.query( RawBatteryStatisicsTable.TABLE_NAME, new String[] { RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL }, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " DESC" );
+		if( lastEntryMadeCursor.moveToFirst() ) {
+			if( level == lastEntryMadeCursor.getInt( lastEntryMadeCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL ) ) ) {
+				Log.d( MonitorBatteryStateService.TAG, "Tried to insert an already existing dataset, skipping..." );
+
+				// if it is the first run of the application, the percentage would be -1 if we won't set it here
+				this.lastChargingPercentage = level;
+
+				// tell all connected clients about the current charging level and the remaining time
+				MonitorBatteryStateService.this.sendCurrentChargingPctToClients();
+				this.showNewPercentageNotification( level, this.lastRemainingMinutes, this.lastTimeCharging );
+
+				// skip the insertion process
+				return;
+			}
+		}
+		lastEntryMadeCursor.close();
+
 		// insert the new dataset into our database
 		final long currentUnixTime = (long) (System.currentTimeMillis() / 1000);
 		ContentValues values = new ContentValues();
@@ -251,7 +270,7 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 		}
 	}
 
-	public void onSharedPreferenceChanged( SharedPreferences sharedPreferences, String key ) { 
+	public void onSharedPreferenceChanged( SharedPreferences sharedPreferences, String key ) {
 		if( 0 == key.compareTo( "advance.show_notification_bar" ) ) {
 			final boolean showShowIcon = sharedPreferences.getBoolean( "advance.show_notification_bar", true );
 			Log.v( MonitorBatteryStateService.TAG, "Notification icon setting chaanged to: " + showShowIcon );
