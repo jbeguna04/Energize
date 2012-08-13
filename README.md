@@ -1,6 +1,14 @@
 # Energize - Monitor your Battery
 This application is designed to monitor your battery state and provide useful information about the current charging level, the estimated time to charge or discharge and some more useful information.
 
+## Build the app
+For building the application by yourself follow the following steps:
+
+1. Clone the application repository
+     git clone https://github.com/thuetz/Energize.git
+2. Change into the cloned directory
+     cd Energize
+
 ## Translations
 As soon as the used strings is nearly fixed, you can help us on our project page of [GetLocalization][1] to translate the app in many languages.
 
