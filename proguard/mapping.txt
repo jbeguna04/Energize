@@ -17,8 +17,7 @@ com.halcyonwaves.apps.energize.BatteryStateDisplayActivity -> com.halcyonwaves.a
     void showWhatsNewDialog() -> b
     void onCreate(android.os.Bundle) -> onCreate
     com.jjoe64.graphview.GraphView$GraphViewSeries getBatteryStatisticData() -> c
-    java.lang.String[] getBatteryStatisticVerticalLabels() -> d
-    void showBatteryGraph() -> e
+    void showBatteryGraph() -> d
     boolean onCreateOptionsMenu(android.view.Menu) -> onCreateOptionsMenu
     boolean onOptionsItemSelected(android.view.MenuItem) -> onOptionsItemSelected
     android.widget.TextView access$0(com.halcyonwaves.apps.energize.BatteryStateDisplayActivity) -> a
