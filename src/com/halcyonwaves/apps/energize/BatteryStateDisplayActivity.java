@@ -190,39 +190,6 @@ public class BatteryStateDisplayActivity extends Activity {
 		return new GraphViewSeries( convertedDataset );
 	}
 
-	private String[] getBatteryStatisticVerticalLabels() {
-		BatteryStatisticsDatabaseOpenHelper batteryDbOpenHelper = new BatteryStatisticsDatabaseOpenHelper( this.getApplicationContext() );
-		SQLiteDatabase batteryStatisticsDatabase = batteryDbOpenHelper.getReadableDatabase();
-		Cursor lastEntryMadeCursor = batteryStatisticsDatabase.query( RawBatteryStatisicsTable.TABLE_NAME, new String[] { RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL }, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " ASC" );
-
-		//
-		final int columnIndexChargingLevel = lastEntryMadeCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL );
-		int maxLevel = 0;
-		int minLevel = 100;
-
-		//
-		lastEntryMadeCursor.moveToFirst();
-		while( !lastEntryMadeCursor.isAfterLast() ) {
-			if( lastEntryMadeCursor.getInt( columnIndexChargingLevel ) > maxLevel ) {
-				maxLevel = lastEntryMadeCursor.getInt( columnIndexChargingLevel );
-			}
-			if( lastEntryMadeCursor.getInt( columnIndexChargingLevel ) < minLevel ) {
-				minLevel = lastEntryMadeCursor.getInt( columnIndexChargingLevel );
-			}
-			lastEntryMadeCursor.moveToNext();
-		}
-
-		// close our connection to the database
-		lastEntryMadeCursor.close();
-		lastEntryMadeCursor = null;
-		batteryDbOpenHelper.close();
-		batteryStatisticsDatabase = null;
-		batteryDbOpenHelper = null;
-
-		// convert the array to an array and return the view series
-		return new String[] { maxLevel + "%", ((int) Math.round( maxLevel / 2.0 )) + "%", minLevel + "%" };
-	}
-
 	private void showBatteryGraph() {
 		GraphView graphView = new LineGraphView( this, this.getString( R.string.graph_title_batterystatistics ) ) {
 
@@ -236,7 +203,7 @@ public class BatteryStateDisplayActivity extends Activity {
 			}
 		};
 		graphView.addSeries( this.getBatteryStatisticData() );
-		graphView.setVerticalLabels( this.getBatteryStatisticVerticalLabels() );
+		graphView.setVerticalLabels( new String[] { "100%", "90%", "80%", "70%", "60%", "50%", "40%", "30%", "20%", "10%", "0%" } );
 		graphView.setScrollable( true );
 		graphView.setScalable( true );
 		// graphView.setViewPort( ((int) (System.currentTimeMillis() / 1000L) - 86400), (int) (System.currentTimeMillis() / 1000L) );
