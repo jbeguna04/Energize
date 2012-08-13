@@ -196,7 +196,7 @@ public class BatteryStateDisplayActivity extends Activity {
 			@Override
 			protected String formatLabel( double value, boolean isValueX ) {
 				if( isValueX ) {
-					SimpleDateFormat dateFormat = new SimpleDateFormat( "dd.MM, H:mm" );
+					SimpleDateFormat dateFormat = new SimpleDateFormat( "H:mm" );
 					return dateFormat.format( new Date( (long) value * 1000 ) );
 				} else
 					return super.formatLabel( value, isValueX ); // let the y-value be normal-formatted
