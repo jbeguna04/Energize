@@ -1,0 +1,6 @@
+[submodule "3rdparty/ViewPagerIndicator"]
+	path = 3rdparty/ViewPagerIndicator
+	url = https://github.com/JakeWharton/Android-ViewPagerIndicator.git
+[submodule "3rdparty/GraphView"]
+	path = 3rdparty/GraphView
+	url = https://github.com/jjoe64/GraphView.git
