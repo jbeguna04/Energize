@@ -154,7 +154,6 @@ com.jjoe64.graphview.GraphView:
     346:352:public void removeSeries(int)
     356:357:public void removeSeries(com.jjoe64.graphview.GraphView$GraphViewSeries)
     530:530:public boolean isShowLegend()
-    564:567:public void setManualYAxisBounds(double,double)
     641:643:public void setViewPort(double,double)
     278:278:static synthetic void access$21(com.jjoe64.graphview.GraphView,double)
     282:282:static synthetic void access$22(com.jjoe64.graphview.GraphView,java.text.NumberFormat)

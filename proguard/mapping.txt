@@ -294,6 +294,7 @@ com.jjoe64.graphview.GraphView -> com.a.a.a:
     void setLegendAlign(com.jjoe64.graphview.GraphView$LegendAlign) -> setLegendAlign
     void setLegendWidth(float) -> setLegendWidth
     void setManualYAxis(boolean) -> setManualYAxis
+    void setManualYAxisBounds(double,double) -> a
     void setScalable(boolean) -> setScalable
     void setScrollable(boolean) -> setScrollable
     void setShowLegend(boolean) -> setShowLegend
