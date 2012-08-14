@@ -27,8 +27,6 @@
     <string name="notification_text_estimate">%1$d hour(s) and %2$d minute(s) remaining</string>
     <string name="notification_text_estimate_na">Estimation currently not available</string>
     
-    <string name="graph_title_batterystatistics">Battery charging statistics</string>
-    
     <string name="battery_state_charging">Charging</string>
     <string name="battery_state_discharging">Discharging</string>
     <string name="battery_state_full">Full</string>

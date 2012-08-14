@@ -22,12 +22,12 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 public class GraphFragment extends Fragment {
-	
+
 	@Override
 	public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState ) {
 		View inflatedView = inflater.inflate( R.layout.fragment_graph, container, false );
-		
-		GraphView graphView = new LineGraphView( this.getActivity().getApplicationContext(), this.getString( R.string.graph_title_batterystatistics ) ) {
+
+		GraphView graphView = new LineGraphView( this.getActivity().getApplicationContext(), "" ) {
 
 			@Override
 			protected String formatLabel( double value, boolean isValueX ) {
@@ -47,10 +47,10 @@ public class GraphFragment extends Fragment {
 		// graphView.setViewPort( ((int) (System.currentTimeMillis() / 1000L) - 86400), (int) (System.currentTimeMillis() / 1000L) );
 		LinearLayout layout = (LinearLayout) inflatedView.findViewById( R.id.layout_graph_view );
 		layout.addView( graphView );
-		
+
 		return inflatedView;
 	}
-	
+
 	private GraphViewSeries getBatteryStatisticData() {
 		BatteryStatisticsDatabaseOpenHelper batteryDbOpenHelper = new BatteryStatisticsDatabaseOpenHelper( this.getActivity().getApplicationContext() );
 		SQLiteDatabase batteryStatisticsDatabase = batteryDbOpenHelper.getReadableDatabase();
