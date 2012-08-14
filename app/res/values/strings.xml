@@ -44,6 +44,9 @@
     <string name="dialog_title_cleardb_successfull">Database cleared</string>
     <string name="dialog_text_cleardb_successfull">The battery statistics were deleted and it will talke some time until the charging estimation will work again.</string>
     
+    <string name="fragment_title_overview">Overview</string>
+    <string name="fragment_title_batterygraph">Battery graph</string>
+    
     <string-array name="pref_list_theme_names">
         <item>Dark theme</item>
         <item>Light theme</item>

@@ -10,41 +10,25 @@
 
 package com.halcyonwaves.apps.energize;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-
-import com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper;
-import com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable;
 import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.GraphView.GraphViewSeries;
-import com.jjoe64.graphview.GraphView.GraphViewData;
-import com.jjoe64.graphview.LineGraphView;
+import com.viewpagerindicator.TitlePageIndicator;
 
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.os.BatteryManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 /**
  * This class defines the behavior of the first activity the user sees after he
@@ -53,11 +37,9 @@ import android.widget.TextView;
  * 
  * @author Tim Huetz
  */
-public class BatteryStateDisplayActivity extends Activity {
+public class BatteryStateDisplayActivity extends FragmentActivity {
 
 	private static final String VERSION_KEY = "version_number";
-	private TextView textViewCurrentLoadingLevel = null;
-	private TextView textViewCurrentChargingState = null;
 
 	private void init() {
 		final SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences( this.getApplicationContext() );
@@ -105,112 +87,26 @@ public class BatteryStateDisplayActivity extends Activity {
 		// set the default preferences
 		PreferenceManager.setDefaultValues( this, R.xml.pref_unified, false );
 
+		// set the theme of the activity and setup its layout
 		this.setTheme( ApplicationCore.getSelectedThemeId( this.getApplicationContext() ) );
 		this.setContentView( R.layout.activity_batterystatedisplay );
-
-		// get the handles to some important controls
-		this.textViewCurrentLoadingLevel = (TextView) this.findViewById( R.id.textview_text_current_charginglvl );
-		this.textViewCurrentChargingState = (TextView) this.findViewById( R.id.textview_text_current_chargingstate );
-
+		
 		// check if the service is running, if not start it
 		if( !ApplicationCore.isServiceRunning( this, MonitorBatteryStateService.class.getName() ) ) {
 			Log.v( "BatteryStateDisplayActivity", "Monitoring service is not running, starting it..." );
 			this.getApplicationContext().startService( new Intent( this.getApplicationContext(), MonitorBatteryStateService.class ) );
 		}
 
-		// get the current battery state and show it on the main activity
-		BroadcastReceiver batteryLevelReceiver = new BroadcastReceiver() {
+		// set the pager with an adapter
+		ViewPager pager = (ViewPager) this.findViewById( R.id.vp_fragment_pager );
+		pager.setAdapter( new MainFragmentPagerAdapter( this.getApplicationContext(), this.getSupportFragmentManager() ) );
 
-			public void onReceive( Context context, Intent intent ) {
-				context.unregisterReceiver( this );
-				int rawlevel = intent.getIntExtra( BatteryManager.EXTRA_LEVEL, -1 );
-				int scale = intent.getIntExtra( BatteryManager.EXTRA_SCALE, -1 );
-				int status = intent.getIntExtra( BatteryManager.EXTRA_STATUS, -1 );
-				int level = -1;
-				if( rawlevel >= 0 && scale > 0 ) {
-					level = (rawlevel * 100) / scale;
-				}
-				switch( status ) {
-					case BatteryManager.BATTERY_STATUS_CHARGING:
-						BatteryStateDisplayActivity.this.textViewCurrentChargingState.setText( BatteryStateDisplayActivity.this.getString( R.string.battery_state_charging ) );
-						break;
-					case BatteryManager.BATTERY_STATUS_DISCHARGING:
-						BatteryStateDisplayActivity.this.textViewCurrentChargingState.setText( BatteryStateDisplayActivity.this.getString( R.string.battery_state_discharging ) );
-						break;
-					case BatteryManager.BATTERY_STATUS_FULL:
-						BatteryStateDisplayActivity.this.textViewCurrentChargingState.setText( BatteryStateDisplayActivity.this.getString( R.string.battery_state_full ) );
-						break;
-					default:
-						BatteryStateDisplayActivity.this.textViewCurrentChargingState.setText( BatteryStateDisplayActivity.this.getString( R.string.battery_state_unknown ) );
-						break;
-				}
+		// bind the title indicator to the adapter
+		TitlePageIndicator titleIndicator = (TitlePageIndicator) this.findViewById( R.id.vp_fragment_titles );
+		titleIndicator.setViewPager( pager );
 
-				BatteryStateDisplayActivity.this.textViewCurrentLoadingLevel.setText( level + "%" ); // TODO
-			}
-		};
-		IntentFilter batteryLevelFilter = new IntentFilter( Intent.ACTION_BATTERY_CHANGED );
-		this.registerReceiver( batteryLevelReceiver, batteryLevelFilter );
-
-		// render the battery graph and initialize the rest of the application
-		this.showBatteryGraph();
+		// do the rest of the initialization of the main dialog
 		this.init();
-	}
-
-	private GraphViewSeries getBatteryStatisticData() {
-		BatteryStatisticsDatabaseOpenHelper batteryDbOpenHelper = new BatteryStatisticsDatabaseOpenHelper( this.getApplicationContext() );
-		SQLiteDatabase batteryStatisticsDatabase = batteryDbOpenHelper.getReadableDatabase();
-		Cursor lastEntryMadeCursor = batteryStatisticsDatabase.query( RawBatteryStatisicsTable.TABLE_NAME, new String[] { RawBatteryStatisicsTable.COLUMN_EVENT_TIME, RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL }, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " ASC" );
-
-		ArrayList< GraphViewData > graphViewData = new ArrayList< GraphView.GraphViewData >();
-
-		//
-		final int columnIndexEventTime = lastEntryMadeCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_EVENT_TIME );
-		final int columnIndexChargingLevel = lastEntryMadeCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL );
-
-		//
-		lastEntryMadeCursor.moveToFirst();
-		while( !lastEntryMadeCursor.isAfterLast() ) {
-			graphViewData.add( new GraphViewData( lastEntryMadeCursor.getInt( columnIndexEventTime ), lastEntryMadeCursor.getInt( columnIndexChargingLevel ) ) );
-			lastEntryMadeCursor.moveToNext();
-		}
-
-		// close our connection to the database
-		lastEntryMadeCursor.close();
-		lastEntryMadeCursor = null;
-		batteryDbOpenHelper.close();
-		batteryStatisticsDatabase = null;
-		batteryDbOpenHelper = null;
-
-		// convert the array to an array and return the view series
-		if( graphViewData.size() == 0 ) {
-			graphViewData.add( new GraphViewData( 0.0, 0.0 ) );
-		}
-		GraphViewData convertedDataset[] = new GraphViewData[ graphViewData.size() ];
-		graphViewData.toArray( convertedDataset );
-		return new GraphViewSeries( convertedDataset );
-	}
-
-	private void showBatteryGraph() {
-		GraphView graphView = new LineGraphView( this, this.getString( R.string.graph_title_batterystatistics ) ) {
-
-			@Override
-			protected String formatLabel( double value, boolean isValueX ) {
-				if( isValueX ) {
-					SimpleDateFormat dateFormat = new SimpleDateFormat( "HH:mm" );
-					return dateFormat.format( new Date( (long) value * 1000 ) );
-				} else
-					return super.formatLabel( value, isValueX ); // let the y-value be normal-formatted
-			}
-		};
-		graphView.addSeries( this.getBatteryStatisticData() );
-		graphView.setVerticalLabels( new String[] { "100%", "90%", "80%", "70%", "60%", "50%", "40%", "30%", "20%", "10%", "0%" } );
-		graphView.setScrollable( true );
-		graphView.setScalable( true );
-		graphView.setManualYAxis( true );
-		graphView.setManualYAxisBounds( 100.0, 0.0 );
-		// graphView.setViewPort( ((int) (System.currentTimeMillis() / 1000L) - 86400), (int) (System.currentTimeMillis() / 1000L) );
-		LinearLayout layout = (LinearLayout) findViewById( R.id.layout_graph_view );
-		layout.addView( graphView );
 	}
 
 	@Override
