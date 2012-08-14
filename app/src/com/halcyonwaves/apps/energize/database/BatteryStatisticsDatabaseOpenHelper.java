@@ -40,8 +40,4 @@ public class BatteryStatisticsDatabaseOpenHelper extends SQLiteOpenHelper {
 	public void onUpgrade( SQLiteDatabase db, int oldVersion, int newVersion ) {
 		RawBatteryStatisicsTable.onUpgrade( db, oldVersion, newVersion );
 	}
-
-	public String getDatabaseName() {
-		return BatteryStatisticsDatabaseOpenHelper.DATABASE_NAME;
-	}
 }
