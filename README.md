@@ -1,6 +1,9 @@
 # Energize - Monitor your Battery
 This application is designed to monitor your battery state and provide useful information about the current charging level, the estimated time to charge or discharge and some more useful information.
 
+## Download a pre-build version
+You can download a pre-build version of Energize from the [Google Play][8] store.
+
 ## Build the application with [Eclipse][7]
 For building the application by yourself follow the following steps:
 
@@ -34,3 +37,4 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
  [5]: http://commons.wikimedia.org/wiki/GNOME_High_contrast_icons/authors
  [6]: http://www.gnu.org/licenses/lgpl.html
  [7]: http://www.eclipse.org/
+ [8]: https://play.google.com/store/apps/details?id=com.halcyonwaves.apps.energize
