@@ -56,7 +56,7 @@ public class OverviewFragment extends Fragment {
 						break;
 				}
 
-				OverviewFragment.this.textViewCurrentLoadingLevel.setText( level + "%" ); // TODO
+				OverviewFragment.this.textViewCurrentLoadingLevel.setText( level + "" ); // TODO
 			}
 		};
 		IntentFilter batteryLevelFilter = new IntentFilter( Intent.ACTION_BATTERY_CHANGED );
