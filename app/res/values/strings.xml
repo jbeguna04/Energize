@@ -49,6 +49,7 @@
     
     <string name="textview_label_time_on_battery">Time on battery:</string>
     <string name="textview_text_time_on_battery">%1$d hour(s) and %2$d minute(s)</string>
+    <string name="textview_text_time_on_battery_not_on_battery">Not on battery</string>
     
     <string-array name="pref_list_theme_names">
         <item>Dark theme</item>

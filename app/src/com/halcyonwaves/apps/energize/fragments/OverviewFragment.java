@@ -1,14 +1,21 @@
 package com.halcyonwaves.apps.energize.fragments;
 
+import java.util.Date;
+
 import com.halcyonwaves.apps.energize.R;
+import com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper;
+import com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.BatteryManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +24,11 @@ import android.widget.TextView;
 
 public class OverviewFragment extends Fragment {
 	
+	private static final String TAG = "OverviewFragment";
+	
 	private TextView textViewCurrentLoadingLevel = null;
 	private TextView textViewCurrentChargingState = null;
+	private boolean batteryDischarging = false;
 	
 	@Override
 	public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState ) {
@@ -47,6 +57,7 @@ public class OverviewFragment extends Fragment {
 						break;
 					case BatteryManager.BATTERY_STATUS_DISCHARGING:
 						OverviewFragment.this.textViewCurrentChargingState.setText( OverviewFragment.this.getString( R.string.battery_state_discharging ) );
+						OverviewFragment.this.batteryDischarging = true;
 						break;
 					case BatteryManager.BATTERY_STATUS_FULL:
 						OverviewFragment.this.textViewCurrentChargingState.setText( OverviewFragment.this.getString( R.string.battery_state_full ) );
@@ -64,7 +75,35 @@ public class OverviewFragment extends Fragment {
 		
 		// update the label how long the device is running on battery
 		TextView onBatteryTextView = (TextView)inflatedView.findViewById( R.id.textview_text_time_on_battery );
-		onBatteryTextView.setText( this.getString(  R.string.textview_text_time_on_battery, 0, 0 ) );
+		onBatteryTextView.setText( this.getText( R.string.textview_text_time_on_battery_not_on_battery ) );
+		if( !batteryDischarging ) {
+			BatteryStatisticsDatabaseOpenHelper batteryDbOpenHelper = new BatteryStatisticsDatabaseOpenHelper( this.getActivity().getApplicationContext() );
+			SQLiteDatabase batteryStatisticsDatabase = batteryDbOpenHelper.getReadableDatabase();
+			Cursor lastEntryMadeCursor = batteryStatisticsDatabase.query( RawBatteryStatisicsTable.TABLE_NAME, new String[] { RawBatteryStatisicsTable.COLUMN_EVENT_TIME }, RawBatteryStatisicsTable.COLUMN_CHARGING_STATE + " LIKE ?", new String[] { String.valueOf( RawBatteryStatisicsTable.CHARGING_STATE_DISCHARGING ) }, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " DESC" );
+			//Cursor lastEntryMadeCursor = batteryStatisticsDatabase.query( RawBatteryStatisicsTable.TABLE_NAME, new String[] { RawBatteryStatisicsTable.COLUMN_EVENT_TIME, RawBatteryStatisicsTable.COLUMN_CHARGING_STATE }, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " DESC" );
+
+			//
+			if( lastEntryMadeCursor.moveToFirst() ) {
+				int lastUnixTime = lastEntryMadeCursor.getInt( lastEntryMadeCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_EVENT_TIME ) );
+				long diff = System.currentTimeMillis() - ( lastUnixTime * 1000 );
+				diff /= 1000;
+				diff /= 60;
+	
+				//
+				Log.v( OverviewFragment.TAG, String.format( "The unix time where the battery was unplugged: %d (%d now, %d minutes ago)", lastUnixTime, System.currentTimeMillis() / 1000, diff ) );
+			}
+			
+			// close our connection to the database
+			lastEntryMadeCursor.close();
+			lastEntryMadeCursor = null;
+			batteryDbOpenHelper.close();
+			batteryStatisticsDatabase = null;
+			batteryDbOpenHelper = null;
+			
+			
+			//
+			onBatteryTextView.setText( this.getString(  R.string.textview_text_time_on_battery, 0, 0 ) );
+		}
 		
 		// return the inflated view
 		return inflatedView;
