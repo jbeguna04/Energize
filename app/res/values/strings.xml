@@ -16,12 +16,6 @@
     <string name="pref_title_clearstatsdb">Clear statistics database</string>
     <string name="pref_summary_clearstatsdb">Clears the recorded battery events</string>
     
-    <string name="pref_about_title_showlicense">Show app license</string>
-    <string name="pref_about_summary_showlicense">Show the application license</string>
-    
-    <string name="pref_about_title_icon_showlicense">Show addional licenses</string>
-    <string name="pref_about_summary_icon_showlicense">Icon and 3rd party licences</string>
-    
     <string name="notification_title_charges">Battery charges</string>
     <string name="notification_title_discharges">Battery discharges</string>
     <string name="notification_text_estimate">%1$d hour(s) and %2$d minute(s) remaining</string>
@@ -45,6 +39,10 @@
     <string name="fragment_title_overview">Overview</string>
     <string name="fragment_title_batterygraph">Battery graph</string>
     <string name="fragment_title_about">About&#8230;</string>
+    
+    <string name="menu_preferences">Preferences</string>
+    <string name="menu_showapplicense">Show app license</string>
+    <string name="menu_show3rdpartylicense">Show addional licenses</string>
     
     <string-array name="pref_list_theme_names">
         <item>Dark theme</item>

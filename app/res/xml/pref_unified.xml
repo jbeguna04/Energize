@@ -11,7 +11,5 @@
     </PreferenceCategory>
 	<PreferenceCategory android:title="About...">
     	<Preference android:title="@string/pref_title_about_whatsnew" android:key="about.whatsnew" />
-    	<Preference android:title="@string/pref_about_title_showlicense" android:key="about.license.app" android:summary="@string/pref_about_summary_showlicense" />
-    	<Preference android:title="@string/pref_about_title_icon_showlicense" android:key="about.license.appicon" android:summary="@string/pref_about_summary_icon_showlicense"/>
    	</PreferenceCategory>
 </PreferenceScreen>

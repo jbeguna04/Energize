@@ -20,6 +20,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
@@ -114,6 +115,23 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 		this.getMenuInflater().inflate( R.menu.menu_main, menu );
 		return true;
 	}
+	
+	private void showAppIconLicensePreference() {
+		LayoutInflater inflater = LayoutInflater.from( this );
+
+		View view = inflater.inflate( R.layout.dialog_license_appicon, null );
+
+		AlertDialog.Builder builder = new AlertDialog.Builder( this );
+
+		builder.setView( view ).setTitle( R.string.dialog_title_appiconlicense ).setPositiveButton( android.R.string.ok, new OnClickListener() {
+
+			public void onClick( DialogInterface dialog, int which ) {
+				dialog.dismiss();
+			}
+		} );
+
+		builder.create().show();
+	}
 
 	@Override
 	public boolean onOptionsItemSelected( final MenuItem item ) {
@@ -121,6 +139,14 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 			case R.id.menu_preferences:
 				final Intent myIntent = new Intent( BatteryStateDisplayActivity.this, SettingsActivity.class );
 				BatteryStateDisplayActivity.this.startActivity( myIntent );
+				return true;
+			case R.id.menu_showapplicense:
+				Intent i = new Intent( Intent.ACTION_VIEW );
+				i.setData( Uri.parse( "http://www.gnu.org/copyleft/gpl.html" ) );
+				startActivity( i );
+				return true;
+			case R.id.menu_show3rdpartylicense:
+				this.showAppIconLicensePreference();
 				return true;
 			default:
 				return false;

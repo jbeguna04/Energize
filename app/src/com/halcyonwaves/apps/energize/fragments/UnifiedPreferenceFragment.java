@@ -10,8 +10,6 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -29,8 +27,6 @@ public class UnifiedPreferenceFragment extends PreferenceFragment {
 
 	private final static String TAG = "UnifiedPreferenceFragment";
 	private Preference whatsNewPreference = null;
-	private Preference showAppIconLicensePreference = null;
-	private Preference showLicencePreference = null;
 	private Preference sendDatabasePreference = null;
 	private Messenger monitorService = null;
 	private final Messenger monitorServiceMessanger = new Messenger( new IncomingHandler() );
@@ -116,54 +112,17 @@ public class UnifiedPreferenceFragment extends PreferenceFragment {
 
 		builder.create().show();
 	}
-
-	private void showAppIconLicensePreference() {
-		LayoutInflater inflater = LayoutInflater.from( this.getActivity() );
-
-		View view = inflater.inflate( R.layout.dialog_license_appicon, null );
-
-		AlertDialog.Builder builder = new AlertDialog.Builder( this.getActivity() );
-
-		builder.setView( view ).setTitle( R.string.dialog_title_appiconlicense ).setPositiveButton( android.R.string.ok, new OnClickListener() {
-
-			public void onClick( DialogInterface dialog, int which ) {
-				dialog.dismiss();
-			}
-		} );
-
-		builder.create().show();
-	}
 	
 	@Override
 	public void onCreate( Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
 		this.addPreferencesFromResource( R.xml.pref_unified );
-
-		this.showLicencePreference = this.findPreference( "about.license.app" );
-		this.showLicencePreference.setOnPreferenceClickListener( new OnPreferenceClickListener() {
-
-			public boolean onPreferenceClick( Preference preference ) {
-				Intent i = new Intent( Intent.ACTION_VIEW );
-				i.setData( Uri.parse( "http://www.gnu.org/copyleft/gpl.html" ) );
-				startActivity( i );
-				return false;
-			}
-		} );
 		
 		this.whatsNewPreference = this.findPreference( "about.whatsnew" );
 		this.whatsNewPreference.setOnPreferenceClickListener( new OnPreferenceClickListener() {
 
 			public boolean onPreferenceClick( Preference preference ) {
 				UnifiedPreferenceFragment.this.showWhatsNewDialog();
-				return false;
-			}
-		} );
-
-		this.showAppIconLicensePreference = this.findPreference( "about.license.appicon" );
-		this.showAppIconLicensePreference.setOnPreferenceClickListener( new OnPreferenceClickListener() {
-
-			public boolean onPreferenceClick( Preference preference ) {
-				UnifiedPreferenceFragment.this.showAppIconLicensePreference();
 				return false;
 			}
 		} );
