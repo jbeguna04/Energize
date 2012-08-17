@@ -4,6 +4,8 @@
 		<TextView android:id="@+id/textview_text_current_charginglvl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="90pt" android:layout_marginLeft="5dp" />
 		<TextView android:id="@+id/textview_label_current_charginglvl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20pt" android:layout_marginLeft="5dp" android:text="%" />
     </LinearLayout>
-    <TextView android:id="@+id/textview_label_current_chargingstate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/textview_label_current_chargingstate" />
-	<TextView android:id="@+id/textview_text_current_chargingstate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" />
+    <TextView android:id="@+id/textview_label_current_chargingstate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/textview_label_current_chargingstate" android:textStyle="bold" />
+	<TextView android:id="@+id/textview_text_current_chargingstate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingLeft="15dp" android:paddingBottom="10dp" />
+	<TextView android:id="@+id/textview_label_time_on_battery" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/textview_label_time_on_battery" android:textStyle="bold" />
+	<TextView android:id="@+id/textview_text_time_on_battery" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingLeft="15dp" android:paddingBottom="10dp" />
 </LinearLayout>

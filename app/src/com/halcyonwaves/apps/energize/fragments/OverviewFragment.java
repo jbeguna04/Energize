@@ -62,6 +62,10 @@ public class OverviewFragment extends Fragment {
 		IntentFilter batteryLevelFilter = new IntentFilter( Intent.ACTION_BATTERY_CHANGED );
 		this.getActivity().registerReceiver( batteryLevelReceiver, batteryLevelFilter );
 		
+		// update the label how long the device is running on battery
+		TextView onBatteryTextView = (TextView)inflatedView.findViewById( R.id.textview_text_time_on_battery );
+		onBatteryTextView.setText( this.getString(  R.string.textview_text_time_on_battery, 0, 0 ) );
+		
 		// return the inflated view
 		return inflatedView;
 	}
