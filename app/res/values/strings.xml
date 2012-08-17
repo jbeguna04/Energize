@@ -41,6 +41,9 @@
     <string name="fragment_title_about">About&#8230;</string>
     
     <string name="textview_app_version">Version: %s</string>
+    <string name="textview_do_you_like_it">Do you like Energize?</string>
+    <string name="textview_why_rating_the_app">The best way to show your support is by telling others.</string>
+    <string name="button_rate_app">Rate the app</string>
     
     <string name="menu_preferences">Preferences</string>
     <string name="menu_showapplicense">Show app license</string>
