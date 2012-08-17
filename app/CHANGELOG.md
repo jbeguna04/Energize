@@ -3,8 +3,8 @@ Change Log
 Version 0.6 *(2012-??-??)*
 --------------------------
 * Added an option to delete the statistics as soon as the devices gets charged
-* The main screen will how a entry how long the user is currently on the battery
-* Added several pages to the main screen to clean up the UI
+* The main screen was extended with an entry how long the user is currently on battery power
+* Added several pages to the main screen to clean up the UI and prepare for a Tablet layout
 * Resized the graph to make it better readable
 * Updated the themes to optimize the look of the app
 * Cleaned up the preference of the app
