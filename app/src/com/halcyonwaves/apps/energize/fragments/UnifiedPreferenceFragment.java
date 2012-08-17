@@ -139,13 +139,6 @@ public class UnifiedPreferenceFragment extends PreferenceFragment {
 		super.onCreate( savedInstanceState );
 		this.addPreferencesFromResource( R.xml.pref_unified );
 
-		try {
-			final Preference applicationVersionPreference = this.findPreference( "about.app_version" );
-			applicationVersionPreference.setSummary( this.getActivity().getPackageManager().getPackageInfo( this.getActivity().getPackageName(), 0 ).versionName );
-		} catch( final NameNotFoundException e ) {
-			Log.e( UnifiedPreferenceFragment.TAG, "Cannot find the preference key for setting up the application version" );
-		}
-
 		this.showLicencePreference = this.findPreference( "about.license.app" );
 		this.showLicencePreference.setOnPreferenceClickListener( new OnPreferenceClickListener() {
 
