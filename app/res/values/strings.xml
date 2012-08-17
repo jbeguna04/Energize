@@ -42,7 +42,7 @@
     
     <string name="textview_app_version">Version: %s</string>
     <string name="textview_do_you_like_it">Do you like Energize?</string>
-    <string name="textview_why_rating_the_app">The best way to show your support is by telling others.</string>
+    <string name="textview_why_rating_the_app">Support us by writing a review and/or rating the app in the Google Play Store.</string>
     <string name="button_rate_app">Rate the app</string>
     
     <string name="menu_preferences">Preferences</string>
