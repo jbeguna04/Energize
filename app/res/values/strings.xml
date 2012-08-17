@@ -40,6 +40,8 @@
     <string name="fragment_title_batterygraph">Battery graph</string>
     <string name="fragment_title_about">About&#8230;</string>
     
+    <string name="textview_app_version">Version: %s</string>
+    
     <string name="menu_preferences">Preferences</string>
     <string name="menu_showapplicense">Show app license</string>
     <string name="menu_show3rdpartylicense">Show addional licenses</string>

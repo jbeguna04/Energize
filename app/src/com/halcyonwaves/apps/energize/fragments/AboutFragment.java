@@ -22,7 +22,7 @@ public class AboutFragment extends Fragment {
 		// set the application version for the about screen
 		try {
 			TextView appVersionTextView = (TextView)inflatedView.findViewById( R.id.tv_about_application_version );
-			appVersionTextView.setText( this.getActivity().getPackageManager().getPackageInfo( this.getActivity().getPackageName(), 0 ).versionName );
+			appVersionTextView.setText( this.getString( R.string.textview_app_version, this.getActivity().getPackageManager().getPackageInfo( this.getActivity().getPackageName(), 0 ).versionName ) );
 		} catch( NameNotFoundException e ) {
 			Log.e( AboutFragment.TAG, "Cannot query the application version for setting it in the about screen." );
 		}
