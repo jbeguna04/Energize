@@ -95,37 +95,11 @@ public class UnifiedPreferenceFragment extends PreferenceFragment {
 		super.onDestroy();
 		this.doUnbindService();
 	}
-
-	private void showWhatsNewDialog() {
-		LayoutInflater inflater = LayoutInflater.from( this.getActivity() );
-
-		View view = inflater.inflate( R.layout.dialog_whatsnew, null );
-
-		AlertDialog.Builder builder = new AlertDialog.Builder( this.getActivity() );
-
-		builder.setView( view ).setTitle( R.string.dialog_title_whatsnew ).setPositiveButton( android.R.string.ok, new OnClickListener() {
-
-			public void onClick( DialogInterface dialog, int which ) {
-				dialog.dismiss();
-			}
-		} );
-
-		builder.create().show();
-	}
 	
 	@Override
 	public void onCreate( Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
 		this.addPreferencesFromResource( R.xml.pref_unified );
-		
-		this.whatsNewPreference = this.findPreference( "about.whatsnew" );
-		this.whatsNewPreference.setOnPreferenceClickListener( new OnPreferenceClickListener() {
-
-			public boolean onPreferenceClick( Preference preference ) {
-				UnifiedPreferenceFragment.this.showWhatsNewDialog();
-				return false;
-			}
-		} );
 
 		this.sendDatabasePreference = this.findPreference( "batstatistics.cleardb" );
 		this.sendDatabasePreference.setOnPreferenceClickListener( new OnPreferenceClickListener() {

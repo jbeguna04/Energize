@@ -9,7 +9,4 @@
     	<ListPreference android:title="@string/pref_title_change_batteryestimation" android:summary="@string/pref_summary_change_batteryestimation" android:entries="@array/pref_list_batteryestimationmethod_names" android:entryValues="@array/pref_list_batteryestimationmethod_values" android:defaultValue="LastChangeEstimate" />
 		<Preference android:title="@string/pref_title_clearstatsdb" android:key="batstatistics.cleardb" android:summary="@string/pref_summary_clearstatsdb" />
     </PreferenceCategory>
-	<PreferenceCategory android:title="About...">
-    	<Preference android:title="@string/pref_title_about_whatsnew" android:key="about.whatsnew" />
-   	</PreferenceCategory>
 </PreferenceScreen>

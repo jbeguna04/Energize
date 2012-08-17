@@ -8,7 +8,6 @@ Version 0.6 *(2012-??-??)*
 * Resized the graph to make it better readable
 * Updated the themes to optimize the look of the app
 * Cleaned up the preference of the app
-* Added a new dialog for showing the "What's new" information with an option to rate the app
 * Done a important code cleanup to remove unused code, optimize the speed and the power consumption of the app and make it easier to implement new features
 
 Version 0.5 *(2012-08-12)*

@@ -11,8 +11,6 @@
     <string name="pref_title_change_batteryestimation">Battery estimation method</string>
     <string name="pref_summary_change_batteryestimation">Method: %1$s</string>
     
-    <string name="pref_title_about_whatsnew">What\'s new?</string>
-    
     <string name="pref_title_clearstatsdb">Clear statistics database</string>
     <string name="pref_summary_clearstatsdb">Clears the recorded battery events</string>
     
