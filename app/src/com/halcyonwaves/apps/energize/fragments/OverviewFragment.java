@@ -1,21 +1,14 @@
 package com.halcyonwaves.apps.energize.fragments;
 
-import java.util.Date;
-
 import com.halcyonwaves.apps.energize.R;
-import com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper;
-import com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.BatteryManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,11 +17,11 @@ import android.widget.TextView;
 
 public class OverviewFragment extends Fragment {
 	
-	private static final String TAG = "OverviewFragment";
+//	private static final String TAG = "OverviewFragment";
 	
 	private TextView textViewCurrentLoadingLevel = null;
 	private TextView textViewCurrentChargingState = null;
-	private boolean batteryDischarging = false;
+//	private boolean batteryDischarging = false;
 	
 	@Override
 	public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState ) {
@@ -57,7 +50,7 @@ public class OverviewFragment extends Fragment {
 						break;
 					case BatteryManager.BATTERY_STATUS_DISCHARGING:
 						OverviewFragment.this.textViewCurrentChargingState.setText( OverviewFragment.this.getString( R.string.battery_state_discharging ) );
-						OverviewFragment.this.batteryDischarging = true;
+//						OverviewFragment.this.batteryDischarging = true;
 						break;
 					case BatteryManager.BATTERY_STATUS_FULL:
 						OverviewFragment.this.textViewCurrentChargingState.setText( OverviewFragment.this.getString( R.string.battery_state_full ) );
@@ -74,6 +67,7 @@ public class OverviewFragment extends Fragment {
 		this.getActivity().registerReceiver( batteryLevelReceiver, batteryLevelFilter );
 		
 		// update the label how long the device is running on battery
+		/*
 		TextView onBatteryTextView = (TextView)inflatedView.findViewById( R.id.textview_text_time_on_battery );
 		onBatteryTextView.setText( this.getText( R.string.textview_text_time_on_battery_not_on_battery ) );
 		if( !batteryDischarging ) {
@@ -103,7 +97,7 @@ public class OverviewFragment extends Fragment {
 			
 			//
 			onBatteryTextView.setText( this.getString(  R.string.textview_text_time_on_battery, 0, 0 ) );
-		}
+		}*/
 		
 		// return the inflated view
 		return inflatedView;
