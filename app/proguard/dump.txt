@@ -34465,7 +34465,7 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 111):
+Constant Pool (count = 112):
   + Integer [2131034128]
   + Integer [2131034129]
   + Integer [2131034130]
@@ -34473,6 +34473,7 @@ Constant Pool (count = 111):
   + Integer [2131034150]
   + Integer [2131034151]
   + Float [1.8]
+  + Float [10.0]
   + Float [32.0]
   + String [Celsius]
   + String [celsius]
@@ -34590,10 +34591,10 @@ Methods (count = 2):
     + Code attribute instructions (code length = 10, locals = 2, stack = 2):
       [0] aload_0 v0
       [1] aload_1 v1
-      [2] putfield #28
+      [2] putfield #29
         + Fieldref [com/halcyonwaves/apps/energize/b/f.a Lcom/halcyonwaves/apps/energize/b/e;]
       [5] aload_0 v0
-      [6] invokespecial #29
+      [6] invokespecial #30
         + Methodref [android/content/BroadcastReceiver.<init> ()V]
       [9] return
       Code attribute exceptions (count = 0):
@@ -34605,210 +34606,213 @@ Methods (count = 2):
     + Code attribute instructions (code length = 320, locals = 10, stack = 7):
       [0] aload_1 v1
       [1] aload_0 v0
-      [2] invokevirtual #30
+      [2] invokevirtual #31
         + Methodref [android/content/Context.unregisterReceiver (Landroid/content/BroadcastReceiver;)V]
       [5] aload_2 v2
-      [6] ldc #13
+      [6] ldc #14
         + String [level]
       [8] iconst_m1
-      [9] invokevirtual #31
+      [9] invokevirtual #32
         + Methodref [android/content/Intent.getIntExtra (Ljava/lang/String;I)I]
       [12] istore_3 v3
       [13] aload_2 v2
-      [14] ldc #14
+      [14] ldc #15
         + String [scale]
       [16] iconst_m1
-      [17] invokevirtual #31
+      [17] invokevirtual #32
         + Methodref [android/content/Intent.getIntExtra (Ljava/lang/String;I)I]
       [20] istore v4
       [22] aload_2 v2
-      [23] ldc #15
+      [23] ldc #16
         + String [status]
       [25] iconst_m1
-      [26] invokevirtual #31
+      [26] invokevirtual #32
         + Methodref [android/content/Intent.getIntExtra (Ljava/lang/String;I)I]
       [29] istore v5
       [31] aload_2 v2
-      [32] ldc #16
+      [32] ldc #17
         + String [temperature]
       [34] iconst_m1
-      [35] invokevirtual #31
+      [35] invokevirtual #32
         + Methodref [android/content/Intent.getIntExtra (Ljava/lang/String;I)I]
       [38] i2f
-      [39] fstore v6
-      [41] iconst_m1
-      [42] istore v7
-      [44] iload_3 v3
-      [45] iflt +17 (target=62)
-      [48] iload v4
-      [50] ifle +12 (target=62)
-      [53] iload_3 v3
-      [54] bipush 100
-      [56] imul
-      [57] iload v4
-      [59] idiv
-      [60] istore v7
-      [62] iload v5
-      [64] tableswitch (4 offsets, default=98) (target=162)
-        2: offset = 32, target = 96
-        3: offset = 54, target = 118
-        4: offset = 98, target = 162
-        5: offset = 76, target = 140
-        default: offset = 98, target = 162
+      [39] ldc #8
+        + Float [10.0]
+      [41] fdiv
+      [42] fstore v6
+      [44] iconst_m1
+      [45] istore v7
+      [47] iload_3 v3
+      [48] iflt +17 (target=65)
+      [51] iload v4
+      [53] ifle +12 (target=65)
+      [56] iload_3 v3
+      [57] bipush 100
+      [59] imul
+      [60] iload v4
+      [62] idiv
+      [63] istore v7
+      [65] iload v5
+      [67] tableswitch (4 offsets, default=95) (target=162)
+        2: offset = 29, target = 96
+        3: offset = 51, target = 118
+        4: offset = 95, target = 162
+        5: offset = 73, target = 140
+        default: offset = 95, target = 162
       [96] aload_0 v0
-      [97] getfield #28
+      [97] getfield #29
         + Fieldref [com/halcyonwaves/apps/energize/b/f.a Lcom/halcyonwaves/apps/energize/b/e;]
-      [100] invokestatic #34
+      [100] invokestatic #35
         + Methodref [com/halcyonwaves/apps/energize/b/e.a (Lcom/halcyonwaves/apps/energize/b/e;)Landroid/widget/TextView;]
       [103] aload_0 v0
-      [104] getfield #28
+      [104] getfield #29
         + Fieldref [com/halcyonwaves/apps/energize/b/f.a Lcom/halcyonwaves/apps/energize/b/e;]
       [107] ldc #1
         + Integer [2131034128]
-      [109] invokevirtual #35
+      [109] invokevirtual #36
         + Methodref [com/halcyonwaves/apps/energize/b/e.b (I)Ljava/lang/String;]
-      [112] invokevirtual #32
+      [112] invokevirtual #33
         + Methodref [android/widget/TextView.setText (Ljava/lang/CharSequence;)V]
       [115] goto +66 (target=181)
       [118] aload_0 v0
-      [119] getfield #28
+      [119] getfield #29
         + Fieldref [com/halcyonwaves/apps/energize/b/f.a Lcom/halcyonwaves/apps/energize/b/e;]
-      [122] invokestatic #34
+      [122] invokestatic #35
         + Methodref [com/halcyonwaves/apps/energize/b/e.a (Lcom/halcyonwaves/apps/energize/b/e;)Landroid/widget/TextView;]
       [125] aload_0 v0
-      [126] getfield #28
+      [126] getfield #29
         + Fieldref [com/halcyonwaves/apps/energize/b/f.a Lcom/halcyonwaves/apps/energize/b/e;]
       [129] ldc #2
         + Integer [2131034129]
-      [131] invokevirtual #35
+      [131] invokevirtual #36
         + Methodref [com/halcyonwaves/apps/energize/b/e.b (I)Ljava/lang/String;]
-      [134] invokevirtual #32
+      [134] invokevirtual #33
         + Methodref [android/widget/TextView.setText (Ljava/lang/CharSequence;)V]
       [137] goto +44 (target=181)
       [140] aload_0 v0
-      [141] getfield #28
+      [141] getfield #29
         + Fieldref [com/halcyonwaves/apps/energize/b/f.a Lcom/halcyonwaves/apps/energize/b/e;]
-      [144] invokestatic #34
+      [144] invokestatic #35
         + Methodref [com/halcyonwaves/apps/energize/b/e.a (Lcom/halcyonwaves/apps/energize/b/e;)Landroid/widget/TextView;]
       [147] aload_0 v0
-      [148] getfield #28
+      [148] getfield #29
         + Fieldref [com/halcyonwaves/apps/energize/b/f.a Lcom/halcyonwaves/apps/energize/b/e;]
       [151] ldc #3
         + Integer [2131034130]
-      [153] invokevirtual #35
+      [153] invokevirtual #36
         + Methodref [com/halcyonwaves/apps/energize/b/e.b (I)Ljava/lang/String;]
-      [156] invokevirtual #32
+      [156] invokevirtual #33
         + Methodref [android/widget/TextView.setText (Ljava/lang/CharSequence;)V]
       [159] goto +22 (target=181)
       [162] aload_0 v0
-      [163] getfield #28
+      [163] getfield #29
         + Fieldref [com/halcyonwaves/apps/energize/b/f.a Lcom/halcyonwaves/apps/energize/b/e;]
-      [166] invokestatic #34
+      [166] invokestatic #35
         + Methodref [com/halcyonwaves/apps/energize/b/e.a (Lcom/halcyonwaves/apps/energize/b/e;)Landroid/widget/TextView;]
       [169] aload_0 v0
-      [170] getfield #28
+      [170] getfield #29
         + Fieldref [com/halcyonwaves/apps/energize/b/f.a Lcom/halcyonwaves/apps/energize/b/e;]
       [173] ldc #4
         + Integer [2131034131]
-      [175] invokevirtual #35
+      [175] invokevirtual #36
         + Methodref [com/halcyonwaves/apps/energize/b/e.b (I)Ljava/lang/String;]
-      [178] invokevirtual #32
+      [178] invokevirtual #33
         + Methodref [android/widget/TextView.setText (Ljava/lang/CharSequence;)V]
       [181] aload_0 v0
-      [182] getfield #28
+      [182] getfield #29
         + Fieldref [com/halcyonwaves/apps/energize/b/f.a Lcom/halcyonwaves/apps/energize/b/e;]
-      [185] invokestatic #36
+      [185] invokestatic #37
         + Methodref [com/halcyonwaves/apps/energize/b/e.b (Lcom/halcyonwaves/apps/energize/b/e;)Landroid/widget/TextView;]
-      [188] new #27
+      [188] new #28
         + Class [java/lang/StringBuilder]
       [191] dup
       [192] iload v7
-      [194] invokestatic #41
+      [194] invokestatic #42
         + Methodref [java/lang/String.valueOf (I)Ljava/lang/String;]
-      [197] invokespecial #42
+      [197] invokespecial #43
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
-      [200] invokevirtual #43
+      [200] invokevirtual #44
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
-      [203] invokevirtual #32
+      [203] invokevirtual #33
         + Methodref [android/widget/TextView.setText (Ljava/lang/CharSequence;)V]
       [206] aload_0 v0
-      [207] getfield #28
+      [207] getfield #29
         + Fieldref [com/halcyonwaves/apps/energize/b/f.a Lcom/halcyonwaves/apps/energize/b/e;]
-      [210] invokestatic #37
+      [210] invokestatic #38
         + Methodref [com/halcyonwaves/apps/energize/b/e.c (Lcom/halcyonwaves/apps/energize/b/e;)Landroid/content/SharedPreferences;]
-      [213] ldc #11
+      [213] ldc #12
         + String [display.temperature_unit]
-      [215] ldc #9
+      [215] ldc #10
         + String [Celsius]
-      [217] invokeinterface #44
+      [217] invokeinterface #45
         + InterfaceMethodref [android/content/SharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
       [222] astore v8
       [224] aload v8
-      [226] ldc #10
+      [226] ldc #11
         + String [celsius]
-      [228] invokevirtual #40
+      [228] invokevirtual #41
         + Methodref [java/lang/String.compareToIgnoreCase (Ljava/lang/String;)I]
       [231] ifne +37 (target=268)
       [234] aload_0 v0
-      [235] getfield #28
+      [235] getfield #29
         + Fieldref [com/halcyonwaves/apps/energize/b/f.a Lcom/halcyonwaves/apps/energize/b/e;]
-      [238] invokestatic #38
+      [238] invokestatic #39
         + Methodref [com/halcyonwaves/apps/energize/b/e.d (Lcom/halcyonwaves/apps/energize/b/e;)Landroid/widget/TextView;]
       [241] aload_0 v0
-      [242] getfield #28
+      [242] getfield #29
         + Fieldref [com/halcyonwaves/apps/energize/b/f.a Lcom/halcyonwaves/apps/energize/b/e;]
       [245] ldc #5
         + Integer [2131034150]
       [247] iconst_1
-      [248] anewarray #25
+      [248] anewarray #26
         + Class [java/lang/Object]
       [251] dup
       [252] iconst_0
       [253] fload v6
-      [255] invokestatic #39
+      [255] invokestatic #40
         + Methodref [java/lang/Float.valueOf (F)Ljava/lang/Float;]
       [258] aastore
-      [259] invokevirtual #33
+      [259] invokevirtual #34
         + Methodref [com/halcyonwaves/apps/energize/b/e.a (I[Ljava/lang/Object;)Ljava/lang/String;]
-      [262] invokevirtual #32
+      [262] invokevirtual #33
         + Methodref [android/widget/TextView.setText (Ljava/lang/CharSequence;)V]
       [265] goto +54 (target=319)
       [268] aload v8
-      [270] ldc #12
+      [270] ldc #13
         + String [fahrenheit]
-      [272] invokevirtual #40
+      [272] invokevirtual #41
         + Methodref [java/lang/String.compareToIgnoreCase (Ljava/lang/String;)I]
       [275] ifne +44 (target=319)
       [278] fload v6
       [280] ldc #7
         + Float [1.8]
       [282] fmul
-      [283] ldc #8
+      [283] ldc #9
         + Float [32.0]
       [285] fadd
       [286] fstore v9
       [288] aload_0 v0
-      [289] getfield #28
+      [289] getfield #29
         + Fieldref [com/halcyonwaves/apps/energize/b/f.a Lcom/halcyonwaves/apps/energize/b/e;]
-      [292] invokestatic #38
+      [292] invokestatic #39
         + Methodref [com/halcyonwaves/apps/energize/b/e.d (Lcom/halcyonwaves/apps/energize/b/e;)Landroid/widget/TextView;]
       [295] aload_0 v0
-      [296] getfield #28
+      [296] getfield #29
         + Fieldref [com/halcyonwaves/apps/energize/b/f.a Lcom/halcyonwaves/apps/energize/b/e;]
       [299] ldc #6
         + Integer [2131034151]
       [301] iconst_1
-      [302] anewarray #25
+      [302] anewarray #26
         + Class [java/lang/Object]
       [305] dup
       [306] iconst_0
       [307] fload v9
-      [309] invokestatic #39
+      [309] invokestatic #40
         + Methodref [java/lang/Float.valueOf (F)Ljava/lang/Float;]
       [312] aastore
-      [313] invokevirtual #33
+      [313] invokevirtual #34
         + Methodref [com/halcyonwaves/apps/energize/b/e.a (I[Ljava/lang/Object;)Ljava/lang/String;]
-      [316] invokevirtual #32
+      [316] invokevirtual #33
         + Methodref [android/widget/TextView.setText (Ljava/lang/CharSequence;)V]
       [319] return
       Code attribute exceptions (count = 0):
