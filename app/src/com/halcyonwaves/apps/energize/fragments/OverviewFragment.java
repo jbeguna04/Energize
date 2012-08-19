@@ -47,7 +47,7 @@ public class OverviewFragment extends Fragment {
 				int rawlevel = intent.getIntExtra( BatteryManager.EXTRA_LEVEL, -1 );
 				int scale = intent.getIntExtra( BatteryManager.EXTRA_SCALE, -1 );
 				int status = intent.getIntExtra( BatteryManager.EXTRA_STATUS, -1 );
-				int temp = intent.getIntExtra( BatteryManager.EXTRA_TEMPERATURE, -1 );
+				float temp = (float) intent.getIntExtra( BatteryManager.EXTRA_TEMPERATURE, -1 );
 				int level = -1;
 				if( rawlevel >= 0 && scale > 0 ) {
 					level = (rawlevel * 100) / scale;
