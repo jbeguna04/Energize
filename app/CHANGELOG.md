@@ -2,9 +2,8 @@ Change Log
 ===============================================================================
 Version 0.6 *(2012-??-??)*
 --------------------------
-* Added an option to delete the statistics as soon as the devices gets charged
-* The main screen shows information how long the user is currently on battery
-* The main screen was extended with an entry how long the user is currently on battery power
+* The main screen shows the temperature of the battery
+* Added an option to chose between Celsius and Fahrenheit
 * Added several pages to the main screen to clean up the UI and prepare for a Tablet layout
 * Resized the graph to make it better readable
 * Updated the themes to optimize the look of the app
