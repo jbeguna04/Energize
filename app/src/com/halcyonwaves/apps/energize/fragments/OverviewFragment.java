@@ -6,8 +6,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.BatteryManager;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,11 +23,14 @@ public class OverviewFragment extends Fragment {
 	private TextView textViewCurrentLoadingLevel = null;
 	private TextView textViewCurrentChargingState = null;
 	private TextView textViewTemp = null;
+	private SharedPreferences sharedPref = null;
 
 	// private boolean batteryDischarging = false;
 
 	@Override
 	public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState ) {
+		this.sharedPref = PreferenceManager.getDefaultSharedPreferences( this.getActivity().getApplicationContext() );
+
 		// inflate the static part of the view
 		View inflatedView = inflater.inflate( R.layout.fragment_maininformation, container, false );
 
@@ -64,7 +69,13 @@ public class OverviewFragment extends Fragment {
 				}
 
 				OverviewFragment.this.textViewCurrentLoadingLevel.setText( level + "" ); // TODO
-				OverviewFragment.this.textViewTemp.setText( OverviewFragment.this.getString( R.string.textview_text_temperature_celsius, temp ) );
+				String prefUsedUnit = OverviewFragment.this.sharedPref.getString( "display.temperature_unit", "Celsius" );
+				if( prefUsedUnit.compareToIgnoreCase( "celsius" ) == 0 ) {
+					OverviewFragment.this.textViewTemp.setText( OverviewFragment.this.getString( R.string.textview_text_temperature_celsius, temp ) );
+				} else if( prefUsedUnit.compareToIgnoreCase( "fahrenheit" ) == 0 ) {
+					final float newTemp = temp * 1.8f + 32.0f;
+					OverviewFragment.this.textViewTemp.setText( OverviewFragment.this.getString( R.string.textview_text_temperature_fahrenheit, newTemp ) );
+				}
 			}
 		};
 		IntentFilter batteryLevelFilter = new IntentFilter( Intent.ACTION_BATTERY_CHANGED );

@@ -4,6 +4,7 @@
         <SwitchPreference android:key="advance.start_on_boot" android:title="@string/pref_title_start_on_boot" android:defaultValue="true" />
         <SwitchPreference android:key="advance.show_notification_bar" android:title="@string/pref_title_show_notification_bar" android:defaultValue="true" android:dependency="advance.start_on_boot"/>
 		<ListPreference android:key="display.theme" android:title="@string/pref_title_theme" android:summary="@string/pref_summary_theme" android:entries="@array/pref_list_theme_names" android:entryValues="@array/pref_list_theme_values" android:defaultValue="DarkTheme" />
+		<ListPreference android:key="display.temperature_unit" android:title="@string/pref_title_temperature_unit" android:summary="@string/pref_summary_temperature_unit" android:entries="@array/pref_list_temperature_unit_names" android:entryValues="@array/pref_list_temperature_unit" android:defaultValue="Celsius" />
     </PreferenceCategory>
     <PreferenceCategory android:title="Statistics">
     	<ListPreference android:title="@string/pref_title_change_batteryestimation" android:summary="@string/pref_summary_change_batteryestimation" android:entries="@array/pref_list_batteryestimationmethod_names" android:entryValues="@array/pref_list_batteryestimationmethod_values" android:defaultValue="LastChangeEstimate" />

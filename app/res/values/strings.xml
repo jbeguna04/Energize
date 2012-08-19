@@ -11,6 +11,9 @@
     <string name="pref_title_change_batteryestimation">Battery estimation method</string>
     <string name="pref_summary_change_batteryestimation">Method: %1$s</string>
     
+    <string name="pref_title_temperature_unit">Temperature unit</string>
+    <string name="pref_summary_temperature_unit">Used unit: %1$s</string>
+    
     <string name="pref_title_clearstatsdb">Clear statistics database</string>
     <string name="pref_summary_clearstatsdb">Clears the recorded battery events</string>
     
@@ -48,8 +51,8 @@
     <string name="menu_show3rdpartylicense">Show addional licenses</string>
     
     <string name="textview_label_temperature">Battery temperature:</string>
-    <string name="textview_text_temperature_celsius">%d °C</string>
-    <string name="textview_text_temperature_fahrenheit">%d °F</string>
+    <string name="textview_text_temperature_celsius">%.1f °C</string>
+    <string name="textview_text_temperature_fahrenheit">%.1f °F</string>
     <string name="textview_label_time_on_battery">Time on battery:</string>
     <string name="textview_text_time_on_battery">%1$d hour(s) and %2$d minute(s)</string>
     <string name="textview_text_time_on_battery_not_on_battery">Not on battery</string>
@@ -59,6 +62,11 @@
         <item>Light theme</item>
     </string-array>
 
+    <string-array name="pref_list_temperature_unit_names">
+        <item>Celsius</item>
+        <item>Fahrenheit</item>
+    </string-array>
+    
     <string-array name="pref_list_batteryestimationmethod_names">
         <item>Last change period (inaccurate)</item>
     </string-array>
