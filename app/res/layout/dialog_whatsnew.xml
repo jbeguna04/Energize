@@ -11,6 +11,18 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:text="Version 0.6"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="25dp"
+        android:text="- The main screen shows the temperature of the battery\n- Added an option to chose between Celsius and Fahrenheit\n- Added several pages to the main screen to clean up the UI and prepare for a Tablet layout\n- Resized the graph to make it better readable\n- Updated the themes to optimize the look of the app\n- Cleaned up the preference of the app\n- Done a important code cleanup to remove unused code, optimize the speed and the power consumption of the app and make it easier to implement new features" />
+    
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:text="Version 0.5"
         android:textStyle="bold" />
 
@@ -18,7 +30,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="25dp"
-        android:text="-Redesigned the main screen of the application\n- Changed the way battery change information are logged\n- Updated the statistics database to store the battery temperature\n- The main screen will show a graph about the charging and discharging process of the battery\n- Done some more internal code cleanup" />
+        android:text="- Redesigned the main screen of the application\n- Changed the way battery change information are logged\n- Updated the statistics database to store the battery temperature\n- The main screen will show a graph about the charging and discharging process of the battery\n- Done some more internal code cleanup" />
    
     <TextView
         android:layout_width="fill_parent"
