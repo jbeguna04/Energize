@@ -47,6 +47,9 @@
     <string name="menu_showapplicense">Show app license</string>
     <string name="menu_show3rdpartylicense">Show addional licenses</string>
     
+    <string name="textview_label_temperature">Battery temperature:</string>
+    <string name="textview_text_temperature_celsius">%d °C</string>
+    <string name="textview_text_temperature_fahrenheit">%d °F</string>
     <string name="textview_label_time_on_battery">Time on battery:</string>
     <string name="textview_text_time_on_battery">%1$d hour(s) and %2$d minute(s)</string>
     <string name="textview_text_time_on_battery_not_on_battery">Not on battery</string>
