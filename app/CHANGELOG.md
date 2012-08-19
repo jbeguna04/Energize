@@ -1,6 +1,6 @@
 Change Log
 ===============================================================================
-Version 0.6 *(2012-??-??)*
+Version 0.6 *(2012-08-19)*
 --------------------------
 * The main screen shows the temperature of the battery
 * Added an option to chose between Celsius and Fahrenheit
