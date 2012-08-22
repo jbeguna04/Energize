@@ -18,7 +18,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="25dp"
-        android:text="- Fixed a bug which caused an application crash while rotating the view\n- Fixed a bug which caused that the battery temperature was not logged\n- Added a tab where a temperature graph is displayed\n- Improved the design of the battery capacity graph\n- Made the graphs zoomable" />
+        android:text="- Fixed a bug which caused an application crash while rotating the view\n- Fixed a bug which caused that the battery temperature was not logged\n- Added a tab where a temperature graph is displayed\n- Improved the design of the battery capacity graph" />
     
     <TextView
         android:layout_width="fill_parent"

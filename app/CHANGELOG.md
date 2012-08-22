@@ -6,7 +6,6 @@ Version 0.6.3 *(2012-08-22)*
 * Fixed a bug which caused that the battery temperature was not logged
 * Added a tab where a temperature graph is displayed
 * Improved the design of the battery capacity graph
-* Made the graphs zoomable
 
 Version 0.6 *(2012-08-19)*
 --------------------------
