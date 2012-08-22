@@ -483,6 +483,10 @@ com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable:
     23:23:public RawBatteryStatisicsTable()
 com.halcyonwaves.apps.energize.fragments.AboutFragment:
     private static final java.lang.String TAG
+com.halcyonwaves.apps.energize.fragments.OverviewFragment:
+    private static final java.lang.String TAG
+com.halcyonwaves.apps.energize.fragments.TemperatureGraphFragment:
+    private static final java.lang.String TAG
 com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment:
     private static final java.lang.String TAG
 com.halcyonwaves.apps.energize.services.MonitorBatteryStateService:
@@ -506,10 +510,6 @@ com.jjoe64.graphview.GraphView:
 com.jjoe64.graphview.GraphView$1:
     604:633:public boolean onScale(com.jjoe64.graphview.compatible.ScaleGestureDetector)
 com.jjoe64.graphview.GraphView$GraphViewConfig
-com.jjoe64.graphview.GraphView$GraphViewSeries:
-    222:229:public GraphView$GraphViewSeries(java.lang.String,com.jjoe64.graphview.GraphView$GraphViewStyle,com.jjoe64.graphview.GraphView$GraphViewData[])
-com.jjoe64.graphview.GraphView$GraphViewStyle:
-    190:193:public GraphView$GraphViewStyle(int,int)
 com.jjoe64.graphview.GraphViewDemo
 com.jjoe64.graphview.R
 com.jjoe64.graphview.R$array
@@ -570,13 +570,13 @@ com.viewpagerindicator.R$dimen:
 com.viewpagerindicator.R$drawable
 com.viewpagerindicator.R$id
 com.viewpagerindicator.R$integer:
-    467:467:public R$integer()
+    468:468:public R$integer()
 com.viewpagerindicator.R$layout
 com.viewpagerindicator.R$menu
 com.viewpagerindicator.R$string
 com.viewpagerindicator.R$style
 com.viewpagerindicator.R$styleable:
-    542:542:public R$styleable()
+    545:545:public R$styleable()
 com.viewpagerindicator.R$xml
 com.viewpagerindicator.TabPageIndicator
 com.viewpagerindicator.TabPageIndicator$1

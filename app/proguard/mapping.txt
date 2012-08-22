@@ -821,11 +821,11 @@ com.halcyonwaves.apps.energize.fragments.AboutFragment -> com.halcyonwaves.apps.
 com.halcyonwaves.apps.energize.fragments.AboutFragment$1 -> com.halcyonwaves.apps.energize.b.b:
     com.halcyonwaves.apps.energize.fragments.AboutFragment this$0 -> a
     void onClick(android.view.View) -> onClick
-com.halcyonwaves.apps.energize.fragments.GraphFragment -> com.halcyonwaves.apps.energize.b.c:
+com.halcyonwaves.apps.energize.fragments.BatteryCapacityGraphFragment -> com.halcyonwaves.apps.energize.b.c:
     android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> a
     com.jjoe64.graphview.GraphView$GraphViewSeries getBatteryStatisticData() -> u
-com.halcyonwaves.apps.energize.fragments.GraphFragment$1 -> com.halcyonwaves.apps.energize.b.d:
-    com.halcyonwaves.apps.energize.fragments.GraphFragment this$0 -> a
+com.halcyonwaves.apps.energize.fragments.BatteryCapacityGraphFragment$1 -> com.halcyonwaves.apps.energize.b.d:
+    com.halcyonwaves.apps.energize.fragments.BatteryCapacityGraphFragment this$0 -> a
     java.lang.String formatLabel(double,boolean) -> a
 com.halcyonwaves.apps.energize.fragments.OverviewFragment -> com.halcyonwaves.apps.energize.b.e:
     android.widget.TextView textViewCurrentLoadingLevel -> N
@@ -840,7 +840,15 @@ com.halcyonwaves.apps.energize.fragments.OverviewFragment -> com.halcyonwaves.ap
 com.halcyonwaves.apps.energize.fragments.OverviewFragment$1 -> com.halcyonwaves.apps.energize.b.f:
     com.halcyonwaves.apps.energize.fragments.OverviewFragment this$0 -> a
     void onReceive(android.content.Context,android.content.Intent) -> onReceive
-com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment -> com.halcyonwaves.apps.energize.b.g:
+com.halcyonwaves.apps.energize.fragments.TemperatureGraphFragment -> com.halcyonwaves.apps.energize.b.g:
+    android.content.SharedPreferences sharedPref -> N
+    android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> a
+    com.jjoe64.graphview.GraphView$GraphViewSeries getBatteryStatisticData() -> u
+    android.content.SharedPreferences access$0(com.halcyonwaves.apps.energize.fragments.TemperatureGraphFragment) -> a
+com.halcyonwaves.apps.energize.fragments.TemperatureGraphFragment$1 -> com.halcyonwaves.apps.energize.b.h:
+    com.halcyonwaves.apps.energize.fragments.TemperatureGraphFragment this$0 -> a
+    java.lang.String formatLabel(double,boolean) -> a
+com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment -> com.halcyonwaves.apps.energize.b.i:
     android.preference.Preference whatsNewPreference -> a
     android.preference.Preference sendDatabasePreference -> b
     android.os.Messenger monitorService -> c
@@ -853,17 +861,17 @@ com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment -> com.halcyo
     void access$0(com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment,android.os.Messenger) -> a
     android.os.Messenger access$1(com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment) -> a
     android.os.Messenger access$2(com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment) -> b
-com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$1 -> com.halcyonwaves.apps.energize.b.h:
+com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$1 -> com.halcyonwaves.apps.energize.b.j:
     com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment this$0 -> a
     void onServiceConnected(android.content.ComponentName,android.os.IBinder) -> onServiceConnected
     void onServiceDisconnected(android.content.ComponentName) -> onServiceDisconnected
-com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$2 -> com.halcyonwaves.apps.energize.b.i:
+com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$2 -> com.halcyonwaves.apps.energize.b.k:
     com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment this$0 -> a
     boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
-com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$IncomingHandler -> com.halcyonwaves.apps.energize.b.j:
+com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$IncomingHandler -> com.halcyonwaves.apps.energize.b.l:
     com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment this$0 -> a
     void handleMessage(android.os.Message) -> handleMessage
-com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$IncomingHandler$1 -> com.halcyonwaves.apps.energize.b.k:
+com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$IncomingHandler$1 -> com.halcyonwaves.apps.energize.b.m:
     com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$IncomingHandler this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
 com.halcyonwaves.apps.energize.receivers.BatteryChangedReceiver -> com.halcyonwaves.apps.energize.receivers.a:
@@ -883,7 +891,7 @@ com.halcyonwaves.apps.energize.services.MonitorBatteryStateService -> com.halcyo
     android.app.NotificationManager notificationManager -> i
     android.app.Notification myNotification -> j
     android.content.SharedPreferences appPreferences -> k
-    void insertPowerValue(int,int,int,double) -> a
+    void insertPowerValue(int,int,int,int) -> a
     void onDestroy() -> onDestroy
     void stopMonitoring() -> a
     void startMonitoring() -> b

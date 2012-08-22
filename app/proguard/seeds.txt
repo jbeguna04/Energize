@@ -214,6 +214,7 @@ com.halcyonwaves.apps.energize.R$drawable: int vpi__tab_unselected_holo
 com.halcyonwaves.apps.energize.R$drawable: int vpi__tab_unselected_pressed_holo
 com.halcyonwaves.apps.energize.R$id: int btn_rate_app
 com.halcyonwaves.apps.energize.R$id: int layout_graph_view
+com.halcyonwaves.apps.energize.R$id: int layout_graph_view_temperature
 com.halcyonwaves.apps.energize.R$id: int menu_preferences
 com.halcyonwaves.apps.energize.R$id: int menu_show3rdpartylicense
 com.halcyonwaves.apps.energize.R$id: int menu_showapplicense
@@ -240,8 +241,9 @@ com.halcyonwaves.apps.energize.R$layout: int activity_batterystatedisplay
 com.halcyonwaves.apps.energize.R$layout: int dialog_license_appicon
 com.halcyonwaves.apps.energize.R$layout: int dialog_whatsnew
 com.halcyonwaves.apps.energize.R$layout: int fragment_about
-com.halcyonwaves.apps.energize.R$layout: int fragment_graph
+com.halcyonwaves.apps.energize.R$layout: int fragment_batterycapacitygraph
 com.halcyonwaves.apps.energize.R$layout: int fragment_maininformation
+com.halcyonwaves.apps.energize.R$layout: int fragment_temperaturegraph
 com.halcyonwaves.apps.energize.R$layout: int main
 com.halcyonwaves.apps.energize.R$menu: int menu_main
 com.halcyonwaves.apps.energize.R$string: int app_name
@@ -259,6 +261,7 @@ com.halcyonwaves.apps.energize.R$string: int dialog_title_whatsnew
 com.halcyonwaves.apps.energize.R$string: int fragment_title_about
 com.halcyonwaves.apps.energize.R$string: int fragment_title_batterygraph
 com.halcyonwaves.apps.energize.R$string: int fragment_title_overview
+com.halcyonwaves.apps.energize.R$string: int fragment_title_temperaturegraph
 com.halcyonwaves.apps.energize.R$string: int hello
 com.halcyonwaves.apps.energize.R$string: int menu_preferences
 com.halcyonwaves.apps.energize.R$string: int menu_show3rdpartylicense
@@ -542,6 +545,7 @@ com.jjoe64.graphview.R$drawable: int vpi__tab_unselected_holo
 com.jjoe64.graphview.R$drawable: int vpi__tab_unselected_pressed_holo
 com.jjoe64.graphview.R$id: int btn_rate_app
 com.jjoe64.graphview.R$id: int layout_graph_view
+com.jjoe64.graphview.R$id: int layout_graph_view_temperature
 com.jjoe64.graphview.R$id: int menu_preferences
 com.jjoe64.graphview.R$id: int menu_show3rdpartylicense
 com.jjoe64.graphview.R$id: int menu_showapplicense
@@ -568,8 +572,9 @@ com.jjoe64.graphview.R$layout: int activity_batterystatedisplay
 com.jjoe64.graphview.R$layout: int dialog_license_appicon
 com.jjoe64.graphview.R$layout: int dialog_whatsnew
 com.jjoe64.graphview.R$layout: int fragment_about
-com.jjoe64.graphview.R$layout: int fragment_graph
+com.jjoe64.graphview.R$layout: int fragment_batterycapacitygraph
 com.jjoe64.graphview.R$layout: int fragment_maininformation
+com.jjoe64.graphview.R$layout: int fragment_temperaturegraph
 com.jjoe64.graphview.R$layout: int main
 com.jjoe64.graphview.R$menu: int menu_main
 com.jjoe64.graphview.R$string: int app_name
@@ -587,6 +592,7 @@ com.jjoe64.graphview.R$string: int dialog_title_whatsnew
 com.jjoe64.graphview.R$string: int fragment_title_about
 com.jjoe64.graphview.R$string: int fragment_title_batterygraph
 com.jjoe64.graphview.R$string: int fragment_title_overview
+com.jjoe64.graphview.R$string: int fragment_title_temperaturegraph
 com.jjoe64.graphview.R$string: int hello
 com.jjoe64.graphview.R$string: int menu_preferences
 com.jjoe64.graphview.R$string: int menu_show3rdpartylicense
@@ -883,6 +889,7 @@ com.viewpagerindicator.R$drawable: int vpi__tab_unselected_holo
 com.viewpagerindicator.R$drawable: int vpi__tab_unselected_pressed_holo
 com.viewpagerindicator.R$id: int btn_rate_app
 com.viewpagerindicator.R$id: int layout_graph_view
+com.viewpagerindicator.R$id: int layout_graph_view_temperature
 com.viewpagerindicator.R$id: int menu_preferences
 com.viewpagerindicator.R$id: int menu_show3rdpartylicense
 com.viewpagerindicator.R$id: int menu_showapplicense
@@ -909,8 +916,9 @@ com.viewpagerindicator.R$layout: int activity_batterystatedisplay
 com.viewpagerindicator.R$layout: int dialog_license_appicon
 com.viewpagerindicator.R$layout: int dialog_whatsnew
 com.viewpagerindicator.R$layout: int fragment_about
-com.viewpagerindicator.R$layout: int fragment_graph
+com.viewpagerindicator.R$layout: int fragment_batterycapacitygraph
 com.viewpagerindicator.R$layout: int fragment_maininformation
+com.viewpagerindicator.R$layout: int fragment_temperaturegraph
 com.viewpagerindicator.R$layout: int main
 com.viewpagerindicator.R$menu: int menu_main
 com.viewpagerindicator.R$string: int app_name
@@ -928,6 +936,7 @@ com.viewpagerindicator.R$string: int dialog_title_whatsnew
 com.viewpagerindicator.R$string: int fragment_title_about
 com.viewpagerindicator.R$string: int fragment_title_batterygraph
 com.viewpagerindicator.R$string: int fragment_title_overview
+com.viewpagerindicator.R$string: int fragment_title_temperaturegraph
 com.viewpagerindicator.R$string: int hello
 com.viewpagerindicator.R$string: int menu_preferences
 com.viewpagerindicator.R$string: int menu_show3rdpartylicense
