@@ -16,6 +16,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,8 @@ import android.widget.LinearLayout;
 
 public class TemperatureGraphFragment extends Fragment {
 
+	private static final String TAG = "TemperatureGraphFragment";
+	
 	@Override
 	public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState ) {
 		View inflatedView = inflater.inflate( R.layout.fragment_temperaturegraph, container, false );
@@ -62,6 +65,7 @@ public class TemperatureGraphFragment extends Fragment {
 		//
 		lastEntryMadeCursor.moveToFirst();
 		while( !lastEntryMadeCursor.isAfterLast() ) {
+			Log.v( TemperatureGraphFragment.TAG, "Found a stored temperature: " + lastEntryMadeCursor.getInt( columnIndexChargingLevel ) );
 			graphViewData.add( new GraphViewData( lastEntryMadeCursor.getInt( columnIndexEventTime ), lastEntryMadeCursor.getInt( columnIndexChargingLevel ) / 10.0f ) );
 			lastEntryMadeCursor.moveToNext();
 		}
