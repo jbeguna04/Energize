@@ -11,6 +11,7 @@ import android.os.BatteryManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,7 @@ import android.widget.TextView;
 
 public class OverviewFragment extends Fragment {
 
-	// private static final String TAG = "OverviewFragment";
+	private static final String TAG = "OverviewFragment";
 
 	private TextView textViewCurrentLoadingLevel = null;
 	private TextView textViewCurrentChargingState = null;
@@ -43,38 +44,42 @@ public class OverviewFragment extends Fragment {
 		BroadcastReceiver batteryLevelReceiver = new BroadcastReceiver() {
 
 			public void onReceive( Context context, Intent intent ) {
-				context.unregisterReceiver( this );
-				int rawlevel = intent.getIntExtra( BatteryManager.EXTRA_LEVEL, -1 );
-				int scale = intent.getIntExtra( BatteryManager.EXTRA_SCALE, -1 );
-				int status = intent.getIntExtra( BatteryManager.EXTRA_STATUS, -1 );
-				float temp = ( (float) intent.getIntExtra( BatteryManager.EXTRA_TEMPERATURE, -1 ) ) / 10.0f;
-				int level = -1;
-				if( rawlevel >= 0 && scale > 0 ) {
-					level = (rawlevel * 100) / scale;
-				}
-				switch( status ) {
-					case BatteryManager.BATTERY_STATUS_CHARGING:
-						OverviewFragment.this.textViewCurrentChargingState.setText( OverviewFragment.this.getString( R.string.battery_state_charging ) );
-						break;
-					case BatteryManager.BATTERY_STATUS_DISCHARGING:
-						OverviewFragment.this.textViewCurrentChargingState.setText( OverviewFragment.this.getString( R.string.battery_state_discharging ) );
-						// OverviewFragment.this.batteryDischarging = true;
-						break;
-					case BatteryManager.BATTERY_STATUS_FULL:
-						OverviewFragment.this.textViewCurrentChargingState.setText( OverviewFragment.this.getString( R.string.battery_state_full ) );
-						break;
-					default:
-						OverviewFragment.this.textViewCurrentChargingState.setText( OverviewFragment.this.getString( R.string.battery_state_unknown ) );
-						break;
-				}
+				try {
+					context.unregisterReceiver( this );
+					int rawlevel = intent.getIntExtra( BatteryManager.EXTRA_LEVEL, -1 );
+					int scale = intent.getIntExtra( BatteryManager.EXTRA_SCALE, -1 );
+					int status = intent.getIntExtra( BatteryManager.EXTRA_STATUS, -1 );
+					float temp = ((float) intent.getIntExtra( BatteryManager.EXTRA_TEMPERATURE, -1 )) / 10.0f;
+					int level = -1;
+					if( rawlevel >= 0 && scale > 0 ) {
+						level = (rawlevel * 100) / scale;
+					}
+					switch( status ) {
+						case BatteryManager.BATTERY_STATUS_CHARGING:
+							OverviewFragment.this.textViewCurrentChargingState.setText( OverviewFragment.this.getString( R.string.battery_state_charging ) );
+							break;
+						case BatteryManager.BATTERY_STATUS_DISCHARGING:
+							OverviewFragment.this.textViewCurrentChargingState.setText( OverviewFragment.this.getString( R.string.battery_state_discharging ) );
+							// OverviewFragment.this.batteryDischarging = true;
+							break;
+						case BatteryManager.BATTERY_STATUS_FULL:
+							OverviewFragment.this.textViewCurrentChargingState.setText( OverviewFragment.this.getString( R.string.battery_state_full ) );
+							break;
+						default:
+							OverviewFragment.this.textViewCurrentChargingState.setText( OverviewFragment.this.getString( R.string.battery_state_unknown ) );
+							break;
+					}
 
-				OverviewFragment.this.textViewCurrentLoadingLevel.setText( level + "" ); // TODO
-				String prefUsedUnit = OverviewFragment.this.sharedPref.getString( "display.temperature_unit", "Celsius" );
-				if( prefUsedUnit.compareToIgnoreCase( "celsius" ) == 0 ) {
-					OverviewFragment.this.textViewTemp.setText( OverviewFragment.this.getString( R.string.textview_text_temperature_celsius, temp ) );
-				} else if( prefUsedUnit.compareToIgnoreCase( "fahrenheit" ) == 0 ) {
-					final float newTemp = temp * 1.8f + 32.0f;
-					OverviewFragment.this.textViewTemp.setText( OverviewFragment.this.getString( R.string.textview_text_temperature_fahrenheit, newTemp ) );
+					OverviewFragment.this.textViewCurrentLoadingLevel.setText( level + "" ); // TODO
+					String prefUsedUnit = OverviewFragment.this.sharedPref.getString( "display.temperature_unit", "Celsius" );
+					if( prefUsedUnit.compareToIgnoreCase( "celsius" ) == 0 ) {
+						OverviewFragment.this.textViewTemp.setText( OverviewFragment.this.getString( R.string.textview_text_temperature_celsius, temp ) );
+					} else if( prefUsedUnit.compareToIgnoreCase( "fahrenheit" ) == 0 ) {
+						final float newTemp = temp * 1.8f + 32.0f;
+						OverviewFragment.this.textViewTemp.setText( OverviewFragment.this.getString( R.string.textview_text_temperature_fahrenheit, newTemp ) );
+					}
+				} catch( IllegalStateException e ) {
+					Log.e( OverviewFragment.TAG, "The fragment was in an illegal state while it received the battery information. This should be handled in a different (and better way), The exception message was: ", e ); // TODO
 				}
 			}
 		};
