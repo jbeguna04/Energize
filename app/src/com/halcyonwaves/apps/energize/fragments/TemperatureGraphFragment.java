@@ -13,10 +13,12 @@ import com.jjoe64.graphview.GraphView.GraphViewStyle;
 import com.jjoe64.graphview.GraphView.GraphViewSeries;
 import com.jjoe64.graphview.LineGraphView;
 
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,9 +29,11 @@ import android.widget.LinearLayout;
 public class TemperatureGraphFragment extends Fragment {
 
 	private static final String TAG = "TemperatureGraphFragment";
+	private SharedPreferences sharedPref = null;
 	
 	@Override
 	public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState ) {
+		this.sharedPref = PreferenceManager.getDefaultSharedPreferences( this.getActivity().getApplicationContext() );
 		View inflatedView = inflater.inflate( R.layout.fragment_temperaturegraph, container, false );
 
 		LineGraphView graphView = new LineGraphView( this.getActivity().getApplicationContext(), "" ) {
@@ -40,7 +44,14 @@ public class TemperatureGraphFragment extends Fragment {
 					SimpleDateFormat dateFormat = new SimpleDateFormat( "HH:mm" );
 					return dateFormat.format( new Date( (long) value * 1000 ) );
 				} else {
-					return String.format( "%.1f C", value );
+					String prefUsedUnit = TemperatureGraphFragment.this.sharedPref.getString( "display.temperature_unit", "Celsius" );
+					if( prefUsedUnit.compareToIgnoreCase( "celsius" ) == 0 ) {
+						return TemperatureGraphFragment.this.getString( R.string.textview_text_temperature_celsius, value );
+					} else if( prefUsedUnit.compareToIgnoreCase( "fahrenheit" ) == 0 ) {
+						return TemperatureGraphFragment.this.getString( R.string.textview_text_temperature_fahrenheit, value );
+					} else {
+						return "N/A";
+					}
 				}
 			}
 		};
@@ -67,10 +78,21 @@ public class TemperatureGraphFragment extends Fragment {
 		final int columnIndexChargingLevel = lastEntryMadeCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_BATTERY_TEMPRATURE );
 
 		//
+		boolean fahrenheitInsteadOfCelsius = false;
+		String prefUsedUnit = TemperatureGraphFragment.this.sharedPref.getString( "display.temperature_unit", "Celsius" );
+		if( prefUsedUnit.compareToIgnoreCase( "fahrenheit" ) == 0 ) {
+			fahrenheitInsteadOfCelsius = true;
+		}
+		
+		//
 		lastEntryMadeCursor.moveToFirst();
 		while( !lastEntryMadeCursor.isAfterLast() ) {
 			Log.v( TemperatureGraphFragment.TAG, "Found a stored temperature: " + lastEntryMadeCursor.getInt( columnIndexChargingLevel ) );
-			graphViewData.add( new GraphViewData( lastEntryMadeCursor.getInt( columnIndexEventTime ), lastEntryMadeCursor.getInt( columnIndexChargingLevel ) / 10.0f ) );
+			if( !fahrenheitInsteadOfCelsius ) {
+				graphViewData.add( new GraphViewData( lastEntryMadeCursor.getInt( columnIndexEventTime ), lastEntryMadeCursor.getInt( columnIndexChargingLevel ) / 10.0f ) );
+			} else {
+				graphViewData.add( new GraphViewData( lastEntryMadeCursor.getInt( columnIndexEventTime ), ( lastEntryMadeCursor.getInt( columnIndexChargingLevel ) / 10.0f) * 1.8f + 32.0f ) );
+			}
 			lastEntryMadeCursor.moveToNext();
 		}
 
