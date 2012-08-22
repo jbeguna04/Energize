@@ -51,7 +51,7 @@
     <string name="menu_showapplicense">Show app license</string>
     <string name="menu_show3rdpartylicense">Show addional licenses</string>
     
-    <string name="textview_label_temperature">Battery temperature:</string>
+    <string name="textview_label_temperature">Current battery temperature:</string>
     <string name="textview_text_temperature_celsius">%.1f °C</string>
     <string name="textview_text_temperature_fahrenheit">%.1f °F</string>
     <string name="textview_label_time_on_battery">Time on battery:</string>
