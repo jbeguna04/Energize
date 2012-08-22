@@ -39,6 +39,7 @@
     
     <string name="fragment_title_overview">Overview</string>
     <string name="fragment_title_batterygraph">Battery graph</string>
+    <string name="fragment_title_temperaturegraph">Temp. graph</string>
     <string name="fragment_title_about">About&#8230;</string>
     
     <string name="textview_app_version">Version: %s (beta)</string>
