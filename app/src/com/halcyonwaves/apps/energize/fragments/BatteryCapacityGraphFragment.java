@@ -14,6 +14,7 @@ import com.jjoe64.graphview.LineGraphView;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -27,7 +28,7 @@ public class BatteryCapacityGraphFragment extends Fragment {
 	public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState ) {
 		View inflatedView = inflater.inflate( R.layout.fragment_batterycapacitygraph, container, false );
 
-		GraphView graphView = new LineGraphView( this.getActivity().getApplicationContext(), "" ) {
+		LineGraphView graphView = new LineGraphView( this.getActivity().getApplicationContext(), "" ) {
 
 			@Override
 			protected String formatLabel( double value, boolean isValueX ) {
@@ -43,6 +44,7 @@ public class BatteryCapacityGraphFragment extends Fragment {
 		graphView.setScrollable( true );
 		graphView.setScalable( true );
 		graphView.setManualYAxis( true );
+		graphView.setDrawBackground( true );
 		graphView.setManualYAxisBounds( 100.0, 0.0 );
 		// graphView.setViewPort( ((int) (System.currentTimeMillis() / 1000L) - 86400), (int) (System.currentTimeMillis() / 1000L) );
 		LinearLayout layout = (LinearLayout) inflatedView.findViewById( R.id.layout_graph_view );
