@@ -9,11 +9,13 @@ import com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelp
 import com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GraphView.GraphViewData;
+import com.jjoe64.graphview.GraphView.GraphViewStyle;
 import com.jjoe64.graphview.GraphView.GraphViewSeries;
 import com.jjoe64.graphview.LineGraphView;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -30,7 +32,7 @@ public class TemperatureGraphFragment extends Fragment {
 	public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState ) {
 		View inflatedView = inflater.inflate( R.layout.fragment_temperaturegraph, container, false );
 
-		GraphView graphView = new LineGraphView( this.getActivity().getApplicationContext(), "" ) {
+		LineGraphView graphView = new LineGraphView( this.getActivity().getApplicationContext(), "" ) {
 
 			@Override
 			protected String formatLabel( double value, boolean isValueX ) {
@@ -45,6 +47,7 @@ public class TemperatureGraphFragment extends Fragment {
 		graphView.addSeries( this.getBatteryStatisticData() );
 		graphView.setScrollable( true );
 		graphView.setScalable( true );
+		graphView.setDrawBackground( false );
 		// graphView.setViewPort( ((int) (System.currentTimeMillis() / 1000L) - 86400), (int) (System.currentTimeMillis() / 1000L) );
 		LinearLayout layout = (LinearLayout) inflatedView.findViewById( R.id.layout_graph_view_temperature );
 		layout.addView( graphView );
@@ -84,6 +87,6 @@ public class TemperatureGraphFragment extends Fragment {
 		}
 		GraphViewData convertedDataset[] = new GraphViewData[ graphViewData.size() ];
 		graphViewData.toArray( convertedDataset );
-		return new GraphViewSeries( convertedDataset );
+		return new GraphViewSeries( "", new GraphViewStyle( Color.rgb( 255, 0, 0 ), 3 ), convertedDataset );
 	}
 }
