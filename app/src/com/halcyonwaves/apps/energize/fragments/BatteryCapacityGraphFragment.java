@@ -21,11 +21,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-public class GraphFragment extends Fragment {
+public class BatteryCapacityGraphFragment extends Fragment {
 
 	@Override
 	public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState ) {
-		View inflatedView = inflater.inflate( R.layout.fragment_graph, container, false );
+		View inflatedView = inflater.inflate( R.layout.fragment_batterycapacitygraph, container, false );
 
 		GraphView graphView = new LineGraphView( this.getActivity().getApplicationContext(), "" ) {
 

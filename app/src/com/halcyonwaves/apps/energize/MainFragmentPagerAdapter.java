@@ -1,7 +1,7 @@
 package com.halcyonwaves.apps.energize;
 
 import com.halcyonwaves.apps.energize.fragments.AboutFragment;
-import com.halcyonwaves.apps.energize.fragments.GraphFragment;
+import com.halcyonwaves.apps.energize.fragments.BatteryCapacityGraphFragment;
 import com.halcyonwaves.apps.energize.fragments.OverviewFragment;
 
 import android.content.Context;
@@ -27,7 +27,7 @@ public class MainFragmentPagerAdapter extends FragmentPagerAdapter {
 			case 0:
 				return new OverviewFragment();
 			case 1:
-				return new GraphFragment();
+				return new BatteryCapacityGraphFragment();
 			case 2:
 				return new AboutFragment();
 			default:
