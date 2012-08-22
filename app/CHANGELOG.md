@@ -1,5 +1,12 @@
 Change Log
 ===============================================================================
+Version 0.6.3 *(2012-08-22)*
+----------------------------
+* Fixed a bug which caused an application crash while rotating the view
+* Fixed a bug which caused that the battery temperature was not logged
+* Added a tab where a temperature graph is displayed
+* Improved the design of the battery capacity graph
+
 Version 0.6 *(2012-08-19)*
 --------------------------
 * The main screen shows the temperature of the battery
