@@ -39,7 +39,7 @@ public class BatteryChangedReceiver extends BroadcastReceiver {
 		final int level = intent.getIntExtra( BatteryManager.EXTRA_LEVEL, -1 );
 		final int scale = intent.getIntExtra( BatteryManager.EXTRA_SCALE, -1 );
 		final int powerSource = intent.getIntExtra( BatteryManager.EXTRA_PLUGGED, -1 );
-		final double temp = intent.getDoubleExtra( BatteryManager.EXTRA_TEMPERATURE, -1.0 );
+		final int temp = intent.getIntExtra( BatteryManager.EXTRA_TEMPERATURE, -1 );
 		this.service.insertPowerValue( powerSource, scale, level, temp );
 	}
 

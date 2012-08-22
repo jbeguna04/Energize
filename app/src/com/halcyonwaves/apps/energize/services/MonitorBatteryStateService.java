@@ -65,7 +65,7 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 	private Notification myNotification = null;
 	private SharedPreferences appPreferences = null;
 
-	public void insertPowerValue( int powerSource, int scale, int level, double temprature ) {
+	public void insertPowerValue( int powerSource, int scale, int level, int temprature ) {
 		// if the database is not open, skip the insertion process
 		if( null == this.batteryStatisticsDatabase || !this.batteryStatisticsDatabase.isOpen() ) {
 			Log.e( MonitorBatteryStateService.TAG, "Tried to insert a dataset into a closed database, skipping..." );
