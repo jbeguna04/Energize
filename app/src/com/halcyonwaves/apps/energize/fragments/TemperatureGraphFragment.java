@@ -35,15 +35,12 @@ public class TemperatureGraphFragment extends Fragment {
 					SimpleDateFormat dateFormat = new SimpleDateFormat( "HH:mm" );
 					return dateFormat.format( new Date( (long) value * 1000 ) );
 				} else
-					return super.formatLabel( value, isValueX ); // let the y-value be normal-formatted
+					return value + " C";
 			}
 		};
 		graphView.addSeries( this.getBatteryStatisticData() );
-		graphView.setVerticalLabels( new String[] { "100%", "90%", "80%", "70%", "60%", "50%", "40%", "30%", "20%", "10%", "0%" } );
 		graphView.setScrollable( true );
 		graphView.setScalable( true );
-		graphView.setManualYAxis( true );
-		graphView.setManualYAxisBounds( 100.0, 0.0 );
 		// graphView.setViewPort( ((int) (System.currentTimeMillis() / 1000L) - 86400), (int) (System.currentTimeMillis() / 1000L) );
 		LinearLayout layout = (LinearLayout) inflatedView.findViewById( R.id.layout_graph_view_temperature );
 		layout.addView( graphView );
@@ -54,18 +51,18 @@ public class TemperatureGraphFragment extends Fragment {
 	private GraphViewSeries getBatteryStatisticData() {
 		BatteryStatisticsDatabaseOpenHelper batteryDbOpenHelper = new BatteryStatisticsDatabaseOpenHelper( this.getActivity().getApplicationContext() );
 		SQLiteDatabase batteryStatisticsDatabase = batteryDbOpenHelper.getReadableDatabase();
-		Cursor lastEntryMadeCursor = batteryStatisticsDatabase.query( RawBatteryStatisicsTable.TABLE_NAME, new String[] { RawBatteryStatisicsTable.COLUMN_EVENT_TIME, RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL }, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " ASC" );
+		Cursor lastEntryMadeCursor = batteryStatisticsDatabase.query( RawBatteryStatisicsTable.TABLE_NAME, new String[] { RawBatteryStatisicsTable.COLUMN_EVENT_TIME, RawBatteryStatisicsTable.COLUMN_BATTERY_TEMPRATURE }, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " ASC" );
 
 		ArrayList< GraphViewData > graphViewData = new ArrayList< GraphViewData >();
 
 		//
 		final int columnIndexEventTime = lastEntryMadeCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_EVENT_TIME );
-		final int columnIndexChargingLevel = lastEntryMadeCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL );
+		final int columnIndexChargingLevel = lastEntryMadeCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_BATTERY_TEMPRATURE );
 
 		//
 		lastEntryMadeCursor.moveToFirst();
 		while( !lastEntryMadeCursor.isAfterLast() ) {
-			graphViewData.add( new GraphViewData( lastEntryMadeCursor.getInt( columnIndexEventTime ), lastEntryMadeCursor.getInt( columnIndexChargingLevel ) ) );
+			graphViewData.add( new GraphViewData( lastEntryMadeCursor.getInt( columnIndexEventTime ), lastEntryMadeCursor.getInt( columnIndexChargingLevel ) / 10.0f ) );
 			lastEntryMadeCursor.moveToNext();
 		}
 
