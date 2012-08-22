@@ -37,8 +37,9 @@ public class TemperatureGraphFragment extends Fragment {
 				if( isValueX ) {
 					SimpleDateFormat dateFormat = new SimpleDateFormat( "HH:mm" );
 					return dateFormat.format( new Date( (long) value * 1000 ) );
-				} else
-					return value + " C";
+				} else {
+					return String.format( "%.1f C", value );
+				}
 			}
 		};
 		graphView.addSeries( this.getBatteryStatisticData() );
