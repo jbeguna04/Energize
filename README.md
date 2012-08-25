@@ -31,7 +31,7 @@ As soon as the used strings is nearly fixed, you can help us on our project page
 The application icon is based upon the [Android Robot][3] logo made by Google Inc. This logo is licensed under the terms of the [Creative Commons Attribution license][4]. The battery icon was designed by the authors of the [GNOME High contrast icon set][5] and is licensed under the terms of the [GNU Lesser General Public License][6].
 
 ## Changelog
-### Version 0.6.3 *(2012-08-22)*
+### Version 0.6.3 *(2012-08-22)* -- [Changes][9]
 * Fixed a bug which caused an application crash while rotating the view
 * Fixed a bug which caused that the battery temperature was not logged
 * Added a tab where a temperature graph is displayed
@@ -106,3 +106,4 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
  [6]: http://www.gnu.org/licenses/lgpl.html
  [7]: http://www.eclipse.org/
  [8]: https://play.google.com/store/apps/details?id=com.halcyonwaves.apps.energize
+ [9]: https://github.com/thuetz/Energize/compare/v0.6...v0.6.3 
