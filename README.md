@@ -31,13 +31,13 @@ As soon as the used strings is nearly fixed, you can help us on our project page
 The application icon is based upon the [Android Robot][3] logo made by Google Inc. This logo is licensed under the terms of the [Creative Commons Attribution license][4]. The battery icon was designed by the authors of the [GNOME High contrast icon set][5] and is licensed under the terms of the [GNU Lesser General Public License][6].
 
 ## Changelog
-### Version 0.6.3 *(2012-08-22)* -- [Changes][9]
+### Version 0.6.3 *(2012-08-22)* - [Changes][19]
 * Fixed a bug which caused an application crash while rotating the view
 * Fixed a bug which caused that the battery temperature was not logged
 * Added a tab where a temperature graph is displayed
 * Improved the design of the battery capacity graph
 
-### Version 0.6 *(2012-08-19)*
+### Version 0.6 *(2012-08-19)* - [Changes][18]
 * The main screen shows the temperature of the battery
 * Added an option to chose between Celsius and Fahrenheit
 * Added several pages to the main screen to clean up the UI and prepare for a Tablet layout
@@ -46,52 +46,52 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
 * Cleaned up the preference of the app
 * Done a important code cleanup to remove unused code, optimize the speed and the power consumption of the app and make it easier to implement new features
 
-### Version 0.5 *(2012-08-12)*
+### Version 0.5 *(2012-08-12)* - [Changes][17]
 * Redesigned the main screen of the application
 * Changed the way battery change information are logged
 * Updated the statistics database to store the battery temperature
 * The main screen will show a graph about the charging and discharging process of the battery
 * Done some more internal code cleanup
 
-### Version 0.4.1 *(2012-08-10)*
+### Version 0.4.1 *(2012-08-10)* - [Changes][16]
 * Added license information for the application icon
 * Applied a fix for the -1 estimation bug
 * Fixed the bug that clicking the notification item won't show the main activity
 * Added support for API level 14 (which includes plain Android 4.0.0)
 * The notification bar item will now show if the battery is charges or discharges
 
-### Version 0.4 *(2012-08-07)*
+### Version 0.4 *(2012-08-07)* - [Changes][15]
 * Basic code cleanup
 * Cleanup of the preference screens
 * The remaining time will show hours and minutes instead of just minutes
 * Added an option to disable the automatic startup of the boot service
 
-### Version 0.3 *(2012-08-05)*
+### Version 0.3 *(2012-08-05)* - [Changes][14]
 * Added the first (but simple) remaining time estimation
 * Added the license text to the application (see About settings)
 * Updated the application icon
 * First version which is available on the Google Play store for everyone
 * Prepared the code to be able to handle in-app billing stuff (for easy donations)
 
-### Version 0.2 *(2012-07-13)*
+### Version 0.2 *(2012-07-13)* - [Changes][13]
 * Added a preference dialog for clearing the obtained battery statistics
 * Added a status bar indicator for the current charging level of the battery
 * Added a "What's new" dialog on the first startup of a new version
 
-### Version 0.1.3 *(2012-07-03)*
+### Version 0.1.3 *(2012-07-03)* - [Changes][12]
 * Changed the layout of the battery statistics database
 
-### Version 0.1.2 *(2012-07-02)*
+### Version 0.1.2 *(2012-07-02)* - [Changes][11]
 * Fixed a bug which caused that the preferences were not accessible
 * Added a first debug option to send the battery statistic database via mail
 * Updated the infrastructure to establish communication between the service and the app
 
-### Version 0.1 *(2012-06-29)*
+### Version 0.1 *(2012-06-29)* - [Changes][10]
 * Added code to obtain statistics about the battery charings
 * Added GPL header to all source files
 * Moved all strings to the resource file (for supporting localization)
 
-### Version 0.0.2 *(2012-04-22)*
+### Version 0.0.2 *(2012-04-22)* - [Changes][9]
 * Added a preference dialog for changing the used theme of the app
 * Added an dialog to show information about the application
 
@@ -106,4 +106,14 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
  [6]: http://www.gnu.org/licenses/lgpl.html
  [7]: http://www.eclipse.org/
  [8]: https://play.google.com/store/apps/details?id=com.halcyonwaves.apps.energize
- [9]: https://github.com/thuetz/Energize/compare/v0.6...v0.6.3 
+ [9]: https://github.com/thuetz/Energize/compare/v0.0.1...v0.0.2 
+ [10]: https://github.com/thuetz/Energize/compare/v0.0.2...v0.1 
+ [11]: https://github.com/thuetz/Energize/compare/v0.1...v0.1.2 
+ [12]: https://github.com/thuetz/Energize/compare/v0.1.2...v0.1.3 
+ [13]: https://github.com/thuetz/Energize/compare/v0.1.3...v0.2
+ [14]: https://github.com/thuetz/Energize/compare/v0.2...v0.3 
+ [15]: https://github.com/thuetz/Energize/compare/v0.3...v0.4 
+ [16]: https://github.com/thuetz/Energize/compare/v0.4...v0.4.1 
+ [17]: https://github.com/thuetz/Energize/compare/v0.4.1...v0.5 
+ [18]: https://github.com/thuetz/Energize/compare/v0.5...v0.6 
+ [19]: https://github.com/thuetz/Energize/compare/v0.6...v0.6.3 
