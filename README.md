@@ -31,6 +31,9 @@ As soon as the used strings is nearly fixed, you can help us on our project page
 The application icon is based upon the [Android Robot][3] logo made by Google Inc. This logo is licensed under the terms of the [Creative Commons Attribution license][4]. The battery icon was designed by the authors of the [GNOME High contrast icon set][5] and is licensed under the terms of the [GNU Lesser General Public License][6].
 
 ## Changelog
+### Version 0.7 *(not released)* - Changes
+* Basic support for Asus Transformer Pad Prime/Infinity dock battery capacity (showing the current capacity; not used for estimation) 
+
 ### Version 0.6.4 *(2012-08-27)* - [Changes][20]
 * Disabled the background color of the battery capacity graph (it caused a graphical glitch)
 * The battery capacity graph and the temperature graph will just show the last 24 hours of the logged information

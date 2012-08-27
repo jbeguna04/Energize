@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.BatteryManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -24,6 +25,9 @@ public class OverviewFragment extends Fragment {
 	private SharedPreferences sharedPref = null;
 	private TextView textViewCurrentChargingState = null;
 	private TextView textViewCurrentLoadingLevel = null;
+	private TextView textViewCurrentLoadingLevelAsusDock = null;
+	private TextView textViewAsusBatterySeperator = null;
+	private TextView textViewAsusBatteryPercentage = null;
 	private TextView textViewTemp = null;
 
 	// private boolean batteryDischarging = false;
@@ -37,8 +41,28 @@ public class OverviewFragment extends Fragment {
 
 		// get the handles to some important controls
 		this.textViewCurrentLoadingLevel = (TextView) inflatedView.findViewById( R.id.textview_text_current_charginglvl );
+		this.textViewCurrentLoadingLevelAsusDock = (TextView) inflatedView.findViewById( R.id.textview_text_current_charginglvl_asusdock );
+		this.textViewAsusBatteryPercentage = (TextView) inflatedView.findViewById( R.id.textview_label_current_charginglvl_asusdock );
+		this.textViewAsusBatterySeperator = (TextView) inflatedView.findViewById( R.id.textview_label_current_charginglvl_asusdock_seperator );
 		this.textViewCurrentChargingState = (TextView) inflatedView.findViewById( R.id.textview_text_current_chargingstate );
 		this.textViewTemp = (TextView) inflatedView.findViewById( R.id.textview_text_temperature );
+		
+		// check if it can be possible that there is a additional battery dock
+		boolean possibleAsusDock = false;
+		if( 0 == Build.BRAND.compareToIgnoreCase( "asus" ) ) {
+			Log.v( OverviewFragment.TAG, "Device brand: " + Build.BRAND );
+			if( Build.DEVICE.toLowerCase().startsWith( "tf700" ) ) {
+				Log.v( OverviewFragment.TAG, "Device model name: " + Build.DEVICE );
+				possibleAsusDock = true;
+			}
+		}
+		
+		// set the visibility to invisible if no dock was found
+		if( !possibleAsusDock ) {
+			this.textViewAsusBatteryPercentage.setVisibility( View.INVISIBLE );
+			this.textViewAsusBatterySeperator.setVisibility( View.INVISIBLE );
+			this.textViewCurrentLoadingLevelAsusDock.setVisibility( View.INVISIBLE );
+		}
 
 		// get the current battery state and show it on the main activity
 		final BroadcastReceiver batteryLevelReceiver = new BroadcastReceiver() {
@@ -46,15 +70,26 @@ public class OverviewFragment extends Fragment {
 			@Override
 			public void onReceive( final Context context, final Intent intent ) {
 				try {
+					// ensure that we're not updating this receiver anymore (to save battery)
 					context.unregisterReceiver( this );
+					
+					// get some important values into local variables
 					final int rawlevel = intent.getIntExtra( BatteryManager.EXTRA_LEVEL, -1 );
 					final int scale = intent.getIntExtra( BatteryManager.EXTRA_SCALE, -1 );
 					final int status = intent.getIntExtra( BatteryManager.EXTRA_STATUS, -1 );
 					final float temp = (intent.getIntExtra( BatteryManager.EXTRA_TEMPERATURE, -1 )) / 10.0f;
+					
+					// get the charging state and level for the keyboard dock of the ASUS Transformer Pad series
+					final int dockStatus = intent.getIntExtra( "dock_status", -1 );
+			        final int dockLevel = intent.getIntExtra( "dock_level", -1 );
+					
+			        // do a potential level scaling (most of the times not required, but to be sure)
 					int level = -1;
 					if( (rawlevel >= 0) && (scale > 0) ) {
 						level = (rawlevel * 100) / scale;
 					}
+					
+					// set the text for the state of he main battery
 					switch( status ) {
 						case BatteryManager.BATTERY_STATUS_CHARGING:
 							OverviewFragment.this.textViewCurrentChargingState.setText( OverviewFragment.this.getString( R.string.battery_state_charging ) );
@@ -72,6 +107,12 @@ public class OverviewFragment extends Fragment {
 					}
 
 					OverviewFragment.this.textViewCurrentLoadingLevel.setText( level + "" ); // TODO
+					if( dockStatus == 1 ) {
+						OverviewFragment.this.textViewCurrentLoadingLevelAsusDock.setText( dockLevel + "---" ); // undocked
+					} else {
+						OverviewFragment.this.textViewCurrentLoadingLevelAsusDock.setText( dockLevel + "" ); // TODO
+					}
+					
 					final String prefUsedUnit = OverviewFragment.this.sharedPref.getString( "display.temperature_unit", "Celsius" );
 					if( prefUsedUnit.compareToIgnoreCase( "celsius" ) == 0 ) {
 						OverviewFragment.this.textViewTemp.setText( OverviewFragment.this.getString( R.string.textview_text_temperature_celsius, temp ) );
@@ -86,20 +127,6 @@ public class OverviewFragment extends Fragment {
 		};
 		final IntentFilter batteryLevelFilter = new IntentFilter( Intent.ACTION_BATTERY_CHANGED );
 		this.getActivity().registerReceiver( batteryLevelReceiver, batteryLevelFilter );
-
-		// update the label how long the device is running on battery
-		/*
-		 * TextView onBatteryTextView = (TextView)inflatedView.findViewById( R.id.textview_text_time_on_battery ); onBatteryTextView.setText( this.getText( R.string.textview_text_time_on_battery_not_on_battery ) ); if( !batteryDischarging ) { BatteryStatisticsDatabaseOpenHelper batteryDbOpenHelper = new BatteryStatisticsDatabaseOpenHelper( this.getActivity().getApplicationContext() ); SQLiteDatabase batteryStatisticsDatabase = batteryDbOpenHelper.getReadableDatabase(); Cursor lastEntryMadeCursor = batteryStatisticsDatabase.query( RawBatteryStatisicsTable.TABLE_NAME, new String[] { RawBatteryStatisicsTable.COLUMN_EVENT_TIME }, RawBatteryStatisicsTable.COLUMN_CHARGING_STATE + " LIKE ?", new String[] { String.valueOf( RawBatteryStatisicsTable.CHARGING_STATE_DISCHARGING ) }, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " DESC" ); //Cursor lastEntryMadeCursor = batteryStatisticsDatabase.query( RawBatteryStatisicsTable.TABLE_NAME, new String[] { RawBatteryStatisicsTable.COLUMN_EVENT_TIME, RawBatteryStatisicsTable.COLUMN_CHARGING_STATE }, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " DESC" );
-		 * 
-		 * // if( lastEntryMadeCursor.moveToFirst() ) { int lastUnixTime = lastEntryMadeCursor.getInt( lastEntryMadeCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_EVENT_TIME ) ); long diff = System.currentTimeMillis() - ( lastUnixTime * 1000 ); diff /= 1000; diff /= 60;
-		 * 
-		 * // Log.v( OverviewFragment.TAG, String.format( "The unix time where the battery was unplugged: %d (%d now, %d minutes ago)", lastUnixTime, System.currentTimeMillis() / 1000, diff ) ); }
-		 * 
-		 * // close our connection to the database lastEntryMadeCursor.close(); lastEntryMadeCursor = null; batteryDbOpenHelper.close(); batteryStatisticsDatabase = null; batteryDbOpenHelper = null;
-		 * 
-		 * 
-		 * // onBatteryTextView.setText( this.getString( R.string.textview_text_time_on_battery, 0, 0 ) ); }
-		 */
 
 		// return the inflated view
 		return inflatedView;
