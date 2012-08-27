@@ -1,7 +1,5 @@
 package com.halcyonwaves.apps.energize.fragments;
 
-import com.halcyonwaves.apps.energize.R;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -17,23 +15,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.halcyonwaves.apps.energize.R;
+
 public class OverviewFragment extends Fragment {
 
 	private static final String TAG = "OverviewFragment";
 
-	private TextView textViewCurrentLoadingLevel = null;
-	private TextView textViewCurrentChargingState = null;
-	private TextView textViewTemp = null;
 	private SharedPreferences sharedPref = null;
+	private TextView textViewCurrentChargingState = null;
+	private TextView textViewCurrentLoadingLevel = null;
+	private TextView textViewTemp = null;
 
 	// private boolean batteryDischarging = false;
 
 	@Override
-	public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState ) {
+	public View onCreateView( final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState ) {
 		this.sharedPref = PreferenceManager.getDefaultSharedPreferences( this.getActivity().getApplicationContext() );
 
 		// inflate the static part of the view
-		View inflatedView = inflater.inflate( R.layout.fragment_maininformation, container, false );
+		final View inflatedView = inflater.inflate( R.layout.fragment_maininformation, container, false );
 
 		// get the handles to some important controls
 		this.textViewCurrentLoadingLevel = (TextView) inflatedView.findViewById( R.id.textview_text_current_charginglvl );
@@ -41,17 +41,18 @@ public class OverviewFragment extends Fragment {
 		this.textViewTemp = (TextView) inflatedView.findViewById( R.id.textview_text_temperature );
 
 		// get the current battery state and show it on the main activity
-		BroadcastReceiver batteryLevelReceiver = new BroadcastReceiver() {
+		final BroadcastReceiver batteryLevelReceiver = new BroadcastReceiver() {
 
-			public void onReceive( Context context, Intent intent ) {
+			@Override
+			public void onReceive( final Context context, final Intent intent ) {
 				try {
 					context.unregisterReceiver( this );
-					int rawlevel = intent.getIntExtra( BatteryManager.EXTRA_LEVEL, -1 );
-					int scale = intent.getIntExtra( BatteryManager.EXTRA_SCALE, -1 );
-					int status = intent.getIntExtra( BatteryManager.EXTRA_STATUS, -1 );
-					float temp = ((float) intent.getIntExtra( BatteryManager.EXTRA_TEMPERATURE, -1 )) / 10.0f;
+					final int rawlevel = intent.getIntExtra( BatteryManager.EXTRA_LEVEL, -1 );
+					final int scale = intent.getIntExtra( BatteryManager.EXTRA_SCALE, -1 );
+					final int status = intent.getIntExtra( BatteryManager.EXTRA_STATUS, -1 );
+					final float temp = (intent.getIntExtra( BatteryManager.EXTRA_TEMPERATURE, -1 )) / 10.0f;
 					int level = -1;
-					if( rawlevel >= 0 && scale > 0 ) {
+					if( (rawlevel >= 0) && (scale > 0) ) {
 						level = (rawlevel * 100) / scale;
 					}
 					switch( status ) {
@@ -71,19 +72,19 @@ public class OverviewFragment extends Fragment {
 					}
 
 					OverviewFragment.this.textViewCurrentLoadingLevel.setText( level + "" ); // TODO
-					String prefUsedUnit = OverviewFragment.this.sharedPref.getString( "display.temperature_unit", "Celsius" );
+					final String prefUsedUnit = OverviewFragment.this.sharedPref.getString( "display.temperature_unit", "Celsius" );
 					if( prefUsedUnit.compareToIgnoreCase( "celsius" ) == 0 ) {
 						OverviewFragment.this.textViewTemp.setText( OverviewFragment.this.getString( R.string.textview_text_temperature_celsius, temp ) );
 					} else if( prefUsedUnit.compareToIgnoreCase( "fahrenheit" ) == 0 ) {
-						final float newTemp = temp * 1.8f + 32.0f;
+						final float newTemp = (temp * 1.8f) + 32.0f;
 						OverviewFragment.this.textViewTemp.setText( OverviewFragment.this.getString( R.string.textview_text_temperature_fahrenheit, newTemp ) );
 					}
-				} catch( IllegalStateException e ) {
+				} catch( final IllegalStateException e ) {
 					Log.e( OverviewFragment.TAG, "The fragment was in an illegal state while it received the battery information. This should be handled in a different (and better way), The exception message was: ", e ); // TODO
 				}
 			}
 		};
-		IntentFilter batteryLevelFilter = new IntentFilter( Intent.ACTION_BATTERY_CHANGED );
+		final IntentFilter batteryLevelFilter = new IntentFilter( Intent.ACTION_BATTERY_CHANGED );
 		this.getActivity().registerReceiver( batteryLevelReceiver, batteryLevelFilter );
 
 		// update the label how long the device is running on battery

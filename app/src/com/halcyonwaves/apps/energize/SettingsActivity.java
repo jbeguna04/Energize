@@ -10,10 +10,10 @@
 
 package com.halcyonwaves.apps.energize;
 
-import com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment;
-
 import android.app.Activity;
 import android.os.Bundle;
+
+import com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment;
 
 public class SettingsActivity extends Activity {
 

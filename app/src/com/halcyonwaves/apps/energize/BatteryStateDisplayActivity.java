@@ -10,9 +10,6 @@
 
 package com.halcyonwaves.apps.energize;
 
-import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
-import com.viewpagerindicator.TitlePageIndicator;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -31,6 +28,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
+import com.viewpagerindicator.TitlePageIndicator;
+
 /**
  * This class defines the behavior of the first activity the user sees after he
  * or she started the application through the launcher entry or by clicking the
@@ -46,39 +46,22 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 		final SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences( this.getApplicationContext() );
 		int currentVersionNumber = 0;
 
-		int savedVersionNumber = sharedPref.getInt( VERSION_KEY, 0 );
+		final int savedVersionNumber = sharedPref.getInt( BatteryStateDisplayActivity.VERSION_KEY, 0 );
 
 		try {
-			PackageInfo pi = getPackageManager().getPackageInfo( getPackageName(), 0 );
+			final PackageInfo pi = this.getPackageManager().getPackageInfo( this.getPackageName(), 0 );
 			currentVersionNumber = pi.versionCode;
-		} catch( Exception e ) {
+		} catch( final Exception e ) {
 		}
 
 		if( currentVersionNumber > savedVersionNumber ) {
-			showWhatsNewDialog();
+			this.showWhatsNewDialog();
 
-			Editor editor = sharedPref.edit();
+			final Editor editor = sharedPref.edit();
 
-			editor.putInt( VERSION_KEY, currentVersionNumber );
+			editor.putInt( BatteryStateDisplayActivity.VERSION_KEY, currentVersionNumber );
 			editor.commit();
 		}
-	}
-
-	private void showWhatsNewDialog() {
-		LayoutInflater inflater = LayoutInflater.from( this );
-
-		View view = inflater.inflate( R.layout.dialog_whatsnew, null );
-
-		AlertDialog.Builder builder = new AlertDialog.Builder( this );
-
-		builder.setView( view ).setTitle( R.string.dialog_title_whatsnew ).setPositiveButton( android.R.string.ok, new OnClickListener() {
-
-			public void onClick( DialogInterface dialog, int which ) {
-				dialog.dismiss();
-			}
-		} );
-
-		builder.create().show();
 	}
 
 	@Override
@@ -91,7 +74,7 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 		// set the theme of the activity and setup its layout
 		this.setTheme( ApplicationCore.getSelectedThemeId( this.getApplicationContext() ) );
 		this.setContentView( R.layout.activity_batterystatedisplay );
-		
+
 		// check if the service is running, if not start it
 		if( !ApplicationCore.isServiceRunning( this, MonitorBatteryStateService.class.getName() ) ) {
 			Log.v( "BatteryStateDisplayActivity", "Monitoring service is not running, starting it..." );
@@ -99,11 +82,11 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 		}
 
 		// set the pager with an adapter
-		ViewPager pager = (ViewPager) this.findViewById( R.id.vp_fragment_pager );
+		final ViewPager pager = (ViewPager) this.findViewById( R.id.vp_fragment_pager );
 		pager.setAdapter( new MainFragmentPagerAdapter( this.getApplicationContext(), this.getSupportFragmentManager() ) );
 
 		// bind the title indicator to the adapter
-		TitlePageIndicator titleIndicator = (TitlePageIndicator) this.findViewById( R.id.vp_fragment_titles );
+		final TitlePageIndicator titleIndicator = (TitlePageIndicator) this.findViewById( R.id.vp_fragment_titles );
 		titleIndicator.setViewPager( pager );
 
 		// do the rest of the initialization of the main dialog
@@ -115,23 +98,6 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 		this.getMenuInflater().inflate( R.menu.menu_main, menu );
 		return true;
 	}
-	
-	private void showAppIconLicensePreference() {
-		LayoutInflater inflater = LayoutInflater.from( this );
-
-		View view = inflater.inflate( R.layout.dialog_license_appicon, null );
-
-		AlertDialog.Builder builder = new AlertDialog.Builder( this );
-
-		builder.setView( view ).setTitle( R.string.dialog_title_appiconlicense ).setPositiveButton( android.R.string.ok, new OnClickListener() {
-
-			public void onClick( DialogInterface dialog, int which ) {
-				dialog.dismiss();
-			}
-		} );
-
-		builder.create().show();
-	}
 
 	@Override
 	public boolean onOptionsItemSelected( final MenuItem item ) {
@@ -141,9 +107,9 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 				BatteryStateDisplayActivity.this.startActivity( myIntent );
 				return true;
 			case R.id.menu_showapplicense:
-				Intent i = new Intent( Intent.ACTION_VIEW );
+				final Intent i = new Intent( Intent.ACTION_VIEW );
 				i.setData( Uri.parse( "http://www.gnu.org/copyleft/gpl.html" ) );
-				startActivity( i );
+				this.startActivity( i );
 				return true;
 			case R.id.menu_show3rdpartylicense:
 				this.showAppIconLicensePreference();
@@ -151,5 +117,39 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 			default:
 				return false;
 		}
+	}
+
+	private void showAppIconLicensePreference() {
+		final LayoutInflater inflater = LayoutInflater.from( this );
+
+		final View view = inflater.inflate( R.layout.dialog_license_appicon, null );
+
+		final AlertDialog.Builder builder = new AlertDialog.Builder( this );
+
+		builder.setView( view ).setTitle( R.string.dialog_title_appiconlicense ).setPositiveButton( android.R.string.ok, new OnClickListener() {
+
+			public void onClick( final DialogInterface dialog, final int which ) {
+				dialog.dismiss();
+			}
+		} );
+
+		builder.create().show();
+	}
+
+	private void showWhatsNewDialog() {
+		final LayoutInflater inflater = LayoutInflater.from( this );
+
+		final View view = inflater.inflate( R.layout.dialog_whatsnew, null );
+
+		final AlertDialog.Builder builder = new AlertDialog.Builder( this );
+
+		builder.setView( view ).setTitle( R.string.dialog_title_whatsnew ).setPositiveButton( android.R.string.ok, new OnClickListener() {
+
+			public void onClick( final DialogInterface dialog, final int which ) {
+				dialog.dismiss();
+			}
+		} );
+
+		builder.create().show();
 	}
 }

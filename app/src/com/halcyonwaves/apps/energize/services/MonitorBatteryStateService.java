@@ -12,12 +12,6 @@ package com.halcyonwaves.apps.energize.services;
 
 import java.util.ArrayList;
 
-import com.halcyonwaves.apps.energize.BatteryStateDisplayActivity;
-import com.halcyonwaves.apps.energize.R;
-import com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper;
-import com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable;
-import com.halcyonwaves.apps.energize.receivers.BatteryChangedReceiver;
-
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -39,35 +33,90 @@ import android.os.RemoteException;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import com.halcyonwaves.apps.energize.BatteryStateDisplayActivity;
+import com.halcyonwaves.apps.energize.R;
+import com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper;
+import com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable;
+import com.halcyonwaves.apps.energize.receivers.BatteryChangedReceiver;
+
 public class MonitorBatteryStateService extends Service implements OnSharedPreferenceChangeListener {
 
-	private static final String TAG = "MonitorBatteryStateService";
+	private class IncomingHandler extends Handler {
 
+		@Override
+		public void handleMessage( final Message msg ) {
+			switch( msg.what ) {
+				case MonitorBatteryStateService.MSG_REGISTER_CLIENT:
+					Log.d( MonitorBatteryStateService.TAG, "Registering new client to the battery monitoring service..." );
+					MonitorBatteryStateService.this.connectedClients.add( msg.replyTo );
+					MonitorBatteryStateService.this.sendCurrentChargingPctToClients();
+					break;
+				case MonitorBatteryStateService.MSG_UNREGISTER_CLIENT:
+					Log.d( MonitorBatteryStateService.TAG, "Unregistering client from the battery monitoring service..." );
+					MonitorBatteryStateService.this.connectedClients.remove( msg.replyTo );
+					break;
+				case MonitorBatteryStateService.MSG_REQUEST_LAST_CHARGING_PCT:
+					Log.d( MonitorBatteryStateService.TAG, "Received request of the charging percentage..." );
+					MonitorBatteryStateService.this.sendCurrentChargingPctToClients();
+					break;
+				case MonitorBatteryStateService.MSG_START_MONITORING:
+					Log.d( MonitorBatteryStateService.TAG, "Starting battery monitoring..." );
+					MonitorBatteryStateService.this.startMonitoring();
+					break;
+				case MonitorBatteryStateService.MSG_STOP_MONITORING:
+					Log.d( MonitorBatteryStateService.TAG, "Stopping battery monitoring..." );
+					MonitorBatteryStateService.this.stopMonitoring();
+					break;
+				case MonitorBatteryStateService.MSG_REQUEST_DB_PATH:
+					Log.d( MonitorBatteryStateService.TAG, "Database path requested, sending it back..." );
+					try {
+						msg.replyTo.send( Message.obtain( null, MonitorBatteryStateService.MSG_REQUEST_DB_PATH, (new ContextWrapper( MonitorBatteryStateService.this )).getDatabasePath( MonitorBatteryStateService.this.batteryDbOpenHelper.getDatabaseName() ).getAbsolutePath() ) );
+					} catch( final RemoteException e ) {
+						Log.e( MonitorBatteryStateService.TAG, "Failed to send the databasae path!" );
+					}
+					break;
+				case MonitorBatteryStateService.MSG_CLEAR_STATISTICS:
+					Log.d( MonitorBatteryStateService.TAG, "Clearing battery statistics database..." );
+					try {
+						MonitorBatteryStateService.this.batteryStatisticsDatabase.delete( RawBatteryStatisicsTable.TABLE_NAME, null, null );
+						msg.replyTo.send( Message.obtain( null, MonitorBatteryStateService.MSG_CLEAR_STATISTICS ) );
+					} catch( final RemoteException e ) {
+						Log.e( MonitorBatteryStateService.TAG, "Failed to clear battery statistics database!" );
+					}
+					break;
+				default:
+					super.handleMessage( msg );
+			}
+		}
+	}
+
+	public static final int MSG_CLEAR_STATISTICS = 7;
 	public static final int MSG_REGISTER_CLIENT = 1;
-	public static final int MSG_UNREGISTER_CLIENT = 2;
+	public static final int MSG_REQUEST_DB_PATH = 6;
 	public static final int MSG_REQUEST_LAST_CHARGING_PCT = 3;
 	public static final int MSG_START_MONITORING = 4;
 	public static final int MSG_STOP_MONITORING = 5;
-	public static final int MSG_REQUEST_DB_PATH = 6;
-	public static final int MSG_CLEAR_STATISTICS = 7;
+	public static final int MSG_UNREGISTER_CLIENT = 2;
 
 	private static final int MY_NOTIFICATION_ID = 1;
 
+	private static final String TAG = "MonitorBatteryStateService";
+	private SharedPreferences appPreferences = null;
 	private BatteryChangedReceiver batteryChangedReceiver = null;
 	private BatteryStatisticsDatabaseOpenHelper batteryDbOpenHelper = null;
 	private SQLiteDatabase batteryStatisticsDatabase = null;
-	private ArrayList< Messenger > connectedClients = new ArrayList< Messenger >();
+	private final ArrayList< Messenger > connectedClients = new ArrayList< Messenger >();
 	private int lastChargingPercentage = -1;
 	private int lastRemainingMinutes = -1;
 	private boolean lastTimeCharging = false;
-	private final Messenger serviceMessenger = new Messenger( new IncomingHandler() );
-	private NotificationManager notificationManager = null;
 	private Notification myNotification = null;
-	private SharedPreferences appPreferences = null;
+	private NotificationManager notificationManager = null;
 
-	public void insertPowerValue( int powerSource, int scale, int level, int temprature ) {
+	private final Messenger serviceMessenger = new Messenger( new IncomingHandler() );
+
+	public void insertPowerValue( final int powerSource, final int scale, final int level, final int temprature ) {
 		// if the database is not open, skip the insertion process
-		if( null == this.batteryStatisticsDatabase || !this.batteryStatisticsDatabase.isOpen() ) {
+		if( (null == this.batteryStatisticsDatabase) || !this.batteryStatisticsDatabase.isOpen() ) {
 			Log.e( MonitorBatteryStateService.TAG, "Tried to insert a dataset into a closed database, skipping..." );
 			return;
 		}
@@ -76,7 +125,7 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 		this.lastTimeCharging = (RawBatteryStatisicsTable.CHARGING_STATE_DISCHARGING != powerSource);
 
 		// get the last entry we made on our database, if the entries are the same we want to insert, skip the insertion process
-		Cursor lastEntryMadeCursor = this.batteryStatisticsDatabase.query( RawBatteryStatisicsTable.TABLE_NAME, new String[] { RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL }, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " DESC" );
+		final Cursor lastEntryMadeCursor = this.batteryStatisticsDatabase.query( RawBatteryStatisicsTable.TABLE_NAME, new String[] { RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL }, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " DESC" );
 		if( lastEntryMadeCursor.moveToFirst() ) {
 			if( level == lastEntryMadeCursor.getInt( lastEntryMadeCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL ) ) ) {
 				Log.d( MonitorBatteryStateService.TAG, "Tried to insert an already existing dataset, skipping..." );
@@ -95,8 +144,8 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 		lastEntryMadeCursor.close();
 
 		// insert the new dataset into our database
-		final long currentUnixTime = (long) (System.currentTimeMillis() / 1000);
-		ContentValues values = new ContentValues();
+		final long currentUnixTime = System.currentTimeMillis() / 1000;
+		final ContentValues values = new ContentValues();
 		values.put( RawBatteryStatisicsTable.COLUMN_EVENT_TIME, currentUnixTime );
 		values.put( RawBatteryStatisicsTable.COLUMN_CHARGING_STATE, powerSource );
 		values.put( RawBatteryStatisicsTable.COLUMN_CHARGING_SCALE, scale );
@@ -108,19 +157,19 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 		this.lastChargingPercentage = level;
 
 		// calculate the remaining time in minutes
-		Cursor querCursor = this.batteryStatisticsDatabase.query( RawBatteryStatisicsTable.TABLE_NAME, new String[] { RawBatteryStatisicsTable.COLUMN_EVENT_TIME }, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " DESC" );
+		final Cursor querCursor = this.batteryStatisticsDatabase.query( RawBatteryStatisicsTable.TABLE_NAME, new String[] { RawBatteryStatisicsTable.COLUMN_EVENT_TIME }, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " DESC" );
 		if( querCursor.moveToFirst() ) {
-			long lastEventTime = querCursor.getLong( querCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_EVENT_TIME ) );
+			final long lastEventTime = querCursor.getLong( querCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_EVENT_TIME ) );
 			if( querCursor.moveToNext() ) {
-				long prevEventTime = querCursor.getLong( querCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_EVENT_TIME ) );
-				long diff = Math.abs( lastEventTime - prevEventTime );
+				final long prevEventTime = querCursor.getLong( querCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_EVENT_TIME ) );
+				final long diff = Math.abs( lastEventTime - prevEventTime );
 				Log.v( MonitorBatteryStateService.TAG, String.format( "Calculated the time between the last two (%d, %d) events: %d", lastEventTime, prevEventTime, diff ) );
 				if( RawBatteryStatisicsTable.CHARGING_STATE_DISCHARGING == powerSource ) {
-					this.lastRemainingMinutes = (int) (Math.round( ((this.lastChargingPercentage) * diff) / 60.0f ));
-					Log.v( MonitorBatteryStateService.TAG, String.format( "Calculated remaining battery life in minutes: %d", lastRemainingMinutes ) );
+					this.lastRemainingMinutes = (Math.round( ((this.lastChargingPercentage) * diff) / 60.0f ));
+					Log.v( MonitorBatteryStateService.TAG, String.format( "Calculated remaining battery life in minutes: %d", this.lastRemainingMinutes ) );
 				} else {
-					this.lastRemainingMinutes = (int) (Math.round( ((100.0f - this.lastChargingPercentage) * diff) / 60.0f ));
-					Log.v( MonitorBatteryStateService.TAG, String.format( "Calculated remaining charging time in minutes: %d", lastRemainingMinutes ) );
+					this.lastRemainingMinutes = (Math.round( ((100.0f - this.lastChargingPercentage) * diff) / 60.0f ));
+					Log.v( MonitorBatteryStateService.TAG, String.format( "Calculated remaining charging time in minutes: %d", this.lastRemainingMinutes ) );
 				}
 			}
 		}
@@ -132,24 +181,68 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 	}
 
 	@Override
+	public IBinder onBind( final Intent intent ) {
+		return this.serviceMessenger.getBinder();
+	}
+
+	@Override
 	public void onDestroy() {
 		this.batteryDbOpenHelper.close();
 		this.batteryStatisticsDatabase = null;
 		super.onDestroy();
 	}
 
-	private void stopMonitoring() {
-		this.batteryDbOpenHelper.close();
-		this.batteryStatisticsDatabase = null;
+	public void onSharedPreferenceChanged( final SharedPreferences sharedPreferences, final String key ) {
+		if( 0 == key.compareTo( "advance.show_notification_bar" ) ) {
+			final boolean showShowIcon = sharedPreferences.getBoolean( "advance.show_notification_bar", true );
+			Log.v( MonitorBatteryStateService.TAG, "Notification icon setting chaanged to: " + showShowIcon );
+			if( !showShowIcon ) {
+				this.notificationManager.cancel( MonitorBatteryStateService.MY_NOTIFICATION_ID );
+				this.myNotification = null;
+			} else {
+				this.showNewPercentageNotification( this.lastChargingPercentage, this.lastRemainingMinutes, this.lastTimeCharging );
+			}
+		}
 	}
 
-	private void startMonitoring() {
+	@Override
+	public int onStartCommand( final Intent intent, final int flags, final int startid ) {
+		//
+		Log.v( MonitorBatteryStateService.TAG, "Starting service for collecting battery statistics..." );
+
+		//
+		this.appPreferences = PreferenceManager.getDefaultSharedPreferences( this.getApplicationContext() );
+		this.appPreferences.registerOnSharedPreferenceChangeListener( this );
+
+		//
+		this.notificationManager = (NotificationManager) this.getSystemService( Context.NOTIFICATION_SERVICE );
+
+		//
+		this.batteryDbOpenHelper = new BatteryStatisticsDatabaseOpenHelper( this.getApplicationContext() );
 		this.batteryStatisticsDatabase = this.batteryDbOpenHelper.getWritableDatabase();
+
+		//
+		this.batteryChangedReceiver = new BatteryChangedReceiver( this );
+		this.registerReceiver( this.batteryChangedReceiver, new IntentFilter( Intent.ACTION_BATTERY_CHANGED ) );
+
+		//
+		Log.v( MonitorBatteryStateService.TAG, "Service successfully started" );
+		return Service.START_STICKY;
 	}
 
-	private void showNewPercentageNotification( int percentage, int remainingMinutes, boolean charges ) {
+	private void sendCurrentChargingPctToClients() {
+		try {
+			for( final Messenger msg : this.connectedClients ) {
+				msg.send( Message.obtain( null, MonitorBatteryStateService.MSG_REQUEST_LAST_CHARGING_PCT, this.lastChargingPercentage, 0 ) );
+			}
+		} catch( final RemoteException e ) {
+			// nothing
+		}
+	}
+
+	private void showNewPercentageNotification( final int percentage, final int remainingMinutes, final boolean charges ) {
 		// be sure that it is a valid percentage
-		if( percentage < 0 || percentage > 100 ) {
+		if( (percentage < 0) || (percentage > 100) ) {
 			Log.e( MonitorBatteryStateService.TAG, "The application tried to show an invalid loading level." );
 			return;
 		}
@@ -178,109 +271,16 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 		}
 		this.myNotification.flags |= Notification.FLAG_ONGOING_EVENT;
 		this.myNotification.contentIntent = PendingIntent.getActivity( this.getApplicationContext(), 0, new Intent( this.getApplicationContext(), BatteryStateDisplayActivity.class ), 0 );
-		this.notificationManager.notify( MY_NOTIFICATION_ID, myNotification );
+		this.notificationManager.notify( MonitorBatteryStateService.MY_NOTIFICATION_ID, this.myNotification );
 	}
 
-	@Override
-	public int onStartCommand( Intent intent, int flags, int startid ) {
-		//
-		Log.v( MonitorBatteryStateService.TAG, "Starting service for collecting battery statistics..." );
-
-		//
-		this.appPreferences = PreferenceManager.getDefaultSharedPreferences( this.getApplicationContext() );
-		this.appPreferences.registerOnSharedPreferenceChangeListener( this );
-
-		//
-		this.notificationManager = (NotificationManager) this.getSystemService( Context.NOTIFICATION_SERVICE );
-
-		//
-		this.batteryDbOpenHelper = new BatteryStatisticsDatabaseOpenHelper( this.getApplicationContext() );
+	private void startMonitoring() {
 		this.batteryStatisticsDatabase = this.batteryDbOpenHelper.getWritableDatabase();
-
-		//
-		this.batteryChangedReceiver = new BatteryChangedReceiver( this );
-		this.registerReceiver( this.batteryChangedReceiver, new IntentFilter( Intent.ACTION_BATTERY_CHANGED ) );
-
-		//
-		Log.v( MonitorBatteryStateService.TAG, "Service successfully started" );
-		return START_STICKY;
 	}
 
-	@Override
-	public IBinder onBind( Intent intent ) {
-		return this.serviceMessenger.getBinder();
-	}
-
-	private void sendCurrentChargingPctToClients() {
-		try {
-			for( Messenger msg : this.connectedClients ) {
-				msg.send( Message.obtain( null, MonitorBatteryStateService.MSG_REQUEST_LAST_CHARGING_PCT, this.lastChargingPercentage, 0 ) );
-			}
-		} catch( RemoteException e ) {
-			// nothing
-		}
-	}
-
-	private class IncomingHandler extends Handler {
-
-		@Override
-		public void handleMessage( Message msg ) {
-			switch( msg.what ) {
-				case MonitorBatteryStateService.MSG_REGISTER_CLIENT:
-					Log.d( MonitorBatteryStateService.TAG, "Registering new client to the battery monitoring service..." );
-					MonitorBatteryStateService.this.connectedClients.add( msg.replyTo );
-					MonitorBatteryStateService.this.sendCurrentChargingPctToClients();
-					break;
-				case MonitorBatteryStateService.MSG_UNREGISTER_CLIENT:
-					Log.d( MonitorBatteryStateService.TAG, "Unregistering client from the battery monitoring service..." );
-					MonitorBatteryStateService.this.connectedClients.remove( msg.replyTo );
-					break;
-				case MonitorBatteryStateService.MSG_REQUEST_LAST_CHARGING_PCT:
-					Log.d( MonitorBatteryStateService.TAG, "Received request of the charging percentage..." );
-					MonitorBatteryStateService.this.sendCurrentChargingPctToClients();
-					break;
-				case MonitorBatteryStateService.MSG_START_MONITORING:
-					Log.d( MonitorBatteryStateService.TAG, "Starting battery monitoring..." );
-					MonitorBatteryStateService.this.startMonitoring();
-					break;
-				case MonitorBatteryStateService.MSG_STOP_MONITORING:
-					Log.d( MonitorBatteryStateService.TAG, "Stopping battery monitoring..." );
-					MonitorBatteryStateService.this.stopMonitoring();
-					break;
-				case MonitorBatteryStateService.MSG_REQUEST_DB_PATH:
-					Log.d( MonitorBatteryStateService.TAG, "Database path requested, sending it back..." );
-					try {
-						msg.replyTo.send( Message.obtain( null, MonitorBatteryStateService.MSG_REQUEST_DB_PATH, (new ContextWrapper( MonitorBatteryStateService.this )).getDatabasePath( MonitorBatteryStateService.this.batteryDbOpenHelper.getDatabaseName() ).getAbsolutePath() ) );
-					} catch( RemoteException e ) {
-						Log.e( MonitorBatteryStateService.TAG, "Failed to send the databasae path!" );
-					}
-					break;
-				case MonitorBatteryStateService.MSG_CLEAR_STATISTICS:
-					Log.d( MonitorBatteryStateService.TAG, "Clearing battery statistics database..." );
-					try {
-						MonitorBatteryStateService.this.batteryStatisticsDatabase.delete( RawBatteryStatisicsTable.TABLE_NAME, null, null );
-						msg.replyTo.send( Message.obtain( null, MonitorBatteryStateService.MSG_CLEAR_STATISTICS ) );
-					} catch( RemoteException e ) {
-						Log.e( MonitorBatteryStateService.TAG, "Failed to clear battery statistics database!" );
-					}
-					break;
-				default:
-					super.handleMessage( msg );
-			}
-		}
-	}
-
-	public void onSharedPreferenceChanged( SharedPreferences sharedPreferences, String key ) {
-		if( 0 == key.compareTo( "advance.show_notification_bar" ) ) {
-			final boolean showShowIcon = sharedPreferences.getBoolean( "advance.show_notification_bar", true );
-			Log.v( MonitorBatteryStateService.TAG, "Notification icon setting chaanged to: " + showShowIcon );
-			if( !showShowIcon ) {
-				this.notificationManager.cancel( MY_NOTIFICATION_ID );
-				this.myNotification = null;
-			} else {
-				this.showNewPercentageNotification( this.lastChargingPercentage, this.lastRemainingMinutes, this.lastTimeCharging );
-			}
-		}
+	private void stopMonitoring() {
+		this.batteryDbOpenHelper.close();
+		this.batteryStatisticsDatabase = null;
 	}
 
 }
