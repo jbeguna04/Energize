@@ -44,7 +44,7 @@ public class BatteryCapacityGraphFragment extends Fragment {
 		graphView.setScrollable( true );
 		graphView.setScalable( true );
 		graphView.setManualYAxis( true );
-		graphView.setDrawBackground( true );
+		graphView.setDrawBackground( false );
 		graphView.setManualYAxisBounds( 100.0, 0.0 );
 		//graphView.setViewPort( ((int) (System.currentTimeMillis() / 1000L) - 3600), 3600 );
 		LinearLayout layout = (LinearLayout) inflatedView.findViewById( R.id.layout_graph_view );
