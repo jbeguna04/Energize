@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,18 +56,22 @@ public class TemperatureGraphFragment extends Fragment {
 				}
 			}
 		};
-		graphView.addSeries( this.getBatteryStatisticData() );
+		final Pair< GraphViewSeries, Long > dataSet = this.getBatteryStatisticData();
+		final Long currentTime = System.currentTimeMillis() / 1000L;
+		graphView.addSeries( dataSet.first );
 		graphView.setScrollable( true );
 		graphView.setScalable( true );
 		graphView.setDrawBackground( false );
-		//graphView.setViewPort( ((int) (System.currentTimeMillis() / 1000L) - 3600), 3600 );
+		if( ( dataSet.second + 86400L ) < currentTime ) {
+			graphView.setViewPort( (currentTime - 86400), 86400 );
+		}
 		LinearLayout layout = (LinearLayout) inflatedView.findViewById( R.id.layout_graph_view_temperature );
 		layout.addView( graphView );
 
 		return inflatedView;
 	}
 
-	private GraphViewSeries getBatteryStatisticData() {
+	private Pair< GraphViewSeries, Long > getBatteryStatisticData() {
 		BatteryStatisticsDatabaseOpenHelper batteryDbOpenHelper = new BatteryStatisticsDatabaseOpenHelper( this.getActivity().getApplicationContext() );
 		SQLiteDatabase batteryStatisticsDatabase = batteryDbOpenHelper.getReadableDatabase();
 		Cursor lastEntryMadeCursor = batteryStatisticsDatabase.query( RawBatteryStatisicsTable.TABLE_NAME, new String[] { RawBatteryStatisicsTable.COLUMN_EVENT_TIME, RawBatteryStatisicsTable.COLUMN_BATTERY_TEMPRATURE }, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " ASC" );
@@ -86,12 +91,17 @@ public class TemperatureGraphFragment extends Fragment {
 		
 		//
 		lastEntryMadeCursor.moveToFirst();
+		Long oldtestTime = Long.MAX_VALUE;
 		while( !lastEntryMadeCursor.isAfterLast() ) {
 			Log.v( TemperatureGraphFragment.TAG, "Found a stored temperature: " + lastEntryMadeCursor.getInt( columnIndexChargingLevel ) );
+			int currentTime = lastEntryMadeCursor.getInt( columnIndexEventTime );
+			if( currentTime < oldtestTime ) {
+				oldtestTime = (long) currentTime;
+			}
 			if( !fahrenheitInsteadOfCelsius ) {
-				graphViewData.add( new GraphViewData( lastEntryMadeCursor.getInt( columnIndexEventTime ), lastEntryMadeCursor.getInt( columnIndexChargingLevel ) / 10.0f ) );
+				graphViewData.add( new GraphViewData( currentTime, lastEntryMadeCursor.getInt( columnIndexChargingLevel ) / 10.0f ) );
 			} else {
-				graphViewData.add( new GraphViewData( lastEntryMadeCursor.getInt( columnIndexEventTime ), ( lastEntryMadeCursor.getInt( columnIndexChargingLevel ) / 10.0f) * 1.8f + 32.0f ) );
+				graphViewData.add( new GraphViewData( currentTime, ( lastEntryMadeCursor.getInt( columnIndexChargingLevel ) / 10.0f) * 1.8f + 32.0f ) );
 			}
 			lastEntryMadeCursor.moveToNext();
 		}
@@ -109,6 +119,6 @@ public class TemperatureGraphFragment extends Fragment {
 		}
 		GraphViewData convertedDataset[] = new GraphViewData[ graphViewData.size() ];
 		graphViewData.toArray( convertedDataset );
-		return new GraphViewSeries( "", new GraphViewStyle( Color.rgb( 255, 0, 0 ), 3 ), convertedDataset );
+		return new Pair< GraphView.GraphViewSeries, Long >( new GraphViewSeries( "", new GraphViewStyle( Color.rgb( 255, 0, 0 ), 3 ), convertedDataset ), oldtestTime );
 	}
 }
