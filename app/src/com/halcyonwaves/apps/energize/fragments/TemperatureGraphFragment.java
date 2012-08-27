@@ -111,7 +111,7 @@ public class TemperatureGraphFragment extends Fragment {
 		final Long currentTime = System.currentTimeMillis() / 1000L;
 		graphView.addSeries( dataSet.first );
 		graphView.setScrollable( true );
-		graphView.setScalable( true );
+		graphView.setScalable( false );
 		graphView.setDrawBackground( false );
 		if( (dataSet.second + 86400L) < currentTime ) {
 			graphView.setViewPort( (currentTime - 86400), 86400 );
