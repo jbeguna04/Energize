@@ -108,7 +108,7 @@ public class OverviewFragment extends Fragment {
 
 					OverviewFragment.this.textViewCurrentLoadingLevel.setText( level + "" ); // TODO
 					if( dockStatus == 1 ) {
-						OverviewFragment.this.textViewCurrentLoadingLevelAsusDock.setText( dockLevel + "---" ); // undocked
+						OverviewFragment.this.textViewCurrentLoadingLevelAsusDock.setText( dockLevel + "-" ); // undocked
 					} else {
 						OverviewFragment.this.textViewCurrentLoadingLevelAsusDock.setText( dockLevel + "" ); // TODO
 					}
