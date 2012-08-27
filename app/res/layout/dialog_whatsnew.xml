@@ -11,6 +11,18 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:text="Version 0.6.4"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="25dp"
+        android:text="- Disabled the background color of the battery capacity graph (it caused a graphical glitch)\n- The battery capacity graph and the temperature graph will just show the last 24 hours of the logged information\n- Done an automated code cleanup to be more resource efficient" />
+    
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:text="Version 0.6.3"
         android:textStyle="bold" />
 
