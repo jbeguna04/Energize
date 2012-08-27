@@ -443,7 +443,7 @@ android.support.v4.widget.SimpleCursorAdapter$CursorToStringConverter
 android.support.v4.widget.SimpleCursorAdapter$ViewBinder
 com.halcyonwaves.apps.energize.ApplicationCore:
     private static final java.lang.String TAG
-    31:31:public ApplicationCore()
+    23:23:public ApplicationCore()
 com.halcyonwaves.apps.energize.BatteryStateDisplayActivity:
     private static final java.lang.String VERSION_KEY
 com.halcyonwaves.apps.energize.BuildConfig
@@ -468,19 +468,19 @@ com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper:
     public static final java.lang.String DATABASE_NAME
     public static final int DATABASE_VERSION
 com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable:
+    public static final int CHARGING_STATE_CHARGING_AC
+    public static final int CHARGING_STATE_CHARGING_USB
+    public static final int CHARGING_STATE_DISCHARGING
+    public static final java.lang.String COLUMN_BATTERY_TEMPRATURE
     public static final java.lang.String COLUMN_CHARGING_LEVEL
     public static final java.lang.String COLUMN_CHARGING_SCALE
-    public static final java.lang.String COLUMN_EVENT_TIME
     public static final java.lang.String COLUMN_CHARGING_STATE
-    public static final java.lang.String COLUMN_BATTERY_TEMPRATURE
+    public static final java.lang.String COLUMN_EVENT_TIME
     public static final java.lang.String COLUMN_ID
     private static final java.lang.String TABLE_CREATE
     private static final java.lang.String TABLE_DROP
-    public static final int CHARGING_STATE_DISCHARGING
-    public static final int CHARGING_STATE_CHARGING_AC
-    public static final int CHARGING_STATE_CHARGING_USB
     public static final java.lang.String TABLE_NAME
-    23:23:public RawBatteryStatisicsTable()
+    15:15:public RawBatteryStatisicsTable()
 com.halcyonwaves.apps.energize.fragments.AboutFragment:
     private static final java.lang.String TAG
 com.halcyonwaves.apps.energize.fragments.OverviewFragment:
@@ -490,21 +490,20 @@ com.halcyonwaves.apps.energize.fragments.TemperatureGraphFragment:
 com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment:
     private static final java.lang.String TAG
 com.halcyonwaves.apps.energize.services.MonitorBatteryStateService:
-    private static final java.lang.String TAG
+    public static final int MSG_CLEAR_STATISTICS
     public static final int MSG_REGISTER_CLIENT
-    public static final int MSG_UNREGISTER_CLIENT
+    public static final int MSG_REQUEST_DB_PATH
     public static final int MSG_REQUEST_LAST_CHARGING_PCT
     public static final int MSG_START_MONITORING
     public static final int MSG_STOP_MONITORING
-    public static final int MSG_REQUEST_DB_PATH
-    public static final int MSG_CLEAR_STATISTICS
+    public static final int MSG_UNREGISTER_CLIENT
     private static final int MY_NOTIFICATION_ID
+    private static final java.lang.String TAG
 com.jjoe64.graphview.BarGraphView
 com.jjoe64.graphview.GraphView:
     346:352:public void removeSeries(int)
     356:357:public void removeSeries(com.jjoe64.graphview.GraphView$GraphViewSeries)
     554:554:public boolean isShowLegend()
-    665:667:public void setViewPort(double,double)
     278:278:static synthetic void access$17(com.jjoe64.graphview.GraphView,double)
     282:282:static synthetic void access$18(com.jjoe64.graphview.GraphView,java.text.NumberFormat)
 com.jjoe64.graphview.GraphView$1:
