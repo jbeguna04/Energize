@@ -21,6 +21,7 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.preference.PreferenceManager;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.halcyonwaves.apps.energize.BatteryStateDisplayActivity;
@@ -252,15 +253,29 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 		if( charges ) {
 			notificationTitleId = R.string.notification_title_charges;
 		}
-
+		
+		// prepare the notification object
+		NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder( this.getApplicationContext() );
+		notificationBuilder.setContentTitle( this.getString( notificationTitleId ) );
+		notificationBuilder.setSmallIcon( R.drawable.ic_stat_00_pct_charged + percentage );
+		notificationBuilder.setOngoing( true );
+		notificationBuilder.setContentIntent( PendingIntent.getActivity( this.getApplicationContext(), 0, new Intent( this.getApplicationContext(), BatteryStateDisplayActivity.class ), 0 ) );
+		notificationBuilder.setPriority( NotificationCompat.PRIORITY_LOW );
+		
+		// if the capacity reaches 15%, use a high priority
+		if( percentage <= 15 ) {
+			notificationBuilder.setPriority( NotificationCompat.PRIORITY_HIGH );
+		}
+		
 		// show the notification
 		if( remainingMinutesNew <= -1 ) {
-			this.myNotification = new Notification.Builder( this ).setContentTitle( this.getString( notificationTitleId ) ).setContentText( this.getString( R.string.notification_text_estimate_na ) ).setSmallIcon( R.drawable.ic_stat_00_pct_charged + percentage ).getNotification();
+			notificationBuilder.setContentText( this.getString( R.string.notification_text_estimate_na ) );
 		} else {
-			this.myNotification = new Notification.Builder( this ).setContentTitle( this.getString( notificationTitleId ) ).setContentText( this.getString( R.string.notification_text_estimate, remainingHours, remainingMinutesNew ) ).setSmallIcon( R.drawable.ic_stat_00_pct_charged + percentage ).getNotification();
+			notificationBuilder.setContentText( this.getString( R.string.notification_text_estimate, remainingHours, remainingMinutesNew ) );
 		}
-		this.myNotification.flags |= Notification.FLAG_ONGOING_EVENT;
-		this.myNotification.contentIntent = PendingIntent.getActivity( this.getApplicationContext(), 0, new Intent( this.getApplicationContext(), BatteryStateDisplayActivity.class ), 0 );
+		
+		// get the created notification and show it
+		this.myNotification = notificationBuilder.build();
 		this.notificationManager.notify( MonitorBatteryStateService.MY_NOTIFICATION_ID, this.myNotification );
 	}
 
