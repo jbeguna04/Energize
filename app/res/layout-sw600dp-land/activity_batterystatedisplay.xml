@@ -3,14 +3,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
+    android:baselineAligned="false"
     android:orientation="horizontal" >
 
-    <fragment
-        android:name="com.halcyonwaves.apps.energize.fragments.OverviewFragment"
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
-        tools:layout="@layout/fragment_maininformation" />
+        android:orientation="vertical" >
+
+        <fragment
+            android:name="com.halcyonwaves.apps.energize.fragments.OverviewFragment"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            tools:layout="@layout/fragment_maininformation" />
+
+        <fragment
+            android:name="com.halcyonwaves.apps.energize.fragments.AboutFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            tools:layout="@layout/fragment_about" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -32,12 +47,5 @@
             android:layout_weight="1"
             tools:layout="@layout/fragment_temperaturegraph" />
     </LinearLayout>
-
-    <fragment
-        android:name="com.halcyonwaves.apps.energize.fragments.AboutFragment"
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        tools:layout="@layout/fragment_about" />
 
 </LinearLayout>
