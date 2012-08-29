@@ -1,4 +1,3 @@
-
 package com.halcyonwaves.apps.energize;
 
 import java.util.Iterator;

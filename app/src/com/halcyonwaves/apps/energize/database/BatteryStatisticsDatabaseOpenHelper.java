@@ -1,4 +1,3 @@
-
 package com.halcyonwaves.apps.energize.database;
 
 import android.content.Context;

@@ -1,4 +1,3 @@
-
 package com.halcyonwaves.apps.energize;
 
 import android.app.Activity;

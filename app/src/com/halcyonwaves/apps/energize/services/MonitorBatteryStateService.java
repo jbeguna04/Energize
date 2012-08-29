@@ -1,4 +1,3 @@
-
 package com.halcyonwaves.apps.energize.services;
 
 import java.util.ArrayList;

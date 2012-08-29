@@ -44,7 +44,7 @@ public class OverviewFragment extends Fragment {
 		this.textViewCurrentLoadingLevelAsusDockLabel = (TextView) inflatedView.findViewById( R.id.textview_label_current_charginglvl_asusdock );
 		this.textViewCurrentChargingState = (TextView) inflatedView.findViewById( R.id.textview_text_current_chargingstate );
 		this.textViewTemp = (TextView) inflatedView.findViewById( R.id.textview_text_temperature );
-		
+
 		// check if it can be possible that there is a additional battery dock
 		boolean possibleAsusDock = false;
 		if( 0 == Build.BRAND.compareToIgnoreCase( "asus" ) ) {
@@ -54,7 +54,7 @@ public class OverviewFragment extends Fragment {
 				possibleAsusDock = true;
 			}
 		}
-		
+
 		// set the visibility to invisible if no dock was found
 		if( !possibleAsusDock ) {
 			this.textViewCurrentLoadingLevelAsusDockLabel.setVisibility( View.INVISIBLE );
@@ -69,23 +69,23 @@ public class OverviewFragment extends Fragment {
 				try {
 					// ensure that we're not updating this receiver anymore (to save battery)
 					context.unregisterReceiver( this );
-					
+
 					// get some important values into local variables
 					final int rawlevel = intent.getIntExtra( BatteryManager.EXTRA_LEVEL, -1 );
 					final int scale = intent.getIntExtra( BatteryManager.EXTRA_SCALE, -1 );
 					final int status = intent.getIntExtra( BatteryManager.EXTRA_STATUS, -1 );
 					final float temp = (intent.getIntExtra( BatteryManager.EXTRA_TEMPERATURE, -1 )) / 10.0f;
-					
+
 					// get the charging state and level for the keyboard dock of the ASUS Transformer Pad series
 					final int dockStatus = intent.getIntExtra( "dock_status", -1 );
-			        final int dockLevel = intent.getIntExtra( "dock_level", -1 );
-					
-			        // do a potential level scaling (most of the times not required, but to be sure)
+					final int dockLevel = intent.getIntExtra( "dock_level", -1 );
+
+					// do a potential level scaling (most of the times not required, but to be sure)
 					int level = -1;
 					if( (rawlevel >= 0) && (scale > 0) ) {
 						level = (rawlevel * 100) / scale;
 					}
-					
+
 					// set the text for the state of he main battery
 					switch( status ) {
 						case BatteryManager.BATTERY_STATUS_CHARGING:
@@ -109,7 +109,7 @@ public class OverviewFragment extends Fragment {
 					} else {
 						OverviewFragment.this.textViewCurrentLoadingLevelAsusDock.setText( dockLevel + "%" ); // TODO
 					}
-					
+
 					final String prefUsedUnit = OverviewFragment.this.sharedPref.getString( "display.temperature_unit", "Celsius" );
 					if( prefUsedUnit.compareToIgnoreCase( "celsius" ) == 0 ) {
 						OverviewFragment.this.textViewTemp.setText( OverviewFragment.this.getString( R.string.textview_text_temperature_celsius, temp ) );

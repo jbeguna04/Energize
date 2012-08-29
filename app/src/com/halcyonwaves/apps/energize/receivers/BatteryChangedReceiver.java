@@ -1,4 +1,3 @@
-
 package com.halcyonwaves.apps.energize.receivers;
 
 import android.content.BroadcastReceiver;
