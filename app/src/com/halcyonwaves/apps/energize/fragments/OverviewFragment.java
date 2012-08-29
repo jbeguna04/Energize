@@ -25,9 +25,8 @@ public class OverviewFragment extends Fragment {
 	private SharedPreferences sharedPref = null;
 	private TextView textViewCurrentChargingState = null;
 	private TextView textViewCurrentLoadingLevel = null;
-	private TextView textViewCurrentLoadingLevelAsusDock = null;
-	private TextView textViewAsusBatterySeperator = null;
-	private TextView textViewAsusBatteryPercentage = null;
+	private TextView textViewCurrentLoadingLevelAsusDock = null;;
+	private TextView textViewCurrentLoadingLevelAsusDockLabel = null;
 	private TextView textViewTemp = null;
 
 	// private boolean batteryDischarging = false;
@@ -42,8 +41,7 @@ public class OverviewFragment extends Fragment {
 		// get the handles to some important controls
 		this.textViewCurrentLoadingLevel = (TextView) inflatedView.findViewById( R.id.textview_text_current_charginglvl );
 		this.textViewCurrentLoadingLevelAsusDock = (TextView) inflatedView.findViewById( R.id.textview_text_current_charginglvl_asusdock );
-		this.textViewAsusBatteryPercentage = (TextView) inflatedView.findViewById( R.id.textview_label_current_charginglvl_asusdock );
-		this.textViewAsusBatterySeperator = (TextView) inflatedView.findViewById( R.id.textview_label_current_charginglvl_asusdock_seperator );
+		this.textViewCurrentLoadingLevelAsusDockLabel = (TextView) inflatedView.findViewById( R.id.textview_label_current_charginglvl_asusdock );
 		this.textViewCurrentChargingState = (TextView) inflatedView.findViewById( R.id.textview_text_current_chargingstate );
 		this.textViewTemp = (TextView) inflatedView.findViewById( R.id.textview_text_temperature );
 		
@@ -59,8 +57,7 @@ public class OverviewFragment extends Fragment {
 		
 		// set the visibility to invisible if no dock was found
 		if( !possibleAsusDock ) {
-			this.textViewAsusBatteryPercentage.setVisibility( View.INVISIBLE );
-			this.textViewAsusBatterySeperator.setVisibility( View.INVISIBLE );
+			this.textViewCurrentLoadingLevelAsusDockLabel.setVisibility( View.INVISIBLE );
 			this.textViewCurrentLoadingLevelAsusDock.setVisibility( View.INVISIBLE );
 		}
 
