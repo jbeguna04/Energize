@@ -105,9 +105,9 @@ public class OverviewFragment extends Fragment {
 
 					OverviewFragment.this.textViewCurrentLoadingLevel.setText( level + "" ); // TODO
 					if( dockStatus == 1 ) {
-						OverviewFragment.this.textViewCurrentLoadingLevelAsusDock.setText( dockLevel + "-" ); // undocked
+						OverviewFragment.this.textViewCurrentLoadingLevelAsusDock.setText( "-" ); // undocked
 					} else {
-						OverviewFragment.this.textViewCurrentLoadingLevelAsusDock.setText( dockLevel + "" ); // TODO
+						OverviewFragment.this.textViewCurrentLoadingLevelAsusDock.setText( dockLevel + "%" ); // TODO
 					}
 					
 					final String prefUsedUnit = OverviewFragment.this.sharedPref.getString( "display.temperature_unit", "Celsius" );
