@@ -32,7 +32,8 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
 
 ## Changelog
 ### Version 0.7 *(not released)* - Changes
-* Basic support for Asus Transformer Pad Prime/Infinity dock battery capacity (showing the current capacity; not used for estimation) 
+* Basic support for Asus Transformer Pad Prime/Infinity dock battery capacity (showing the current capacity; not used for estimation)
+* Added a basic first version of a separate tablet layout which uses the display more efficently 
 
 ### Version 0.6.4 *(2012-08-27)* - [Changes][20]
 * Disabled the background color of the battery capacity graph (it caused a graphical glitch)

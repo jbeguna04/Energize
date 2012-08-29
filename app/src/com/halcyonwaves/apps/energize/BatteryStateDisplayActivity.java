@@ -81,13 +81,15 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 			this.getApplicationContext().startService( new Intent( this.getApplicationContext(), MonitorBatteryStateService.class ) );
 		}
 
-		// set the pager with an adapter
+		// set the pager with an adapter (not availbale in the tablet layout)
 		final ViewPager pager = (ViewPager) this.findViewById( R.id.vp_fragment_pager );
-		pager.setAdapter( new MainFragmentPagerAdapter( this.getApplicationContext(), this.getSupportFragmentManager() ) );
+		if( null != pager ) {
+			pager.setAdapter( new MainFragmentPagerAdapter( this.getApplicationContext(), this.getSupportFragmentManager() ) );
 
-		// bind the title indicator to the adapter
-		final TitlePageIndicator titleIndicator = (TitlePageIndicator) this.findViewById( R.id.vp_fragment_titles );
-		titleIndicator.setViewPager( pager );
+			// bind the title indicator to the adapter
+			final TitlePageIndicator titleIndicator = (TitlePageIndicator) this.findViewById( R.id.vp_fragment_titles );
+			titleIndicator.setViewPager( pager );
+		}
 
 		// do the rest of the initialization of the main dialog
 		this.init();
