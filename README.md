@@ -35,6 +35,7 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
 * Basic support for Asus Transformer Pad Prime/Infinity dock battery capacity (showing the current capacity; not used for estimation)
 * Added a basic first version of a separate tablet layout which uses the display more efficiently 
 * Rewrote the architecture for estimating the remaining time on battery to support more sophisticated algorithms in the future
+* On Jelly Bean (Android 4.1) devices the status message in the notification bar gets an higher priority as soon as the capacity decreases below 15%
 
 ### Version 0.6.4 *(2012-08-27)* - [Changes][20]
 * Disabled the background color of the battery capacity graph (it caused a graphical glitch)
