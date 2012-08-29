@@ -19,10 +19,12 @@ For building the application by yourself follow the following steps:
 
           git submodule init
           git submodule update
-          
-  4. Create an Android project for each submodule using the `Android Project from Existing Code` function of Eclipse
-  5. Create an Android project for the actual application (using the `Android Project from Existing Code` function of Eclipse)
-  6. Build the application :)
+
+  4. Replace the Android Support Library used in the `ViewPagerIndicator` submodule (directory libs/) with the latest version of the Android Support Library (at least version 10).
+
+  5. Create an Android project for each submodule using the `Android Project from Existing Code` function of Eclipse
+  6. Create an Android project for the actual application (using the `Android Project from Existing Code` function of Eclipse)
+  7. Build the application :)
 
 ## Translations
 As soon as the used strings is nearly fixed, you can help us on our project page of [GetLocalization][1] to translate the app in many languages.
