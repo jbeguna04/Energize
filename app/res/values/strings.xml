@@ -1,77 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Energize</string>
 
+    <string name="app_name">Energize</string>
     <string name="pref_title_start_on_boot">Start on boot</string>
     <string name="pref_title_show_notification_bar">Status bar icon</string>
-    
     <string name="pref_title_theme">Theme</string>
     <string name="pref_summary_theme">Using \""%1$s\" as theme</string>
-    
     <string name="pref_title_change_batteryestimation">Battery estimation method</string>
     <string name="pref_summary_change_batteryestimation">Method: %1$s</string>
-    
     <string name="pref_title_temperature_unit">Temperature unit</string>
     <string name="pref_summary_temperature_unit">Used unit: %1$s</string>
-    
     <string name="pref_title_clearstatsdb">Clear statistics database</string>
     <string name="pref_summary_clearstatsdb">Clears the recorded battery events</string>
-    
     <string name="notification_title_charges">Battery charges</string>
     <string name="notification_title_discharges">Battery discharges</string>
     <string name="notification_text_estimate">%1$d hour(s) and %2$d minute(s) remaining</string>
     <string name="notification_text_estimate_na">Estimation currently not available</string>
-    
     <string name="battery_state_charging">Charging</string>
     <string name="battery_state_discharging">Discharging</string>
     <string name="battery_state_full">Full</string>
     <string name="battery_state_unknown">Unknown</string>
-    
     <string name="textview_label_current_chargingstate">Current charging state:</string>
-    <string name="textview_label_current_charginglvl">Current charging level of the battery:</string>
-    
     <string name="dialog_title_whatsnew">What\'s new?</string>
     <string name="dialog_title_appiconlicense">Addional licenses</string>
     <string name="dialog_text_appiconlicense">Portions of the application icon (the Android robot) are modifications based on work created and shared by the Android Open Source Project and used according to terms described in the Creative Commons 2.5 Attribution License.\n\nThe battery icon used in the application icon was designed by the GNOME High contrast icons/authors and is licensed under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either version 2.1 of the License, or (at your option) any later version.\n\nGraphView library (for drawing all charts) was developed by Jonas Gehring.</string>
-
     <string name="dialog_title_cleardb_successfull">Database cleared</string>
     <string name="dialog_text_cleardb_successfull">The battery statistics were deleted and it will talke some time until the charging estimation will work again.</string>
-    
     <string name="fragment_title_overview">Overview</string>
     <string name="fragment_title_batterygraph">Battery graph</string>
     <string name="fragment_title_temperaturegraph">Temp. graph</string>
     <string name="fragment_title_about">About&#8230;</string>
-    
     <string name="textview_app_version">Version: %s (beta)</string>
     <string name="textview_do_you_like_it">Do you like Energize?</string>
     <string name="textview_why_rating_the_app">Support us by writing a review and/or rating the app in the Google Play Store.</string>
     <string name="button_rate_app">Rate the app</string>
-    
     <string name="menu_preferences">Preferences</string>
     <string name="menu_showapplicense">Show app license</string>
     <string name="menu_show3rdpartylicense">Show addional licenses</string>
-    
     <string name="textview_label_temperature">Current battery temperature:</string>
     <string name="textview_label_charginglvl_asusdock">ASUS Transformer Pad Dock capacity:</string>
     <string name="textview_text_temperature_celsius">%.1f °C</string>
     <string name="textview_text_temperature_fahrenheit">%.1f °F</string>
-    <string name="textview_label_time_on_battery">Time on battery:</string>
-    <string name="textview_text_time_on_battery">%1$d hour(s) and %2$d minute(s)</string>
-    <string name="textview_text_time_on_battery_not_on_battery">Not on battery</string>
-    
+
     <string-array name="pref_list_theme_names">
         <item>Dark theme</item>
         <item>Light theme</item>
     </string-array>
-
     <string-array name="pref_list_temperature_unit_names">
         <item>Celsius</item>
         <item>Fahrenheit</item>
     </string-array>
-    
     <string-array name="pref_list_batteryestimationmethod_names">
         <item>Last change period (inaccurate)</item>
     </string-array>
 
-    <string name="app_version">Application version</string>
 </resources>
