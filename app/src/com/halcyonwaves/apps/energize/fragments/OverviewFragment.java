@@ -49,8 +49,8 @@ public class OverviewFragment extends Fragment {
 		boolean possibleAsusDock = false;
 		if( 0 == Build.BRAND.compareToIgnoreCase( "asus" ) ) {
 			Log.v( OverviewFragment.TAG, "Device brand: " + Build.BRAND );
-			if( Build.DEVICE.toLowerCase().startsWith( "tf700" ) ) {
-				Log.v( OverviewFragment.TAG, "Device model name: " + Build.DEVICE );
+			if( Build.DEVICE.toLowerCase().startsWith( "tf201" ) || Build.DEVICE.toLowerCase().startsWith( "tf300" ) || Build.DEVICE.toLowerCase().startsWith( "tf700" ) ) {
+				Log.v( OverviewFragment.TAG, "Device model name: " + Build.MODEL );
 				possibleAsusDock = true;
 			}
 		}
