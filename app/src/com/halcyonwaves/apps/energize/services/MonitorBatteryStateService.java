@@ -97,9 +97,6 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 	private BatteryStatisticsDatabaseOpenHelper batteryDbOpenHelper = null;
 	private SQLiteDatabase batteryStatisticsDatabase = null;
 	private final ArrayList< Messenger > connectedClients = new ArrayList< Messenger >();
-	private int lastChargingPercentage = -1;
-	private int lastRemainingMinutes = -1;
-	private boolean lastTimeCharging = false;
 	private Notification myNotification = null;
 	private NotificationManager notificationManager = null;
 
@@ -112,63 +109,25 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 			return;
 		}
 
-		// store if the battery is charging or not
-		this.lastTimeCharging = (RawBatteryStatisicsTable.CHARGING_STATE_DISCHARGING != powerSource);
-
 		// get the last entry we made on our database, if the entries are the same we want to insert, skip the insertion process
 		final Cursor lastEntryMadeCursor = this.batteryStatisticsDatabase.query( RawBatteryStatisicsTable.TABLE_NAME, new String[] { RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL }, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " DESC" );
-		if( lastEntryMadeCursor.moveToFirst() ) {
-			if( level == lastEntryMadeCursor.getInt( lastEntryMadeCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL ) ) ) {
-				Log.d( MonitorBatteryStateService.TAG, "Tried to insert an already existing dataset, skipping..." );
-
-				// if it is the first run of the application, the percentage would be -1 if we won't set it here
-				this.lastChargingPercentage = level;
-
-				// tell all connected clients about the current charging level and the remaining time
-				MonitorBatteryStateService.this.sendCurrentChargingPctToClients();
-				this.showNewPercentageNotification( level, this.lastRemainingMinutes, this.lastTimeCharging );
-
-				// skip the insertion process
-				return;
-			}
+		lastEntryMadeCursor.moveToFirst();
+		
+		// if the level changed, we can insert the entry into our database
+		if( level != lastEntryMadeCursor.getInt( lastEntryMadeCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL ) ) ) {
+			final long currentUnixTime = System.currentTimeMillis() / 1000;
+			final ContentValues values = new ContentValues();
+			values.put( RawBatteryStatisicsTable.COLUMN_EVENT_TIME, currentUnixTime );
+			values.put( RawBatteryStatisicsTable.COLUMN_CHARGING_STATE, powerSource );
+			values.put( RawBatteryStatisicsTable.COLUMN_CHARGING_SCALE, scale );
+			values.put( RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL, level );
+			values.put( RawBatteryStatisicsTable.COLUMN_BATTERY_TEMPRATURE, temprature );
+			this.batteryStatisticsDatabase.insert( RawBatteryStatisicsTable.TABLE_NAME, null, values );
 		}
 		lastEntryMadeCursor.close();
 
-		// insert the new dataset into our database
-		final long currentUnixTime = System.currentTimeMillis() / 1000;
-		final ContentValues values = new ContentValues();
-		values.put( RawBatteryStatisicsTable.COLUMN_EVENT_TIME, currentUnixTime );
-		values.put( RawBatteryStatisicsTable.COLUMN_CHARGING_STATE, powerSource );
-		values.put( RawBatteryStatisicsTable.COLUMN_CHARGING_SCALE, scale );
-		values.put( RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL, level );
-		values.put( RawBatteryStatisicsTable.COLUMN_BATTERY_TEMPRATURE, temprature );
-		this.batteryStatisticsDatabase.insert( RawBatteryStatisicsTable.TABLE_NAME, null, values );
-
-		// store the charging level and update the notification about the current charging level
-		this.lastChargingPercentage = level;
-
-		// calculate the remaining time in minutes
-		final Cursor querCursor = this.batteryStatisticsDatabase.query( RawBatteryStatisicsTable.TABLE_NAME, new String[] { RawBatteryStatisicsTable.COLUMN_EVENT_TIME }, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " DESC" );
-		if( querCursor.moveToFirst() ) {
-			final long lastEventTime = querCursor.getLong( querCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_EVENT_TIME ) );
-			if( querCursor.moveToNext() ) {
-				final long prevEventTime = querCursor.getLong( querCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_EVENT_TIME ) );
-				final long diff = Math.abs( lastEventTime - prevEventTime );
-				Log.v( MonitorBatteryStateService.TAG, String.format( "Calculated the time between the last two (%d, %d) events: %d", lastEventTime, prevEventTime, diff ) );
-				if( RawBatteryStatisicsTable.CHARGING_STATE_DISCHARGING == powerSource ) {
-					this.lastRemainingMinutes = (Math.round( ((this.lastChargingPercentage) * diff) / 60.0f ));
-					Log.v( MonitorBatteryStateService.TAG, String.format( "Calculated remaining battery life in minutes: %d", this.lastRemainingMinutes ) );
-				} else {
-					this.lastRemainingMinutes = (Math.round( ((100.0f - this.lastChargingPercentage) * diff) / 60.0f ));
-					Log.v( MonitorBatteryStateService.TAG, String.format( "Calculated remaining charging time in minutes: %d", this.lastRemainingMinutes ) );
-				}
-			}
-		}
-		querCursor.close();
-
-		// tell all connected clients about the current charging level and the remaining time
-		MonitorBatteryStateService.this.sendCurrentChargingPctToClients();
-		this.showNewPercentageNotification( level, this.lastRemainingMinutes, RawBatteryStatisicsTable.CHARGING_STATE_DISCHARGING != powerSource );
+		// show the notification
+		this.showNewPercentageNotification();
 	}
 
 	@Override
@@ -191,7 +150,7 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 				this.notificationManager.cancel( MonitorBatteryStateService.MY_NOTIFICATION_ID );
 				this.myNotification = null;
 			} else {
-				this.showNewPercentageNotification( this.lastChargingPercentage, this.lastRemainingMinutes, this.lastTimeCharging );
+				this.showNewPercentageNotification();
 			}
 		}
 	}
@@ -221,17 +180,19 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 		return Service.START_STICKY;
 	}
 
-	private void sendCurrentChargingPctToClients() {
+	private void sendCurrentChargingPctToClients() {/*
 		try {
 			for( final Messenger msg : this.connectedClients ) {
 				msg.send( Message.obtain( null, MonitorBatteryStateService.MSG_REQUEST_LAST_CHARGING_PCT, this.lastChargingPercentage, 0 ) );
 			}
 		} catch( final RemoteException e ) {
 			// nothing
-		}
+		}*/
 	}
 
-	private void showNewPercentageNotification( final int percentage, final int remainingMinutes, final boolean charges ) {
+	private void showNewPercentageNotification() {
+		 final int percentage = 0; final int remainingMinutes = 0; final boolean charges = true;
+		 
 		// be sure that it is a valid percentage
 		if( (percentage < 0) || (percentage > 100) ) {
 			Log.e( MonitorBatteryStateService.TAG, "The application tried to show an invalid loading level." );
