@@ -5,9 +5,9 @@ import android.content.Context;
 
 public class SimpleEstimationAlgorithm {
 
-	public static int getEstimationInMinutes( Context context ) {
+	public static EstimationResult getEstimation( Context context ) {
 		// TODO Auto-generated method stub
-		return 0;
+		return new EstimationResult();
 	}
 
 }

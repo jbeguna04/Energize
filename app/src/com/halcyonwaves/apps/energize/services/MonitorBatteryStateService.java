@@ -27,6 +27,8 @@ import com.halcyonwaves.apps.energize.BatteryStateDisplayActivity;
 import com.halcyonwaves.apps.energize.R;
 import com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper;
 import com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable;
+import com.halcyonwaves.apps.energize.estimators.BatteryEstimationMgr;
+import com.halcyonwaves.apps.energize.estimators.EstimationResult;
 import com.halcyonwaves.apps.energize.receivers.BatteryChangedReceiver;
 
 public class MonitorBatteryStateService extends Service implements OnSharedPreferenceChangeListener {
@@ -155,12 +157,11 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 	}
 
 	private void showNewPercentageNotification() {
-		final int percentage = 0;
-		final int remainingMinutes = 0;
-		final boolean charges = true;
-
+		// query the current estimation values
+		final EstimationResult estimation = BatteryEstimationMgr.getEstimation( this.getApplicationContext() );
+		
 		// be sure that it is a valid percentage
-		if( (percentage < 0) || (percentage > 100) ) {
+		if( !estimation.isValid ) {
 			Log.e( MonitorBatteryStateService.TAG, "The application tried to show an invalid loading level." );
 			return;
 		}
@@ -172,25 +173,25 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 		}
 
 		// calculate the estimates for the notification window
-		final int remainingHours = remainingMinutes > 0 ? (int) Math.floor( remainingMinutes / 60.0 ) : 0;
-		final int remainingMinutesNew = remainingMinutes - (60 * remainingHours);
+		final int remainingHours = estimation.minutes > 0 ? (int) Math.floor( estimation.minutes / 60.0 ) : 0;
+		final int remainingMinutesNew = estimation.minutes - (60 * remainingHours);
 
 		// determine the correct title string for the notification
 		int notificationTitleId = R.string.notification_title_discharges;
-		if( charges ) {
+		if( estimation.charging ) {
 			notificationTitleId = R.string.notification_title_charges;
 		}
 
 		// prepare the notification object
 		final NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder( this.getApplicationContext() );
 		notificationBuilder.setContentTitle( this.getString( notificationTitleId ) );
-		notificationBuilder.setSmallIcon( R.drawable.ic_stat_00_pct_charged + percentage );
+		notificationBuilder.setSmallIcon( R.drawable.ic_stat_00_pct_charged + estimation.level );
 		notificationBuilder.setOngoing( true );
 		notificationBuilder.setContentIntent( PendingIntent.getActivity( this.getApplicationContext(), 0, new Intent( this.getApplicationContext(), BatteryStateDisplayActivity.class ), 0 ) );
 		notificationBuilder.setPriority( NotificationCompat.PRIORITY_LOW );
 
 		// if the capacity reaches 15%, use a high priority
-		if( percentage <= 15 ) {
+		if( estimation.level <= 15 ) {
 			notificationBuilder.setPriority( NotificationCompat.PRIORITY_HIGH );
 		}
 
