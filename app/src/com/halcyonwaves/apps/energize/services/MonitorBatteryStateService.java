@@ -8,7 +8,6 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -40,31 +39,10 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 				case MonitorBatteryStateService.MSG_REGISTER_CLIENT:
 					Log.d( MonitorBatteryStateService.TAG, "Registering new client to the battery monitoring service..." );
 					MonitorBatteryStateService.this.connectedClients.add( msg.replyTo );
-					MonitorBatteryStateService.this.sendCurrentChargingPctToClients();
 					break;
 				case MonitorBatteryStateService.MSG_UNREGISTER_CLIENT:
 					Log.d( MonitorBatteryStateService.TAG, "Unregistering client from the battery monitoring service..." );
 					MonitorBatteryStateService.this.connectedClients.remove( msg.replyTo );
-					break;
-				case MonitorBatteryStateService.MSG_REQUEST_LAST_CHARGING_PCT:
-					Log.d( MonitorBatteryStateService.TAG, "Received request of the charging percentage..." );
-					MonitorBatteryStateService.this.sendCurrentChargingPctToClients();
-					break;
-				case MonitorBatteryStateService.MSG_START_MONITORING:
-					Log.d( MonitorBatteryStateService.TAG, "Starting battery monitoring..." );
-					MonitorBatteryStateService.this.startMonitoring();
-					break;
-				case MonitorBatteryStateService.MSG_STOP_MONITORING:
-					Log.d( MonitorBatteryStateService.TAG, "Stopping battery monitoring..." );
-					MonitorBatteryStateService.this.stopMonitoring();
-					break;
-				case MonitorBatteryStateService.MSG_REQUEST_DB_PATH:
-					Log.d( MonitorBatteryStateService.TAG, "Database path requested, sending it back..." );
-					try {
-						msg.replyTo.send( Message.obtain( null, MonitorBatteryStateService.MSG_REQUEST_DB_PATH, (new ContextWrapper( MonitorBatteryStateService.this )).getDatabasePath( MonitorBatteryStateService.this.batteryDbOpenHelper.getDatabaseName() ).getAbsolutePath() ) );
-					} catch( final RemoteException e ) {
-						Log.e( MonitorBatteryStateService.TAG, "Failed to send the databasae path!" );
-					}
 					break;
 				case MonitorBatteryStateService.MSG_CLEAR_STATISTICS:
 					Log.d( MonitorBatteryStateService.TAG, "Clearing battery statistics database..." );
@@ -83,10 +61,6 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 
 	public static final int MSG_CLEAR_STATISTICS = 7;
 	public static final int MSG_REGISTER_CLIENT = 1;
-	public static final int MSG_REQUEST_DB_PATH = 6;
-	public static final int MSG_REQUEST_LAST_CHARGING_PCT = 3;
-	public static final int MSG_START_MONITORING = 4;
-	public static final int MSG_STOP_MONITORING = 5;
 	public static final int MSG_UNREGISTER_CLIENT = 2;
 
 	private static final int MY_NOTIFICATION_ID = 1;
@@ -112,7 +86,7 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 		// get the last entry we made on our database, if the entries are the same we want to insert, skip the insertion process
 		final Cursor lastEntryMadeCursor = this.batteryStatisticsDatabase.query( RawBatteryStatisicsTable.TABLE_NAME, new String[] { RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL }, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " DESC" );
 		lastEntryMadeCursor.moveToFirst();
-		
+
 		// if the level changed, we can insert the entry into our database
 		if( level != lastEntryMadeCursor.getInt( lastEntryMadeCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL ) ) ) {
 			final long currentUnixTime = System.currentTimeMillis() / 1000;
@@ -180,19 +154,11 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 		return Service.START_STICKY;
 	}
 
-	private void sendCurrentChargingPctToClients() {/*
-		try {
-			for( final Messenger msg : this.connectedClients ) {
-				msg.send( Message.obtain( null, MonitorBatteryStateService.MSG_REQUEST_LAST_CHARGING_PCT, this.lastChargingPercentage, 0 ) );
-			}
-		} catch( final RemoteException e ) {
-			// nothing
-		}*/
-	}
-
 	private void showNewPercentageNotification() {
-		 final int percentage = 0; final int remainingMinutes = 0; final boolean charges = true;
-		 
+		final int percentage = 0;
+		final int remainingMinutes = 0;
+		final boolean charges = true;
+
 		// be sure that it is a valid percentage
 		if( (percentage < 0) || (percentage > 100) ) {
 			Log.e( MonitorBatteryStateService.TAG, "The application tried to show an invalid loading level." );
@@ -239,14 +205,4 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 		this.myNotification = notificationBuilder.build();
 		this.notificationManager.notify( MonitorBatteryStateService.MY_NOTIFICATION_ID, this.myNotification );
 	}
-
-	private void startMonitoring() {
-		this.batteryStatisticsDatabase = this.batteryDbOpenHelper.getWritableDatabase();
-	}
-
-	private void stopMonitoring() {
-		this.batteryDbOpenHelper.close();
-		this.batteryStatisticsDatabase = null;
-	}
-
 }
