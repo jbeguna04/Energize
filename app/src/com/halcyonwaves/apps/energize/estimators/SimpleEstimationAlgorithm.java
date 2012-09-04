@@ -44,8 +44,8 @@ public class SimpleEstimationAlgorithm {
 			batteryDbOpenHelper.close();
 			batteryDbOpenHelper = null;
 
-			// return an invalid estimation
-			return new EstimationResult();
+			// the estimation is not available but we have the current charging state and level
+			return new EstimationResult( -1, lastChargingPercentage, lastChargingState != RawBatteryStatisicsTable.CHARGING_STATE_DISCHARGING );
 		}
 
 		//
