@@ -41,6 +41,7 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
 * Fixed some design issues on devices with a smaller display
 * Fixed several smaller performance issues detected by an code analysis via Lint 
 * Changing the used theme will now directly affect the design of the application without the need of restarting the application
+* Fixed a bug which caused that sometimes the "no estimation available" message was displayed even if it was possible to estimate the remaining time
 
 ### Version 0.6.4 *(2012-08-27)* - [Changes][20]
 * Disabled the background color of the battery capacity graph (it caused a graphical glitch)
