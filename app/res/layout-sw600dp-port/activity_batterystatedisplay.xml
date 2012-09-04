@@ -27,11 +27,4 @@
         android:layout_weight="1"
         tools:layout="@layout/fragment_temperaturegraph" />
 
-    <fragment
-        android:name="com.halcyonwaves.apps.energize.fragments.AboutFragment"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        tools:layout="@layout/fragment_about" />
-
 </LinearLayout>

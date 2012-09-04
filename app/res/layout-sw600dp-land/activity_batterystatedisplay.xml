@@ -6,26 +6,12 @@
     android:baselineAligned="false"
     android:orientation="horizontal" >
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <fragment
+        android:name="com.halcyonwaves.apps.energize.fragments.OverviewFragment"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical" >
-
-        <fragment
-            android:name="com.halcyonwaves.apps.energize.fragments.OverviewFragment"
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            tools:layout="@layout/fragment_maininformation" />
-
-        <fragment
-            android:name="com.halcyonwaves.apps.energize.fragments.AboutFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            tools:layout="@layout/fragment_about" />
-    </LinearLayout>
+        android:layout_weight="3"
+        tools:layout="@layout/fragment_maininformation" />
 
     <LinearLayout
         android:layout_width="wrap_content"
