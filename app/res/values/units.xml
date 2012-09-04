@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fragment_about_padding">15dp</dimen>
+    <dimen name="fragment_about_appname_padding_top">30dp</dimen>
+    <dimen name="fragment_about_appversion_padding_left">100dp</dimen>
+    <dimen name="fragment_about_doyouliketheapp_padding_top">40dp</dimen>
+    <dimen name="fragment_about_whyratingtheapp_top">10dp</dimen>
+    <dimen name="fragment_about_whyratingtheapp_bottom">20dp</dimen>
+</resources>

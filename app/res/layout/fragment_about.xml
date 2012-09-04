@@ -2,8 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="15dp"
-    android:paddingRight="15dp" >
+    android:padding="@dimen/fragment_about_padding">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +14,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:paddingTop="30dp"
+            android:paddingTop="@dimen/fragment_about_appname_padding_top"
             android:text="@string/app_name"
             android:textSize="40dp"
             android:textStyle="bold" />
@@ -25,7 +24,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:paddingLeft="100dp"
+            android:paddingLeft="@dimen/fragment_about_appversion_padding_left"
             android:text="@string/textview_app_version"
             android:textSize="20dp"
             android:textStyle="italic" />
@@ -35,7 +34,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:paddingTop="40dp"
+            android:paddingTop="@dimen/fragment_about_doyouliketheapp_padding_top"
             android:text="@string/textview_do_you_like_it"
             android:textSize="20dp"
             android:textStyle="bold" />
@@ -45,10 +44,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:paddingBottom="10dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:paddingTop="20dp"
+            android:paddingBottom="@dimen/fragment_about_whyratingtheapp_bottom"
+            android:paddingTop="@dimen/fragment_about_whyratingtheapp_top"
             android:text="@string/textview_why_rating_the_app"
             android:textSize="15dp"
             android:textStyle="normal" />
