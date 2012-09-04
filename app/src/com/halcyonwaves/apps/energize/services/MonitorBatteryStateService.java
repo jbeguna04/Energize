@@ -87,10 +87,9 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 
 		// get the last entry we made on our database, if the entries are the same we want to insert, skip the insertion process
 		final Cursor lastEntryMadeCursor = this.batteryStatisticsDatabase.query( RawBatteryStatisicsTable.TABLE_NAME, new String[] { RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL }, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " DESC" );
-		lastEntryMadeCursor.moveToFirst();
 
 		// if the level changed, we can insert the entry into our database
-		if( level != lastEntryMadeCursor.getInt( lastEntryMadeCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL ) ) ) {
+		if( !lastEntryMadeCursor.moveToFirst() || level != lastEntryMadeCursor.getInt( lastEntryMadeCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL ) ) ) {
 			final long currentUnixTime = System.currentTimeMillis() / 1000;
 			final ContentValues values = new ContentValues();
 			values.put( RawBatteryStatisicsTable.COLUMN_EVENT_TIME, currentUnixTime );
@@ -100,6 +99,8 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 			values.put( RawBatteryStatisicsTable.COLUMN_BATTERY_TEMPRATURE, temprature );
 			this.batteryStatisticsDatabase.insert( RawBatteryStatisicsTable.TABLE_NAME, null, values );
 		}
+		
+		// close the database cursor again
 		lastEntryMadeCursor.close();
 
 		// show the notification
