@@ -29,13 +29,13 @@
     <string name="fragment_title_overview">Overview</string>
     <string name="fragment_title_batterygraph">Battery graph</string>
     <string name="fragment_title_temperaturegraph">Temp. graph</string>
+    <string name="menu_about">About Energize&#8230;</string>
     <string name="fragment_title_about">About&#8230;</string>
     <string name="textview_app_version">Version: %s (beta)</string>
     <string name="textview_do_you_like_it">Do you like Energize?</string>
     <string name="textview_why_rating_the_app">Support us by writing a review and/or rating the app in the Google Play Store.</string>
     <string name="button_rate_app">Rate the app</string>
     <string name="menu_preferences">Preferences</string>
-    <string name="menu_showapplicense">Show app license</string>
     <string name="menu_show3rdpartylicense">Show addional licenses</string>
     <string name="textview_label_temperature">Current battery temperature:</string>
     <string name="textview_label_charginglvl_asusdock">ASUS Transformer Pad Dock capacity:</string>

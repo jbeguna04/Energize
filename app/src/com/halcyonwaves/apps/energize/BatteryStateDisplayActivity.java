@@ -1,6 +1,7 @@
 package com.halcyonwaves.apps.energize;
 
 import android.app.AlertDialog;
+import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -18,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.halcyonwaves.apps.energize.dialogs.AboutDialog;
 import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
 import com.viewpagerindicator.TitlePageIndicator;
 
@@ -91,6 +93,11 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 		return true;
 	}
 
+	private void showAboutDialog() {
+		AboutDialog aboutDialog = new AboutDialog();
+		aboutDialog.show( this.getFragmentManager(), "fragment_about" );
+	}
+
 	@Override
 	public boolean onOptionsItemSelected( final MenuItem item ) {
 		switch( item.getItemId() ) {
@@ -98,10 +105,8 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 				final Intent myIntent = new Intent( BatteryStateDisplayActivity.this, SettingsActivity.class );
 				BatteryStateDisplayActivity.this.startActivity( myIntent );
 				return true;
-			case R.id.menu_showapplicense:
-				final Intent i = new Intent( Intent.ACTION_VIEW );
-				i.setData( Uri.parse( "http://www.gnu.org/copyleft/gpl.html" ) );
-				this.startActivity( i );
+			case R.id.menu_about:
+				this.showAboutDialog();
 				return true;
 			case R.id.menu_show3rdpartylicense:
 				this.showAppIconLicensePreference();
