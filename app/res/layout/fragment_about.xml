@@ -1,66 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/fragment_about_padding">
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tv_about_application_name"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:text="@string/app_name"
+        android:textSize="40dp"
+        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tv_about_application_name"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:paddingTop="@dimen/fragment_about_appname_padding_top"
-            android:text="@string/app_name"
-            android:textSize="40dp"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/tv_about_application_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="100dp"
+        android:text="@string/textview_app_version"
+        android:textSize="20dp"
+        android:textStyle="italic" />
 
-        <TextView
-            android:id="@+id/tv_about_application_version"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:paddingLeft="@dimen/fragment_about_appversion_padding_left"
-            android:text="@string/textview_app_version"
-            android:textSize="20dp"
-            android:textStyle="italic" />
+    <TextView
+        android:id="@+id/tv_do_you_like_the_app"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="50dp"
+        android:text="@string/textview_do_you_like_it"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tv_do_you_like_the_app"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:paddingTop="@dimen/fragment_about_doyouliketheapp_padding_top"
-            android:text="@string/textview_do_you_like_it"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/tv_why_rating_the_app"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingBottom="20dp"
+        android:text="@string/textview_why_rating_the_app"
+        android:textSize="15dp"
+        android:textStyle="normal" />
 
-        <TextView
-            android:id="@+id/tv_why_rating_the_app"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:paddingBottom="@dimen/fragment_about_whyratingtheapp_bottom"
-            android:paddingTop="@dimen/fragment_about_whyratingtheapp_top"
-            android:text="@string/textview_why_rating_the_app"
-            android:textSize="15dp"
-            android:textStyle="normal" />
+    <Button
+        android:id="@+id/btn_rate_app"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_rate_app" />
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal" >
-
-            <Button
-                android:id="@+id/btn_rate_app"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/button_rate_app" />
-        </LinearLayout>
-    </LinearLayout>
-
-</ScrollView>
+</LinearLayout>
