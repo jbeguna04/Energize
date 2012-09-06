@@ -1,14 +1,12 @@
 package com.halcyonwaves.apps.energize;
 
 import android.app.AlertDialog;
-import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
-import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
@@ -93,11 +91,6 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 		return true;
 	}
 
-	private void showAboutDialog() {
-		AboutDialog aboutDialog = new AboutDialog();
-		aboutDialog.show( this.getFragmentManager(), "fragment_about" );
-	}
-
 	@Override
 	public boolean onOptionsItemSelected( final MenuItem item ) {
 		switch( item.getItemId() ) {
@@ -114,6 +107,11 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 			default:
 				return false;
 		}
+	}
+
+	private void showAboutDialog() {
+		final AboutDialog aboutDialog = new AboutDialog();
+		aboutDialog.show( this.getFragmentManager(), "fragment_about" );
 	}
 
 	private void showAppIconLicensePreference() {

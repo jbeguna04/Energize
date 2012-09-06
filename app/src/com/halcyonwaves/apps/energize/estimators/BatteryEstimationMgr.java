@@ -9,7 +9,7 @@ public class BatteryEstimationMgr {
 
 	final static String TAG = "BatteryEstimationMgr";
 
-	public static EstimationResult getEstimation( Context context ) {
+	public static EstimationResult getEstimation( final Context context ) {
 		final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences( context );
 		final String estimationMethod = prefs.getString( "batstatistics.usedestimator", "" );
 

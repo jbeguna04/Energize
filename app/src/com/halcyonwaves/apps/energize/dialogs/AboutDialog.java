@@ -1,7 +1,5 @@
 package com.halcyonwaves.apps.energize.dialogs;
 
-import com.halcyonwaves.apps.energize.R;
-
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -10,17 +8,19 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.halcyonwaves.apps.energize.R;
+
 public class AboutDialog extends DialogFragment {
-	
+
 	private final static String TAG = "AboutDialog";
 
 	@Override
-	public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState ) {
+	public View onCreateView( final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState ) {
 		final View inflatedView = inflater.inflate( R.layout.fragment_about, container, false );
 
 		// set the application version for the about screen
@@ -45,7 +45,7 @@ public class AboutDialog extends DialogFragment {
 				}
 			}
 		} );
-		
+
 		// set the dialog title
 		this.getDialog().setTitle( R.string.fragment_title_about );
 

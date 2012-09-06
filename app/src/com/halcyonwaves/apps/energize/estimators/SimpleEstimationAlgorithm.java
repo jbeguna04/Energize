@@ -1,20 +1,20 @@
 package com.halcyonwaves.apps.energize.estimators;
 
-import com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper;
-import com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable;
-
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper;
+import com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable;
+
 public class SimpleEstimationAlgorithm {
 
 	private final static String TAG = "SimpleEstimationAlgorithm";
 
-	public static EstimationResult getEstimation( Context context ) {
+	public static EstimationResult getEstimation( final Context context ) {
 		BatteryStatisticsDatabaseOpenHelper batteryDbOpenHelper = new BatteryStatisticsDatabaseOpenHelper( context );
-		SQLiteDatabase batteryStatisticsDatabase = batteryDbOpenHelper.getReadableDatabase();
+		final SQLiteDatabase batteryStatisticsDatabase = batteryDbOpenHelper.getReadableDatabase();
 
 		// query the information we need for the estimation
 		final Cursor querCursor = batteryStatisticsDatabase.query( RawBatteryStatisicsTable.TABLE_NAME, new String[] { RawBatteryStatisicsTable.COLUMN_EVENT_TIME, RawBatteryStatisicsTable.COLUMN_CHARGING_STATE, RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL }, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " DESC" );

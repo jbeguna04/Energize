@@ -89,7 +89,7 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 		final Cursor lastEntryMadeCursor = this.batteryStatisticsDatabase.query( RawBatteryStatisicsTable.TABLE_NAME, new String[] { RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL }, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " DESC" );
 
 		// if the level changed, we can insert the entry into our database
-		if( !lastEntryMadeCursor.moveToFirst() || level != lastEntryMadeCursor.getInt( lastEntryMadeCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL ) ) ) {
+		if( !lastEntryMadeCursor.moveToFirst() || (level != lastEntryMadeCursor.getInt( lastEntryMadeCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL ) )) ) {
 			final long currentUnixTime = System.currentTimeMillis() / 1000;
 			final ContentValues values = new ContentValues();
 			values.put( RawBatteryStatisicsTable.COLUMN_EVENT_TIME, currentUnixTime );
@@ -99,7 +99,7 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 			values.put( RawBatteryStatisicsTable.COLUMN_BATTERY_TEMPRATURE, temprature );
 			this.batteryStatisticsDatabase.insert( RawBatteryStatisicsTable.TABLE_NAME, null, values );
 		}
-		
+
 		// close the database cursor again
 		lastEntryMadeCursor.close();
 
@@ -160,7 +160,7 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 	private void showNewPercentageNotification() {
 		// query the current estimation values
 		final EstimationResult estimation = BatteryEstimationMgr.getEstimation( this.getApplicationContext() );
-		
+
 		// be sure that it is a valid percentage
 		if( !estimation.isValid ) {
 			Log.e( MonitorBatteryStateService.TAG, "The application tried to show an invalid loading level." );

@@ -2,10 +2,10 @@ package com.halcyonwaves.apps.energize.estimators;
 
 public final class EstimationResult {
 
-	public final int minutes;
-	public final int level;
 	public final boolean charging;
 	public final boolean isValid;
+	public final int level;
+	public final int minutes;
 
 	public EstimationResult() {
 		this.minutes = -1;
@@ -13,8 +13,8 @@ public final class EstimationResult {
 		this.charging = false;
 		this.isValid = false;
 	}
-	
-	public EstimationResult( int minutes, int level, boolean charging ) {
+
+	public EstimationResult( final int minutes, final int level, final boolean charging ) {
 		this.minutes = minutes;
 		this.level = level;
 		this.charging = charging;
