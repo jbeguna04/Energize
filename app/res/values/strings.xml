@@ -42,6 +42,8 @@
     <string name="textview_label_charginglvl_asusdock">ASUS Transformer Pad Dock capacity:</string>
     <string name="textview_text_temperature_celsius">%.1f °C</string>
     <string name="textview_text_temperature_fahrenheit">%.1f °F</string>
+    <string name="btn_close_about_dialog">Close the dialog</string>
+    <string name="textview_or_close_the_app_label">or</string>
 
     <string-array name="pref_list_theme_names">
         <item>Dark theme</item>

@@ -17,7 +17,7 @@
         android:id="@+id/tv_about_application_version"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="100dp"
+        android:paddingLeft="55dp"
         android:text="@string/textview_app_version"
         android:textSize="20dp"
         android:textStyle="italic" />
@@ -41,10 +41,28 @@
         android:textSize="15dp"
         android:textStyle="normal" />
 
-    <Button
-        android:id="@+id/btn_rate_app"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_rate_app" />
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_rate_app"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_rate_app" />
+        
+    <TextView
+        android:id="@+id/tv_or_close_the_app_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textview_or_close_the_app_label" />
+
+        <Button
+            android:id="@+id/btn_close_about_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_close_about_dialog" />
+    </LinearLayout>
 
 </LinearLayout>

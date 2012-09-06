@@ -46,6 +46,16 @@ public class AboutDialog extends DialogFragment {
 			}
 		} );
 
+		// ensure that the close button will close the dialog
+		final Button closeButton = (Button) inflatedView.findViewById( R.id.btn_close_about_dialog );
+		closeButton.setOnClickListener( new OnClickListener() {
+
+			public void onClick( View v ) {
+				AboutDialog.this.getDialog().dismiss();
+
+			}
+		} );
+
 		// set the dialog title
 		this.getDialog().setTitle( R.string.fragment_title_about );
 
