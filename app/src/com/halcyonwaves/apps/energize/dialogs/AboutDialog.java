@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,11 +51,15 @@ public class AboutDialog extends DialogFragment {
 		final Button closeButton = (Button) inflatedView.findViewById( R.id.btn_close_about_dialog );
 		closeButton.setOnClickListener( new OnClickListener() {
 
-			public void onClick( View v ) {
+			public void onClick( final View v ) {
 				AboutDialog.this.getDialog().dismiss();
 
 			}
 		} );
+
+		// make the links clickable
+		final TextView textViewLicense = (TextView) inflatedView.findViewById( R.id.tv_applicense );
+		textViewLicense.setMovementMethod( LinkMovementMethod.getInstance() );
 
 		// set the dialog title
 		this.getDialog().setTitle( R.string.fragment_title_about );
