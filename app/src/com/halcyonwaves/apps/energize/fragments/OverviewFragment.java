@@ -25,6 +25,7 @@ public class OverviewFragment extends Fragment {
 	private SharedPreferences sharedPref = null;
 	private TextView textViewCurrentChargingState = null;
 	private TextView textViewCurrentLoadingLevel = null;
+	private TextView textViewTimeOnBattery = null;
 	private TextView textViewCurrentLoadingLevelAsusDock = null;;
 	private TextView textViewCurrentLoadingLevelAsusDockLabel = null;
 	private TextView textViewTemp = null;
@@ -44,6 +45,10 @@ public class OverviewFragment extends Fragment {
 		this.textViewCurrentLoadingLevelAsusDockLabel = (TextView) inflatedView.findViewById( R.id.textview_label_current_charginglvl_asusdock );
 		this.textViewCurrentChargingState = (TextView) inflatedView.findViewById( R.id.textview_text_current_chargingstate );
 		this.textViewTemp = (TextView) inflatedView.findViewById( R.id.textview_text_temperature );
+		this.textViewTimeOnBattery = (TextView) inflatedView.findViewById( R.id.textview_text_timeonbattery );
+		
+		// set the default text for the "time on battery" label
+		OverviewFragment.this.textViewTimeOnBattery.setText( "-" );
 
 		// check if it can be possible that there is a additional battery dock
 		boolean possibleAsusDock = false;
@@ -93,7 +98,9 @@ public class OverviewFragment extends Fragment {
 							break;
 						case BatteryManager.BATTERY_STATUS_DISCHARGING:
 							OverviewFragment.this.textViewCurrentChargingState.setText( OverviewFragment.this.getString( R.string.battery_state_discharging ) );
-							// OverviewFragment.this.batteryDischarging = true;
+							
+							// get the time the device is on battery and show it to the user
+							OverviewFragment.this.textViewTimeOnBattery.setText( "TODO" ); // TODO: implement this
 							break;
 						case BatteryManager.BATTERY_STATUS_FULL:
 							OverviewFragment.this.textViewCurrentChargingState.setText( OverviewFragment.this.getString( R.string.battery_state_full ) );
