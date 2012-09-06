@@ -65,6 +65,20 @@
             android:paddingLeft="15dp" />
 
         <TextView
+            android:id="@+id/textview_label_timeonbattery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/textview_label_timeonbattery"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textview_text_timeonbattery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:paddingLeft="15dp" />
+        
+        <TextView
             android:id="@+id/textview_label_current_charginglvl_asusdock"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
