@@ -11,7 +11,7 @@ public final class PowerEventsTable {
 
 	public static final String COLUMN_ID = "_id";
 	private static final String TABLE_CREATE = "CREATE TABLE " + PowerEventsTable.TABLE_NAME + "( " + PowerEventsTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + PowerEventsTable.COLUMN_EVENT_TIME + " INTEGER, " + PowerEventsTable.COLUMN_BATTERY_IS_CHARGING + " INTEGER );";
-	private static final String TABLE_DROP = "DROP TABLE " + PowerEventsTable.TABLE_NAME + ";";
+	private static final String TABLE_DROP = "DROP TABLE IF EXISTS " + PowerEventsTable.TABLE_NAME + ";";
 
 	public static final String TABLE_NAME = "powerEvents";
 

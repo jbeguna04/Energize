@@ -15,7 +15,7 @@ public final class RawBatteryStatisicsTable {
 
 	public static final String COLUMN_ID = "_id";
 	private static final String TABLE_CREATE = "CREATE TABLE " + RawBatteryStatisicsTable.TABLE_NAME + "( " + RawBatteryStatisicsTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " INTEGER, " + RawBatteryStatisicsTable.COLUMN_CHARGING_STATE + " INTEGER, " + RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL + " INTEGER, " + RawBatteryStatisicsTable.COLUMN_CHARGING_SCALE + " INTEGER, " + RawBatteryStatisicsTable.COLUMN_BATTERY_TEMPRATURE + " INTEGER );";
-	private static final String TABLE_DROP = "DROP TABLE " + RawBatteryStatisicsTable.TABLE_NAME + ";";
+	private static final String TABLE_DROP = "DROP TABLE IF EXISTS " + RawBatteryStatisicsTable.TABLE_NAME + ";";
 
 	public static final String TABLE_NAME = "rawBatteryStats";
 
