@@ -78,6 +78,10 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 
 	private final Messenger serviceMessenger = new Messenger( new IncomingHandler() );
 
+	public void insertPowerSupplyChangeEvent( final boolean isChargingNow ) {
+
+	}
+
 	public void insertPowerValue( final int powerSource, final int scale, final int level, final int temprature ) {
 		// if the database is not open, skip the insertion process
 		if( (null == this.batteryStatisticsDatabase) || !this.batteryStatisticsDatabase.isOpen() ) {
