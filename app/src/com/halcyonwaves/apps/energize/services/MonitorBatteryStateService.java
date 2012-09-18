@@ -26,6 +26,7 @@ import android.util.Log;
 import com.halcyonwaves.apps.energize.BatteryStateDisplayActivity;
 import com.halcyonwaves.apps.energize.R;
 import com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper;
+import com.halcyonwaves.apps.energize.database.PowerEventsTable;
 import com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable;
 import com.halcyonwaves.apps.energize.estimators.BatteryEstimationMgr;
 import com.halcyonwaves.apps.energize.estimators.EstimationResult;
@@ -79,7 +80,11 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 	private final Messenger serviceMessenger = new Messenger( new IncomingHandler() );
 
 	public void insertPowerSupplyChangeEvent( final boolean isChargingNow ) {
-
+		final ContentValues values = new ContentValues();
+		final long currentUnixTime = System.currentTimeMillis() / 1000;
+		values.put( PowerEventsTable.COLUMN_EVENT_TIME, currentUnixTime );
+		values.put( PowerEventsTable.COLUMN_BATTERY_IS_CHARGING, isChargingNow ? PowerEventsTable.POWER_EVENT_IS_CHARGING : PowerEventsTable.POWER_EVENT_IS_NOT_CHARGING );
+		this.batteryStatisticsDatabase.insert( PowerEventsTable.TABLE_NAME, null, values );
 	}
 
 	public void insertPowerValue( final int powerSource, final int scale, final int level, final int temprature ) {
