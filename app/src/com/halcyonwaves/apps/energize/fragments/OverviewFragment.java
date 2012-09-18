@@ -33,6 +33,7 @@ public class OverviewFragment extends Fragment {
 	private TextView textViewCurrentLoadingLevelAsusDockLabel = null;;
 	private TextView textViewTemp = null;
 	private TextView textViewTimeOnBattery = null;
+	private boolean isDevicePlugged = false;
 
 	// private boolean batteryDischarging = false;
 
@@ -99,6 +100,13 @@ public class OverviewFragment extends Fragment {
 					final int scale = intent.getIntExtra( BatteryManager.EXTRA_SCALE, -1 );
 					final int status = intent.getIntExtra( BatteryManager.EXTRA_STATUS, -1 );
 					final float temp = (intent.getIntExtra( BatteryManager.EXTRA_TEMPERATURE, -1 )) / 10.0f;
+					final int plugged = intent.getIntExtra( BatteryManager.EXTRA_PLUGGED, -1 );
+					
+					// if the device is plugged in, remember that
+					if( plugged > 0 ) {
+						OverviewFragment.this.isDevicePlugged = true;
+						OverviewFragment.this.textViewTimeOnBattery.setText( "-" );
+					}
 
 					// get the charging state and level for the keyboard dock of the ASUS Transformer Pad series
 					final int dockStatus = intent.getIntExtra( "dock_status", -1 );
