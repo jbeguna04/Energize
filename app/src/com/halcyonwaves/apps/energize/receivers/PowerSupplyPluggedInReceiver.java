@@ -8,7 +8,7 @@ import android.util.Log;
 import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
 
 public class PowerSupplyPluggedInReceiver extends BroadcastReceiver {
-	
+
 	private final static String TAG = "PowerSupplyPluggedInReceiver";
 
 	private MonitorBatteryStateService service = null;

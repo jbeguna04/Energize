@@ -33,7 +33,6 @@ public class OverviewFragment extends Fragment {
 	private TextView textViewCurrentLoadingLevelAsusDockLabel = null;;
 	private TextView textViewTemp = null;
 	private TextView textViewTimeOnBattery = null;
-	private boolean isDevicePlugged = false;
 
 	// private boolean batteryDischarging = false;
 
@@ -55,12 +54,12 @@ public class OverviewFragment extends Fragment {
 		// get the time on battery and set it
 		BatteryStatisticsDatabaseOpenHelper batteryDbHelper = new BatteryStatisticsDatabaseOpenHelper( this.getActivity().getApplicationContext() );
 		SQLiteDatabase batteryDB = batteryDbHelper.getReadableDatabase();
-		Cursor queryCursor = batteryDB.query( PowerEventsTable.TABLE_NAME, new String[] { PowerEventsTable.COLUMN_EVENT_TIME }, PowerEventsTable.COLUMN_BATTERY_IS_CHARGING + " = " + PowerEventsTable.POWER_EVENT_IS_NOT_CHARGING, null, null, null, PowerEventsTable.COLUMN_EVENT_TIME + " DESC" );
+		final Cursor queryCursor = batteryDB.query( PowerEventsTable.TABLE_NAME, new String[] { PowerEventsTable.COLUMN_EVENT_TIME }, PowerEventsTable.COLUMN_BATTERY_IS_CHARGING + " = " + PowerEventsTable.POWER_EVENT_IS_NOT_CHARGING, null, null, null, PowerEventsTable.COLUMN_EVENT_TIME + " DESC" );
 		if( queryCursor.moveToFirst() ) {
 			final long timeGoneToBattery = queryCursor.getInt( queryCursor.getColumnIndex( PowerEventsTable.COLUMN_EVENT_TIME ) );
 			final long currentUnixTime = System.currentTimeMillis() / 1000;
-			final long difference = Math.round( ( currentUnixTime - timeGoneToBattery ) / 60.0 );
-			final long remainingHours = difference  > 0 ? (int) Math.floor( difference / 60.0 ) : 0;
+			final long difference = Math.round( (currentUnixTime - timeGoneToBattery) / 60.0 );
+			final long remainingHours = difference > 0 ? (int) Math.floor( difference / 60.0 ) : 0;
 			final long remainingMinutesNew = difference - (60 * remainingHours);
 			this.textViewTimeOnBattery.setText( this.getString( R.string.textview_text_timeonbattery, remainingHours, remainingMinutesNew ) );
 		} else {
@@ -101,10 +100,9 @@ public class OverviewFragment extends Fragment {
 					final int status = intent.getIntExtra( BatteryManager.EXTRA_STATUS, -1 );
 					final float temp = (intent.getIntExtra( BatteryManager.EXTRA_TEMPERATURE, -1 )) / 10.0f;
 					final int plugged = intent.getIntExtra( BatteryManager.EXTRA_PLUGGED, -1 );
-					
+
 					// if the device is plugged in, remember that
 					if( plugged > 0 ) {
-						OverviewFragment.this.isDevicePlugged = true;
 						OverviewFragment.this.textViewTimeOnBattery.setText( "-" );
 					}
 

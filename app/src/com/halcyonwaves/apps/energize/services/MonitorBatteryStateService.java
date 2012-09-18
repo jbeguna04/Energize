@@ -73,13 +73,13 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 	private static final String TAG = "MonitorBatteryStateService";
 	private SharedPreferences appPreferences = null;
 	private BatteryChangedReceiver batteryChangedReceiver = null;
-	private PowerSupplyPulledOffReceiver powerUnpluggedReceiver = null;
-	private PowerSupplyPluggedInReceiver powerPluggedInReceiver = null;
 	private BatteryStatisticsDatabaseOpenHelper batteryDbOpenHelper = null;
 	private SQLiteDatabase batteryStatisticsDatabase = null;
 	private final ArrayList< Messenger > connectedClients = new ArrayList< Messenger >();
 	private Notification myNotification = null;
 	private NotificationManager notificationManager = null;
+	private PowerSupplyPluggedInReceiver powerPluggedInReceiver = null;
+	private PowerSupplyPulledOffReceiver powerUnpluggedReceiver = null;
 
 	private final Messenger serviceMessenger = new Messenger( new IncomingHandler() );
 
@@ -168,7 +168,7 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 		//
 		this.batteryChangedReceiver = new BatteryChangedReceiver( this );
 		this.registerReceiver( this.batteryChangedReceiver, new IntentFilter( Intent.ACTION_BATTERY_CHANGED ) );
-		
+
 		//
 		this.powerPluggedInReceiver = new PowerSupplyPluggedInReceiver( this );
 		this.powerUnpluggedReceiver = new PowerSupplyPulledOffReceiver( this );

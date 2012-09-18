@@ -10,7 +10,7 @@ import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
 public class PowerSupplyPulledOffReceiver extends BroadcastReceiver {
 
 	private final static String TAG = "PowerSupplyPulledOffReceiver";
-	
+
 	private MonitorBatteryStateService service = null;
 
 	public PowerSupplyPulledOffReceiver( final MonitorBatteryStateService service ) {

@@ -4,12 +4,12 @@ import android.database.sqlite.SQLiteDatabase;
 
 public final class PowerEventsTable {
 
-	public static final int POWER_EVENT_IS_CHARGING = 1;
-	public static final int POWER_EVENT_IS_NOT_CHARGING = 0;
-	public static final String COLUMN_EVENT_TIME = "eventTime";
 	public static final String COLUMN_BATTERY_IS_CHARGING = "isCharging";
-
+	public static final String COLUMN_EVENT_TIME = "eventTime";
 	public static final String COLUMN_ID = "_id";
+	public static final int POWER_EVENT_IS_CHARGING = 1;
+
+	public static final int POWER_EVENT_IS_NOT_CHARGING = 0;
 	private static final String TABLE_CREATE = "CREATE TABLE " + PowerEventsTable.TABLE_NAME + "( " + PowerEventsTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + PowerEventsTable.COLUMN_EVENT_TIME + " INTEGER, " + PowerEventsTable.COLUMN_BATTERY_IS_CHARGING + " INTEGER );";
 	private static final String TABLE_DROP = "DROP TABLE IF EXISTS " + PowerEventsTable.TABLE_NAME + ";";
 
