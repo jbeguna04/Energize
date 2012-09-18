@@ -31,6 +31,8 @@ import com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable;
 import com.halcyonwaves.apps.energize.estimators.BatteryEstimationMgr;
 import com.halcyonwaves.apps.energize.estimators.EstimationResult;
 import com.halcyonwaves.apps.energize.receivers.BatteryChangedReceiver;
+import com.halcyonwaves.apps.energize.receivers.PowerSupplyPluggedInReceiver;
+import com.halcyonwaves.apps.energize.receivers.PowerSupplyPulledOffReceiver;
 
 public class MonitorBatteryStateService extends Service implements OnSharedPreferenceChangeListener {
 
@@ -71,6 +73,8 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 	private static final String TAG = "MonitorBatteryStateService";
 	private SharedPreferences appPreferences = null;
 	private BatteryChangedReceiver batteryChangedReceiver = null;
+	private PowerSupplyPulledOffReceiver powerUnpluggedReceiver = null;
+	private PowerSupplyPluggedInReceiver powerPluggedInReceiver = null;
 	private BatteryStatisticsDatabaseOpenHelper batteryDbOpenHelper = null;
 	private SQLiteDatabase batteryStatisticsDatabase = null;
 	private final ArrayList< Messenger > connectedClients = new ArrayList< Messenger >();
@@ -160,6 +164,12 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 		//
 		this.batteryChangedReceiver = new BatteryChangedReceiver( this );
 		this.registerReceiver( this.batteryChangedReceiver, new IntentFilter( Intent.ACTION_BATTERY_CHANGED ) );
+		
+		//
+		this.powerPluggedInReceiver = new PowerSupplyPluggedInReceiver( this );
+		this.powerUnpluggedReceiver = new PowerSupplyPulledOffReceiver( this );
+		this.registerReceiver( this.powerPluggedInReceiver, new IntentFilter( Intent.ACTION_POWER_CONNECTED ) );
+		this.registerReceiver( this.powerUnpluggedReceiver, new IntentFilter( Intent.ACTION_POWER_DISCONNECTED ) );
 
 		//
 		Log.v( MonitorBatteryStateService.TAG, "Service successfully started" );
