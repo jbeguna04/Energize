@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.BatteryManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,6 +19,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.halcyonwaves.apps.energize.R;
+import com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper;
+import com.halcyonwaves.apps.energize.database.PowerEventsTable;
 
 public class OverviewFragment extends Fragment {
 
@@ -47,8 +51,23 @@ public class OverviewFragment extends Fragment {
 		this.textViewTemp = (TextView) inflatedView.findViewById( R.id.textview_text_temperature );
 		this.textViewTimeOnBattery = (TextView) inflatedView.findViewById( R.id.textview_text_timeonbattery );
 
-		// set the default text for the "time on battery" label
-		OverviewFragment.this.textViewTimeOnBattery.setText( "-" );
+		// get the time on battery and set it
+		BatteryStatisticsDatabaseOpenHelper batteryDbHelper = new BatteryStatisticsDatabaseOpenHelper( this.getActivity().getApplicationContext() );
+		SQLiteDatabase batteryDB = batteryDbHelper.getReadableDatabase();
+		Cursor queryCursor = batteryDB.query( PowerEventsTable.TABLE_NAME, new String[] { PowerEventsTable.COLUMN_EVENT_TIME }, PowerEventsTable.COLUMN_BATTERY_IS_CHARGING + " = " + PowerEventsTable.POWER_EVENT_IS_NOT_CHARGING, null, null, null, PowerEventsTable.COLUMN_EVENT_TIME + " DESC" );
+		if( queryCursor.moveToFirst() ) {
+			final long timeGoneToBattery = queryCursor.getInt( queryCursor.getColumnIndex( PowerEventsTable.COLUMN_EVENT_TIME ) );
+			final long currentUnixTime = System.currentTimeMillis() / 1000;
+			final long difference = Math.round( ( currentUnixTime - timeGoneToBattery ) / 60.0 );
+			final long remainingHours = difference  > 0 ? (int) Math.floor( difference / 60.0 ) : 0;
+			final long remainingMinutesNew = difference - (60 * remainingHours);
+			this.textViewTimeOnBattery.setText( this.getString( R.string.textview_text_timeonbattery, remainingHours, remainingMinutesNew ) );
+		} else {
+			this.textViewTimeOnBattery.setText( "-" );
+		}
+		batteryDbHelper.close();
+		batteryDB = null;
+		batteryDbHelper = null;
 
 		// check if it can be possible that there is a additional battery dock
 		boolean possibleAsusDock = false;
@@ -98,9 +117,6 @@ public class OverviewFragment extends Fragment {
 							break;
 						case BatteryManager.BATTERY_STATUS_DISCHARGING:
 							OverviewFragment.this.textViewCurrentChargingState.setText( OverviewFragment.this.getString( R.string.battery_state_discharging ) );
-
-							// get the time the device is on battery and show it to the user
-							OverviewFragment.this.textViewTimeOnBattery.setText( "TODO" ); // TODO: implement this
 							break;
 						case BatteryManager.BATTERY_STATUS_FULL:
 							OverviewFragment.this.textViewCurrentChargingState.setText( OverviewFragment.this.getString( R.string.battery_state_full ) );

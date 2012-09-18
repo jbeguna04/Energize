@@ -88,7 +88,11 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 		final long currentUnixTime = System.currentTimeMillis() / 1000;
 		values.put( PowerEventsTable.COLUMN_EVENT_TIME, currentUnixTime );
 		values.put( PowerEventsTable.COLUMN_BATTERY_IS_CHARGING, isChargingNow ? PowerEventsTable.POWER_EVENT_IS_CHARGING : PowerEventsTable.POWER_EVENT_IS_NOT_CHARGING );
-		this.batteryStatisticsDatabase.insert( PowerEventsTable.TABLE_NAME, null, values );
+		if( -1 == this.batteryStatisticsDatabase.insert( PowerEventsTable.TABLE_NAME, null, values ) ) {
+			Log.e( MonitorBatteryStateService.TAG, "Failed to log the event that the power cord was plugged in or unplugged." );
+		} else {
+			Log.v( MonitorBatteryStateService.TAG, "Successfully inserted a power cord plugging event into the database." );
+		}
 	}
 
 	public void insertPowerValue( final int powerSource, final int scale, final int level, final int temprature ) {
