@@ -33,7 +33,7 @@ As soon as the used strings is nearly fixed, you can help us on our project page
 The application icon is based upon the [Android Robot][3] logo made by Google Inc. This logo is licensed under the terms of the [Creative Commons Attribution license][4]. The battery icon was designed by the authors of the [GNOME High contrast icon set][5] and is licensed under the terms of the [GNU Lesser General Public License][6].
 
 ## Changelog
-### Version 0.7 *(not released)* - Changes
+### Version 0.7 *(2012-09-19)* - Changes
 * Basic support for Asus Transformer Pad Prime/TF300/Infinity dock battery capacity (showing the current capacity; not used for estimation)
 * Added a basic first version of a separate tablet layout which uses the display more efficiently 
 * Rewrote the architecture for estimating the remaining time on battery to support more sophisticated algorithms in the future
