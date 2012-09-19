@@ -40,7 +40,6 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
 * On Jelly Bean (Android 4.1) devices the status message in the notification bar gets an higher priority as soon as the capacity decreases below 15%
 * Fixed some design issues on devices with a smaller display
 * Fixed several smaller performance issues detected by an code analysis via Lint 
-* Changing the used theme will now directly affect the design of the application without the need of restarting the application
 * Fixed a bug which caused that sometimes the "no estimation available" message was displayed even if it was possible to estimate the remaining time
 * Extended the statistics database with a table which logs the AC plugging events (power cord plugged in or unplugged)
 * Added a label to the overview which displays the time the device is on battery power
