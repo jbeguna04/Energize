@@ -1,5 +1,6 @@
 android.support.v4.app.BackStackState
 android.support.v4.app.BackStackState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.Fragment: Fragment()
 android.support.v4.app.Fragment$SavedState
 android.support.v4.app.Fragment$SavedState: android.os.Parcelable$Creator CREATOR
 android.support.v4.app.FragmentActivity: FragmentActivity()
@@ -9,6 +10,23 @@ android.support.v4.app.FragmentState
 android.support.v4.app.FragmentState: android.os.Parcelable$Creator CREATOR
 android.support.v4.content.ModernAsyncTask$Status: android.support.v4.content.ModernAsyncTask$Status[] values()
 android.support.v4.content.ModernAsyncTask$Status: android.support.v4.content.ModernAsyncTask$Status valueOf(java.lang.String)
+android.support.v4.view.PagerTabStrip: void setTabIndicatorColor(int)
+android.support.v4.view.PagerTabStrip: void setTabIndicatorColorResource(int)
+android.support.v4.view.PagerTabStrip: int getTabIndicatorColor()
+android.support.v4.view.PagerTabStrip: void setTextSpacing(int)
+android.support.v4.view.PagerTabStrip: void setBackgroundDrawable(android.graphics.drawable.Drawable)
+android.support.v4.view.PagerTabStrip: void setBackgroundColor(int)
+android.support.v4.view.PagerTabStrip: void setBackgroundResource(int)
+android.support.v4.view.PagerTabStrip: void setDrawFullUnderline(boolean)
+android.support.v4.view.PagerTabStrip: boolean getDrawFullUnderline()
+android.support.v4.view.PagerTabStrip: int getMinHeight()
+android.support.v4.view.PagerTitleStrip: void setSingleLineAllCaps(android.widget.TextView)
+android.support.v4.view.PagerTitleStrip: void setTextSpacing(int)
+android.support.v4.view.PagerTitleStrip: int getTextSpacing()
+android.support.v4.view.PagerTitleStrip: void setNonPrimaryAlpha(float)
+android.support.v4.view.PagerTitleStrip: void setTextColor(int)
+android.support.v4.view.PagerTitleStrip: void setGravity(int)
+android.support.v4.view.PagerTitleStrip: int getMinHeight()
 android.support.v4.view.ViewPager
 android.support.v4.view.ViewPager: ViewPager(android.content.Context)
 android.support.v4.view.ViewPager: ViewPager(android.content.Context,android.util.AttributeSet)
@@ -212,23 +230,30 @@ com.halcyonwaves.apps.energize.R$drawable: int vpi__tab_selected_pressed_holo
 com.halcyonwaves.apps.energize.R$drawable: int vpi__tab_unselected_focused_holo
 com.halcyonwaves.apps.energize.R$drawable: int vpi__tab_unselected_holo
 com.halcyonwaves.apps.energize.R$drawable: int vpi__tab_unselected_pressed_holo
+com.halcyonwaves.apps.energize.R$id: int btn_close_about_dialog
 com.halcyonwaves.apps.energize.R$id: int btn_rate_app
 com.halcyonwaves.apps.energize.R$id: int layout_graph_view
 com.halcyonwaves.apps.energize.R$id: int layout_graph_view_temperature
+com.halcyonwaves.apps.energize.R$id: int menu_about
 com.halcyonwaves.apps.energize.R$id: int menu_preferences
 com.halcyonwaves.apps.energize.R$id: int menu_show3rdpartylicense
-com.halcyonwaves.apps.energize.R$id: int menu_showapplicense
 com.halcyonwaves.apps.energize.R$id: int none
 com.halcyonwaves.apps.energize.R$id: int textview_label_current_charginglvl
+com.halcyonwaves.apps.energize.R$id: int textview_label_current_charginglvl_asusdock
 com.halcyonwaves.apps.energize.R$id: int textview_label_current_chargingstate
 com.halcyonwaves.apps.energize.R$id: int textview_label_temperature
+com.halcyonwaves.apps.energize.R$id: int textview_label_timeonbattery
 com.halcyonwaves.apps.energize.R$id: int textview_text_current_charginglvl
+com.halcyonwaves.apps.energize.R$id: int textview_text_current_charginglvl_asusdock
 com.halcyonwaves.apps.energize.R$id: int textview_text_current_chargingstate
 com.halcyonwaves.apps.energize.R$id: int textview_text_temperature
+com.halcyonwaves.apps.energize.R$id: int textview_text_timeonbattery
 com.halcyonwaves.apps.energize.R$id: int triangle
 com.halcyonwaves.apps.energize.R$id: int tv_about_application_name
 com.halcyonwaves.apps.energize.R$id: int tv_about_application_version
+com.halcyonwaves.apps.energize.R$id: int tv_applicense
 com.halcyonwaves.apps.energize.R$id: int tv_do_you_like_the_app
+com.halcyonwaves.apps.energize.R$id: int tv_or_close_the_app_label
 com.halcyonwaves.apps.energize.R$id: int tv_why_rating_the_app
 com.halcyonwaves.apps.energize.R$id: int underline
 com.halcyonwaves.apps.energize.R$id: int vp_fragment_pager
@@ -247,11 +272,11 @@ com.halcyonwaves.apps.energize.R$layout: int fragment_temperaturegraph
 com.halcyonwaves.apps.energize.R$layout: int main
 com.halcyonwaves.apps.energize.R$menu: int menu_main
 com.halcyonwaves.apps.energize.R$string: int app_name
-com.halcyonwaves.apps.energize.R$string: int app_version
 com.halcyonwaves.apps.energize.R$string: int battery_state_charging
 com.halcyonwaves.apps.energize.R$string: int battery_state_discharging
 com.halcyonwaves.apps.energize.R$string: int battery_state_full
 com.halcyonwaves.apps.energize.R$string: int battery_state_unknown
+com.halcyonwaves.apps.energize.R$string: int btn_close_about_dialog
 com.halcyonwaves.apps.energize.R$string: int button_rate_app
 com.halcyonwaves.apps.energize.R$string: int dialog_text_appiconlicense
 com.halcyonwaves.apps.energize.R$string: int dialog_text_cleardb_successfull
@@ -263,9 +288,9 @@ com.halcyonwaves.apps.energize.R$string: int fragment_title_batterygraph
 com.halcyonwaves.apps.energize.R$string: int fragment_title_overview
 com.halcyonwaves.apps.energize.R$string: int fragment_title_temperaturegraph
 com.halcyonwaves.apps.energize.R$string: int hello
+com.halcyonwaves.apps.energize.R$string: int menu_about
 com.halcyonwaves.apps.energize.R$string: int menu_preferences
 com.halcyonwaves.apps.energize.R$string: int menu_show3rdpartylicense
-com.halcyonwaves.apps.energize.R$string: int menu_showapplicense
 com.halcyonwaves.apps.energize.R$string: int notification_text_estimate
 com.halcyonwaves.apps.energize.R$string: int notification_text_estimate_na
 com.halcyonwaves.apps.energize.R$string: int notification_title_charges
@@ -282,14 +307,15 @@ com.halcyonwaves.apps.energize.R$string: int pref_title_temperature_unit
 com.halcyonwaves.apps.energize.R$string: int pref_title_theme
 com.halcyonwaves.apps.energize.R$string: int textview_app_version
 com.halcyonwaves.apps.energize.R$string: int textview_do_you_like_it
-com.halcyonwaves.apps.energize.R$string: int textview_label_current_charginglvl
+com.halcyonwaves.apps.energize.R$string: int textview_label_applicense
+com.halcyonwaves.apps.energize.R$string: int textview_label_charginglvl_asusdock
 com.halcyonwaves.apps.energize.R$string: int textview_label_current_chargingstate
 com.halcyonwaves.apps.energize.R$string: int textview_label_temperature
-com.halcyonwaves.apps.energize.R$string: int textview_label_time_on_battery
+com.halcyonwaves.apps.energize.R$string: int textview_label_timeonbattery
+com.halcyonwaves.apps.energize.R$string: int textview_or_close_the_app_label
 com.halcyonwaves.apps.energize.R$string: int textview_text_temperature_celsius
 com.halcyonwaves.apps.energize.R$string: int textview_text_temperature_fahrenheit
-com.halcyonwaves.apps.energize.R$string: int textview_text_time_on_battery
-com.halcyonwaves.apps.energize.R$string: int textview_text_time_on_battery_not_on_battery
+com.halcyonwaves.apps.energize.R$string: int textview_text_timeonbattery
 com.halcyonwaves.apps.energize.R$string: int textview_why_rating_the_app
 com.halcyonwaves.apps.energize.R$style: int DarkTheme
 com.halcyonwaves.apps.energize.R$style: int LightTheme
@@ -341,6 +367,12 @@ com.halcyonwaves.apps.energize.R$styleable: int ViewPagerIndicator_vpiUnderlineP
 com.halcyonwaves.apps.energize.R$xml: int pref_unified
 com.halcyonwaves.apps.energize.SettingsActivity
 com.halcyonwaves.apps.energize.SettingsActivity: SettingsActivity()
+com.halcyonwaves.apps.energize.fragments.BatteryCapacityGraphFragment
+com.halcyonwaves.apps.energize.fragments.BatteryCapacityGraphFragment: BatteryCapacityGraphFragment()
+com.halcyonwaves.apps.energize.fragments.OverviewFragment
+com.halcyonwaves.apps.energize.fragments.OverviewFragment: OverviewFragment()
+com.halcyonwaves.apps.energize.fragments.TemperatureGraphFragment
+com.halcyonwaves.apps.energize.fragments.TemperatureGraphFragment: TemperatureGraphFragment()
 com.halcyonwaves.apps.energize.receivers.BootCompletedReceiver
 com.halcyonwaves.apps.energize.receivers.BootCompletedReceiver: BootCompletedReceiver()
 com.halcyonwaves.apps.energize.services.MonitorBatteryStateService
@@ -543,23 +575,30 @@ com.jjoe64.graphview.R$drawable: int vpi__tab_selected_pressed_holo
 com.jjoe64.graphview.R$drawable: int vpi__tab_unselected_focused_holo
 com.jjoe64.graphview.R$drawable: int vpi__tab_unselected_holo
 com.jjoe64.graphview.R$drawable: int vpi__tab_unselected_pressed_holo
+com.jjoe64.graphview.R$id: int btn_close_about_dialog
 com.jjoe64.graphview.R$id: int btn_rate_app
 com.jjoe64.graphview.R$id: int layout_graph_view
 com.jjoe64.graphview.R$id: int layout_graph_view_temperature
+com.jjoe64.graphview.R$id: int menu_about
 com.jjoe64.graphview.R$id: int menu_preferences
 com.jjoe64.graphview.R$id: int menu_show3rdpartylicense
-com.jjoe64.graphview.R$id: int menu_showapplicense
 com.jjoe64.graphview.R$id: int none
 com.jjoe64.graphview.R$id: int textview_label_current_charginglvl
+com.jjoe64.graphview.R$id: int textview_label_current_charginglvl_asusdock
 com.jjoe64.graphview.R$id: int textview_label_current_chargingstate
 com.jjoe64.graphview.R$id: int textview_label_temperature
+com.jjoe64.graphview.R$id: int textview_label_timeonbattery
 com.jjoe64.graphview.R$id: int textview_text_current_charginglvl
+com.jjoe64.graphview.R$id: int textview_text_current_charginglvl_asusdock
 com.jjoe64.graphview.R$id: int textview_text_current_chargingstate
 com.jjoe64.graphview.R$id: int textview_text_temperature
+com.jjoe64.graphview.R$id: int textview_text_timeonbattery
 com.jjoe64.graphview.R$id: int triangle
 com.jjoe64.graphview.R$id: int tv_about_application_name
 com.jjoe64.graphview.R$id: int tv_about_application_version
+com.jjoe64.graphview.R$id: int tv_applicense
 com.jjoe64.graphview.R$id: int tv_do_you_like_the_app
+com.jjoe64.graphview.R$id: int tv_or_close_the_app_label
 com.jjoe64.graphview.R$id: int tv_why_rating_the_app
 com.jjoe64.graphview.R$id: int underline
 com.jjoe64.graphview.R$id: int vp_fragment_pager
@@ -578,11 +617,11 @@ com.jjoe64.graphview.R$layout: int fragment_temperaturegraph
 com.jjoe64.graphview.R$layout: int main
 com.jjoe64.graphview.R$menu: int menu_main
 com.jjoe64.graphview.R$string: int app_name
-com.jjoe64.graphview.R$string: int app_version
 com.jjoe64.graphview.R$string: int battery_state_charging
 com.jjoe64.graphview.R$string: int battery_state_discharging
 com.jjoe64.graphview.R$string: int battery_state_full
 com.jjoe64.graphview.R$string: int battery_state_unknown
+com.jjoe64.graphview.R$string: int btn_close_about_dialog
 com.jjoe64.graphview.R$string: int button_rate_app
 com.jjoe64.graphview.R$string: int dialog_text_appiconlicense
 com.jjoe64.graphview.R$string: int dialog_text_cleardb_successfull
@@ -594,9 +633,9 @@ com.jjoe64.graphview.R$string: int fragment_title_batterygraph
 com.jjoe64.graphview.R$string: int fragment_title_overview
 com.jjoe64.graphview.R$string: int fragment_title_temperaturegraph
 com.jjoe64.graphview.R$string: int hello
+com.jjoe64.graphview.R$string: int menu_about
 com.jjoe64.graphview.R$string: int menu_preferences
 com.jjoe64.graphview.R$string: int menu_show3rdpartylicense
-com.jjoe64.graphview.R$string: int menu_showapplicense
 com.jjoe64.graphview.R$string: int notification_text_estimate
 com.jjoe64.graphview.R$string: int notification_text_estimate_na
 com.jjoe64.graphview.R$string: int notification_title_charges
@@ -613,14 +652,15 @@ com.jjoe64.graphview.R$string: int pref_title_temperature_unit
 com.jjoe64.graphview.R$string: int pref_title_theme
 com.jjoe64.graphview.R$string: int textview_app_version
 com.jjoe64.graphview.R$string: int textview_do_you_like_it
-com.jjoe64.graphview.R$string: int textview_label_current_charginglvl
+com.jjoe64.graphview.R$string: int textview_label_applicense
+com.jjoe64.graphview.R$string: int textview_label_charginglvl_asusdock
 com.jjoe64.graphview.R$string: int textview_label_current_chargingstate
 com.jjoe64.graphview.R$string: int textview_label_temperature
-com.jjoe64.graphview.R$string: int textview_label_time_on_battery
+com.jjoe64.graphview.R$string: int textview_label_timeonbattery
+com.jjoe64.graphview.R$string: int textview_or_close_the_app_label
 com.jjoe64.graphview.R$string: int textview_text_temperature_celsius
 com.jjoe64.graphview.R$string: int textview_text_temperature_fahrenheit
-com.jjoe64.graphview.R$string: int textview_text_time_on_battery
-com.jjoe64.graphview.R$string: int textview_text_time_on_battery_not_on_battery
+com.jjoe64.graphview.R$string: int textview_text_timeonbattery
 com.jjoe64.graphview.R$string: int textview_why_rating_the_app
 com.jjoe64.graphview.R$style: int DarkTheme
 com.jjoe64.graphview.R$style: int LightTheme
@@ -887,23 +927,30 @@ com.viewpagerindicator.R$drawable: int vpi__tab_selected_pressed_holo
 com.viewpagerindicator.R$drawable: int vpi__tab_unselected_focused_holo
 com.viewpagerindicator.R$drawable: int vpi__tab_unselected_holo
 com.viewpagerindicator.R$drawable: int vpi__tab_unselected_pressed_holo
+com.viewpagerindicator.R$id: int btn_close_about_dialog
 com.viewpagerindicator.R$id: int btn_rate_app
 com.viewpagerindicator.R$id: int layout_graph_view
 com.viewpagerindicator.R$id: int layout_graph_view_temperature
+com.viewpagerindicator.R$id: int menu_about
 com.viewpagerindicator.R$id: int menu_preferences
 com.viewpagerindicator.R$id: int menu_show3rdpartylicense
-com.viewpagerindicator.R$id: int menu_showapplicense
 com.viewpagerindicator.R$id: int none
 com.viewpagerindicator.R$id: int textview_label_current_charginglvl
+com.viewpagerindicator.R$id: int textview_label_current_charginglvl_asusdock
 com.viewpagerindicator.R$id: int textview_label_current_chargingstate
 com.viewpagerindicator.R$id: int textview_label_temperature
+com.viewpagerindicator.R$id: int textview_label_timeonbattery
 com.viewpagerindicator.R$id: int textview_text_current_charginglvl
+com.viewpagerindicator.R$id: int textview_text_current_charginglvl_asusdock
 com.viewpagerindicator.R$id: int textview_text_current_chargingstate
 com.viewpagerindicator.R$id: int textview_text_temperature
+com.viewpagerindicator.R$id: int textview_text_timeonbattery
 com.viewpagerindicator.R$id: int triangle
 com.viewpagerindicator.R$id: int tv_about_application_name
 com.viewpagerindicator.R$id: int tv_about_application_version
+com.viewpagerindicator.R$id: int tv_applicense
 com.viewpagerindicator.R$id: int tv_do_you_like_the_app
+com.viewpagerindicator.R$id: int tv_or_close_the_app_label
 com.viewpagerindicator.R$id: int tv_why_rating_the_app
 com.viewpagerindicator.R$id: int underline
 com.viewpagerindicator.R$id: int vp_fragment_pager
@@ -922,11 +969,11 @@ com.viewpagerindicator.R$layout: int fragment_temperaturegraph
 com.viewpagerindicator.R$layout: int main
 com.viewpagerindicator.R$menu: int menu_main
 com.viewpagerindicator.R$string: int app_name
-com.viewpagerindicator.R$string: int app_version
 com.viewpagerindicator.R$string: int battery_state_charging
 com.viewpagerindicator.R$string: int battery_state_discharging
 com.viewpagerindicator.R$string: int battery_state_full
 com.viewpagerindicator.R$string: int battery_state_unknown
+com.viewpagerindicator.R$string: int btn_close_about_dialog
 com.viewpagerindicator.R$string: int button_rate_app
 com.viewpagerindicator.R$string: int dialog_text_appiconlicense
 com.viewpagerindicator.R$string: int dialog_text_cleardb_successfull
@@ -938,9 +985,9 @@ com.viewpagerindicator.R$string: int fragment_title_batterygraph
 com.viewpagerindicator.R$string: int fragment_title_overview
 com.viewpagerindicator.R$string: int fragment_title_temperaturegraph
 com.viewpagerindicator.R$string: int hello
+com.viewpagerindicator.R$string: int menu_about
 com.viewpagerindicator.R$string: int menu_preferences
 com.viewpagerindicator.R$string: int menu_show3rdpartylicense
-com.viewpagerindicator.R$string: int menu_showapplicense
 com.viewpagerindicator.R$string: int notification_text_estimate
 com.viewpagerindicator.R$string: int notification_text_estimate_na
 com.viewpagerindicator.R$string: int notification_title_charges
@@ -957,14 +1004,15 @@ com.viewpagerindicator.R$string: int pref_title_temperature_unit
 com.viewpagerindicator.R$string: int pref_title_theme
 com.viewpagerindicator.R$string: int textview_app_version
 com.viewpagerindicator.R$string: int textview_do_you_like_it
-com.viewpagerindicator.R$string: int textview_label_current_charginglvl
+com.viewpagerindicator.R$string: int textview_label_applicense
+com.viewpagerindicator.R$string: int textview_label_charginglvl_asusdock
 com.viewpagerindicator.R$string: int textview_label_current_chargingstate
 com.viewpagerindicator.R$string: int textview_label_temperature
-com.viewpagerindicator.R$string: int textview_label_time_on_battery
+com.viewpagerindicator.R$string: int textview_label_timeonbattery
+com.viewpagerindicator.R$string: int textview_or_close_the_app_label
 com.viewpagerindicator.R$string: int textview_text_temperature_celsius
 com.viewpagerindicator.R$string: int textview_text_temperature_fahrenheit
-com.viewpagerindicator.R$string: int textview_text_time_on_battery
-com.viewpagerindicator.R$string: int textview_text_time_on_battery_not_on_battery
+com.viewpagerindicator.R$string: int textview_text_timeonbattery
 com.viewpagerindicator.R$string: int textview_why_rating_the_app
 com.viewpagerindicator.R$style: int DarkTheme
 com.viewpagerindicator.R$style: int LightTheme

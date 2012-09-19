@@ -119,7 +119,6 @@ android.support.v4.app.Fragment -> android.support.v4.app.Fragment:
     void onHiddenChanged(boolean) -> a
     void setMenuVisibility(boolean) -> b
     void setUserVisibleHint(boolean) -> c
-    void startActivity(android.content.Intent) -> a
     void onActivityResult(int,int,android.content.Intent) -> a
     android.view.LayoutInflater getLayoutInflater(android.os.Bundle) -> a
     void onInflate(android.app.Activity,android.util.AttributeSet,android.os.Bundle) -> a
@@ -175,7 +174,7 @@ android.support.v4.app.FragmentActivity -> android.support.v4.app.g:
     boolean mOptionsMenuInvalidated -> h
     boolean mCheckedForLoaderManager -> i
     boolean mLoadersStarted -> j
-    android.support.v4.app.HCSparseArray mAllLoaderManagers -> k
+    android.support.v4.util.SparseArrayCompat mAllLoaderManagers -> k
     android.support.v4.app.LoaderManagerImpl mLoaderManager -> l
     void onActivityResult(int,int,android.content.Intent) -> onActivityResult
     void onBackPressed() -> onBackPressed
@@ -191,20 +190,20 @@ android.support.v4.app.FragmentActivity -> android.support.v4.app.g:
     void onPause() -> onPause
     void onResume() -> onResume
     void onPostResume() -> onPostResume
+    void onResumeFragments() -> a
     boolean onPreparePanel(int,android.view.View,android.view.Menu) -> onPreparePanel
     java.lang.Object onRetainNonConfigurationInstance() -> onRetainNonConfigurationInstance
     void onSaveInstanceState(android.os.Bundle) -> onSaveInstanceState
     void onStart() -> onStart
     void onStop() -> onStop
-    java.lang.Object onRetainCustomNonConfigurationInstance() -> a
-    void supportInvalidateOptionsMenu() -> b
+    java.lang.Object onRetainCustomNonConfigurationInstance() -> b
+    void supportInvalidateOptionsMenu() -> c
     void dump(java.lang.String,java.io.FileDescriptor,java.io.PrintWriter,java.lang.String[]) -> dump
     void doReallyStop(boolean) -> a
-    void onReallyStop() -> c
+    void onReallyStop() -> d
     void onAttachFragment(android.support.v4.app.Fragment) -> a
-    android.support.v4.app.FragmentManager getSupportFragmentManager() -> d
+    android.support.v4.app.FragmentManager getSupportFragmentManager() -> e
     void startActivityForResult(android.content.Intent,int) -> startActivityForResult
-    void startActivityFromFragment(android.support.v4.app.Fragment,android.content.Intent,int) -> a
     void invalidateSupportFragmentIndex(int) -> a
     android.support.v4.app.LoaderManagerImpl getLoaderManager(int,boolean,boolean) -> a
 android.support.v4.app.FragmentActivity$1 -> android.support.v4.app.h:
@@ -217,7 +216,7 @@ android.support.v4.app.FragmentActivity$NonConfigurationInstances -> android.sup
     java.lang.Object custom -> b
     java.util.HashMap children -> c
     java.util.ArrayList fragments -> d
-    android.support.v4.app.HCSparseArray loaders -> e
+    android.support.v4.util.SparseArrayCompat loaders -> e
 android.support.v4.app.FragmentManager -> android.support.v4.app.k:
     android.support.v4.app.FragmentTransaction beginTransaction() -> a
     boolean executePendingTransactions() -> b
@@ -263,7 +262,7 @@ android.support.v4.app.FragmentManagerImpl -> android.support.v4.app.m:
     android.view.animation.Animation makeFadeAnimation(android.content.Context,float,float) -> a
     android.view.animation.Animation loadAnimation(android.support.v4.app.Fragment,int,boolean,int) -> a
     void performPendingDeferredStart(android.support.v4.app.Fragment) -> a
-    void moveToState(android.support.v4.app.Fragment,int,int,int) -> a
+    void moveToState(android.support.v4.app.Fragment,int,int,int,boolean) -> a
     void moveToState(android.support.v4.app.Fragment) -> b
     void moveToState(int,boolean) -> a
     void moveToState(int,int,int,boolean) -> a
@@ -345,7 +344,8 @@ android.support.v4.app.FragmentPagerAdapter -> android.support.v4.app.q:
     boolean isViewFromObject(android.view.View,java.lang.Object) -> a
     android.os.Parcelable saveState() -> a
     void restoreState(android.os.Parcelable,java.lang.ClassLoader) -> a
-    java.lang.String makeFragmentName(int,int) -> a
+    long getItemId(int) -> b
+    java.lang.String makeFragmentName(int,long) -> a
 android.support.v4.app.FragmentState -> android.support.v4.app.FragmentState:
     java.lang.String mClassName -> a
     int mIndex -> b
@@ -372,36 +372,16 @@ android.support.v4.app.FragmentTransaction -> android.support.v4.app.s:
     android.support.v4.app.FragmentTransaction detach(android.support.v4.app.Fragment) -> a
     android.support.v4.app.FragmentTransaction attach(android.support.v4.app.Fragment) -> b
     int commitAllowingStateLoss() -> a
-android.support.v4.app.HCSparseArray -> android.support.v4.app.t:
-    java.lang.Object DELETED -> a
-    boolean mGarbage -> b
-    int[] mKeys -> c
-    java.lang.Object[] mValues -> d
-    int mSize -> e
-    java.lang.Object get(int) -> a
-    java.lang.Object get(int,java.lang.Object) -> a
-    void delete(int) -> b
-    void remove(int) -> c
-    void removeAt(int) -> d
-    void gc() -> c
-    void put(int,java.lang.Object) -> b
-    int size() -> a
-    int keyAt(int) -> e
-    java.lang.Object valueAt(int) -> f
-    void clear() -> b
-    int binarySearch(int[],int,int,int) -> a
-    int idealByteArraySize(int) -> g
-    int idealIntArraySize(int) -> h
-android.support.v4.app.LoaderManager -> android.support.v4.app.u:
+android.support.v4.app.LoaderManager -> android.support.v4.app.t:
     boolean hasRunningLoaders() -> a
-android.support.v4.app.LoaderManager$LoaderCallbacks -> android.support.v4.app.v:
+android.support.v4.app.LoaderManager$LoaderCallbacks -> android.support.v4.app.u:
     android.support.v4.content.Loader onCreateLoader(int,android.os.Bundle) -> a
     void onLoadFinished(android.support.v4.content.Loader,java.lang.Object) -> a
     void onLoaderReset(android.support.v4.content.Loader) -> a
-android.support.v4.app.LoaderManagerImpl -> android.support.v4.app.w:
+android.support.v4.app.LoaderManagerImpl -> android.support.v4.app.v:
     boolean DEBUG -> a
-    android.support.v4.app.HCSparseArray mLoaders -> b
-    android.support.v4.app.HCSparseArray mInactiveLoaders -> c
+    android.support.v4.util.SparseArrayCompat mLoaders -> b
+    android.support.v4.util.SparseArrayCompat mInactiveLoaders -> c
     android.support.v4.app.FragmentActivity mActivity -> d
     boolean mStarted -> e
     boolean mRetaining -> f
@@ -416,7 +396,7 @@ android.support.v4.app.LoaderManagerImpl -> android.support.v4.app.w:
     java.lang.String toString() -> toString
     void dump(java.lang.String,java.io.FileDescriptor,java.io.PrintWriter,java.lang.String[]) -> a
     boolean hasRunningLoaders() -> a
-android.support.v4.app.LoaderManagerImpl$LoaderInfo -> android.support.v4.app.x:
+android.support.v4.app.LoaderManagerImpl$LoaderInfo -> android.support.v4.app.w:
     int mId -> a
     android.os.Bundle mArgs -> b
     android.support.v4.app.LoaderManager$LoaderCallbacks mCallbacks -> c
@@ -441,11 +421,76 @@ android.support.v4.app.LoaderManagerImpl$LoaderInfo -> android.support.v4.app.x:
     void callOnLoadFinished(android.support.v4.content.Loader,java.lang.Object) -> a
     java.lang.String toString() -> toString
     void dump(java.lang.String,java.io.FileDescriptor,java.io.PrintWriter,java.lang.String[]) -> a
-android.support.v4.app.NoSaveStateFrameLayout -> android.support.v4.app.y:
+android.support.v4.app.NoSaveStateFrameLayout -> android.support.v4.app.x:
     android.view.ViewGroup wrap(android.view.View) -> a
     void dispatchSaveInstanceState(android.util.SparseArray) -> dispatchSaveInstanceState
     void dispatchRestoreInstanceState(android.util.SparseArray) -> dispatchRestoreInstanceState
-android.support.v4.app.SuperNotCalledException -> android.support.v4.app.z:
+android.support.v4.app.NotificationCompat -> android.support.v4.app.y:
+    android.support.v4.app.NotificationCompat$NotificationCompatImpl IMPL -> a
+    android.support.v4.app.NotificationCompat$NotificationCompatImpl access$000() -> a
+android.support.v4.app.NotificationCompat$Action -> android.support.v4.app.z:
+    int icon -> a
+    java.lang.CharSequence title -> b
+    android.app.PendingIntent actionIntent -> c
+android.support.v4.app.NotificationCompat$BigPictureStyle -> android.support.v4.app.aa:
+    android.graphics.Bitmap mPicture -> a
+android.support.v4.app.NotificationCompat$BigTextStyle -> android.support.v4.app.ab:
+    java.lang.CharSequence mBigText -> a
+android.support.v4.app.NotificationCompat$Builder -> android.support.v4.app.ac:
+    android.content.Context mContext -> a
+    java.lang.CharSequence mContentTitle -> b
+    java.lang.CharSequence mContentText -> c
+    android.app.PendingIntent mContentIntent -> d
+    android.app.PendingIntent mFullScreenIntent -> e
+    android.widget.RemoteViews mTickerView -> f
+    android.graphics.Bitmap mLargeIcon -> g
+    java.lang.CharSequence mContentInfo -> h
+    int mNumber -> i
+    int mPriority -> j
+    boolean mUseChronometer -> k
+    android.support.v4.app.NotificationCompat$Style mStyle -> l
+    java.lang.CharSequence mSubText -> m
+    int mProgressMax -> n
+    int mProgress -> o
+    boolean mProgressIndeterminate -> p
+    java.util.ArrayList mActions -> q
+    android.app.Notification mNotification -> r
+    android.support.v4.app.NotificationCompat$Builder setSmallIcon(int) -> a
+    android.support.v4.app.NotificationCompat$Builder setContentTitle(java.lang.CharSequence) -> a
+    android.support.v4.app.NotificationCompat$Builder setContentText(java.lang.CharSequence) -> b
+    android.support.v4.app.NotificationCompat$Builder setContentIntent(android.app.PendingIntent) -> a
+    android.support.v4.app.NotificationCompat$Builder setOngoing(boolean) -> a
+    void setFlag(int,boolean) -> a
+    android.support.v4.app.NotificationCompat$Builder setPriority(int) -> b
+    android.app.Notification build() -> a
+android.support.v4.app.NotificationCompat$InboxStyle -> android.support.v4.app.ad:
+    java.util.ArrayList mTexts -> a
+android.support.v4.app.NotificationCompat$NotificationCompatImpl -> android.support.v4.app.ae:
+    android.app.Notification build(android.support.v4.app.NotificationCompat$Builder) -> a
+android.support.v4.app.NotificationCompat$NotificationCompatImplBase -> android.support.v4.app.af:
+    android.app.Notification build(android.support.v4.app.NotificationCompat$Builder) -> a
+android.support.v4.app.NotificationCompat$NotificationCompatImplHoneycomb -> android.support.v4.app.ag:
+    android.app.Notification build(android.support.v4.app.NotificationCompat$Builder) -> a
+android.support.v4.app.NotificationCompat$NotificationCompatImplIceCreamSandwich -> android.support.v4.app.ah:
+    android.app.Notification build(android.support.v4.app.NotificationCompat$Builder) -> a
+android.support.v4.app.NotificationCompat$NotificationCompatImplJellybean -> android.support.v4.app.ai:
+    android.app.Notification build(android.support.v4.app.NotificationCompat$Builder) -> a
+android.support.v4.app.NotificationCompat$Style -> android.support.v4.app.aj:
+    java.lang.CharSequence mBigContentTitle -> b
+    java.lang.CharSequence mSummaryText -> c
+    boolean mSummaryTextSet -> d
+android.support.v4.app.NotificationCompatHoneycomb -> android.support.v4.app.ak:
+    android.app.Notification add(android.content.Context,android.app.Notification,java.lang.CharSequence,java.lang.CharSequence,java.lang.CharSequence,android.widget.RemoteViews,int,android.app.PendingIntent,android.app.PendingIntent,android.graphics.Bitmap) -> a
+android.support.v4.app.NotificationCompatIceCreamSandwich -> android.support.v4.app.al:
+    android.app.Notification add(android.content.Context,android.app.Notification,java.lang.CharSequence,java.lang.CharSequence,java.lang.CharSequence,android.widget.RemoteViews,int,android.app.PendingIntent,android.app.PendingIntent,android.graphics.Bitmap,int,int,boolean) -> a
+android.support.v4.app.NotificationCompatJellybean -> android.support.v4.app.am:
+    android.app.Notification$Builder b -> a
+    void addAction(int,java.lang.CharSequence,android.app.PendingIntent) -> a
+    void addBigTextStyle(java.lang.CharSequence,boolean,java.lang.CharSequence,java.lang.CharSequence) -> a
+    void addBigPictureStyle(java.lang.CharSequence,boolean,java.lang.CharSequence,android.graphics.Bitmap) -> a
+    void addInboxStyle(java.lang.CharSequence,boolean,java.lang.CharSequence,java.util.ArrayList) -> a
+    android.app.Notification build() -> a
+android.support.v4.app.SuperNotCalledException -> android.support.v4.app.an:
 android.support.v4.content.Loader -> android.support.v4.a.a:
     int mId -> a
     android.support.v4.content.Loader$OnLoadCompleteListener mListener -> b
@@ -490,52 +535,182 @@ android.support.v4.util.LogWriter -> android.support.v4.c.b:
     void flush() -> flush
     void write(char[],int,int) -> write
     void flushBuilder() -> a
-android.support.v4.view.KeyEventCompat -> android.support.v4.view.a:
+android.support.v4.util.SparseArrayCompat -> android.support.v4.c.c:
+    java.lang.Object DELETED -> a
+    boolean mGarbage -> b
+    int[] mKeys -> c
+    java.lang.Object[] mValues -> d
+    int mSize -> e
+    java.lang.Object get(int) -> a
+    java.lang.Object get(int,java.lang.Object) -> a
+    void delete(int) -> b
+    void remove(int) -> c
+    void removeAt(int) -> d
+    void gc() -> c
+    void put(int,java.lang.Object) -> b
+    int size() -> a
+    int keyAt(int) -> e
+    java.lang.Object valueAt(int) -> f
+    void clear() -> b
+    int binarySearch(int[],int,int,int) -> a
+    int idealByteArraySize(int) -> g
+    int idealIntArraySize(int) -> h
+android.support.v4.view.AccessibilityDelegateCompat -> android.support.v4.view.a:
+    android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateImpl IMPL -> b
+    java.lang.Object DEFAULT_DELEGATE -> c
+    java.lang.Object mBridge -> a
+    java.lang.Object getBridge() -> a
+    void sendAccessibilityEvent(android.view.View,int) -> a
+    void sendAccessibilityEventUnchecked(android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    boolean dispatchPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> b
+    void onPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> c
+    void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> d
+    void onInitializeAccessibilityNodeInfo(android.view.View,android.support.v4.view.accessibility.AccessibilityNodeInfoCompat) -> a
+    boolean onRequestSendAccessibilityEvent(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateIcsImpl -> android.support.v4.view.b:
+    java.lang.Object newAccessiblityDelegateDefaultImpl() -> a
+    java.lang.Object newAccessiblityDelegateBridge(android.support.v4.view.AccessibilityDelegateCompat) -> a
+    boolean dispatchPopulateAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    void onInitializeAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> b
+    void onInitializeAccessibilityNodeInfo(java.lang.Object,android.view.View,android.support.v4.view.accessibility.AccessibilityNodeInfoCompat) -> a
+    void onPopulateAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> c
+    boolean onRequestSendAccessibilityEvent(java.lang.Object,android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    void sendAccessibilityEvent(java.lang.Object,android.view.View,int) -> a
+    void sendAccessibilityEventUnchecked(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> d
+android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateIcsImpl$1 -> android.support.v4.view.c:
+    android.support.v4.view.AccessibilityDelegateCompat val$compat -> a
+    android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateIcsImpl this$0 -> b
+    boolean dispatchPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> b
+    void onInitializeAccessibilityNodeInfo(android.view.View,java.lang.Object) -> a
+    void onPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> c
+    boolean onRequestSendAccessibilityEvent(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    void sendAccessibilityEvent(android.view.View,int) -> a
+    void sendAccessibilityEventUnchecked(android.view.View,android.view.accessibility.AccessibilityEvent) -> d
+android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateImpl -> android.support.v4.view.d:
+    java.lang.Object newAccessiblityDelegateDefaultImpl() -> a
+    java.lang.Object newAccessiblityDelegateBridge(android.support.v4.view.AccessibilityDelegateCompat) -> a
+    boolean dispatchPopulateAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    void onInitializeAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> b
+    void onInitializeAccessibilityNodeInfo(java.lang.Object,android.view.View,android.support.v4.view.accessibility.AccessibilityNodeInfoCompat) -> a
+    void onPopulateAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> c
+    boolean onRequestSendAccessibilityEvent(java.lang.Object,android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    void sendAccessibilityEvent(java.lang.Object,android.view.View,int) -> a
+    void sendAccessibilityEventUnchecked(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> d
+android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateJellyBeanImpl -> android.support.v4.view.e:
+    java.lang.Object newAccessiblityDelegateBridge(android.support.v4.view.AccessibilityDelegateCompat) -> a
+android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateJellyBeanImpl$1 -> android.support.v4.view.f:
+    android.support.v4.view.AccessibilityDelegateCompat val$compat -> a
+    android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateJellyBeanImpl this$0 -> b
+    boolean dispatchPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> b
+    void onInitializeAccessibilityNodeInfo(android.view.View,java.lang.Object) -> a
+    void onPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> c
+    boolean onRequestSendAccessibilityEvent(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    void sendAccessibilityEvent(android.view.View,int) -> a
+    void sendAccessibilityEventUnchecked(android.view.View,android.view.accessibility.AccessibilityEvent) -> d
+android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateStubImpl -> android.support.v4.view.g:
+    java.lang.Object newAccessiblityDelegateDefaultImpl() -> a
+    java.lang.Object newAccessiblityDelegateBridge(android.support.v4.view.AccessibilityDelegateCompat) -> a
+    boolean dispatchPopulateAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    void onInitializeAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> b
+    void onInitializeAccessibilityNodeInfo(java.lang.Object,android.view.View,android.support.v4.view.accessibility.AccessibilityNodeInfoCompat) -> a
+    void onPopulateAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> c
+    boolean onRequestSendAccessibilityEvent(java.lang.Object,android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    void sendAccessibilityEvent(java.lang.Object,android.view.View,int) -> a
+    void sendAccessibilityEventUnchecked(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> d
+android.support.v4.view.AccessibilityDelegateCompatIcs -> android.support.v4.view.h:
+    java.lang.Object newAccessibilityDelegateDefaultImpl() -> a
+    java.lang.Object newAccessibilityDelegateBridge(android.support.v4.view.AccessibilityDelegateCompatIcs$AccessibilityDelegateBridge) -> a
+    boolean dispatchPopulateAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    void onInitializeAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> b
+    void onInitializeAccessibilityNodeInfo(java.lang.Object,android.view.View,java.lang.Object) -> a
+    void onPopulateAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> c
+    boolean onRequestSendAccessibilityEvent(java.lang.Object,android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    void sendAccessibilityEvent(java.lang.Object,android.view.View,int) -> a
+    void sendAccessibilityEventUnchecked(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> d
+android.support.v4.view.AccessibilityDelegateCompatIcs$1 -> android.support.v4.view.i:
+    android.support.v4.view.AccessibilityDelegateCompatIcs$AccessibilityDelegateBridge val$bridge -> a
+    boolean dispatchPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> dispatchPopulateAccessibilityEvent
+    void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> onInitializeAccessibilityEvent
+    void onInitializeAccessibilityNodeInfo(android.view.View,android.view.accessibility.AccessibilityNodeInfo) -> onInitializeAccessibilityNodeInfo
+    void onPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> onPopulateAccessibilityEvent
+    boolean onRequestSendAccessibilityEvent(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> onRequestSendAccessibilityEvent
+    void sendAccessibilityEvent(android.view.View,int) -> sendAccessibilityEvent
+    void sendAccessibilityEventUnchecked(android.view.View,android.view.accessibility.AccessibilityEvent) -> sendAccessibilityEventUnchecked
+android.support.v4.view.AccessibilityDelegateCompatIcs$AccessibilityDelegateBridge -> android.support.v4.view.j:
+    boolean dispatchPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> b
+    void onInitializeAccessibilityNodeInfo(android.view.View,java.lang.Object) -> a
+    void onPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> c
+    boolean onRequestSendAccessibilityEvent(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    void sendAccessibilityEvent(android.view.View,int) -> a
+    void sendAccessibilityEventUnchecked(android.view.View,android.view.accessibility.AccessibilityEvent) -> d
+android.support.v4.view.AccessibilityDelegateCompatJellyBean -> android.support.v4.view.k:
+    java.lang.Object newAccessibilityDelegateBridge(android.support.v4.view.AccessibilityDelegateCompatJellyBean$AccessibilityDelegateBridgeJellyBean) -> a
+android.support.v4.view.AccessibilityDelegateCompatJellyBean$1 -> android.support.v4.view.l:
+    android.support.v4.view.AccessibilityDelegateCompatJellyBean$AccessibilityDelegateBridgeJellyBean val$bridge -> a
+    boolean dispatchPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> dispatchPopulateAccessibilityEvent
+    void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> onInitializeAccessibilityEvent
+    void onInitializeAccessibilityNodeInfo(android.view.View,android.view.accessibility.AccessibilityNodeInfo) -> onInitializeAccessibilityNodeInfo
+    void onPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> onPopulateAccessibilityEvent
+    boolean onRequestSendAccessibilityEvent(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> onRequestSendAccessibilityEvent
+    void sendAccessibilityEvent(android.view.View,int) -> sendAccessibilityEvent
+    void sendAccessibilityEventUnchecked(android.view.View,android.view.accessibility.AccessibilityEvent) -> sendAccessibilityEventUnchecked
+android.support.v4.view.AccessibilityDelegateCompatJellyBean$AccessibilityDelegateBridgeJellyBean -> android.support.v4.view.m:
+    boolean dispatchPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> b
+    void onInitializeAccessibilityNodeInfo(android.view.View,java.lang.Object) -> a
+    void onPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> c
+    boolean onRequestSendAccessibilityEvent(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    void sendAccessibilityEvent(android.view.View,int) -> a
+    void sendAccessibilityEventUnchecked(android.view.View,android.view.accessibility.AccessibilityEvent) -> d
+android.support.v4.view.KeyEventCompat -> android.support.v4.view.n:
     android.support.v4.view.KeyEventCompat$KeyEventVersionImpl IMPL -> a
     boolean hasModifiers(android.view.KeyEvent,int) -> a
     boolean hasNoModifiers(android.view.KeyEvent) -> a
-android.support.v4.view.KeyEventCompat$BaseKeyEventVersionImpl -> android.support.v4.view.b:
+android.support.v4.view.KeyEventCompat$BaseKeyEventVersionImpl -> android.support.v4.view.o:
     int metaStateFilterDirectionalModifiers(int,int,int,int,int) -> a
     int normalizeMetaState(int) -> a
     boolean metaStateHasModifiers(int,int) -> a
     boolean metaStateHasNoModifiers(int) -> b
-android.support.v4.view.KeyEventCompat$HoneycombKeyEventVersionImpl -> android.support.v4.view.c:
+android.support.v4.view.KeyEventCompat$HoneycombKeyEventVersionImpl -> android.support.v4.view.p:
     boolean metaStateHasModifiers(int,int) -> a
     boolean metaStateHasNoModifiers(int) -> b
-android.support.v4.view.KeyEventCompat$KeyEventVersionImpl -> android.support.v4.view.d:
+android.support.v4.view.KeyEventCompat$KeyEventVersionImpl -> android.support.v4.view.q:
     boolean metaStateHasModifiers(int,int) -> a
     boolean metaStateHasNoModifiers(int) -> b
-android.support.v4.view.KeyEventCompatHoneycomb -> android.support.v4.view.e:
+android.support.v4.view.KeyEventCompatHoneycomb -> android.support.v4.view.r:
     boolean metaStateHasModifiers(int,int) -> a
     boolean metaStateHasNoModifiers(int) -> a
-android.support.v4.view.MotionEventCompat -> android.support.v4.view.f:
+android.support.v4.view.MotionEventCompat -> android.support.v4.view.s:
     android.support.v4.view.MotionEventCompat$MotionEventVersionImpl IMPL -> a
     int getActionIndex(android.view.MotionEvent) -> a
     int findPointerIndex(android.view.MotionEvent,int) -> a
     int getPointerId(android.view.MotionEvent,int) -> b
     float getX(android.view.MotionEvent,int) -> c
     float getY(android.view.MotionEvent,int) -> d
-android.support.v4.view.MotionEventCompat$BaseMotionEventVersionImpl -> android.support.v4.view.g:
+android.support.v4.view.MotionEventCompat$BaseMotionEventVersionImpl -> android.support.v4.view.t:
     int findPointerIndex(android.view.MotionEvent,int) -> a
     int getPointerId(android.view.MotionEvent,int) -> b
     float getX(android.view.MotionEvent,int) -> c
     float getY(android.view.MotionEvent,int) -> d
-android.support.v4.view.MotionEventCompat$EclairMotionEventVersionImpl -> android.support.v4.view.h:
+android.support.v4.view.MotionEventCompat$EclairMotionEventVersionImpl -> android.support.v4.view.u:
     int findPointerIndex(android.view.MotionEvent,int) -> a
     int getPointerId(android.view.MotionEvent,int) -> b
     float getX(android.view.MotionEvent,int) -> c
     float getY(android.view.MotionEvent,int) -> d
-android.support.v4.view.MotionEventCompat$MotionEventVersionImpl -> android.support.v4.view.i:
+android.support.v4.view.MotionEventCompat$MotionEventVersionImpl -> android.support.v4.view.v:
     int findPointerIndex(android.view.MotionEvent,int) -> a
     int getPointerId(android.view.MotionEvent,int) -> b
     float getX(android.view.MotionEvent,int) -> c
     float getY(android.view.MotionEvent,int) -> d
-android.support.v4.view.MotionEventCompatEclair -> android.support.v4.view.j:
+android.support.v4.view.MotionEventCompatEclair -> android.support.v4.view.w:
     int findPointerIndex(android.view.MotionEvent,int) -> a
     int getPointerId(android.view.MotionEvent,int) -> b
     float getX(android.view.MotionEvent,int) -> c
     float getY(android.view.MotionEvent,int) -> d
-android.support.v4.view.PagerAdapter -> android.support.v4.view.k:
+android.support.v4.view.PagerAdapter -> android.support.v4.view.x:
     android.database.DataSetObservable mObservable -> a
     int getCount() -> b
     void startUpdate(android.view.ViewGroup) -> a
@@ -554,97 +729,127 @@ android.support.v4.view.PagerAdapter -> android.support.v4.view.k:
     int getItemPosition(java.lang.Object) -> a
     void registerDataSetObserver(android.database.DataSetObserver) -> a
     void unregisterDataSetObserver(android.database.DataSetObserver) -> b
-    java.lang.CharSequence getPageTitle(int) -> b
-android.support.v4.view.VelocityTrackerCompat -> android.support.v4.view.l:
+    java.lang.CharSequence getPageTitle(int) -> c
+    float getPageWidth(int) -> d
+android.support.v4.view.VelocityTrackerCompat -> android.support.v4.view.y:
     android.support.v4.view.VelocityTrackerCompat$VelocityTrackerVersionImpl IMPL -> a
     float getXVelocity(android.view.VelocityTracker,int) -> a
-    float getYVelocity(android.view.VelocityTracker,int) -> b
-android.support.v4.view.VelocityTrackerCompat$BaseVelocityTrackerVersionImpl -> android.support.v4.view.m:
+android.support.v4.view.VelocityTrackerCompat$BaseVelocityTrackerVersionImpl -> android.support.v4.view.z:
     float getXVelocity(android.view.VelocityTracker,int) -> a
-    float getYVelocity(android.view.VelocityTracker,int) -> b
-android.support.v4.view.VelocityTrackerCompat$HoneycombVelocityTrackerVersionImpl -> android.support.v4.view.n:
+android.support.v4.view.VelocityTrackerCompat$HoneycombVelocityTrackerVersionImpl -> android.support.v4.view.aa:
     float getXVelocity(android.view.VelocityTracker,int) -> a
-    float getYVelocity(android.view.VelocityTracker,int) -> b
-android.support.v4.view.VelocityTrackerCompat$VelocityTrackerVersionImpl -> android.support.v4.view.o:
+android.support.v4.view.VelocityTrackerCompat$VelocityTrackerVersionImpl -> android.support.v4.view.ab:
     float getXVelocity(android.view.VelocityTracker,int) -> a
-    float getYVelocity(android.view.VelocityTracker,int) -> b
-android.support.v4.view.VelocityTrackerCompatHoneycomb -> android.support.v4.view.p:
+android.support.v4.view.VelocityTrackerCompatHoneycomb -> android.support.v4.view.ac:
     float getXVelocity(android.view.VelocityTracker,int) -> a
-    float getYVelocity(android.view.VelocityTracker,int) -> b
-android.support.v4.view.ViewCompat -> android.support.v4.view.q:
+android.support.v4.view.ViewCompat -> android.support.v4.view.ad:
     android.support.v4.view.ViewCompat$ViewCompatImpl IMPL -> a
     boolean canScrollHorizontally(android.view.View,int) -> a
     int getOverScrollMode(android.view.View) -> a
-android.support.v4.view.ViewCompat$BaseViewCompatImpl -> android.support.v4.view.r:
+    void setAccessibilityDelegate(android.view.View,android.support.v4.view.AccessibilityDelegateCompat) -> a
+    void postInvalidateOnAnimation(android.view.View) -> b
+    int getImportantForAccessibility(android.view.View) -> c
+    void setImportantForAccessibility(android.view.View,int) -> b
+android.support.v4.view.ViewCompat$BaseViewCompatImpl -> android.support.v4.view.ae:
     boolean canScrollHorizontally(android.view.View,int) -> a
     int getOverScrollMode(android.view.View) -> a
-android.support.v4.view.ViewCompat$GBViewCompatImpl -> android.support.v4.view.s:
+    void setAccessibilityDelegate(android.view.View,android.support.v4.view.AccessibilityDelegateCompat) -> a
+    void postInvalidateOnAnimation(android.view.View) -> b
+    long getFrameTime() -> a
+    int getImportantForAccessibility(android.view.View) -> c
+    void setImportantForAccessibility(android.view.View,int) -> b
+android.support.v4.view.ViewCompat$GBViewCompatImpl -> android.support.v4.view.af:
     int getOverScrollMode(android.view.View) -> a
-android.support.v4.view.ViewCompat$ICSViewCompatImpl -> android.support.v4.view.t:
+android.support.v4.view.ViewCompat$HCViewCompatImpl -> android.support.v4.view.ag:
+    long getFrameTime() -> a
+android.support.v4.view.ViewCompat$ICSViewCompatImpl -> android.support.v4.view.ah:
     boolean canScrollHorizontally(android.view.View,int) -> a
-android.support.v4.view.ViewCompat$ViewCompatImpl -> android.support.v4.view.u:
+    void setAccessibilityDelegate(android.view.View,android.support.v4.view.AccessibilityDelegateCompat) -> a
+android.support.v4.view.ViewCompat$JBViewCompatImpl -> android.support.v4.view.ai:
+    void postInvalidateOnAnimation(android.view.View) -> b
+    int getImportantForAccessibility(android.view.View) -> c
+    void setImportantForAccessibility(android.view.View,int) -> b
+android.support.v4.view.ViewCompat$ViewCompatImpl -> android.support.v4.view.aj:
     boolean canScrollHorizontally(android.view.View,int) -> a
     int getOverScrollMode(android.view.View) -> a
-android.support.v4.view.ViewCompatGingerbread -> android.support.v4.view.v:
+    void setAccessibilityDelegate(android.view.View,android.support.v4.view.AccessibilityDelegateCompat) -> a
+    void postInvalidateOnAnimation(android.view.View) -> b
+    int getImportantForAccessibility(android.view.View) -> c
+    void setImportantForAccessibility(android.view.View,int) -> b
+android.support.v4.view.ViewCompatGingerbread -> android.support.v4.view.ak:
     int getOverScrollMode(android.view.View) -> a
-android.support.v4.view.ViewCompatICS -> android.support.v4.view.w:
+android.support.v4.view.ViewCompatHC -> android.support.v4.view.al:
+    long getFrameTime() -> a
+android.support.v4.view.ViewCompatICS -> android.support.v4.view.am:
     boolean canScrollHorizontally(android.view.View,int) -> a
-android.support.v4.view.ViewConfigurationCompat -> android.support.v4.view.x:
+    void setAccessibilityDelegate(android.view.View,java.lang.Object) -> a
+android.support.v4.view.ViewCompatJB -> android.support.v4.view.an:
+    void postInvalidateOnAnimation(android.view.View) -> a
+    int getImportantForAccessibility(android.view.View) -> b
+    void setImportantForAccessibility(android.view.View,int) -> a
+android.support.v4.view.ViewConfigurationCompat -> android.support.v4.view.ao:
     android.support.v4.view.ViewConfigurationCompat$ViewConfigurationVersionImpl IMPL -> a
     int getScaledPagingTouchSlop(android.view.ViewConfiguration) -> a
-android.support.v4.view.ViewConfigurationCompat$BaseViewConfigurationVersionImpl -> android.support.v4.view.y:
+android.support.v4.view.ViewConfigurationCompat$BaseViewConfigurationVersionImpl -> android.support.v4.view.ap:
     int getScaledPagingTouchSlop(android.view.ViewConfiguration) -> a
-android.support.v4.view.ViewConfigurationCompat$FroyoViewConfigurationVersionImpl -> android.support.v4.view.z:
+android.support.v4.view.ViewConfigurationCompat$FroyoViewConfigurationVersionImpl -> android.support.v4.view.aq:
     int getScaledPagingTouchSlop(android.view.ViewConfiguration) -> a
-android.support.v4.view.ViewConfigurationCompat$ViewConfigurationVersionImpl -> android.support.v4.view.aa:
+android.support.v4.view.ViewConfigurationCompat$ViewConfigurationVersionImpl -> android.support.v4.view.ar:
     int getScaledPagingTouchSlop(android.view.ViewConfiguration) -> a
-android.support.v4.view.ViewConfigurationCompatFroyo -> android.support.v4.view.ab:
+android.support.v4.view.ViewConfigurationCompatFroyo -> android.support.v4.view.as:
     int getScaledPagingTouchSlop(android.view.ViewConfiguration) -> a
 android.support.v4.view.ViewPager -> android.support.v4.view.ViewPager:
     int[] LAYOUT_ATTRS -> a
     java.util.Comparator COMPARATOR -> b
     android.view.animation.Interpolator sInterpolator -> c
     java.util.ArrayList mItems -> d
-    android.support.v4.view.PagerAdapter mAdapter -> e
-    int mCurItem -> f
-    int mRestoredCurItem -> g
-    android.os.Parcelable mRestoredAdapterState -> h
-    java.lang.ClassLoader mRestoredClassLoader -> i
-    android.widget.Scroller mScroller -> j
-    android.support.v4.view.ViewPager$PagerObserver mObserver -> k
-    int mPageMargin -> l
-    android.graphics.drawable.Drawable mMarginDrawable -> m
-    int mTopPageBounds -> n
-    int mBottomPageBounds -> o
-    int mChildWidthMeasureSpec -> p
-    int mChildHeightMeasureSpec -> q
-    boolean mInLayout -> r
-    boolean mScrollingCacheEnabled -> s
-    boolean mPopulatePending -> t
-    boolean mScrolling -> u
-    int mOffscreenPageLimit -> v
-    boolean mIsBeingDragged -> w
-    boolean mIsUnableToDrag -> x
-    int mTouchSlop -> y
-    float mInitialMotionX -> z
-    float mLastMotionX -> A
-    float mLastMotionY -> B
-    int mActivePointerId -> C
-    android.view.VelocityTracker mVelocityTracker -> D
-    int mMinimumVelocity -> E
-    int mMaximumVelocity -> F
-    int mFlingDistance -> G
-    boolean mFakeDragging -> H
-    long mFakeDragBeginTime -> I
-    android.support.v4.widget.EdgeEffectCompat mLeftEdge -> J
-    android.support.v4.widget.EdgeEffectCompat mRightEdge -> K
-    boolean mFirstLayout -> L
-    boolean mCalledSuper -> M
-    int mDecorChildCount -> N
-    android.support.v4.view.ViewPager$OnPageChangeListener mOnPageChangeListener -> O
-    android.support.v4.view.ViewPager$OnPageChangeListener mInternalPageChangeListener -> P
-    android.support.v4.view.ViewPager$OnAdapterChangeListener mAdapterChangeListener -> Q
-    int mScrollState -> R
+    android.support.v4.view.ViewPager$ItemInfo mTempItem -> e
+    android.graphics.Rect mTempRect -> f
+    android.support.v4.view.PagerAdapter mAdapter -> g
+    int mCurItem -> h
+    int mRestoredCurItem -> i
+    android.os.Parcelable mRestoredAdapterState -> j
+    java.lang.ClassLoader mRestoredClassLoader -> k
+    android.widget.Scroller mScroller -> l
+    android.support.v4.view.ViewPager$PagerObserver mObserver -> m
+    int mPageMargin -> n
+    android.graphics.drawable.Drawable mMarginDrawable -> o
+    int mTopPageBounds -> p
+    int mBottomPageBounds -> q
+    float mFirstOffset -> r
+    float mLastOffset -> s
+    int mChildWidthMeasureSpec -> t
+    int mChildHeightMeasureSpec -> u
+    boolean mInLayout -> v
+    boolean mScrollingCacheEnabled -> w
+    boolean mPopulatePending -> x
+    int mOffscreenPageLimit -> y
+    boolean mIsBeingDragged -> z
+    boolean mIsUnableToDrag -> A
+    int mDefaultGutterSize -> B
+    int mGutterSize -> C
+    int mTouchSlop -> D
+    float mInitialMotionX -> E
+    float mLastMotionX -> F
+    float mLastMotionY -> G
+    int mActivePointerId -> H
+    android.view.VelocityTracker mVelocityTracker -> I
+    int mMinimumVelocity -> J
+    int mMaximumVelocity -> K
+    int mFlingDistance -> L
+    int mCloseEnough -> M
+    boolean mFakeDragging -> N
+    long mFakeDragBeginTime -> O
+    android.support.v4.widget.EdgeEffectCompat mLeftEdge -> P
+    android.support.v4.widget.EdgeEffectCompat mRightEdge -> Q
+    boolean mFirstLayout -> R
+    boolean mNeedCalculatePageOffsets -> S
+    boolean mCalledSuper -> T
+    int mDecorChildCount -> U
+    android.support.v4.view.ViewPager$OnPageChangeListener mOnPageChangeListener -> V
+    android.support.v4.view.ViewPager$OnPageChangeListener mInternalPageChangeListener -> W
+    android.support.v4.view.ViewPager$OnAdapterChangeListener mAdapterChangeListener -> Z
+    int mScrollState -> aa
     void initViewPager() -> a
     void setScrollState(int) -> setScrollState
     void setAdapter(android.support.v4.view.PagerAdapter) -> setAdapter
@@ -667,25 +872,31 @@ android.support.v4.view.ViewPager -> android.support.v4.view.ViewPager:
     void drawableStateChanged() -> drawableStateChanged
     float distanceInfluenceForSnapDuration(float) -> a
     void smoothScrollTo(int,int,int) -> a
-    void addNewItem(int,int) -> a
+    android.support.v4.view.ViewPager$ItemInfo addNewItem(int,int) -> a
     void dataSetChanged() -> b
     void populate() -> c
+    void populate(int) -> a
+    void calculatePageOffsets(android.support.v4.view.ViewPager$ItemInfo,int,android.support.v4.view.ViewPager$ItemInfo) -> a
     android.os.Parcelable onSaveInstanceState() -> onSaveInstanceState
     void onRestoreInstanceState(android.os.Parcelable) -> onRestoreInstanceState
     void addView(android.view.View,int,android.view.ViewGroup$LayoutParams) -> addView
     android.support.v4.view.ViewPager$ItemInfo infoForChild(android.view.View) -> a
     android.support.v4.view.ViewPager$ItemInfo infoForAnyChild(android.view.View) -> b
+    android.support.v4.view.ViewPager$ItemInfo infoForPosition(int) -> b
     void onAttachedToWindow() -> onAttachedToWindow
     void onMeasure(int,int) -> onMeasure
     void onSizeChanged(int,int,int,int) -> onSizeChanged
     void recomputeScrollPosition(int,int,int,int) -> a
     void onLayout(boolean,int,int,int,int) -> onLayout
     void computeScroll() -> computeScroll
-    void pageScrolled(int) -> b
+    boolean pageScrolled(int) -> d
     void onPageScrolled(int,float,int) -> a
     void completeScroll() -> k
+    boolean isGutterDrag(float,float) -> a
     boolean onInterceptTouchEvent(android.view.MotionEvent) -> onInterceptTouchEvent
     boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
+    boolean performDrag(float) -> c
+    android.support.v4.view.ViewPager$ItemInfo infoForCurrentScrollPosition() -> l
     int determineTargetPage(int,float,int,int) -> a
     void draw(android.graphics.Canvas) -> draw
     void onDraw(android.graphics.Canvas) -> onDraw
@@ -694,12 +905,13 @@ android.support.v4.view.ViewPager -> android.support.v4.view.ViewPager:
     void fakeDragBy(float) -> b
     boolean isFakeDragging() -> f
     void onSecondaryPointerUp(android.view.MotionEvent) -> a
-    void endDrag() -> l
+    void endDrag() -> m
     void setScrollingCacheEnabled(boolean) -> setScrollingCacheEnabled
     boolean canScroll(android.view.View,boolean,int,int,int) -> a
     boolean dispatchKeyEvent(android.view.KeyEvent) -> dispatchKeyEvent
     boolean executeKeyEvent(android.view.KeyEvent) -> a
-    boolean arrowScroll(int) -> a
+    boolean arrowScroll(int) -> c
+    android.graphics.Rect getChildRectInPagerCoordinates(android.graphics.Rect,android.view.View) -> a
     boolean pageLeft() -> g
     boolean pageRight() -> h
     void addFocusables(java.util.ArrayList,int,int) -> addFocusables
@@ -710,27 +922,37 @@ android.support.v4.view.ViewPager -> android.support.v4.view.ViewPager:
     android.view.ViewGroup$LayoutParams generateLayoutParams(android.view.ViewGroup$LayoutParams) -> generateLayoutParams
     boolean checkLayoutParams(android.view.ViewGroup$LayoutParams) -> checkLayoutParams
     android.view.ViewGroup$LayoutParams generateLayoutParams(android.util.AttributeSet) -> generateLayoutParams
-    int[] access$100() -> i
-android.support.v4.view.ViewPager$1 -> android.support.v4.view.ac:
+    android.support.v4.view.PagerAdapter access$100(android.support.v4.view.ViewPager) -> a
+    int access$200(android.support.v4.view.ViewPager) -> b
+    int[] access$300() -> i
+android.support.v4.view.ViewPager$1 -> android.support.v4.view.at:
     int compare(android.support.v4.view.ViewPager$ItemInfo,android.support.v4.view.ViewPager$ItemInfo) -> a
     int compare(java.lang.Object,java.lang.Object) -> compare
-android.support.v4.view.ViewPager$2 -> android.support.v4.view.ad:
+android.support.v4.view.ViewPager$2 -> android.support.v4.view.au:
     float getInterpolation(float) -> getInterpolation
-android.support.v4.view.ViewPager$Decor -> android.support.v4.view.ae:
-android.support.v4.view.ViewPager$ItemInfo -> android.support.v4.view.af:
+android.support.v4.view.ViewPager$Decor -> android.support.v4.view.av:
+android.support.v4.view.ViewPager$ItemInfo -> android.support.v4.view.aw:
     java.lang.Object object -> a
     int position -> b
     boolean scrolling -> c
-android.support.v4.view.ViewPager$LayoutParams -> android.support.v4.view.ag:
+    float widthFactor -> d
+    float offset -> e
+android.support.v4.view.ViewPager$LayoutParams -> android.support.v4.view.ax:
     boolean isDecor -> a
     int gravity -> b
-android.support.v4.view.ViewPager$OnAdapterChangeListener -> android.support.v4.view.ah:
+    float widthFactor -> c
+    boolean needsMeasure -> d
+android.support.v4.view.ViewPager$MyAccessibilityDelegate -> android.support.v4.view.ay:
+    android.support.v4.view.ViewPager this$0 -> b
+    void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> d
+    void onInitializeAccessibilityNodeInfo(android.view.View,android.support.v4.view.accessibility.AccessibilityNodeInfoCompat) -> a
+android.support.v4.view.ViewPager$OnAdapterChangeListener -> android.support.v4.view.az:
     void onAdapterChanged(android.support.v4.view.PagerAdapter,android.support.v4.view.PagerAdapter) -> a
-android.support.v4.view.ViewPager$OnPageChangeListener -> android.support.v4.view.ai:
+android.support.v4.view.ViewPager$OnPageChangeListener -> android.support.v4.view.ba:
     void onPageScrolled(int,float,int) -> a
     void onPageSelected(int) -> a
     void onPageScrollStateChanged(int) -> b
-android.support.v4.view.ViewPager$PagerObserver -> android.support.v4.view.aj:
+android.support.v4.view.ViewPager$PagerObserver -> android.support.v4.view.bb:
     android.support.v4.view.ViewPager this$0 -> a
     void onChanged() -> onChanged
     void onInvalidated() -> onInvalidated
@@ -741,11 +963,37 @@ android.support.v4.view.ViewPager$SavedState -> android.support.v4.view.ViewPage
     android.os.Parcelable$Creator CREATOR -> CREATOR
     void writeToParcel(android.os.Parcel,int) -> writeToParcel
     java.lang.String toString() -> toString
-android.support.v4.view.ViewPager$SavedState$1 -> android.support.v4.view.ak:
+android.support.v4.view.ViewPager$SavedState$1 -> android.support.v4.view.bc:
     android.support.v4.view.ViewPager$SavedState createFromParcel(android.os.Parcel,java.lang.ClassLoader) -> b
     android.support.v4.view.ViewPager$SavedState[] newArray(int) -> b
     java.lang.Object[] newArray(int) -> a
     java.lang.Object createFromParcel(android.os.Parcel,java.lang.ClassLoader) -> a
+android.support.v4.view.accessibility.AccessibilityNodeInfoCompat -> android.support.v4.view.a.a:
+    android.support.v4.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityNodeInfoImpl IMPL -> a
+    java.lang.Object mInfo -> b
+    java.lang.Object getInfo() -> a
+    void addAction(int) -> a
+    void setScrollable(boolean) -> a
+    void setClassName(java.lang.CharSequence) -> a
+    int hashCode() -> hashCode
+    boolean equals(java.lang.Object) -> equals
+android.support.v4.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityNodeInfoIcsImpl -> android.support.v4.view.a.b:
+    void addAction(java.lang.Object,int) -> a
+    void setClassName(java.lang.Object,java.lang.CharSequence) -> a
+    void setScrollable(java.lang.Object,boolean) -> a
+android.support.v4.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityNodeInfoImpl -> android.support.v4.view.a.c:
+    void addAction(java.lang.Object,int) -> a
+    void setScrollable(java.lang.Object,boolean) -> a
+    void setClassName(java.lang.Object,java.lang.CharSequence) -> a
+android.support.v4.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityNodeInfoJellybeanImpl -> android.support.v4.view.a.d:
+android.support.v4.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityNodeInfoStubImpl -> android.support.v4.view.a.e:
+    void addAction(java.lang.Object,int) -> a
+    void setClassName(java.lang.Object,java.lang.CharSequence) -> a
+    void setScrollable(java.lang.Object,boolean) -> a
+android.support.v4.view.accessibility.AccessibilityNodeInfoCompatIcs -> android.support.v4.view.a.f:
+    void addAction(java.lang.Object,int) -> a
+    void setClassName(java.lang.Object,java.lang.CharSequence) -> a
+    void setScrollable(java.lang.Object,boolean) -> a
 android.support.v4.widget.EdgeEffectCompat -> android.support.v4.d.a:
     java.lang.Object mEdgeEffect -> a
     android.support.v4.widget.EdgeEffectCompat$EdgeEffectImpl IMPL -> b
@@ -791,12 +1039,13 @@ com.halcyonwaves.apps.energize.ApplicationCore -> com.halcyonwaves.apps.energize
     int getSelectedThemeId(android.content.Context) -> a
     boolean isServiceRunning(android.content.Context,java.lang.String) -> a
 com.halcyonwaves.apps.energize.BatteryStateDisplayActivity -> com.halcyonwaves.apps.energize.BatteryStateDisplayActivity:
-    void init() -> e
+    void init() -> f
     void onCreate(android.os.Bundle) -> onCreate
     boolean onCreateOptionsMenu(android.view.Menu) -> onCreateOptionsMenu
     boolean onOptionsItemSelected(android.view.MenuItem) -> onOptionsItemSelected
-    void showAppIconLicensePreference() -> f
-    void showWhatsNewDialog() -> g
+    void showAboutDialog() -> g
+    void showAppIconLicensePreference() -> h
+    void showWhatsNewDialog() -> i
 com.halcyonwaves.apps.energize.BatteryStateDisplayActivity$1 -> com.halcyonwaves.apps.energize.b:
     com.halcyonwaves.apps.energize.BatteryStateDisplayActivity this$0 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
@@ -807,48 +1056,68 @@ com.halcyonwaves.apps.energize.MainFragmentPagerAdapter -> com.halcyonwaves.apps
     android.content.Context appContext -> a
     int getCount() -> b
     android.support.v4.app.Fragment getItem(int) -> a
-    java.lang.CharSequence getPageTitle(int) -> b
+    java.lang.CharSequence getPageTitle(int) -> c
 com.halcyonwaves.apps.energize.SettingsActivity -> com.halcyonwaves.apps.energize.SettingsActivity:
     void onCreate(android.os.Bundle) -> onCreate
 com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper -> com.halcyonwaves.apps.energize.a.a:
     void onCreate(android.database.sqlite.SQLiteDatabase) -> onCreate
     void onUpgrade(android.database.sqlite.SQLiteDatabase,int,int) -> onUpgrade
-com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable -> com.halcyonwaves.apps.energize.a.b:
+com.halcyonwaves.apps.energize.database.PowerEventsTable -> com.halcyonwaves.apps.energize.a.b:
     void onCreate(android.database.sqlite.SQLiteDatabase) -> a
     void onUpgrade(android.database.sqlite.SQLiteDatabase,int,int) -> a
-com.halcyonwaves.apps.energize.fragments.AboutFragment -> com.halcyonwaves.apps.energize.b.a:
-    android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> a
-com.halcyonwaves.apps.energize.fragments.AboutFragment$1 -> com.halcyonwaves.apps.energize.b.b:
-    com.halcyonwaves.apps.energize.fragments.AboutFragment this$0 -> a
+com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable -> com.halcyonwaves.apps.energize.a.c:
+    void onCreate(android.database.sqlite.SQLiteDatabase) -> a
+    void onUpgrade(android.database.sqlite.SQLiteDatabase,int,int) -> a
+com.halcyonwaves.apps.energize.dialogs.AboutDialog -> com.halcyonwaves.apps.energize.b.a:
+    android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> onCreateView
+com.halcyonwaves.apps.energize.dialogs.AboutDialog$1 -> com.halcyonwaves.apps.energize.b.b:
+    com.halcyonwaves.apps.energize.dialogs.AboutDialog this$0 -> a
     void onClick(android.view.View) -> onClick
-com.halcyonwaves.apps.energize.fragments.BatteryCapacityGraphFragment -> com.halcyonwaves.apps.energize.b.c:
+com.halcyonwaves.apps.energize.dialogs.AboutDialog$2 -> com.halcyonwaves.apps.energize.b.c:
+    com.halcyonwaves.apps.energize.dialogs.AboutDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.halcyonwaves.apps.energize.estimators.BatteryEstimationMgr -> com.halcyonwaves.apps.energize.c.a:
+    com.halcyonwaves.apps.energize.estimators.EstimationResult getEstimation(android.content.Context) -> a
+com.halcyonwaves.apps.energize.estimators.EstimationResult -> com.halcyonwaves.apps.energize.c.b:
+    boolean charging -> a
+    boolean isValid -> b
+    int level -> c
+    int minutes -> d
+com.halcyonwaves.apps.energize.estimators.SimpleEstimationAlgorithm -> com.halcyonwaves.apps.energize.c.c:
+    com.halcyonwaves.apps.energize.estimators.EstimationResult getEstimation(android.content.Context) -> a
+com.halcyonwaves.apps.energize.fragments.BatteryCapacityGraphFragment -> com.halcyonwaves.apps.energize.fragments.BatteryCapacityGraphFragment:
     android.util.Pair getBatteryStatisticData() -> u
     android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> a
-com.halcyonwaves.apps.energize.fragments.BatteryCapacityGraphFragment$1 -> com.halcyonwaves.apps.energize.b.d:
+com.halcyonwaves.apps.energize.fragments.BatteryCapacityGraphFragment$1 -> com.halcyonwaves.apps.energize.fragments.a:
     com.halcyonwaves.apps.energize.fragments.BatteryCapacityGraphFragment this$0 -> a
     java.lang.String formatLabel(double,boolean) -> a
-com.halcyonwaves.apps.energize.fragments.OverviewFragment -> com.halcyonwaves.apps.energize.b.e:
+com.halcyonwaves.apps.energize.fragments.OverviewFragment -> com.halcyonwaves.apps.energize.fragments.OverviewFragment:
     android.content.SharedPreferences sharedPref -> N
     android.widget.TextView textViewCurrentChargingState -> O
     android.widget.TextView textViewCurrentLoadingLevel -> P
-    android.widget.TextView textViewTemp -> Q
+    android.widget.TextView textViewCurrentLoadingLevelAsusDock -> Q
+    android.widget.TextView textViewCurrentLoadingLevelAsusDockLabel -> R
+    android.widget.TextView textViewTemp -> S
+    android.widget.TextView textViewTimeOnBattery -> T
     android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> a
     android.widget.TextView access$0(com.halcyonwaves.apps.energize.fragments.OverviewFragment) -> a
     android.widget.TextView access$1(com.halcyonwaves.apps.energize.fragments.OverviewFragment) -> b
-    android.content.SharedPreferences access$2(com.halcyonwaves.apps.energize.fragments.OverviewFragment) -> c
+    android.widget.TextView access$2(com.halcyonwaves.apps.energize.fragments.OverviewFragment) -> c
     android.widget.TextView access$3(com.halcyonwaves.apps.energize.fragments.OverviewFragment) -> d
-com.halcyonwaves.apps.energize.fragments.OverviewFragment$1 -> com.halcyonwaves.apps.energize.b.f:
+    android.content.SharedPreferences access$4(com.halcyonwaves.apps.energize.fragments.OverviewFragment) -> e
+    android.widget.TextView access$5(com.halcyonwaves.apps.energize.fragments.OverviewFragment) -> f
+com.halcyonwaves.apps.energize.fragments.OverviewFragment$1 -> com.halcyonwaves.apps.energize.fragments.b:
     com.halcyonwaves.apps.energize.fragments.OverviewFragment this$0 -> a
     void onReceive(android.content.Context,android.content.Intent) -> onReceive
-com.halcyonwaves.apps.energize.fragments.TemperatureGraphFragment -> com.halcyonwaves.apps.energize.b.g:
+com.halcyonwaves.apps.energize.fragments.TemperatureGraphFragment -> com.halcyonwaves.apps.energize.fragments.TemperatureGraphFragment:
     android.content.SharedPreferences sharedPref -> N
     android.util.Pair getBatteryStatisticData() -> u
     android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> a
     android.content.SharedPreferences access$0(com.halcyonwaves.apps.energize.fragments.TemperatureGraphFragment) -> a
-com.halcyonwaves.apps.energize.fragments.TemperatureGraphFragment$1 -> com.halcyonwaves.apps.energize.b.h:
+com.halcyonwaves.apps.energize.fragments.TemperatureGraphFragment$1 -> com.halcyonwaves.apps.energize.fragments.c:
     com.halcyonwaves.apps.energize.fragments.TemperatureGraphFragment this$0 -> a
     java.lang.String formatLabel(double,boolean) -> a
-com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment -> com.halcyonwaves.apps.energize.b.i:
+com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment -> com.halcyonwaves.apps.energize.fragments.d:
     android.os.Messenger monitorService -> a
     android.content.ServiceConnection monitorServiceConnection -> b
     android.os.Messenger monitorServiceMessanger -> c
@@ -860,17 +1129,17 @@ com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment -> com.halcyo
     void access$0(com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment,android.os.Messenger) -> a
     android.os.Messenger access$1(com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment) -> a
     android.os.Messenger access$2(com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment) -> b
-com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$1 -> com.halcyonwaves.apps.energize.b.j:
+com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$1 -> com.halcyonwaves.apps.energize.fragments.e:
     com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment this$0 -> a
     void onServiceConnected(android.content.ComponentName,android.os.IBinder) -> onServiceConnected
     void onServiceDisconnected(android.content.ComponentName) -> onServiceDisconnected
-com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$2 -> com.halcyonwaves.apps.energize.b.k:
+com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$2 -> com.halcyonwaves.apps.energize.fragments.f:
     com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment this$0 -> a
     boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
-com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$IncomingHandler -> com.halcyonwaves.apps.energize.b.l:
+com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$IncomingHandler -> com.halcyonwaves.apps.energize.fragments.g:
     com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment this$0 -> a
     void handleMessage(android.os.Message) -> handleMessage
-com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$IncomingHandler$1 -> com.halcyonwaves.apps.energize.b.m:
+com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$IncomingHandler$1 -> com.halcyonwaves.apps.energize.fragments.h:
     com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment$IncomingHandler this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
 com.halcyonwaves.apps.energize.receivers.BatteryChangedReceiver -> com.halcyonwaves.apps.energize.receivers.a:
@@ -878,33 +1147,32 @@ com.halcyonwaves.apps.energize.receivers.BatteryChangedReceiver -> com.halcyonwa
     void onReceive(android.content.Context,android.content.Intent) -> onReceive
 com.halcyonwaves.apps.energize.receivers.BootCompletedReceiver -> com.halcyonwaves.apps.energize.receivers.BootCompletedReceiver:
     void onReceive(android.content.Context,android.content.Intent) -> onReceive
+com.halcyonwaves.apps.energize.receivers.PowerSupplyPluggedInReceiver -> com.halcyonwaves.apps.energize.receivers.b:
+    com.halcyonwaves.apps.energize.services.MonitorBatteryStateService service -> a
+    void onReceive(android.content.Context,android.content.Intent) -> onReceive
+com.halcyonwaves.apps.energize.receivers.PowerSupplyPulledOffReceiver -> com.halcyonwaves.apps.energize.receivers.c:
+    com.halcyonwaves.apps.energize.services.MonitorBatteryStateService service -> a
+    void onReceive(android.content.Context,android.content.Intent) -> onReceive
 com.halcyonwaves.apps.energize.services.MonitorBatteryStateService -> com.halcyonwaves.apps.energize.services.MonitorBatteryStateService:
     android.content.SharedPreferences appPreferences -> a
     com.halcyonwaves.apps.energize.receivers.BatteryChangedReceiver batteryChangedReceiver -> b
     com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper batteryDbOpenHelper -> c
     android.database.sqlite.SQLiteDatabase batteryStatisticsDatabase -> d
     java.util.ArrayList connectedClients -> e
-    int lastChargingPercentage -> f
-    int lastRemainingMinutes -> g
-    boolean lastTimeCharging -> h
-    android.app.Notification myNotification -> i
-    android.app.NotificationManager notificationManager -> j
-    android.os.Messenger serviceMessenger -> k
+    android.app.Notification myNotification -> f
+    android.app.NotificationManager notificationManager -> g
+    com.halcyonwaves.apps.energize.receivers.PowerSupplyPluggedInReceiver powerPluggedInReceiver -> h
+    com.halcyonwaves.apps.energize.receivers.PowerSupplyPulledOffReceiver powerUnpluggedReceiver -> i
+    android.os.Messenger serviceMessenger -> j
+    void insertPowerSupplyChangeEvent(boolean) -> a
     void insertPowerValue(int,int,int,int) -> a
     android.os.IBinder onBind(android.content.Intent) -> onBind
     void onDestroy() -> onDestroy
     void onSharedPreferenceChanged(android.content.SharedPreferences,java.lang.String) -> onSharedPreferenceChanged
     int onStartCommand(android.content.Intent,int,int) -> onStartCommand
-    void sendCurrentChargingPctToClients() -> a
-    void showNewPercentageNotification(int,int,boolean) -> a
-    void startMonitoring() -> b
-    void stopMonitoring() -> c
+    void showNewPercentageNotification() -> a
     java.util.ArrayList access$0(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> a
-    void access$1(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> b
-    void access$2(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> c
-    void access$3(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> d
-    com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper access$4(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> e
-    android.database.sqlite.SQLiteDatabase access$5(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> f
+    android.database.sqlite.SQLiteDatabase access$1(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> b
 com.halcyonwaves.apps.energize.services.MonitorBatteryStateService$IncomingHandler -> com.halcyonwaves.apps.energize.services.a:
     com.halcyonwaves.apps.energize.services.MonitorBatteryStateService this$0 -> a
     void handleMessage(android.os.Message) -> handleMessage
