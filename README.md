@@ -34,6 +34,7 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
 
 ## Changelog
 ### Version 0.7.1 *(2012-10-XX)* - [Changes][22]
+* Added support for Android 3.1 and higher
 * Updated the version of the used GraphView library
 * Updated the version of the used ViewPagerIndicator library
 
