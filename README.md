@@ -33,6 +33,10 @@ As soon as the used strings is nearly fixed, you can help us on our project page
 The application icon is based upon the [Android Robot][3] logo made by Google Inc. This logo is licensed under the terms of the [Creative Commons Attribution license][4]. The battery icon was designed by the authors of the [GNOME High contrast icon set][5] and is licensed under the terms of the [GNU Lesser General Public License][6].
 
 ## Changelog
+### Version 0.7.1 *(2012-10-XX)* - [Changes][22]
+* Updated the version of the used GraphView library
+* Updated the version of the used ViewPagerIndicator library
+
 ### Version 0.7 *(2012-09-19)* - [Changes][21]
 * Basic support for Asus Transformer Pad Prime/TF300/Infinity dock battery capacity (showing the current capacity; not used for estimation)
 * Added a basic first version of a separate tablet layout which uses the display more efficiently 
@@ -137,3 +141,4 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
  [19]: https://github.com/thuetz/Energize/compare/v0.6...v0.6.3 
  [20]: https://github.com/thuetz/Energize/compare/v0.6.3...v0.6.4 
  [21]: https://github.com/thuetz/Energize/compare/v0.6.4...v0.7 
+ [22]: https://github.com/thuetz/Energize/compare/v0.7...v0.7.1 
