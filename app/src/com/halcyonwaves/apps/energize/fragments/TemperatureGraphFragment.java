@@ -21,10 +21,9 @@ import android.widget.LinearLayout;
 import com.halcyonwaves.apps.energize.R;
 import com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper;
 import com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable;
-import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GraphView.GraphViewData;
-import com.jjoe64.graphview.GraphView.GraphViewSeries;
-import com.jjoe64.graphview.GraphView.GraphViewStyle;
+import com.jjoe64.graphview.GraphViewSeries;
+import com.jjoe64.graphview.GraphViewSeries.GraphViewStyle;
 import com.jjoe64.graphview.LineGraphView;
 
 public class TemperatureGraphFragment extends Fragment {
@@ -80,7 +79,7 @@ public class TemperatureGraphFragment extends Fragment {
 		}
 		final GraphViewData convertedDataset[] = new GraphViewData[ graphViewData.size() ];
 		graphViewData.toArray( convertedDataset );
-		return new Pair< GraphView.GraphViewSeries, Long >( new GraphViewSeries( "", new GraphViewStyle( Color.rgb( 255, 0, 0 ), 3 ), convertedDataset ), oldtestTime );
+		return new Pair< GraphViewSeries, Long >( new GraphViewSeries( "", new GraphViewStyle( Color.rgb( 255, 0, 0 ), 3 ), convertedDataset ), oldtestTime );
 	}
 
 	@Override

@@ -17,9 +17,8 @@ import android.widget.LinearLayout;
 import com.halcyonwaves.apps.energize.R;
 import com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper;
 import com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable;
-import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GraphView.GraphViewData;
-import com.jjoe64.graphview.GraphView.GraphViewSeries;
+import com.jjoe64.graphview.GraphViewSeries;
 import com.jjoe64.graphview.LineGraphView;
 
 public class BatteryCapacityGraphFragment extends Fragment {
@@ -60,7 +59,7 @@ public class BatteryCapacityGraphFragment extends Fragment {
 		}
 		final GraphViewData convertedDataset[] = new GraphViewData[ graphViewData.size() ];
 		graphViewData.toArray( convertedDataset );
-		return new Pair< GraphView.GraphViewSeries, Long >( new GraphViewSeries( convertedDataset ), oldtestTime );
+		return new Pair< GraphViewSeries, Long >( new GraphViewSeries( convertedDataset ), oldtestTime );
 	}
 
 	@Override
