@@ -67,6 +67,7 @@ com.halcyonwaves.apps.energize.R$attr: int footerIndicatorUnderlinePadding
 com.halcyonwaves.apps.energize.R$attr: int footerLineHeight
 com.halcyonwaves.apps.energize.R$attr: int footerPadding
 com.halcyonwaves.apps.energize.R$attr: int gapWidth
+com.halcyonwaves.apps.energize.R$attr: int linePosition
 com.halcyonwaves.apps.energize.R$attr: int lineWidth
 com.halcyonwaves.apps.energize.R$attr: int pageColor
 com.halcyonwaves.apps.energize.R$attr: int radius
@@ -79,6 +80,7 @@ com.halcyonwaves.apps.energize.R$attr: int titlePadding
 com.halcyonwaves.apps.energize.R$attr: int topPadding
 com.halcyonwaves.apps.energize.R$attr: int unselectedColor
 com.halcyonwaves.apps.energize.R$attr: int vpiCirclePageIndicatorStyle
+com.halcyonwaves.apps.energize.R$attr: int vpiIconPageIndicatorStyle
 com.halcyonwaves.apps.energize.R$attr: int vpiLinePageIndicatorStyle
 com.halcyonwaves.apps.energize.R$attr: int vpiTabPageIndicatorStyle
 com.halcyonwaves.apps.energize.R$attr: int vpiTitlePageIndicatorStyle
@@ -230,6 +232,7 @@ com.halcyonwaves.apps.energize.R$drawable: int vpi__tab_selected_pressed_holo
 com.halcyonwaves.apps.energize.R$drawable: int vpi__tab_unselected_focused_holo
 com.halcyonwaves.apps.energize.R$drawable: int vpi__tab_unselected_holo
 com.halcyonwaves.apps.energize.R$drawable: int vpi__tab_unselected_pressed_holo
+com.halcyonwaves.apps.energize.R$id: int bottom
 com.halcyonwaves.apps.energize.R$id: int btn_close_about_dialog
 com.halcyonwaves.apps.energize.R$id: int btn_rate_app
 com.halcyonwaves.apps.energize.R$id: int layout_graph_view
@@ -248,6 +251,7 @@ com.halcyonwaves.apps.energize.R$id: int textview_text_current_charginglvl_asusd
 com.halcyonwaves.apps.energize.R$id: int textview_text_current_chargingstate
 com.halcyonwaves.apps.energize.R$id: int textview_text_temperature
 com.halcyonwaves.apps.energize.R$id: int textview_text_timeonbattery
+com.halcyonwaves.apps.energize.R$id: int top
 com.halcyonwaves.apps.energize.R$id: int triangle
 com.halcyonwaves.apps.energize.R$id: int tv_about_application_name
 com.halcyonwaves.apps.energize.R$id: int tv_about_application_version
@@ -260,6 +264,7 @@ com.halcyonwaves.apps.energize.R$id: int vp_fragment_pager
 com.halcyonwaves.apps.energize.R$id: int vp_fragment_titles
 com.halcyonwaves.apps.energize.R$integer: int default_circle_indicator_orientation
 com.halcyonwaves.apps.energize.R$integer: int default_title_indicator_footer_indicator_style
+com.halcyonwaves.apps.energize.R$integer: int default_title_indicator_line_position
 com.halcyonwaves.apps.energize.R$integer: int default_underline_indicator_fade_delay
 com.halcyonwaves.apps.energize.R$integer: int default_underline_indicator_fade_length
 com.halcyonwaves.apps.energize.R$layout: int activity_batterystatedisplay
@@ -322,8 +327,10 @@ com.halcyonwaves.apps.energize.R$style: int LightTheme
 com.halcyonwaves.apps.energize.R$style: int TextAppearance_TabPageIndicator
 com.halcyonwaves.apps.energize.R$style: int Theme_PageIndicatorDefaults
 com.halcyonwaves.apps.energize.R$style: int Widget
+com.halcyonwaves.apps.energize.R$style: int Widget_IconPageIndicator
 com.halcyonwaves.apps.energize.R$style: int Widget_TabPageIndicator
 com.halcyonwaves.apps.energize.R$styleable: int[] CirclePageIndicator
+com.halcyonwaves.apps.energize.R$styleable: int CirclePageIndicator_android_background
 com.halcyonwaves.apps.energize.R$styleable: int CirclePageIndicator_android_orientation
 com.halcyonwaves.apps.energize.R$styleable: int CirclePageIndicator_centered
 com.halcyonwaves.apps.energize.R$styleable: int CirclePageIndicator_fillColor
@@ -333,6 +340,7 @@ com.halcyonwaves.apps.energize.R$styleable: int CirclePageIndicator_snap
 com.halcyonwaves.apps.energize.R$styleable: int CirclePageIndicator_strokeColor
 com.halcyonwaves.apps.energize.R$styleable: int CirclePageIndicator_strokeWidth
 com.halcyonwaves.apps.energize.R$styleable: int[] LinePageIndicator
+com.halcyonwaves.apps.energize.R$styleable: int LinePageIndicator_android_background
 com.halcyonwaves.apps.energize.R$styleable: int LinePageIndicator_centered
 com.halcyonwaves.apps.energize.R$styleable: int LinePageIndicator_gapWidth
 com.halcyonwaves.apps.energize.R$styleable: int LinePageIndicator_lineWidth
@@ -340,6 +348,7 @@ com.halcyonwaves.apps.energize.R$styleable: int LinePageIndicator_selectedColor
 com.halcyonwaves.apps.energize.R$styleable: int LinePageIndicator_strokeWidth
 com.halcyonwaves.apps.energize.R$styleable: int LinePageIndicator_unselectedColor
 com.halcyonwaves.apps.energize.R$styleable: int[] TitlePageIndicator
+com.halcyonwaves.apps.energize.R$styleable: int TitlePageIndicator_android_background
 com.halcyonwaves.apps.energize.R$styleable: int TitlePageIndicator_android_textColor
 com.halcyonwaves.apps.energize.R$styleable: int TitlePageIndicator_android_textSize
 com.halcyonwaves.apps.energize.R$styleable: int TitlePageIndicator_clipPadding
@@ -349,17 +358,20 @@ com.halcyonwaves.apps.energize.R$styleable: int TitlePageIndicator_footerIndicat
 com.halcyonwaves.apps.energize.R$styleable: int TitlePageIndicator_footerIndicatorUnderlinePadding
 com.halcyonwaves.apps.energize.R$styleable: int TitlePageIndicator_footerLineHeight
 com.halcyonwaves.apps.energize.R$styleable: int TitlePageIndicator_footerPadding
+com.halcyonwaves.apps.energize.R$styleable: int TitlePageIndicator_linePosition
 com.halcyonwaves.apps.energize.R$styleable: int TitlePageIndicator_selectedBold
 com.halcyonwaves.apps.energize.R$styleable: int TitlePageIndicator_selectedColor
 com.halcyonwaves.apps.energize.R$styleable: int TitlePageIndicator_titlePadding
 com.halcyonwaves.apps.energize.R$styleable: int TitlePageIndicator_topPadding
 com.halcyonwaves.apps.energize.R$styleable: int[] UnderlinePageIndicator
+com.halcyonwaves.apps.energize.R$styleable: int UnderlinePageIndicator_android_background
 com.halcyonwaves.apps.energize.R$styleable: int UnderlinePageIndicator_fadeDelay
 com.halcyonwaves.apps.energize.R$styleable: int UnderlinePageIndicator_fadeLength
 com.halcyonwaves.apps.energize.R$styleable: int UnderlinePageIndicator_fades
 com.halcyonwaves.apps.energize.R$styleable: int UnderlinePageIndicator_selectedColor
 com.halcyonwaves.apps.energize.R$styleable: int[] ViewPagerIndicator
 com.halcyonwaves.apps.energize.R$styleable: int ViewPagerIndicator_vpiCirclePageIndicatorStyle
+com.halcyonwaves.apps.energize.R$styleable: int ViewPagerIndicator_vpiIconPageIndicatorStyle
 com.halcyonwaves.apps.energize.R$styleable: int ViewPagerIndicator_vpiLinePageIndicatorStyle
 com.halcyonwaves.apps.energize.R$styleable: int ViewPagerIndicator_vpiTabPageIndicatorStyle
 com.halcyonwaves.apps.energize.R$styleable: int ViewPagerIndicator_vpiTitlePageIndicatorStyle
@@ -412,6 +424,7 @@ com.jjoe64.graphview.R$attr: int footerIndicatorUnderlinePadding
 com.jjoe64.graphview.R$attr: int footerLineHeight
 com.jjoe64.graphview.R$attr: int footerPadding
 com.jjoe64.graphview.R$attr: int gapWidth
+com.jjoe64.graphview.R$attr: int linePosition
 com.jjoe64.graphview.R$attr: int lineWidth
 com.jjoe64.graphview.R$attr: int pageColor
 com.jjoe64.graphview.R$attr: int radius
@@ -424,6 +437,7 @@ com.jjoe64.graphview.R$attr: int titlePadding
 com.jjoe64.graphview.R$attr: int topPadding
 com.jjoe64.graphview.R$attr: int unselectedColor
 com.jjoe64.graphview.R$attr: int vpiCirclePageIndicatorStyle
+com.jjoe64.graphview.R$attr: int vpiIconPageIndicatorStyle
 com.jjoe64.graphview.R$attr: int vpiLinePageIndicatorStyle
 com.jjoe64.graphview.R$attr: int vpiTabPageIndicatorStyle
 com.jjoe64.graphview.R$attr: int vpiTitlePageIndicatorStyle
@@ -575,6 +589,7 @@ com.jjoe64.graphview.R$drawable: int vpi__tab_selected_pressed_holo
 com.jjoe64.graphview.R$drawable: int vpi__tab_unselected_focused_holo
 com.jjoe64.graphview.R$drawable: int vpi__tab_unselected_holo
 com.jjoe64.graphview.R$drawable: int vpi__tab_unselected_pressed_holo
+com.jjoe64.graphview.R$id: int bottom
 com.jjoe64.graphview.R$id: int btn_close_about_dialog
 com.jjoe64.graphview.R$id: int btn_rate_app
 com.jjoe64.graphview.R$id: int layout_graph_view
@@ -593,6 +608,7 @@ com.jjoe64.graphview.R$id: int textview_text_current_charginglvl_asusdock
 com.jjoe64.graphview.R$id: int textview_text_current_chargingstate
 com.jjoe64.graphview.R$id: int textview_text_temperature
 com.jjoe64.graphview.R$id: int textview_text_timeonbattery
+com.jjoe64.graphview.R$id: int top
 com.jjoe64.graphview.R$id: int triangle
 com.jjoe64.graphview.R$id: int tv_about_application_name
 com.jjoe64.graphview.R$id: int tv_about_application_version
@@ -605,6 +621,7 @@ com.jjoe64.graphview.R$id: int vp_fragment_pager
 com.jjoe64.graphview.R$id: int vp_fragment_titles
 com.jjoe64.graphview.R$integer: int default_circle_indicator_orientation
 com.jjoe64.graphview.R$integer: int default_title_indicator_footer_indicator_style
+com.jjoe64.graphview.R$integer: int default_title_indicator_line_position
 com.jjoe64.graphview.R$integer: int default_underline_indicator_fade_delay
 com.jjoe64.graphview.R$integer: int default_underline_indicator_fade_length
 com.jjoe64.graphview.R$layout: int activity_batterystatedisplay
@@ -667,8 +684,10 @@ com.jjoe64.graphview.R$style: int LightTheme
 com.jjoe64.graphview.R$style: int TextAppearance_TabPageIndicator
 com.jjoe64.graphview.R$style: int Theme_PageIndicatorDefaults
 com.jjoe64.graphview.R$style: int Widget
+com.jjoe64.graphview.R$style: int Widget_IconPageIndicator
 com.jjoe64.graphview.R$style: int Widget_TabPageIndicator
 com.jjoe64.graphview.R$styleable: int[] CirclePageIndicator
+com.jjoe64.graphview.R$styleable: int CirclePageIndicator_android_background
 com.jjoe64.graphview.R$styleable: int CirclePageIndicator_android_orientation
 com.jjoe64.graphview.R$styleable: int CirclePageIndicator_centered
 com.jjoe64.graphview.R$styleable: int CirclePageIndicator_fillColor
@@ -678,6 +697,7 @@ com.jjoe64.graphview.R$styleable: int CirclePageIndicator_snap
 com.jjoe64.graphview.R$styleable: int CirclePageIndicator_strokeColor
 com.jjoe64.graphview.R$styleable: int CirclePageIndicator_strokeWidth
 com.jjoe64.graphview.R$styleable: int[] LinePageIndicator
+com.jjoe64.graphview.R$styleable: int LinePageIndicator_android_background
 com.jjoe64.graphview.R$styleable: int LinePageIndicator_centered
 com.jjoe64.graphview.R$styleable: int LinePageIndicator_gapWidth
 com.jjoe64.graphview.R$styleable: int LinePageIndicator_lineWidth
@@ -685,6 +705,7 @@ com.jjoe64.graphview.R$styleable: int LinePageIndicator_selectedColor
 com.jjoe64.graphview.R$styleable: int LinePageIndicator_strokeWidth
 com.jjoe64.graphview.R$styleable: int LinePageIndicator_unselectedColor
 com.jjoe64.graphview.R$styleable: int[] TitlePageIndicator
+com.jjoe64.graphview.R$styleable: int TitlePageIndicator_android_background
 com.jjoe64.graphview.R$styleable: int TitlePageIndicator_android_textColor
 com.jjoe64.graphview.R$styleable: int TitlePageIndicator_android_textSize
 com.jjoe64.graphview.R$styleable: int TitlePageIndicator_clipPadding
@@ -694,17 +715,20 @@ com.jjoe64.graphview.R$styleable: int TitlePageIndicator_footerIndicatorStyle
 com.jjoe64.graphview.R$styleable: int TitlePageIndicator_footerIndicatorUnderlinePadding
 com.jjoe64.graphview.R$styleable: int TitlePageIndicator_footerLineHeight
 com.jjoe64.graphview.R$styleable: int TitlePageIndicator_footerPadding
+com.jjoe64.graphview.R$styleable: int TitlePageIndicator_linePosition
 com.jjoe64.graphview.R$styleable: int TitlePageIndicator_selectedBold
 com.jjoe64.graphview.R$styleable: int TitlePageIndicator_selectedColor
 com.jjoe64.graphview.R$styleable: int TitlePageIndicator_titlePadding
 com.jjoe64.graphview.R$styleable: int TitlePageIndicator_topPadding
 com.jjoe64.graphview.R$styleable: int[] UnderlinePageIndicator
+com.jjoe64.graphview.R$styleable: int UnderlinePageIndicator_android_background
 com.jjoe64.graphview.R$styleable: int UnderlinePageIndicator_fadeDelay
 com.jjoe64.graphview.R$styleable: int UnderlinePageIndicator_fadeLength
 com.jjoe64.graphview.R$styleable: int UnderlinePageIndicator_fades
 com.jjoe64.graphview.R$styleable: int UnderlinePageIndicator_selectedColor
 com.jjoe64.graphview.R$styleable: int[] ViewPagerIndicator
 com.jjoe64.graphview.R$styleable: int ViewPagerIndicator_vpiCirclePageIndicatorStyle
+com.jjoe64.graphview.R$styleable: int ViewPagerIndicator_vpiIconPageIndicatorStyle
 com.jjoe64.graphview.R$styleable: int ViewPagerIndicator_vpiLinePageIndicatorStyle
 com.jjoe64.graphview.R$styleable: int ViewPagerIndicator_vpiTabPageIndicatorStyle
 com.jjoe64.graphview.R$styleable: int ViewPagerIndicator_vpiTitlePageIndicatorStyle
@@ -729,6 +753,9 @@ com.viewpagerindicator.CirclePageIndicator: void setCurrentItem(int)
 com.viewpagerindicator.CirclePageIndicator: void setOnPageChangeListener(android.support.v4.view.ViewPager$OnPageChangeListener)
 com.viewpagerindicator.CirclePageIndicator$SavedState
 com.viewpagerindicator.CirclePageIndicator$SavedState: android.os.Parcelable$Creator CREATOR
+com.viewpagerindicator.IconPageIndicator: void setViewPager(android.support.v4.view.ViewPager)
+com.viewpagerindicator.IconPageIndicator: void setCurrentItem(int)
+com.viewpagerindicator.IconPageIndicator: void setOnPageChangeListener(android.support.v4.view.ViewPager$OnPageChangeListener)
 com.viewpagerindicator.LinePageIndicator: void setCentered(boolean)
 com.viewpagerindicator.LinePageIndicator: void setUnselectedColor(int)
 com.viewpagerindicator.LinePageIndicator: int getUnselectedColor()
@@ -764,6 +791,7 @@ com.viewpagerindicator.R$attr: int footerIndicatorUnderlinePadding
 com.viewpagerindicator.R$attr: int footerLineHeight
 com.viewpagerindicator.R$attr: int footerPadding
 com.viewpagerindicator.R$attr: int gapWidth
+com.viewpagerindicator.R$attr: int linePosition
 com.viewpagerindicator.R$attr: int lineWidth
 com.viewpagerindicator.R$attr: int pageColor
 com.viewpagerindicator.R$attr: int radius
@@ -776,6 +804,7 @@ com.viewpagerindicator.R$attr: int titlePadding
 com.viewpagerindicator.R$attr: int topPadding
 com.viewpagerindicator.R$attr: int unselectedColor
 com.viewpagerindicator.R$attr: int vpiCirclePageIndicatorStyle
+com.viewpagerindicator.R$attr: int vpiIconPageIndicatorStyle
 com.viewpagerindicator.R$attr: int vpiLinePageIndicatorStyle
 com.viewpagerindicator.R$attr: int vpiTabPageIndicatorStyle
 com.viewpagerindicator.R$attr: int vpiTitlePageIndicatorStyle
@@ -927,6 +956,7 @@ com.viewpagerindicator.R$drawable: int vpi__tab_selected_pressed_holo
 com.viewpagerindicator.R$drawable: int vpi__tab_unselected_focused_holo
 com.viewpagerindicator.R$drawable: int vpi__tab_unselected_holo
 com.viewpagerindicator.R$drawable: int vpi__tab_unselected_pressed_holo
+com.viewpagerindicator.R$id: int bottom
 com.viewpagerindicator.R$id: int btn_close_about_dialog
 com.viewpagerindicator.R$id: int btn_rate_app
 com.viewpagerindicator.R$id: int layout_graph_view
@@ -945,6 +975,7 @@ com.viewpagerindicator.R$id: int textview_text_current_charginglvl_asusdock
 com.viewpagerindicator.R$id: int textview_text_current_chargingstate
 com.viewpagerindicator.R$id: int textview_text_temperature
 com.viewpagerindicator.R$id: int textview_text_timeonbattery
+com.viewpagerindicator.R$id: int top
 com.viewpagerindicator.R$id: int triangle
 com.viewpagerindicator.R$id: int tv_about_application_name
 com.viewpagerindicator.R$id: int tv_about_application_version
@@ -957,6 +988,7 @@ com.viewpagerindicator.R$id: int vp_fragment_pager
 com.viewpagerindicator.R$id: int vp_fragment_titles
 com.viewpagerindicator.R$integer: int default_circle_indicator_orientation
 com.viewpagerindicator.R$integer: int default_title_indicator_footer_indicator_style
+com.viewpagerindicator.R$integer: int default_title_indicator_line_position
 com.viewpagerindicator.R$integer: int default_underline_indicator_fade_delay
 com.viewpagerindicator.R$integer: int default_underline_indicator_fade_length
 com.viewpagerindicator.R$layout: int activity_batterystatedisplay
@@ -1019,8 +1051,10 @@ com.viewpagerindicator.R$style: int LightTheme
 com.viewpagerindicator.R$style: int TextAppearance_TabPageIndicator
 com.viewpagerindicator.R$style: int Theme_PageIndicatorDefaults
 com.viewpagerindicator.R$style: int Widget
+com.viewpagerindicator.R$style: int Widget_IconPageIndicator
 com.viewpagerindicator.R$style: int Widget_TabPageIndicator
 com.viewpagerindicator.R$styleable: int[] CirclePageIndicator
+com.viewpagerindicator.R$styleable: int CirclePageIndicator_android_background
 com.viewpagerindicator.R$styleable: int CirclePageIndicator_android_orientation
 com.viewpagerindicator.R$styleable: int CirclePageIndicator_centered
 com.viewpagerindicator.R$styleable: int CirclePageIndicator_fillColor
@@ -1030,6 +1064,7 @@ com.viewpagerindicator.R$styleable: int CirclePageIndicator_snap
 com.viewpagerindicator.R$styleable: int CirclePageIndicator_strokeColor
 com.viewpagerindicator.R$styleable: int CirclePageIndicator_strokeWidth
 com.viewpagerindicator.R$styleable: int[] LinePageIndicator
+com.viewpagerindicator.R$styleable: int LinePageIndicator_android_background
 com.viewpagerindicator.R$styleable: int LinePageIndicator_centered
 com.viewpagerindicator.R$styleable: int LinePageIndicator_gapWidth
 com.viewpagerindicator.R$styleable: int LinePageIndicator_lineWidth
@@ -1037,6 +1072,7 @@ com.viewpagerindicator.R$styleable: int LinePageIndicator_selectedColor
 com.viewpagerindicator.R$styleable: int LinePageIndicator_strokeWidth
 com.viewpagerindicator.R$styleable: int LinePageIndicator_unselectedColor
 com.viewpagerindicator.R$styleable: int[] TitlePageIndicator
+com.viewpagerindicator.R$styleable: int TitlePageIndicator_android_background
 com.viewpagerindicator.R$styleable: int TitlePageIndicator_android_textColor
 com.viewpagerindicator.R$styleable: int TitlePageIndicator_android_textSize
 com.viewpagerindicator.R$styleable: int TitlePageIndicator_clipPadding
@@ -1046,17 +1082,20 @@ com.viewpagerindicator.R$styleable: int TitlePageIndicator_footerIndicatorStyle
 com.viewpagerindicator.R$styleable: int TitlePageIndicator_footerIndicatorUnderlinePadding
 com.viewpagerindicator.R$styleable: int TitlePageIndicator_footerLineHeight
 com.viewpagerindicator.R$styleable: int TitlePageIndicator_footerPadding
+com.viewpagerindicator.R$styleable: int TitlePageIndicator_linePosition
 com.viewpagerindicator.R$styleable: int TitlePageIndicator_selectedBold
 com.viewpagerindicator.R$styleable: int TitlePageIndicator_selectedColor
 com.viewpagerindicator.R$styleable: int TitlePageIndicator_titlePadding
 com.viewpagerindicator.R$styleable: int TitlePageIndicator_topPadding
 com.viewpagerindicator.R$styleable: int[] UnderlinePageIndicator
+com.viewpagerindicator.R$styleable: int UnderlinePageIndicator_android_background
 com.viewpagerindicator.R$styleable: int UnderlinePageIndicator_fadeDelay
 com.viewpagerindicator.R$styleable: int UnderlinePageIndicator_fadeLength
 com.viewpagerindicator.R$styleable: int UnderlinePageIndicator_fades
 com.viewpagerindicator.R$styleable: int UnderlinePageIndicator_selectedColor
 com.viewpagerindicator.R$styleable: int[] ViewPagerIndicator
 com.viewpagerindicator.R$styleable: int ViewPagerIndicator_vpiCirclePageIndicatorStyle
+com.viewpagerindicator.R$styleable: int ViewPagerIndicator_vpiIconPageIndicatorStyle
 com.viewpagerindicator.R$styleable: int ViewPagerIndicator_vpiLinePageIndicatorStyle
 com.viewpagerindicator.R$styleable: int ViewPagerIndicator_vpiTabPageIndicatorStyle
 com.viewpagerindicator.R$styleable: int ViewPagerIndicator_vpiTitlePageIndicatorStyle
@@ -1080,6 +1119,8 @@ com.viewpagerindicator.TitlePageIndicator: float getFooterIndicatorPadding()
 com.viewpagerindicator.TitlePageIndicator: void setFooterIndicatorPadding(float)
 com.viewpagerindicator.TitlePageIndicator: com.viewpagerindicator.TitlePageIndicator$IndicatorStyle getFooterIndicatorStyle()
 com.viewpagerindicator.TitlePageIndicator: void setFooterIndicatorStyle(com.viewpagerindicator.TitlePageIndicator$IndicatorStyle)
+com.viewpagerindicator.TitlePageIndicator: com.viewpagerindicator.TitlePageIndicator$LinePosition getLinePosition()
+com.viewpagerindicator.TitlePageIndicator: void setLinePosition(com.viewpagerindicator.TitlePageIndicator$LinePosition)
 com.viewpagerindicator.TitlePageIndicator: int getSelectedColor()
 com.viewpagerindicator.TitlePageIndicator: void setSelectedColor(int)
 com.viewpagerindicator.TitlePageIndicator: void setSelectedBold(boolean)
@@ -1101,6 +1142,8 @@ com.viewpagerindicator.TitlePageIndicator: void setCurrentItem(int)
 com.viewpagerindicator.TitlePageIndicator: void setOnPageChangeListener(android.support.v4.view.ViewPager$OnPageChangeListener)
 com.viewpagerindicator.TitlePageIndicator$IndicatorStyle: com.viewpagerindicator.TitlePageIndicator$IndicatorStyle[] values()
 com.viewpagerindicator.TitlePageIndicator$IndicatorStyle: com.viewpagerindicator.TitlePageIndicator$IndicatorStyle valueOf(java.lang.String)
+com.viewpagerindicator.TitlePageIndicator$LinePosition: com.viewpagerindicator.TitlePageIndicator$LinePosition[] values()
+com.viewpagerindicator.TitlePageIndicator$LinePosition: com.viewpagerindicator.TitlePageIndicator$LinePosition valueOf(java.lang.String)
 com.viewpagerindicator.TitlePageIndicator$SavedState
 com.viewpagerindicator.TitlePageIndicator$SavedState: android.os.Parcelable$Creator CREATOR
 com.viewpagerindicator.UnderlinePageIndicator: boolean getFades()

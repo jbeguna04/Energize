@@ -521,9 +521,6 @@ android.support.v4.os.ParcelableCompatCreatorCallbacks -> android.support.v4.b.c
     java.lang.Object[] newArray(int) -> a
 android.support.v4.os.ParcelableCompatCreatorHoneycombMR2 -> android.support.v4.b.d:
     android.support.v4.os.ParcelableCompatCreatorCallbacks mCallbacks -> a
-    java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
-    java.lang.Object createFromParcel(android.os.Parcel,java.lang.ClassLoader) -> createFromParcel
-    java.lang.Object[] newArray(int) -> newArray
 android.support.v4.os.ParcelableCompatCreatorHoneycombMR2Stub -> android.support.v4.b.e:
     android.os.Parcelable$Creator instantiate(android.support.v4.os.ParcelableCompatCreatorCallbacks) -> a
 android.support.v4.util.DebugUtils -> android.support.v4.c.a:
@@ -560,111 +557,34 @@ android.support.v4.view.AccessibilityDelegateCompat -> android.support.v4.view.a
     java.lang.Object DEFAULT_DELEGATE -> c
     java.lang.Object mBridge -> a
     java.lang.Object getBridge() -> a
-    void sendAccessibilityEvent(android.view.View,int) -> a
-    void sendAccessibilityEventUnchecked(android.view.View,android.view.accessibility.AccessibilityEvent) -> a
-    boolean dispatchPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> b
-    void onPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> c
-    void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> d
-    void onInitializeAccessibilityNodeInfo(android.view.View,android.support.v4.view.accessibility.AccessibilityNodeInfoCompat) -> a
-    boolean onRequestSendAccessibilityEvent(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
 android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateIcsImpl -> android.support.v4.view.b:
     java.lang.Object newAccessiblityDelegateDefaultImpl() -> a
     java.lang.Object newAccessiblityDelegateBridge(android.support.v4.view.AccessibilityDelegateCompat) -> a
-    boolean dispatchPopulateAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
-    void onInitializeAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> b
-    void onInitializeAccessibilityNodeInfo(java.lang.Object,android.view.View,android.support.v4.view.accessibility.AccessibilityNodeInfoCompat) -> a
-    void onPopulateAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> c
-    boolean onRequestSendAccessibilityEvent(java.lang.Object,android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
-    void sendAccessibilityEvent(java.lang.Object,android.view.View,int) -> a
-    void sendAccessibilityEventUnchecked(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> d
 android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateIcsImpl$1 -> android.support.v4.view.c:
     android.support.v4.view.AccessibilityDelegateCompat val$compat -> a
     android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateIcsImpl this$0 -> b
-    boolean dispatchPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> a
-    void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> b
-    void onInitializeAccessibilityNodeInfo(android.view.View,java.lang.Object) -> a
-    void onPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> c
-    boolean onRequestSendAccessibilityEvent(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
-    void sendAccessibilityEvent(android.view.View,int) -> a
-    void sendAccessibilityEventUnchecked(android.view.View,android.view.accessibility.AccessibilityEvent) -> d
 android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateImpl -> android.support.v4.view.d:
     java.lang.Object newAccessiblityDelegateDefaultImpl() -> a
     java.lang.Object newAccessiblityDelegateBridge(android.support.v4.view.AccessibilityDelegateCompat) -> a
-    boolean dispatchPopulateAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
-    void onInitializeAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> b
-    void onInitializeAccessibilityNodeInfo(java.lang.Object,android.view.View,android.support.v4.view.accessibility.AccessibilityNodeInfoCompat) -> a
-    void onPopulateAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> c
-    boolean onRequestSendAccessibilityEvent(java.lang.Object,android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
-    void sendAccessibilityEvent(java.lang.Object,android.view.View,int) -> a
-    void sendAccessibilityEventUnchecked(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> d
 android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateJellyBeanImpl -> android.support.v4.view.e:
     java.lang.Object newAccessiblityDelegateBridge(android.support.v4.view.AccessibilityDelegateCompat) -> a
 android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateJellyBeanImpl$1 -> android.support.v4.view.f:
     android.support.v4.view.AccessibilityDelegateCompat val$compat -> a
     android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateJellyBeanImpl this$0 -> b
-    boolean dispatchPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> a
-    void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> b
-    void onInitializeAccessibilityNodeInfo(android.view.View,java.lang.Object) -> a
-    void onPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> c
-    boolean onRequestSendAccessibilityEvent(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
-    void sendAccessibilityEvent(android.view.View,int) -> a
-    void sendAccessibilityEventUnchecked(android.view.View,android.view.accessibility.AccessibilityEvent) -> d
 android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateStubImpl -> android.support.v4.view.g:
     java.lang.Object newAccessiblityDelegateDefaultImpl() -> a
     java.lang.Object newAccessiblityDelegateBridge(android.support.v4.view.AccessibilityDelegateCompat) -> a
-    boolean dispatchPopulateAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
-    void onInitializeAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> b
-    void onInitializeAccessibilityNodeInfo(java.lang.Object,android.view.View,android.support.v4.view.accessibility.AccessibilityNodeInfoCompat) -> a
-    void onPopulateAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> c
-    boolean onRequestSendAccessibilityEvent(java.lang.Object,android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
-    void sendAccessibilityEvent(java.lang.Object,android.view.View,int) -> a
-    void sendAccessibilityEventUnchecked(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> d
 android.support.v4.view.AccessibilityDelegateCompatIcs -> android.support.v4.view.h:
     java.lang.Object newAccessibilityDelegateDefaultImpl() -> a
     java.lang.Object newAccessibilityDelegateBridge(android.support.v4.view.AccessibilityDelegateCompatIcs$AccessibilityDelegateBridge) -> a
-    boolean dispatchPopulateAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
-    void onInitializeAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> b
-    void onInitializeAccessibilityNodeInfo(java.lang.Object,android.view.View,java.lang.Object) -> a
-    void onPopulateAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> c
-    boolean onRequestSendAccessibilityEvent(java.lang.Object,android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
-    void sendAccessibilityEvent(java.lang.Object,android.view.View,int) -> a
-    void sendAccessibilityEventUnchecked(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> d
 android.support.v4.view.AccessibilityDelegateCompatIcs$1 -> android.support.v4.view.i:
     android.support.v4.view.AccessibilityDelegateCompatIcs$AccessibilityDelegateBridge val$bridge -> a
-    boolean dispatchPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> dispatchPopulateAccessibilityEvent
-    void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> onInitializeAccessibilityEvent
-    void onInitializeAccessibilityNodeInfo(android.view.View,android.view.accessibility.AccessibilityNodeInfo) -> onInitializeAccessibilityNodeInfo
-    void onPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> onPopulateAccessibilityEvent
-    boolean onRequestSendAccessibilityEvent(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> onRequestSendAccessibilityEvent
-    void sendAccessibilityEvent(android.view.View,int) -> sendAccessibilityEvent
-    void sendAccessibilityEventUnchecked(android.view.View,android.view.accessibility.AccessibilityEvent) -> sendAccessibilityEventUnchecked
 android.support.v4.view.AccessibilityDelegateCompatIcs$AccessibilityDelegateBridge -> android.support.v4.view.j:
-    boolean dispatchPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> a
-    void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> b
-    void onInitializeAccessibilityNodeInfo(android.view.View,java.lang.Object) -> a
-    void onPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> c
-    boolean onRequestSendAccessibilityEvent(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
-    void sendAccessibilityEvent(android.view.View,int) -> a
-    void sendAccessibilityEventUnchecked(android.view.View,android.view.accessibility.AccessibilityEvent) -> d
 android.support.v4.view.AccessibilityDelegateCompatJellyBean -> android.support.v4.view.k:
     java.lang.Object newAccessibilityDelegateBridge(android.support.v4.view.AccessibilityDelegateCompatJellyBean$AccessibilityDelegateBridgeJellyBean) -> a
 android.support.v4.view.AccessibilityDelegateCompatJellyBean$1 -> android.support.v4.view.l:
     android.support.v4.view.AccessibilityDelegateCompatJellyBean$AccessibilityDelegateBridgeJellyBean val$bridge -> a
-    boolean dispatchPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> dispatchPopulateAccessibilityEvent
-    void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> onInitializeAccessibilityEvent
-    void onInitializeAccessibilityNodeInfo(android.view.View,android.view.accessibility.AccessibilityNodeInfo) -> onInitializeAccessibilityNodeInfo
-    void onPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> onPopulateAccessibilityEvent
-    boolean onRequestSendAccessibilityEvent(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> onRequestSendAccessibilityEvent
-    void sendAccessibilityEvent(android.view.View,int) -> sendAccessibilityEvent
-    void sendAccessibilityEventUnchecked(android.view.View,android.view.accessibility.AccessibilityEvent) -> sendAccessibilityEventUnchecked
 android.support.v4.view.AccessibilityDelegateCompatJellyBean$AccessibilityDelegateBridgeJellyBean -> android.support.v4.view.m:
-    boolean dispatchPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> a
-    void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> b
-    void onInitializeAccessibilityNodeInfo(android.view.View,java.lang.Object) -> a
-    void onPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> c
-    boolean onRequestSendAccessibilityEvent(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
-    void sendAccessibilityEvent(android.view.View,int) -> a
-    void sendAccessibilityEventUnchecked(android.view.View,android.view.accessibility.AccessibilityEvent) -> d
 android.support.v4.view.KeyEventCompat -> android.support.v4.view.n:
     android.support.v4.view.KeyEventCompat$KeyEventVersionImpl IMPL -> a
     boolean hasModifiers(android.view.KeyEvent,int) -> a
@@ -848,8 +768,8 @@ android.support.v4.view.ViewPager -> android.support.v4.view.ViewPager:
     int mDecorChildCount -> U
     android.support.v4.view.ViewPager$OnPageChangeListener mOnPageChangeListener -> V
     android.support.v4.view.ViewPager$OnPageChangeListener mInternalPageChangeListener -> W
-    android.support.v4.view.ViewPager$OnAdapterChangeListener mAdapterChangeListener -> Z
-    int mScrollState -> aa
+    android.support.v4.view.ViewPager$OnAdapterChangeListener mAdapterChangeListener -> X
+    int mScrollState -> Y
     void initViewPager() -> a
     void setScrollState(int) -> setScrollState
     void setAdapter(android.support.v4.view.PagerAdapter) -> setAdapter
@@ -922,8 +842,6 @@ android.support.v4.view.ViewPager -> android.support.v4.view.ViewPager:
     android.view.ViewGroup$LayoutParams generateLayoutParams(android.view.ViewGroup$LayoutParams) -> generateLayoutParams
     boolean checkLayoutParams(android.view.ViewGroup$LayoutParams) -> checkLayoutParams
     android.view.ViewGroup$LayoutParams generateLayoutParams(android.util.AttributeSet) -> generateLayoutParams
-    android.support.v4.view.PagerAdapter access$100(android.support.v4.view.ViewPager) -> a
-    int access$200(android.support.v4.view.ViewPager) -> b
     int[] access$300() -> i
 android.support.v4.view.ViewPager$1 -> android.support.v4.view.at:
     int compare(android.support.v4.view.ViewPager$ItemInfo,android.support.v4.view.ViewPager$ItemInfo) -> a
@@ -944,8 +862,6 @@ android.support.v4.view.ViewPager$LayoutParams -> android.support.v4.view.ax:
     boolean needsMeasure -> d
 android.support.v4.view.ViewPager$MyAccessibilityDelegate -> android.support.v4.view.ay:
     android.support.v4.view.ViewPager this$0 -> b
-    void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> d
-    void onInitializeAccessibilityNodeInfo(android.view.View,android.support.v4.view.accessibility.AccessibilityNodeInfoCompat) -> a
 android.support.v4.view.ViewPager$OnAdapterChangeListener -> android.support.v4.view.az:
     void onAdapterChanged(android.support.v4.view.PagerAdapter,android.support.v4.view.PagerAdapter) -> a
 android.support.v4.view.ViewPager$OnPageChangeListener -> android.support.v4.view.ba:
@@ -968,32 +884,6 @@ android.support.v4.view.ViewPager$SavedState$1 -> android.support.v4.view.bc:
     android.support.v4.view.ViewPager$SavedState[] newArray(int) -> b
     java.lang.Object[] newArray(int) -> a
     java.lang.Object createFromParcel(android.os.Parcel,java.lang.ClassLoader) -> a
-android.support.v4.view.accessibility.AccessibilityNodeInfoCompat -> android.support.v4.view.a.a:
-    android.support.v4.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityNodeInfoImpl IMPL -> a
-    java.lang.Object mInfo -> b
-    java.lang.Object getInfo() -> a
-    void addAction(int) -> a
-    void setScrollable(boolean) -> a
-    void setClassName(java.lang.CharSequence) -> a
-    int hashCode() -> hashCode
-    boolean equals(java.lang.Object) -> equals
-android.support.v4.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityNodeInfoIcsImpl -> android.support.v4.view.a.b:
-    void addAction(java.lang.Object,int) -> a
-    void setClassName(java.lang.Object,java.lang.CharSequence) -> a
-    void setScrollable(java.lang.Object,boolean) -> a
-android.support.v4.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityNodeInfoImpl -> android.support.v4.view.a.c:
-    void addAction(java.lang.Object,int) -> a
-    void setScrollable(java.lang.Object,boolean) -> a
-    void setClassName(java.lang.Object,java.lang.CharSequence) -> a
-android.support.v4.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityNodeInfoJellybeanImpl -> android.support.v4.view.a.d:
-android.support.v4.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityNodeInfoStubImpl -> android.support.v4.view.a.e:
-    void addAction(java.lang.Object,int) -> a
-    void setClassName(java.lang.Object,java.lang.CharSequence) -> a
-    void setScrollable(java.lang.Object,boolean) -> a
-android.support.v4.view.accessibility.AccessibilityNodeInfoCompatIcs -> android.support.v4.view.a.f:
-    void addAction(java.lang.Object,int) -> a
-    void setClassName(java.lang.Object,java.lang.CharSequence) -> a
-    void setScrollable(java.lang.Object,boolean) -> a
 android.support.v4.widget.EdgeEffectCompat -> android.support.v4.d.a:
     java.lang.Object mEdgeEffect -> a
     android.support.v4.widget.EdgeEffectCompat$EdgeEffectImpl IMPL -> b
@@ -1197,7 +1087,7 @@ com.jjoe64.graphview.GraphView -> com.a.a.a:
     double manualMinYValue -> r
     int[] $SWITCH_TABLE$com$jjoe64$graphview$GraphView$LegendAlign -> s
     com.jjoe64.graphview.GraphView$GraphViewData[] _values(int) -> a
-    void addSeries(com.jjoe64.graphview.GraphView$GraphViewSeries) -> a
+    void addSeries(com.jjoe64.graphview.GraphViewSeries) -> a
     void drawLegend(android.graphics.Canvas,float,float) -> a
     void drawSeries(android.graphics.Canvas,com.jjoe64.graphview.GraphView$GraphViewData[],float,float,float,double,double,double,double,float) -> a
     java.lang.String formatLabel(double,boolean) -> a
@@ -1249,23 +1139,25 @@ com.jjoe64.graphview.GraphView$GraphViewContentView -> com.a.a.c:
 com.jjoe64.graphview.GraphView$GraphViewData -> com.a.a.d:
     double valueX -> a
     double valueY -> b
-com.jjoe64.graphview.GraphView$GraphViewSeries -> com.a.a.e:
-    java.lang.String description -> a
-    com.jjoe64.graphview.GraphView$GraphViewStyle style -> b
-    com.jjoe64.graphview.GraphView$GraphViewData[] values -> c
-com.jjoe64.graphview.GraphView$GraphViewStyle -> com.a.a.f:
-    int color -> a
-    int thickness -> b
-com.jjoe64.graphview.GraphView$LegendAlign -> com.a.a.g:
+com.jjoe64.graphview.GraphView$LegendAlign -> com.a.a.e:
     com.jjoe64.graphview.GraphView$LegendAlign TOP -> a
     com.jjoe64.graphview.GraphView$LegendAlign MIDDLE -> b
     com.jjoe64.graphview.GraphView$LegendAlign BOTTOM -> c
     com.jjoe64.graphview.GraphView$LegendAlign[] ENUM$VALUES -> d
     com.jjoe64.graphview.GraphView$LegendAlign[] values() -> values
     com.jjoe64.graphview.GraphView$LegendAlign valueOf(java.lang.String) -> valueOf
-com.jjoe64.graphview.GraphView$VerLabelsView -> com.a.a.h:
+com.jjoe64.graphview.GraphView$VerLabelsView -> com.a.a.f:
     com.jjoe64.graphview.GraphView this$0 -> a
     void onDraw(android.graphics.Canvas) -> onDraw
+com.jjoe64.graphview.GraphViewSeries -> com.a.a.g:
+    java.lang.String description -> a
+    com.jjoe64.graphview.GraphViewSeries$GraphViewStyle style -> b
+    com.jjoe64.graphview.GraphView$GraphViewData[] values -> c
+    java.util.List graphViews -> d
+    void addGraphView(com.jjoe64.graphview.GraphView) -> a
+com.jjoe64.graphview.GraphViewSeries$GraphViewStyle -> com.a.a.h:
+    int color -> a
+    int thickness -> b
 com.jjoe64.graphview.LineGraphView -> com.a.a.i:
     android.graphics.Paint paintBackground -> a
     boolean drawBackground -> c
@@ -1397,6 +1289,7 @@ com.viewpagerindicator.R$attr -> com.viewpagerindicator.e:
     int footerLineHeight -> footerLineHeight
     int footerPadding -> footerPadding
     int gapWidth -> gapWidth
+    int linePosition -> linePosition
     int lineWidth -> lineWidth
     int pageColor -> pageColor
     int radius -> radius
@@ -1409,6 +1302,7 @@ com.viewpagerindicator.R$attr -> com.viewpagerindicator.e:
     int topPadding -> topPadding
     int unselectedColor -> unselectedColor
     int vpiCirclePageIndicatorStyle -> vpiCirclePageIndicatorStyle
+    int vpiIconPageIndicatorStyle -> vpiIconPageIndicatorStyle
     int vpiLinePageIndicatorStyle -> vpiLinePageIndicatorStyle
     int vpiTabPageIndicatorStyle -> vpiTabPageIndicatorStyle
     int vpiTitlePageIndicatorStyle -> vpiTitlePageIndicatorStyle
@@ -1456,10 +1350,12 @@ com.viewpagerindicator.R$dimen -> com.viewpagerindicator.h:
 com.viewpagerindicator.R$integer -> com.viewpagerindicator.i:
     int default_circle_indicator_orientation -> default_circle_indicator_orientation
     int default_title_indicator_footer_indicator_style -> default_title_indicator_footer_indicator_style
+    int default_title_indicator_line_position -> default_title_indicator_line_position
     int default_underline_indicator_fade_delay -> default_underline_indicator_fade_delay
     int default_underline_indicator_fade_length -> default_underline_indicator_fade_length
 com.viewpagerindicator.R$styleable -> com.viewpagerindicator.j:
     int[] CirclePageIndicator -> CirclePageIndicator
+    int CirclePageIndicator_android_background -> CirclePageIndicator_android_background
     int CirclePageIndicator_android_orientation -> CirclePageIndicator_android_orientation
     int CirclePageIndicator_centered -> CirclePageIndicator_centered
     int CirclePageIndicator_fillColor -> CirclePageIndicator_fillColor
@@ -1469,6 +1365,7 @@ com.viewpagerindicator.R$styleable -> com.viewpagerindicator.j:
     int CirclePageIndicator_strokeColor -> CirclePageIndicator_strokeColor
     int CirclePageIndicator_strokeWidth -> CirclePageIndicator_strokeWidth
     int[] LinePageIndicator -> LinePageIndicator
+    int LinePageIndicator_android_background -> LinePageIndicator_android_background
     int LinePageIndicator_centered -> LinePageIndicator_centered
     int LinePageIndicator_gapWidth -> LinePageIndicator_gapWidth
     int LinePageIndicator_lineWidth -> LinePageIndicator_lineWidth
@@ -1476,6 +1373,7 @@ com.viewpagerindicator.R$styleable -> com.viewpagerindicator.j:
     int LinePageIndicator_strokeWidth -> LinePageIndicator_strokeWidth
     int LinePageIndicator_unselectedColor -> LinePageIndicator_unselectedColor
     int[] TitlePageIndicator -> TitlePageIndicator
+    int TitlePageIndicator_android_background -> TitlePageIndicator_android_background
     int TitlePageIndicator_android_textColor -> TitlePageIndicator_android_textColor
     int TitlePageIndicator_android_textSize -> TitlePageIndicator_android_textSize
     int TitlePageIndicator_clipPadding -> TitlePageIndicator_clipPadding
@@ -1485,17 +1383,20 @@ com.viewpagerindicator.R$styleable -> com.viewpagerindicator.j:
     int TitlePageIndicator_footerIndicatorUnderlinePadding -> TitlePageIndicator_footerIndicatorUnderlinePadding
     int TitlePageIndicator_footerLineHeight -> TitlePageIndicator_footerLineHeight
     int TitlePageIndicator_footerPadding -> TitlePageIndicator_footerPadding
+    int TitlePageIndicator_linePosition -> TitlePageIndicator_linePosition
     int TitlePageIndicator_selectedBold -> TitlePageIndicator_selectedBold
     int TitlePageIndicator_selectedColor -> TitlePageIndicator_selectedColor
     int TitlePageIndicator_titlePadding -> TitlePageIndicator_titlePadding
     int TitlePageIndicator_topPadding -> TitlePageIndicator_topPadding
     int[] UnderlinePageIndicator -> UnderlinePageIndicator
+    int UnderlinePageIndicator_android_background -> UnderlinePageIndicator_android_background
     int UnderlinePageIndicator_fadeDelay -> UnderlinePageIndicator_fadeDelay
     int UnderlinePageIndicator_fadeLength -> UnderlinePageIndicator_fadeLength
     int UnderlinePageIndicator_fades -> UnderlinePageIndicator_fades
     int UnderlinePageIndicator_selectedColor -> UnderlinePageIndicator_selectedColor
     int[] ViewPagerIndicator -> ViewPagerIndicator
     int ViewPagerIndicator_vpiCirclePageIndicatorStyle -> ViewPagerIndicator_vpiCirclePageIndicatorStyle
+    int ViewPagerIndicator_vpiIconPageIndicatorStyle -> ViewPagerIndicator_vpiIconPageIndicatorStyle
     int ViewPagerIndicator_vpiLinePageIndicatorStyle -> ViewPagerIndicator_vpiLinePageIndicatorStyle
     int ViewPagerIndicator_vpiTabPageIndicatorStyle -> ViewPagerIndicator_vpiTabPageIndicatorStyle
     int ViewPagerIndicator_vpiTitlePageIndicatorStyle -> ViewPagerIndicator_vpiTitlePageIndicatorStyle
@@ -1503,18 +1404,18 @@ com.viewpagerindicator.R$styleable -> com.viewpagerindicator.j:
 com.viewpagerindicator.TitlePageIndicator -> com.viewpagerindicator.TitlePageIndicator:
     android.support.v4.view.ViewPager mViewPager -> a
     android.support.v4.view.ViewPager$OnPageChangeListener mListener -> b
-    android.support.v4.view.PagerAdapter mPagerAdapter -> c
-    int mCurrentPage -> d
-    float mPageOffset -> e
-    int mScrollState -> f
-    android.graphics.Paint mPaintText -> g
-    boolean mBoldText -> h
-    int mColorText -> i
-    int mColorSelected -> j
-    android.graphics.Path mPath -> k
-    android.graphics.Rect mBounds -> l
-    android.graphics.Paint mPaintFooterLine -> m
-    com.viewpagerindicator.TitlePageIndicator$IndicatorStyle mFooterIndicatorStyle -> n
+    int mCurrentPage -> c
+    float mPageOffset -> d
+    int mScrollState -> e
+    android.graphics.Paint mPaintText -> f
+    boolean mBoldText -> g
+    int mColorText -> h
+    int mColorSelected -> i
+    android.graphics.Path mPath -> j
+    android.graphics.Rect mBounds -> k
+    android.graphics.Paint mPaintFooterLine -> l
+    com.viewpagerindicator.TitlePageIndicator$IndicatorStyle mFooterIndicatorStyle -> m
+    com.viewpagerindicator.TitlePageIndicator$LinePosition mLinePosition -> n
     android.graphics.Paint mPaintFooterIndicator -> o
     float mFooterIndicatorHeight -> p
     float mFooterIndicatorUnderlinePadding -> q
@@ -1539,6 +1440,8 @@ com.viewpagerindicator.TitlePageIndicator -> com.viewpagerindicator.TitlePageInd
     void setFooterIndicatorPadding(float) -> setFooterIndicatorPadding
     com.viewpagerindicator.TitlePageIndicator$IndicatorStyle getFooterIndicatorStyle() -> getFooterIndicatorStyle
     void setFooterIndicatorStyle(com.viewpagerindicator.TitlePageIndicator$IndicatorStyle) -> setFooterIndicatorStyle
+    com.viewpagerindicator.TitlePageIndicator$LinePosition getLinePosition() -> getLinePosition
+    void setLinePosition(com.viewpagerindicator.TitlePageIndicator$LinePosition) -> setLinePosition
     int getSelectedColor() -> getSelectedColor
     void setSelectedColor(int) -> setSelectedColor
     void setSelectedBold(boolean) -> setSelectedBold
@@ -1581,13 +1484,21 @@ com.viewpagerindicator.TitlePageIndicator$IndicatorStyle -> com.viewpagerindicat
     com.viewpagerindicator.TitlePageIndicator$IndicatorStyle fromValue(int) -> a
     com.viewpagerindicator.TitlePageIndicator$IndicatorStyle[] values() -> values
     com.viewpagerindicator.TitlePageIndicator$IndicatorStyle valueOf(java.lang.String) -> valueOf
-com.viewpagerindicator.TitlePageIndicator$OnCenterItemClickListener -> com.viewpagerindicator.l:
+com.viewpagerindicator.TitlePageIndicator$LinePosition -> com.viewpagerindicator.l:
+    com.viewpagerindicator.TitlePageIndicator$LinePosition Bottom -> a
+    com.viewpagerindicator.TitlePageIndicator$LinePosition Top -> b
+    int value -> c
+    com.viewpagerindicator.TitlePageIndicator$LinePosition[] ENUM$VALUES -> d
+    com.viewpagerindicator.TitlePageIndicator$LinePosition fromValue(int) -> a
+    com.viewpagerindicator.TitlePageIndicator$LinePosition[] values() -> values
+    com.viewpagerindicator.TitlePageIndicator$LinePosition valueOf(java.lang.String) -> valueOf
+com.viewpagerindicator.TitlePageIndicator$OnCenterItemClickListener -> com.viewpagerindicator.m:
     void onCenterItemClick(int) -> a
 com.viewpagerindicator.TitlePageIndicator$SavedState -> com.viewpagerindicator.TitlePageIndicator$SavedState:
     int currentPage -> a
     android.os.Parcelable$Creator CREATOR -> CREATOR
     void writeToParcel(android.os.Parcel,int) -> writeToParcel
-com.viewpagerindicator.TitlePageIndicator$SavedState$1 -> com.viewpagerindicator.m:
+com.viewpagerindicator.TitlePageIndicator$SavedState$1 -> com.viewpagerindicator.n:
     com.viewpagerindicator.TitlePageIndicator$SavedState createFromParcel(android.os.Parcel) -> a
     com.viewpagerindicator.TitlePageIndicator$SavedState[] newArray(int) -> a
     java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
@@ -1626,16 +1537,16 @@ com.viewpagerindicator.UnderlinePageIndicator -> com.viewpagerindicator.Underlin
     void setOnPageChangeListener(android.support.v4.view.ViewPager$OnPageChangeListener) -> setOnPageChangeListener
     void onRestoreInstanceState(android.os.Parcelable) -> onRestoreInstanceState
     android.os.Parcelable onSaveInstanceState() -> onSaveInstanceState
-    boolean access$2(com.viewpagerindicator.UnderlinePageIndicator) -> a
+    boolean access$0(com.viewpagerindicator.UnderlinePageIndicator) -> a
     java.lang.Runnable access$3(com.viewpagerindicator.UnderlinePageIndicator) -> b
-com.viewpagerindicator.UnderlinePageIndicator$2 -> com.viewpagerindicator.n:
+com.viewpagerindicator.UnderlinePageIndicator$2 -> com.viewpagerindicator.o:
     com.viewpagerindicator.UnderlinePageIndicator this$0 -> a
     void run() -> run
 com.viewpagerindicator.UnderlinePageIndicator$SavedState -> com.viewpagerindicator.UnderlinePageIndicator$SavedState:
     int currentPage -> a
     android.os.Parcelable$Creator CREATOR -> CREATOR
     void writeToParcel(android.os.Parcel,int) -> writeToParcel
-com.viewpagerindicator.UnderlinePageIndicator$SavedState$1 -> com.viewpagerindicator.o:
+com.viewpagerindicator.UnderlinePageIndicator$SavedState$1 -> com.viewpagerindicator.p:
     com.viewpagerindicator.UnderlinePageIndicator$SavedState createFromParcel(android.os.Parcel) -> a
     com.viewpagerindicator.UnderlinePageIndicator$SavedState[] newArray(int) -> a
     java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
