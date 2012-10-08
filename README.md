@@ -37,6 +37,7 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
 * Added support for Android 3.1 and higher
 * Updated the version of the used GraphView library
 * Updated the version of the used ViewPagerIndicator library
+* Fixed a minor bug which caused sometimes the application to crash
 
 ### Version 0.7 *(2012-09-19)* - [Changes][21]
 * Basic support for Asus Transformer Pad Prime/TF300/Infinity dock battery capacity (showing the current capacity; not used for estimation)
