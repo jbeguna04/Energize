@@ -36,7 +36,7 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
 ### Version 0.7.4 *(2012-10-XX)* - [Changes][23]
 * The remaining time will now also be displayed on the main activity of the application
 * Updated the code to query the service for each battery depending question (remaining time, time on battery, etc.)
-* Fixed a bug which caused an application crash while accessing the preferences on a device running an Android version below 4.0
+* Since a bug which caused an application crash while accessing the preferences on a device running an Android version below 4.0 cannot be fixed easily we had to drop Android 3.1 - 3.2 support again. SORRY guys!
 
 ### Version 0.7.2 *(2012-10-08)* - [Changes][22]
 * Added support for Android 3.1 and higher
