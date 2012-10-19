@@ -52,6 +52,7 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 				case MonitorBatteryStateService.MSG_CLEAR_STATISTICS:
 					Log.d( MonitorBatteryStateService.TAG, "Clearing battery statistics database..." );
 					try {
+						MonitorBatteryStateService.this.batteryStatisticsDatabase.delete( PowerEventsTable.TABLE_NAME, null, null );
 						MonitorBatteryStateService.this.batteryStatisticsDatabase.delete( RawBatteryStatisicsTable.TABLE_NAME, null, null );
 						msg.replyTo.send( Message.obtain( null, MonitorBatteryStateService.MSG_CLEAR_STATISTICS ) );
 					} catch( final RemoteException e ) {
