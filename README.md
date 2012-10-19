@@ -40,6 +40,7 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
 ### Version 0.7.3 *(2012-10-19)* - [Changes][23]
 * Since a bug which caused an application crash while accessing the preferences on a device running an Android version below 4.0 cannot be fixed easily we had to drop Android 3.1 - 3.2 support again. SORRY guys!
 * Changed the text of some labels
+* Fixed a bug which caused that no notification icon was displayed
 
 ### Version 0.7.2 *(2012-10-08)* - [Changes][22]
 * Added support for Android 3.1 and higher
