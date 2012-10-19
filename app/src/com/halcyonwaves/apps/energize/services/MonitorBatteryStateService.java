@@ -181,18 +181,32 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 	}
 
 	private void showNewPercentageNotification() {
+		// if we should not show the notification, skip the method here
+		if( !this.appPreferences.getBoolean( "advance.show_notification_bar", true ) ) {
+			return;
+		}
+		
 		// query the current estimation values
 		final EstimationResult estimation = BatteryEstimationMgr.getEstimation( this.getApplicationContext() );
 
 		// be sure that it is a valid percentage
 		if( !estimation.isValid ) {
-			Log.e( MonitorBatteryStateService.TAG, "The application tried to show an invalid loading level." );
-			return;
-		}
-
-		// if we should not show the notification, skip the method here
-
-		if( !this.appPreferences.getBoolean( "advance.show_notification_bar", true ) ) {
+			Log.w( MonitorBatteryStateService.TAG, "The application tried to show an invalid loading level. Showing a placeholder!" );
+			
+			// build a basic notification indicating that there is not enough information to show up an estimate
+			final NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder( this.getApplicationContext() );
+			notificationBuilder.setContentTitle( this.getString( R.string.notification_title_missingstatistics ) );
+			notificationBuilder.setContentText( this.getString( R.string.notification_text_missingstatistics ) );
+			notificationBuilder.setSmallIcon( R.drawable.ic_launcher );
+			notificationBuilder.setOngoing( true );
+			notificationBuilder.setContentIntent( PendingIntent.getActivity( this.getApplicationContext(), 0, new Intent( this.getApplicationContext(), BatteryStateDisplayActivity.class ), 0 ) );
+			notificationBuilder.setPriority( NotificationCompat.PRIORITY_LOW );
+			
+			// show up the notification we just set up
+			this.myNotification = notificationBuilder.build();
+			this.notificationManager.notify( MonitorBatteryStateService.MY_NOTIFICATION_ID, this.myNotification );
+			
+			// skip the rest of the application code
 			return;
 		}
 
