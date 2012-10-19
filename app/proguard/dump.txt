@@ -23375,43 +23375,98 @@ _____________________________________________________________________
 Interfaces (count = 1):
   + Class [android/os/Parcelable$ClassLoaderCreator]
 
-Constant Pool (count = 17):
+Constant Pool (count = 28):
   + Class [android/os/Parcelable$ClassLoaderCreator]
+  + Class [android/support/v4/b/c]
   + Class [android/support/v4/b/d]
   + Class [java/lang/Object]
   + Fieldref [android/support/v4/b/d.a Landroid/support/v4/b/c;]
   + Methodref [java/lang/Object.<init> ()V]
+  + InterfaceMethodref [android/support/v4/b/c.a (I)[Ljava/lang/Object;]
+  + InterfaceMethodref [android/support/v4/b/c.a (Landroid/os/Parcel;Ljava/lang/ClassLoader;)Ljava/lang/Object;]
   + NameAndType [<init> ()V]
+  + NameAndType [a (I)[Ljava/lang/Object;]
+  + NameAndType [a (Landroid/os/Parcel;Ljava/lang/ClassLoader;)Ljava/lang/Object;]
   + NameAndType [a Landroid/support/v4/b/c;]
   + Utf8 [()V]
+  + Utf8 [(I)[Ljava/lang/Object;]
+  + Utf8 [(Landroid/os/Parcel;)Ljava/lang/Object;]
+  + Utf8 [(Landroid/os/Parcel;Ljava/lang/ClassLoader;)Ljava/lang/Object;]
   + Utf8 [(Landroid/support/v4/b/c;)V]
   + Utf8 [<init>]
   + Utf8 [Code]
   + Utf8 [Landroid/support/v4/b/c;]
   + Utf8 [a]
   + Utf8 [android/os/Parcelable$ClassLoaderCreator]
+  + Utf8 [android/support/v4/b/c]
   + Utf8 [android/support/v4/b/d]
+  + Utf8 [createFromParcel]
   + Utf8 [java/lang/Object]
+  + Utf8 [newArray]
 
 Fields (count = 1):
   + Field:        a Landroid/support/v4/b/c;
     Access flags: 0x12
       = private final android.support.v4.b.c a
 
-Methods (count = 1):
+Methods (count = 4):
   - Method:       <init>(Landroid/support/v4/b/c;)V
     Access flags: 0x1
       = public d(android.support.v4.b.c)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 10, locals = 2, stack = 2):
       [0] aload_0 v0
-      [1] invokespecial #5
+      [1] invokespecial #6
         + Methodref [java/lang/Object.<init> ()V]
       [4] aload_0 v0
       [5] aload_1 v1
-      [6] putfield #4
+      [6] putfield #5
         + Fieldref [android/support/v4/b/d.a Landroid/support/v4/b/c;]
       [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+    Access flags: 0x1
+      = public java.lang.Object createFromParcel(android.os.Parcel)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 12, locals = 2, stack = 3):
+      [0] aload_0 v0
+      [1] getfield #5
+        + Fieldref [android/support/v4/b/d.a Landroid/support/v4/b/c;]
+      [4] aload_1 v1
+      [5] aconst_null
+      [6] invokeinterface #8
+        + InterfaceMethodref [android/support/v4/b/c.a (Landroid/os/Parcel;Ljava/lang/ClassLoader;)Ljava/lang/Object;]
+      [11] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       createFromParcel(Landroid/os/Parcel;Ljava/lang/ClassLoader;)Ljava/lang/Object;
+    Access flags: 0x1
+      = public java.lang.Object createFromParcel(android.os.Parcel,java.lang.ClassLoader)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 12, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] getfield #5
+        + Fieldref [android/support/v4/b/d.a Landroid/support/v4/b/c;]
+      [4] aload_1 v1
+      [5] aload_2 v2
+      [6] invokeinterface #8
+        + InterfaceMethodref [android/support/v4/b/c.a (Landroid/os/Parcel;Ljava/lang/ClassLoader;)Ljava/lang/Object;]
+      [11] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       newArray(I)[Ljava/lang/Object;
+    Access flags: 0x1
+      = public java.lang.Object[] newArray(int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 11, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] getfield #5
+        + Fieldref [android/support/v4/b/d.a Landroid/support/v4/b/c;]
+      [4] iload_1 v1
+      [5] invokeinterface #7
+        + InterfaceMethodref [android/support/v4/b/c.a (I)[Ljava/lang/Object;]
+      [10] areturn
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
 
@@ -24545,7 +24600,7 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 45):
+Constant Pool (count = 70):
   + Class [android/os/Build$VERSION]
   + Class [android/support/v4/view/a]
   + Class [android/support/v4/view/b]
@@ -24563,16 +24618,40 @@ Constant Pool (count = 45):
   + Methodref [java/lang/Object.<init> ()V]
   + InterfaceMethodref [android/support/v4/view/d.a ()Ljava/lang/Object;]
   + InterfaceMethodref [android/support/v4/view/d.a (Landroid/support/v4/view/a;)Ljava/lang/Object;]
+  + InterfaceMethodref [android/support/v4/view/d.a (Ljava/lang/Object;Landroid/view/View;I)V]
+  + InterfaceMethodref [android/support/v4/view/d.a (Ljava/lang/Object;Landroid/view/View;Landroid/support/v4/view/a/a;)V]
+  + InterfaceMethodref [android/support/v4/view/d.a (Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + InterfaceMethodref [android/support/v4/view/d.a (Ljava/lang/Object;Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + InterfaceMethodref [android/support/v4/view/d.b (Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + InterfaceMethodref [android/support/v4/view/d.c (Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + InterfaceMethodref [android/support/v4/view/d.d (Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
   + NameAndType [<init> ()V]
   + NameAndType [SDK_INT I]
   + NameAndType [a ()Ljava/lang/Object;]
   + NameAndType [a (Landroid/support/v4/view/a;)Ljava/lang/Object;]
+  + NameAndType [a (Ljava/lang/Object;Landroid/view/View;I)V]
+  + NameAndType [a (Ljava/lang/Object;Landroid/view/View;Landroid/support/v4/view/a/a;)V]
+  + NameAndType [a (Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + NameAndType [a (Ljava/lang/Object;Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
   + NameAndType [a Ljava/lang/Object;]
+  + NameAndType [b (Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
   + NameAndType [b Landroid/support/v4/view/d;]
+  + NameAndType [c (Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
   + NameAndType [c Ljava/lang/Object;]
+  + NameAndType [d (Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
   + Utf8 [()Ljava/lang/Object;]
   + Utf8 [()V]
   + Utf8 [(Landroid/support/v4/view/a;)Ljava/lang/Object;]
+  + Utf8 [(Landroid/view/View;I)V]
+  + Utf8 [(Landroid/view/View;Landroid/support/v4/view/a/a;)V]
+  + Utf8 [(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + Utf8 [(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + Utf8 [(Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + Utf8 [(Ljava/lang/Object;Landroid/view/View;I)V]
+  + Utf8 [(Ljava/lang/Object;Landroid/view/View;Landroid/support/v4/view/a/a;)V]
+  + Utf8 [(Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + Utf8 [(Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + Utf8 [(Ljava/lang/Object;Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
   + Utf8 [<clinit>]
   + Utf8 [<init>]
   + Utf8 [Code]
@@ -24589,6 +24668,7 @@ Constant Pool (count = 45):
   + Utf8 [android/support/v4/view/g]
   + Utf8 [b]
   + Utf8 [c]
+  + Utf8 [d]
   + Utf8 [java/lang/Object]
 
 Fields (count = 3):
@@ -24602,7 +24682,7 @@ Fields (count = 3):
     Access flags: 0x10
       = final java.lang.Object a
 
-Methods (count = 3):
+Methods (count = 10):
   - Method:       <init>()V
     Access flags: 0x1
       = public a()
@@ -24631,6 +24711,119 @@ Methods (count = 3):
       [1] getfield #9
         + Fieldref [android/support/v4/view/a.a Ljava/lang/Object;]
       [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Landroid/view/View;I)V
+    Access flags: 0x1
+      = public void a(android.view.View,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 14, locals = 3, stack = 4):
+      [0] getstatic #10
+        + Fieldref [android/support/v4/view/a.b Landroid/support/v4/view/d;]
+      [3] getstatic #11
+        + Fieldref [android/support/v4/view/a.c Ljava/lang/Object;]
+      [6] aload_1 v1
+      [7] iload_2 v2
+      [8] invokeinterface #18
+        + InterfaceMethodref [android/support/v4/view/d.a (Ljava/lang/Object;Landroid/view/View;I)V]
+      [13] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x1
+      = public void a(android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 14, locals = 3, stack = 4):
+      [0] getstatic #10
+        + Fieldref [android/support/v4/view/a.b Landroid/support/v4/view/d;]
+      [3] getstatic #11
+        + Fieldref [android/support/v4/view/a.c Ljava/lang/Object;]
+      [6] aload_1 v1
+      [7] aload_2 v2
+      [8] invokeinterface #24
+        + InterfaceMethodref [android/support/v4/view/d.d (Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+      [13] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       b(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z
+    Access flags: 0x1
+      = public boolean b(android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 14, locals = 3, stack = 4):
+      [0] getstatic #10
+        + Fieldref [android/support/v4/view/a.b Landroid/support/v4/view/d;]
+      [3] getstatic #11
+        + Fieldref [android/support/v4/view/a.c Ljava/lang/Object;]
+      [6] aload_1 v1
+      [7] aload_2 v2
+      [8] invokeinterface #20
+        + InterfaceMethodref [android/support/v4/view/d.a (Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+      [13] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       c(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x1
+      = public void c(android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 14, locals = 3, stack = 4):
+      [0] getstatic #10
+        + Fieldref [android/support/v4/view/a.b Landroid/support/v4/view/d;]
+      [3] getstatic #11
+        + Fieldref [android/support/v4/view/a.c Ljava/lang/Object;]
+      [6] aload_1 v1
+      [7] aload_2 v2
+      [8] invokeinterface #23
+        + InterfaceMethodref [android/support/v4/view/d.c (Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+      [13] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       d(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x1
+      = public void d(android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 14, locals = 3, stack = 4):
+      [0] getstatic #10
+        + Fieldref [android/support/v4/view/a.b Landroid/support/v4/view/d;]
+      [3] getstatic #11
+        + Fieldref [android/support/v4/view/a.c Ljava/lang/Object;]
+      [6] aload_1 v1
+      [7] aload_2 v2
+      [8] invokeinterface #22
+        + InterfaceMethodref [android/support/v4/view/d.b (Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+      [13] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Landroid/view/View;Landroid/support/v4/view/a/a;)V
+    Access flags: 0x1
+      = public void a(android.view.View,android.support.v4.view.a.a)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 14, locals = 3, stack = 4):
+      [0] getstatic #10
+        + Fieldref [android/support/v4/view/a.b Landroid/support/v4/view/d;]
+      [3] getstatic #11
+        + Fieldref [android/support/v4/view/a.c Ljava/lang/Object;]
+      [6] aload_1 v1
+      [7] aload_2 v2
+      [8] invokeinterface #19
+        + InterfaceMethodref [android/support/v4/view/d.a (Ljava/lang/Object;Landroid/view/View;Landroid/support/v4/view/a/a;)V]
+      [13] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z
+    Access flags: 0x1
+      = public boolean a(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 15, locals = 4, stack = 5):
+      [0] getstatic #10
+        + Fieldref [android/support/v4/view/a.b Landroid/support/v4/view/d;]
+      [3] getstatic #11
+        + Fieldref [android/support/v4/view/a.c Ljava/lang/Object;]
+      [6] aload_1 v1
+      [7] aload_2 v2
+      [8] aload_3 v3
+      [9] invokeinterface #21
+        + InterfaceMethodref [android/support/v4/view/d.a (Ljava/lang/Object;Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+      [14] ireturn
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
   - Method:       <clinit>()V
@@ -24691,42 +24884,68 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 25):
+Constant Pool (count = 51):
+  + Class [android/support/v4/view/a/a]
   + Class [android/support/v4/view/b]
   + Class [android/support/v4/view/c]
   + Class [android/support/v4/view/g]
   + Class [android/support/v4/view/h]
+  + Methodref [android/support/v4/view/a/a.a ()Ljava/lang/Object;]
   + Methodref [android/support/v4/view/c.<init> (Landroid/support/v4/view/b;Landroid/support/v4/view/a;)V]
   + Methodref [android/support/v4/view/g.<init> ()V]
   + Methodref [android/support/v4/view/h.a ()Ljava/lang/Object;]
   + Methodref [android/support/v4/view/h.a (Landroid/support/v4/view/j;)Ljava/lang/Object;]
+  + Methodref [android/support/v4/view/h.a (Ljava/lang/Object;Landroid/view/View;I)V]
+  + Methodref [android/support/v4/view/h.a (Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + Methodref [android/support/v4/view/h.a (Ljava/lang/Object;Landroid/view/View;Ljava/lang/Object;)V]
+  + Methodref [android/support/v4/view/h.a (Ljava/lang/Object;Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + Methodref [android/support/v4/view/h.b (Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + Methodref [android/support/v4/view/h.c (Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + Methodref [android/support/v4/view/h.d (Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
   + NameAndType [<init> ()V]
   + NameAndType [<init> (Landroid/support/v4/view/b;Landroid/support/v4/view/a;)V]
   + NameAndType [a ()Ljava/lang/Object;]
   + NameAndType [a (Landroid/support/v4/view/j;)Ljava/lang/Object;]
+  + NameAndType [a (Ljava/lang/Object;Landroid/view/View;I)V]
+  + NameAndType [a (Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + NameAndType [a (Ljava/lang/Object;Landroid/view/View;Ljava/lang/Object;)V]
+  + NameAndType [a (Ljava/lang/Object;Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + NameAndType [b (Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + NameAndType [c (Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + NameAndType [d (Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
   + Utf8 [()Ljava/lang/Object;]
   + Utf8 [()V]
   + Utf8 [(Landroid/support/v4/view/a;)Ljava/lang/Object;]
   + Utf8 [(Landroid/support/v4/view/b;Landroid/support/v4/view/a;)V]
   + Utf8 [(Landroid/support/v4/view/j;)Ljava/lang/Object;]
+  + Utf8 [(Ljava/lang/Object;Landroid/view/View;I)V]
+  + Utf8 [(Ljava/lang/Object;Landroid/view/View;Landroid/support/v4/view/a/a;)V]
+  + Utf8 [(Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + Utf8 [(Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + Utf8 [(Ljava/lang/Object;Landroid/view/View;Ljava/lang/Object;)V]
+  + Utf8 [(Ljava/lang/Object;Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
   + Utf8 [<init>]
   + Utf8 [Code]
   + Utf8 [a]
+  + Utf8 [android/support/v4/view/a/a]
   + Utf8 [android/support/v4/view/b]
   + Utf8 [android/support/v4/view/c]
   + Utf8 [android/support/v4/view/g]
   + Utf8 [android/support/v4/view/h]
+  + Utf8 [b]
+  + Utf8 [c]
+  + Utf8 [d]
 
 Fields (count = 0):
 
-Methods (count = 3):
+Methods (count = 10):
   - Method:       <init>()V
     Access flags: 0x0
       = b()
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] invokespecial #6
+      [1] invokespecial #8
         + Methodref [android/support/v4/view/g.<init> ()V]
       [4] return
       Code attribute exceptions (count = 0):
@@ -24736,7 +24955,7 @@ Methods (count = 3):
       = public java.lang.Object a()
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 4, locals = 1, stack = 1):
-      [0] invokestatic #7
+      [0] invokestatic #9
         + Methodref [android/support/v4/view/h.a ()Ljava/lang/Object;]
       [3] areturn
       Code attribute exceptions (count = 0):
@@ -24746,16 +24965,110 @@ Methods (count = 3):
       = public java.lang.Object a(android.support.v4.view.a)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 13, locals = 2, stack = 4):
-      [0] new #2
+      [0] new #3
         + Class [android/support/v4/view/c]
       [3] dup
       [4] aload_0 v0
       [5] aload_1 v1
-      [6] invokespecial #5
+      [6] invokespecial #7
         + Methodref [android/support/v4/view/c.<init> (Landroid/support/v4/view/b;Landroid/support/v4/view/a;)V]
-      [9] invokestatic #8
+      [9] invokestatic #10
         + Methodref [android/support/v4/view/h.a (Landroid/support/v4/view/j;)Ljava/lang/Object;]
       [12] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z
+    Access flags: 0x1
+      = public boolean a(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 7, locals = 4, stack = 3):
+      [0] aload_1 v1
+      [1] aload_2 v2
+      [2] aload_3 v3
+      [3] invokestatic #12
+        + Methodref [android/support/v4/view/h.a (Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+      [6] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       b(Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x1
+      = public void b(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 7, locals = 4, stack = 3):
+      [0] aload_1 v1
+      [1] aload_2 v2
+      [2] aload_3 v3
+      [3] invokestatic #15
+        + Methodref [android/support/v4/view/h.b (Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+      [6] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Ljava/lang/Object;Landroid/view/View;Landroid/support/v4/view/a/a;)V
+    Access flags: 0x1
+      = public void a(java.lang.Object,android.view.View,android.support.v4.view.a.a)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 4, stack = 3):
+      [0] aload_1 v1
+      [1] aload_2 v2
+      [2] aload_3 v3
+      [3] invokevirtual #6
+        + Methodref [android/support/v4/view/a/a.a ()Ljava/lang/Object;]
+      [6] invokestatic #13
+        + Methodref [android/support/v4/view/h.a (Ljava/lang/Object;Landroid/view/View;Ljava/lang/Object;)V]
+      [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       c(Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x1
+      = public void c(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 7, locals = 4, stack = 3):
+      [0] aload_1 v1
+      [1] aload_2 v2
+      [2] aload_3 v3
+      [3] invokestatic #16
+        + Methodref [android/support/v4/view/h.c (Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+      [6] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Ljava/lang/Object;Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z
+    Access flags: 0x1
+      = public boolean a(java.lang.Object,android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 9, locals = 5, stack = 4):
+      [0] aload_1 v1
+      [1] aload_2 v2
+      [2] aload_3 v3
+      [3] aload v4
+      [5] invokestatic #14
+        + Methodref [android/support/v4/view/h.a (Ljava/lang/Object;Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+      [8] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Ljava/lang/Object;Landroid/view/View;I)V
+    Access flags: 0x1
+      = public void a(java.lang.Object,android.view.View,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 7, locals = 4, stack = 3):
+      [0] aload_1 v1
+      [1] aload_2 v2
+      [2] iload_3 v3
+      [3] invokestatic #11
+        + Methodref [android/support/v4/view/h.a (Ljava/lang/Object;Landroid/view/View;I)V]
+      [6] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       d(Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x1
+      = public void d(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 7, locals = 4, stack = 3):
+      [0] aload_1 v1
+      [1] aload_2 v2
+      [2] aload_3 v3
+      [3] invokestatic #17
+        + Methodref [android/support/v4/view/h.d (Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+      [6] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
 
@@ -24772,26 +25085,55 @@ _____________________________________________________________________
 Interfaces (count = 1):
   + Class [android/support/v4/view/j]
 
-Constant Pool (count = 21):
+Constant Pool (count = 50):
+  + Class [android/support/v4/view/a]
+  + Class [android/support/v4/view/a/a]
   + Class [android/support/v4/view/c]
   + Class [android/support/v4/view/j]
   + Class [java/lang/Object]
   + Fieldref [android/support/v4/view/c.a Landroid/support/v4/view/a;]
   + Fieldref [android/support/v4/view/c.b Landroid/support/v4/view/b;]
+  + Methodref [android/support/v4/view/a.a (Landroid/view/View;I)V]
+  + Methodref [android/support/v4/view/a.a (Landroid/view/View;Landroid/support/v4/view/a/a;)V]
+  + Methodref [android/support/v4/view/a.a (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + Methodref [android/support/v4/view/a.a (Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + Methodref [android/support/v4/view/a.b (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + Methodref [android/support/v4/view/a.c (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + Methodref [android/support/v4/view/a.d (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + Methodref [android/support/v4/view/a/a.<init> (Ljava/lang/Object;)V]
   + Methodref [java/lang/Object.<init> ()V]
   + NameAndType [<init> ()V]
+  + NameAndType [<init> (Ljava/lang/Object;)V]
+  + NameAndType [a (Landroid/view/View;I)V]
+  + NameAndType [a (Landroid/view/View;Landroid/support/v4/view/a/a;)V]
+  + NameAndType [a (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + NameAndType [a (Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
   + NameAndType [a Landroid/support/v4/view/a;]
+  + NameAndType [b (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
   + NameAndType [b Landroid/support/v4/view/b;]
+  + NameAndType [c (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + NameAndType [d (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
   + Utf8 [()V]
   + Utf8 [(Landroid/support/v4/view/b;Landroid/support/v4/view/a;)V]
+  + Utf8 [(Landroid/view/View;I)V]
+  + Utf8 [(Landroid/view/View;Landroid/support/v4/view/a/a;)V]
+  + Utf8 [(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + Utf8 [(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + Utf8 [(Landroid/view/View;Ljava/lang/Object;)V]
+  + Utf8 [(Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + Utf8 [(Ljava/lang/Object;)V]
   + Utf8 [<init>]
   + Utf8 [Code]
   + Utf8 [Landroid/support/v4/view/a;]
   + Utf8 [Landroid/support/v4/view/b;]
   + Utf8 [a]
+  + Utf8 [android/support/v4/view/a]
+  + Utf8 [android/support/v4/view/a/a]
   + Utf8 [android/support/v4/view/c]
   + Utf8 [android/support/v4/view/j]
   + Utf8 [b]
+  + Utf8 [c]
+  + Utf8 [d]
   + Utf8 [java/lang/Object]
 
 Fields (count = 2):
@@ -24802,7 +25144,7 @@ Fields (count = 2):
     Access flags: 0x1010
       = final synthetic android.support.v4.view.b b
 
-Methods (count = 1):
+Methods (count = 8):
   - Method:       <init>(Landroid/support/v4/view/b;Landroid/support/v4/view/a;)V
     Access flags: 0x0
       = c(android.support.v4.view.b,android.support.v4.view.a)
@@ -24810,16 +25152,127 @@ Methods (count = 1):
     + Code attribute instructions (code length = 15, locals = 3, stack = 2):
       [0] aload_0 v0
       [1] aload_1 v1
-      [2] putfield #5
+      [2] putfield #7
         + Fieldref [android/support/v4/view/c.b Landroid/support/v4/view/b;]
       [5] aload_0 v0
       [6] aload_2 v2
-      [7] putfield #4
+      [7] putfield #6
         + Fieldref [android/support/v4/view/c.a Landroid/support/v4/view/a;]
       [10] aload_0 v0
-      [11] invokespecial #6
+      [11] invokespecial #16
         + Methodref [java/lang/Object.<init> ()V]
       [14] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z
+    Access flags: 0x1
+      = public boolean a(android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] getfield #6
+        + Fieldref [android/support/v4/view/c.a Landroid/support/v4/view/a;]
+      [4] aload_1 v1
+      [5] aload_2 v2
+      [6] invokevirtual #12
+        + Methodref [android/support/v4/view/a.b (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+      [9] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       b(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x1
+      = public void b(android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] getfield #6
+        + Fieldref [android/support/v4/view/c.a Landroid/support/v4/view/a;]
+      [4] aload_1 v1
+      [5] aload_2 v2
+      [6] invokevirtual #14
+        + Methodref [android/support/v4/view/a.d (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+      [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Landroid/view/View;Ljava/lang/Object;)V
+    Access flags: 0x1
+      = public void a(android.view.View,java.lang.Object)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 17, locals = 3, stack = 5):
+      [0] aload_0 v0
+      [1] getfield #6
+        + Fieldref [android/support/v4/view/c.a Landroid/support/v4/view/a;]
+      [4] aload_1 v1
+      [5] new #2
+        + Class [android/support/v4/view/a/a]
+      [8] dup
+      [9] aload_2 v2
+      [10] invokespecial #15
+        + Methodref [android/support/v4/view/a/a.<init> (Ljava/lang/Object;)V]
+      [13] invokevirtual #9
+        + Methodref [android/support/v4/view/a.a (Landroid/view/View;Landroid/support/v4/view/a/a;)V]
+      [16] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       c(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x1
+      = public void c(android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] getfield #6
+        + Fieldref [android/support/v4/view/c.a Landroid/support/v4/view/a;]
+      [4] aload_1 v1
+      [5] aload_2 v2
+      [6] invokevirtual #13
+        + Methodref [android/support/v4/view/a.c (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+      [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z
+    Access flags: 0x1
+      = public boolean a(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 11, locals = 4, stack = 4):
+      [0] aload_0 v0
+      [1] getfield #6
+        + Fieldref [android/support/v4/view/c.a Landroid/support/v4/view/a;]
+      [4] aload_1 v1
+      [5] aload_2 v2
+      [6] aload_3 v3
+      [7] invokevirtual #11
+        + Methodref [android/support/v4/view/a.a (Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+      [10] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Landroid/view/View;I)V
+    Access flags: 0x1
+      = public void a(android.view.View,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] getfield #6
+        + Fieldref [android/support/v4/view/c.a Landroid/support/v4/view/a;]
+      [4] aload_1 v1
+      [5] iload_2 v2
+      [6] invokevirtual #8
+        + Methodref [android/support/v4/view/a.a (Landroid/view/View;I)V]
+      [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       d(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x1
+      = public void d(android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] getfield #6
+        + Fieldref [android/support/v4/view/c.a Landroid/support/v4/view/a;]
+      [4] aload_1 v1
+      [5] aload_2 v2
+      [6] invokevirtual #10
+        + Methodref [android/support/v4/view/a.a (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+      [9] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
 
@@ -24835,24 +25288,53 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 8):
+Constant Pool (count = 16):
   + Class [android/support/v4/view/d]
   + Class [java/lang/Object]
   + Utf8 [()Ljava/lang/Object;]
   + Utf8 [(Landroid/support/v4/view/a;)Ljava/lang/Object;]
+  + Utf8 [(Ljava/lang/Object;Landroid/view/View;I)V]
+  + Utf8 [(Ljava/lang/Object;Landroid/view/View;Landroid/support/v4/view/a/a;)V]
+  + Utf8 [(Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + Utf8 [(Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + Utf8 [(Ljava/lang/Object;Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
   + Utf8 [a]
   + Utf8 [android/support/v4/view/d]
+  + Utf8 [b]
+  + Utf8 [c]
+  + Utf8 [d]
   + Utf8 [java/lang/Object]
 
 Fields (count = 0):
 
-Methods (count = 2):
+Methods (count = 9):
   + Method:       a()Ljava/lang/Object;
     Access flags: 0x401
       = public abstract java.lang.Object a()
   + Method:       a(Landroid/support/v4/view/a;)Ljava/lang/Object;
     Access flags: 0x401
       = public abstract java.lang.Object a(android.support.v4.view.a)
+  + Method:       a(Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z
+    Access flags: 0x401
+      = public abstract boolean a(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent)
+  + Method:       b(Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x401
+      = public abstract void b(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent)
+  + Method:       a(Ljava/lang/Object;Landroid/view/View;Landroid/support/v4/view/a/a;)V
+    Access flags: 0x401
+      = public abstract void a(java.lang.Object,android.view.View,android.support.v4.view.a.a)
+  + Method:       c(Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x401
+      = public abstract void c(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent)
+  + Method:       a(Ljava/lang/Object;Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z
+    Access flags: 0x401
+      = public abstract boolean a(java.lang.Object,android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent)
+  + Method:       a(Ljava/lang/Object;Landroid/view/View;I)V
+    Access flags: 0x401
+      = public abstract void a(java.lang.Object,android.view.View,int)
+  + Method:       d(Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x401
+      = public abstract void d(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent)
 
 Class file attributes (count = 0):
 
@@ -24934,26 +25416,55 @@ _____________________________________________________________________
 Interfaces (count = 1):
   + Class [android/support/v4/view/m]
 
-Constant Pool (count = 21):
+Constant Pool (count = 50):
+  + Class [android/support/v4/view/a]
+  + Class [android/support/v4/view/a/a]
   + Class [android/support/v4/view/f]
   + Class [android/support/v4/view/m]
   + Class [java/lang/Object]
   + Fieldref [android/support/v4/view/f.a Landroid/support/v4/view/a;]
   + Fieldref [android/support/v4/view/f.b Landroid/support/v4/view/e;]
+  + Methodref [android/support/v4/view/a.a (Landroid/view/View;I)V]
+  + Methodref [android/support/v4/view/a.a (Landroid/view/View;Landroid/support/v4/view/a/a;)V]
+  + Methodref [android/support/v4/view/a.a (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + Methodref [android/support/v4/view/a.a (Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + Methodref [android/support/v4/view/a.b (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + Methodref [android/support/v4/view/a.c (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + Methodref [android/support/v4/view/a.d (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + Methodref [android/support/v4/view/a/a.<init> (Ljava/lang/Object;)V]
   + Methodref [java/lang/Object.<init> ()V]
   + NameAndType [<init> ()V]
+  + NameAndType [<init> (Ljava/lang/Object;)V]
+  + NameAndType [a (Landroid/view/View;I)V]
+  + NameAndType [a (Landroid/view/View;Landroid/support/v4/view/a/a;)V]
+  + NameAndType [a (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + NameAndType [a (Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
   + NameAndType [a Landroid/support/v4/view/a;]
+  + NameAndType [b (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
   + NameAndType [b Landroid/support/v4/view/e;]
+  + NameAndType [c (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + NameAndType [d (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
   + Utf8 [()V]
   + Utf8 [(Landroid/support/v4/view/e;Landroid/support/v4/view/a;)V]
+  + Utf8 [(Landroid/view/View;I)V]
+  + Utf8 [(Landroid/view/View;Landroid/support/v4/view/a/a;)V]
+  + Utf8 [(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + Utf8 [(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + Utf8 [(Landroid/view/View;Ljava/lang/Object;)V]
+  + Utf8 [(Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + Utf8 [(Ljava/lang/Object;)V]
   + Utf8 [<init>]
   + Utf8 [Code]
   + Utf8 [Landroid/support/v4/view/a;]
   + Utf8 [Landroid/support/v4/view/e;]
   + Utf8 [a]
+  + Utf8 [android/support/v4/view/a]
+  + Utf8 [android/support/v4/view/a/a]
   + Utf8 [android/support/v4/view/f]
   + Utf8 [android/support/v4/view/m]
   + Utf8 [b]
+  + Utf8 [c]
+  + Utf8 [d]
   + Utf8 [java/lang/Object]
 
 Fields (count = 2):
@@ -24964,7 +25475,7 @@ Fields (count = 2):
     Access flags: 0x1010
       = final synthetic android.support.v4.view.e b
 
-Methods (count = 1):
+Methods (count = 8):
   - Method:       <init>(Landroid/support/v4/view/e;Landroid/support/v4/view/a;)V
     Access flags: 0x0
       = f(android.support.v4.view.e,android.support.v4.view.a)
@@ -24972,16 +25483,127 @@ Methods (count = 1):
     + Code attribute instructions (code length = 15, locals = 3, stack = 2):
       [0] aload_0 v0
       [1] aload_1 v1
-      [2] putfield #5
+      [2] putfield #7
         + Fieldref [android/support/v4/view/f.b Landroid/support/v4/view/e;]
       [5] aload_0 v0
       [6] aload_2 v2
-      [7] putfield #4
+      [7] putfield #6
         + Fieldref [android/support/v4/view/f.a Landroid/support/v4/view/a;]
       [10] aload_0 v0
-      [11] invokespecial #6
+      [11] invokespecial #16
         + Methodref [java/lang/Object.<init> ()V]
       [14] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z
+    Access flags: 0x1
+      = public boolean a(android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] getfield #6
+        + Fieldref [android/support/v4/view/f.a Landroid/support/v4/view/a;]
+      [4] aload_1 v1
+      [5] aload_2 v2
+      [6] invokevirtual #12
+        + Methodref [android/support/v4/view/a.b (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+      [9] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       b(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x1
+      = public void b(android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] getfield #6
+        + Fieldref [android/support/v4/view/f.a Landroid/support/v4/view/a;]
+      [4] aload_1 v1
+      [5] aload_2 v2
+      [6] invokevirtual #14
+        + Methodref [android/support/v4/view/a.d (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+      [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Landroid/view/View;Ljava/lang/Object;)V
+    Access flags: 0x1
+      = public void a(android.view.View,java.lang.Object)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 17, locals = 3, stack = 5):
+      [0] aload_0 v0
+      [1] getfield #6
+        + Fieldref [android/support/v4/view/f.a Landroid/support/v4/view/a;]
+      [4] aload_1 v1
+      [5] new #2
+        + Class [android/support/v4/view/a/a]
+      [8] dup
+      [9] aload_2 v2
+      [10] invokespecial #15
+        + Methodref [android/support/v4/view/a/a.<init> (Ljava/lang/Object;)V]
+      [13] invokevirtual #9
+        + Methodref [android/support/v4/view/a.a (Landroid/view/View;Landroid/support/v4/view/a/a;)V]
+      [16] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       c(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x1
+      = public void c(android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] getfield #6
+        + Fieldref [android/support/v4/view/f.a Landroid/support/v4/view/a;]
+      [4] aload_1 v1
+      [5] aload_2 v2
+      [6] invokevirtual #13
+        + Methodref [android/support/v4/view/a.c (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+      [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z
+    Access flags: 0x1
+      = public boolean a(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 11, locals = 4, stack = 4):
+      [0] aload_0 v0
+      [1] getfield #6
+        + Fieldref [android/support/v4/view/f.a Landroid/support/v4/view/a;]
+      [4] aload_1 v1
+      [5] aload_2 v2
+      [6] aload_3 v3
+      [7] invokevirtual #11
+        + Methodref [android/support/v4/view/a.a (Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+      [10] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Landroid/view/View;I)V
+    Access flags: 0x1
+      = public void a(android.view.View,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] getfield #6
+        + Fieldref [android/support/v4/view/f.a Landroid/support/v4/view/a;]
+      [4] aload_1 v1
+      [5] iload_2 v2
+      [6] invokevirtual #8
+        + Methodref [android/support/v4/view/a.a (Landroid/view/View;I)V]
+      [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       d(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x1
+      = public void d(android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] getfield #6
+        + Fieldref [android/support/v4/view/f.a Landroid/support/v4/view/a;]
+      [4] aload_1 v1
+      [5] aload_2 v2
+      [6] invokevirtual #10
+        + Methodref [android/support/v4/view/a.a (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+      [9] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
 
@@ -24998,7 +25620,7 @@ _____________________________________________________________________
 Interfaces (count = 1):
   + Class [android/support/v4/view/d]
 
-Constant Pool (count = 15):
+Constant Pool (count = 23):
   + Class [android/support/v4/view/d]
   + Class [android/support/v4/view/g]
   + Class [java/lang/Object]
@@ -25007,16 +25629,24 @@ Constant Pool (count = 15):
   + Utf8 [()Ljava/lang/Object;]
   + Utf8 [()V]
   + Utf8 [(Landroid/support/v4/view/a;)Ljava/lang/Object;]
+  + Utf8 [(Ljava/lang/Object;Landroid/view/View;I)V]
+  + Utf8 [(Ljava/lang/Object;Landroid/view/View;Landroid/support/v4/view/a/a;)V]
+  + Utf8 [(Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + Utf8 [(Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + Utf8 [(Ljava/lang/Object;Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
   + Utf8 [<init>]
   + Utf8 [Code]
   + Utf8 [a]
   + Utf8 [android/support/v4/view/d]
   + Utf8 [android/support/v4/view/g]
+  + Utf8 [b]
+  + Utf8 [c]
+  + Utf8 [d]
   + Utf8 [java/lang/Object]
 
 Fields (count = 0):
 
-Methods (count = 3):
+Methods (count = 10):
   - Method:       <init>()V
     Access flags: 0x0
       = g()
@@ -25046,6 +25676,64 @@ Methods (count = 3):
       [1] areturn
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
+  + Method:       a(Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z
+    Access flags: 0x1
+      = public boolean a(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 2, locals = 4, stack = 1):
+      [0] iconst_0
+      [1] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       b(Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x1
+      = public void b(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 1, locals = 4, stack = 0):
+      [0] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Ljava/lang/Object;Landroid/view/View;Landroid/support/v4/view/a/a;)V
+    Access flags: 0x1
+      = public void a(java.lang.Object,android.view.View,android.support.v4.view.a.a)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 1, locals = 4, stack = 0):
+      [0] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       c(Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x1
+      = public void c(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 1, locals = 4, stack = 0):
+      [0] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Ljava/lang/Object;Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z
+    Access flags: 0x1
+      = public boolean a(java.lang.Object,android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 2, locals = 5, stack = 1):
+      [0] iconst_1
+      [1] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Ljava/lang/Object;Landroid/view/View;I)V
+    Access flags: 0x1
+      = public void a(java.lang.Object,android.view.View,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 1, locals = 4, stack = 0):
+      [0] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       d(Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x1
+      = public void d(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 1, locals = 4, stack = 0):
+      [0] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
 
 Class file attributes (count = 0):
 
@@ -25059,30 +25747,66 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 20):
+Constant Pool (count = 56):
   + Class [android/support/v4/view/h]
   + Class [android/support/v4/view/i]
   + Class [android/view/View$AccessibilityDelegate]
+  + Class [android/view/accessibility/AccessibilityNodeInfo]
   + Class [java/lang/Object]
   + Methodref [android/support/v4/view/i.<init> (Landroid/support/v4/view/j;)V]
   + Methodref [android/view/View$AccessibilityDelegate.<init> ()V]
+  + Methodref [android/view/View$AccessibilityDelegate.dispatchPopulateAccessibilityEvent (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + Methodref [android/view/View$AccessibilityDelegate.onInitializeAccessibilityEvent (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + Methodref [android/view/View$AccessibilityDelegate.onInitializeAccessibilityNodeInfo (Landroid/view/View;Landroid/view/accessibility/AccessibilityNodeInfo;)V]
+  + Methodref [android/view/View$AccessibilityDelegate.onPopulateAccessibilityEvent (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + Methodref [android/view/View$AccessibilityDelegate.onRequestSendAccessibilityEvent (Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + Methodref [android/view/View$AccessibilityDelegate.sendAccessibilityEvent (Landroid/view/View;I)V]
+  + Methodref [android/view/View$AccessibilityDelegate.sendAccessibilityEventUnchecked (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
   + NameAndType [<init> ()V]
   + NameAndType [<init> (Landroid/support/v4/view/j;)V]
+  + NameAndType [dispatchPopulateAccessibilityEvent (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + NameAndType [onInitializeAccessibilityEvent (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + NameAndType [onInitializeAccessibilityNodeInfo (Landroid/view/View;Landroid/view/accessibility/AccessibilityNodeInfo;)V]
+  + NameAndType [onPopulateAccessibilityEvent (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + NameAndType [onRequestSendAccessibilityEvent (Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + NameAndType [sendAccessibilityEvent (Landroid/view/View;I)V]
+  + NameAndType [sendAccessibilityEventUnchecked (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
   + Utf8 [()Ljava/lang/Object;]
   + Utf8 [()V]
   + Utf8 [(Landroid/support/v4/view/j;)Ljava/lang/Object;]
   + Utf8 [(Landroid/support/v4/view/j;)V]
+  + Utf8 [(Landroid/view/View;I)V]
+  + Utf8 [(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + Utf8 [(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + Utf8 [(Landroid/view/View;Landroid/view/accessibility/AccessibilityNodeInfo;)V]
+  + Utf8 [(Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + Utf8 [(Ljava/lang/Object;Landroid/view/View;I)V]
+  + Utf8 [(Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + Utf8 [(Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + Utf8 [(Ljava/lang/Object;Landroid/view/View;Ljava/lang/Object;)V]
+  + Utf8 [(Ljava/lang/Object;Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
   + Utf8 [<init>]
   + Utf8 [Code]
   + Utf8 [a]
   + Utf8 [android/support/v4/view/h]
   + Utf8 [android/support/v4/view/i]
   + Utf8 [android/view/View$AccessibilityDelegate]
+  + Utf8 [android/view/accessibility/AccessibilityNodeInfo]
+  + Utf8 [b]
+  + Utf8 [c]
+  + Utf8 [d]
+  + Utf8 [dispatchPopulateAccessibilityEvent]
   + Utf8 [java/lang/Object]
+  + Utf8 [onInitializeAccessibilityEvent]
+  + Utf8 [onInitializeAccessibilityNodeInfo]
+  + Utf8 [onPopulateAccessibilityEvent]
+  + Utf8 [onRequestSendAccessibilityEvent]
+  + Utf8 [sendAccessibilityEvent]
+  + Utf8 [sendAccessibilityEventUnchecked]
 
 Fields (count = 0):
 
-Methods (count = 2):
+Methods (count = 9):
   + Method:       a()Ljava/lang/Object;
     Access flags: 0x9
       = public static java.lang.Object a()
@@ -25091,7 +25815,7 @@ Methods (count = 2):
       [0] new #3
         + Class [android/view/View$AccessibilityDelegate]
       [3] dup
-      [4] invokespecial #6
+      [4] invokespecial #7
         + Methodref [android/view/View$AccessibilityDelegate.<init> ()V]
       [7] areturn
       Code attribute exceptions (count = 0):
@@ -25105,9 +25829,117 @@ Methods (count = 2):
         + Class [android/support/v4/view/i]
       [3] dup
       [4] aload_0 v0
-      [5] invokespecial #5
+      [5] invokespecial #6
         + Methodref [android/support/v4/view/i.<init> (Landroid/support/v4/view/j;)V]
       [8] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z
+    Access flags: 0x9
+      = public static boolean a(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] checkcast #3
+        + Class [android/view/View$AccessibilityDelegate]
+      [4] aload_1 v1
+      [5] aload_2 v2
+      [6] invokevirtual #8
+        + Methodref [android/view/View$AccessibilityDelegate.dispatchPopulateAccessibilityEvent (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+      [9] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       b(Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x9
+      = public static void b(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] checkcast #3
+        + Class [android/view/View$AccessibilityDelegate]
+      [4] aload_1 v1
+      [5] aload_2 v2
+      [6] invokevirtual #9
+        + Methodref [android/view/View$AccessibilityDelegate.onInitializeAccessibilityEvent (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+      [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Ljava/lang/Object;Landroid/view/View;Ljava/lang/Object;)V
+    Access flags: 0x9
+      = public static void a(java.lang.Object,android.view.View,java.lang.Object)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 13, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] checkcast #3
+        + Class [android/view/View$AccessibilityDelegate]
+      [4] aload_1 v1
+      [5] aload_2 v2
+      [6] checkcast #4
+        + Class [android/view/accessibility/AccessibilityNodeInfo]
+      [9] invokevirtual #10
+        + Methodref [android/view/View$AccessibilityDelegate.onInitializeAccessibilityNodeInfo (Landroid/view/View;Landroid/view/accessibility/AccessibilityNodeInfo;)V]
+      [12] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       c(Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x9
+      = public static void c(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] checkcast #3
+        + Class [android/view/View$AccessibilityDelegate]
+      [4] aload_1 v1
+      [5] aload_2 v2
+      [6] invokevirtual #11
+        + Methodref [android/view/View$AccessibilityDelegate.onPopulateAccessibilityEvent (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+      [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Ljava/lang/Object;Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z
+    Access flags: 0x9
+      = public static boolean a(java.lang.Object,android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 11, locals = 4, stack = 4):
+      [0] aload_0 v0
+      [1] checkcast #3
+        + Class [android/view/View$AccessibilityDelegate]
+      [4] aload_1 v1
+      [5] aload_2 v2
+      [6] aload_3 v3
+      [7] invokevirtual #12
+        + Methodref [android/view/View$AccessibilityDelegate.onRequestSendAccessibilityEvent (Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+      [10] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Ljava/lang/Object;Landroid/view/View;I)V
+    Access flags: 0x9
+      = public static void a(java.lang.Object,android.view.View,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] checkcast #3
+        + Class [android/view/View$AccessibilityDelegate]
+      [4] aload_1 v1
+      [5] iload_2 v2
+      [6] invokevirtual #13
+        + Methodref [android/view/View$AccessibilityDelegate.sendAccessibilityEvent (Landroid/view/View;I)V]
+      [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       d(Ljava/lang/Object;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x9
+      = public static void d(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] checkcast #3
+        + Class [android/view/View$AccessibilityDelegate]
+      [4] aload_1 v1
+      [5] aload_2 v2
+      [6] invokevirtual #14
+        + Methodref [android/view/View$AccessibilityDelegate.sendAccessibilityEventUnchecked (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+      [9] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
 
@@ -25123,28 +25955,60 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 15):
+Constant Pool (count = 47):
   + Class [android/support/v4/view/i]
+  + Class [android/support/v4/view/j]
   + Class [android/view/View$AccessibilityDelegate]
   + Fieldref [android/support/v4/view/i.a Landroid/support/v4/view/j;]
   + Methodref [android/view/View$AccessibilityDelegate.<init> ()V]
+  + InterfaceMethodref [android/support/v4/view/j.a (Landroid/view/View;I)V]
+  + InterfaceMethodref [android/support/v4/view/j.a (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + InterfaceMethodref [android/support/v4/view/j.a (Landroid/view/View;Ljava/lang/Object;)V]
+  + InterfaceMethodref [android/support/v4/view/j.a (Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + InterfaceMethodref [android/support/v4/view/j.b (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + InterfaceMethodref [android/support/v4/view/j.c (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + InterfaceMethodref [android/support/v4/view/j.d (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
   + NameAndType [<init> ()V]
+  + NameAndType [a (Landroid/view/View;I)V]
+  + NameAndType [a (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + NameAndType [a (Landroid/view/View;Ljava/lang/Object;)V]
+  + NameAndType [a (Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
   + NameAndType [a Landroid/support/v4/view/j;]
+  + NameAndType [b (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + NameAndType [c (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + NameAndType [d (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
   + Utf8 [()V]
   + Utf8 [(Landroid/support/v4/view/j;)V]
+  + Utf8 [(Landroid/view/View;I)V]
+  + Utf8 [(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + Utf8 [(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + Utf8 [(Landroid/view/View;Landroid/view/accessibility/AccessibilityNodeInfo;)V]
+  + Utf8 [(Landroid/view/View;Ljava/lang/Object;)V]
+  + Utf8 [(Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
   + Utf8 [<init>]
   + Utf8 [Code]
   + Utf8 [Landroid/support/v4/view/j;]
   + Utf8 [a]
   + Utf8 [android/support/v4/view/i]
+  + Utf8 [android/support/v4/view/j]
   + Utf8 [android/view/View$AccessibilityDelegate]
+  + Utf8 [b]
+  + Utf8 [c]
+  + Utf8 [d]
+  + Utf8 [dispatchPopulateAccessibilityEvent]
+  + Utf8 [onInitializeAccessibilityEvent]
+  + Utf8 [onInitializeAccessibilityNodeInfo]
+  + Utf8 [onPopulateAccessibilityEvent]
+  + Utf8 [onRequestSendAccessibilityEvent]
+  + Utf8 [sendAccessibilityEvent]
+  + Utf8 [sendAccessibilityEventUnchecked]
 
 Fields (count = 1):
   + Field:        a Landroid/support/v4/view/j;
     Access flags: 0x1010
       = final synthetic android.support.v4.view.j a
 
-Methods (count = 1):
+Methods (count = 8):
   - Method:       <init>(Landroid/support/v4/view/j;)V
     Access flags: 0x0
       = i(android.support.v4.view.j)
@@ -25152,12 +26016,118 @@ Methods (count = 1):
     + Code attribute instructions (code length = 10, locals = 2, stack = 2):
       [0] aload_0 v0
       [1] aload_1 v1
-      [2] putfield #3
+      [2] putfield #4
         + Fieldref [android/support/v4/view/i.a Landroid/support/v4/view/j;]
       [5] aload_0 v0
-      [6] invokespecial #4
+      [6] invokespecial #5
         + Methodref [android/view/View$AccessibilityDelegate.<init> ()V]
       [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       dispatchPopulateAccessibilityEvent(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z
+    Access flags: 0x1
+      = public boolean dispatchPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 12, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] getfield #4
+        + Fieldref [android/support/v4/view/i.a Landroid/support/v4/view/j;]
+      [4] aload_1 v1
+      [5] aload_2 v2
+      [6] invokeinterface #7
+        + InterfaceMethodref [android/support/v4/view/j.a (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+      [11] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onInitializeAccessibilityEvent(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x1
+      = public void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 12, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] getfield #4
+        + Fieldref [android/support/v4/view/i.a Landroid/support/v4/view/j;]
+      [4] aload_1 v1
+      [5] aload_2 v2
+      [6] invokeinterface #10
+        + InterfaceMethodref [android/support/v4/view/j.b (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+      [11] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onInitializeAccessibilityNodeInfo(Landroid/view/View;Landroid/view/accessibility/AccessibilityNodeInfo;)V
+    Access flags: 0x1
+      = public void onInitializeAccessibilityNodeInfo(android.view.View,android.view.accessibility.AccessibilityNodeInfo)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 12, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] getfield #4
+        + Fieldref [android/support/v4/view/i.a Landroid/support/v4/view/j;]
+      [4] aload_1 v1
+      [5] aload_2 v2
+      [6] invokeinterface #8
+        + InterfaceMethodref [android/support/v4/view/j.a (Landroid/view/View;Ljava/lang/Object;)V]
+      [11] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onPopulateAccessibilityEvent(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x1
+      = public void onPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 12, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] getfield #4
+        + Fieldref [android/support/v4/view/i.a Landroid/support/v4/view/j;]
+      [4] aload_1 v1
+      [5] aload_2 v2
+      [6] invokeinterface #11
+        + InterfaceMethodref [android/support/v4/view/j.c (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+      [11] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onRequestSendAccessibilityEvent(Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z
+    Access flags: 0x1
+      = public boolean onRequestSendAccessibilityEvent(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 13, locals = 4, stack = 4):
+      [0] aload_0 v0
+      [1] getfield #4
+        + Fieldref [android/support/v4/view/i.a Landroid/support/v4/view/j;]
+      [4] aload_1 v1
+      [5] aload_2 v2
+      [6] aload_3 v3
+      [7] invokeinterface #9
+        + InterfaceMethodref [android/support/v4/view/j.a (Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+      [12] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       sendAccessibilityEvent(Landroid/view/View;I)V
+    Access flags: 0x1
+      = public void sendAccessibilityEvent(android.view.View,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 12, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] getfield #4
+        + Fieldref [android/support/v4/view/i.a Landroid/support/v4/view/j;]
+      [4] aload_1 v1
+      [5] iload_2 v2
+      [6] invokeinterface #6
+        + InterfaceMethodref [android/support/v4/view/j.a (Landroid/view/View;I)V]
+      [11] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       sendAccessibilityEventUnchecked(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x1
+      = public void sendAccessibilityEventUnchecked(android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 12, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] getfield #4
+        + Fieldref [android/support/v4/view/i.a Landroid/support/v4/view/j;]
+      [4] aload_1 v1
+      [5] aload_2 v2
+      [6] invokeinterface #12
+        + InterfaceMethodref [android/support/v4/view/j.d (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+      [11] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
 
@@ -25173,15 +26143,45 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 5):
+Constant Pool (count = 14):
   + Class [android/support/v4/view/j]
   + Class [java/lang/Object]
+  + Utf8 [(Landroid/view/View;I)V]
+  + Utf8 [(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + Utf8 [(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + Utf8 [(Landroid/view/View;Ljava/lang/Object;)V]
+  + Utf8 [(Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + Utf8 [a]
   + Utf8 [android/support/v4/view/j]
+  + Utf8 [b]
+  + Utf8 [c]
+  + Utf8 [d]
   + Utf8 [java/lang/Object]
 
 Fields (count = 0):
 
-Methods (count = 0):
+Methods (count = 7):
+  + Method:       a(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z
+    Access flags: 0x401
+      = public abstract boolean a(android.view.View,android.view.accessibility.AccessibilityEvent)
+  + Method:       b(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x401
+      = public abstract void b(android.view.View,android.view.accessibility.AccessibilityEvent)
+  + Method:       a(Landroid/view/View;Ljava/lang/Object;)V
+    Access flags: 0x401
+      = public abstract void a(android.view.View,java.lang.Object)
+  + Method:       c(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x401
+      = public abstract void c(android.view.View,android.view.accessibility.AccessibilityEvent)
+  + Method:       a(Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z
+    Access flags: 0x401
+      = public abstract boolean a(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent)
+  + Method:       a(Landroid/view/View;I)V
+    Access flags: 0x401
+      = public abstract void a(android.view.View,int)
+  + Method:       d(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x401
+      = public abstract void d(android.view.View,android.view.accessibility.AccessibilityEvent)
 
 Class file attributes (count = 0):
 
@@ -25240,28 +26240,60 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 15):
+Constant Pool (count = 47):
   + Class [android/support/v4/view/l]
+  + Class [android/support/v4/view/m]
   + Class [android/view/View$AccessibilityDelegate]
   + Fieldref [android/support/v4/view/l.a Landroid/support/v4/view/m;]
   + Methodref [android/view/View$AccessibilityDelegate.<init> ()V]
+  + InterfaceMethodref [android/support/v4/view/m.a (Landroid/view/View;I)V]
+  + InterfaceMethodref [android/support/v4/view/m.a (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + InterfaceMethodref [android/support/v4/view/m.a (Landroid/view/View;Ljava/lang/Object;)V]
+  + InterfaceMethodref [android/support/v4/view/m.a (Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + InterfaceMethodref [android/support/v4/view/m.b (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + InterfaceMethodref [android/support/v4/view/m.c (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + InterfaceMethodref [android/support/v4/view/m.d (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
   + NameAndType [<init> ()V]
+  + NameAndType [a (Landroid/view/View;I)V]
+  + NameAndType [a (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + NameAndType [a (Landroid/view/View;Ljava/lang/Object;)V]
+  + NameAndType [a (Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
   + NameAndType [a Landroid/support/v4/view/m;]
+  + NameAndType [b (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + NameAndType [c (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + NameAndType [d (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
   + Utf8 [()V]
   + Utf8 [(Landroid/support/v4/view/m;)V]
+  + Utf8 [(Landroid/view/View;I)V]
+  + Utf8 [(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + Utf8 [(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + Utf8 [(Landroid/view/View;Landroid/view/accessibility/AccessibilityNodeInfo;)V]
+  + Utf8 [(Landroid/view/View;Ljava/lang/Object;)V]
+  + Utf8 [(Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
   + Utf8 [<init>]
   + Utf8 [Code]
   + Utf8 [Landroid/support/v4/view/m;]
   + Utf8 [a]
   + Utf8 [android/support/v4/view/l]
+  + Utf8 [android/support/v4/view/m]
   + Utf8 [android/view/View$AccessibilityDelegate]
+  + Utf8 [b]
+  + Utf8 [c]
+  + Utf8 [d]
+  + Utf8 [dispatchPopulateAccessibilityEvent]
+  + Utf8 [onInitializeAccessibilityEvent]
+  + Utf8 [onInitializeAccessibilityNodeInfo]
+  + Utf8 [onPopulateAccessibilityEvent]
+  + Utf8 [onRequestSendAccessibilityEvent]
+  + Utf8 [sendAccessibilityEvent]
+  + Utf8 [sendAccessibilityEventUnchecked]
 
 Fields (count = 1):
   + Field:        a Landroid/support/v4/view/m;
     Access flags: 0x1010
       = final synthetic android.support.v4.view.m a
 
-Methods (count = 1):
+Methods (count = 8):
   - Method:       <init>(Landroid/support/v4/view/m;)V
     Access flags: 0x0
       = l(android.support.v4.view.m)
@@ -25269,12 +26301,118 @@ Methods (count = 1):
     + Code attribute instructions (code length = 10, locals = 2, stack = 2):
       [0] aload_0 v0
       [1] aload_1 v1
-      [2] putfield #3
+      [2] putfield #4
         + Fieldref [android/support/v4/view/l.a Landroid/support/v4/view/m;]
       [5] aload_0 v0
-      [6] invokespecial #4
+      [6] invokespecial #5
         + Methodref [android/view/View$AccessibilityDelegate.<init> ()V]
       [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       dispatchPopulateAccessibilityEvent(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z
+    Access flags: 0x1
+      = public boolean dispatchPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 12, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] getfield #4
+        + Fieldref [android/support/v4/view/l.a Landroid/support/v4/view/m;]
+      [4] aload_1 v1
+      [5] aload_2 v2
+      [6] invokeinterface #7
+        + InterfaceMethodref [android/support/v4/view/m.a (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+      [11] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onInitializeAccessibilityEvent(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x1
+      = public void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 12, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] getfield #4
+        + Fieldref [android/support/v4/view/l.a Landroid/support/v4/view/m;]
+      [4] aload_1 v1
+      [5] aload_2 v2
+      [6] invokeinterface #10
+        + InterfaceMethodref [android/support/v4/view/m.b (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+      [11] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onInitializeAccessibilityNodeInfo(Landroid/view/View;Landroid/view/accessibility/AccessibilityNodeInfo;)V
+    Access flags: 0x1
+      = public void onInitializeAccessibilityNodeInfo(android.view.View,android.view.accessibility.AccessibilityNodeInfo)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 12, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] getfield #4
+        + Fieldref [android/support/v4/view/l.a Landroid/support/v4/view/m;]
+      [4] aload_1 v1
+      [5] aload_2 v2
+      [6] invokeinterface #8
+        + InterfaceMethodref [android/support/v4/view/m.a (Landroid/view/View;Ljava/lang/Object;)V]
+      [11] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onPopulateAccessibilityEvent(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x1
+      = public void onPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 12, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] getfield #4
+        + Fieldref [android/support/v4/view/l.a Landroid/support/v4/view/m;]
+      [4] aload_1 v1
+      [5] aload_2 v2
+      [6] invokeinterface #11
+        + InterfaceMethodref [android/support/v4/view/m.c (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+      [11] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onRequestSendAccessibilityEvent(Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z
+    Access flags: 0x1
+      = public boolean onRequestSendAccessibilityEvent(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 13, locals = 4, stack = 4):
+      [0] aload_0 v0
+      [1] getfield #4
+        + Fieldref [android/support/v4/view/l.a Landroid/support/v4/view/m;]
+      [4] aload_1 v1
+      [5] aload_2 v2
+      [6] aload_3 v3
+      [7] invokeinterface #9
+        + InterfaceMethodref [android/support/v4/view/m.a (Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+      [12] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       sendAccessibilityEvent(Landroid/view/View;I)V
+    Access flags: 0x1
+      = public void sendAccessibilityEvent(android.view.View,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 12, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] getfield #4
+        + Fieldref [android/support/v4/view/l.a Landroid/support/v4/view/m;]
+      [4] aload_1 v1
+      [5] iload_2 v2
+      [6] invokeinterface #6
+        + InterfaceMethodref [android/support/v4/view/m.a (Landroid/view/View;I)V]
+      [11] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       sendAccessibilityEventUnchecked(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x1
+      = public void sendAccessibilityEventUnchecked(android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 12, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] getfield #4
+        + Fieldref [android/support/v4/view/l.a Landroid/support/v4/view/m;]
+      [4] aload_1 v1
+      [5] aload_2 v2
+      [6] invokeinterface #12
+        + InterfaceMethodref [android/support/v4/view/m.d (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+      [11] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
 
@@ -25290,15 +26428,45 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 5):
+Constant Pool (count = 14):
   + Class [android/support/v4/view/m]
   + Class [java/lang/Object]
+  + Utf8 [(Landroid/view/View;I)V]
+  + Utf8 [(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + Utf8 [(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + Utf8 [(Landroid/view/View;Ljava/lang/Object;)V]
+  + Utf8 [(Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z]
+  + Utf8 [a]
   + Utf8 [android/support/v4/view/m]
+  + Utf8 [b]
+  + Utf8 [c]
+  + Utf8 [d]
   + Utf8 [java/lang/Object]
 
 Fields (count = 0):
 
-Methods (count = 0):
+Methods (count = 7):
+  + Method:       a(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z
+    Access flags: 0x401
+      = public abstract boolean a(android.view.View,android.view.accessibility.AccessibilityEvent)
+  + Method:       b(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x401
+      = public abstract void b(android.view.View,android.view.accessibility.AccessibilityEvent)
+  + Method:       a(Landroid/view/View;Ljava/lang/Object;)V
+    Access flags: 0x401
+      = public abstract void a(android.view.View,java.lang.Object)
+  + Method:       c(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x401
+      = public abstract void c(android.view.View,android.view.accessibility.AccessibilityEvent)
+  + Method:       a(Landroid/view/ViewGroup;Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)Z
+    Access flags: 0x401
+      = public abstract boolean a(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent)
+  + Method:       a(Landroid/view/View;I)V
+    Access flags: 0x401
+      = public abstract void a(android.view.View,int)
+  + Method:       d(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x401
+      = public abstract void d(android.view.View,android.view.accessibility.AccessibilityEvent)
 
 Class file attributes (count = 0):
 
@@ -28097,7 +29265,7 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 994):
+Constant Pool (count = 995):
   + Integer [-2147483648]
   + Integer [262144]
   + Integer [393216]
@@ -28189,9 +29357,9 @@ Constant Pool (count = 994):
   + Fieldref [android/support/v4/view/ViewPager.U I]
   + Fieldref [android/support/v4/view/ViewPager.V Landroid/support/v4/view/ba;]
   + Fieldref [android/support/v4/view/ViewPager.W Landroid/support/v4/view/ba;]
-  + Fieldref [android/support/v4/view/ViewPager.X Landroid/support/v4/view/az;]
-  + Fieldref [android/support/v4/view/ViewPager.Y I]
+  + Fieldref [android/support/v4/view/ViewPager.Z Landroid/support/v4/view/az;]
   + Fieldref [android/support/v4/view/ViewPager.a [I]
+  + Fieldref [android/support/v4/view/ViewPager.aa I]
   + Fieldref [android/support/v4/view/ViewPager.b Ljava/util/Comparator;]
   + Fieldref [android/support/v4/view/ViewPager.c Landroid/view/animation/Interpolator;]
   + Fieldref [android/support/v4/view/ViewPager.d Ljava/util/ArrayList;]
@@ -28489,8 +29657,7 @@ Constant Pool (count = 994):
   + NameAndType [U I]
   + NameAndType [V Landroid/support/v4/view/ba;]
   + NameAndType [W Landroid/support/v4/view/ba;]
-  + NameAndType [X Landroid/support/v4/view/az;]
-  + NameAndType [Y I]
+  + NameAndType [Z Landroid/support/v4/view/az;]
   + NameAndType [a ()Landroid/os/Parcelable;]
   + NameAndType [a ()V]
   + NameAndType [a ()Z]
@@ -28534,6 +29701,7 @@ Constant Pool (count = 994):
   + NameAndType [a Ljava/lang/Object;]
   + NameAndType [a Z]
   + NameAndType [a [I]
+  + NameAndType [aa I]
   + NameAndType [abortAnimation ()V]
   + NameAndType [abs (F)F]
   + NameAndType [abs (I)I]
@@ -28788,6 +29956,8 @@ Constant Pool (count = 994):
   + Utf8 [(Landroid/graphics/drawable/Drawable;)Z]
   + Utf8 [(Landroid/os/Parcelable;)V]
   + Utf8 [(Landroid/os/Parcelable;Ljava/lang/ClassLoader;)V]
+  + Utf8 [(Landroid/support/v4/view/ViewPager;)I]
+  + Utf8 [(Landroid/support/v4/view/ViewPager;)Landroid/support/v4/view/x;]
   + Utf8 [(Landroid/support/v4/view/ViewPager;)V]
   + Utf8 [(Landroid/support/v4/view/ViewPager;Landroid/support/v4/view/at;)V]
   + Utf8 [(Landroid/support/v4/view/aw;ILandroid/support/v4/view/aw;)V]
@@ -28880,11 +30050,10 @@ Constant Pool (count = 994):
   + Utf8 [V]
   + Utf8 [ViewPager]
   + Utf8 [W]
-  + Utf8 [X]
-  + Utf8 [Y]
   + Utf8 [Z]
   + Utf8 [[I]
   + Utf8 [a]
+  + Utf8 [aa]
   + Utf8 [abortAnimation]
   + Utf8 [abs]
   + Utf8 [add]
@@ -29239,14 +30408,14 @@ Fields (count = 51):
   + Field:        W Landroid/support/v4/view/ba;
     Access flags: 0x2
       = private android.support.v4.view.ba W
-  + Field:        X Landroid/support/v4/view/az;
+  + Field:        Z Landroid/support/v4/view/az;
     Access flags: 0x2
-      = private android.support.v4.view.az X
-  + Field:        Y I
+      = private android.support.v4.view.az Z
+  + Field:        aa I
     Access flags: 0x2
-      = private int Y
+      = private int aa
 
-Methods (count = 76):
+Methods (count = 78):
   - Method:       <init>(Landroid/content/Context;)V
     Access flags: 0x1
       = public ViewPager(android.content.Context)
@@ -29320,8 +30489,8 @@ Methods (count = 76):
         + Fieldref [android/support/v4/view/ViewPager.S Z]
       [85] aload_0 v0
       [86] iconst_0
-      [87] putfield #94
-        + Fieldref [android/support/v4/view/ViewPager.Y I]
+      [87] putfield #95
+        + Fieldref [android/support/v4/view/ViewPager.aa I]
       [90] aload_0 v0
       [91] invokevirtual #157
         + Methodref [android/support/v4/view/ViewPager.a ()V]
@@ -29402,8 +30571,8 @@ Methods (count = 76):
         + Fieldref [android/support/v4/view/ViewPager.S Z]
       [86] aload_0 v0
       [87] iconst_0
-      [88] putfield #94
-        + Fieldref [android/support/v4/view/ViewPager.Y I]
+      [88] putfield #95
+        + Fieldref [android/support/v4/view/ViewPager.aa I]
       [91] aload_0 v0
       [92] invokevirtual #157
         + Methodref [android/support/v4/view/ViewPager.a ()V]
@@ -29540,15 +30709,15 @@ Methods (count = 76):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 32, locals = 2, stack = 2):
       [0] aload_0 v0
-      [1] getfield #94
-        + Fieldref [android/support/v4/view/ViewPager.Y I]
+      [1] getfield #95
+        + Fieldref [android/support/v4/view/ViewPager.aa I]
       [4] iload_1 v1
       [5] ificmpne +4 (target=9)
       [8] return
       [9] aload_0 v0
       [10] iload_1 v1
-      [11] putfield #94
-        + Fieldref [android/support/v4/view/ViewPager.Y I]
+      [11] putfield #95
+        + Fieldref [android/support/v4/view/ViewPager.aa I]
       [14] aload_0 v0
       [15] getfield #91
         + Fieldref [android/support/v4/view/ViewPager.V Landroid/support/v4/view/ba;]
@@ -29723,14 +30892,14 @@ Methods (count = 76):
         + Methodref [android/support/v4/view/ViewPager.c ()V]
       [215] aload_0 v0
       [216] getfield #93
-        + Fieldref [android/support/v4/view/ViewPager.X Landroid/support/v4/view/az;]
+        + Fieldref [android/support/v4/view/ViewPager.Z Landroid/support/v4/view/az;]
       [219] ifnull +19 (target=238)
       [222] aload_2 v2
       [223] aload_1 v1
       [224] ifacmpeq +14 (target=238)
       [227] aload_0 v0
       [228] getfield #93
-        + Fieldref [android/support/v4/view/ViewPager.X Landroid/support/v4/view/az;]
+        + Fieldref [android/support/v4/view/ViewPager.Z Landroid/support/v4/view/az;]
       [231] aload_2 v2
       [232] aload_1 v1
       [233] invokeinterface #357
@@ -29794,7 +30963,7 @@ Methods (count = 76):
       [0] aload_0 v0
       [1] aload_1 v1
       [2] putfield #93
-        + Fieldref [android/support/v4/view/ViewPager.X Landroid/support/v4/view/az;]
+        + Fieldref [android/support/v4/view/ViewPager.Z Landroid/support/v4/view/az;]
       [5] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
@@ -33163,8 +34332,8 @@ Methods (count = 76):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 142, locals = 6, stack = 3):
       [0] aload_0 v0
-      [1] getfield #94
-        + Fieldref [android/support/v4/view/ViewPager.Y I]
+      [1] getfield #95
+        + Fieldref [android/support/v4/view/ViewPager.aa I]
       [4] iconst_2
       [5] ificmpne +7 (target=12)
       [8] iconst_1
@@ -33549,8 +34718,8 @@ Methods (count = 76):
         + Methodref [android/widget/Scroller.computeScrollOffset ()Z]
       [390] pop
       [391] aload_0 v0
-      [392] getfield #94
-        + Fieldref [android/support/v4/view/ViewPager.Y I]
+      [392] getfield #95
+        + Fieldref [android/support/v4/view/ViewPager.aa I]
       [395] iconst_2
       [396] ificmpne +57 (target=453)
       [399] aload_0 v0
@@ -36112,12 +37281,34 @@ Methods (count = 76):
       [12] areturn
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
+  + Method:       a(Landroid/support/v4/view/ViewPager;)Landroid/support/v4/view/x;
+    Access flags: 0x1008
+      = static synthetic android.support.v4.view.x a(android.support.v4.view.ViewPager)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #101
+        + Fieldref [android/support/v4/view/ViewPager.g Landroid/support/v4/view/x;]
+      [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       b(Landroid/support/v4/view/ViewPager;)I
+    Access flags: 0x1008
+      = static synthetic int b(android.support.v4.view.ViewPager)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #102
+        + Fieldref [android/support/v4/view/ViewPager.h I]
+      [4] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
   + Method:       i()[I
     Access flags: 0x1008
       = static synthetic int[] i()
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 4, locals = 0, stack = 1):
-      [0] getstatic #95
+      [0] getstatic #94
         + Fieldref [android/support/v4/view/ViewPager.a [I]
       [3] areturn
       Code attribute exceptions (count = 0):
@@ -36134,7 +37325,7 @@ Methods (count = 76):
       [5] ldc #4
         + Integer [16842931]
       [7] iastore
-      [8] putstatic #95
+      [8] putstatic #94
         + Fieldref [android/support/v4/view/ViewPager.a [I]
       [11] new #33
         + Class [android/support/v4/view/at]
@@ -36528,28 +37719,71 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 15):
+Constant Pool (count = 58):
+  + Class [android/support/v4/view/ViewPager]
   + Class [android/support/v4/view/a]
+  + Class [android/support/v4/view/a/a]
   + Class [android/support/v4/view/ay]
+  + Class [android/support/v4/view/x]
+  + Class [android/view/accessibility/AccessibilityEvent]
+  + Class [java/lang/Class]
   + Fieldref [android/support/v4/view/ay.b Landroid/support/v4/view/ViewPager;]
+  + Methodref [android/support/v4/view/ViewPager.a (Landroid/support/v4/view/ViewPager;)Landroid/support/v4/view/x;]
+  + Methodref [android/support/v4/view/ViewPager.b (Landroid/support/v4/view/ViewPager;)I]
   + Methodref [android/support/v4/view/a.<init> ()V]
+  + Methodref [android/support/v4/view/a.a (Landroid/view/View;Landroid/support/v4/view/a/a;)V]
+  + Methodref [android/support/v4/view/a.d (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + Methodref [android/support/v4/view/a/a.a (I)V]
+  + Methodref [android/support/v4/view/a/a.a (Ljava/lang/CharSequence;)V]
+  + Methodref [android/support/v4/view/a/a.a (Z)V]
+  + Methodref [android/support/v4/view/x.b ()I]
+  + Methodref [android/view/accessibility/AccessibilityEvent.setClassName (Ljava/lang/CharSequence;)V]
+  + Methodref [java/lang/Class.getName ()Ljava/lang/String;]
   + NameAndType [<init> ()V]
+  + NameAndType [a (I)V]
+  + NameAndType [a (Landroid/support/v4/view/ViewPager;)Landroid/support/v4/view/x;]
+  + NameAndType [a (Landroid/view/View;Landroid/support/v4/view/a/a;)V]
+  + NameAndType [a (Ljava/lang/CharSequence;)V]
+  + NameAndType [a (Z)V]
+  + NameAndType [b ()I]
+  + NameAndType [b (Landroid/support/v4/view/ViewPager;)I]
   + NameAndType [b Landroid/support/v4/view/ViewPager;]
+  + NameAndType [d (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + NameAndType [getName ()Ljava/lang/String;]
+  + NameAndType [setClassName (Ljava/lang/CharSequence;)V]
+  + Utf8 [()I]
+  + Utf8 [()Ljava/lang/String;]
   + Utf8 [()V]
+  + Utf8 [(I)V]
+  + Utf8 [(Landroid/support/v4/view/ViewPager;)I]
+  + Utf8 [(Landroid/support/v4/view/ViewPager;)Landroid/support/v4/view/x;]
   + Utf8 [(Landroid/support/v4/view/ViewPager;)V]
+  + Utf8 [(Landroid/view/View;Landroid/support/v4/view/a/a;)V]
+  + Utf8 [(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+  + Utf8 [(Ljava/lang/CharSequence;)V]
+  + Utf8 [(Z)V]
   + Utf8 [<init>]
   + Utf8 [Code]
   + Utf8 [Landroid/support/v4/view/ViewPager;]
+  + Utf8 [a]
+  + Utf8 [android/support/v4/view/ViewPager]
   + Utf8 [android/support/v4/view/a]
+  + Utf8 [android/support/v4/view/a/a]
   + Utf8 [android/support/v4/view/ay]
+  + Utf8 [android/support/v4/view/x]
+  + Utf8 [android/view/accessibility/AccessibilityEvent]
   + Utf8 [b]
+  + Utf8 [d]
+  + Utf8 [getName]
+  + Utf8 [java/lang/Class]
+  + Utf8 [setClassName]
 
 Fields (count = 1):
   + Field:        b Landroid/support/v4/view/ViewPager;
     Access flags: 0x1010
       = final synthetic android.support.v4.view.ViewPager b
 
-Methods (count = 1):
+Methods (count = 3):
   - Method:       <init>(Landroid/support/v4/view/ViewPager;)V
     Access flags: 0x0
       = ay(android.support.v4.view.ViewPager)
@@ -36557,12 +37791,133 @@ Methods (count = 1):
     + Code attribute instructions (code length = 10, locals = 2, stack = 2):
       [0] aload_0 v0
       [1] aload_1 v1
-      [2] putfield #3
+      [2] putfield #8
         + Fieldref [android/support/v4/view/ay.b Landroid/support/v4/view/ViewPager;]
       [5] aload_0 v0
-      [6] invokespecial #4
+      [6] invokespecial #11
         + Methodref [android/support/v4/view/a.<init> ()V]
       [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       d(Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V
+    Access flags: 0x1
+      = public void d(android.view.View,android.view.accessibility.AccessibilityEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 16, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] aload_2 v2
+      [3] invokespecial #13
+        + Methodref [android/support/v4/view/a.d (Landroid/view/View;Landroid/view/accessibility/AccessibilityEvent;)V]
+      [6] aload_2 v2
+      [7] ldc #1
+        + Class [android/support/v4/view/ViewPager]
+      [9] invokevirtual #19
+        + Methodref [java/lang/Class.getName ()Ljava/lang/String;]
+      [12] invokevirtual #18
+        + Methodref [android/view/accessibility/AccessibilityEvent.setClassName (Ljava/lang/CharSequence;)V]
+      [15] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Landroid/view/View;Landroid/support/v4/view/a/a;)V
+    Access flags: 0x1
+      = public void a(android.view.View,android.support.v4.view.a.a)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 145, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] aload_2 v2
+      [3] invokespecial #12
+        + Methodref [android/support/v4/view/a.a (Landroid/view/View;Landroid/support/v4/view/a/a;)V]
+      [6] aload_2 v2
+      [7] ldc #1
+        + Class [android/support/v4/view/ViewPager]
+      [9] invokevirtual #19
+        + Methodref [java/lang/Class.getName ()Ljava/lang/String;]
+      [12] invokevirtual #15
+        + Methodref [android/support/v4/view/a/a.a (Ljava/lang/CharSequence;)V]
+      [15] aload_2 v2
+      [16] aload_0 v0
+      [17] getfield #8
+        + Fieldref [android/support/v4/view/ay.b Landroid/support/v4/view/ViewPager;]
+      [20] invokestatic #9
+        + Methodref [android/support/v4/view/ViewPager.a (Landroid/support/v4/view/ViewPager;)Landroid/support/v4/view/x;]
+      [23] ifnull +21 (target=44)
+      [26] aload_0 v0
+      [27] getfield #8
+        + Fieldref [android/support/v4/view/ay.b Landroid/support/v4/view/ViewPager;]
+      [30] invokestatic #9
+        + Methodref [android/support/v4/view/ViewPager.a (Landroid/support/v4/view/ViewPager;)Landroid/support/v4/view/x;]
+      [33] invokevirtual #17
+        + Methodref [android/support/v4/view/x.b ()I]
+      [36] iconst_1
+      [37] ificmple +7 (target=44)
+      [40] iconst_1
+      [41] goto +4 (target=45)
+      [44] iconst_0
+      [45] invokevirtual #16
+        + Methodref [android/support/v4/view/a/a.a (Z)V]
+      [48] aload_0 v0
+      [49] getfield #8
+        + Fieldref [android/support/v4/view/ay.b Landroid/support/v4/view/ViewPager;]
+      [52] invokestatic #9
+        + Methodref [android/support/v4/view/ViewPager.a (Landroid/support/v4/view/ViewPager;)Landroid/support/v4/view/x;]
+      [55] ifnull +42 (target=97)
+      [58] aload_0 v0
+      [59] getfield #8
+        + Fieldref [android/support/v4/view/ay.b Landroid/support/v4/view/ViewPager;]
+      [62] invokestatic #10
+        + Methodref [android/support/v4/view/ViewPager.b (Landroid/support/v4/view/ViewPager;)I]
+      [65] iflt +32 (target=97)
+      [68] aload_0 v0
+      [69] getfield #8
+        + Fieldref [android/support/v4/view/ay.b Landroid/support/v4/view/ViewPager;]
+      [72] invokestatic #10
+        + Methodref [android/support/v4/view/ViewPager.b (Landroid/support/v4/view/ViewPager;)I]
+      [75] aload_0 v0
+      [76] getfield #8
+        + Fieldref [android/support/v4/view/ay.b Landroid/support/v4/view/ViewPager;]
+      [79] invokestatic #9
+        + Methodref [android/support/v4/view/ViewPager.a (Landroid/support/v4/view/ViewPager;)Landroid/support/v4/view/x;]
+      [82] invokevirtual #17
+        + Methodref [android/support/v4/view/x.b ()I]
+      [85] iconst_1
+      [86] isub
+      [87] ificmpge +10 (target=97)
+      [90] aload_2 v2
+      [91] sipush 4096
+      [94] invokevirtual #14
+        + Methodref [android/support/v4/view/a/a.a (I)V]
+      [97] aload_0 v0
+      [98] getfield #8
+        + Fieldref [android/support/v4/view/ay.b Landroid/support/v4/view/ViewPager;]
+      [101] invokestatic #9
+        + Methodref [android/support/v4/view/ViewPager.a (Landroid/support/v4/view/ViewPager;)Landroid/support/v4/view/x;]
+      [104] ifnull +40 (target=144)
+      [107] aload_0 v0
+      [108] getfield #8
+        + Fieldref [android/support/v4/view/ay.b Landroid/support/v4/view/ViewPager;]
+      [111] invokestatic #10
+        + Methodref [android/support/v4/view/ViewPager.b (Landroid/support/v4/view/ViewPager;)I]
+      [114] ifle +30 (target=144)
+      [117] aload_0 v0
+      [118] getfield #8
+        + Fieldref [android/support/v4/view/ay.b Landroid/support/v4/view/ViewPager;]
+      [121] invokestatic #10
+        + Methodref [android/support/v4/view/ViewPager.b (Landroid/support/v4/view/ViewPager;)I]
+      [124] aload_0 v0
+      [125] getfield #8
+        + Fieldref [android/support/v4/view/ay.b Landroid/support/v4/view/ViewPager;]
+      [128] invokestatic #9
+        + Methodref [android/support/v4/view/ViewPager.a (Landroid/support/v4/view/ViewPager;)Landroid/support/v4/view/x;]
+      [131] invokevirtual #17
+        + Methodref [android/support/v4/view/x.b ()I]
+      [134] ificmpge +10 (target=144)
+      [137] aload_2 v2
+      [138] sipush 8192
+      [141] invokevirtual #14
+        + Methodref [android/support/v4/view/a/a.a (I)V]
+      [144] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
 
@@ -37097,6 +38452,586 @@ Methods (count = 5):
       [3] invokevirtual #7
         + Methodref [android/support/v4/view/bc.b (Landroid/os/Parcel;Ljava/lang/ClassLoader;)Landroid/support/v4/view/ViewPager$SavedState;]
       [6] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: android/support/v4/view/a/a
+  Superclass:    java/lang/Object
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x21
+    = public class android.support.v4.view.a.a extends java.lang.Object
+
+Interfaces (count = 0):
+
+Constant Pool (count = 62):
+  + Class [android/os/Build$VERSION]
+  + Class [android/support/v4/view/a/a]
+  + Class [android/support/v4/view/a/b]
+  + Class [android/support/v4/view/a/c]
+  + Class [android/support/v4/view/a/d]
+  + Class [android/support/v4/view/a/e]
+  + Class [java/lang/Object]
+  + Fieldref [android/os/Build$VERSION.SDK_INT I]
+  + Fieldref [android/support/v4/view/a/a.a Landroid/support/v4/view/a/c;]
+  + Fieldref [android/support/v4/view/a/a.b Ljava/lang/Object;]
+  + Methodref [android/support/v4/view/a/b.<init> ()V]
+  + Methodref [android/support/v4/view/a/d.<init> ()V]
+  + Methodref [android/support/v4/view/a/e.<init> ()V]
+  + Methodref [java/lang/Object.<init> ()V]
+  + Methodref [java/lang/Object.equals (Ljava/lang/Object;)Z]
+  + Methodref [java/lang/Object.getClass ()Ljava/lang/Class;]
+  + Methodref [java/lang/Object.hashCode ()I]
+  + InterfaceMethodref [android/support/v4/view/a/c.a (Ljava/lang/Object;I)V]
+  + InterfaceMethodref [android/support/v4/view/a/c.a (Ljava/lang/Object;Ljava/lang/CharSequence;)V]
+  + InterfaceMethodref [android/support/v4/view/a/c.a (Ljava/lang/Object;Z)V]
+  + NameAndType [<init> ()V]
+  + NameAndType [SDK_INT I]
+  + NameAndType [a (Ljava/lang/Object;I)V]
+  + NameAndType [a (Ljava/lang/Object;Ljava/lang/CharSequence;)V]
+  + NameAndType [a (Ljava/lang/Object;Z)V]
+  + NameAndType [a Landroid/support/v4/view/a/c;]
+  + NameAndType [b Ljava/lang/Object;]
+  + NameAndType [equals (Ljava/lang/Object;)Z]
+  + NameAndType [getClass ()Ljava/lang/Class;]
+  + NameAndType [hashCode ()I]
+  + Utf8 [()I]
+  + Utf8 [()Ljava/lang/Class;]
+  + Utf8 [()Ljava/lang/Object;]
+  + Utf8 [()V]
+  + Utf8 [(I)V]
+  + Utf8 [(Ljava/lang/CharSequence;)V]
+  + Utf8 [(Ljava/lang/Object;)V]
+  + Utf8 [(Ljava/lang/Object;)Z]
+  + Utf8 [(Ljava/lang/Object;I)V]
+  + Utf8 [(Ljava/lang/Object;Ljava/lang/CharSequence;)V]
+  + Utf8 [(Ljava/lang/Object;Z)V]
+  + Utf8 [(Z)V]
+  + Utf8 [<clinit>]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [I]
+  + Utf8 [Landroid/support/v4/view/a/c;]
+  + Utf8 [Ljava/lang/Object;]
+  + Utf8 [SDK_INT]
+  + Utf8 [a]
+  + Utf8 [android/os/Build$VERSION]
+  + Utf8 [android/support/v4/view/a/a]
+  + Utf8 [android/support/v4/view/a/b]
+  + Utf8 [android/support/v4/view/a/c]
+  + Utf8 [android/support/v4/view/a/d]
+  + Utf8 [android/support/v4/view/a/e]
+  + Utf8 [b]
+  + Utf8 [equals]
+  + Utf8 [getClass]
+  + Utf8 [hashCode]
+  + Utf8 [java/lang/Object]
+
+Fields (count = 2):
+  + Field:        a Landroid/support/v4/view/a/c;
+    Access flags: 0x1a
+      = private static final android.support.v4.view.a.c a
+  + Field:        b Ljava/lang/Object;
+    Access flags: 0x12
+      = private final java.lang.Object b
+
+Methods (count = 8):
+  - Method:       <init>(Ljava/lang/Object;)V
+    Access flags: 0x1
+      = public a(java.lang.Object)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] invokespecial #14
+        + Methodref [java/lang/Object.<init> ()V]
+      [4] aload_0 v0
+      [5] aload_1 v1
+      [6] putfield #10
+        + Fieldref [android/support/v4/view/a/a.b Ljava/lang/Object;]
+      [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a()Ljava/lang/Object;
+    Access flags: 0x1
+      = public java.lang.Object a()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #10
+        + Fieldref [android/support/v4/view/a/a.b Ljava/lang/Object;]
+      [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(I)V
+    Access flags: 0x1
+      = public void a(int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 14, locals = 2, stack = 3):
+      [0] getstatic #9
+        + Fieldref [android/support/v4/view/a/a.a Landroid/support/v4/view/a/c;]
+      [3] aload_0 v0
+      [4] getfield #10
+        + Fieldref [android/support/v4/view/a/a.b Ljava/lang/Object;]
+      [7] iload_1 v1
+      [8] invokeinterface #18
+        + InterfaceMethodref [android/support/v4/view/a/c.a (Ljava/lang/Object;I)V]
+      [13] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Z)V
+    Access flags: 0x1
+      = public void a(boolean)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 14, locals = 2, stack = 3):
+      [0] getstatic #9
+        + Fieldref [android/support/v4/view/a/a.a Landroid/support/v4/view/a/c;]
+      [3] aload_0 v0
+      [4] getfield #10
+        + Fieldref [android/support/v4/view/a/a.b Ljava/lang/Object;]
+      [7] iload_1 v1
+      [8] invokeinterface #20
+        + InterfaceMethodref [android/support/v4/view/a/c.a (Ljava/lang/Object;Z)V]
+      [13] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Ljava/lang/CharSequence;)V
+    Access flags: 0x1
+      = public void a(java.lang.CharSequence)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 14, locals = 2, stack = 3):
+      [0] getstatic #9
+        + Fieldref [android/support/v4/view/a/a.a Landroid/support/v4/view/a/c;]
+      [3] aload_0 v0
+      [4] getfield #10
+        + Fieldref [android/support/v4/view/a/a.b Ljava/lang/Object;]
+      [7] aload_1 v1
+      [8] invokeinterface #19
+        + InterfaceMethodref [android/support/v4/view/a/c.a (Ljava/lang/Object;Ljava/lang/CharSequence;)V]
+      [13] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       hashCode()I
+    Access flags: 0x1
+      = public int hashCode()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 19, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #10
+        + Fieldref [android/support/v4/view/a/a.b Ljava/lang/Object;]
+      [4] ifnonnull +7 (target=11)
+      [7] iconst_0
+      [8] goto +10 (target=18)
+      [11] aload_0 v0
+      [12] getfield #10
+        + Fieldref [android/support/v4/view/a/a.b Ljava/lang/Object;]
+      [15] invokevirtual #17
+        + Methodref [java/lang/Object.hashCode ()I]
+      [18] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       equals(Ljava/lang/Object;)Z
+    Access flags: 0x1
+      = public boolean equals(java.lang.Object)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 65, locals = 3, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] ifacmpne +5 (target=7)
+      [5] iconst_1
+      [6] ireturn
+      [7] aload_1 v1
+      [8] ifnonnull +5 (target=13)
+      [11] iconst_0
+      [12] ireturn
+      [13] aload_0 v0
+      [14] invokevirtual #16
+        + Methodref [java/lang/Object.getClass ()Ljava/lang/Class;]
+      [17] aload_1 v1
+      [18] invokevirtual #16
+        + Methodref [java/lang/Object.getClass ()Ljava/lang/Class;]
+      [21] ifacmpeq +5 (target=26)
+      [24] iconst_0
+      [25] ireturn
+      [26] aload_1 v1
+      [27] checkcast #2
+        + Class [android/support/v4/view/a/a]
+      [30] astore_2 v2
+      [31] aload_0 v0
+      [32] getfield #10
+        + Fieldref [android/support/v4/view/a/a.b Ljava/lang/Object;]
+      [35] ifnonnull +12 (target=47)
+      [38] aload_2 v2
+      [39] getfield #10
+        + Fieldref [android/support/v4/view/a/a.b Ljava/lang/Object;]
+      [42] ifnull +21 (target=63)
+      [45] iconst_0
+      [46] ireturn
+      [47] aload_0 v0
+      [48] getfield #10
+        + Fieldref [android/support/v4/view/a/a.b Ljava/lang/Object;]
+      [51] aload_2 v2
+      [52] getfield #10
+        + Fieldref [android/support/v4/view/a/a.b Ljava/lang/Object;]
+      [55] invokevirtual #15
+        + Methodref [java/lang/Object.equals (Ljava/lang/Object;)Z]
+      [58] ifne +5 (target=63)
+      [61] iconst_0
+      [62] ireturn
+      [63] iconst_1
+      [64] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  - Method:       <clinit>()V
+    Access flags: 0x8
+      = static void <clinit>()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 53, locals = 0, stack = 2):
+      [0] getstatic #8
+        + Fieldref [android/os/Build$VERSION.SDK_INT I]
+      [3] bipush 16
+      [5] ificmplt +16 (target=21)
+      [8] new #5
+        + Class [android/support/v4/view/a/d]
+      [11] dup
+      [12] invokespecial #12
+        + Methodref [android/support/v4/view/a/d.<init> ()V]
+      [15] putstatic #9
+        + Fieldref [android/support/v4/view/a/a.a Landroid/support/v4/view/a/c;]
+      [18] goto +34 (target=52)
+      [21] getstatic #8
+        + Fieldref [android/os/Build$VERSION.SDK_INT I]
+      [24] bipush 14
+      [26] ificmplt +16 (target=42)
+      [29] new #3
+        + Class [android/support/v4/view/a/b]
+      [32] dup
+      [33] invokespecial #11
+        + Methodref [android/support/v4/view/a/b.<init> ()V]
+      [36] putstatic #9
+        + Fieldref [android/support/v4/view/a/a.a Landroid/support/v4/view/a/c;]
+      [39] goto +13 (target=52)
+      [42] new #6
+        + Class [android/support/v4/view/a/e]
+      [45] dup
+      [46] invokespecial #13
+        + Methodref [android/support/v4/view/a/e.<init> ()V]
+      [49] putstatic #9
+        + Fieldref [android/support/v4/view/a/a.a Landroid/support/v4/view/a/c;]
+      [52] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: android/support/v4/view/a/b
+  Superclass:    android/support/v4/view/a/e
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x20
+    = class android.support.v4.view.a.b extends android.support.v4.view.a.e
+
+Interfaces (count = 0):
+
+Constant Pool (count = 22):
+  + Class [android/support/v4/view/a/b]
+  + Class [android/support/v4/view/a/e]
+  + Class [android/support/v4/view/a/f]
+  + Methodref [android/support/v4/view/a/e.<init> ()V]
+  + Methodref [android/support/v4/view/a/f.a (Ljava/lang/Object;I)V]
+  + Methodref [android/support/v4/view/a/f.a (Ljava/lang/Object;Ljava/lang/CharSequence;)V]
+  + Methodref [android/support/v4/view/a/f.a (Ljava/lang/Object;Z)V]
+  + NameAndType [<init> ()V]
+  + NameAndType [a (Ljava/lang/Object;I)V]
+  + NameAndType [a (Ljava/lang/Object;Ljava/lang/CharSequence;)V]
+  + NameAndType [a (Ljava/lang/Object;Z)V]
+  + Utf8 [()V]
+  + Utf8 [(Ljava/lang/Object;I)V]
+  + Utf8 [(Ljava/lang/Object;Ljava/lang/CharSequence;)V]
+  + Utf8 [(Ljava/lang/Object;Z)V]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [a]
+  + Utf8 [android/support/v4/view/a/b]
+  + Utf8 [android/support/v4/view/a/e]
+  + Utf8 [android/support/v4/view/a/f]
+
+Fields (count = 0):
+
+Methods (count = 4):
+  - Method:       <init>()V
+    Access flags: 0x0
+      = b()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] invokespecial #4
+        + Methodref [android/support/v4/view/a/e.<init> ()V]
+      [4] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Ljava/lang/Object;I)V
+    Access flags: 0x1
+      = public void a(java.lang.Object,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 6, locals = 3, stack = 2):
+      [0] aload_1 v1
+      [1] iload_2 v2
+      [2] invokestatic #5
+        + Methodref [android/support/v4/view/a/f.a (Ljava/lang/Object;I)V]
+      [5] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Ljava/lang/Object;Ljava/lang/CharSequence;)V
+    Access flags: 0x1
+      = public void a(java.lang.Object,java.lang.CharSequence)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 6, locals = 3, stack = 2):
+      [0] aload_1 v1
+      [1] aload_2 v2
+      [2] invokestatic #6
+        + Methodref [android/support/v4/view/a/f.a (Ljava/lang/Object;Ljava/lang/CharSequence;)V]
+      [5] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Ljava/lang/Object;Z)V
+    Access flags: 0x1
+      = public void a(java.lang.Object,boolean)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 6, locals = 3, stack = 2):
+      [0] aload_1 v1
+      [1] iload_2 v2
+      [2] invokestatic #7
+        + Methodref [android/support/v4/view/a/f.a (Ljava/lang/Object;Z)V]
+      [5] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: android/support/v4/view/a/c
+  Superclass:    java/lang/Object
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x600
+    = interface android.support.v4.view.a.c extends java.lang.Object
+
+Interfaces (count = 0):
+
+Constant Pool (count = 9):
+  + Class [android/support/v4/view/a/c]
+  + Class [java/lang/Object]
+  + Utf8 [(Ljava/lang/Object;I)V]
+  + Utf8 [(Ljava/lang/Object;Ljava/lang/CharSequence;)V]
+  + Utf8 [(Ljava/lang/Object;Z)V]
+  + Utf8 [a]
+  + Utf8 [android/support/v4/view/a/c]
+  + Utf8 [java/lang/Object]
+
+Fields (count = 0):
+
+Methods (count = 3):
+  + Method:       a(Ljava/lang/Object;I)V
+    Access flags: 0x401
+      = public abstract void a(java.lang.Object,int)
+  + Method:       a(Ljava/lang/Object;Z)V
+    Access flags: 0x401
+      = public abstract void a(java.lang.Object,boolean)
+  + Method:       a(Ljava/lang/Object;Ljava/lang/CharSequence;)V
+    Access flags: 0x401
+      = public abstract void a(java.lang.Object,java.lang.CharSequence)
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: android/support/v4/view/a/d
+  Superclass:    android/support/v4/view/a/b
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x20
+    = class android.support.v4.view.a.d extends android.support.v4.view.a.b
+
+Interfaces (count = 0):
+
+Constant Pool (count = 10):
+  + Class [android/support/v4/view/a/b]
+  + Class [android/support/v4/view/a/d]
+  + Methodref [android/support/v4/view/a/b.<init> ()V]
+  + NameAndType [<init> ()V]
+  + Utf8 [()V]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [android/support/v4/view/a/b]
+  + Utf8 [android/support/v4/view/a/d]
+
+Fields (count = 0):
+
+Methods (count = 1):
+  - Method:       <init>()V
+    Access flags: 0x0
+      = d()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] invokespecial #3
+        + Methodref [android/support/v4/view/a/b.<init> ()V]
+      [4] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: android/support/v4/view/a/e
+  Superclass:    java/lang/Object
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x20
+    = class android.support.v4.view.a.e extends java.lang.Object
+
+Interfaces (count = 1):
+  + Class [android/support/v4/view/a/c]
+
+Constant Pool (count = 16):
+  + Class [android/support/v4/view/a/c]
+  + Class [android/support/v4/view/a/e]
+  + Class [java/lang/Object]
+  + Methodref [java/lang/Object.<init> ()V]
+  + NameAndType [<init> ()V]
+  + Utf8 [()V]
+  + Utf8 [(Ljava/lang/Object;I)V]
+  + Utf8 [(Ljava/lang/Object;Ljava/lang/CharSequence;)V]
+  + Utf8 [(Ljava/lang/Object;Z)V]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [a]
+  + Utf8 [android/support/v4/view/a/c]
+  + Utf8 [android/support/v4/view/a/e]
+  + Utf8 [java/lang/Object]
+
+Fields (count = 0):
+
+Methods (count = 4):
+  - Method:       <init>()V
+    Access flags: 0x0
+      = e()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] invokespecial #4
+        + Methodref [java/lang/Object.<init> ()V]
+      [4] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Ljava/lang/Object;I)V
+    Access flags: 0x1
+      = public void a(java.lang.Object,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 1, locals = 3, stack = 0):
+      [0] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Ljava/lang/Object;Ljava/lang/CharSequence;)V
+    Access flags: 0x1
+      = public void a(java.lang.Object,java.lang.CharSequence)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 1, locals = 3, stack = 0):
+      [0] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Ljava/lang/Object;Z)V
+    Access flags: 0x1
+      = public void a(java.lang.Object,boolean)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 1, locals = 3, stack = 0):
+      [0] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: android/support/v4/view/a/f
+  Superclass:    java/lang/Object
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x20
+    = class android.support.v4.view.a.f extends java.lang.Object
+
+Interfaces (count = 0):
+
+Constant Pool (count = 24):
+  + Class [android/support/v4/view/a/f]
+  + Class [android/view/accessibility/AccessibilityNodeInfo]
+  + Class [java/lang/Object]
+  + Methodref [android/view/accessibility/AccessibilityNodeInfo.addAction (I)V]
+  + Methodref [android/view/accessibility/AccessibilityNodeInfo.setClassName (Ljava/lang/CharSequence;)V]
+  + Methodref [android/view/accessibility/AccessibilityNodeInfo.setScrollable (Z)V]
+  + NameAndType [addAction (I)V]
+  + NameAndType [setClassName (Ljava/lang/CharSequence;)V]
+  + NameAndType [setScrollable (Z)V]
+  + Utf8 [(I)V]
+  + Utf8 [(Ljava/lang/CharSequence;)V]
+  + Utf8 [(Ljava/lang/Object;I)V]
+  + Utf8 [(Ljava/lang/Object;Ljava/lang/CharSequence;)V]
+  + Utf8 [(Ljava/lang/Object;Z)V]
+  + Utf8 [(Z)V]
+  + Utf8 [Code]
+  + Utf8 [a]
+  + Utf8 [addAction]
+  + Utf8 [android/support/v4/view/a/f]
+  + Utf8 [android/view/accessibility/AccessibilityNodeInfo]
+  + Utf8 [java/lang/Object]
+  + Utf8 [setClassName]
+  + Utf8 [setScrollable]
+
+Fields (count = 0):
+
+Methods (count = 3):
+  + Method:       a(Ljava/lang/Object;I)V
+    Access flags: 0x9
+      = public static void a(java.lang.Object,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 9, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] checkcast #2
+        + Class [android/view/accessibility/AccessibilityNodeInfo]
+      [4] iload_1 v1
+      [5] invokevirtual #4
+        + Methodref [android/view/accessibility/AccessibilityNodeInfo.addAction (I)V]
+      [8] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Ljava/lang/Object;Ljava/lang/CharSequence;)V
+    Access flags: 0x9
+      = public static void a(java.lang.Object,java.lang.CharSequence)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 9, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] checkcast #2
+        + Class [android/view/accessibility/AccessibilityNodeInfo]
+      [4] aload_1 v1
+      [5] invokevirtual #5
+        + Methodref [android/view/accessibility/AccessibilityNodeInfo.setClassName (Ljava/lang/CharSequence;)V]
+      [8] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Ljava/lang/Object;Z)V
+    Access flags: 0x9
+      = public static void a(java.lang.Object,boolean)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 9, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] checkcast #2
+        + Class [android/view/accessibility/AccessibilityNodeInfo]
+      [4] iload_1 v1
+      [5] invokevirtual #6
+        + Methodref [android/view/accessibility/AccessibilityNodeInfo.setScrollable (Z)V]
+      [8] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
 
@@ -38061,8 +39996,8 @@ Constant Pool (count = 244):
   + Integer [2130903041]
   + Integer [2130903042]
   + Integer [2130968576]
-  + Integer [2131034133]
-  + Integer [2131034134]
+  + Integer [2131034135]
+  + Integer [2131034136]
   + Integer [2131099653]
   + Integer [2131099654]
   + Integer [2131558400]
@@ -38586,7 +40521,7 @@ Methods (count = 8):
       [24] invokevirtual #47
         + Methodref [android/app/AlertDialog$Builder.setView (Landroid/view/View;)Landroid/app/AlertDialog$Builder;]
       [27] ldc #7
-        + Integer [2131034134]
+        + Integer [2131034136]
       [29] invokevirtual #46
         + Methodref [android/app/AlertDialog$Builder.setTitle (I)Landroid/app/AlertDialog$Builder;]
       [32] ldc #1
@@ -38636,7 +40571,7 @@ Methods (count = 8):
       [24] invokevirtual #47
         + Methodref [android/app/AlertDialog$Builder.setView (Landroid/view/View;)Landroid/app/AlertDialog$Builder;]
       [27] ldc #6
-        + Integer [2131034133]
+        + Integer [2131034135]
       [29] invokevirtual #46
         + Methodref [android/app/AlertDialog$Builder.setTitle (I)Landroid/app/AlertDialog$Builder;]
       [32] ldc #1
@@ -38814,9 +40749,9 @@ _____________________________________________________________________
 Interfaces (count = 0):
 
 Constant Pool (count = 67):
-  + Integer [2131034138]
-  + Integer [2131034139]
   + Integer [2131034140]
+  + Integer [2131034141]
+  + Integer [2131034142]
   + String []
   + String [Application requested an non-existing fragment title: ]
   + String [Application requested an non-existing fragment: ]
@@ -38981,7 +40916,7 @@ Methods (count = 4):
       [29] getfield #16
         + Fieldref [com/halcyonwaves/apps/energize/d.a Landroid/content/Context;]
       [32] ldc #1
-        + Integer [2131034138]
+        + Integer [2131034140]
       [34] invokevirtual #17
         + Methodref [android/content/Context.getString (I)Ljava/lang/String;]
       [37] areturn
@@ -38989,7 +40924,7 @@ Methods (count = 4):
       [39] getfield #16
         + Fieldref [com/halcyonwaves/apps/energize/d.a Landroid/content/Context;]
       [42] ldc #2
-        + Integer [2131034139]
+        + Integer [2131034141]
       [44] invokevirtual #17
         + Methodref [android/content/Context.getString (I)Ljava/lang/String;]
       [47] areturn
@@ -38997,7 +40932,7 @@ Methods (count = 4):
       [49] getfield #16
         + Fieldref [com/halcyonwaves/apps/energize/d.a Landroid/content/Context;]
       [52] ldc #3
-        + Integer [2131034140]
+        + Integer [2131034142]
       [54] invokevirtual #17
         + Methodref [android/content/Context.getString (I)Ljava/lang/String;]
       [57] areturn
@@ -39382,8 +41317,8 @@ Interfaces (count = 0):
 
 Constant Pool (count = 115):
   + Integer [2130903043]
-  + Integer [2131034142]
-  + Integer [2131034143]
+  + Integer [2131034144]
+  + Integer [2131034145]
   + Integer [2131099656]
   + Integer [2131099657]
   + Integer [2131099660]
@@ -39534,7 +41469,7 @@ Methods (count = 2):
       [22] aload v5
       [24] aload_0 v0
       [25] ldc #3
-        + Integer [2131034143]
+        + Integer [2131034145]
       [27] iconst_1
       [28] anewarray #25
         + Class [java/lang/Object]
@@ -39620,7 +41555,7 @@ Methods (count = 2):
       [145] invokevirtual #40
         + Methodref [com/halcyonwaves/apps/energize/b/a.getDialog ()Landroid/app/Dialog;]
       [148] ldc #2
-        + Integer [2131034142]
+        + Integer [2131034144]
       [150] invokevirtual #29
         + Methodref [android/app/Dialog.setTitle (I)V]
       [153] aload v4
@@ -41162,7 +43097,7 @@ Interfaces (count = 0):
 
 Constant Pool (count = 233):
   + Integer [2130903045]
-  + Integer [2131034152]
+  + Integer [2131034156]
   + Integer [2131099664]
   + Integer [2131099667]
   + Integer [2131099669]
@@ -41631,7 +43566,7 @@ Methods (count = 8):
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.T Landroid/widget/TextView;]
       [249] aload_0 v0
       [250] ldc #2
-        + Integer [2131034152]
+        + Integer [2131034156]
       [252] iconst_2
       [253] anewarray #38
         + Class [java/lang/Object]
@@ -41861,12 +43796,12 @@ _____________________________________________________________________
 Interfaces (count = 0):
 
 Constant Pool (count = 143):
-  + Integer [2131034128]
-  + Integer [2131034129]
   + Integer [2131034130]
   + Integer [2131034131]
-  + Integer [2131034154]
-  + Integer [2131034155]
+  + Integer [2131034132]
+  + Integer [2131034133]
+  + Integer [2131034158]
+  + Integer [2131034159]
   + Float [1.8]
   + Float [10.0]
   + Float [32.0]
@@ -42126,7 +44061,7 @@ Methods (count = 2):
       [148] getfield #38
         + Fieldref [com/halcyonwaves/apps/energize/fragments/b.a Lcom/halcyonwaves/apps/energize/fragments/OverviewFragment;]
       [151] ldc #1
-        + Integer [2131034128]
+        + Integer [2131034130]
       [153] invokevirtual #46
         + Methodref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.b (I)Ljava/lang/String;]
       [156] invokevirtual #43
@@ -42141,7 +44076,7 @@ Methods (count = 2):
       [170] getfield #38
         + Fieldref [com/halcyonwaves/apps/energize/fragments/b.a Lcom/halcyonwaves/apps/energize/fragments/OverviewFragment;]
       [173] ldc #2
-        + Integer [2131034129]
+        + Integer [2131034131]
       [175] invokevirtual #46
         + Methodref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.b (I)Ljava/lang/String;]
       [178] invokevirtual #43
@@ -42156,7 +44091,7 @@ Methods (count = 2):
       [192] getfield #38
         + Fieldref [com/halcyonwaves/apps/energize/fragments/b.a Lcom/halcyonwaves/apps/energize/fragments/OverviewFragment;]
       [195] ldc #3
-        + Integer [2131034130]
+        + Integer [2131034132]
       [197] invokevirtual #46
         + Methodref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.b (I)Ljava/lang/String;]
       [200] invokevirtual #43
@@ -42171,7 +44106,7 @@ Methods (count = 2):
       [214] getfield #38
         + Fieldref [com/halcyonwaves/apps/energize/fragments/b.a Lcom/halcyonwaves/apps/energize/fragments/OverviewFragment;]
       [217] ldc #4
-        + Integer [2131034131]
+        + Integer [2131034133]
       [219] invokevirtual #46
         + Methodref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.b (I)Ljava/lang/String;]
       [222] invokevirtual #43
@@ -42254,7 +44189,7 @@ Methods (count = 2):
       [337] getfield #38
         + Fieldref [com/halcyonwaves/apps/energize/fragments/b.a Lcom/halcyonwaves/apps/energize/fragments/OverviewFragment;]
       [340] ldc #5
-        + Integer [2131034154]
+        + Integer [2131034158]
       [342] iconst_1
       [343] anewarray #35
         + Class [java/lang/Object]
@@ -42292,7 +44227,7 @@ Methods (count = 2):
       [391] getfield #38
         + Fieldref [com/halcyonwaves/apps/energize/fragments/b.a Lcom/halcyonwaves/apps/energize/fragments/OverviewFragment;]
       [394] ldc #6
-        + Integer [2131034155]
+        + Integer [2131034159]
       [396] iconst_1
       [397] anewarray #35
         + Class [java/lang/Object]
@@ -42985,8 +44920,8 @@ _____________________________________________________________________
 Interfaces (count = 0):
 
 Constant Pool (count = 74):
-  + Integer [2131034154]
-  + Integer [2131034155]
+  + Integer [2131034158]
+  + Integer [2131034159]
   + String [Celsius]
   + String [HH:mm]
   + String [N/A]
@@ -43132,7 +45067,7 @@ Methods (count = 2):
       [63] getfield #20
         + Fieldref [com/halcyonwaves/apps/energize/fragments/c.a Lcom/halcyonwaves/apps/energize/fragments/TemperatureGraphFragment;]
       [66] ldc #1
-        + Integer [2131034154]
+        + Integer [2131034158]
       [68] iconst_1
       [69] anewarray #14
         + Class [java/lang/Object]
@@ -43155,7 +45090,7 @@ Methods (count = 2):
       [94] getfield #20
         + Fieldref [com/halcyonwaves/apps/energize/fragments/c.a Lcom/halcyonwaves/apps/energize/fragments/TemperatureGraphFragment;]
       [97] ldc #2
-        + Integer [2131034155]
+        + Integer [2131034159]
       [99] iconst_1
       [100] anewarray #14
         + Class [java/lang/Object]
@@ -43842,8 +45777,8 @@ Interfaces (count = 0):
 
 Constant Pool (count = 64):
   + Integer [17039370]
-  + Integer [2131034136]
-  + Integer [2131034137]
+  + Integer [2131034138]
+  + Integer [2131034139]
   + Class [android/app/AlertDialog]
   + Class [android/app/AlertDialog$Builder]
   + Class [android/os/Handler]
@@ -43950,11 +45885,11 @@ Methods (count = 2):
       [38] astore_2 v2
       [39] aload_2 v2
       [40] ldc #2
-        + Integer [2131034136]
+        + Integer [2131034138]
       [42] invokevirtual #18
         + Methodref [android/app/AlertDialog$Builder.setTitle (I)Landroid/app/AlertDialog$Builder;]
       [45] ldc #3
-        + Integer [2131034137]
+        + Integer [2131034139]
       [47] invokevirtual #16
         + Methodref [android/app/AlertDialog$Builder.setMessage (I)Landroid/app/AlertDialog$Builder;]
       [50] ldc #1
@@ -44468,19 +46403,22 @@ _____________________________________________________________________
 Interfaces (count = 1):
   + Class [android/content/SharedPreferences$OnSharedPreferenceChangeListener]
 
-Constant Pool (count = 351):
+Constant Pool (count = 357):
+  + Integer [2130837504]
   + Integer [2130837505]
   + Integer [2131034124]
   + Integer [2131034125]
   + Integer [2131034126]
   + Integer [2131034127]
+  + Integer [2131034128]
+  + Integer [2131034129]
   + String [Failed to log the event that the power cord was plugged in or unplugged.]
   + String [MonitorBatteryStateService]
   + String [Notification icon setting chaanged to: ]
   + String [Service successfully started]
   + String [Starting service for collecting battery statistics...]
   + String [Successfully inserted a power cord plugging event into the database.]
-  + String [The application tried to show an invalid loading level.]
+  + String [The application tried to show an invalid loading level. Showing a placeholder!]
   + String [Tried to insert a dataset into a closed database, skipping...]
   + String [advance.show_notification_bar]
   + String [android.intent.action.ACTION_POWER_CONNECTED]
@@ -44570,6 +46508,7 @@ Constant Pool (count = 351):
   + Methodref [android/support/v4/app/ac.b (Ljava/lang/CharSequence;)Landroid/support/v4/app/ac;]
   + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;)I]
   + Methodref [android/util/Log.v (Ljava/lang/String;Ljava/lang/String;)I]
+  + Methodref [android/util/Log.w (Ljava/lang/String;Ljava/lang/String;)I]
   + Methodref [com/halcyonwaves/apps/energize/a/a.<init> (Landroid/content/Context;)V]
   + Methodref [com/halcyonwaves/apps/energize/a/a.close ()V]
   + Methodref [com/halcyonwaves/apps/energize/a/a.getWritableDatabase ()Landroid/database/sqlite/SQLiteDatabase;]
@@ -44661,6 +46600,7 @@ Constant Pool (count = 351):
   + NameAndType [v (Ljava/lang/String;Ljava/lang/String;)I]
   + NameAndType [valueOf (I)Ljava/lang/Integer;]
   + NameAndType [valueOf (J)Ljava/lang/Long;]
+  + NameAndType [w (Ljava/lang/String;Ljava/lang/String;)I]
   + Utf8 [()J]
   + Utf8 [()Landroid/app/Notification;]
   + Utf8 [()Landroid/content/Context;]
@@ -44727,7 +46667,7 @@ Constant Pool (count = 351):
   + Utf8 [Service successfully started]
   + Utf8 [Starting service for collecting battery statistics...]
   + Utf8 [Successfully inserted a power cord plugging event into the database.]
-  + Utf8 [The application tried to show an invalid loading level.]
+  + Utf8 [The application tried to show an invalid loading level. Showing a placeholder!]
   + Utf8 [Tried to insert a dataset into a closed database, skipping...]
   + Utf8 [Z]
   + Utf8 [a]
@@ -44816,6 +46756,7 @@ Constant Pool (count = 351):
   + Utf8 [toString]
   + Utf8 [v]
   + Utf8 [valueOf]
+  + Utf8 [w]
 
 Fields (count = 10):
   + Field:        a Landroid/content/SharedPreferences;
@@ -44856,62 +46797,62 @@ Methods (count = 10):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 76, locals = 1, stack = 7):
       [0] aload_0 v0
-      [1] invokespecial #82
+      [1] invokespecial #85
         + Methodref [android/app/Service.<init> ()V]
       [4] aload_0 v0
       [5] aconst_null
-      [6] putfield #69
+      [6] putfield #72
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.a Landroid/content/SharedPreferences;]
       [9] aload_0 v0
       [10] aconst_null
-      [11] putfield #70
+      [11] putfield #73
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.b Lcom/halcyonwaves/apps/energize/receivers/a;]
       [14] aload_0 v0
       [15] aconst_null
-      [16] putfield #71
+      [16] putfield #74
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.c Lcom/halcyonwaves/apps/energize/a/a;]
       [19] aload_0 v0
       [20] aconst_null
-      [21] putfield #72
+      [21] putfield #75
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.d Landroid/database/sqlite/SQLiteDatabase;]
       [24] aload_0 v0
-      [25] new #58
+      [25] new #61
         + Class [java/util/ArrayList]
       [28] dup
-      [29] invokespecial #127
+      [29] invokespecial #131
         + Methodref [java/util/ArrayList.<init> ()V]
-      [32] putfield #73
+      [32] putfield #76
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.e Ljava/util/ArrayList;]
       [35] aload_0 v0
       [36] aconst_null
-      [37] putfield #74
+      [37] putfield #77
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.f Landroid/app/Notification;]
       [40] aload_0 v0
       [41] aconst_null
-      [42] putfield #75
+      [42] putfield #78
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.g Landroid/app/NotificationManager;]
       [45] aload_0 v0
       [46] aconst_null
-      [47] putfield #76
+      [47] putfield #79
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.h Lcom/halcyonwaves/apps/energize/receivers/b;]
       [50] aload_0 v0
       [51] aconst_null
-      [52] putfield #77
+      [52] putfield #80
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.i Lcom/halcyonwaves/apps/energize/receivers/c;]
       [55] aload_0 v0
-      [56] new #38
+      [56] new #41
         + Class [android/os/Messenger]
       [59] dup
-      [60] new #50
+      [60] new #53
         + Class [com/halcyonwaves/apps/energize/services/a]
       [63] dup
       [64] aload_0 v0
       [65] aconst_null
-      [66] invokespecial #118
+      [66] invokespecial #122
         + Methodref [com/halcyonwaves/apps/energize/services/a.<init> (Lcom/halcyonwaves/apps/energize/services/MonitorBatteryStateService;Lcom/halcyonwaves/apps/energize/services/a;)V]
-      [69] invokespecial #92
+      [69] invokespecial #95
         + Methodref [android/os/Messenger.<init> (Landroid/os/Handler;)V]
-      [72] putfield #78
+      [72] putfield #81
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.j Landroid/os/Messenger;]
       [75] return
       Code attribute exceptions (count = 0):
@@ -44921,64 +46862,64 @@ Methods (count = 10):
       = public void a(boolean)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 82, locals = 5, stack = 6):
-      [0] new #31
+      [0] new #34
         + Class [android/content/ContentValues]
       [3] dup
-      [4] invokespecial #84
+      [4] invokespecial #87
         + Methodref [android/content/ContentValues.<init> ()V]
       [7] astore_2 v2
-      [8] invokestatic #126
+      [8] invokestatic #130
         + Methodref [java/lang/System.currentTimeMillis ()J]
-      [11] ldc2_w #61
+      [11] ldc2_w #64
         + Long [1000]
       [14] ldiv
       [15] lstore_3 v3
       [16] aload_2 v2
-      [17] ldc #22
+      [17] ldc #25
         + String [eventTime]
       [19] lload_3 v3
-      [20] invokestatic #120
+      [20] invokestatic #124
         + Methodref [java/lang/Long.valueOf (J)Ljava/lang/Long;]
-      [23] invokevirtual #86
+      [23] invokevirtual #89
         + Methodref [android/content/ContentValues.put (Ljava/lang/String;Ljava/lang/Long;)V]
       [26] aload_2 v2
-      [27] ldc #24
+      [27] ldc #27
         + String [isCharging]
       [29] iload_1 v1
       [30] ifeq +7 (target=37)
       [33] iconst_1
       [34] goto +4 (target=38)
       [37] iconst_0
-      [38] invokestatic #119
+      [38] invokestatic #123
         + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
-      [41] invokevirtual #85
+      [41] invokevirtual #88
         + Methodref [android/content/ContentValues.put (Ljava/lang/String;Ljava/lang/Integer;)V]
-      [44] ldc2_w #59
+      [44] ldc2_w #62
         + Long [-1]
       [47] aload_0 v0
-      [48] getfield #72
+      [48] getfield #75
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.d Landroid/database/sqlite/SQLiteDatabase;]
-      [51] ldc #26
+      [51] ldc #29
         + String [powerEvents]
       [53] aconst_null
       [54] aload_2 v2
-      [55] invokevirtual #89
+      [55] invokevirtual #92
         + Methodref [android/database/sqlite/SQLiteDatabase.insert (Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J]
       [58] lcmp
       [59] ifne +14 (target=73)
-      [62] ldc #7
+      [62] ldc #10
         + String [MonitorBatteryStateService]
-      [64] ldc #6
+      [64] ldc #9
         + String [Failed to log the event that the power cord was plugged in or unplugged.]
-      [66] invokestatic #103
+      [66] invokestatic #106
         + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;)I]
       [69] pop
       [70] goto +11 (target=81)
-      [73] ldc #7
+      [73] ldc #10
         + String [MonitorBatteryStateService]
-      [75] ldc #11
+      [75] ldc #14
         + String [Successfully inserted a power cord plugging event into the database.]
-      [77] invokestatic #104
+      [77] invokestatic #107
         + Methodref [android/util/Log.v (Ljava/lang/String;Ljava/lang/String;)I]
       [80] pop
       [81] return
@@ -44990,126 +46931,126 @@ Methods (count = 10):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 182, locals = 9, stack = 8):
       [0] aload_0 v0
-      [1] getfield #72
+      [1] getfield #75
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.d Landroid/database/sqlite/SQLiteDatabase;]
       [4] ifnull +13 (target=17)
       [7] aload_0 v0
-      [8] getfield #72
+      [8] getfield #75
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.d Landroid/database/sqlite/SQLiteDatabase;]
-      [11] invokevirtual #90
+      [11] invokevirtual #93
         + Methodref [android/database/sqlite/SQLiteDatabase.isOpen ()Z]
       [14] ifne +12 (target=26)
-      [17] ldc #7
+      [17] ldc #10
         + String [MonitorBatteryStateService]
-      [19] ldc #13
+      [19] ldc #16
         + String [Tried to insert a dataset into a closed database, skipping...]
-      [21] invokestatic #103
+      [21] invokestatic #106
         + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;)I]
       [24] pop
       [25] return
       [26] aload_0 v0
-      [27] getfield #72
+      [27] getfield #75
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.d Landroid/database/sqlite/SQLiteDatabase;]
-      [30] ldc #27
+      [30] ldc #30
         + String [rawBatteryStats]
       [32] iconst_1
-      [33] anewarray #55
+      [33] anewarray #58
         + Class [java/lang/String]
       [36] dup
       [37] iconst_0
-      [38] ldc #19
+      [38] ldc #22
         + String [chargingLevel]
       [40] aastore
       [41] aconst_null
       [42] aconst_null
       [43] aconst_null
       [44] aconst_null
-      [45] ldc #23
+      [45] ldc #26
         + String [eventTime DESC]
-      [47] invokevirtual #91
+      [47] invokevirtual #94
         + Methodref [android/database/sqlite/SQLiteDatabase.query (Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;]
       [50] astore v5
       [52] aload v5
-      [54] invokeinterface #133
+      [54] invokeinterface #137
         + InterfaceMethodref [android/database/Cursor.moveToFirst ()Z]
       [59] ifeq +23 (target=82)
       [62] iload_3 v3
       [63] aload v5
       [65] aload v5
-      [67] ldc #19
+      [67] ldc #22
         + String [chargingLevel]
-      [69] invokeinterface #131
+      [69] invokeinterface #135
         + InterfaceMethodref [android/database/Cursor.getColumnIndex (Ljava/lang/String;)I]
-      [74] invokeinterface #132
+      [74] invokeinterface #136
         + InterfaceMethodref [android/database/Cursor.getInt (I)I]
       [79] ificmpeq +91 (target=170)
-      [82] invokestatic #126
+      [82] invokestatic #130
         + Methodref [java/lang/System.currentTimeMillis ()J]
-      [85] ldc2_w #61
+      [85] ldc2_w #64
         + Long [1000]
       [88] ldiv
       [89] lstore v6
-      [91] new #31
+      [91] new #34
         + Class [android/content/ContentValues]
       [94] dup
-      [95] invokespecial #84
+      [95] invokespecial #87
         + Methodref [android/content/ContentValues.<init> ()V]
       [98] astore v8
       [100] aload v8
-      [102] ldc #22
+      [102] ldc #25
         + String [eventTime]
       [104] lload v6
-      [106] invokestatic #120
+      [106] invokestatic #124
         + Methodref [java/lang/Long.valueOf (J)Ljava/lang/Long;]
-      [109] invokevirtual #86
+      [109] invokevirtual #89
         + Methodref [android/content/ContentValues.put (Ljava/lang/String;Ljava/lang/Long;)V]
       [112] aload v8
-      [114] ldc #21
+      [114] ldc #24
         + String [chargingState]
       [116] iload_1 v1
-      [117] invokestatic #119
+      [117] invokestatic #123
         + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
-      [120] invokevirtual #85
+      [120] invokevirtual #88
         + Methodref [android/content/ContentValues.put (Ljava/lang/String;Ljava/lang/Integer;)V]
       [123] aload v8
-      [125] ldc #20
+      [125] ldc #23
         + String [chargingScale]
       [127] iload_2 v2
-      [128] invokestatic #119
+      [128] invokestatic #123
         + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
-      [131] invokevirtual #85
+      [131] invokevirtual #88
         + Methodref [android/content/ContentValues.put (Ljava/lang/String;Ljava/lang/Integer;)V]
       [134] aload v8
-      [136] ldc #19
+      [136] ldc #22
         + String [chargingLevel]
       [138] iload_3 v3
-      [139] invokestatic #119
+      [139] invokestatic #123
         + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
-      [142] invokevirtual #85
+      [142] invokevirtual #88
         + Methodref [android/content/ContentValues.put (Ljava/lang/String;Ljava/lang/Integer;)V]
       [145] aload v8
-      [147] ldc #18
+      [147] ldc #21
         + String [batteryTemprature]
       [149] iload v4
-      [151] invokestatic #119
+      [151] invokestatic #123
         + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
-      [154] invokevirtual #85
+      [154] invokevirtual #88
         + Methodref [android/content/ContentValues.put (Ljava/lang/String;Ljava/lang/Integer;)V]
       [157] aload_0 v0
-      [158] getfield #72
+      [158] getfield #75
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.d Landroid/database/sqlite/SQLiteDatabase;]
-      [161] ldc #27
+      [161] ldc #30
         + String [rawBatteryStats]
       [163] aconst_null
       [164] aload v8
-      [166] invokevirtual #89
+      [166] invokevirtual #92
         + Methodref [android/database/sqlite/SQLiteDatabase.insert (Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J]
       [169] pop2
       [170] aload v5
-      [172] invokeinterface #130
+      [172] invokeinterface #134
         + InterfaceMethodref [android/database/Cursor.close ()V]
       [177] aload_0 v0
-      [178] invokespecial #112
+      [178] invokespecial #116
         + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.a ()V]
       [181] return
       Code attribute exceptions (count = 0):
@@ -45120,9 +47061,9 @@ Methods (count = 10):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 8, locals = 2, stack = 1):
       [0] aload_0 v0
-      [1] getfield #78
+      [1] getfield #81
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.j Landroid/os/Messenger;]
-      [4] invokevirtual #93
+      [4] invokevirtual #96
         + Methodref [android/os/Messenger.getBinder ()Landroid/os/IBinder;]
       [7] areturn
       Code attribute exceptions (count = 0):
@@ -45133,16 +47074,16 @@ Methods (count = 10):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 17, locals = 1, stack = 2):
       [0] aload_0 v0
-      [1] getfield #71
+      [1] getfield #74
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.c Lcom/halcyonwaves/apps/energize/a/a;]
-      [4] invokevirtual #106
+      [4] invokevirtual #110
         + Methodref [com/halcyonwaves/apps/energize/a/a.close ()V]
       [7] aload_0 v0
       [8] aconst_null
-      [9] putfield #72
+      [9] putfield #75
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.d Landroid/database/sqlite/SQLiteDatabase;]
       [12] aload_0 v0
-      [13] invokespecial #83
+      [13] invokespecial #86
         + Methodref [android/app/Service.onDestroy ()V]
       [16] return
       Code attribute exceptions (count = 0):
@@ -45153,50 +47094,50 @@ Methods (count = 10):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 66, locals = 4, stack = 4):
       [0] aload_2 v2
-      [1] ldc #14
+      [1] ldc #17
         + String [advance.show_notification_bar]
-      [3] invokevirtual #122
+      [3] invokevirtual #126
         + Methodref [java/lang/String.compareTo (Ljava/lang/String;)I]
       [6] ifne +59 (target=65)
       [9] aload_1 v1
-      [10] ldc #14
+      [10] ldc #17
         + String [advance.show_notification_bar]
       [12] iconst_1
-      [13] invokeinterface #128
+      [13] invokeinterface #132
         + InterfaceMethodref [android/content/SharedPreferences.getBoolean (Ljava/lang/String;Z)Z]
       [18] istore_3 v3
-      [19] ldc #7
+      [19] ldc #10
         + String [MonitorBatteryStateService]
-      [21] new #56
+      [21] new #59
         + Class [java/lang/StringBuilder]
       [24] dup
-      [25] ldc #8
+      [25] ldc #11
         + String [Notification icon setting chaanged to: ]
-      [27] invokespecial #123
+      [27] invokespecial #127
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
       [30] iload_3 v3
-      [31] invokevirtual #124
+      [31] invokevirtual #128
         + Methodref [java/lang/StringBuilder.append (Z)Ljava/lang/StringBuilder;]
-      [34] invokevirtual #125
+      [34] invokevirtual #129
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
-      [37] invokestatic #104
+      [37] invokestatic #107
         + Methodref [android/util/Log.v (Ljava/lang/String;Ljava/lang/String;)I]
       [40] pop
       [41] iload_3 v3
       [42] ifne +19 (target=61)
       [45] aload_0 v0
-      [46] getfield #75
+      [46] getfield #78
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.g Landroid/app/NotificationManager;]
       [49] iconst_1
-      [50] invokevirtual #79
+      [50] invokevirtual #82
         + Methodref [android/app/NotificationManager.cancel (I)V]
       [53] aload_0 v0
       [54] aconst_null
-      [55] putfield #74
+      [55] putfield #77
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.f Landroid/app/Notification;]
       [58] goto +7 (target=65)
       [61] aload_0 v0
-      [62] invokespecial #112
+      [62] invokespecial #116
         + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.a ()V]
       [65] return
       Code attribute exceptions (count = 0):
@@ -45206,130 +47147,130 @@ Methods (count = 10):
       = public int onStartCommand(android.content.Intent,int,int)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 168, locals = 4, stack = 5):
-      [0] ldc #7
+      [0] ldc #10
         + String [MonitorBatteryStateService]
-      [2] ldc #10
+      [2] ldc #13
         + String [Starting service for collecting battery statistics...]
-      [4] invokestatic #104
+      [4] invokestatic #107
         + Methodref [android/util/Log.v (Ljava/lang/String;Ljava/lang/String;)I]
       [7] pop
       [8] aload_0 v0
       [9] aload_0 v0
-      [10] invokevirtual #113
+      [10] invokevirtual #117
         + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getApplicationContext ()Landroid/content/Context;]
-      [13] invokestatic #94
+      [13] invokestatic #97
         + Methodref [android/preference/PreferenceManager.getDefaultSharedPreferences (Landroid/content/Context;)Landroid/content/SharedPreferences;]
-      [16] putfield #69
+      [16] putfield #72
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.a Landroid/content/SharedPreferences;]
       [19] aload_0 v0
-      [20] getfield #69
+      [20] getfield #72
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.a Landroid/content/SharedPreferences;]
       [23] aload_0 v0
-      [24] invokeinterface #129
+      [24] invokeinterface #133
         + InterfaceMethodref [android/content/SharedPreferences.registerOnSharedPreferenceChangeListener (Landroid/content/SharedPreferences$OnSharedPreferenceChangeListener;)V]
       [29] aload_0 v0
       [30] aload_0 v0
-      [31] ldc #25
+      [31] ldc #28
         + String [notification]
-      [33] invokevirtual #116
+      [33] invokevirtual #120
         + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getSystemService (Ljava/lang/String;)Ljava/lang/Object;]
-      [36] checkcast #28
+      [36] checkcast #31
         + Class [android/app/NotificationManager]
-      [39] putfield #75
+      [39] putfield #78
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.g Landroid/app/NotificationManager;]
       [42] aload_0 v0
-      [43] new #43
+      [43] new #46
         + Class [com/halcyonwaves/apps/energize/a/a]
       [46] dup
       [47] aload_0 v0
-      [48] invokevirtual #113
+      [48] invokevirtual #117
         + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getApplicationContext ()Landroid/content/Context;]
-      [51] invokespecial #105
+      [51] invokespecial #109
         + Methodref [com/halcyonwaves/apps/energize/a/a.<init> (Landroid/content/Context;)V]
-      [54] putfield #71
+      [54] putfield #74
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.c Lcom/halcyonwaves/apps/energize/a/a;]
       [57] aload_0 v0
       [58] aload_0 v0
-      [59] getfield #71
+      [59] getfield #74
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.c Lcom/halcyonwaves/apps/energize/a/a;]
-      [62] invokevirtual #107
+      [62] invokevirtual #111
         + Methodref [com/halcyonwaves/apps/energize/a/a.getWritableDatabase ()Landroid/database/sqlite/SQLiteDatabase;]
-      [65] putfield #72
+      [65] putfield #75
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.d Landroid/database/sqlite/SQLiteDatabase;]
       [68] aload_0 v0
-      [69] new #46
+      [69] new #49
         + Class [com/halcyonwaves/apps/energize/receivers/a]
       [72] dup
       [73] aload_0 v0
-      [74] invokespecial #109
+      [74] invokespecial #113
         + Methodref [com/halcyonwaves/apps/energize/receivers/a.<init> (Lcom/halcyonwaves/apps/energize/services/MonitorBatteryStateService;)V]
-      [77] putfield #70
+      [77] putfield #73
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.b Lcom/halcyonwaves/apps/energize/receivers/a;]
       [80] aload_0 v0
       [81] aload_0 v0
-      [82] getfield #70
+      [82] getfield #73
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.b Lcom/halcyonwaves/apps/energize/receivers/a;]
-      [85] new #33
+      [85] new #36
         + Class [android/content/IntentFilter]
       [88] dup
-      [89] ldc #17
+      [89] ldc #20
         + String [android.intent.action.BATTERY_CHANGED]
-      [91] invokespecial #88
+      [91] invokespecial #91
         + Methodref [android/content/IntentFilter.<init> (Ljava/lang/String;)V]
-      [94] invokevirtual #117
+      [94] invokevirtual #121
         + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.registerReceiver (Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;]
       [97] pop
       [98] aload_0 v0
-      [99] new #47
+      [99] new #50
         + Class [com/halcyonwaves/apps/energize/receivers/b]
       [102] dup
       [103] aload_0 v0
-      [104] invokespecial #110
+      [104] invokespecial #114
         + Methodref [com/halcyonwaves/apps/energize/receivers/b.<init> (Lcom/halcyonwaves/apps/energize/services/MonitorBatteryStateService;)V]
-      [107] putfield #76
+      [107] putfield #79
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.h Lcom/halcyonwaves/apps/energize/receivers/b;]
       [110] aload_0 v0
-      [111] new #48
+      [111] new #51
         + Class [com/halcyonwaves/apps/energize/receivers/c]
       [114] dup
       [115] aload_0 v0
-      [116] invokespecial #111
+      [116] invokespecial #115
         + Methodref [com/halcyonwaves/apps/energize/receivers/c.<init> (Lcom/halcyonwaves/apps/energize/services/MonitorBatteryStateService;)V]
-      [119] putfield #77
+      [119] putfield #80
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.i Lcom/halcyonwaves/apps/energize/receivers/c;]
       [122] aload_0 v0
       [123] aload_0 v0
-      [124] getfield #76
+      [124] getfield #79
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.h Lcom/halcyonwaves/apps/energize/receivers/b;]
-      [127] new #33
+      [127] new #36
         + Class [android/content/IntentFilter]
       [130] dup
-      [131] ldc #15
+      [131] ldc #18
         + String [android.intent.action.ACTION_POWER_CONNECTED]
-      [133] invokespecial #88
+      [133] invokespecial #91
         + Methodref [android/content/IntentFilter.<init> (Ljava/lang/String;)V]
-      [136] invokevirtual #117
+      [136] invokevirtual #121
         + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.registerReceiver (Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;]
       [139] pop
       [140] aload_0 v0
       [141] aload_0 v0
-      [142] getfield #77
+      [142] getfield #80
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.i Lcom/halcyonwaves/apps/energize/receivers/c;]
-      [145] new #33
+      [145] new #36
         + Class [android/content/IntentFilter]
       [148] dup
-      [149] ldc #16
+      [149] ldc #19
         + String [android.intent.action.ACTION_POWER_DISCONNECTED]
-      [151] invokespecial #88
+      [151] invokespecial #91
         + Methodref [android/content/IntentFilter.<init> (Ljava/lang/String;)V]
-      [154] invokevirtual #117
+      [154] invokevirtual #121
         + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.registerReceiver (Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;]
       [157] pop
-      [158] ldc #7
+      [158] ldc #10
         + String [MonitorBatteryStateService]
-      [160] ldc #9
+      [160] ldc #12
         + String [Service successfully started]
-      [162] invokestatic #104
+      [162] invokestatic #107
         + Methodref [android/util/Log.v (Ljava/lang/String;Ljava/lang/String;)I]
       [165] pop
       [166] iconst_1
@@ -45340,191 +47281,270 @@ Methods (count = 10):
     Access flags: 0x2
       = private void a()
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 258, locals = 6, stack = 7):
+    + Code attribute instructions (code length = 358, locals = 6, stack = 7):
       [0] aload_0 v0
-      [1] invokevirtual #113
-        + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getApplicationContext ()Landroid/content/Context;]
-      [4] invokestatic #108
-        + Methodref [com/halcyonwaves/apps/energize/c/a.a (Landroid/content/Context;)Lcom/halcyonwaves/apps/energize/c/b;]
-      [7] astore_1 v1
-      [8] aload_1 v1
-      [9] getfield #66
-        + Fieldref [com/halcyonwaves/apps/energize/c/b.b Z]
-      [12] ifne +12 (target=24)
-      [15] ldc #7
-        + String [MonitorBatteryStateService]
-      [17] ldc #12
-        + String [The application tried to show an invalid loading level.]
-      [19] invokestatic #103
-        + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;)I]
-      [22] pop
-      [23] return
-      [24] aload_0 v0
-      [25] getfield #69
+      [1] getfield #72
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.a Landroid/content/SharedPreferences;]
-      [28] ldc #14
+      [4] ldc #17
         + String [advance.show_notification_bar]
-      [30] iconst_1
-      [31] invokeinterface #128
+      [6] iconst_1
+      [7] invokeinterface #132
         + InterfaceMethodref [android/content/SharedPreferences.getBoolean (Ljava/lang/String;Z)Z]
-      [36] ifne +4 (target=40)
-      [39] return
-      [40] aload_1 v1
-      [41] getfield #68
-        + Fieldref [com/halcyonwaves/apps/energize/c/b.d I]
-      [44] ifle +19 (target=63)
-      [47] aload_1 v1
-      [48] getfield #68
-        + Fieldref [com/halcyonwaves/apps/energize/c/b.d I]
-      [51] i2d
-      [52] ldc2_w #63
-        + Double [60.0]
-      [55] ddiv
-      [56] invokestatic #121
-        + Methodref [java/lang/Math.floor (D)D]
-      [59] d2i
-      [60] goto +4 (target=64)
-      [63] iconst_0
-      [64] istore_2 v2
-      [65] aload_1 v1
-      [66] getfield #68
-        + Fieldref [com/halcyonwaves/apps/energize/c/b.d I]
-      [69] bipush 60
-      [71] iload_2 v2
-      [72] imul
-      [73] isub
-      [74] istore_3 v3
-      [75] ldc #3
-        + Integer [2131034125]
-      [77] istore v4
-      [79] aload_1 v1
-      [80] getfield #65
-        + Fieldref [com/halcyonwaves/apps/energize/c/b.a Z]
-      [83] ifeq +7 (target=90)
-      [86] ldc #2
-        + Integer [2131034124]
-      [88] istore v4
-      [90] new #40
+      [12] ifne +4 (target=16)
+      [15] return
+      [16] aload_0 v0
+      [17] invokevirtual #117
+        + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getApplicationContext ()Landroid/content/Context;]
+      [20] invokestatic #112
+        + Methodref [com/halcyonwaves/apps/energize/c/a.a (Landroid/content/Context;)Lcom/halcyonwaves/apps/energize/c/b;]
+      [23] astore_1 v1
+      [24] aload_1 v1
+      [25] getfield #69
+        + Fieldref [com/halcyonwaves/apps/energize/c/b.b Z]
+      [28] ifne +112 (target=140)
+      [31] ldc #10
+        + String [MonitorBatteryStateService]
+      [33] ldc #15
+        + String [The application tried to show an invalid loading level. Showing a placeholder!]
+      [35] invokestatic #108
+        + Methodref [android/util/Log.w (Ljava/lang/String;Ljava/lang/String;)I]
+      [38] pop
+      [39] new #43
         + Class [android/support/v4/app/ac]
-      [93] dup
-      [94] aload_0 v0
-      [95] invokevirtual #113
+      [42] dup
+      [43] aload_0 v0
+      [44] invokevirtual #117
         + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getApplicationContext ()Landroid/content/Context;]
-      [98] invokespecial #95
+      [47] invokespecial #98
         + Methodref [android/support/v4/app/ac.<init> (Landroid/content/Context;)V]
-      [101] astore v5
-      [103] aload v5
-      [105] aload_0 v0
-      [106] iload v4
-      [108] invokevirtual #114
+      [50] astore_2 v2
+      [51] aload_2 v2
+      [52] aload_0 v0
+      [53] ldc #3
+        + Integer [2131034124]
+      [55] invokevirtual #118
         + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getString (I)Ljava/lang/String;]
-      [111] invokevirtual #99
+      [58] invokevirtual #102
         + Methodref [android/support/v4/app/ac.a (Ljava/lang/CharSequence;)Landroid/support/v4/app/ac;]
-      [114] pop
-      [115] aload v5
-      [117] ldc #1
-        + Integer [2130837505]
-      [119] aload_1 v1
-      [120] getfield #67
-        + Fieldref [com/halcyonwaves/apps/energize/c/b.c I]
-      [123] iadd
-      [124] invokevirtual #97
-        + Methodref [android/support/v4/app/ac.a (I)Landroid/support/v4/app/ac;]
-      [127] pop
-      [128] aload v5
-      [130] iconst_1
-      [131] invokevirtual #100
-        + Methodref [android/support/v4/app/ac.a (Z)Landroid/support/v4/app/ac;]
-      [134] pop
-      [135] aload v5
-      [137] aload_0 v0
-      [138] invokevirtual #113
-        + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getApplicationContext ()Landroid/content/Context;]
-      [141] iconst_0
-      [142] new #32
-        + Class [android/content/Intent]
-      [145] dup
-      [146] aload_0 v0
-      [147] invokevirtual #113
-        + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getApplicationContext ()Landroid/content/Context;]
-      [150] ldc #42
-        + Class [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity]
-      [152] invokespecial #87
-        + Methodref [android/content/Intent.<init> (Landroid/content/Context;Ljava/lang/Class;)V]
-      [155] iconst_0
-      [156] invokestatic #81
-        + Methodref [android/app/PendingIntent.getActivity (Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;]
-      [159] invokevirtual #98
-        + Methodref [android/support/v4/app/ac.a (Landroid/app/PendingIntent;)Landroid/support/v4/app/ac;]
-      [162] pop
-      [163] aload v5
-      [165] iconst_m1
-      [166] invokevirtual #101
-        + Methodref [android/support/v4/app/ac.b (I)Landroid/support/v4/app/ac;]
-      [169] pop
-      [170] aload_1 v1
-      [171] getfield #67
-        + Fieldref [com/halcyonwaves/apps/energize/c/b.c I]
-      [174] bipush 15
-      [176] ificmpgt +10 (target=186)
-      [179] aload v5
-      [181] iconst_1
-      [182] invokevirtual #101
-        + Methodref [android/support/v4/app/ac.b (I)Landroid/support/v4/app/ac;]
-      [185] pop
-      [186] iload_3 v3
-      [187] iconst_m1
-      [188] ificmpgt +18 (target=206)
-      [191] aload v5
-      [193] aload_0 v0
-      [194] ldc #5
-        + Integer [2131034127]
-      [196] invokevirtual #114
+      [61] pop
+      [62] aload_2 v2
+      [63] aload_0 v0
+      [64] ldc #8
+        + Integer [2131034129]
+      [66] invokevirtual #118
         + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getString (I)Ljava/lang/String;]
-      [199] invokevirtual #102
+      [69] invokevirtual #105
         + Methodref [android/support/v4/app/ac.b (Ljava/lang/CharSequence;)Landroid/support/v4/app/ac;]
-      [202] pop
-      [203] goto +33 (target=236)
-      [206] aload v5
-      [208] aload_0 v0
-      [209] ldc #4
-        + Integer [2131034126]
-      [211] iconst_2
-      [212] anewarray #54
-        + Class [java/lang/Object]
-      [215] dup
-      [216] iconst_0
-      [217] iload_2 v2
-      [218] invokestatic #119
-        + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
-      [221] aastore
-      [222] dup
-      [223] iconst_1
-      [224] iload_3 v3
-      [225] invokestatic #119
-        + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
-      [228] aastore
-      [229] invokevirtual #115
-        + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getString (I[Ljava/lang/Object;)Ljava/lang/String;]
-      [232] invokevirtual #102
-        + Methodref [android/support/v4/app/ac.b (Ljava/lang/CharSequence;)Landroid/support/v4/app/ac;]
-      [235] pop
-      [236] aload_0 v0
-      [237] aload v5
-      [239] invokevirtual #96
+      [72] pop
+      [73] aload_2 v2
+      [74] ldc #1
+        + Integer [2130837504]
+      [76] invokevirtual #100
+        + Methodref [android/support/v4/app/ac.a (I)Landroid/support/v4/app/ac;]
+      [79] pop
+      [80] aload_2 v2
+      [81] iconst_1
+      [82] invokevirtual #103
+        + Methodref [android/support/v4/app/ac.a (Z)Landroid/support/v4/app/ac;]
+      [85] pop
+      [86] aload_2 v2
+      [87] aload_0 v0
+      [88] invokevirtual #117
+        + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getApplicationContext ()Landroid/content/Context;]
+      [91] iconst_0
+      [92] new #35
+        + Class [android/content/Intent]
+      [95] dup
+      [96] aload_0 v0
+      [97] invokevirtual #117
+        + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getApplicationContext ()Landroid/content/Context;]
+      [100] ldc #45
+        + Class [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity]
+      [102] invokespecial #90
+        + Methodref [android/content/Intent.<init> (Landroid/content/Context;Ljava/lang/Class;)V]
+      [105] iconst_0
+      [106] invokestatic #84
+        + Methodref [android/app/PendingIntent.getActivity (Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;]
+      [109] invokevirtual #101
+        + Methodref [android/support/v4/app/ac.a (Landroid/app/PendingIntent;)Landroid/support/v4/app/ac;]
+      [112] pop
+      [113] aload_2 v2
+      [114] iconst_m1
+      [115] invokevirtual #104
+        + Methodref [android/support/v4/app/ac.b (I)Landroid/support/v4/app/ac;]
+      [118] pop
+      [119] aload_0 v0
+      [120] aload_2 v2
+      [121] invokevirtual #99
         + Methodref [android/support/v4/app/ac.a ()Landroid/app/Notification;]
-      [242] putfield #74
+      [124] putfield #77
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.f Landroid/app/Notification;]
-      [245] aload_0 v0
-      [246] getfield #75
+      [127] aload_0 v0
+      [128] getfield #78
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.g Landroid/app/NotificationManager;]
-      [249] iconst_1
-      [250] aload_0 v0
-      [251] getfield #74
+      [131] iconst_1
+      [132] aload_0 v0
+      [133] getfield #77
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.f Landroid/app/Notification;]
-      [254] invokevirtual #80
+      [136] invokevirtual #83
         + Methodref [android/app/NotificationManager.notify (ILandroid/app/Notification;)V]
-      [257] return
+      [139] return
+      [140] aload_1 v1
+      [141] getfield #71
+        + Fieldref [com/halcyonwaves/apps/energize/c/b.d I]
+      [144] ifle +19 (target=163)
+      [147] aload_1 v1
+      [148] getfield #71
+        + Fieldref [com/halcyonwaves/apps/energize/c/b.d I]
+      [151] i2d
+      [152] ldc2_w #66
+        + Double [60.0]
+      [155] ddiv
+      [156] invokestatic #125
+        + Methodref [java/lang/Math.floor (D)D]
+      [159] d2i
+      [160] goto +4 (target=164)
+      [163] iconst_0
+      [164] istore_2 v2
+      [165] aload_1 v1
+      [166] getfield #71
+        + Fieldref [com/halcyonwaves/apps/energize/c/b.d I]
+      [169] bipush 60
+      [171] iload_2 v2
+      [172] imul
+      [173] isub
+      [174] istore_3 v3
+      [175] ldc #5
+        + Integer [2131034126]
+      [177] istore v4
+      [179] aload_1 v1
+      [180] getfield #68
+        + Fieldref [com/halcyonwaves/apps/energize/c/b.a Z]
+      [183] ifeq +7 (target=190)
+      [186] ldc #4
+        + Integer [2131034125]
+      [188] istore v4
+      [190] new #43
+        + Class [android/support/v4/app/ac]
+      [193] dup
+      [194] aload_0 v0
+      [195] invokevirtual #117
+        + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getApplicationContext ()Landroid/content/Context;]
+      [198] invokespecial #98
+        + Methodref [android/support/v4/app/ac.<init> (Landroid/content/Context;)V]
+      [201] astore v5
+      [203] aload v5
+      [205] aload_0 v0
+      [206] iload v4
+      [208] invokevirtual #118
+        + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getString (I)Ljava/lang/String;]
+      [211] invokevirtual #102
+        + Methodref [android/support/v4/app/ac.a (Ljava/lang/CharSequence;)Landroid/support/v4/app/ac;]
+      [214] pop
+      [215] aload v5
+      [217] ldc #2
+        + Integer [2130837505]
+      [219] aload_1 v1
+      [220] getfield #70
+        + Fieldref [com/halcyonwaves/apps/energize/c/b.c I]
+      [223] iadd
+      [224] invokevirtual #100
+        + Methodref [android/support/v4/app/ac.a (I)Landroid/support/v4/app/ac;]
+      [227] pop
+      [228] aload v5
+      [230] iconst_1
+      [231] invokevirtual #103
+        + Methodref [android/support/v4/app/ac.a (Z)Landroid/support/v4/app/ac;]
+      [234] pop
+      [235] aload v5
+      [237] aload_0 v0
+      [238] invokevirtual #117
+        + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getApplicationContext ()Landroid/content/Context;]
+      [241] iconst_0
+      [242] new #35
+        + Class [android/content/Intent]
+      [245] dup
+      [246] aload_0 v0
+      [247] invokevirtual #117
+        + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getApplicationContext ()Landroid/content/Context;]
+      [250] ldc #45
+        + Class [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity]
+      [252] invokespecial #90
+        + Methodref [android/content/Intent.<init> (Landroid/content/Context;Ljava/lang/Class;)V]
+      [255] iconst_0
+      [256] invokestatic #84
+        + Methodref [android/app/PendingIntent.getActivity (Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;]
+      [259] invokevirtual #101
+        + Methodref [android/support/v4/app/ac.a (Landroid/app/PendingIntent;)Landroid/support/v4/app/ac;]
+      [262] pop
+      [263] aload v5
+      [265] iconst_m1
+      [266] invokevirtual #104
+        + Methodref [android/support/v4/app/ac.b (I)Landroid/support/v4/app/ac;]
+      [269] pop
+      [270] aload_1 v1
+      [271] getfield #70
+        + Fieldref [com/halcyonwaves/apps/energize/c/b.c I]
+      [274] bipush 15
+      [276] ificmpgt +10 (target=286)
+      [279] aload v5
+      [281] iconst_1
+      [282] invokevirtual #104
+        + Methodref [android/support/v4/app/ac.b (I)Landroid/support/v4/app/ac;]
+      [285] pop
+      [286] iload_3 v3
+      [287] iconst_m1
+      [288] ificmpgt +18 (target=306)
+      [291] aload v5
+      [293] aload_0 v0
+      [294] ldc #7
+        + Integer [2131034128]
+      [296] invokevirtual #118
+        + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getString (I)Ljava/lang/String;]
+      [299] invokevirtual #105
+        + Methodref [android/support/v4/app/ac.b (Ljava/lang/CharSequence;)Landroid/support/v4/app/ac;]
+      [302] pop
+      [303] goto +33 (target=336)
+      [306] aload v5
+      [308] aload_0 v0
+      [309] ldc #6
+        + Integer [2131034127]
+      [311] iconst_2
+      [312] anewarray #57
+        + Class [java/lang/Object]
+      [315] dup
+      [316] iconst_0
+      [317] iload_2 v2
+      [318] invokestatic #123
+        + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
+      [321] aastore
+      [322] dup
+      [323] iconst_1
+      [324] iload_3 v3
+      [325] invokestatic #123
+        + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
+      [328] aastore
+      [329] invokevirtual #119
+        + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getString (I[Ljava/lang/Object;)Ljava/lang/String;]
+      [332] invokevirtual #105
+        + Methodref [android/support/v4/app/ac.b (Ljava/lang/CharSequence;)Landroid/support/v4/app/ac;]
+      [335] pop
+      [336] aload_0 v0
+      [337] aload v5
+      [339] invokevirtual #99
+        + Methodref [android/support/v4/app/ac.a ()Landroid/app/Notification;]
+      [342] putfield #77
+        + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.f Landroid/app/Notification;]
+      [345] aload_0 v0
+      [346] getfield #78
+        + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.g Landroid/app/NotificationManager;]
+      [349] iconst_1
+      [350] aload_0 v0
+      [351] getfield #77
+        + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.f Landroid/app/Notification;]
+      [354] invokevirtual #83
+        + Methodref [android/app/NotificationManager.notify (ILandroid/app/Notification;)V]
+      [357] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
   + Method:       a(Lcom/halcyonwaves/apps/energize/services/MonitorBatteryStateService;)Ljava/util/ArrayList;
@@ -45533,7 +47553,7 @@ Methods (count = 10):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #73
+      [1] getfield #76
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.e Ljava/util/ArrayList;]
       [4] areturn
       Code attribute exceptions (count = 0):
@@ -45544,7 +47564,7 @@ Methods (count = 10):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #72
+      [1] getfield #75
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.d Landroid/database/sqlite/SQLiteDatabase;]
       [4] areturn
       Code attribute exceptions (count = 0):
