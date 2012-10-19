@@ -26,6 +26,18 @@ For building the application by yourself follow the following steps:
   6. Create an Android project for the actual application (using the `Android Project from Existing Code` function of Eclipse)
   7. Build the application :)
 
+### Updating the used submodules
+In some cases you might want to use a newer version of one of the submodule the application is using. For doing this follow the upcoming steps:
+
+  1. Go into the folder of the submodule you want to update
+  2. Pull the changes from their repository by typing:
+
+          git pull
+
+  3. (Just for developers): Adjust the reference to the new version of the library by typing:
+
+          TODO
+
 ## Translations
 As soon as the used strings is nearly fixed, you can help us on our project page of [GetLocalization][1] to translate the app in many languages.
 
