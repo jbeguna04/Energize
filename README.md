@@ -33,10 +33,13 @@ As soon as the used strings is nearly fixed, you can help us on our project page
 The application icon is based upon the [Android Robot][3] logo made by Google Inc. This logo is licensed under the terms of the [Creative Commons Attribution license][4]. The battery icon was designed by the authors of the [GNOME High contrast icon set][5] and is licensed under the terms of the [GNU Lesser General Public License][6].
 
 ## Changelog
-### Version 0.7.4 *(2012-10-XX)* - [Changes][23]
+### Version 0.8 *(2012-XX-XX)* - Changes
 * The remaining time will now also be displayed on the main activity of the application
 * Updated the code to query the service for each battery depending question (remaining time, time on battery, etc.)
+
+### Version 0.7.3 *(2012-10-19)* - [Changes][23]
 * Since a bug which caused an application crash while accessing the preferences on a device running an Android version below 4.0 cannot be fixed easily we had to drop Android 3.1 - 3.2 support again. SORRY guys!
+* Changed the text of some labels
 
 ### Version 0.7.2 *(2012-10-08)* - [Changes][22]
 * Added support for Android 3.1 and higher
