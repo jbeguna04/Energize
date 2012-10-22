@@ -41,6 +41,19 @@ public class UnifiedPreferenceFragment extends PreferenceFragment {
 					builder.create().show();
 					// TODO: show notification
 					break;
+				case MonitorBatteryStateService.MSG_COPY_DB_TO_SDCARD:
+					final AlertDialog.Builder builderCopy = new AlertDialog.Builder( UnifiedPreferenceFragment.this.getActivity() );
+
+					builderCopy.setTitle( R.string.dialog_title_copydb_successfull ).setMessage( R.string.dialog_text_copydb_successfull ).setPositiveButton( android.R.string.ok, new OnClickListener() {
+
+						public void onClick( final DialogInterface dialog, final int which ) {
+							dialog.dismiss();
+
+						}
+					} );
+					builderCopy.create().show();
+					// TODO: show notification
+					break;
 				default:
 					super.handleMessage( msg );
 			}
@@ -71,6 +84,7 @@ public class UnifiedPreferenceFragment extends PreferenceFragment {
 	private final Messenger monitorServiceMessanger = new Messenger( new IncomingHandler() );
 
 	private Preference sendDatabasePreference = null;
+	private Preference copyDatabaseToSdPreference = null;
 
 	private void doBindService() {
 		this.getActivity().bindService( new Intent( this.getActivity(), MonitorBatteryStateService.class ), this.monitorServiceConnection, Context.BIND_AUTO_CREATE );
@@ -92,6 +106,22 @@ public class UnifiedPreferenceFragment extends PreferenceFragment {
 	public void onCreate( final Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
 		this.addPreferencesFromResource( R.xml.pref_unified );
+
+		this.copyDatabaseToSdPreference = this.findPreference( "debug.copydb2sd" );
+		this.copyDatabaseToSdPreference.setOnPreferenceClickListener( new OnPreferenceClickListener() {
+
+			public boolean onPreferenceClick( final Preference preference ) {
+				Log.v( UnifiedPreferenceFragment.TAG, "Copying current statistics databse to sdcard..." );
+				try {
+					final Message msg = Message.obtain( null, MonitorBatteryStateService.MSG_COPY_DB_TO_SDCARD );
+					msg.replyTo = UnifiedPreferenceFragment.this.monitorServiceMessanger;
+					UnifiedPreferenceFragment.this.monitorService.send( msg );
+				} catch( final RemoteException e ) {
+					Log.e( UnifiedPreferenceFragment.TAG, "Failed to copy the battery statistics database to the sdcard!" );
+				}
+				return false;
+			}
+		} );
 
 		this.sendDatabasePreference = this.findPreference( "batstatistics.cleardb" );
 		this.sendDatabasePreference.setOnPreferenceClickListener( new OnPreferenceClickListener() {

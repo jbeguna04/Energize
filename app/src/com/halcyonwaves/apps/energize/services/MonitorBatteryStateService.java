@@ -1,5 +1,10 @@
 package com.halcyonwaves.apps.energize.services;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import android.app.Notification;
@@ -14,6 +19,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
@@ -59,6 +65,15 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 						Log.e( MonitorBatteryStateService.TAG, "Failed to clear battery statistics database!" );
 					}
 					break;
+				case MonitorBatteryStateService.MSG_COPY_DB_TO_SDCARD:
+					Log.d( MonitorBatteryStateService.TAG, "Copying battery statistics database..." );
+					try {
+						MonitorBatteryStateService.this.copyDatabaseToSDCard();
+						msg.replyTo.send( Message.obtain( null, MonitorBatteryStateService.MSG_COPY_DB_TO_SDCARD ) );
+					} catch( final RemoteException e ) {
+						Log.e( MonitorBatteryStateService.TAG, "Failed to copy battery statistics database!" );
+					}
+					break;
 				default:
 					super.handleMessage( msg );
 			}
@@ -66,6 +81,7 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 	}
 
 	public static final int MSG_CLEAR_STATISTICS = 7;
+	public static final int MSG_COPY_DB_TO_SDCARD = 8;
 	public static final int MSG_REGISTER_CLIENT = 1;
 	public static final int MSG_UNREGISTER_CLIENT = 2;
 
@@ -83,6 +99,39 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 	private PowerSupplyPulledOffReceiver powerUnpluggedReceiver = null;
 
 	private final Messenger serviceMessenger = new Messenger( new IncomingHandler() );
+
+	private void copyDatabaseToSDCard() {
+		final File extStorePath = Environment.getExternalStorageDirectory();
+
+		// close the database before copying it
+		this.batteryStatisticsDatabase.close();
+
+		// get a correct input and output stream
+		try {
+			FileInputStream in = new FileInputStream( new File( this.batteryStatisticsDatabase.getPath() ) );
+			FileOutputStream out = new FileOutputStream( extStorePath.getAbsolutePath() + File.separator + "energizeStatisticcs.db" );
+
+			// copy the database to the SD card
+			byte[] buffer = new byte[ 1024 ];
+			int read;
+			while( (read = in.read( buffer )) != -1 ) {
+				out.write( buffer, 0, read );
+			}
+
+			// close the streams again
+			out.flush();
+			out.close();
+			in.close();
+		} catch( FileNotFoundException e ) {
+			Log.e( MonitorBatteryStateService.TAG, "Cannot open an input and/or outpout file. The exception message was: " + e.getMessage() );
+		} catch( IOException e ) {
+			Log.e( MonitorBatteryStateService.TAG, "I/O error during copying the database." );
+		} finally {
+			// the last step is to reopen the database
+			this.batteryStatisticsDatabase = this.batteryDbOpenHelper.getWritableDatabase();
+		}
+
+	}
 
 	public void insertPowerSupplyChangeEvent( final boolean isChargingNow ) {
 		final ContentValues values = new ContentValues();
@@ -186,14 +235,14 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 		if( !this.appPreferences.getBoolean( "advance.show_notification_bar", true ) ) {
 			return;
 		}
-		
+
 		// query the current estimation values
 		final EstimationResult estimation = BatteryEstimationMgr.getEstimation( this.getApplicationContext() );
 
 		// be sure that it is a valid percentage
 		if( !estimation.isValid ) {
 			Log.w( MonitorBatteryStateService.TAG, "The application tried to show an invalid loading level. Showing a placeholder!" );
-			
+
 			// build a basic notification indicating that there is not enough information to show up an estimate
 			final NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder( this.getApplicationContext() );
 			notificationBuilder.setContentTitle( this.getString( R.string.notification_title_missingstatistics ) );
@@ -202,11 +251,11 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 			notificationBuilder.setOngoing( true );
 			notificationBuilder.setContentIntent( PendingIntent.getActivity( this.getApplicationContext(), 0, new Intent( this.getApplicationContext(), BatteryStateDisplayActivity.class ), 0 ) );
 			notificationBuilder.setPriority( NotificationCompat.PRIORITY_LOW );
-			
+
 			// show up the notification we just set up
 			this.myNotification = notificationBuilder.build();
 			this.notificationManager.notify( MonitorBatteryStateService.MY_NOTIFICATION_ID, this.myNotification );
-			
+
 			// skip the rest of the application code
 			return;
 		}
