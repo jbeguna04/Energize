@@ -61,7 +61,9 @@ public class UnifiedPreferenceFragment extends PreferenceFragment {
 	}
 
 	private final static String TAG = "UnifiedPreferenceFragment";
+	private Preference copyDatabaseToSdPreference = null;
 	private Messenger monitorService = null;
+
 	private final ServiceConnection monitorServiceConnection = new ServiceConnection() {
 
 		public void onServiceConnected( final ComponentName className, final IBinder service ) {
@@ -82,9 +84,7 @@ public class UnifiedPreferenceFragment extends PreferenceFragment {
 	};
 
 	private final Messenger monitorServiceMessanger = new Messenger( new IncomingHandler() );
-
 	private Preference sendDatabasePreference = null;
-	private Preference copyDatabaseToSdPreference = null;
 
 	private void doBindService() {
 		this.getActivity().bindService( new Intent( this.getActivity(), MonitorBatteryStateService.class ), this.monitorServiceConnection, Context.BIND_AUTO_CREATE );

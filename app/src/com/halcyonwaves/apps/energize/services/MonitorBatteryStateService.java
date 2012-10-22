@@ -108,11 +108,11 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 
 		// get a correct input and output stream
 		try {
-			FileInputStream in = new FileInputStream( new File( this.batteryStatisticsDatabase.getPath() ) );
-			FileOutputStream out = new FileOutputStream( extStorePath.getAbsolutePath() + File.separator + "energizeStatisticcs.db" );
+			final FileInputStream in = new FileInputStream( new File( this.batteryStatisticsDatabase.getPath() ) );
+			final FileOutputStream out = new FileOutputStream( extStorePath.getAbsolutePath() + File.separator + "energizeStatisticcs.db" );
 
 			// copy the database to the SD card
-			byte[] buffer = new byte[ 1024 ];
+			final byte[] buffer = new byte[ 1024 ];
 			int read;
 			while( (read = in.read( buffer )) != -1 ) {
 				out.write( buffer, 0, read );
@@ -122,9 +122,9 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 			out.flush();
 			out.close();
 			in.close();
-		} catch( FileNotFoundException e ) {
+		} catch( final FileNotFoundException e ) {
 			Log.e( MonitorBatteryStateService.TAG, "Cannot open an input and/or outpout file. The exception message was: " + e.getMessage() );
-		} catch( IOException e ) {
+		} catch( final IOException e ) {
 			Log.e( MonitorBatteryStateService.TAG, "I/O error during copying the database." );
 		} finally {
 			// the last step is to reopen the database
