@@ -81,11 +81,7 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 
 						// request the current time estimate and package it to send it to the requesting object
 						final EstimationResult estimation = BatteryEstimationMgr.getEstimation( MonitorBatteryStateService.this.getApplicationContext() );
-						final Bundle returningData = new Bundle();
-						returningData.putInt( "level", estimation.level );
-						returningData.putInt( "minutes", estimation.minutes );
-						returningData.putBoolean( "charging", estimation.charging );
-						returningData.putBoolean( "valid", estimation.isValid );
+						final Bundle returningData = estimation.toBundle();
 
 						// prepare the message which should be send to the requesting object
 						final Message returningMessage = Message.obtain( null, MonitorBatteryStateService.MSG_COPY_DB_TO_SDCARD );
