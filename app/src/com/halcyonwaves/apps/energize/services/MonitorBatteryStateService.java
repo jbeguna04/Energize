@@ -19,6 +19,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
@@ -74,6 +75,28 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 						Log.e( MonitorBatteryStateService.TAG, "Failed to copy battery statistics database!" );
 					}
 					break;
+				case MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME:
+					Log.d( MonitorBatteryStateService.TAG, "Sending remaining time..." );
+					try {
+
+						// request the current time estimate and package it to send it to the requesting object
+						EstimationResult estimation = BatteryEstimationMgr.getEstimation( MonitorBatteryStateService.this.getApplicationContext() );
+						Bundle returningData = new Bundle();
+						returningData.putInt( "level", estimation.level );
+						returningData.putInt( "minutes", estimation.minutes );
+						returningData.putBoolean( "charging", estimation.charging );
+						returningData.putBoolean( "valid", estimation.isValid );
+
+						// prepare the message which should be send to the requesting object
+						Message returningMessage = Message.obtain( null, MonitorBatteryStateService.MSG_COPY_DB_TO_SDCARD );
+						returningMessage.setData( returningData );
+
+						// reply with the time estimation
+						msg.replyTo.send( returningMessage );
+					} catch( final RemoteException e ) {
+						Log.e( MonitorBatteryStateService.TAG, "Failed so send the time estimation to the requesting object." );
+					}
+					break;
 				default:
 					super.handleMessage( msg );
 			}
@@ -82,6 +105,7 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 
 	public static final int MSG_CLEAR_STATISTICS = 7;
 	public static final int MSG_COPY_DB_TO_SDCARD = 8;
+	public static final int MSG_REQUEST_REMAINING_TIME = 9;
 	public static final int MSG_REGISTER_CLIENT = 1;
 	public static final int MSG_UNREGISTER_CLIENT = 2;
 
