@@ -31,9 +31,12 @@
         <service
             android:name="com.halcyonwaves.apps.energize.services.MonitorBatteryStateService"
             android:exported="false" />
-        <service
+        <!--
+             <service
             android:name="com.halcyonwaves.apps.energize.services.BillingService"
             android:exported="false" />
+        -->
+
 
         <!-- register a receiver which gets called after the device booted up -->
         <receiver
@@ -45,6 +48,7 @@
         </receiver>
 
         <!-- register a receiver for handling the in-app billing responses -->
+        <!--
         <receiver
             android:name="com.halcyonwaves.apps.energize.receivers.BillingReceiver"
             android:exported="false" >
@@ -54,6 +58,7 @@
                 <action android:name="com.android.vending.billing.PURCHASE_STATE_CHANGED" />
             </intent-filter>
         </receiver>
+        -->
 
         <!-- define the main activity which will be displayed if the user selects the launcher item -->
         <activity
