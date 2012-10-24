@@ -11,6 +11,8 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -29,6 +31,7 @@ import android.os.RemoteException;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.widget.RemoteViews;
 
 import com.halcyonwaves.apps.energize.BatteryStateDisplayActivity;
 import com.halcyonwaves.apps.energize.R;
@@ -40,6 +43,7 @@ import com.halcyonwaves.apps.energize.estimators.EstimationResult;
 import com.halcyonwaves.apps.energize.receivers.BatteryChangedReceiver;
 import com.halcyonwaves.apps.energize.receivers.PowerSupplyPluggedInReceiver;
 import com.halcyonwaves.apps.energize.receivers.PowerSupplyPulledOffReceiver;
+import com.halcyonwaves.apps.energize.widgets.SimpleBatteryWidget;
 
 public class MonitorBatteryStateService extends Service implements OnSharedPreferenceChangeListener {
 
@@ -163,6 +167,27 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 
 	}
 
+	private void updateWidgetContent( EstimationResult estimation ) {
+		AppWidgetManager appWidgetManager = AppWidgetManager.getInstance( this.getApplicationContext() );
+
+		ComponentName thisWidget = new ComponentName( this.getApplicationContext(), SimpleBatteryWidget.class );
+		int[] allWidgetIds = appWidgetManager.getAppWidgetIds( thisWidget );
+
+		for( int widgetId : allWidgetIds ) {
+
+			// get the view of the widget we want to update
+			RemoteViews remoteViews = new RemoteViews( this.getApplicationContext().getPackageName(), R.layout.widget_simplebattery );
+			
+			// update the content of the widget
+			remoteViews.setTextViewText( R.id.simplewidget_current_charginglvl, String.valueOf( estimation.level ) );
+			remoteViews.setTextViewText( R.id.simplewidget_current_chargingstate, "TODO" );
+			remoteViews.setTextViewText( R.id.simplewidget_remaining_time, String.format( this.getString( R.string.simplewidget_textview_remainingtime ), estimation.remainingHours, estimation.remainingMinutes ) );
+
+			// tell the widget manager to update the widget
+			appWidgetManager.updateAppWidget( widgetId, remoteViews );
+		}
+	}
+
 	public void insertPowerSupplyChangeEvent( final boolean isChargingNow ) {
 		final ContentValues values = new ContentValues();
 		final long currentUnixTime = System.currentTimeMillis() / 1000;
@@ -268,6 +293,9 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 
 		// query the current estimation values
 		final EstimationResult estimation = BatteryEstimationMgr.getEstimation( this.getApplicationContext() );
+
+		// update all widgets
+		this.updateWidgetContent( estimation );
 
 		// be sure that it is a valid percentage
 		if( !estimation.isValid ) {
