@@ -19,7 +19,9 @@ public final class EstimationResult {
 	public final boolean charging;
 	public final boolean isValid;
 	public final int level;
-
+	
+	public final int remainingMinutes;
+	public final int remainingHours;
 	public final int minutes;
 
 	public EstimationResult() {
@@ -27,6 +29,8 @@ public final class EstimationResult {
 		this.level = -1;
 		this.charging = false;
 		this.isValid = false;
+		this.remainingHours = -1;
+		this.remainingMinutes = -1;
 	}
 
 	public EstimationResult( final int minutes, final int level, final boolean charging ) {
@@ -34,6 +38,8 @@ public final class EstimationResult {
 		this.level = level;
 		this.charging = charging;
 		this.isValid = true;
+		this.remainingHours = this.minutes > 0 ? (int) Math.floor( this.minutes / 60.0 ) : 0;
+		this.remainingMinutes = this.minutes - (60 * remainingHours);
 	}
 
 	public Bundle toBundle() {
@@ -42,6 +48,8 @@ public final class EstimationResult {
 		returnBundle.putBoolean( "isValid", this.isValid );
 		returnBundle.putInt( "level", this.level );
 		returnBundle.putInt( "minutes", this.minutes );
+		returnBundle.putInt( "remainingHours", this.remainingHours );
+		returnBundle.putInt( "remainingMinutes", this.remainingMinutes );
 		return returnBundle;
 	}
 
