@@ -100,6 +100,7 @@ public class UnifiedPreferenceFragment extends PreferenceFragment {
 			}
 		}
 		this.getActivity().unbindService( this.monitorServiceConnection );
+		this.monitorService = null;
 	}
 
 	@Override
