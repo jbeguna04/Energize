@@ -290,10 +290,6 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 			return;
 		}
 
-		// calculate the estimates for the notification window
-		final int remainingHours = estimation.minutes > 0 ? (int) Math.floor( estimation.minutes / 60.0 ) : 0;
-		final int remainingMinutesNew = estimation.minutes - (60 * remainingHours);
-
 		// determine the correct title string for the notification
 		int notificationTitleId = R.string.notification_title_discharges;
 		if( estimation.charging ) {
@@ -314,10 +310,10 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 		}
 
 		// show the notification
-		if( remainingMinutesNew <= -1 ) {
+		if( estimation.remainingMinutes <= -1 ) {
 			notificationBuilder.setContentText( this.getString( R.string.notification_text_estimate_na ) );
 		} else {
-			notificationBuilder.setContentText( this.getString( R.string.notification_text_estimate, remainingHours, remainingMinutesNew ) );
+			notificationBuilder.setContentText( this.getString( R.string.notification_text_estimate, estimation.remainingHours, estimation.remainingMinutes ) );
 		}
 
 		// get the created notification and show it
