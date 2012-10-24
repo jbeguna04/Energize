@@ -6,7 +6,8 @@ import android.content.Context;
 
 public class SimpleBatteryWidget extends AppWidgetProvider {
 
-	public void onUpdate( Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds ) {
+	@Override
+	public void onUpdate( final Context context, final AppWidgetManager appWidgetManager, final int[] appWidgetIds ) {
 
 		super.onUpdate( context, appWidgetManager, appWidgetIds );
 	}

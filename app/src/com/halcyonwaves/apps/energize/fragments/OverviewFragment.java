@@ -33,9 +33,6 @@ import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
 
 public class OverviewFragment extends Fragment {
 
-	private static final String TAG = "OverviewFragment";
-	private Messenger monitorService = null;
-
 	class IncomingHandler extends Handler {
 
 		@Override
@@ -47,7 +44,7 @@ public class OverviewFragment extends Fragment {
 						final Message msg2 = Message.obtain( null, MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME );
 						msg2.replyTo = OverviewFragment.this.monitorServiceMessanger;
 						OverviewFragment.this.monitorService.send( msg2 );
-					} catch( RemoteException e1 ) {
+					} catch( final RemoteException e1 ) {
 						Log.e( OverviewFragment.TAG, "Failed to query the current time estimation." );
 					}
 					break;
@@ -62,7 +59,11 @@ public class OverviewFragment extends Fragment {
 		}
 	}
 
-	private ServiceConnection monitorServiceConnection = new ServiceConnection() {
+	private static final String TAG = "OverviewFragment";
+
+	private Messenger monitorService = null;
+
+	private final ServiceConnection monitorServiceConnection = new ServiceConnection() {
 
 		public void onServiceConnected( final ComponentName className, final IBinder service ) {
 			OverviewFragment.this.monitorService = new Messenger( service );
@@ -83,6 +84,17 @@ public class OverviewFragment extends Fragment {
 
 	private final Messenger monitorServiceMessanger = new Messenger( new IncomingHandler() );
 
+	private SharedPreferences sharedPref = null;
+
+	private TextView textViewCurrentChargingState = null;
+
+	private TextView textViewCurrentLoadingLevel = null;
+	private TextView textViewCurrentLoadingLevelAsusDock = null;
+	private TextView textViewCurrentLoadingLevelAsusDockLabel = null;
+	private TextView textViewRemainingTime = null;
+	private TextView textViewTemp = null;;
+	private TextView textViewTimeOnBattery = null;
+
 	private void doBindService() {
 		this.getActivity().bindService( new Intent( this.getActivity(), MonitorBatteryStateService.class ), this.monitorServiceConnection, Context.BIND_AUTO_CREATE );
 	}
@@ -98,25 +110,6 @@ public class OverviewFragment extends Fragment {
 		}
 		this.getActivity().unbindService( this.monitorServiceConnection );
 		this.monitorService = null;
-	}
-
-	private SharedPreferences sharedPref = null;
-	private TextView textViewCurrentChargingState = null;
-	private TextView textViewCurrentLoadingLevel = null;
-	private TextView textViewCurrentLoadingLevelAsusDock = null;
-	private TextView textViewCurrentLoadingLevelAsusDockLabel = null;;
-	private TextView textViewTemp = null;
-	private TextView textViewTimeOnBattery = null;
-	private TextView textViewRemainingTime = null;
-
-	private void updateEstimationLabel( EstimationResult estimation ) {
-		this.textViewRemainingTime.setText( String.format( this.getString( R.string.textview_text_remainingtime ), estimation.remainingHours, estimation.remainingMinutes ) );
-	}
-
-	@Override
-	public void onDestroyView() {
-		super.onDestroyView();
-		this.doUnbindService();
 	}
 
 	@Override
@@ -243,5 +236,15 @@ public class OverviewFragment extends Fragment {
 
 		// return the inflated view
 		return inflatedView;
+	}
+
+	@Override
+	public void onDestroyView() {
+		super.onDestroyView();
+		this.doUnbindService();
+	}
+
+	private void updateEstimationLabel( final EstimationResult estimation ) {
+		this.textViewRemainingTime.setText( String.format( this.getString( R.string.textview_text_remainingtime ), estimation.remainingHours, estimation.remainingMinutes ) );
 	}
 }
