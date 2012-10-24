@@ -1,15 +1,22 @@
 package com.halcyonwaves.apps.energize.fragments;
 
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.BatteryManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -21,10 +28,77 @@ import android.widget.TextView;
 import com.halcyonwaves.apps.energize.R;
 import com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper;
 import com.halcyonwaves.apps.energize.database.PowerEventsTable;
+import com.halcyonwaves.apps.energize.estimators.EstimationResult;
+import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
 
 public class OverviewFragment extends Fragment {
 
 	private static final String TAG = "OverviewFragment";
+	private Messenger monitorService = null;
+
+	class IncomingHandler extends Handler {
+
+		@Override
+		public void handleMessage( final Message msg ) {
+			switch( msg.what ) {
+				case MonitorBatteryStateService.MSG_REGISTER_CLIENT:
+					// since the client is now registered, we can ask the service about the remaining time we have
+					try {
+						final Message msg2 = Message.obtain( null, MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME );
+						msg2.replyTo = OverviewFragment.this.monitorServiceMessanger;
+						OverviewFragment.this.monitorService.send( msg2 );
+					} catch( RemoteException e1 ) {
+						Log.e( OverviewFragment.TAG, "Failed to query the current time estimation." );
+					}
+					break;
+				case MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME:
+					final EstimationResult remainingTimeEstimation = EstimationResult.fromBundle( msg.getData() );
+					Log.d( OverviewFragment.TAG, String.format( "Received an time estimation of %d minutes.", remainingTimeEstimation.minutes ) );
+					OverviewFragment.this.updateEstimationLabel( remainingTimeEstimation );
+					break;
+				default:
+					super.handleMessage( msg );
+			}
+		}
+	}
+
+	private ServiceConnection monitorServiceConnection = new ServiceConnection() {
+
+		public void onServiceConnected( final ComponentName className, final IBinder service ) {
+			OverviewFragment.this.monitorService = new Messenger( service );
+			try {
+				Log.d( OverviewFragment.TAG, "Trying to connect to the battery monitoring service..." );
+				final Message msg = Message.obtain( null, MonitorBatteryStateService.MSG_REGISTER_CLIENT );
+				msg.replyTo = OverviewFragment.this.monitorServiceMessanger;
+				OverviewFragment.this.monitorService.send( msg );
+			} catch( final RemoteException e ) {
+				Log.e( OverviewFragment.TAG, "Failed to connect to the battery monitoring service!" );
+			}
+		}
+
+		public void onServiceDisconnected( final ComponentName className ) {
+			OverviewFragment.this.monitorService = null;
+		}
+	};
+
+	private final Messenger monitorServiceMessanger = new Messenger( new IncomingHandler() );
+
+	private void doBindService() {
+		this.getActivity().bindService( new Intent( this.getActivity(), MonitorBatteryStateService.class ), this.monitorServiceConnection, Context.BIND_AUTO_CREATE );
+	}
+
+	private void doUnbindService() {
+		if( this.monitorService != null ) {
+			try {
+				final Message msg = Message.obtain( null, MonitorBatteryStateService.MSG_UNREGISTER_CLIENT );
+				msg.replyTo = this.monitorServiceMessanger;
+				this.monitorService.send( msg );
+			} catch( final RemoteException e ) {
+			}
+		}
+		this.getActivity().unbindService( this.monitorServiceConnection );
+		this.monitorService = null;
+	}
 
 	private SharedPreferences sharedPref = null;
 	private TextView textViewCurrentChargingState = null;
@@ -33,8 +107,17 @@ public class OverviewFragment extends Fragment {
 	private TextView textViewCurrentLoadingLevelAsusDockLabel = null;;
 	private TextView textViewTemp = null;
 	private TextView textViewTimeOnBattery = null;
+	private TextView textViewRemainingTime = null;
 
-	// private boolean batteryDischarging = false;
+	private void updateEstimationLabel( EstimationResult estimation ) {
+		this.textViewRemainingTime.setText( String.format( this.getString( R.string.textview_text_remainingtime ), estimation.remainingHours, estimation.remainingMinutes ) );
+	}
+
+	@Override
+	public void onDestroyView() {
+		super.onDestroyView();
+		this.doUnbindService();
+	}
 
 	@Override
 	public View onCreateView( final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState ) {
@@ -50,6 +133,7 @@ public class OverviewFragment extends Fragment {
 		this.textViewCurrentChargingState = (TextView) inflatedView.findViewById( R.id.textview_text_current_chargingstate );
 		this.textViewTemp = (TextView) inflatedView.findViewById( R.id.textview_text_temperature );
 		this.textViewTimeOnBattery = (TextView) inflatedView.findViewById( R.id.textview_text_timeonbattery );
+		this.textViewRemainingTime = (TextView) inflatedView.findViewById( R.id.textview_text_remainingtime );
 
 		// get the time on battery and set it
 		BatteryStatisticsDatabaseOpenHelper batteryDbHelper = new BatteryStatisticsDatabaseOpenHelper( this.getActivity().getApplicationContext() );
@@ -84,6 +168,9 @@ public class OverviewFragment extends Fragment {
 			this.textViewCurrentLoadingLevelAsusDockLabel.setVisibility( View.INVISIBLE );
 			this.textViewCurrentLoadingLevelAsusDock.setVisibility( View.INVISIBLE );
 		}
+
+		// bind to the service and ask for the current time estimation
+		this.doBindService();
 
 		// get the current battery state and show it on the main activity
 		final BroadcastReceiver batteryLevelReceiver = new BroadcastReceiver() {
