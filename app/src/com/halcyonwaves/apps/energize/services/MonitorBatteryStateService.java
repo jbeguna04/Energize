@@ -51,10 +51,20 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 				case MonitorBatteryStateService.MSG_REGISTER_CLIENT:
 					Log.d( MonitorBatteryStateService.TAG, "Registering new client to the battery monitoring service..." );
 					MonitorBatteryStateService.this.connectedClients.add( msg.replyTo );
+					try {
+						msg.replyTo.send( Message.obtain( null, MonitorBatteryStateService.MSG_REGISTER_CLIENT ) );
+					} catch( final RemoteException e ) {
+						Log.e( MonitorBatteryStateService.TAG, "Failed to tell the client that the client was successfully registered." );
+					}
 					break;
 				case MonitorBatteryStateService.MSG_UNREGISTER_CLIENT:
 					Log.d( MonitorBatteryStateService.TAG, "Unregistering client from the battery monitoring service..." );
 					MonitorBatteryStateService.this.connectedClients.remove( msg.replyTo );
+					try {
+						msg.replyTo.send( Message.obtain( null, MonitorBatteryStateService.MSG_UNREGISTER_CLIENT ) );
+					} catch( final RemoteException e ) {
+						Log.e( MonitorBatteryStateService.TAG, "Failed to tell the client that the client was successfully unregistered." );
+					}
 					break;
 				case MonitorBatteryStateService.MSG_CLEAR_STATISTICS:
 					Log.d( MonitorBatteryStateService.TAG, "Clearing battery statistics database..." );
