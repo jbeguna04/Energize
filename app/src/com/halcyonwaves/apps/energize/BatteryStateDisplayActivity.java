@@ -32,6 +32,8 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 
 	private static final String VERSION_KEY = "version_number";
 
+	private CustomViewPager usedPager = null;
+
 	private void init() {
 		final SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences( this.getApplicationContext() );
 		int currentVersionNumber = 0;
@@ -72,13 +74,13 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 		}
 
 		// set the pager with an adapter (not availbale in the tablet layout)
-		final ViewPager pager = (ViewPager) this.findViewById( R.id.vp_fragment_pager );
-		if( null != pager ) {
-			pager.setAdapter( new MainFragmentPagerAdapter( this.getApplicationContext(), this.getSupportFragmentManager() ) );
+		this.usedPager = (CustomViewPager) this.findViewById( R.id.vp_fragment_pager );
+		if( null != this.usedPager ) {
+			this.usedPager.setAdapter( new MainFragmentPagerAdapter( this.getApplicationContext(), this.getSupportFragmentManager() ) );
 
 			// bind the title indicator to the adapter
 			final TitlePageIndicator titleIndicator = (TitlePageIndicator) this.findViewById( R.id.vp_fragment_titles );
-			titleIndicator.setViewPager( pager );
+			titleIndicator.setViewPager( this.usedPager );
 		}
 
 		// do the rest of the initialization of the main dialog
@@ -103,6 +105,9 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 				return true;
 			case R.id.menu_show3rdpartylicense:
 				this.showAppIconLicensePreference();
+				return true;
+			case R.id.menu_lockscreen:
+				this.usedPager.togglePagingEnabled();
 				return true;
 			default:
 				return false;

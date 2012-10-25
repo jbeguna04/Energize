@@ -34,6 +34,7 @@
     <string name="fragment_title_batterygraph">Battery graph</string>
     <string name="fragment_title_temperaturegraph">Temp. graph</string>
     <string name="menu_about">About Energize&#8230;</string>
+    <string name="menu_lockscreen">Lock screen</string>
     <string name="fragment_title_about">About&#8230;</string>
     <string name="textview_app_version">Version: %s (beta)</string>
     <string name="textview_do_you_like_it">Do you like Energize?</string>
