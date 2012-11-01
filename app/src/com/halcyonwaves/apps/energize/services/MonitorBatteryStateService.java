@@ -172,6 +172,13 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 
 		ComponentName thisWidget = new ComponentName( this.getApplicationContext(), SimpleBatteryWidget.class );
 		int[] allWidgetIds = appWidgetManager.getAppWidgetIds( thisWidget );
+		
+		// determine the correct title string for the notification
+		int notificationTitleId = R.string.notification_title_discharges;
+		if( estimation.charging ) {
+			notificationTitleId = R.string.notification_title_charges;
+		}
+		final String widgetTitle = this.getApplicationContext().getString( notificationTitleId );
 
 		for( int widgetId : allWidgetIds ) {
 
@@ -180,7 +187,7 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 			
 			// update the content of the widget
 			remoteViews.setTextViewText( R.id.simplewidget_current_charginglvl, String.valueOf( estimation.level ) );
-			remoteViews.setTextViewText( R.id.simplewidget_current_chargingstate, "TODO" );
+			remoteViews.setTextViewText( R.id.simplewidget_current_chargingstate, widgetTitle );
 			remoteViews.setTextViewText( R.id.simplewidget_remaining_time, String.format( this.getString( R.string.simplewidget_textview_remainingtime ), estimation.remainingHours, estimation.remainingMinutes ) );
 
 			// tell the widget manager to update the widget
