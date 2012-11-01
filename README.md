@@ -45,7 +45,7 @@ As soon as the used strings is nearly fixed, you can help us on our project page
 The application icon is based upon the [Android Robot][3] logo made by Google Inc. This logo is licensed under the terms of the [Creative Commons Attribution license][4]. The battery icon was designed by the authors of the [GNOME High contrast icon set][5] and is licensed under the terms of the [GNU Lesser General Public License][6].
 
 ## Changelog
-### Version 0.8 *(2012-11-01)* - Changes
+### Version 0.8 *(2012-11-01)* - [Changes][24]
 * The remaining time will now also be displayed on the main activity of the application
 * Updated the code to query the service for each battery depending question (remaining time, time on battery, etc.)
 * Added a first (but still ugly) widget
@@ -170,3 +170,4 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
  [21]: https://github.com/thuetz/Energize/compare/v0.6.4...v0.7 
  [22]: https://github.com/thuetz/Energize/compare/v0.7...v0.7.2 
  [23]: https://github.com/thuetz/Energize/compare/v0.7.2...v0.7.3 
+ [24]: https://github.com/thuetz/Energize/compare/v0.7.3...v0.8 
