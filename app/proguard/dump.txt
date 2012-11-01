@@ -48835,20 +48835,24 @@ Methods (count = 13):
     Access flags: 0x1
       = public void onDestroy()
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 17, locals = 1, stack = 2):
+    + Code attribute instructions (code length = 24, locals = 1, stack = 2):
       [0] aload_0 v0
       [1] getfield #91
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.c Lcom/halcyonwaves/apps/energize/a/a;]
-      [4] invokevirtual #139
-        + Methodref [com/halcyonwaves/apps/energize/a/a.close ()V]
+      [4] ifnull +15 (target=19)
       [7] aload_0 v0
-      [8] aconst_null
-      [9] putfield #92
+      [8] getfield #91
+        + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.c Lcom/halcyonwaves/apps/energize/a/a;]
+      [11] invokevirtual #139
+        + Methodref [com/halcyonwaves/apps/energize/a/a.close ()V]
+      [14] aload_0 v0
+      [15] aconst_null
+      [16] putfield #92
         + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.d Landroid/database/sqlite/SQLiteDatabase;]
-      [12] aload_0 v0
-      [13] invokespecial #104
+      [19] aload_0 v0
+      [20] invokespecial #104
         + Methodref [android/app/Service.onDestroy ()V]
-      [16] return
+      [23] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
   + Method:       onSharedPreferenceChanged(Landroid/content/SharedPreferences;Ljava/lang/String;)V
