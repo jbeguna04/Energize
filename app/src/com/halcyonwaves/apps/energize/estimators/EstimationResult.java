@@ -2,8 +2,25 @@ package com.halcyonwaves.apps.energize.estimators;
 
 import android.os.Bundle;
 
+/**
+ * Representation of the results obtained by the estimation algorithm.
+ * 
+ * This class represents a wrapper to the information obtained by one of
+ * the estimation algorithms.
+ * 
+ * @author Tim Huetz <tim@huetz.biz>
+ * @since 0.7
+ */
 public final class EstimationResult {
 
+	/**
+	 * Reconstructs and instance of this class based on the data stored
+	 * in the supplied Bundle.
+	 * 
+	 * @since 0.8
+	 * @param from The Bundle form which the object should be reconstructed.
+	 * @return An instance of this class based on the Bundle data.
+	 */
 	public static EstimationResult fromBundle( final Bundle from ) {
 		final boolean charging = from.getBoolean( "charging" );
 		final boolean valid = from.getBoolean( "isValid" );
@@ -42,6 +59,13 @@ public final class EstimationResult {
 		this.remainingMinutes = this.minutes - (60 * this.remainingHours);
 	}
 
+	/**
+	 * Converts an instance of this class into a bundle object to be send
+	 * through the standard Android methods.
+	 * 
+	 * @since 0.8
+	 * @return A bundle which contains all information wrapped by the object.
+	 */
 	public Bundle toBundle() {
 		final Bundle returnBundle = new Bundle();
 		returnBundle.putBoolean( "charging", this.charging );
