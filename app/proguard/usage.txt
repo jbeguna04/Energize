@@ -983,7 +983,9 @@ com.halcyonwaves.apps.energize.receivers.PowerSupplyPulledOffReceiver:
     private static final java.lang.String TAG
 com.halcyonwaves.apps.energize.services.MonitorBatteryStateService:
     public static final int MSG_CLEAR_STATISTICS
+    public static final int MSG_COPY_DB_TO_SDCARD
     public static final int MSG_REGISTER_CLIENT
+    public static final int MSG_REQUEST_REMAINING_TIME
     public static final int MSG_UNREGISTER_CLIENT
     private static final int MY_NOTIFICATION_ID
     private static final java.lang.String TAG
@@ -1065,13 +1067,13 @@ com.viewpagerindicator.R$dimen:
 com.viewpagerindicator.R$drawable
 com.viewpagerindicator.R$id
 com.viewpagerindicator.R$integer:
-    494:494:public R$integer()
+    505:505:public R$integer()
 com.viewpagerindicator.R$layout
 com.viewpagerindicator.R$menu
 com.viewpagerindicator.R$string
 com.viewpagerindicator.R$style
 com.viewpagerindicator.R$styleable:
-    578:578:public R$styleable()
+    595:595:public R$styleable()
 com.viewpagerindicator.R$xml
 com.viewpagerindicator.TabPageIndicator
 com.viewpagerindicator.TabPageIndicator$1
