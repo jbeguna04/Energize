@@ -172,7 +172,7 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 
 		ComponentName thisWidget = new ComponentName( this.getApplicationContext(), SimpleBatteryWidget.class );
 		int[] allWidgetIds = appWidgetManager.getAppWidgetIds( thisWidget );
-		
+
 		// determine the correct title string for the notification
 		int notificationTitleId = R.string.notification_title_discharges;
 		if( estimation.charging ) {
@@ -184,7 +184,7 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 
 			// get the view of the widget we want to update
 			RemoteViews remoteViews = new RemoteViews( this.getApplicationContext().getPackageName(), R.layout.widget_simplebattery );
-			
+
 			// update the content of the widget
 			remoteViews.setTextViewText( R.id.simplewidget_current_charginglvl, String.valueOf( estimation.level ) );
 			remoteViews.setTextViewText( R.id.simplewidget_current_chargingstate, widgetTitle );
@@ -243,8 +243,10 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 
 	@Override
 	public void onDestroy() {
-		this.batteryDbOpenHelper.close();
-		this.batteryStatisticsDatabase = null;
+		if( null != this.batteryDbOpenHelper ) {
+			this.batteryDbOpenHelper.close();
+			this.batteryStatisticsDatabase = null;
+		}
 		super.onDestroy();
 	}
 
