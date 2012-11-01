@@ -83,7 +83,7 @@ public class BatteryCapacityGraphFragment extends Fragment {
 		graphView.addSeries( dataSet.first );
 		graphView.setVerticalLabels( new String[] { "100%", "90%", "80%", "70%", "60%", "50%", "40%", "30%", "20%", "10%", "0%" } );
 		graphView.setScrollable( true );
-		graphView.setScalable( false );
+		graphView.setScalable( true );
 		graphView.setManualYAxis( true );
 		graphView.setDrawBackground( false );
 		graphView.setManualYAxisBounds( 100.0, 0.0 );
