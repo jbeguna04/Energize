@@ -1055,8 +1055,8 @@ com.halcyonwaves.apps.energize.BatteryStateDisplayActivity$2 -> com.halcyonwaves
     void onClick(android.content.DialogInterface,int) -> onClick
 com.halcyonwaves.apps.energize.CustomViewPager -> com.halcyonwaves.apps.energize.CustomViewPager:
     boolean enabled -> a
-    boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
     boolean onInterceptTouchEvent(android.view.MotionEvent) -> onInterceptTouchEvent
+    boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
     void setPagingEnabled(boolean) -> setPagingEnabled
     void togglePagingEnabled() -> j
 com.halcyonwaves.apps.energize.MainFragmentPagerAdapter -> com.halcyonwaves.apps.energize.d:
@@ -1202,7 +1202,6 @@ com.halcyonwaves.apps.energize.services.MonitorBatteryStateService -> com.halcyo
     com.halcyonwaves.apps.energize.receivers.PowerSupplyPulledOffReceiver powerUnpluggedReceiver -> i
     android.os.Messenger serviceMessenger -> j
     void copyDatabaseToSDCard() -> a
-    void updateWidgetContent(com.halcyonwaves.apps.energize.estimators.EstimationResult) -> a
     void insertPowerSupplyChangeEvent(boolean) -> a
     void insertPowerValue(int,int,int,int) -> a
     android.os.IBinder onBind(android.content.Intent) -> onBind
@@ -1210,6 +1209,7 @@ com.halcyonwaves.apps.energize.services.MonitorBatteryStateService -> com.halcyo
     void onSharedPreferenceChanged(android.content.SharedPreferences,java.lang.String) -> onSharedPreferenceChanged
     int onStartCommand(android.content.Intent,int,int) -> onStartCommand
     void showNewPercentageNotification() -> b
+    void updateWidgetContent(com.halcyonwaves.apps.energize.estimators.EstimationResult) -> a
     java.util.ArrayList access$0(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> a
     android.database.sqlite.SQLiteDatabase access$1(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> b
     void access$2(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> c

@@ -40852,24 +40852,6 @@ Methods (count = 5):
       [11] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
-  + Method:       onTouchEvent(Landroid/view/MotionEvent;)Z
-    Access flags: 0x1
-      = public boolean onTouchEvent(android.view.MotionEvent)
-    Class member attributes (count = 1):
-    + Code attribute instructions (code length = 15, locals = 2, stack = 2):
-      [0] aload_0 v0
-      [1] getfield #3
-        + Fieldref [com/halcyonwaves/apps/energize/CustomViewPager.a Z]
-      [4] ifeq +9 (target=13)
-      [7] aload_0 v0
-      [8] aload_1 v1
-      [9] invokespecial #6
-        + Methodref [android/support/v4/view/ViewPager.onTouchEvent (Landroid/view/MotionEvent;)Z]
-      [12] ireturn
-      [13] iconst_0
-      [14] ireturn
-      Code attribute exceptions (count = 0):
-      Code attribute attributes (attribute count = 0):
   + Method:       onInterceptTouchEvent(Landroid/view/MotionEvent;)Z
     Access flags: 0x1
       = public boolean onInterceptTouchEvent(android.view.MotionEvent)
@@ -40883,6 +40865,24 @@ Methods (count = 5):
       [8] aload_1 v1
       [9] invokespecial #5
         + Methodref [android/support/v4/view/ViewPager.onInterceptTouchEvent (Landroid/view/MotionEvent;)Z]
+      [12] ireturn
+      [13] iconst_0
+      [14] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onTouchEvent(Landroid/view/MotionEvent;)Z
+    Access flags: 0x1
+      = public boolean onTouchEvent(android.view.MotionEvent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 15, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] getfield #3
+        + Fieldref [com/halcyonwaves/apps/energize/CustomViewPager.a Z]
+      [4] ifeq +9 (target=13)
+      [7] aload_0 v0
+      [8] aload_1 v1
+      [9] invokespecial #6
+        + Methodref [android/support/v4/view/ViewPager.onTouchEvent (Landroid/view/MotionEvent;)Z]
       [12] ireturn
       [13] iconst_0
       [14] ireturn
@@ -48517,134 +48517,6 @@ Methods (count = 13):
       - ExceptionInfo (11 -> 142: 179):
       - ExceptionInfo (156 -> 165: 179):
       Code attribute attributes (attribute count = 0):
-  + Method:       a(Lcom/halcyonwaves/apps/energize/c/b;)V
-    Access flags: 0x2
-      = private void a(com.halcyonwaves.apps.energize.c.b)
-    Class member attributes (count = 1):
-    + Code attribute instructions (code length = 176, locals = 12, stack = 7):
-      [0] aload_0 v0
-      [1] invokevirtual #148
-        + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getApplicationContext ()Landroid/content/Context;]
-      [4] invokestatic #106
-        + Methodref [android/appwidget/AppWidgetManager.getInstance (Landroid/content/Context;)Landroid/appwidget/AppWidgetManager;]
-      [7] astore_2 v2
-      [8] new #43
-        + Class [android/content/ComponentName]
-      [11] dup
-      [12] aload_0 v0
-      [13] invokevirtual #148
-        + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getApplicationContext ()Landroid/content/Context;]
-      [16] ldc #67
-        + Class [com/halcyonwaves/apps/energize/widgets/SimpleBatteryWidget]
-      [18] invokespecial #108
-        + Methodref [android/content/ComponentName.<init> (Landroid/content/Context;Ljava/lang/Class;)V]
-      [21] astore_3 v3
-      [22] aload_2 v2
-      [23] aload_3 v3
-      [24] invokevirtual #105
-        + Methodref [android/appwidget/AppWidgetManager.getAppWidgetIds (Landroid/content/ComponentName;)[I]
-      [27] astore v4
-      [29] ldc #6
-        + Integer [2131034126]
-      [31] istore v5
-      [33] aload_1 v1
-      [34] getfield #84
-        + Fieldref [com/halcyonwaves/apps/energize/c/b.a Z]
-      [37] ifeq +7 (target=44)
-      [40] ldc #5
-        + Integer [2131034125]
-      [42] istore v5
-      [44] aload_0 v0
-      [45] invokevirtual #148
-        + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getApplicationContext ()Landroid/content/Context;]
-      [48] iload v5
-      [50] invokevirtual #113
-        + Methodref [android/content/Context.getString (I)Ljava/lang/String;]
-      [53] astore v6
-      [55] aload v4
-      [57] dup
-      [58] astore v10
-      [60] arraylength
-      [61] istore v9
-      [63] iconst_0
-      [64] istore v8
-      [66] goto +102 (target=168)
-      [69] aload v10
-      [71] iload v8
-      [73] iaload
-      [74] istore v7
-      [76] new #57
-        + Class [android/widget/RemoteViews]
-      [79] dup
-      [80] aload_0 v0
-      [81] invokevirtual #148
-        + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getApplicationContext ()Landroid/content/Context;]
-      [84] invokevirtual #112
-        + Methodref [android/content/Context.getPackageName ()Ljava/lang/String;]
-      [87] ldc #3
-        + Integer [2130903048]
-      [89] invokespecial #136
-        + Methodref [android/widget/RemoteViews.<init> (Ljava/lang/String;I)V]
-      [92] astore v11
-      [94] aload v11
-      [96] ldc #11
-        + Integer [2131099679]
-      [98] aload_1 v1
-      [99] getfield #86
-        + Fieldref [com/halcyonwaves/apps/energize/c/b.c I]
-      [102] invokestatic #168
-        + Methodref [java/lang/String.valueOf (I)Ljava/lang/String;]
-      [105] invokevirtual #137
-        + Methodref [android/widget/RemoteViews.setTextViewText (ILjava/lang/CharSequence;)V]
-      [108] aload v11
-      [110] ldc #12
-        + Integer [2131099680]
-      [112] aload v6
-      [114] invokevirtual #137
-        + Methodref [android/widget/RemoteViews.setTextViewText (ILjava/lang/CharSequence;)V]
-      [117] aload v11
-      [119] ldc #13
-        + Integer [2131099681]
-      [121] aload_0 v0
-      [122] ldc #10
-        + Integer [2131034160]
-      [124] invokevirtual #149
-        + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getString (I)Ljava/lang/String;]
-      [127] iconst_2
-      [128] anewarray #75
-        + Class [java/lang/Object]
-      [131] dup
-      [132] iconst_0
-      [133] aload_1 v1
-      [134] getfield #87
-        + Fieldref [com/halcyonwaves/apps/energize/c/b.e I]
-      [137] invokestatic #164
-        + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
-      [140] aastore
-      [141] dup
-      [142] iconst_1
-      [143] aload_1 v1
-      [144] getfield #88
-        + Fieldref [com/halcyonwaves/apps/energize/c/b.f I]
-      [147] invokestatic #164
-        + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
-      [150] aastore
-      [151] invokestatic #167
-        + Methodref [java/lang/String.format (Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
-      [154] invokevirtual #137
-        + Methodref [android/widget/RemoteViews.setTextViewText (ILjava/lang/CharSequence;)V]
-      [157] aload_2 v2
-      [158] iload v7
-      [160] aload v11
-      [162] invokevirtual #107
-        + Methodref [android/appwidget/AppWidgetManager.updateAppWidget (ILandroid/widget/RemoteViews;)V]
-      [165] iinc v8, 1
-      [168] iload v8
-      [170] iload v9
-      [172] ificmplt -103 (target=69)
-      [175] return
-      Code attribute exceptions (count = 0):
-      Code attribute attributes (attribute count = 0):
   + Method:       a(Z)V
     Access flags: 0x1
       = public void a(boolean)
@@ -49322,6 +49194,134 @@ Methods (count = 13):
       [320] invokevirtual #101
         + Methodref [android/app/NotificationManager.notify (ILandroid/app/Notification;)V]
       [323] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Lcom/halcyonwaves/apps/energize/c/b;)V
+    Access flags: 0x2
+      = private void a(com.halcyonwaves.apps.energize.c.b)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 176, locals = 12, stack = 7):
+      [0] aload_0 v0
+      [1] invokevirtual #148
+        + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getApplicationContext ()Landroid/content/Context;]
+      [4] invokestatic #106
+        + Methodref [android/appwidget/AppWidgetManager.getInstance (Landroid/content/Context;)Landroid/appwidget/AppWidgetManager;]
+      [7] astore_2 v2
+      [8] new #43
+        + Class [android/content/ComponentName]
+      [11] dup
+      [12] aload_0 v0
+      [13] invokevirtual #148
+        + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getApplicationContext ()Landroid/content/Context;]
+      [16] ldc #67
+        + Class [com/halcyonwaves/apps/energize/widgets/SimpleBatteryWidget]
+      [18] invokespecial #108
+        + Methodref [android/content/ComponentName.<init> (Landroid/content/Context;Ljava/lang/Class;)V]
+      [21] astore_3 v3
+      [22] aload_2 v2
+      [23] aload_3 v3
+      [24] invokevirtual #105
+        + Methodref [android/appwidget/AppWidgetManager.getAppWidgetIds (Landroid/content/ComponentName;)[I]
+      [27] astore v4
+      [29] ldc #6
+        + Integer [2131034126]
+      [31] istore v5
+      [33] aload_1 v1
+      [34] getfield #84
+        + Fieldref [com/halcyonwaves/apps/energize/c/b.a Z]
+      [37] ifeq +7 (target=44)
+      [40] ldc #5
+        + Integer [2131034125]
+      [42] istore v5
+      [44] aload_0 v0
+      [45] invokevirtual #148
+        + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getApplicationContext ()Landroid/content/Context;]
+      [48] iload v5
+      [50] invokevirtual #113
+        + Methodref [android/content/Context.getString (I)Ljava/lang/String;]
+      [53] astore v6
+      [55] aload v4
+      [57] dup
+      [58] astore v10
+      [60] arraylength
+      [61] istore v9
+      [63] iconst_0
+      [64] istore v8
+      [66] goto +102 (target=168)
+      [69] aload v10
+      [71] iload v8
+      [73] iaload
+      [74] istore v7
+      [76] new #57
+        + Class [android/widget/RemoteViews]
+      [79] dup
+      [80] aload_0 v0
+      [81] invokevirtual #148
+        + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getApplicationContext ()Landroid/content/Context;]
+      [84] invokevirtual #112
+        + Methodref [android/content/Context.getPackageName ()Ljava/lang/String;]
+      [87] ldc #3
+        + Integer [2130903048]
+      [89] invokespecial #136
+        + Methodref [android/widget/RemoteViews.<init> (Ljava/lang/String;I)V]
+      [92] astore v11
+      [94] aload v11
+      [96] ldc #11
+        + Integer [2131099679]
+      [98] aload_1 v1
+      [99] getfield #86
+        + Fieldref [com/halcyonwaves/apps/energize/c/b.c I]
+      [102] invokestatic #168
+        + Methodref [java/lang/String.valueOf (I)Ljava/lang/String;]
+      [105] invokevirtual #137
+        + Methodref [android/widget/RemoteViews.setTextViewText (ILjava/lang/CharSequence;)V]
+      [108] aload v11
+      [110] ldc #12
+        + Integer [2131099680]
+      [112] aload v6
+      [114] invokevirtual #137
+        + Methodref [android/widget/RemoteViews.setTextViewText (ILjava/lang/CharSequence;)V]
+      [117] aload v11
+      [119] ldc #13
+        + Integer [2131099681]
+      [121] aload_0 v0
+      [122] ldc #10
+        + Integer [2131034160]
+      [124] invokevirtual #149
+        + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getString (I)Ljava/lang/String;]
+      [127] iconst_2
+      [128] anewarray #75
+        + Class [java/lang/Object]
+      [131] dup
+      [132] iconst_0
+      [133] aload_1 v1
+      [134] getfield #87
+        + Fieldref [com/halcyonwaves/apps/energize/c/b.e I]
+      [137] invokestatic #164
+        + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
+      [140] aastore
+      [141] dup
+      [142] iconst_1
+      [143] aload_1 v1
+      [144] getfield #88
+        + Fieldref [com/halcyonwaves/apps/energize/c/b.f I]
+      [147] invokestatic #164
+        + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
+      [150] aastore
+      [151] invokestatic #167
+        + Methodref [java/lang/String.format (Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
+      [154] invokevirtual #137
+        + Methodref [android/widget/RemoteViews.setTextViewText (ILjava/lang/CharSequence;)V]
+      [157] aload_2 v2
+      [158] iload v7
+      [160] aload v11
+      [162] invokevirtual #107
+        + Methodref [android/appwidget/AppWidgetManager.updateAppWidget (ILandroid/widget/RemoteViews;)V]
+      [165] iinc v8, 1
+      [168] iload v8
+      [170] iload v9
+      [172] ificmplt -103 (target=69)
+      [175] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
   + Method:       a(Lcom/halcyonwaves/apps/energize/services/MonitorBatteryStateService;)Ljava/util/ArrayList;
