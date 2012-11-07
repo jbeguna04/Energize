@@ -274,6 +274,7 @@ com.halcyonwaves.apps.energize.R$id: int tv_why_rating_the_app
 com.halcyonwaves.apps.energize.R$id: int underline
 com.halcyonwaves.apps.energize.R$id: int vp_fragment_pager
 com.halcyonwaves.apps.energize.R$id: int vp_fragment_titles
+com.halcyonwaves.apps.energize.R$id: int webview_whatsnew
 com.halcyonwaves.apps.energize.R$id: int widget_simplewidget_layout
 com.halcyonwaves.apps.energize.R$integer: int default_circle_indicator_orientation
 com.halcyonwaves.apps.energize.R$integer: int default_title_indicator_footer_indicator_style
@@ -654,6 +655,7 @@ com.jjoe64.graphview.R$id: int tv_why_rating_the_app
 com.jjoe64.graphview.R$id: int underline
 com.jjoe64.graphview.R$id: int vp_fragment_pager
 com.jjoe64.graphview.R$id: int vp_fragment_titles
+com.jjoe64.graphview.R$id: int webview_whatsnew
 com.jjoe64.graphview.R$id: int widget_simplewidget_layout
 com.jjoe64.graphview.R$integer: int default_circle_indicator_orientation
 com.jjoe64.graphview.R$integer: int default_title_indicator_footer_indicator_style
@@ -1042,6 +1044,7 @@ com.viewpagerindicator.R$id: int tv_why_rating_the_app
 com.viewpagerindicator.R$id: int underline
 com.viewpagerindicator.R$id: int vp_fragment_pager
 com.viewpagerindicator.R$id: int vp_fragment_titles
+com.viewpagerindicator.R$id: int webview_whatsnew
 com.viewpagerindicator.R$id: int widget_simplewidget_layout
 com.viewpagerindicator.R$integer: int default_circle_indicator_orientation
 com.viewpagerindicator.R$integer: int default_title_indicator_footer_indicator_style

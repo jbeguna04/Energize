@@ -1067,13 +1067,13 @@ com.viewpagerindicator.R$dimen:
 com.viewpagerindicator.R$drawable
 com.viewpagerindicator.R$id
 com.viewpagerindicator.R$integer:
-    505:505:public R$integer()
+    506:506:public R$integer()
 com.viewpagerindicator.R$layout
 com.viewpagerindicator.R$menu
 com.viewpagerindicator.R$string
 com.viewpagerindicator.R$style
 com.viewpagerindicator.R$styleable:
-    595:595:public R$styleable()
+    596:596:public R$styleable()
 com.viewpagerindicator.R$xml
 com.viewpagerindicator.TabPageIndicator
 com.viewpagerindicator.TabPageIndicator$1
