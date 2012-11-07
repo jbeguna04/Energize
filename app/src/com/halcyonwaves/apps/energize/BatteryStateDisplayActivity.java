@@ -10,7 +10,6 @@ import android.content.pm.PackageInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -142,7 +141,7 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 
 		final View view = inflater.inflate( R.layout.dialog_whatsnew, null );
 
-		WebView changelogWebview = (WebView) view.findViewById( R.id.webview_whatsnew );
+		final WebView changelogWebview = (WebView) view.findViewById( R.id.webview_whatsnew );
 		changelogWebview.loadUrl( "file:///android_asset/html/changelog.html" );
 
 		final AlertDialog.Builder builder = new AlertDialog.Builder( this );

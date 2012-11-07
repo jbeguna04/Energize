@@ -167,34 +167,6 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 
 	}
 
-	private void updateWidgetContent( EstimationResult estimation ) {
-		AppWidgetManager appWidgetManager = AppWidgetManager.getInstance( this.getApplicationContext() );
-
-		ComponentName thisWidget = new ComponentName( this.getApplicationContext(), SimpleBatteryWidget.class );
-		int[] allWidgetIds = appWidgetManager.getAppWidgetIds( thisWidget );
-
-		// determine the correct title string for the notification
-		int notificationTitleId = R.string.notification_title_discharges;
-		if( estimation.charging ) {
-			notificationTitleId = R.string.notification_title_charges;
-		}
-		final String widgetTitle = this.getApplicationContext().getString( notificationTitleId );
-
-		for( int widgetId : allWidgetIds ) {
-
-			// get the view of the widget we want to update
-			RemoteViews remoteViews = new RemoteViews( this.getApplicationContext().getPackageName(), R.layout.widget_simplebattery );
-
-			// update the content of the widget
-			remoteViews.setTextViewText( R.id.simplewidget_current_charginglvl, String.valueOf( estimation.level ) );
-			remoteViews.setTextViewText( R.id.simplewidget_current_chargingstate, widgetTitle );
-			remoteViews.setTextViewText( R.id.simplewidget_remaining_time, String.format( this.getString( R.string.simplewidget_textview_remainingtime ), estimation.remainingHours, estimation.remainingMinutes ) );
-
-			// tell the widget manager to update the widget
-			appWidgetManager.updateAppWidget( widgetId, remoteViews );
-		}
-	}
-
 	public void insertPowerSupplyChangeEvent( final boolean isChargingNow ) {
 		final ContentValues values = new ContentValues();
 		final long currentUnixTime = System.currentTimeMillis() / 1000;
@@ -356,5 +328,33 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 		// get the created notification and show it
 		this.myNotification = notificationBuilder.build();
 		this.notificationManager.notify( MonitorBatteryStateService.MY_NOTIFICATION_ID, this.myNotification );
+	}
+
+	private void updateWidgetContent( final EstimationResult estimation ) {
+		final AppWidgetManager appWidgetManager = AppWidgetManager.getInstance( this.getApplicationContext() );
+
+		final ComponentName thisWidget = new ComponentName( this.getApplicationContext(), SimpleBatteryWidget.class );
+		final int[] allWidgetIds = appWidgetManager.getAppWidgetIds( thisWidget );
+
+		// determine the correct title string for the notification
+		int notificationTitleId = R.string.notification_title_discharges;
+		if( estimation.charging ) {
+			notificationTitleId = R.string.notification_title_charges;
+		}
+		final String widgetTitle = this.getApplicationContext().getString( notificationTitleId );
+
+		for( final int widgetId : allWidgetIds ) {
+
+			// get the view of the widget we want to update
+			final RemoteViews remoteViews = new RemoteViews( this.getApplicationContext().getPackageName(), R.layout.widget_simplebattery );
+
+			// update the content of the widget
+			remoteViews.setTextViewText( R.id.simplewidget_current_charginglvl, String.valueOf( estimation.level ) );
+			remoteViews.setTextViewText( R.id.simplewidget_current_chargingstate, widgetTitle );
+			remoteViews.setTextViewText( R.id.simplewidget_remaining_time, String.format( this.getString( R.string.simplewidget_textview_remainingtime ), estimation.remainingHours, estimation.remainingMinutes ) );
+
+			// tell the widget manager to update the widget
+			appWidgetManager.updateAppWidget( widgetId, remoteViews );
+		}
 	}
 }
