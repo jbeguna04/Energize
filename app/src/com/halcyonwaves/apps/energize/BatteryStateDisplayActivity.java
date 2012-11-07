@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 
 import com.halcyonwaves.apps.energize.dialogs.AboutDialog;
 import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
@@ -140,6 +141,9 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 		final LayoutInflater inflater = LayoutInflater.from( this );
 
 		final View view = inflater.inflate( R.layout.dialog_whatsnew, null );
+
+		WebView changelogWebview = (WebView) view.findViewById( R.id.webview_whatsnew );
+		changelogWebview.loadUrl( "file:///android_asset/html/changelog.html" );
 
 		final AlertDialog.Builder builder = new AlertDialog.Builder( this );
 
