@@ -1,35 +1,46 @@
-import sqlite3
+from argparse import ArgumentParser, ArgumentTypeError, FileType
 from pylab import *
 
+def DatabaseType( dbfile ):
+	import sqlite3
+	import os.path
+	if os.path.exists( dbfile ):
+		dbConnection = sqlite3.connect( dbfile )
+		return dbConnection
+	else:
+		raise ArgumentTypeError( 'The supplied database does not exists.' )
+
 if __name__ == '__main__':
-	xUncharging = []
-	yUncharging = []
-	xChargingUSB = []
-	yChargingUSB = []
-	xChargingAC = []
-	yChargingAC = []
-	
-	#
-	conn = sqlite3.connect( 'batteryStats.db' )
-	c = conn.cursor()
-	for row in c.execute( 'SELECT eventTime, chargingLevel, chargingState FROM rawBatteryStats ORDER BY eventTime;' ):
-		if int( row[ 2 ] ) == 0:
-			xUncharging.append( int( row[ 0 ] ) )
-			yUncharging.append( int( row[ 1 ] ) )
-		elif int( row[ 2 ] ) == 1:
-			xChargingAC.append( int( row[ 0 ] ) )
-			yChargingAC.append( int( row[ 1 ] ) )
-		elif int( row[ 2 ] ) == 2:
-			xChargingUSB.append( int( row[ 0 ] ) )
-			yChargingUSB.append( int( row[ 1 ] ) )
-	c.close()
-	conn.commit()
+	# setup the argument parser and do the parsing
+	argumentParser = ArgumentParser( description = 'Tool for testing different estimation methods on real datasets.', epilog = 'This tool was written for optimizing the estimations of Energize. Copyright (c) 2012 by Tim Huetz. All rights reserved.' )
+	argumentParser.add_argument( 'database', type = DatabaseType, help = 'define the database to use for doing the analysis' )
+	parsedArguments = argumentParser.parse_args()
+
+	# check if all required arguments were passed to the application
+	if parsedArguments.database == None:
+		argumentParser.print_help()
+		exit( -1 )
 
 	#
-	l = plot( xUncharging, yUncharging, 'r.', xChargingAC, yChargingAC, 'g.', xChargingUSB, yChargingUSB, 'm.' )
-	grid( True )
-	title( 'Battery statistics' )
-	xlabel( 'Unix timestamp' )
-	ylabel( 'Charging percentage' )
-	legend( (l), ( 'Decharging', 'Charging (AC)', 'Charging (USB)' ) )
+	xDischarging = []
+	yDischarging = []
+	xCharging = []
+	yCharging = []
+
+	# gather the information stored in the database
+	c = parsedArguments.database.cursor()
+	for row in c.execute( 'SELECT eventTime, chargingLevel, chargingState FROM rawBatteryStats ORDER BY eventTime;' ):
+		if int( row[ 2 ] ) == 0:
+			xDischarging.append( int( row[ 0 ] ) )
+			yDischarging.append( int( row[ 1 ] ) )
+		else:
+			xCharging.append( int( row[ 0 ] ) )
+			yCharging.append( int( row[ 1 ] ) )
+
+	# close the database connection again
+	c.close()
+	parsedArguments.database.close()
+
+	# plot the obtained dataset
+	l = plot( xDischarging, yDischarging, 'r.', xCharging, yCharging, 'g.' )
 	show()
