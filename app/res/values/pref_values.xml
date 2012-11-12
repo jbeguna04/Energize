@@ -6,6 +6,7 @@
     </string-array>
     <string-array name="pref_list_batteryestimationmethod_values">
         <item>LastChangeEstimate</item>
+        <item>LastNChangeEstimate</item>
     </string-array>
     <string-array name="pref_list_temperature_unit">
         <item>Celsius</item>

@@ -65,6 +65,7 @@
     </string-array>
     <string-array name="pref_list_batteryestimationmethod_names">
         <item>Last change period (inaccurate)</item>
+        <item>Last n-change periods (bit inaccurate)</item>
     </string-array>
 
 </resources>

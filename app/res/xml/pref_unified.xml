@@ -29,7 +29,7 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="Statistics" >
         <ListPreference
-            android:defaultValue="LastChangeEstimate"
+            android:defaultValue="LastNChangeEstimate"
             android:entries="@array/pref_list_batteryestimationmethod_names"
             android:entryValues="@array/pref_list_batteryestimationmethod_values"
             android:key="batstatistics.usedestimator"
