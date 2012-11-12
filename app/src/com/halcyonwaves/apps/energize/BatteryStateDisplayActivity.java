@@ -38,21 +38,35 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 		final SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences( this.getApplicationContext() );
 		int currentVersionNumber = 0;
 
+		// get the version number on which the "What's new" dialog was show the last time
 		final int savedVersionNumber = sharedPref.getInt( BatteryStateDisplayActivity.VERSION_KEY, 0 );
 
+		// get the current version number of the app
 		try {
 			final PackageInfo pi = this.getPackageManager().getPackageInfo( this.getPackageName(), 0 );
 			currentVersionNumber = pi.versionCode;
 		} catch( final Exception e ) {
 		}
 
+		// if the app was updated, show the "What's new" dialog
 		if( currentVersionNumber > savedVersionNumber ) {
+			// show the dialog
 			this.showWhatsNewDialog();
 
-			final Editor editor = sharedPref.edit();
+			// get write access to the application preferences
+			Editor editor = sharedPref.edit();
 
+			// update the default estimation algorithm if a version below 0.8.3 was used:
+			if( savedVersionNumber < 83 ) {
+				editor.putString( "batstatistics.usedestimator", "LastNChangeEstimate" );
+			}
+
+			// update the field which stores the last time the dialog was shown
 			editor.putInt( BatteryStateDisplayActivity.VERSION_KEY, currentVersionNumber );
+
+			// commit all changes and close the editor again
 			editor.commit();
+			editor = null;
 		}
 	}
 
