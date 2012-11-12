@@ -47,7 +47,6 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
 ## Changelog
 ### Version 0.8.3 *(2012-11-??)* - [Changes][27]
 * Added a new estimation algorithm which is a bit better than the old one (but still not accurate enough)
-* Fixed a bug that the application was not displayed when clicking on the widget
 * Fixed a bug that the widget was requesting more space then required
 * The widget will now show the battery stats right after adding it to the screen
 
