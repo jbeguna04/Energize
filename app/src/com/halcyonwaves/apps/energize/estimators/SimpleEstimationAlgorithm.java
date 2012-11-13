@@ -37,7 +37,7 @@ public class SimpleEstimationAlgorithm {
 		final int lastChargingState = querCursor.getInt( querCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_CHARGING_STATE ) );
 
 		// if it fails to move to the next object, return
-		if( !querCursor.moveToNext() ) {
+		if( !querCursor.moveToNext() || (querCursor.getInt( querCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_CHARGING_STATE ) ) != lastChargingState) ) {
 
 			// close all opened databases
 			querCursor.close();
