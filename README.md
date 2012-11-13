@@ -48,7 +48,8 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
 ### Version 0.8.3 *(2012-11-??)* - [Changes][27]
 * Added a new estimation algorithm which is a bit better than the old one (but still not accurate enough)
 * Fixed a bug that the widget was requesting more space then required
-* The widget will now show the battery stats right after adding it to the screen
+* Added support for lock screen widgets on Android 4.2+
+* Added support for high-resolution devices (like the Nexus 10)
 
 ### Version 0.8.2 *(2012-11-07)* - [Changes][26]
 * Fixed a bug which caused an application crash on tablets while pressing the lock-button
