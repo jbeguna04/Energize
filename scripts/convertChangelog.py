@@ -10,7 +10,7 @@ if __name__ == '__main__':
 	# setup the argument parser and do the parsing
 	argumentParser = ArgumentParser( description = 'Tool for extracting a changelog out of the README.md file.', epilog = 'This tool was written for Energize. Copyright (c) 2012 by Tim Huetz. Licenced under the terms of the GPLv3.' )
 	argumentParser.add_argument( 'inputFile', type = FileType( 'r', 0 ), help = 'the readme file from which the changelog should be extracted' )
-	argumentParser.add_argument( 'outputFile', type = FileType( 'w', 0 ), help = 'the file ' )
+	argumentParser.add_argument( 'outputFile', type = FileType( 'w', 0 ), help = 'the file to write the HTML changelog to' )
 	parsedArguments = argumentParser.parse_args()
 
 	# check if all required arguments were passed to the application
