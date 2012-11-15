@@ -46,7 +46,7 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
 
 ## Changelog
 ### Version 0.8.3 *(2012-11-??)* - [Changes][27]
-* Added support for lock screen widgets on Android 4.2+
+* Added support for lockscreen widgets on Android 4.2+
 * Added support for high-resolution devices (like the Nexus 10)
 * Added a new estimation algorithm which is a bit better than the old one (but still not accurate enough)
 * Fixed a smaller bug in the old estimation algorithm
