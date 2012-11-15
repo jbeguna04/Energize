@@ -59,6 +59,8 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 						msg.replyTo.send( Message.obtain( null, MonitorBatteryStateService.MSG_REGISTER_CLIENT ) );
 					} catch( final RemoteException e ) {
 						Log.e( MonitorBatteryStateService.TAG, "Failed to tell the client that the client was successfully registered." );
+					} catch( final NullPointerException e ) {
+						Log.e( MonitorBatteryStateService.TAG, "Failed to tell the client that the client was successfully registered (NullPointerException)." );
 					}
 					break;
 				case MonitorBatteryStateService.MSG_UNREGISTER_CLIENT:
@@ -68,6 +70,8 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 						msg.replyTo.send( Message.obtain( null, MonitorBatteryStateService.MSG_UNREGISTER_CLIENT ) );
 					} catch( final RemoteException e ) {
 						Log.e( MonitorBatteryStateService.TAG, "Failed to tell the client that the client was successfully unregistered." );
+					} catch( final NullPointerException e ) {
+						Log.e( MonitorBatteryStateService.TAG, "Failed to tell the client that the client was successfully unregistered (NullPointerException)." );
 					}
 					break;
 				case MonitorBatteryStateService.MSG_CLEAR_STATISTICS:
@@ -78,6 +82,8 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 						msg.replyTo.send( Message.obtain( null, MonitorBatteryStateService.MSG_CLEAR_STATISTICS ) );
 					} catch( final RemoteException e ) {
 						Log.e( MonitorBatteryStateService.TAG, "Failed to clear battery statistics database!" );
+					} catch( final NullPointerException e ) {
+						Log.e( MonitorBatteryStateService.TAG, "Failed to clear battery statistics database (NullPointerException)!" );
 					}
 					break;
 				case MonitorBatteryStateService.MSG_COPY_DB_TO_SDCARD:
@@ -87,6 +93,8 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 						msg.replyTo.send( Message.obtain( null, MonitorBatteryStateService.MSG_COPY_DB_TO_SDCARD ) );
 					} catch( final RemoteException e ) {
 						Log.e( MonitorBatteryStateService.TAG, "Failed to copy battery statistics database!" );
+					} catch( final NullPointerException e ) {
+						Log.e( MonitorBatteryStateService.TAG, "Failed to copy battery statistics database (NullPointerException)!" );
 					}
 					break;
 				case MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME:
@@ -105,6 +113,8 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 						msg.replyTo.send( returningMessage );
 					} catch( final RemoteException e ) {
 						Log.e( MonitorBatteryStateService.TAG, "Failed so send the time estimation to the requesting object." );
+					} catch( final NullPointerException e ) {
+						Log.e( MonitorBatteryStateService.TAG, "Failed so send the time estimation to the requesting object (NullPointerException)." );
 					}
 					break;
 				default:
