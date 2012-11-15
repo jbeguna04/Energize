@@ -46,11 +46,12 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
 
 ## Changelog
 ### Version 0.8.3 *(2012-11-??)* - [Changes][27]
-* Added a new estimation algorithm which is a bit better than the old one (but still not accurate enough)
-* Fixed a bug that the widget was requesting more space then required
 * Added support for lock screen widgets on Android 4.2+
 * Added support for high-resolution devices (like the Nexus 10)
-* Removed the option to turn-off the automatic service start after the device has finished booting
+* Added a new estimation algorithm which is a bit better than the old one (but still not accurate enough)
+* Fixed a smaller bug in the old estimation algorithm
+* Fixed a bug that the widget was requesting more space then required
+* Removed the option to turn-off the automatic service start after the device has finished booting (because it is essential)
 * Removed the theme support because it was buggy not not really useful 
 * Fixed two bugs which caused the application to crash with a null-pointer exception
 
