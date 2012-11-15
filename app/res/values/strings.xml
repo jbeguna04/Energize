@@ -2,7 +2,6 @@
 <resources>
 
     <string name="app_name">Energize</string>
-    <string name="pref_title_start_on_boot">Start on boot</string>
     <string name="pref_title_show_notification_bar">Status bar icon</string>
     <string name="pref_title_change_batteryestimation">Battery estimation method</string>
     <string name="pref_summary_change_batteryestimation">Method: %1$s</string>

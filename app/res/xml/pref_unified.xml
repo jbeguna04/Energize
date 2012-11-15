@@ -4,11 +4,6 @@
     <PreferenceCategory android:title="General" >
         <SwitchPreference
             android:defaultValue="true"
-            android:key="advance.start_on_boot"
-            android:title="@string/pref_title_start_on_boot" />
-        <SwitchPreference
-            android:defaultValue="true"
-            android:dependency="advance.start_on_boot"
             android:key="advance.show_notification_bar"
             android:title="@string/pref_title_show_notification_bar" />
 
