@@ -41,6 +41,13 @@ public class OverviewFragment extends Fragment {
 				case MonitorBatteryStateService.MSG_REGISTER_CLIENT:
 					// since the client is now registered, we can ask the service about the remaining time we have
 					try {
+						// be sure that the monitor service is available, sometimes (I don't know why) this is not the case
+						if( null == OverviewFragment.this.monitorService ) {
+							Log.e( OverviewFragment.TAG, "Tried to query the remaining time but the monitor service was not available!" );
+							return;
+						}
+
+						// query the remaining time
 						final Message msg2 = Message.obtain( null, MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME );
 						msg2.replyTo = OverviewFragment.this.monitorServiceMessanger;
 						OverviewFragment.this.monitorService.send( msg2 );
