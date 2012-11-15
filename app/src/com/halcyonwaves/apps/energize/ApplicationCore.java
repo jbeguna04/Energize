@@ -6,26 +6,11 @@ import java.util.List;
 import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.util.Log;
 
 public class ApplicationCore extends Application {
 
 	private static final String TAG = "ApplicationCore";
-
-	public static int getSelectedThemeId( final Context context ) {
-		final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences( context );
-		final String d = prefs.getString( "display.theme", "UnknownTheme" );
-		if( d.compareTo( "DarkTheme" ) == 0 ) {
-			return R.style.DarkTheme;
-		} else if( d.compareTo( "LightTheme" ) == 0 ) {
-			return R.style.LightTheme;
-		} else {
-			Log.w( ApplicationCore.TAG, "The selected theme is unknown ('" + d + "'), returning default theme!" );
-			return R.style.DarkTheme;
-		}
-	}
 
 	public static boolean isServiceRunning( final Context ctx, final String serviceName ) {
 		Log.v( ApplicationCore.TAG, "Checking if the monitoring service is running or not..." );

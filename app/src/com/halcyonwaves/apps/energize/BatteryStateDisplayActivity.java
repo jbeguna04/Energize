@@ -77,8 +77,7 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 		// set the default preferences
 		PreferenceManager.setDefaultValues( this, R.xml.pref_unified, false );
 
-		// set the theme of the activity and setup its layout
-		this.setTheme( ApplicationCore.getSelectedThemeId( this.getApplicationContext() ) );
+		// setup the layout of the main activity
 		this.setContentView( R.layout.activity_batterystatedisplay );
 
 		// check if the service is running, if not start it

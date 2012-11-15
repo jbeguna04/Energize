@@ -10,7 +10,6 @@ public class SettingsActivity extends Activity {
 	@Override
 	protected void onCreate( final Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
-		this.setTheme( ApplicationCore.getSelectedThemeId( this.getApplicationContext() ) );
 		this.getFragmentManager().beginTransaction().replace( android.R.id.content, new UnifiedPreferenceFragment() ).commit();
 	}
 }

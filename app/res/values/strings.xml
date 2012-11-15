@@ -4,8 +4,6 @@
     <string name="app_name">Energize</string>
     <string name="pref_title_start_on_boot">Start on boot</string>
     <string name="pref_title_show_notification_bar">Status bar icon</string>
-    <string name="pref_title_theme">Theme</string>
-    <string name="pref_summary_theme">Using \""%1$s\" as theme</string>
     <string name="pref_title_change_batteryestimation">Battery estimation method</string>
     <string name="pref_summary_change_batteryestimation">Method: %1$s</string>
     <string name="pref_title_temperature_unit">Temperature unit</string>
@@ -55,10 +53,6 @@
     <string name="btn_close_about_dialog">Close the dialog</string>
     <string name="textview_or_close_the_app_label">or</string>
 
-    <string-array name="pref_list_theme_names">
-        <item>Dark theme</item>
-        <item>Light theme</item>
-    </string-array>
     <string-array name="pref_list_temperature_unit_names">
         <item>Celsius</item>
         <item>Fahrenheit</item>
