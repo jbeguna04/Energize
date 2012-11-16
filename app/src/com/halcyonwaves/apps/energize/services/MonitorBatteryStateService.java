@@ -366,7 +366,11 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 			// update the content of the widget
 			remoteViews.setTextViewText( R.id.simplewidget_current_charginglvl, String.valueOf( estimation.level ) );
 			remoteViews.setTextViewText( R.id.simplewidget_current_chargingstate, widgetTitle );
-			remoteViews.setTextViewText( R.id.simplewidget_remaining_time, String.format( this.getString( R.string.simplewidget_textview_remainingtime ), estimation.remainingHours, estimation.remainingMinutes ) );
+			if( estimation.remainingMinutes <= -1 ) {
+				remoteViews.setTextViewText( R.id.simplewidget_remaining_time, this.getString( R.string.notification_text_estimate_na ) );
+			} else {
+				remoteViews.setTextViewText( R.id.simplewidget_remaining_time, String.format( this.getString( R.string.simplewidget_textview_remainingtime ), estimation.remainingHours, estimation.remainingMinutes ) );
+			}
 
 			// tell the widget manager to update the widget
 			appWidgetManager.updateAppWidget( widgetId, remoteViews );
