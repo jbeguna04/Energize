@@ -1,5 +1,3 @@
-android.annotation.SuppressLint
-android.annotation.TargetApi
 android.support.v4.accessibilityservice.AccessibilityServiceInfoCompat
 android.support.v4.accessibilityservice.AccessibilityServiceInfoCompat$AccessibilityServiceInfoIcsImpl
 android.support.v4.accessibilityservice.AccessibilityServiceInfoCompat$AccessibilityServiceInfoStubImpl
@@ -348,33 +346,10 @@ android.support.v4.util.SparseArrayCompat:
     265:273:public int indexOfValue(java.lang.Object)
     296:323:public void append(int,java.lang.Object)
 android.support.v4.util.TimeUtils
-android.support.v4.view.AccessibilityDelegateCompat:
-    480:480:public android.support.v4.view.accessibility.AccessibilityNodeProviderCompat getAccessibilityNodeProvider(android.view.View)
-    500:500:public boolean performAccessibilityAction(android.view.View,int,android.os.Bundle)
-android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateImpl:
-    public abstract android.support.v4.view.accessibility.AccessibilityNodeProviderCompat getAccessibilityNodeProvider(java.lang.Object,android.view.View)
-    public abstract boolean performAccessibilityAction(java.lang.Object,android.view.View,int,android.os.Bundle)
-android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateJellyBeanImpl:
-    275:280:public android.support.v4.view.accessibility.AccessibilityNodeProviderCompat getAccessibilityNodeProvider(java.lang.Object,android.view.View)
-    286:286:public boolean performAccessibilityAction(java.lang.Object,android.view.View,int,android.os.Bundle)
-android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateJellyBeanImpl$1:
-    260:262:public java.lang.Object getAccessibilityNodeProvider(android.view.View)
-    267:267:public boolean performAccessibilityAction(android.view.View,int,android.os.Bundle)
-android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateStubImpl:
-    109:109:public android.support.v4.view.accessibility.AccessibilityNodeProviderCompat getAccessibilityNodeProvider(java.lang.Object,android.view.View)
-    115:115:public boolean performAccessibilityAction(java.lang.Object,android.view.View,int,android.os.Bundle)
 android.support.v4.view.AccessibilityDelegateCompatIcs:
     28:30:AccessibilityDelegateCompatIcs()
 android.support.v4.view.AccessibilityDelegateCompatJellyBean:
     30:32:AccessibilityDelegateCompatJellyBean()
-    99:99:public static java.lang.Object getAccessibilityNodeProvider(java.lang.Object,android.view.View)
-    104:104:public static boolean performAccessibilityAction(java.lang.Object,android.view.View,int,android.os.Bundle)
-android.support.v4.view.AccessibilityDelegateCompatJellyBean$1:
-    87:87:public android.view.accessibility.AccessibilityNodeProvider getAccessibilityNodeProvider(android.view.View)
-    92:92:public boolean performAccessibilityAction(android.view.View,int,android.os.Bundle)
-android.support.v4.view.AccessibilityDelegateCompatJellyBean$AccessibilityDelegateBridgeJellyBean:
-    public abstract java.lang.Object getAccessibilityNodeProvider(android.view.View)
-    public abstract boolean performAccessibilityAction(android.view.View,int,android.os.Bundle)
 android.support.v4.view.KeyEventCompat:
     25:95:public KeyEventCompat()
     127:127:public static int normalizeMetaState(int)
@@ -542,8 +517,6 @@ android.support.v4.view.ViewPager:
     public static final int SCROLL_STATE_SETTLING
     514:516:android.support.v4.view.ViewPager$OnPageChangeListener setInternalPageChangeListener(android.support.v4.view.ViewPager$OnPageChangeListener)
     638:639:void smoothScrollTo(int,int)
-android.support.v4.view.ViewPager$MyAccessibilityDelegate:
-    2495:2512:public boolean performAccessibilityAction(android.view.View,int,android.os.Bundle)
 android.support.v4.view.ViewPager$SimpleOnPageChangeListener
 android.support.v4.view.accessibility.AccessibilityEventCompat
 android.support.v4.view.accessibility.AccessibilityEventCompat$AccessibilityEventIcsImpl
@@ -863,14 +836,8 @@ android.support.v4.view.accessibility.AccessibilityNodeInfoCompatIcs:
     213:214:public static void setText(java.lang.Object,java.lang.CharSequence)
     217:218:public static void recycle(java.lang.Object)
 android.support.v4.view.accessibility.AccessibilityNodeInfoCompatJellyBean
-android.support.v4.view.accessibility.AccessibilityNodeProviderCompat
-android.support.v4.view.accessibility.AccessibilityNodeProviderCompat$AccessibilityNodeProviderImpl
-android.support.v4.view.accessibility.AccessibilityNodeProviderCompat$AccessibilityNodeProviderJellyBeanImpl
-android.support.v4.view.accessibility.AccessibilityNodeProviderCompat$AccessibilityNodeProviderJellyBeanImpl$1
-android.support.v4.view.accessibility.AccessibilityNodeProviderCompat$AccessibilityNodeProviderStubImpl
-android.support.v4.view.accessibility.AccessibilityNodeProviderCompatJellyBean
-android.support.v4.view.accessibility.AccessibilityNodeProviderCompatJellyBean$1
-android.support.v4.view.accessibility.AccessibilityNodeProviderCompatJellyBean$AccessibilityNodeInfoBridge
+android.support.v4.view.accessibility.AccessibilityNodeProviderCompatJellyBean:
+    28:29:AccessibilityNodeProviderCompatJellyBean()
 android.support.v4.view.accessibility.AccessibilityRecordCompat
 android.support.v4.view.accessibility.AccessibilityRecordCompat$AccessibilityRecordIcsImpl
 android.support.v4.view.accessibility.AccessibilityRecordCompat$AccessibilityRecordIcsMr1Impl
@@ -915,7 +882,7 @@ android.support.v4.widget.SimpleCursorAdapter$CursorToStringConverter
 android.support.v4.widget.SimpleCursorAdapter$ViewBinder
 com.halcyonwaves.apps.energize.ApplicationCore:
     private static final java.lang.String TAG
-    13:13:public ApplicationCore()
+    11:11:public ApplicationCore()
 com.halcyonwaves.apps.energize.BatteryStateDisplayActivity:
     private static final java.lang.String VERSION_KEY
 com.halcyonwaves.apps.energize.BuildConfig
@@ -971,6 +938,10 @@ com.halcyonwaves.apps.energize.estimators.BatteryEstimationMgr:
 com.halcyonwaves.apps.energize.estimators.SimpleEstimationAlgorithm:
     private static final java.lang.String TAG
     11:11:public SimpleEstimationAlgorithm()
+com.halcyonwaves.apps.energize.estimators.SimpleEstimationAlgorithm2:
+    private static final int MAX_N
+    private static final java.lang.String TAG
+    22:22:public SimpleEstimationAlgorithm2()
 com.halcyonwaves.apps.energize.fragments.OverviewFragment:
     private static final java.lang.String TAG
 com.halcyonwaves.apps.energize.fragments.TemperatureGraphFragment:
@@ -987,7 +958,10 @@ com.halcyonwaves.apps.energize.services.MonitorBatteryStateService:
     public static final int MSG_REGISTER_CLIENT
     public static final int MSG_REQUEST_REMAINING_TIME
     public static final int MSG_UNREGISTER_CLIENT
+    public static final int MSG_UPDATE_WIDGETS
     private static final int MY_NOTIFICATION_ID
+    private static final java.lang.String TAG
+com.halcyonwaves.apps.energize.widgets.SimpleBatteryWidget:
     private static final java.lang.String TAG
 com.jjoe64.graphview.BarGraphView
 com.jjoe64.graphview.GraphView:
@@ -1005,20 +979,9 @@ com.jjoe64.graphview.GraphViewSeries:
     64:72:public void appendData(com.jjoe64.graphview.GraphView$GraphViewData,boolean)
     80:84:public void resetData(com.jjoe64.graphview.GraphView$GraphViewData[])
 com.jjoe64.graphview.R
-com.jjoe64.graphview.R$array
-com.jjoe64.graphview.R$attr
-com.jjoe64.graphview.R$bool
-com.jjoe64.graphview.R$color
-com.jjoe64.graphview.R$dimen
 com.jjoe64.graphview.R$drawable
-com.jjoe64.graphview.R$id
-com.jjoe64.graphview.R$integer
 com.jjoe64.graphview.R$layout
-com.jjoe64.graphview.R$menu
 com.jjoe64.graphview.R$string
-com.jjoe64.graphview.R$style
-com.jjoe64.graphview.R$styleable
-com.jjoe64.graphview.R$xml
 com.jjoe64.graphview.compatible.RealScaleGestureDetector:
     13:19:public RealScaleGestureDetector(android.content.Context,com.jjoe64.graphview.compatible.ScaleGestureDetector,com.jjoe64.graphview.compatible.ScaleGestureDetector$SimpleOnScaleGestureListener)
 com.jjoe64.graphview.compatible.RealScaleGestureDetector$1
@@ -1054,27 +1017,22 @@ com.viewpagerindicator.PageIndicator:
     public abstract void setOnPageChangeListener(android.support.v4.view.ViewPager$OnPageChangeListener)
     public abstract void notifyDataSetChanged()
 com.viewpagerindicator.R:
-    10:10:public R()
-com.viewpagerindicator.R$array
+    9:9:public R()
 com.viewpagerindicator.R$attr:
-    19:19:public R$attr()
+    110:110:public R$attr()
 com.viewpagerindicator.R$bool:
-    307:307:public R$bool()
+    143:143:public R$bool()
 com.viewpagerindicator.R$color:
-    314:314:public R$color()
+    31:31:public R$color()
 com.viewpagerindicator.R$dimen:
-    335:335:public R$dimen()
+    150:150:public R$dimen()
 com.viewpagerindicator.R$drawable
 com.viewpagerindicator.R$id
 com.viewpagerindicator.R$integer:
-    506:506:public R$integer()
-com.viewpagerindicator.R$layout
-com.viewpagerindicator.R$menu
-com.viewpagerindicator.R$string
+    24:24:public R$integer()
 com.viewpagerindicator.R$style
 com.viewpagerindicator.R$styleable:
-    596:596:public R$styleable()
-com.viewpagerindicator.R$xml
+    52:52:public R$styleable()
 com.viewpagerindicator.TabPageIndicator
 com.viewpagerindicator.TabPageIndicator$1
 com.viewpagerindicator.TabPageIndicator$2

@@ -567,6 +567,8 @@ android.support.v4.view.AccessibilityDelegateCompat -> android.support.v4.view.a
     void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> d
     void onInitializeAccessibilityNodeInfo(android.view.View,android.support.v4.view.accessibility.AccessibilityNodeInfoCompat) -> a
     boolean onRequestSendAccessibilityEvent(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    android.support.v4.view.accessibility.AccessibilityNodeProviderCompat getAccessibilityNodeProvider(android.view.View) -> a
+    boolean performAccessibilityAction(android.view.View,int,android.os.Bundle) -> a
 android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateIcsImpl -> android.support.v4.view.b:
     java.lang.Object newAccessiblityDelegateDefaultImpl() -> a
     java.lang.Object newAccessiblityDelegateBridge(android.support.v4.view.AccessibilityDelegateCompat) -> a
@@ -597,8 +599,12 @@ android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateImpl ->
     boolean onRequestSendAccessibilityEvent(java.lang.Object,android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
     void sendAccessibilityEvent(java.lang.Object,android.view.View,int) -> a
     void sendAccessibilityEventUnchecked(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> d
+    android.support.v4.view.accessibility.AccessibilityNodeProviderCompat getAccessibilityNodeProvider(java.lang.Object,android.view.View) -> a
+    boolean performAccessibilityAction(java.lang.Object,android.view.View,int,android.os.Bundle) -> a
 android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateJellyBeanImpl -> android.support.v4.view.e:
     java.lang.Object newAccessiblityDelegateBridge(android.support.v4.view.AccessibilityDelegateCompat) -> a
+    android.support.v4.view.accessibility.AccessibilityNodeProviderCompat getAccessibilityNodeProvider(java.lang.Object,android.view.View) -> a
+    boolean performAccessibilityAction(java.lang.Object,android.view.View,int,android.os.Bundle) -> a
 android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateJellyBeanImpl$1 -> android.support.v4.view.f:
     android.support.v4.view.AccessibilityDelegateCompat val$compat -> a
     android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateJellyBeanImpl this$0 -> b
@@ -609,6 +615,8 @@ android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateJellyBe
     boolean onRequestSendAccessibilityEvent(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
     void sendAccessibilityEvent(android.view.View,int) -> a
     void sendAccessibilityEventUnchecked(android.view.View,android.view.accessibility.AccessibilityEvent) -> d
+    java.lang.Object getAccessibilityNodeProvider(android.view.View) -> a
+    boolean performAccessibilityAction(android.view.View,int,android.os.Bundle) -> a
 android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateStubImpl -> android.support.v4.view.g:
     java.lang.Object newAccessiblityDelegateDefaultImpl() -> a
     java.lang.Object newAccessiblityDelegateBridge(android.support.v4.view.AccessibilityDelegateCompat) -> a
@@ -619,6 +627,8 @@ android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateStubImp
     boolean onRequestSendAccessibilityEvent(java.lang.Object,android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
     void sendAccessibilityEvent(java.lang.Object,android.view.View,int) -> a
     void sendAccessibilityEventUnchecked(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> d
+    android.support.v4.view.accessibility.AccessibilityNodeProviderCompat getAccessibilityNodeProvider(java.lang.Object,android.view.View) -> a
+    boolean performAccessibilityAction(java.lang.Object,android.view.View,int,android.os.Bundle) -> a
 android.support.v4.view.AccessibilityDelegateCompatIcs -> android.support.v4.view.h:
     java.lang.Object newAccessibilityDelegateDefaultImpl() -> a
     java.lang.Object newAccessibilityDelegateBridge(android.support.v4.view.AccessibilityDelegateCompatIcs$AccessibilityDelegateBridge) -> a
@@ -648,6 +658,8 @@ android.support.v4.view.AccessibilityDelegateCompatIcs$AccessibilityDelegateBrid
     void sendAccessibilityEventUnchecked(android.view.View,android.view.accessibility.AccessibilityEvent) -> d
 android.support.v4.view.AccessibilityDelegateCompatJellyBean -> android.support.v4.view.k:
     java.lang.Object newAccessibilityDelegateBridge(android.support.v4.view.AccessibilityDelegateCompatJellyBean$AccessibilityDelegateBridgeJellyBean) -> a
+    java.lang.Object getAccessibilityNodeProvider(java.lang.Object,android.view.View) -> a
+    boolean performAccessibilityAction(java.lang.Object,android.view.View,int,android.os.Bundle) -> a
 android.support.v4.view.AccessibilityDelegateCompatJellyBean$1 -> android.support.v4.view.l:
     android.support.v4.view.AccessibilityDelegateCompatJellyBean$AccessibilityDelegateBridgeJellyBean val$bridge -> a
     boolean dispatchPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> dispatchPopulateAccessibilityEvent
@@ -657,6 +669,8 @@ android.support.v4.view.AccessibilityDelegateCompatJellyBean$1 -> android.suppor
     boolean onRequestSendAccessibilityEvent(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> onRequestSendAccessibilityEvent
     void sendAccessibilityEvent(android.view.View,int) -> sendAccessibilityEvent
     void sendAccessibilityEventUnchecked(android.view.View,android.view.accessibility.AccessibilityEvent) -> sendAccessibilityEventUnchecked
+    android.view.accessibility.AccessibilityNodeProvider getAccessibilityNodeProvider(android.view.View) -> getAccessibilityNodeProvider
+    boolean performAccessibilityAction(android.view.View,int,android.os.Bundle) -> performAccessibilityAction
 android.support.v4.view.AccessibilityDelegateCompatJellyBean$AccessibilityDelegateBridgeJellyBean -> android.support.v4.view.m:
     boolean dispatchPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> a
     void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> b
@@ -665,6 +679,8 @@ android.support.v4.view.AccessibilityDelegateCompatJellyBean$AccessibilityDelega
     boolean onRequestSendAccessibilityEvent(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
     void sendAccessibilityEvent(android.view.View,int) -> a
     void sendAccessibilityEventUnchecked(android.view.View,android.view.accessibility.AccessibilityEvent) -> d
+    java.lang.Object getAccessibilityNodeProvider(android.view.View) -> a
+    boolean performAccessibilityAction(android.view.View,int,android.os.Bundle) -> a
 android.support.v4.view.KeyEventCompat -> android.support.v4.view.n:
     android.support.v4.view.KeyEventCompat$KeyEventVersionImpl IMPL -> a
     boolean hasModifiers(android.view.KeyEvent,int) -> a
@@ -946,6 +962,7 @@ android.support.v4.view.ViewPager$MyAccessibilityDelegate -> android.support.v4.
     android.support.v4.view.ViewPager this$0 -> b
     void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> d
     void onInitializeAccessibilityNodeInfo(android.view.View,android.support.v4.view.accessibility.AccessibilityNodeInfoCompat) -> a
+    boolean performAccessibilityAction(android.view.View,int,android.os.Bundle) -> a
 android.support.v4.view.ViewPager$OnAdapterChangeListener -> android.support.v4.view.az:
     void onAdapterChanged(android.support.v4.view.PagerAdapter,android.support.v4.view.PagerAdapter) -> a
 android.support.v4.view.ViewPager$OnPageChangeListener -> android.support.v4.view.ba:
@@ -994,6 +1011,36 @@ android.support.v4.view.accessibility.AccessibilityNodeInfoCompatIcs -> android.
     void addAction(java.lang.Object,int) -> a
     void setClassName(java.lang.Object,java.lang.CharSequence) -> a
     void setScrollable(java.lang.Object,boolean) -> a
+android.support.v4.view.accessibility.AccessibilityNodeProviderCompat -> android.support.v4.view.a.g:
+    android.support.v4.view.accessibility.AccessibilityNodeProviderCompat$AccessibilityNodeProviderImpl IMPL -> a
+    java.lang.Object mProvider -> b
+    java.lang.Object getProvider() -> a
+    android.support.v4.view.accessibility.AccessibilityNodeInfoCompat createAccessibilityNodeInfo(int) -> a
+    boolean performAction(int,int,android.os.Bundle) -> a
+    java.util.List findAccessibilityNodeInfosByText(java.lang.String,int) -> a
+android.support.v4.view.accessibility.AccessibilityNodeProviderCompat$AccessibilityNodeProviderImpl -> android.support.v4.view.a.h:
+    java.lang.Object newAccessibilityNodeProviderBridge(android.support.v4.view.accessibility.AccessibilityNodeProviderCompat) -> a
+android.support.v4.view.accessibility.AccessibilityNodeProviderCompat$AccessibilityNodeProviderJellyBeanImpl -> android.support.v4.view.a.i:
+    java.lang.Object newAccessibilityNodeProviderBridge(android.support.v4.view.accessibility.AccessibilityNodeProviderCompat) -> a
+android.support.v4.view.accessibility.AccessibilityNodeProviderCompat$AccessibilityNodeProviderJellyBeanImpl$1 -> android.support.v4.view.a.j:
+    android.support.v4.view.accessibility.AccessibilityNodeProviderCompat val$compat -> a
+    android.support.v4.view.accessibility.AccessibilityNodeProviderCompat$AccessibilityNodeProviderJellyBeanImpl this$0 -> b
+    boolean performAction(int,int,android.os.Bundle) -> a
+    java.util.List findAccessibilityNodeInfosByText(java.lang.String,int) -> a
+    java.lang.Object createAccessibilityNodeInfo(int) -> a
+android.support.v4.view.accessibility.AccessibilityNodeProviderCompat$AccessibilityNodeProviderStubImpl -> android.support.v4.view.a.k:
+    java.lang.Object newAccessibilityNodeProviderBridge(android.support.v4.view.accessibility.AccessibilityNodeProviderCompat) -> a
+android.support.v4.view.accessibility.AccessibilityNodeProviderCompatJellyBean -> android.support.v4.view.a.l:
+    java.lang.Object newAccessibilityNodeProviderBridge(android.support.v4.view.accessibility.AccessibilityNodeProviderCompatJellyBean$AccessibilityNodeInfoBridge) -> a
+android.support.v4.view.accessibility.AccessibilityNodeProviderCompatJellyBean$1 -> android.support.v4.view.a.m:
+    android.support.v4.view.accessibility.AccessibilityNodeProviderCompatJellyBean$AccessibilityNodeInfoBridge val$bridge -> a
+    android.view.accessibility.AccessibilityNodeInfo createAccessibilityNodeInfo(int) -> createAccessibilityNodeInfo
+    java.util.List findAccessibilityNodeInfosByText(java.lang.String,int) -> findAccessibilityNodeInfosByText
+    boolean performAction(int,int,android.os.Bundle) -> performAction
+android.support.v4.view.accessibility.AccessibilityNodeProviderCompatJellyBean$AccessibilityNodeInfoBridge -> android.support.v4.view.a.n:
+    java.lang.Object createAccessibilityNodeInfo(int) -> a
+    boolean performAction(int,int,android.os.Bundle) -> a
+    java.util.List findAccessibilityNodeInfosByText(java.lang.String,int) -> a
 android.support.v4.widget.EdgeEffectCompat -> android.support.v4.d.a:
     java.lang.Object mEdgeEffect -> a
     android.support.v4.widget.EdgeEffectCompat$EdgeEffectImpl IMPL -> b
@@ -1036,7 +1083,6 @@ android.support.v4.widget.EdgeEffectCompatIcs -> android.support.v4.d.e:
     boolean onRelease(java.lang.Object) -> c
     boolean draw(java.lang.Object,android.graphics.Canvas) -> a
 com.halcyonwaves.apps.energize.ApplicationCore -> com.halcyonwaves.apps.energize.a:
-    int getSelectedThemeId(android.content.Context) -> a
     boolean isServiceRunning(android.content.Context,java.lang.String) -> a
 com.halcyonwaves.apps.energize.BatteryStateDisplayActivity -> com.halcyonwaves.apps.energize.BatteryStateDisplayActivity:
     com.halcyonwaves.apps.energize.CustomViewPager usedPager -> m
@@ -1095,6 +1141,8 @@ com.halcyonwaves.apps.energize.estimators.EstimationResult -> com.halcyonwaves.a
     com.halcyonwaves.apps.energize.estimators.EstimationResult fromBundle(android.os.Bundle) -> a
     android.os.Bundle toBundle() -> a
 com.halcyonwaves.apps.energize.estimators.SimpleEstimationAlgorithm -> com.halcyonwaves.apps.energize.c.c:
+    com.halcyonwaves.apps.energize.estimators.EstimationResult getEstimation(android.content.Context) -> a
+com.halcyonwaves.apps.energize.estimators.SimpleEstimationAlgorithm2 -> com.halcyonwaves.apps.energize.c.d:
     com.halcyonwaves.apps.energize.estimators.EstimationResult getEstimation(android.content.Context) -> a
 com.halcyonwaves.apps.energize.fragments.BatteryCapacityGraphFragment -> com.halcyonwaves.apps.energize.fragments.BatteryCapacityGraphFragment:
     android.util.Pair getBatteryStatisticData() -> u
@@ -1213,6 +1261,7 @@ com.halcyonwaves.apps.energize.services.MonitorBatteryStateService -> com.halcyo
     java.util.ArrayList access$0(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> a
     android.database.sqlite.SQLiteDatabase access$1(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> b
     void access$2(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> c
+    void access$3(com.halcyonwaves.apps.energize.services.MonitorBatteryStateService) -> d
 com.halcyonwaves.apps.energize.services.MonitorBatteryStateService$IncomingHandler -> com.halcyonwaves.apps.energize.services.a:
     com.halcyonwaves.apps.energize.services.MonitorBatteryStateService this$0 -> a
     void handleMessage(android.os.Message) -> handleMessage
@@ -1428,131 +1477,131 @@ com.viewpagerindicator.LinePageIndicator$SavedState$1 -> com.viewpagerindicator.
 com.viewpagerindicator.PageIndicator -> com.viewpagerindicator.c:
 com.viewpagerindicator.R -> com.viewpagerindicator.d:
 com.viewpagerindicator.R$attr -> com.viewpagerindicator.e:
-    int centered -> centered
-    int clipPadding -> clipPadding
-    int fadeDelay -> fadeDelay
-    int fadeLength -> fadeLength
-    int fades -> fades
-    int fillColor -> fillColor
-    int footerColor -> footerColor
-    int footerIndicatorHeight -> footerIndicatorHeight
     int footerIndicatorStyle -> footerIndicatorStyle
-    int footerIndicatorUnderlinePadding -> footerIndicatorUnderlinePadding
+    int fillColor -> fillColor
+    int vpiIconPageIndicatorStyle -> vpiIconPageIndicatorStyle
+    int vpiCirclePageIndicatorStyle -> vpiCirclePageIndicatorStyle
+    int snap -> snap
+    int clipPadding -> clipPadding
+    int footerColor -> footerColor
+    int topPadding -> topPadding
+    int vpiLinePageIndicatorStyle -> vpiLinePageIndicatorStyle
+    int fadeDelay -> fadeDelay
+    int unselectedColor -> unselectedColor
     int footerLineHeight -> footerLineHeight
+    int fades -> fades
+    int selectedColor -> selectedColor
     int footerPadding -> footerPadding
-    int gapWidth -> gapWidth
+    int footerIndicatorUnderlinePadding -> footerIndicatorUnderlinePadding
+    int titlePadding -> titlePadding
+    int vpiUnderlinePageIndicatorStyle -> vpiUnderlinePageIndicatorStyle
+    int strokeWidth -> strokeWidth
+    int vpiTabPageIndicatorStyle -> vpiTabPageIndicatorStyle
+    int footerIndicatorHeight -> footerIndicatorHeight
+    int centered -> centered
     int linePosition -> linePosition
     int lineWidth -> lineWidth
     int pageColor -> pageColor
-    int radius -> radius
-    int selectedBold -> selectedBold
-    int selectedColor -> selectedColor
-    int snap -> snap
     int strokeColor -> strokeColor
-    int strokeWidth -> strokeWidth
-    int titlePadding -> titlePadding
-    int topPadding -> topPadding
-    int unselectedColor -> unselectedColor
-    int vpiCirclePageIndicatorStyle -> vpiCirclePageIndicatorStyle
-    int vpiIconPageIndicatorStyle -> vpiIconPageIndicatorStyle
-    int vpiLinePageIndicatorStyle -> vpiLinePageIndicatorStyle
-    int vpiTabPageIndicatorStyle -> vpiTabPageIndicatorStyle
     int vpiTitlePageIndicatorStyle -> vpiTitlePageIndicatorStyle
-    int vpiUnderlinePageIndicatorStyle -> vpiUnderlinePageIndicatorStyle
+    int radius -> radius
+    int gapWidth -> gapWidth
+    int selectedBold -> selectedBold
+    int fadeLength -> fadeLength
 com.viewpagerindicator.R$bool -> com.viewpagerindicator.f:
-    int default_circle_indicator_centered -> default_circle_indicator_centered
-    int default_circle_indicator_snap -> default_circle_indicator_snap
-    int default_line_indicator_centered -> default_line_indicator_centered
-    int default_title_indicator_selected_bold -> default_title_indicator_selected_bold
     int default_underline_indicator_fades -> default_underline_indicator_fades
+    int default_circle_indicator_snap -> default_circle_indicator_snap
+    int default_title_indicator_selected_bold -> default_title_indicator_selected_bold
+    int default_circle_indicator_centered -> default_circle_indicator_centered
+    int default_line_indicator_centered -> default_line_indicator_centered
 com.viewpagerindicator.R$color -> com.viewpagerindicator.g:
-    int default_circle_indicator_fill_color -> default_circle_indicator_fill_color
-    int default_circle_indicator_page_color -> default_circle_indicator_page_color
-    int default_circle_indicator_stroke_color -> default_circle_indicator_stroke_color
-    int default_line_indicator_selected_color -> default_line_indicator_selected_color
-    int default_line_indicator_unselected_color -> default_line_indicator_unselected_color
+    int vpi__bright_foreground_disabled_holo_dark -> vpi__bright_foreground_disabled_holo_dark
+    int vpi__light_theme -> vpi__light_theme
+    int vpi__background_holo_light -> vpi__background_holo_light
+    int default_title_indicator_text_color -> default_title_indicator_text_color
+    int vpi__background_holo_dark -> vpi__background_holo_dark
     int default_title_indicator_footer_color -> default_title_indicator_footer_color
     int default_title_indicator_selected_color -> default_title_indicator_selected_color
-    int default_title_indicator_text_color -> default_title_indicator_text_color
-    int default_underline_indicator_selected_color -> default_underline_indicator_selected_color
-    int vpi__background_holo_dark -> vpi__background_holo_dark
-    int vpi__background_holo_light -> vpi__background_holo_light
-    int vpi__bright_foreground_disabled_holo_dark -> vpi__bright_foreground_disabled_holo_dark
-    int vpi__bright_foreground_disabled_holo_light -> vpi__bright_foreground_disabled_holo_light
-    int vpi__bright_foreground_holo_dark -> vpi__bright_foreground_holo_dark
-    int vpi__bright_foreground_holo_light -> vpi__bright_foreground_holo_light
     int vpi__bright_foreground_inverse_holo_dark -> vpi__bright_foreground_inverse_holo_dark
+    int default_circle_indicator_fill_color -> default_circle_indicator_fill_color
+    int default_line_indicator_selected_color -> default_line_indicator_selected_color
+    int vpi__bright_foreground_disabled_holo_light -> vpi__bright_foreground_disabled_holo_light
     int vpi__bright_foreground_inverse_holo_light -> vpi__bright_foreground_inverse_holo_light
+    int default_line_indicator_unselected_color -> default_line_indicator_unselected_color
+    int default_underline_indicator_selected_color -> default_underline_indicator_selected_color
+    int vpi__bright_foreground_holo_dark -> vpi__bright_foreground_holo_dark
     int vpi__dark_theme -> vpi__dark_theme
-    int vpi__light_theme -> vpi__light_theme
+    int default_circle_indicator_stroke_color -> default_circle_indicator_stroke_color
+    int vpi__bright_foreground_holo_light -> vpi__bright_foreground_holo_light
+    int default_circle_indicator_page_color -> default_circle_indicator_page_color
 com.viewpagerindicator.R$dimen -> com.viewpagerindicator.h:
-    int default_circle_indicator_radius -> default_circle_indicator_radius
-    int default_circle_indicator_stroke_width -> default_circle_indicator_stroke_width
-    int default_line_indicator_gap_width -> default_line_indicator_gap_width
-    int default_line_indicator_line_width -> default_line_indicator_line_width
-    int default_line_indicator_stroke_width -> default_line_indicator_stroke_width
-    int default_title_indicator_clip_padding -> default_title_indicator_clip_padding
-    int default_title_indicator_footer_indicator_height -> default_title_indicator_footer_indicator_height
-    int default_title_indicator_footer_indicator_underline_padding -> default_title_indicator_footer_indicator_underline_padding
-    int default_title_indicator_footer_line_height -> default_title_indicator_footer_line_height
-    int default_title_indicator_footer_padding -> default_title_indicator_footer_padding
     int default_title_indicator_text_size -> default_title_indicator_text_size
     int default_title_indicator_title_padding -> default_title_indicator_title_padding
+    int default_title_indicator_clip_padding -> default_title_indicator_clip_padding
+    int default_line_indicator_stroke_width -> default_line_indicator_stroke_width
+    int default_title_indicator_footer_indicator_underline_padding -> default_title_indicator_footer_indicator_underline_padding
+    int default_circle_indicator_radius -> default_circle_indicator_radius
+    int default_title_indicator_footer_padding -> default_title_indicator_footer_padding
+    int default_title_indicator_footer_line_height -> default_title_indicator_footer_line_height
+    int default_line_indicator_gap_width -> default_line_indicator_gap_width
+    int default_line_indicator_line_width -> default_line_indicator_line_width
+    int default_title_indicator_footer_indicator_height -> default_title_indicator_footer_indicator_height
     int default_title_indicator_top_padding -> default_title_indicator_top_padding
+    int default_circle_indicator_stroke_width -> default_circle_indicator_stroke_width
 com.viewpagerindicator.R$integer -> com.viewpagerindicator.i:
+    int default_underline_indicator_fade_delay -> default_underline_indicator_fade_delay
     int default_circle_indicator_orientation -> default_circle_indicator_orientation
+    int default_underline_indicator_fade_length -> default_underline_indicator_fade_length
     int default_title_indicator_footer_indicator_style -> default_title_indicator_footer_indicator_style
     int default_title_indicator_line_position -> default_title_indicator_line_position
-    int default_underline_indicator_fade_delay -> default_underline_indicator_fade_delay
-    int default_underline_indicator_fade_length -> default_underline_indicator_fade_length
 com.viewpagerindicator.R$styleable -> com.viewpagerindicator.j:
-    int[] CirclePageIndicator -> CirclePageIndicator
-    int CirclePageIndicator_android_background -> CirclePageIndicator_android_background
-    int CirclePageIndicator_android_orientation -> CirclePageIndicator_android_orientation
-    int CirclePageIndicator_centered -> CirclePageIndicator_centered
-    int CirclePageIndicator_fillColor -> CirclePageIndicator_fillColor
-    int CirclePageIndicator_pageColor -> CirclePageIndicator_pageColor
-    int CirclePageIndicator_radius -> CirclePageIndicator_radius
-    int CirclePageIndicator_snap -> CirclePageIndicator_snap
-    int CirclePageIndicator_strokeColor -> CirclePageIndicator_strokeColor
-    int CirclePageIndicator_strokeWidth -> CirclePageIndicator_strokeWidth
-    int[] LinePageIndicator -> LinePageIndicator
     int LinePageIndicator_android_background -> LinePageIndicator_android_background
-    int LinePageIndicator_centered -> LinePageIndicator_centered
-    int LinePageIndicator_gapWidth -> LinePageIndicator_gapWidth
-    int LinePageIndicator_lineWidth -> LinePageIndicator_lineWidth
-    int LinePageIndicator_selectedColor -> LinePageIndicator_selectedColor
-    int LinePageIndicator_strokeWidth -> LinePageIndicator_strokeWidth
-    int LinePageIndicator_unselectedColor -> LinePageIndicator_unselectedColor
-    int[] TitlePageIndicator -> TitlePageIndicator
-    int TitlePageIndicator_android_background -> TitlePageIndicator_android_background
-    int TitlePageIndicator_android_textColor -> TitlePageIndicator_android_textColor
-    int TitlePageIndicator_android_textSize -> TitlePageIndicator_android_textSize
-    int TitlePageIndicator_clipPadding -> TitlePageIndicator_clipPadding
-    int TitlePageIndicator_footerColor -> TitlePageIndicator_footerColor
-    int TitlePageIndicator_footerIndicatorHeight -> TitlePageIndicator_footerIndicatorHeight
-    int TitlePageIndicator_footerIndicatorStyle -> TitlePageIndicator_footerIndicatorStyle
-    int TitlePageIndicator_footerIndicatorUnderlinePadding -> TitlePageIndicator_footerIndicatorUnderlinePadding
-    int TitlePageIndicator_footerLineHeight -> TitlePageIndicator_footerLineHeight
-    int TitlePageIndicator_footerPadding -> TitlePageIndicator_footerPadding
-    int TitlePageIndicator_linePosition -> TitlePageIndicator_linePosition
-    int TitlePageIndicator_selectedBold -> TitlePageIndicator_selectedBold
-    int TitlePageIndicator_selectedColor -> TitlePageIndicator_selectedColor
-    int TitlePageIndicator_titlePadding -> TitlePageIndicator_titlePadding
-    int TitlePageIndicator_topPadding -> TitlePageIndicator_topPadding
     int[] UnderlinePageIndicator -> UnderlinePageIndicator
-    int UnderlinePageIndicator_android_background -> UnderlinePageIndicator_android_background
-    int UnderlinePageIndicator_fadeDelay -> UnderlinePageIndicator_fadeDelay
-    int UnderlinePageIndicator_fadeLength -> UnderlinePageIndicator_fadeLength
+    int TitlePageIndicator_selectedBold -> TitlePageIndicator_selectedBold
+    int CirclePageIndicator_pageColor -> CirclePageIndicator_pageColor
     int UnderlinePageIndicator_fades -> UnderlinePageIndicator_fades
-    int UnderlinePageIndicator_selectedColor -> UnderlinePageIndicator_selectedColor
-    int[] ViewPagerIndicator -> ViewPagerIndicator
-    int ViewPagerIndicator_vpiCirclePageIndicatorStyle -> ViewPagerIndicator_vpiCirclePageIndicatorStyle
-    int ViewPagerIndicator_vpiIconPageIndicatorStyle -> ViewPagerIndicator_vpiIconPageIndicatorStyle
-    int ViewPagerIndicator_vpiLinePageIndicatorStyle -> ViewPagerIndicator_vpiLinePageIndicatorStyle
+    int UnderlinePageIndicator_android_background -> UnderlinePageIndicator_android_background
+    int TitlePageIndicator_android_background -> TitlePageIndicator_android_background
+    int LinePageIndicator_lineWidth -> LinePageIndicator_lineWidth
+    int TitlePageIndicator_clipPadding -> TitlePageIndicator_clipPadding
+    int TitlePageIndicator_topPadding -> TitlePageIndicator_topPadding
+    int CirclePageIndicator_snap -> CirclePageIndicator_snap
     int ViewPagerIndicator_vpiTabPageIndicatorStyle -> ViewPagerIndicator_vpiTabPageIndicatorStyle
+    int UnderlinePageIndicator_fadeLength -> UnderlinePageIndicator_fadeLength
+    int[] LinePageIndicator -> LinePageIndicator
     int ViewPagerIndicator_vpiTitlePageIndicatorStyle -> ViewPagerIndicator_vpiTitlePageIndicatorStyle
+    int CirclePageIndicator_radius -> CirclePageIndicator_radius
+    int LinePageIndicator_strokeWidth -> LinePageIndicator_strokeWidth
+    int TitlePageIndicator_android_textSize -> TitlePageIndicator_android_textSize
+    int CirclePageIndicator_strokeWidth -> CirclePageIndicator_strokeWidth
+    int TitlePageIndicator_footerIndicatorHeight -> TitlePageIndicator_footerIndicatorHeight
+    int[] ViewPagerIndicator -> ViewPagerIndicator
+    int TitlePageIndicator_footerIndicatorStyle -> TitlePageIndicator_footerIndicatorStyle
+    int CirclePageIndicator_android_background -> CirclePageIndicator_android_background
+    int ViewPagerIndicator_vpiCirclePageIndicatorStyle -> ViewPagerIndicator_vpiCirclePageIndicatorStyle
+    int CirclePageIndicator_strokeColor -> CirclePageIndicator_strokeColor
+    int TitlePageIndicator_linePosition -> TitlePageIndicator_linePosition
+    int UnderlinePageIndicator_fadeDelay -> UnderlinePageIndicator_fadeDelay
+    int LinePageIndicator_gapWidth -> LinePageIndicator_gapWidth
+    int TitlePageIndicator_footerPadding -> TitlePageIndicator_footerPadding
+    int TitlePageIndicator_footerLineHeight -> TitlePageIndicator_footerLineHeight
+    int CirclePageIndicator_centered -> CirclePageIndicator_centered
+    int TitlePageIndicator_titlePadding -> TitlePageIndicator_titlePadding
+    int ViewPagerIndicator_vpiIconPageIndicatorStyle -> ViewPagerIndicator_vpiIconPageIndicatorStyle
+    int[] CirclePageIndicator -> CirclePageIndicator
+    int TitlePageIndicator_footerIndicatorUnderlinePadding -> TitlePageIndicator_footerIndicatorUnderlinePadding
+    int TitlePageIndicator_android_textColor -> TitlePageIndicator_android_textColor
+    int CirclePageIndicator_android_orientation -> CirclePageIndicator_android_orientation
+    int CirclePageIndicator_fillColor -> CirclePageIndicator_fillColor
+    int LinePageIndicator_unselectedColor -> LinePageIndicator_unselectedColor
+    int ViewPagerIndicator_vpiLinePageIndicatorStyle -> ViewPagerIndicator_vpiLinePageIndicatorStyle
+    int[] TitlePageIndicator -> TitlePageIndicator
+    int LinePageIndicator_selectedColor -> LinePageIndicator_selectedColor
+    int UnderlinePageIndicator_selectedColor -> UnderlinePageIndicator_selectedColor
+    int TitlePageIndicator_selectedColor -> TitlePageIndicator_selectedColor
     int ViewPagerIndicator_vpiUnderlinePageIndicatorStyle -> ViewPagerIndicator_vpiUnderlinePageIndicatorStyle
+    int TitlePageIndicator_footerColor -> TitlePageIndicator_footerColor
+    int LinePageIndicator_centered -> LinePageIndicator_centered
 com.viewpagerindicator.TitlePageIndicator -> com.viewpagerindicator.TitlePageIndicator:
     android.support.v4.view.ViewPager mViewPager -> a
     android.support.v4.view.ViewPager$OnPageChangeListener mListener -> b
