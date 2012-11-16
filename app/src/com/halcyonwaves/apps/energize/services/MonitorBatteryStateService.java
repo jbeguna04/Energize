@@ -117,6 +117,10 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 						Log.e( MonitorBatteryStateService.TAG, "Failed so send the time estimation to the requesting object (NullPointerException)." );
 					}
 					break;
+				case MonitorBatteryStateService.MSG_UPDATE_WIDGETS:
+					Log.d( MonitorBatteryStateService.TAG, "Updating widgets..." );
+					MonitorBatteryStateService.this.showNewPercentageNotification();
+					break;
 				default:
 					super.handleMessage( msg );
 			}
@@ -127,6 +131,7 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 	public static final int MSG_COPY_DB_TO_SDCARD = 4;
 	public static final int MSG_REGISTER_CLIENT = 1;
 	public static final int MSG_REQUEST_REMAINING_TIME = 5;
+	public static final int MSG_UPDATE_WIDGETS = 6;
 	public static final int MSG_UNREGISTER_CLIENT = 2;
 
 	private static final int MY_NOTIFICATION_ID = 1;
