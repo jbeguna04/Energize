@@ -25,16 +25,16 @@ public class SimpleBatteryWidget extends AppWidgetProvider {
 		final int N = appWidgetIds.length;
 
 		// try to get a connection to the service
-		IBinder service = this.peekService( context.getApplicationContext(), new Intent( context.getApplicationContext(), MonitorBatteryStateService.class ) );
+		final IBinder service = this.peekService( context.getApplicationContext(), new Intent( context.getApplicationContext(), MonitorBatteryStateService.class ) );
 		if( null != service ) {
 			try {
 				// get a messenger to the service and prepare the update request message
-				Messenger serviceMessenger = new Messenger( service );
-				Message msg = Message.obtain( null, MonitorBatteryStateService.MSG_UPDATE_WIDGETS );
+				final Messenger serviceMessenger = new Messenger( service );
+				final Message msg = Message.obtain( null, MonitorBatteryStateService.MSG_UPDATE_WIDGETS );
 
 				// send the update request to the service
 				serviceMessenger.send( msg );
-			} catch( RemoteException e ) {
+			} catch( final RemoteException e ) {
 				Log.e( SimpleBatteryWidget.TAG, "Failed to ask the service to update all widgets!" );
 			}
 		}

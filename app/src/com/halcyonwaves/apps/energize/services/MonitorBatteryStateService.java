@@ -131,8 +131,8 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 	public static final int MSG_COPY_DB_TO_SDCARD = 4;
 	public static final int MSG_REGISTER_CLIENT = 1;
 	public static final int MSG_REQUEST_REMAINING_TIME = 5;
-	public static final int MSG_UPDATE_WIDGETS = 6;
 	public static final int MSG_UNREGISTER_CLIENT = 2;
+	public static final int MSG_UPDATE_WIDGETS = 6;
 
 	private static final int MY_NOTIFICATION_ID = 1;
 
