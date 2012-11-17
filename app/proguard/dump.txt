@@ -40801,7 +40801,7 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 66):
+Constant Pool (count = 70):
   + String [ApplicationCore]
   + String [Checking if the monitoring service is running or not...]
   + String [activity]
@@ -40816,6 +40816,7 @@ Constant Pool (count = 66):
   + Class [java/util/Iterator]
   + Class [java/util/List]
   + Fieldref [android/app/ActivityManager$RunningServiceInfo.service Landroid/content/ComponentName;]
+  + Fieldref [android/app/ActivityManager$RunningServiceInfo.started Z]
   + Methodref [android/app/ActivityManager.getRunningServices (I)Ljava/util/List;]
   + Methodref [android/content/ComponentName.getClassName ()Ljava/lang/String;]
   + Methodref [android/content/Context.getSystemService (Ljava/lang/String;)Ljava/lang/Object;]
@@ -40832,6 +40833,7 @@ Constant Pool (count = 66):
   + NameAndType [iterator ()Ljava/util/Iterator;]
   + NameAndType [next ()Ljava/lang/Object;]
   + NameAndType [service Landroid/content/ComponentName;]
+  + NameAndType [started Z]
   + NameAndType [v (Ljava/lang/String;Ljava/lang/String;)I]
   + Utf8 [()Ljava/lang/Object;]
   + Utf8 [()Ljava/lang/String;]
@@ -40846,6 +40848,7 @@ Constant Pool (count = 66):
   + Utf8 [Checking if the monitoring service is running or not...]
   + Utf8 [Code]
   + Utf8 [Landroid/content/ComponentName;]
+  + Utf8 [Z]
   + Utf8 [a]
   + Utf8 [activity]
   + Utf8 [android/app/ActivityManager]
@@ -40866,6 +40869,7 @@ Constant Pool (count = 66):
   + Utf8 [java/util/List]
   + Utf8 [next]
   + Utf8 [service]
+  + Utf8 [started]
   + Utf8 [v]
 
 Fields (count = 0):
@@ -40875,12 +40879,12 @@ Methods (count = 1):
     Access flags: 0x9
       = public static boolean a(android.content.Context,java.lang.String)
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 81, locals = 7, stack = 2):
+    + Code attribute instructions (code length = 89, locals = 7, stack = 2):
       [0] ldc #1
         + String [ApplicationCore]
       [2] ldc #2
         + String [Checking if the monitoring service is running or not...]
-      [4] invokestatic #18
+      [4] invokestatic #19
         + Methodref [android/util/Log.v (Ljava/lang/String;Ljava/lang/String;)I]
       [7] pop
       [8] iconst_0
@@ -40888,23 +40892,23 @@ Methods (count = 1):
       [10] aload_0 v0
       [11] ldc #3
         + String [activity]
-      [13] invokevirtual #17
+      [13] invokevirtual #18
         + Methodref [android/content/Context.getSystemService (Ljava/lang/String;)Ljava/lang/Object;]
       [16] checkcast #4
         + Class [android/app/ActivityManager]
       [19] astore_3 v3
       [20] aload_3 v3
       [21] bipush 50
-      [23] invokevirtual #15
+      [23] invokevirtual #16
         + Methodref [android/app/ActivityManager.getRunningServices (I)Ljava/util/List;]
       [26] astore v4
       [28] aload v4
-      [30] invokeinterface #22
+      [30] invokeinterface #23
         + InterfaceMethodref [java/util/List.iterator ()Ljava/util/Iterator;]
       [35] astore v5
-      [37] goto +32 (target=69)
+      [37] goto +40 (target=77)
       [40] aload v5
-      [42] invokeinterface #21
+      [42] invokeinterface #22
         + InterfaceMethodref [java/util/Iterator.next ()Ljava/lang/Object;]
       [47] checkcast #5
         + Class [android/app/ActivityManager$RunningServiceInfo]
@@ -40912,20 +40916,24 @@ Methods (count = 1):
       [52] aload v6
       [54] getfield #14
         + Fieldref [android/app/ActivityManager$RunningServiceInfo.service Landroid/content/ComponentName;]
-      [57] invokevirtual #16
+      [57] invokevirtual #17
         + Methodref [android/content/ComponentName.getClassName ()Ljava/lang/String;]
       [60] aload_1 v1
-      [61] invokevirtual #19
+      [61] invokevirtual #20
         + Methodref [java/lang/String.equals (Ljava/lang/Object;)Z]
-      [64] ifeq +5 (target=69)
-      [67] iconst_1
-      [68] istore_2 v2
-      [69] aload v5
-      [71] invokeinterface #20
+      [64] ifeq +13 (target=77)
+      [67] aload v6
+      [69] getfield #15
+        + Fieldref [android/app/ActivityManager$RunningServiceInfo.started Z]
+      [72] ifeq +5 (target=77)
+      [75] iconst_1
+      [76] istore_2 v2
+      [77] aload v5
+      [79] invokeinterface #21
         + InterfaceMethodref [java/util/Iterator.hasNext ()Z]
-      [76] ifne -36 (target=40)
-      [79] iload_2 v2
-      [80] ireturn
+      [84] ifne -44 (target=40)
+      [87] iload_2 v2
+      [88] ireturn
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
 
