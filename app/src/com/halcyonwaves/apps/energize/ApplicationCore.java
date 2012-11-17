@@ -21,7 +21,7 @@ public class ApplicationCore extends Application {
 		while( i.hasNext() ) {
 			final ActivityManager.RunningServiceInfo runningServiceInfo = i.next();
 
-			if( runningServiceInfo.service.getClassName().equals( serviceName ) ) {
+			if( runningServiceInfo.service.getClassName().equals( serviceName ) && runningServiceInfo.started ) {
 				serviceRunning = true;
 			}
 		}
