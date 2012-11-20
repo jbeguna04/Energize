@@ -45,6 +45,9 @@ As soon as the used strings is nearly fixed, you can help us on our project page
 The application icon is based upon the [Android Robot][3] logo made by Google Inc. This logo is licensed under the terms of the [Creative Commons Attribution license][4]. The battery icon was designed by the authors of the [GNOME High contrast icon set][5] and is licensed under the terms of the [GNU Lesser General Public License][6].
 
 ## Changelog
+### Version 0.8.6 *(2012-11-20)* - [Changes][28]
+* Fixed a bug which caused that the widget was not updated if the status bar notification was disabled
+
 ### Version 0.8.3 - 0.8.5 *(2012-11-16)* - [Changes][27]
 * Added support for lockscreen widgets on Android 4.2+
 * Added support for high-resolution devices (like the Nexus 10)
@@ -193,3 +196,4 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
  [25]: https://github.com/thuetz/Energize/compare/v0.8...v0.8.1 
  [26]: https://github.com/thuetz/Energize/compare/v0.8.1...v0.8.2 
  [27]: https://github.com/thuetz/Energize/compare/v0.8.2...v0.8.5 
+ [28]: https://github.com/thuetz/Energize/compare/v0.8.5...v0.8.6 

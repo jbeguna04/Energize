@@ -282,16 +282,16 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 	}
 
 	private void showNewPercentageNotification() {
-		// if we should not show the notification, skip the method here
-		if( !this.appPreferences.getBoolean( "advance.show_notification_bar", true ) ) {
-			return;
-		}
-
 		// query the current estimation values
 		final EstimationResult estimation = BatteryEstimationMgr.getEstimation( this.getApplicationContext() );
 
 		// update all widgets
 		this.updateWidgetContent( estimation );
+		
+		// if we should not show the notification, skip the method here
+		if( !this.appPreferences.getBoolean( "advance.show_notification_bar", true ) ) {
+			return;
+		}
 
 		// be sure that it is a valid percentage
 		if( !estimation.isValid ) {
