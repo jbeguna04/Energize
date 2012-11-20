@@ -50380,25 +50380,25 @@ Methods (count = 14):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 324, locals = 4, stack = 7):
       [0] aload_0 v0
-      [1] getfield #89
-        + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.a Landroid/content/SharedPreferences;]
-      [4] ldc #24
-        + String [advance.show_notification_bar]
-      [6] iconst_1
-      [7] invokeinterface #176
-        + InterfaceMethodref [android/content/SharedPreferences.getBoolean (Ljava/lang/String;Z)Z]
-      [12] ifne +4 (target=16)
-      [15] return
-      [16] aload_0 v0
-      [17] invokevirtual #148
+      [1] invokevirtual #148
         + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getApplicationContext ()Landroid/content/Context;]
-      [20] invokestatic #141
+      [4] invokestatic #141
         + Methodref [com/halcyonwaves/apps/energize/c/a.a (Landroid/content/Context;)Lcom/halcyonwaves/apps/energize/c/b;]
-      [23] astore_1 v1
-      [24] aload_0 v0
-      [25] aload_1 v1
-      [26] invokespecial #146
+      [7] astore_1 v1
+      [8] aload_0 v0
+      [9] aload_1 v1
+      [10] invokespecial #146
         + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.a (Lcom/halcyonwaves/apps/energize/c/b;)V]
+      [13] aload_0 v0
+      [14] getfield #89
+        + Fieldref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.a Landroid/content/SharedPreferences;]
+      [17] ldc #24
+        + String [advance.show_notification_bar]
+      [19] iconst_1
+      [20] invokeinterface #176
+        + InterfaceMethodref [android/content/SharedPreferences.getBoolean (Ljava/lang/String;Z)Z]
+      [25] ifne +4 (target=29)
+      [28] return
       [29] aload_1 v1
       [30] getfield #85
         + Fieldref [com/halcyonwaves/apps/energize/c/b.b Z]
