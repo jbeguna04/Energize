@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Log;
 
 import com.halcyonwaves.apps.energize.fragments.BatteryCapacityGraphFragment;
+import com.halcyonwaves.apps.energize.fragments.DonationsFragment;
 import com.halcyonwaves.apps.energize.fragments.OverviewFragment;
 import com.halcyonwaves.apps.energize.fragments.TemperatureGraphFragment;
 
@@ -22,7 +23,7 @@ public class MainFragmentPagerAdapter extends FragmentPagerAdapter {
 
 	@Override
 	public int getCount() {
-		return 3;
+		return 4;
 	}
 
 	@Override
@@ -34,6 +35,8 @@ public class MainFragmentPagerAdapter extends FragmentPagerAdapter {
 				return new BatteryCapacityGraphFragment();
 			case 2:
 				return new TemperatureGraphFragment();
+			case 3:
+				return new DonationsFragment();
 			default:
 				Log.e( MainFragmentPagerAdapter.TAG, "Application requested an non-existing fragment: " + position );
 				return null;
@@ -49,6 +52,8 @@ public class MainFragmentPagerAdapter extends FragmentPagerAdapter {
 				return this.appContext.getString( R.string.fragment_title_batterygraph );
 			case 2:
 				return this.appContext.getString( R.string.fragment_title_temperaturegraph );
+			case 3:
+				return this.appContext.getString( R.string.fragment_title_donations );
 			default:
 				Log.e( MainFragmentPagerAdapter.TAG, "Application requested an non-existing fragment title: " + position );
 				return "";

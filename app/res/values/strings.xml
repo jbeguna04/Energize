@@ -30,6 +30,7 @@
     <string name="fragment_title_overview">Overview</string>
     <string name="fragment_title_batterygraph">Battery graph</string>
     <string name="fragment_title_temperaturegraph">Temp. graph</string>
+    <string name="fragment_title_donations">Donations</string>
     <string name="menu_about">About Energize&#8230;</string>
     <string name="menu_lockscreen">Lock screen</string>
     <string name="fragment_title_about">About&#8230;</string>
