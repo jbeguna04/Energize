@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
+import android.widget.FrameLayout;
 
 import com.halcyonwaves.apps.energize.dialogs.AboutDialog;
 import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
@@ -78,7 +79,16 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 		PreferenceManager.setDefaultValues( this, R.xml.pref_unified, false );
 
 		// setup the layout of the main activity
-		this.setContentView( R.layout.activity_batterystatedisplay );
+		final FrameLayout overlayFramelayout = new FrameLayout( this.getApplicationContext() );
+		View overlayView = this.getLayoutInflater().inflate( R.layout.activity_batterystatedisplay, overlayFramelayout, false );
+		overlayFramelayout.addView( overlayView );
+
+		//
+		View overlayViewHelp = this.getLayoutInflater().inflate( R.layout.overlay_help_mainscreen, overlayFramelayout, false );
+		overlayFramelayout.addView( overlayViewHelp );
+
+		//
+		this.setContentView( overlayFramelayout );
 
 		// check if the service is running, if not start it
 		if( !ApplicationCore.isServiceRunning( this, MonitorBatteryStateService.class.getName() ) ) {
