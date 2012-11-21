@@ -4,3 +4,6 @@
 [submodule "3rdparty/GraphView"]
 	path = 3rdparty/GraphView
 	url = https://github.com/jjoe64/GraphView.git
+[submodule "3rdparty/ShowcaseView"]
+	path = 3rdparty/ShowcaseView
+	url = https://github.com/Espiandev/ShowcaseView.git
