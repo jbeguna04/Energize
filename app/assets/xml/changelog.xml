@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
-<release version="0.8.7" versioncode="87" releasedate="2012-12-XX">
+<release version="0.8.7" versioncode="87" releasedate="2012-12-05">
 <change>Made use of the ACRA library for bug reporting</change>
 <change>Switched to a new process for maintaining the change log</change>
 <change>Fixed a bug which caused that the user could click on the widgets just once after the device has booted</change>
