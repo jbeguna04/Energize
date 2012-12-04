@@ -89,6 +89,12 @@
 
         <!-- define the preference activity we want to show -->
         <activity android:name="com.halcyonwaves.apps.energize.SettingsActivity" />
+        <activity
+            android:name="org.acra.CrashReportDialog"
+            android:excludeFromRecents="true"
+            android:finishOnTaskLaunch="true"
+            android:launchMode="singleInstance"
+            android:theme="@android:style/Theme.Holo.Dialog" />
     </application>
 
 </manifest>
