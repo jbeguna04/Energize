@@ -2,6 +2,10 @@ package com.halcyonwaves.apps.energize.dialogs;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -38,6 +42,7 @@ public class ChangeLogDialog {
 	static final private String TAG = "ChangeLogDialog";
 
 	private Activity rootActivity = null;
+	private SimpleDateFormat changelogDateFormat = new SimpleDateFormat( "yyyy-MM-dd" );
 
 	public ChangeLogDialog( final Activity context ) {
 		this.rootActivity = context;
@@ -102,6 +107,29 @@ public class ChangeLogDialog {
 		return _Result;
 	}
 
+	private static Calendar getDatePart( Date date ) {
+		Calendar cal = Calendar.getInstance();       // get calendar instance
+		cal.setTime( date );
+		cal.set( Calendar.HOUR_OF_DAY, 0 );            // set hour to midnight
+		cal.set( Calendar.MINUTE, 0 );                 // set minute in hour
+		cal.set( Calendar.SECOND, 0 );                 // set second in minute
+		cal.set( Calendar.MILLISECOND, 0 );            // set millisecond in second
+
+		return cal;                                  // return the date part
+	}
+
+	private static int daysBetween( Date startDate, Date endDate ) {
+		Calendar sDate = getDatePart( startDate );
+		Calendar eDate = getDatePart( endDate );
+
+		int daysBetween = 0;
+		while( sDate.before( eDate ) ) {
+			sDate.add( Calendar.DAY_OF_MONTH, 1 );
+			daysBetween++;
+		}
+		return daysBetween;
+	}
+
 	public void markDialogAsAlreadyDisplayed() {
 		final SharedPreferences appPreferences = PreferenceManager.getDefaultSharedPreferences( this.rootActivity.getApplicationContext() );
 
@@ -113,7 +141,16 @@ public class ChangeLogDialog {
 	}
 
 	private String parseChangelogReleaseTag( final XmlPullParser aXml ) throws XmlPullParserException, IOException {
-		String _Result = "<h1>Version " + aXml.getAttributeValue( null, "version" ) + "</h1><h2>Released on " + aXml.getAttributeValue( null, "releasedate" ) + "</h2><ul>";
+		// try to calculate the days since the release of the version
+		int daysSinceRelease = -1;
+		try {
+			daysSinceRelease = ChangeLogDialog.daysBetween( this.changelogDateFormat.parse( aXml.getAttributeValue( null, "releasedate" ) ), Calendar.getInstance().getTime() );
+			
+		} catch( final ParseException e ) {
+			// failed to parse the date
+		}
+
+		String _Result = "<h1>Version " + aXml.getAttributeValue( null, "version" ) + "</h1><h2>Released on " + aXml.getAttributeValue( null, "releasedate" ) + " (" + daysSinceRelease + " days ago)</h2><ul>";
 		int eventType = aXml.getEventType();
 		while( (eventType != XmlPullParser.END_TAG) || (aXml.getName().equals( "change" )) ) {
 			if( (eventType == XmlPullParser.START_TAG) && (aXml.getName().equals( "change" )) ) {
