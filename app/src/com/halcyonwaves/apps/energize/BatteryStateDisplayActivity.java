@@ -4,9 +4,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.pm.PackageInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
@@ -18,6 +15,7 @@ import android.view.View;
 import android.webkit.WebView;
 
 import com.halcyonwaves.apps.energize.dialogs.AboutDialog;
+import com.halcyonwaves.apps.energize.dialogs.ChangeLogDialog;
 import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
 import com.viewpagerindicator.TitlePageIndicator;
 
@@ -30,45 +28,7 @@ import com.viewpagerindicator.TitlePageIndicator;
  */
 public class BatteryStateDisplayActivity extends FragmentActivity {
 
-	private static final String VERSION_KEY = "version_number";
-
 	private CustomViewPager usedPager = null;
-
-	private void init() {
-		final SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences( this.getApplicationContext() );
-		int currentVersionNumber = 0;
-
-		// get the version number on which the "What's new" dialog was show the last time
-		final int savedVersionNumber = sharedPref.getInt( BatteryStateDisplayActivity.VERSION_KEY, 0 );
-
-		// get the current version number of the app
-		try {
-			final PackageInfo pi = this.getPackageManager().getPackageInfo( this.getPackageName(), 0 );
-			currentVersionNumber = pi.versionCode;
-		} catch( final Exception e ) {
-		}
-
-		// if the app was updated, show the "What's new" dialog
-		if( currentVersionNumber > savedVersionNumber ) {
-			// show the dialog
-			this.showWhatsNewDialog();
-
-			// get write access to the application preferences
-			Editor editor = sharedPref.edit();
-
-			// update the default estimation algorithm if a version below 0.8.3 was used:
-			if( savedVersionNumber < 83 ) {
-				editor.putString( "batstatistics.usedestimator", "LastNChangeEstimate" );
-			}
-
-			// update the field which stores the last time the dialog was shown
-			editor.putInt( BatteryStateDisplayActivity.VERSION_KEY, currentVersionNumber );
-
-			// commit all changes and close the editor again
-			editor.commit();
-			editor = null;
-		}
-	}
 
 	@Override
 	protected void onCreate( final Bundle savedInstanceState ) {
@@ -86,7 +46,7 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 			this.getApplicationContext().startService( new Intent( this.getApplicationContext(), MonitorBatteryStateService.class ) );
 		}
 
-		// set the pager with an adapter (not availbale in the tablet layout)
+		// set the pager with an adapter (not available in the tablet layout)
 		this.usedPager = (CustomViewPager) this.findViewById( R.id.vp_fragment_pager );
 		if( null != this.usedPager ) {
 			this.usedPager.setAdapter( new MainFragmentPagerAdapter( this.getApplicationContext(), this.getSupportFragmentManager() ) );
@@ -96,8 +56,9 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 			titleIndicator.setViewPager( this.usedPager );
 		}
 
-		// do the rest of the initialization of the main dialog
-		this.init();
+		// show the changelog dialog
+		ChangeLogDialog changeDlg = new ChangeLogDialog( this );
+		changeDlg.show();
 	}
 
 	@Override
