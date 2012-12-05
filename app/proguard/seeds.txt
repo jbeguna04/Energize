@@ -304,6 +304,8 @@ com.halcyonwaves.apps.energize.R$string: int dialog_title_appiconlicense
 com.halcyonwaves.apps.energize.R$string: int dialog_title_cleardb_successfull
 com.halcyonwaves.apps.energize.R$string: int dialog_title_copydb_successfull
 com.halcyonwaves.apps.energize.R$string: int dialog_title_whatsnew
+com.halcyonwaves.apps.energize.R$string: int dlg_msg_appcrash
+com.halcyonwaves.apps.energize.R$string: int dlg_title_appcrash
 com.halcyonwaves.apps.energize.R$string: int fragment_title_about
 com.halcyonwaves.apps.energize.R$string: int fragment_title_batterygraph
 com.halcyonwaves.apps.energize.R$string: int fragment_title_overview
@@ -664,3 +666,11 @@ com.viewpagerindicator.UnderlinePageIndicator: void setCurrentItem(int)
 com.viewpagerindicator.UnderlinePageIndicator: void setOnPageChangeListener(android.support.v4.view.ViewPager$OnPageChangeListener)
 com.viewpagerindicator.UnderlinePageIndicator$SavedState
 com.viewpagerindicator.UnderlinePageIndicator$SavedState: android.os.Parcelable$Creator CREATOR
+org.acra.CrashReportDialog
+org.acra.CrashReportDialog: CrashReportDialog()
+org.acra.ReportField: org.acra.ReportField[] values()
+org.acra.ReportField: org.acra.ReportField valueOf(java.lang.String)
+org.acra.ReportingInteractionMode: org.acra.ReportingInteractionMode[] values()
+org.acra.ReportingInteractionMode: org.acra.ReportingInteractionMode valueOf(java.lang.String)
+org.acra.collector.MediaCodecListCollector$CodecType: org.acra.collector.MediaCodecListCollector$CodecType[] values()
+org.acra.collector.MediaCodecListCollector$CodecType: org.acra.collector.MediaCodecListCollector$CodecType valueOf(java.lang.String)

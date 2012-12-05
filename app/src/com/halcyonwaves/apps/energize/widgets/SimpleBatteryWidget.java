@@ -47,7 +47,7 @@ public class SimpleBatteryWidget extends AppWidgetProvider {
 			final Intent intent = new Intent( context, BatteryStateDisplayActivity.class );
 
 			//
-			final PendingIntent pendingIntent = PendingIntent.getActivity( context, 0, intent, 0 );
+			final PendingIntent pendingIntent = PendingIntent.getActivity( context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT );
 
 			// Get the layout for the App Widget and attach an on-click listener to the button
 			final RemoteViews views = new RemoteViews( context.getPackageName(), R.layout.widget_simplebattery );
