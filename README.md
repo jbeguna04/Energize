@@ -48,7 +48,7 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
 ### Version 0.8.7 (Code: *87*, Released on: ***2012-12-05***) - [Changes][29]
 * Made use of the ACRA library for bug reporting
 * Switched to a new process for maintaining the change log
-* Fixed a bug which caused that the user could click on the widgets just once after the device has booted
+* Fixed a bug which caused that the user could click on the widgets only once after the device has booted
 
 ### Version 0.8.6 (Code: *86*, Released on: ***2012-11-20***) - [Changes][28]
 * Fixed a bug which caused that the widget was not updated if the status bar notification was disabled
