@@ -46,8 +46,9 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
 
 ## Changelog
 ### Version 0.9 (Code: *90*, Released on: ***20XX-XX-XX***) - [Changes][30]
-* Added a help overlay which introduces the UI functions to the user
+* Replaced the old library for displaying the battery charts with a new (more flexible) one
 * Added a fragment for donations (which help me to develop this app for free)
+* Added a new required permission for accessing even more battery information to provide you much more information
 
 ### Version 0.8.7 (Code: *87*, Released on: ***2012-12-05***) - [Changes][29]
 * Made use of the ACRA library for bug reporting
