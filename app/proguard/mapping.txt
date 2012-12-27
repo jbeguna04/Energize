@@ -1111,12 +1111,15 @@ com.halcyonwaves.apps.energize.SettingsActivity -> com.halcyonwaves.apps.energiz
 com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper -> com.halcyonwaves.apps.energize.a.a:
     void onCreate(android.database.sqlite.SQLiteDatabase) -> onCreate
     void onUpgrade(android.database.sqlite.SQLiteDatabase,int,int) -> onUpgrade
+    void onDowngrade(android.database.sqlite.SQLiteDatabase,int,int) -> onDowngrade
 com.halcyonwaves.apps.energize.database.PowerEventsTable -> com.halcyonwaves.apps.energize.a.b:
     void onCreate(android.database.sqlite.SQLiteDatabase) -> a
     void onUpgrade(android.database.sqlite.SQLiteDatabase,int,int) -> a
+    void onDowngrade(android.database.sqlite.SQLiteDatabase,int,int) -> b
 com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable -> com.halcyonwaves.apps.energize.a.c:
     void onCreate(android.database.sqlite.SQLiteDatabase) -> a
     void onUpgrade(android.database.sqlite.SQLiteDatabase,int,int) -> a
+    void onDowngrade(android.database.sqlite.SQLiteDatabase,int,int) -> b
 com.halcyonwaves.apps.energize.dialogs.AboutDialog -> com.halcyonwaves.apps.energize.b.a:
     android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> onCreateView
 com.halcyonwaves.apps.energize.dialogs.AboutDialog$1 -> com.halcyonwaves.apps.energize.b.b:

@@ -42056,7 +42056,7 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 28):
+Constant Pool (count = 33):
   + String [batteryUsageStatistics.db]
   + Class [android/database/sqlite/SQLiteOpenHelper]
   + Class [com/halcyonwaves/apps/energize/a/a]
@@ -42065,11 +42065,14 @@ Constant Pool (count = 28):
   + Methodref [android/database/sqlite/SQLiteOpenHelper.<init> (Landroid/content/Context;Ljava/lang/String;Landroid/database/sqlite/SQLiteDatabase$CursorFactory;I)V]
   + Methodref [com/halcyonwaves/apps/energize/a/b.a (Landroid/database/sqlite/SQLiteDatabase;)V]
   + Methodref [com/halcyonwaves/apps/energize/a/b.a (Landroid/database/sqlite/SQLiteDatabase;II)V]
+  + Methodref [com/halcyonwaves/apps/energize/a/b.b (Landroid/database/sqlite/SQLiteDatabase;II)V]
   + Methodref [com/halcyonwaves/apps/energize/a/c.a (Landroid/database/sqlite/SQLiteDatabase;)V]
   + Methodref [com/halcyonwaves/apps/energize/a/c.a (Landroid/database/sqlite/SQLiteDatabase;II)V]
+  + Methodref [com/halcyonwaves/apps/energize/a/c.b (Landroid/database/sqlite/SQLiteDatabase;II)V]
   + NameAndType [<init> (Landroid/content/Context;Ljava/lang/String;Landroid/database/sqlite/SQLiteDatabase$CursorFactory;I)V]
   + NameAndType [a (Landroid/database/sqlite/SQLiteDatabase;)V]
   + NameAndType [a (Landroid/database/sqlite/SQLiteDatabase;II)V]
+  + NameAndType [b (Landroid/database/sqlite/SQLiteDatabase;II)V]
   + Utf8 [(Landroid/content/Context;)V]
   + Utf8 [(Landroid/content/Context;Ljava/lang/String;Landroid/database/sqlite/SQLiteDatabase$CursorFactory;I)V]
   + Utf8 [(Landroid/database/sqlite/SQLiteDatabase;)V]
@@ -42078,16 +42081,18 @@ Constant Pool (count = 28):
   + Utf8 [Code]
   + Utf8 [a]
   + Utf8 [android/database/sqlite/SQLiteOpenHelper]
+  + Utf8 [b]
   + Utf8 [batteryUsageStatistics.db]
   + Utf8 [com/halcyonwaves/apps/energize/a/a]
   + Utf8 [com/halcyonwaves/apps/energize/a/b]
   + Utf8 [com/halcyonwaves/apps/energize/a/c]
   + Utf8 [onCreate]
+  + Utf8 [onDowngrade]
   + Utf8 [onUpgrade]
 
 Fields (count = 0):
 
-Methods (count = 3):
+Methods (count = 4):
   - Method:       <init>(Landroid/content/Context;)V
     Access flags: 0x1
       = public a(android.content.Context)
@@ -42110,7 +42115,7 @@ Methods (count = 3):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 9, locals = 2, stack = 1):
       [0] aload_1 v1
-      [1] invokestatic #9
+      [1] invokestatic #10
         + Methodref [com/halcyonwaves/apps/energize/a/c.a (Landroid/database/sqlite/SQLiteDatabase;)V]
       [4] aload_1 v1
       [5] invokestatic #7
@@ -42126,13 +42131,31 @@ Methods (count = 3):
       [0] aload_1 v1
       [1] iload_2 v2
       [2] iload_3 v3
-      [3] invokestatic #10
+      [3] invokestatic #11
         + Methodref [com/halcyonwaves/apps/energize/a/c.a (Landroid/database/sqlite/SQLiteDatabase;II)V]
       [6] aload_1 v1
       [7] iload_2 v2
       [8] iload_3 v3
       [9] invokestatic #8
         + Methodref [com/halcyonwaves/apps/energize/a/b.a (Landroid/database/sqlite/SQLiteDatabase;II)V]
+      [12] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onDowngrade(Landroid/database/sqlite/SQLiteDatabase;II)V
+    Access flags: 0x1
+      = public void onDowngrade(android.database.sqlite.SQLiteDatabase,int,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 13, locals = 4, stack = 3):
+      [0] aload_1 v1
+      [1] iload_2 v2
+      [2] iload_3 v3
+      [3] invokestatic #12
+        + Methodref [com/halcyonwaves/apps/energize/a/c.b (Landroid/database/sqlite/SQLiteDatabase;II)V]
+      [6] aload_1 v1
+      [7] iload_2 v2
+      [8] iload_3 v3
+      [9] invokestatic #9
+        + Methodref [com/halcyonwaves/apps/energize/a/b.b (Landroid/database/sqlite/SQLiteDatabase;II)V]
       [12] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
@@ -42149,7 +42172,7 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 19):
+Constant Pool (count = 20):
   + String [CREATE TABLE powerEvents( _id INTEGER PRIMARY KEY AUTOINCREMENT, eventTime INTEGER, isCharging INTEGER );]
   + String [DROP TABLE IF EXISTS powerEvents;]
   + Class [android/database/sqlite/SQLiteDatabase]
@@ -42165,13 +42188,14 @@ Constant Pool (count = 19):
   + Utf8 [DROP TABLE IF EXISTS powerEvents;]
   + Utf8 [a]
   + Utf8 [android/database/sqlite/SQLiteDatabase]
+  + Utf8 [b]
   + Utf8 [com/halcyonwaves/apps/energize/a/b]
   + Utf8 [execSQL]
   + Utf8 [java/lang/Object]
 
 Fields (count = 0):
 
-Methods (count = 2):
+Methods (count = 3):
   + Method:       a(Landroid/database/sqlite/SQLiteDatabase;)V
     Access flags: 0x9
       = public static void a(android.database.sqlite.SQLiteDatabase)
@@ -42203,6 +42227,24 @@ Methods (count = 2):
       [12] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
+  + Method:       b(Landroid/database/sqlite/SQLiteDatabase;II)V
+    Access flags: 0x9
+      = public static void b(android.database.sqlite.SQLiteDatabase,int,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 13, locals = 3, stack = 2):
+      [0] aload_0 v0
+      [1] ldc #2
+        + String [DROP TABLE IF EXISTS powerEvents;]
+      [3] invokevirtual #6
+        + Methodref [android/database/sqlite/SQLiteDatabase.execSQL (Ljava/lang/String;)V]
+      [6] aload_0 v0
+      [7] ldc #1
+        + String [CREATE TABLE powerEvents( _id INTEGER PRIMARY KEY AUTOINCREMENT, eventTime INTEGER, isCharging INTEGER );]
+      [9] invokevirtual #6
+        + Methodref [android/database/sqlite/SQLiteDatabase.execSQL (Ljava/lang/String;)V]
+      [12] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
 
 Class file attributes (count = 0):
 
@@ -42216,7 +42258,7 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 19):
+Constant Pool (count = 20):
   + String [CREATE TABLE rawBatteryStats( _id INTEGER PRIMARY KEY AUTOINCREMENT, eventTime INTEGER, chargingState INTEGER, chargingLevel INTEGER, chargingScale INTEGER, batteryTemprature INTEGER );]
   + String [DROP TABLE IF EXISTS rawBatteryStats;]
   + Class [android/database/sqlite/SQLiteDatabase]
@@ -42232,13 +42274,14 @@ Constant Pool (count = 19):
   + Utf8 [DROP TABLE IF EXISTS rawBatteryStats;]
   + Utf8 [a]
   + Utf8 [android/database/sqlite/SQLiteDatabase]
+  + Utf8 [b]
   + Utf8 [com/halcyonwaves/apps/energize/a/c]
   + Utf8 [execSQL]
   + Utf8 [java/lang/Object]
 
 Fields (count = 0):
 
-Methods (count = 2):
+Methods (count = 3):
   + Method:       a(Landroid/database/sqlite/SQLiteDatabase;)V
     Access flags: 0x9
       = public static void a(android.database.sqlite.SQLiteDatabase)
@@ -42255,6 +42298,24 @@ Methods (count = 2):
   + Method:       a(Landroid/database/sqlite/SQLiteDatabase;II)V
     Access flags: 0x9
       = public static void a(android.database.sqlite.SQLiteDatabase,int,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 13, locals = 3, stack = 2):
+      [0] aload_0 v0
+      [1] ldc #2
+        + String [DROP TABLE IF EXISTS rawBatteryStats;]
+      [3] invokevirtual #6
+        + Methodref [android/database/sqlite/SQLiteDatabase.execSQL (Ljava/lang/String;)V]
+      [6] aload_0 v0
+      [7] ldc #1
+        + String [CREATE TABLE rawBatteryStats( _id INTEGER PRIMARY KEY AUTOINCREMENT, eventTime INTEGER, chargingState INTEGER, chargingLevel INTEGER, chargingScale INTEGER, batteryTemprature INTEGER );]
+      [9] invokevirtual #6
+        + Methodref [android/database/sqlite/SQLiteDatabase.execSQL (Ljava/lang/String;)V]
+      [12] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       b(Landroid/database/sqlite/SQLiteDatabase;II)V
+    Access flags: 0x9
+      = public static void b(android.database.sqlite.SQLiteDatabase,int,int)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 13, locals = 3, stack = 2):
       [0] aload_0 v0
