@@ -24,4 +24,10 @@ public class BatteryStatisticsDatabaseOpenHelper extends SQLiteOpenHelper {
 		RawBatteryStatisicsTable.onUpgrade( db, oldVersion, newVersion );
 		PowerEventsTable.onUpgrade( db, oldVersion, newVersion );
 	}
+	
+	@Override
+	public void onDowngrade( SQLiteDatabase db, int oldVersion, int newVersion ) {
+		RawBatteryStatisicsTable.onDowngrade( db, oldVersion, newVersion );
+		PowerEventsTable.onDowngrade( db, oldVersion, newVersion );
+	}
 }
