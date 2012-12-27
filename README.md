@@ -45,6 +45,9 @@ As soon as the used strings is nearly fixed, you can help us on our project page
 The application icon is based upon the [Android Robot][3] logo made by Google Inc. This logo is licensed under the terms of the [Creative Commons Attribution license][4]. The battery icon was designed by the authors of the [GNOME High contrast icon set][5] and is licensed under the terms of the [GNU Lesser General Public License][6].
 
 ## Changelog
+### Version 0.8.8 (Code: *88*, Released on: ***2012-12-26***) - [Changes][30]
+* Added a semi-downgrade option for the database to fix an application crash
+
 ### Version 0.8.7 (Code: *87*, Released on: ***2012-12-05***) - [Changes][29]
 * Made use of the ACRA library for bug reporting
 * Switched to a new process for maintaining the change log
