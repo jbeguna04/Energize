@@ -206,3 +206,4 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
  [27]: https://github.com/thuetz/Energize/compare/v0.8.2...v0.8.5 
  [28]: https://github.com/thuetz/Energize/compare/v0.8.5...v0.8.6 
  [29]: https://github.com/thuetz/Energize/compare/v0.8.6...v0.8.7
+ [30]: https://github.com/thuetz/Energize/compare/v0.8.7...v0.8.8
