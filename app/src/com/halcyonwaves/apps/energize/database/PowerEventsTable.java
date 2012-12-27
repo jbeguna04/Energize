@@ -26,4 +26,12 @@ public final class PowerEventsTable {
 		// ... and to create a new one
 		db.execSQL( PowerEventsTable.TABLE_CREATE );
 	}
+	
+	public static void onDowngrade( SQLiteDatabase db, int oldVersion, int newVersion ) {
+		// the only downgrade option is to delete the old database...
+		db.execSQL( PowerEventsTable.TABLE_DROP );
+
+		// ... and to create a new one
+		db.execSQL( PowerEventsTable.TABLE_CREATE );
+	}
 }

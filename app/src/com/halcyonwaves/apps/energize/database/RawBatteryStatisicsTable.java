@@ -30,4 +30,12 @@ public final class RawBatteryStatisicsTable {
 		// ... and to create a new one
 		db.execSQL( RawBatteryStatisicsTable.TABLE_CREATE );
 	}
+	
+	public static void onDowngrade( SQLiteDatabase db, int oldVersion, int newVersion ) {
+		// the only downgrade option is to delete the old database...
+		db.execSQL( RawBatteryStatisicsTable.TABLE_DROP );
+
+		// ... and to create a new one
+		db.execSQL( RawBatteryStatisicsTable.TABLE_CREATE );
+	}
 }
