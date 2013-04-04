@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
+<release version="0.8.9" versioncode="89" releasedate="2013-04-07">
+<change>Added a field for the time estimation for a full battery cycle (time on battery + estimated remaining time)</change>
+<change>Added some minor bugs in data logging algorithm</change>
+<change>Fixed a bug which caused that if the device was turned off, the time estimation was still running after it was tuned on again</change>
+<change>Fixed a bug that the graph was not redrawn if the application was resumed instead of restarted</change>
+</release>
 <release version="0.8.8" versioncode="88" releasedate="2012-12-26">
 <change>Added a semi-downgrade option for the database to fix an application crash</change>
 </release>
