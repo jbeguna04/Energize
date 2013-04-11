@@ -49,6 +49,7 @@
     <string name="textview_label_charginglvl_asusdock">ASUS Transformer Pad Dock capacity:</string>
     <string name="textview_text_temperature_celsius">%.1f °C</string>
     <string name="textview_text_temperature_fahrenheit">%.1f °F</string>
+    <string name="textview_text_temperature_kelvin">%.1f °K</string>
     <string name="btn_close_about_dialog">Close the dialog</string>
     <string name="textview_or_close_the_app_label">or</string>
     <string name="dlg_title_appcrash">The app crashed</string>
@@ -57,6 +58,7 @@
     <string-array name="pref_list_temperature_unit_names">
         <item>Celsius</item>
         <item>Fahrenheit</item>
+        <item>Kelvin</item>
     </string-array>
     <string-array name="pref_list_batteryestimationmethod_names">
         <item>Last change period (inaccurate)</item>
