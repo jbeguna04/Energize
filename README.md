@@ -47,6 +47,7 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
 ## Changelog
 ### Version 0.8.9 (Code: *89*, Released on: ***2013-04-11***) - [Changes][31]
 * Added support for Kelvin as a temperature in the drawn graph (requested feature)
+* Updated the library which is used for drawing the graphs
 * Minor bug fixes for the backup agent
 
 ### Version 0.8.8 (Code: *88*, Released on: ***2012-12-26***) - [Changes][30]
