@@ -7,5 +7,6 @@
     <string-array name="pref_list_temperature_unit">
         <item>Celsius</item>
         <item>Fahrenheit</item>
+        <item>Kelvin</item>
     </string-array>   
 </resources>

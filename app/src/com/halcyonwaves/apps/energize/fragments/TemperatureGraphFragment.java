@@ -23,10 +23,16 @@ import com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelp
 import com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable;
 import com.jjoe64.graphview.GraphView.GraphViewData;
 import com.jjoe64.graphview.GraphViewSeries;
-import com.jjoe64.graphview.GraphViewSeries.GraphViewStyle;
+import com.jjoe64.graphview.GraphViewSeries.GraphViewSeriesStyle;
 import com.jjoe64.graphview.LineGraphView;
 
 public class TemperatureGraphFragment extends Fragment {
+	
+	private enum TemperatureUnit {
+		TemperatureUnitCelsius,
+		TemperatureUnitFahrenheit,
+		TemperatureUnitKelvin
+	}
 
 	private static final String TAG = "TemperatureGraphFragment";
 	private SharedPreferences sharedPref = null;
@@ -43,10 +49,12 @@ public class TemperatureGraphFragment extends Fragment {
 		final int columnIndexChargingLevel = lastEntryMadeCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_BATTERY_TEMPRATURE );
 
 		//
-		boolean fahrenheitInsteadOfCelsius = false;
+		TemperatureUnit usedUnit = TemperatureUnit.TemperatureUnitCelsius;
 		final String prefUsedUnit = TemperatureGraphFragment.this.sharedPref.getString( "display.temperature_unit", "Celsius" );
 		if( prefUsedUnit.compareToIgnoreCase( "fahrenheit" ) == 0 ) {
-			fahrenheitInsteadOfCelsius = true;
+			usedUnit = TemperatureUnit.TemperatureUnitFahrenheit;
+		} else if( prefUsedUnit.compareToIgnoreCase( "kelvin" ) == 0 ) {
+			usedUnit = TemperatureUnit.TemperatureUnitKelvin;
 		}
 
 		//
@@ -58,10 +66,16 @@ public class TemperatureGraphFragment extends Fragment {
 			if( currentTime < oldtestTime ) {
 				oldtestTime = (long) currentTime;
 			}
-			if( !fahrenheitInsteadOfCelsius ) {
-				graphViewData.add( new GraphViewData( currentTime, lastEntryMadeCursor.getInt( columnIndexChargingLevel ) / 10.0f ) );
-			} else {
-				graphViewData.add( new GraphViewData( currentTime, ((lastEntryMadeCursor.getInt( columnIndexChargingLevel ) / 10.0f) * 1.8f) + 32.0f ) );
+			switch( usedUnit ) {
+				case TemperatureUnitCelsius:
+					graphViewData.add( new GraphViewData( currentTime, lastEntryMadeCursor.getInt( columnIndexChargingLevel ) / 10.0f ) );
+					break;
+				case TemperatureUnitFahrenheit:
+					graphViewData.add( new GraphViewData( currentTime, ((lastEntryMadeCursor.getInt( columnIndexChargingLevel ) / 10.0f) * 1.8f) + 32.0f ) );
+					break;
+				case TemperatureUnitKelvin:
+					graphViewData.add( new GraphViewData( currentTime, ( lastEntryMadeCursor.getInt( columnIndexChargingLevel ) / 10.0f ) + 273.15f ) );
+					break;
 			}
 			lastEntryMadeCursor.moveToNext();
 		}
@@ -79,7 +93,7 @@ public class TemperatureGraphFragment extends Fragment {
 		}
 		final GraphViewData convertedDataset[] = new GraphViewData[ graphViewData.size() ];
 		graphViewData.toArray( convertedDataset );
-		return new Pair< GraphViewSeries, Long >( new GraphViewSeries( "", new GraphViewStyle( Color.rgb( 255, 0, 0 ), 3 ), convertedDataset ), oldtestTime );
+		return new Pair< GraphViewSeries, Long >( new GraphViewSeries( "", new GraphViewSeriesStyle( Color.rgb( 255, 0, 0 ), 3 ), convertedDataset ), oldtestTime );
 	}
 
 	@Override
@@ -95,14 +109,27 @@ public class TemperatureGraphFragment extends Fragment {
 					final SimpleDateFormat dateFormat = new SimpleDateFormat( "HH:mm" );
 					return dateFormat.format( new Date( (long) value * 1000 ) );
 				} else {
+					//
+					TemperatureUnit usedUnit = TemperatureUnit.TemperatureUnitCelsius;
 					final String prefUsedUnit = TemperatureGraphFragment.this.sharedPref.getString( "display.temperature_unit", "Celsius" );
-					if( prefUsedUnit.compareToIgnoreCase( "celsius" ) == 0 ) {
-						return TemperatureGraphFragment.this.getString( R.string.textview_text_temperature_celsius, value );
-					} else if( prefUsedUnit.compareToIgnoreCase( "fahrenheit" ) == 0 ) {
-						return TemperatureGraphFragment.this.getString( R.string.textview_text_temperature_fahrenheit, value );
-					} else {
-						return "N/A";
+					if( prefUsedUnit.compareToIgnoreCase( "fahrenheit" ) == 0 ) {
+						usedUnit = TemperatureUnit.TemperatureUnitFahrenheit;
+					} else if( prefUsedUnit.compareToIgnoreCase( "kelvin" ) == 0 ) {
+						usedUnit = TemperatureUnit.TemperatureUnitKelvin;
 					}
+					
+					//
+					switch( usedUnit ) {
+						case TemperatureUnitCelsius:
+							return TemperatureGraphFragment.this.getString( R.string.textview_text_temperature_celsius, value );
+						case TemperatureUnitFahrenheit:
+							return TemperatureGraphFragment.this.getString( R.string.textview_text_temperature_fahrenheit, value );
+						case TemperatureUnitKelvin:
+							return TemperatureGraphFragment.this.getString( R.string.textview_text_temperature_kelvin, value );
+					}
+					
+					//
+					return "N/A";
 				}
 			}
 		};

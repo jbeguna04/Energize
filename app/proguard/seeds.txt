@@ -341,6 +341,7 @@ com.halcyonwaves.apps.energize.R$string: int textview_or_close_the_app_label
 com.halcyonwaves.apps.energize.R$string: int textview_text_remainingtime
 com.halcyonwaves.apps.energize.R$string: int textview_text_temperature_celsius
 com.halcyonwaves.apps.energize.R$string: int textview_text_temperature_fahrenheit
+com.halcyonwaves.apps.energize.R$string: int textview_text_temperature_kelvin
 com.halcyonwaves.apps.energize.R$string: int textview_text_timeonbattery
 com.halcyonwaves.apps.energize.R$string: int textview_why_rating_the_app
 com.halcyonwaves.apps.energize.R$style: int DarkTheme
@@ -407,12 +408,16 @@ com.halcyonwaves.apps.energize.fragments.OverviewFragment
 com.halcyonwaves.apps.energize.fragments.OverviewFragment: OverviewFragment()
 com.halcyonwaves.apps.energize.fragments.TemperatureGraphFragment
 com.halcyonwaves.apps.energize.fragments.TemperatureGraphFragment: TemperatureGraphFragment()
+com.halcyonwaves.apps.energize.fragments.TemperatureGraphFragment$TemperatureUnit: com.halcyonwaves.apps.energize.fragments.TemperatureGraphFragment$TemperatureUnit[] values()
+com.halcyonwaves.apps.energize.fragments.TemperatureGraphFragment$TemperatureUnit: com.halcyonwaves.apps.energize.fragments.TemperatureGraphFragment$TemperatureUnit valueOf(java.lang.String)
 com.halcyonwaves.apps.energize.receivers.BootCompletedReceiver
 com.halcyonwaves.apps.energize.receivers.BootCompletedReceiver: BootCompletedReceiver()
 com.halcyonwaves.apps.energize.services.MonitorBatteryStateService
 com.halcyonwaves.apps.energize.services.MonitorBatteryStateService: MonitorBatteryStateService()
 com.halcyonwaves.apps.energize.widgets.SimpleBatteryWidget
 com.halcyonwaves.apps.energize.widgets.SimpleBatteryWidget: SimpleBatteryWidget()
+com.jjoe64.graphview.GraphView: com.jjoe64.graphview.GraphViewStyle getGraphViewStyle()
+com.jjoe64.graphview.GraphView: void setGraphViewStyle(com.jjoe64.graphview.GraphViewStyle)
 com.jjoe64.graphview.GraphView: com.jjoe64.graphview.GraphView$LegendAlign getLegendAlign()
 com.jjoe64.graphview.GraphView: float getLegendWidth()
 com.jjoe64.graphview.GraphView: double getMaxY()

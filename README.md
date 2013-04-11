@@ -45,10 +45,15 @@ As soon as the used strings is nearly fixed, you can help us on our project page
 The application icon is based upon the [Android Robot][3] logo made by Google Inc. This logo is licensed under the terms of the [Creative Commons Attribution license][4]. The battery icon was designed by the authors of the [GNOME High contrast icon set][5] and is licensed under the terms of the [GNU Lesser General Public License][6].
 
 ## Changelog
-### Version 0.9 (Code: *90*, Released on: ***20XX-XX-XX***) - [Changes][31]
+### Version 0.9 (Code: *90*, Released on: ***2013-XX-XX***) - [Changes][32]
 * Replaced the old library for displaying the battery charts with a new (more flexible) one
 * Added a fragment for donations (which help me to develop this app for free)
 * Added a new required permission for accessing even more battery information to provide you much more information
+
+### Version 0.8.9 (Code: *89*, Released on: ***2013-04-11***) - [Changes][31]
+* Added support for Kelvin as a temperature in the drawn graph (requested feature)
+* Updated the library which is used for drawing the graphs
+* Minor bug fixes for the backup agent
 
 ### Version 0.8.8 (Code: *88*, Released on: ***2012-12-26***) - [Changes][30]
 * Added a semi-downgrade option for the database to fix an application crash
@@ -212,5 +217,5 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
  [28]: https://github.com/thuetz/Energize/compare/v0.8.5...v0.8.6 
  [29]: https://github.com/thuetz/Energize/compare/v0.8.6...v0.8.7
  [30]: https://github.com/thuetz/Energize/compare/v0.8.7...v0.8.8
- [31]: https://github.com/thuetz/Energize/compare/v0.8.8...v0.9 
-
+ [31]: https://github.com/thuetz/Energize/compare/v0.8.8...v0.8.9
+ [32]: https://github.com/thuetz/Energize/compare/v0.8.9...v0.9 

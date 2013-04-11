@@ -969,23 +969,36 @@ com.halcyonwaves.apps.energize.widgets.SimpleBatteryWidget:
     private static final java.lang.String TAG
 com.jjoe64.graphview.BarGraphView
 com.jjoe64.graphview.GraphView:
-    501:501:public boolean isShowLegend()
-    505:510:public void redrawAll()
-    514:515:public void removeSeries(com.jjoe64.graphview.GraphViewSeries)
-    519:525:public void removeSeries(int)
-    528:532:public void scrollToEnd()
-    239:239:static synthetic void access$17(com.jjoe64.graphview.GraphView,double)
+    258:263:public GraphView(android.content.Context,android.util.AttributeSet)
+    539:539:public boolean isShowLegend()
+    543:549:public void redrawAll()
+    553:554:public void removeSeries(com.jjoe64.graphview.GraphViewSeries)
+    558:564:public void removeSeries(int)
+    567:571:public void scrollToEnd()
+    243:243:static synthetic void access$18(com.jjoe64.graphview.GraphView,double)
 com.jjoe64.graphview.GraphView$1:
-    581:605:public boolean onScale(com.jjoe64.graphview.compatible.ScaleGestureDetector)
+    620:644:public boolean onScale(com.jjoe64.graphview.compatible.ScaleGestureDetector)
 com.jjoe64.graphview.GraphView$GraphViewConfig
 com.jjoe64.graphview.GraphViewDemo
 com.jjoe64.graphview.GraphViewSeries:
-    64:72:public void appendData(com.jjoe64.graphview.GraphView$GraphViewData,boolean)
-    80:84:public void resetData(com.jjoe64.graphview.GraphView$GraphViewData[])
+    71:82:public void appendData(com.jjoe64.graphview.GraphView$GraphViewData,boolean)
+    90:94:public void resetData(com.jjoe64.graphview.GraphView$GraphViewData[])
+com.jjoe64.graphview.GraphViewSeries$GraphViewSeriesStyle:
+    private com.jjoe64.graphview.ValueDependentColor valueDependentColor
+    29:30:public void setValueDependentColor(com.jjoe64.graphview.ValueDependentColor)
+    32:32:public com.jjoe64.graphview.ValueDependentColor getValueDependentColor()
+com.jjoe64.graphview.GraphViewStyle:
+    21:25:public GraphViewStyle(int,int,int)
+    40:41:public void setVerticalLabelsColor(int)
+    44:45:public void setHorizontalLabelsColor(int)
+    48:49:public void setGridColor(int)
+com.jjoe64.graphview.LineGraphView:
+    23:28:public LineGraphView(android.content.Context,android.util.AttributeSet)
 com.jjoe64.graphview.R
 com.jjoe64.graphview.R$drawable
 com.jjoe64.graphview.R$layout
 com.jjoe64.graphview.R$string
+com.jjoe64.graphview.ValueDependentColor
 com.jjoe64.graphview.compatible.RealScaleGestureDetector:
     13:19:public RealScaleGestureDetector(android.content.Context,com.jjoe64.graphview.compatible.ScaleGestureDetector,com.jjoe64.graphview.compatible.ScaleGestureDetector$SimpleOnScaleGestureListener)
 com.jjoe64.graphview.compatible.RealScaleGestureDetector$1
