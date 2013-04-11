@@ -45,11 +45,9 @@ As soon as the used strings is nearly fixed, you can help us on our project page
 The application icon is based upon the [Android Robot][3] logo made by Google Inc. This logo is licensed under the terms of the [Creative Commons Attribution license][4]. The battery icon was designed by the authors of the [GNOME High contrast icon set][5] and is licensed under the terms of the [GNU Lesser General Public License][6].
 
 ## Changelog
-### Version 0.8.9 (Code: *89*, Released on: ***2013-04-07***) - [Changes][31]
-* Added a field for the time estimation for a full battery cycle (time on battery + estimated remaining time)
-* Added some minor bugs in data logging algorithm
-* Fixed a bug which caused that if the device was turned off, the time estimation was still running after it was tuned on again
-* Fixed a bug that the graph was not redrawn if the application was resumed instead of restarted
+### Version 0.8.9 (Code: *89*, Released on: ***2013-04-11***) - [Changes][31]
+* Added support for Kelvin as a temperature in the drawn graph (requested feature)
+* Minor bug fixes for the backup agent
 
 ### Version 0.8.8 (Code: *88*, Released on: ***2012-12-26***) - [Changes][30]
 * Added a semi-downgrade option for the database to fix an application crash
