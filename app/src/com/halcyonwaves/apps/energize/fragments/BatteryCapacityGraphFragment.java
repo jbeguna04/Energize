@@ -78,6 +78,14 @@ public class BatteryCapacityGraphFragment extends Fragment {
 				}
 			}
 		};
+		this.updateGraph(graphView);
+		final LinearLayout layout = (LinearLayout) inflatedView.findViewById( R.id.layout_graph_view );
+		layout.addView( graphView );
+
+		return inflatedView;
+	}
+
+	private void updateGraph(final LineGraphView graphView) {
 		final Pair< GraphViewSeries, Long > dataSet = this.getBatteryStatisticData();
 		final Long currentTime = System.currentTimeMillis() / 1000L;
 		graphView.addSeries( dataSet.first );
@@ -90,9 +98,5 @@ public class BatteryCapacityGraphFragment extends Fragment {
 		if( (dataSet.second + 86400L) < currentTime ) {
 			graphView.setViewPort( (currentTime - 86400), 86400 );
 		}
-		final LinearLayout layout = (LinearLayout) inflatedView.findViewById( R.id.layout_graph_view );
-		layout.addView( graphView );
-
-		return inflatedView;
 	}
 }
