@@ -36,6 +36,8 @@ public class TemperatureGraphFragment extends Fragment {
 
 	private static final String TAG = "TemperatureGraphFragment";
 	private SharedPreferences sharedPref = null;
+	private LineGraphView graphView = null;
+	private boolean seriesSet = false;
 
 	private Pair< GraphViewSeries, Long > getBatteryStatisticData() {
 		BatteryStatisticsDatabaseOpenHelper batteryDbOpenHelper = new BatteryStatisticsDatabaseOpenHelper( this.getActivity().getApplicationContext() );
@@ -101,7 +103,7 @@ public class TemperatureGraphFragment extends Fragment {
 		this.sharedPref = PreferenceManager.getDefaultSharedPreferences( this.getActivity().getApplicationContext() );
 		final View inflatedView = inflater.inflate( R.layout.fragment_temperaturegraph, container, false );
 
-		final LineGraphView graphView = new LineGraphView( this.getActivity().getApplicationContext(), "" ) {
+		this.graphView = new LineGraphView( this.getActivity().getApplicationContext(), "" ) {
 
 			@Override
 			protected String formatLabel( final double value, final boolean isValueX ) {
@@ -133,18 +135,32 @@ public class TemperatureGraphFragment extends Fragment {
 				}
 			}
 		};
-		final Pair< GraphViewSeries, Long > dataSet = this.getBatteryStatisticData();
-		final Long currentTime = System.currentTimeMillis() / 1000L;
-		graphView.addSeries( dataSet.first );
-		graphView.setScrollable( true );
-		graphView.setScalable( true );
-		graphView.setDrawBackground( false );
-		if( (dataSet.second + 86400L) < currentTime ) {
-			graphView.setViewPort( (currentTime - 86400), 86400 );
-		}
+		this.graphView.setScrollable( true );
+		this.graphView.setScalable( true );
+		this.graphView.setDrawBackground( false );
+		this.updateGraph();
 		final LinearLayout layout = (LinearLayout) inflatedView.findViewById( R.id.layout_graph_view_temperature );
-		layout.addView( graphView );
+		layout.addView( this.graphView );
 
 		return inflatedView;
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		this.updateGraph();
+	}
+	
+	private void updateGraph() {
+		final Pair< GraphViewSeries, Long > dataSet = this.getBatteryStatisticData();
+		if( this.seriesSet ) {
+			this.graphView.removeSeries( 0 );
+		}
+		final Long currentTime = System.currentTimeMillis() / 1000L;
+		this.graphView.addSeries( dataSet.first );
+		if( (dataSet.second + 86400L) < currentTime ) {
+			this.graphView.setViewPort( (currentTime - 86400), 86400 );
+		}
+		this.seriesSet = true;
 	}
 }
