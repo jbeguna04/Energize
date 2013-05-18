@@ -8,14 +8,11 @@ import org.acra.ReportField;
 import org.acra.ReportingInteractionMode;
 import org.acra.annotation.ReportsCrashes;
 
-import com.googlecode.androidannotations.annotations.EApplication;
-
 import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
-@EApplication
 @ReportsCrashes(
 		formKey = "",
 		mailTo = "energize@halcyonwaves.com",
