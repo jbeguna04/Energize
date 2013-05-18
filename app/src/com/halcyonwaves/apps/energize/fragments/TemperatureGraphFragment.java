@@ -23,7 +23,7 @@ import com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelp
 import com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable;
 import com.jjoe64.graphview.GraphView.GraphViewData;
 import com.jjoe64.graphview.GraphViewSeries;
-import com.jjoe64.graphview.GraphViewSeries.GraphViewSeriesStyle;
+import com.jjoe64.graphview.GraphViewSeries.GraphViewStyle;
 import com.jjoe64.graphview.LineGraphView;
 
 public class TemperatureGraphFragment extends Fragment {
@@ -93,7 +93,7 @@ public class TemperatureGraphFragment extends Fragment {
 		}
 		final GraphViewData convertedDataset[] = new GraphViewData[ graphViewData.size() ];
 		graphViewData.toArray( convertedDataset );
-		return new Pair< GraphViewSeries, Long >( new GraphViewSeries( "", new GraphViewSeriesStyle( Color.rgb( 255, 0, 0 ), 3 ), convertedDataset ), oldtestTime );
+		return new Pair< GraphViewSeries, Long >( new GraphViewSeries( "", new GraphViewStyle( Color.rgb( 255, 0, 0 ), 3 ), convertedDataset ), oldtestTime );
 	}
 
 	@Override
