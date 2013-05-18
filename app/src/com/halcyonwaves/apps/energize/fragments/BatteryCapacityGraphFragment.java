@@ -22,6 +22,9 @@ import com.jjoe64.graphview.GraphViewSeries;
 import com.jjoe64.graphview.LineGraphView;
 
 public class BatteryCapacityGraphFragment extends Fragment {
+	
+	private LineGraphView graphView = null;
+	private boolean seriesSet = false;
 
 	private Pair< GraphViewSeries, Long > getBatteryStatisticData() {
 		BatteryStatisticsDatabaseOpenHelper batteryDbOpenHelper = new BatteryStatisticsDatabaseOpenHelper( this.getActivity().getApplicationContext() );
@@ -61,12 +64,18 @@ public class BatteryCapacityGraphFragment extends Fragment {
 		graphViewData.toArray( convertedDataset );
 		return new Pair< GraphViewSeries, Long >( new GraphViewSeries( convertedDataset ), oldtestTime );
 	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		this.updateGraph();
+	}
 
 	@Override
 	public View onCreateView( final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState ) {
 		final View inflatedView = inflater.inflate( R.layout.fragment_batterycapacitygraph, container, false );
 
-		final LineGraphView graphView = new LineGraphView( this.getActivity().getApplicationContext(), "" ) {
+		this.graphView = new LineGraphView( this.getActivity().getApplicationContext(), "" ) {
 
 			@Override
 			protected String formatLabel( final double value, final boolean isValueX ) {
@@ -78,25 +87,29 @@ public class BatteryCapacityGraphFragment extends Fragment {
 				}
 			}
 		};
-		this.updateGraph(graphView);
+		this.graphView.setVerticalLabels( new String[] { "100%", "90%", "80%", "70%", "60%", "50%", "40%", "30%", "20%", "10%", "0%" } );
+		this.graphView.setScrollable( true );
+		this.graphView.setScalable( true );
+		this.graphView.setManualYAxis( true );
+		this.graphView.setDrawBackground( false );
+		this.graphView.setManualYAxisBounds( 100.0, 0.0 );
+		this.updateGraph();
 		final LinearLayout layout = (LinearLayout) inflatedView.findViewById( R.id.layout_graph_view );
-		layout.addView( graphView );
+		layout.addView( this.graphView );
 
 		return inflatedView;
 	}
 
-	private void updateGraph(final LineGraphView graphView) {
+	private void updateGraph() {
 		final Pair< GraphViewSeries, Long > dataSet = this.getBatteryStatisticData();
 		final Long currentTime = System.currentTimeMillis() / 1000L;
-		graphView.addSeries( dataSet.first );
-		graphView.setVerticalLabels( new String[] { "100%", "90%", "80%", "70%", "60%", "50%", "40%", "30%", "20%", "10%", "0%" } );
-		graphView.setScrollable( true );
-		graphView.setScalable( true );
-		graphView.setManualYAxis( true );
-		graphView.setDrawBackground( false );
-		graphView.setManualYAxisBounds( 100.0, 0.0 );
-		if( (dataSet.second + 86400L) < currentTime ) {
-			graphView.setViewPort( (currentTime - 86400), 86400 );
+		if( this.seriesSet ) {
+			this.graphView.removeSeries( 0 );
 		}
+		this.graphView.addSeries( dataSet.first );
+		if( (dataSet.second + 86400L) < currentTime ) {
+			this.graphView.setViewPort( (currentTime - 86400), 86400 );
+		}
+		this.seriesSet = true;
 	}
 }
