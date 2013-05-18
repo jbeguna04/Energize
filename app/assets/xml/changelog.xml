@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
+<release version="0.9" versioncode="90" releasedate="2013-XX-XX">
+<change>Fixed a bug which caused that the fragments were not updated if the application was paused and then resumed</change>
+<change>Started to reorganize the code to be easier build with the Android Studio</change>
+</release>
 <release version="0.8.9" versioncode="89" releasedate="2013-04-11">
 <change>Added support for Kelvin as a temperature in the drawn graph (requested feature)</change>
 <change>Updated the library which is used for drawing the graphs</change>

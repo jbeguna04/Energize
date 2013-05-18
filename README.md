@@ -46,10 +46,8 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
 
 ## Changelog
 ### Version 0.9 (Code: *90*, Released on: ***2013-XX-XX***) - [Changes][32]
-* Replaced the old library for displaying the battery charts with a new (more flexible) one
-* Added a fragment for donations (which help me to develop this app for free)
-* Added a new required permission for accessing even more battery information to provide you much more information
 * Fixed a bug which caused that the fragments were not updated if the application was paused and then resumed
+* Started to reorganize the code to be easier build with the Android Studio
 
 ### Version 0.8.9 (Code: *89*, Released on: ***2013-04-11***) - [Changes][31]
 * Added support for Kelvin as a temperature in the drawn graph (requested feature)
