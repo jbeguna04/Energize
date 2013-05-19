@@ -120,6 +120,12 @@ public class OverviewFragment extends Fragment {
 	}
 
 	@Override
+	public void onResume() {
+		super.onResume();
+		this.updateBatteryInformation();
+	}
+	
+	@Override
 	public View onCreateView( final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState ) {
 		this.sharedPref = PreferenceManager.getDefaultSharedPreferences( this.getActivity().getApplicationContext() );
 
@@ -172,6 +178,14 @@ public class OverviewFragment extends Fragment {
 		// bind to the service and ask for the current time estimation
 		this.doBindService();
 
+		//
+		this.updateBatteryInformation();
+
+		// return the inflated view
+		return inflatedView;
+	}
+
+	private void updateBatteryInformation() {
 		// get the current battery state and show it on the main activity
 		final BroadcastReceiver batteryLevelReceiver = new BroadcastReceiver() {
 
@@ -240,9 +254,6 @@ public class OverviewFragment extends Fragment {
 		};
 		final IntentFilter batteryLevelFilter = new IntentFilter( Intent.ACTION_BATTERY_CHANGED );
 		this.getActivity().registerReceiver( batteryLevelReceiver, batteryLevelFilter );
-
-		// return the inflated view
-		return inflatedView;
 	}
 
 	@Override
