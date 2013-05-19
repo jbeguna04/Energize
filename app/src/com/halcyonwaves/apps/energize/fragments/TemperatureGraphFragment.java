@@ -154,7 +154,7 @@ public class TemperatureGraphFragment extends Fragment {
 	private void updateGraph() {
 		final Pair< GraphViewSeries, Long > dataSet = this.getBatteryStatisticData();
 		if( this.seriesSet ) {
-			this.graphView.removeSeries( 0 );
+			//TODO: this.graphView.removeSeries( 0 );
 		}
 		final Long currentTime = System.currentTimeMillis() / 1000L;
 		this.graphView.addSeries( dataSet.first );

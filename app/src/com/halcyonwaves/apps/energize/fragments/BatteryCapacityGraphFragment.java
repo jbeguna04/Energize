@@ -104,7 +104,7 @@ public class BatteryCapacityGraphFragment extends Fragment {
 		final Pair< GraphViewSeries, Long > dataSet = this.getBatteryStatisticData();
 		final Long currentTime = System.currentTimeMillis() / 1000L;
 		if( this.seriesSet ) {
-			this.graphView.removeSeries( 0 );
+			//TODO: this.graphView.removeSeries( 0 );
 		}
 		this.graphView.addSeries( dataSet.first );
 		if( (dataSet.second + 86400L) < currentTime ) {
