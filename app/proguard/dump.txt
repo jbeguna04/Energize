@@ -62756,7 +62756,7 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 92):
+Constant Pool (count = 100):
   + String [EnergizeExtension]
   + String [Failed to query the current time estimation.]
   + String [Received an time estimation of %d minutes.]
@@ -62769,10 +62769,12 @@ Constant Pool (count = 92):
   + Class [com/halcyonwaves/apps/energize/EnergizeExtension]
   + Class [com/halcyonwaves/apps/energize/c/b]
   + Class [com/halcyonwaves/apps/energize/d]
+  + Class [java/lang/Integer]
   + Class [java/lang/Object]
   + Class [java/lang/String]
   + Fieldref [android/os/Message.replyTo Landroid/os/Messenger;]
   + Fieldref [android/os/Message.what I]
+  + Fieldref [com/halcyonwaves/apps/energize/c/b.d I]
   + Fieldref [com/halcyonwaves/apps/energize/d.a Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
   + Methodref [android/os/Handler.<init> ()V]
   + Methodref [android/os/Handler.handleMessage (Landroid/os/Message;)V]
@@ -62787,6 +62789,7 @@ Constant Pool (count = 92):
   + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.c (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)Lcom/halcyonwaves/apps/energize/c/b;]
   + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.d (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)V]
   + Methodref [com/halcyonwaves/apps/energize/c/b.a (Landroid/os/Bundle;)Lcom/halcyonwaves/apps/energize/c/b;]
+  + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
   + Methodref [java/lang/String.format (Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
   + NameAndType [<init> ()V]
   + NameAndType [a (Landroid/os/Bundle;)Lcom/halcyonwaves/apps/energize/c/b;]
@@ -62797,6 +62800,7 @@ Constant Pool (count = 92):
   + NameAndType [c (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)Lcom/halcyonwaves/apps/energize/c/b;]
   + NameAndType [d (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)V]
   + NameAndType [d (Ljava/lang/String;Ljava/lang/String;)I]
+  + NameAndType [d I]
   + NameAndType [e (Ljava/lang/String;Ljava/lang/String;)I]
   + NameAndType [format (Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
   + NameAndType [getData ()Landroid/os/Bundle;]
@@ -62804,9 +62808,11 @@ Constant Pool (count = 92):
   + NameAndType [obtain (Landroid/os/Handler;I)Landroid/os/Message;]
   + NameAndType [replyTo Landroid/os/Messenger;]
   + NameAndType [send (Landroid/os/Message;)V]
+  + NameAndType [valueOf (I)Ljava/lang/Integer;]
   + NameAndType [what I]
   + Utf8 [()Landroid/os/Bundle;]
   + Utf8 [()V]
+  + Utf8 [(I)Ljava/lang/Integer;]
   + Utf8 [(Landroid/os/Bundle;)Lcom/halcyonwaves/apps/energize/c/b;]
   + Utf8 [(Landroid/os/Handler;I)Landroid/os/Message;]
   + Utf8 [(Landroid/os/Message;)V]
@@ -62842,11 +62848,13 @@ Constant Pool (count = 92):
   + Utf8 [format]
   + Utf8 [getData]
   + Utf8 [handleMessage]
+  + Utf8 [java/lang/Integer]
   + Utf8 [java/lang/Object]
   + Utf8 [java/lang/String]
   + Utf8 [obtain]
   + Utf8 [replyTo]
   + Utf8 [send]
+  + Utf8 [valueOf]
   + Utf8 [what]
 
 Fields (count = 1):
@@ -62862,10 +62870,10 @@ Methods (count = 2):
     + Code attribute instructions (code length = 10, locals = 2, stack = 2):
       [0] aload_0 v0
       [1] aload_1 v1
-      [2] putfield #17
+      [2] putfield #19
         + Fieldref [com/halcyonwaves/apps/energize/d.a Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
       [5] aload_0 v0
-      [6] invokespecial #18
+      [6] invokespecial #20
         + Methodref [android/os/Handler.<init> ()V]
       [9] return
       Code attribute exceptions (count = 0):
@@ -62874,103 +62882,107 @@ Methods (count = 2):
     Access flags: 0x1
       = public void handleMessage(android.os.Message)
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 157, locals = 3, stack = 6):
+    + Code attribute instructions (code length = 163, locals = 3, stack = 6):
       [0] aload_1 v1
-      [1] getfield #16
+      [1] getfield #17
         + Fieldref [android/os/Message.what I]
-      [4] tableswitch (5 offsets, default=147) (target=151)
+      [4] tableswitch (5 offsets, default=153) (target=157)
         1: offset = 36, target = 40
-        2: offset = 147, target = 151
-        3: offset = 147, target = 151
-        4: offset = 147, target = 151
+        2: offset = 153, target = 157
+        3: offset = 153, target = 157
+        4: offset = 153, target = 157
         5: offset = 98, target = 102
-        default: offset = 147, target = 151
+        default: offset = 153, target = 157
       [40] aload_0 v0
-      [41] getfield #17
+      [41] getfield #19
         + Fieldref [com/halcyonwaves/apps/energize/d.a Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
-      [44] invokestatic #27
+      [44] invokestatic #29
         + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.b (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)Landroid/os/Messenger;]
       [47] ifnonnull +12 (target=59)
       [50] ldc #1
         + String [EnergizeExtension]
       [52] ldc #4
         + String [Tried to query the remaining time but the monitor service was not available!]
-      [54] invokestatic #24
+      [54] invokestatic #26
         + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;)I]
       [57] pop
       [58] return
       [59] aconst_null
       [60] iconst_5
-      [61] invokestatic #21
+      [61] invokestatic #23
         + Methodref [android/os/Message.obtain (Landroid/os/Handler;I)Landroid/os/Message;]
       [64] astore_2 v2
       [65] aload_2 v2
       [66] aload_0 v0
-      [67] getfield #17
+      [67] getfield #19
         + Fieldref [com/halcyonwaves/apps/energize/d.a Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
-      [70] invokestatic #25
+      [70] invokestatic #27
         + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.a (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)Landroid/os/Messenger;]
-      [73] putfield #15
+      [73] putfield #16
         + Fieldref [android/os/Message.replyTo Landroid/os/Messenger;]
       [76] aload_0 v0
-      [77] getfield #17
+      [77] getfield #19
         + Fieldref [com/halcyonwaves/apps/energize/d.a Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
-      [80] invokestatic #27
+      [80] invokestatic #29
         + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.b (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)Landroid/os/Messenger;]
       [83] aload_2 v2
-      [84] invokevirtual #22
+      [84] invokevirtual #24
         + Methodref [android/os/Messenger.send (Landroid/os/Message;)V]
-      [87] goto +69 (target=156)
+      [87] goto +75 (target=162)
       [90] astore_2 v2
       [91] ldc #1
         + String [EnergizeExtension]
       [93] ldc #2
         + String [Failed to query the current time estimation.]
-      [95] invokestatic #24
+      [95] invokestatic #26
         + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;)I]
       [98] pop
-      [99] goto +57 (target=156)
+      [99] goto +63 (target=162)
       [102] aload_0 v0
-      [103] getfield #17
+      [103] getfield #19
         + Fieldref [com/halcyonwaves/apps/energize/d.a Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
       [106] aload_1 v1
-      [107] invokevirtual #20
+      [107] invokevirtual #22
         + Methodref [android/os/Message.getData ()Landroid/os/Bundle;]
-      [110] invokestatic #30
+      [110] invokestatic #32
         + Methodref [com/halcyonwaves/apps/energize/c/b.a (Landroid/os/Bundle;)Lcom/halcyonwaves/apps/energize/c/b;]
-      [113] invokestatic #26
+      [113] invokestatic #28
         + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.a (Lcom/halcyonwaves/apps/energize/EnergizeExtension;Lcom/halcyonwaves/apps/energize/c/b;)V]
       [116] ldc #1
         + String [EnergizeExtension]
       [118] ldc #3
         + String [Received an time estimation of %d minutes.]
       [120] iconst_1
-      [121] anewarray #13
+      [121] anewarray #14
         + Class [java/lang/Object]
       [124] dup
       [125] iconst_0
       [126] aload_0 v0
-      [127] getfield #17
+      [127] getfield #19
         + Fieldref [com/halcyonwaves/apps/energize/d.a Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
-      [130] invokestatic #28
+      [130] invokestatic #30
         + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.c (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)Lcom/halcyonwaves/apps/energize/c/b;]
-      [133] aastore
-      [134] invokestatic #31
+      [133] getfield #18
+        + Fieldref [com/halcyonwaves/apps/energize/c/b.d I]
+      [136] invokestatic #33
+        + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
+      [139] aastore
+      [140] invokestatic #34
         + Methodref [java/lang/String.format (Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
-      [137] invokestatic #23
+      [143] invokestatic #25
         + Methodref [android/util/Log.d (Ljava/lang/String;Ljava/lang/String;)I]
-      [140] pop
-      [141] aload_0 v0
-      [142] getfield #17
+      [146] pop
+      [147] aload_0 v0
+      [148] getfield #19
         + Fieldref [com/halcyonwaves/apps/energize/d.a Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
-      [145] invokestatic #29
+      [151] invokestatic #31
         + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.d (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)V]
-      [148] goto +8 (target=156)
-      [151] aload_0 v0
-      [152] aload_1 v1
-      [153] invokespecial #19
+      [154] goto +8 (target=162)
+      [157] aload_0 v0
+      [158] aload_1 v1
+      [159] invokespecial #21
         + Methodref [android/os/Handler.handleMessage (Landroid/os/Message;)V]
-      [156] return
+      [162] return
       Code attribute exceptions (count = 2):
       - ExceptionInfo (40 -> 58: 90):
       + Class [android/os/RemoteException]
@@ -62982,8 +62994,8 @@ Methods (count = 2):
         - [59] Var: ..., Stack: (empty)
         - [90] Var: ..., Stack: [a:android/os/RemoteException]
         - [102] Var: ..., Stack: (empty)
-        - [151] Var: ..., Stack: (empty)
-        - [156] Var: ..., Stack: (empty)
+        - [157] Var: ..., Stack: (empty)
+        - [162] Var: ..., Stack: (empty)
 
 Class file attributes (count = 0):
 
