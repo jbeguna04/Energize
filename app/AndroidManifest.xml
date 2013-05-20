@@ -40,7 +40,7 @@
             android:exported="false" />
         --><service
             android:name=".EnergizeExtension"
-            android:icon="@drawable/ic_launcher"
+            android:icon="@drawable/ic_battery"
             android:label="@string/app_name"
             android:permission="com.google.android.apps.dashclock.permission.READ_EXTENSION_DATA" >
             <intent-filter>
@@ -52,7 +52,7 @@
                 android:value="1" />
             <meta-data
                 android:name="description"
-                android:value="@string/app_name" />
+                android:value="@string/dc_widget_desc" />
         </service>
 
         <!-- register a receiver which gets called after the device booted up -->

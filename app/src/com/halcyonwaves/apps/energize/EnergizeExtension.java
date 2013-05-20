@@ -10,7 +10,7 @@ public class EnergizeExtension extends DashClockExtension {
 	protected void onUpdateData(int reason) {
 		publishUpdate(new ExtensionData()
 				.visible(true)
-				.icon(R.drawable.ic_launcher)
+				.icon(R.drawable.ic_battery)
 				.status("Hello")
 				.expandedTitle("Hello, world!")
 				.expandedBody("This is an example.")
