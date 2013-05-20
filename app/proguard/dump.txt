@@ -66634,47 +66634,51 @@ Methods (count = 18):
     Access flags: 0x1
       = public void i()
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 43, locals = 2, stack = 2):
+    + Code attribute instructions (code length = 50, locals = 2, stack = 2):
       [0] aload_0 v0
       [1] invokespecial #87
         + Methodref [android/support/v4/app/Fragment.i ()V]
       [4] aload_0 v0
       [5] invokespecial #103
         + Methodref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.B ()V]
-      [8] aconst_null
-      [9] iconst_5
-      [10] invokestatic #82
-        + Methodref [android/os/Message.obtain (Landroid/os/Handler;I)Landroid/os/Message;]
-      [13] astore_1 v1
-      [14] aload_1 v1
-      [15] aload_0 v0
-      [16] getfield #70
-        + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.R Landroid/os/Messenger;]
-      [19] putfield #65
-        + Fieldref [android/os/Message.replyTo Landroid/os/Messenger;]
-      [22] aload_0 v0
-      [23] getfield #68
+      [8] aload_0 v0
+      [9] getfield #68
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.P Landroid/os/Messenger;]
-      [26] aload_1 v1
-      [27] invokevirtual #84
+      [12] ifnull +37 (target=49)
+      [15] aconst_null
+      [16] iconst_5
+      [17] invokestatic #82
+        + Methodref [android/os/Message.obtain (Landroid/os/Handler;I)Landroid/os/Message;]
+      [20] astore_1 v1
+      [21] aload_1 v1
+      [22] aload_0 v0
+      [23] getfield #70
+        + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.R Landroid/os/Messenger;]
+      [26] putfield #65
+        + Fieldref [android/os/Message.replyTo Landroid/os/Messenger;]
+      [29] aload_0 v0
+      [30] getfield #68
+        + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.P Landroid/os/Messenger;]
+      [33] aload_1 v1
+      [34] invokevirtual #84
         + Methodref [android/os/Messenger.send (Landroid/os/Message;)V]
-      [30] goto +12 (target=42)
-      [33] astore_1 v1
-      [34] ldc #15
+      [37] goto +12 (target=49)
+      [40] astore_1 v1
+      [41] ldc #15
         + String [OverviewFragment]
-      [36] ldc #14
+      [43] ldc #14
         + String [Failed to query the current time estimation.]
-      [38] invokestatic #93
+      [45] invokestatic #93
         + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;)I]
-      [41] pop
-      [42] return
+      [48] pop
+      [49] return
       Code attribute exceptions (count = 1):
-      - ExceptionInfo (8 -> 30: 33):
+      - ExceptionInfo (8 -> 37: 40):
       + Class [android/os/RemoteException]
       Code attribute attributes (attribute count = 1):
       + Stack map table attribute (count = 2):
-        - [33] Var: ..., Stack: [a:android/os/RemoteException]
-        - [42] Var: ..., Stack: (empty)
+        - [40] Var: ..., Stack: [a:android/os/RemoteException]
+        - [49] Var: ..., Stack: (empty)
   + Method:       a(Landroid/view/LayoutInflater;Landroid/view/ViewGroup;Landroid/os/Bundle;)Landroid/view/View;
     Access flags: 0x1
       = public android.view.View a(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle)
