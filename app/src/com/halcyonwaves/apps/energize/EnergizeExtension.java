@@ -22,7 +22,8 @@ import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
 public class EnergizeExtension extends DashClockExtension {
 	
 	private static final String TAG = "EnergizeExtension";
-	private ExtensionData currentExtensionData = new ExtensionData();
+	private int percentageLoaded = 0;
+	private EstimationResult remainingTimeEstimation = new EstimationResult();
 	
 	class IncomingHandler extends Handler {
 
@@ -47,9 +48,9 @@ public class EnergizeExtension extends DashClockExtension {
 					}
 					break;
 				case MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME:
-					final EstimationResult remainingTimeEstimation = EstimationResult.fromBundle( msg.getData() );
-					Log.d( EnergizeExtension.TAG, String.format( "Received an time estimation of %d minutes.", remainingTimeEstimation.minutes ) );
-					EnergizeExtension.this.currentExtensionData.expandedBody( String.format(EnergizeExtension.this.getApplicationContext().getString( R.string.notification_text_estimate ), remainingTimeEstimation.remainingHours, remainingTimeEstimation.remainingMinutes ) );
+					EnergizeExtension.this.remainingTimeEstimation = EstimationResult.fromBundle( msg.getData() );
+					Log.d( EnergizeExtension.TAG, String.format( "Received an time estimation of %d minutes.", EnergizeExtension.this.remainingTimeEstimation ) );
+					EnergizeExtension.this.sendPublishedData();
 					break;
 				default:
 					super.handleMessage( msg );
@@ -98,17 +99,15 @@ public class EnergizeExtension extends DashClockExtension {
 	}
 	
 	@Override
+	protected void onInitialize(boolean isReconnect) {
+		this.setUpdateWhenScreenOn(true);
+		super.onInitialize(isReconnect);
+	}
+	
+	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		//
 		this.doBindService();
-		
-		//
-		this.currentExtensionData.visible(true);
-		this.currentExtensionData.icon(R.drawable.ic_battery);
-		this.currentExtensionData.status("-");
-		this.currentExtensionData.expandedTitle("-");
-		this.currentExtensionData.expandedBody("-");
-		this.currentExtensionData.clickIntent( new Intent(this.getApplicationContext(),BatteryStateDisplayActivity.class));
 		
 		//
 		this.updateBatteryInformation();
@@ -118,6 +117,20 @@ public class EnergizeExtension extends DashClockExtension {
 	}
 	
 	private void updateBatteryInformation() {
+		// query the remaining time
+		try {
+			if( this.monitorService != null ) {
+				final Message msg2 = Message.obtain(null,MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME);
+				msg2.replyTo = EnergizeExtension.this.monitorServiceMessanger;
+				this.monitorService.send(msg2);
+			} else {
+				Log.w(EnergizeExtension.TAG, "No monitor service connected, trying to bind service!");
+				this.doBindService();
+			}
+		} catch (RemoteException e) {
+			Log.e(EnergizeExtension.TAG,"Failed to query the current time estimation.");
+		}
+		
 		// get the current battery state and show it on the main activity
 		final BroadcastReceiver batteryLevelReceiver = new BroadcastReceiver() {
 
@@ -137,8 +150,9 @@ public class EnergizeExtension extends DashClockExtension {
 						level = (rawlevel * 100) / scale;
 					}
 
-					EnergizeExtension.this.currentExtensionData.status( level + "%" );
-					EnergizeExtension.this.currentExtensionData.expandedTitle( level + "%" ); // TODO: long version
+					Log.d( EnergizeExtension.TAG, "Updating the DashClock widget (basic information).");
+					EnergizeExtension.this.percentageLoaded = level;
+					EnergizeExtension.this.sendPublishedData();
 				} catch( final IllegalStateException e ) {
 					Log.e( EnergizeExtension.TAG, "The fragment was in an illegal state while it received the battery information. This should be handled in a different (and better way), The exception message was: ", e ); // TODO
 				}
@@ -148,15 +162,27 @@ public class EnergizeExtension extends DashClockExtension {
 		this.getApplicationContext().registerReceiver( batteryLevelReceiver, batteryLevelFilter );
 	}
 	
+	private void sendPublishedData() {
+		Log.d(EnergizeExtension.TAG, "Constructing and sending DashClock widget update...");
+		
+		//
+		if( this.remainingTimeEstimation.isValid ) {
+			this.publishUpdate( new ExtensionData().visible( true ).icon( R.drawable.ic_battery ).status( this.percentageLoaded + "%" ).expandedTitle( String.format( this.getApplicationContext().getString( R.string.dc_widget_charged_long ), this.percentageLoaded ) ).expandedBody( String.format(EnergizeExtension.this.getApplicationContext().getString( R.string.notification_text_estimate ), remainingTimeEstimation.remainingHours, remainingTimeEstimation.remainingMinutes ) ).clickIntent( new Intent(this.getApplicationContext(),BatteryStateDisplayActivity.class) ) );
+		} else {
+			this.publishUpdate( new ExtensionData().visible( true ).icon( R.drawable.ic_battery ).status( this.percentageLoaded + "%" ).expandedTitle( String.format( this.getApplicationContext().getString( R.string.dc_widget_charged_long ), this.percentageLoaded ) ).expandedBody( EnergizeExtension.this.getApplicationContext().getString( R.string.notification_text_estimate_na ) ).clickIntent( new Intent(this.getApplicationContext(),BatteryStateDisplayActivity.class) ) );
+		}
+	}
+	
 	@Override
 	public void onDestroy() {
-		this.doUnbindService();
+		//this.doUnbindService();
 		super.onDestroy();
 	}
 
 	protected void onUpdateData(int reason) {
+		Log.i( EnergizeExtension.TAG, "Update requested... " );
 		this.updateBatteryInformation();
-		this.publishUpdate(this.currentExtensionData);
+		//this.publishUpdate(this.currentExtensionData);
 	}
 
 }
