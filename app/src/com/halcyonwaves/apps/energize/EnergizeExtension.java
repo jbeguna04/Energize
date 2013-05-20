@@ -49,7 +49,7 @@ public class EnergizeExtension extends DashClockExtension {
 					break;
 				case MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME:
 					EnergizeExtension.this.remainingTimeEstimation = EstimationResult.fromBundle( msg.getData() );
-					Log.d( EnergizeExtension.TAG, String.format( "Received an time estimation of %d minutes.", EnergizeExtension.this.remainingTimeEstimation ) );
+					Log.d( EnergizeExtension.TAG, String.format( "Received an time estimation of %d minutes.", EnergizeExtension.this.remainingTimeEstimation.minutes ) );
 					EnergizeExtension.this.sendPublishedData();
 					break;
 				default:
