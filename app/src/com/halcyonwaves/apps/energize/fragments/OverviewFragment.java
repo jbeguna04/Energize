@@ -32,6 +32,8 @@ import com.halcyonwaves.apps.energize.estimators.EstimationResult;
 import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
 
 public class OverviewFragment extends Fragment {
+	
+	private static final String TAG = "OverviewFragment";
 
 	class IncomingHandler extends Handler {
 
@@ -65,8 +67,6 @@ public class OverviewFragment extends Fragment {
 			}
 		}
 	}
-
-	private static final String TAG = "OverviewFragment";
 
 	private Messenger monitorService = null;
 
