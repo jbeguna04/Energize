@@ -128,9 +128,11 @@ public class OverviewFragment extends Fragment {
 
 		// query the remaining time
 		try {
-			final Message msg2 = Message.obtain(null,MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME);
-			msg2.replyTo = OverviewFragment.this.monitorServiceMessanger;
-			this.monitorService.send(msg2);
+			if( this.monitorService != null ) {
+				final Message msg2 = Message.obtain(null,MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME);
+				msg2.replyTo = OverviewFragment.this.monitorServiceMessanger;
+				this.monitorService.send(msg2);
+			}
 		} catch (RemoteException e) {
 			Log.e(OverviewFragment.TAG,"Failed to query the current time estimation.");
 		}
