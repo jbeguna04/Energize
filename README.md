@@ -46,9 +46,9 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
 
 ## Changelog
 ### Version 0.9 (Code: *90*, Released on: ***2013-XX-XX***) - [Changes][32]
+* Added support for the DashClock widget
 * Fixed a bug which caused that the fragments were not updated if the application was paused and then resumed
-* Added support for the DashClock widget 
-* Started to reorganize the code to be easier build with the Android Studio
+* Fixed some minor performance issues
 
 ### Version 0.8.9 (Code: *89*, Released on: ***2013-04-11***) - [Changes][31]
 * Added support for Kelvin as a temperature in the drawn graph (requested feature)
