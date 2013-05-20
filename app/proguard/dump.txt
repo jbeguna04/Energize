@@ -58570,6 +58570,2134 @@ Methods (count = 13):
 Class file attributes (count = 0):
 
 _____________________________________________________________________
++ Program class: com/google/android/apps/dashclock/api/a
+  Superclass:    android/app/Service
+  Major version: 0x32
+  Minor version: 0x0
+  Access flags:  0x421
+    = public abstract class com.google.android.apps.dashclock.api.a extends android.app.Service
+
+Interfaces (count = 0):
+
+Constant Pool (count = 114):
+  + String [Couldn't publish updated extension data.]
+  + String [DashClockExtension]
+  + String [DashClockExtension:]
+  + Class [android/app/Service]
+  + Class [android/os/Handler]
+  + Class [android/os/HandlerThread]
+  + Class [android/os/Looper]
+  + Class [android/os/RemoteException]
+  + Class [android/util/Log]
+  + Class [com/google/android/apps/dashclock/api/a]
+  + Class [com/google/android/apps/dashclock/api/a/c]
+  + Class [com/google/android/apps/dashclock/api/b]
+  + Class [java/lang/Class]
+  + Class [java/lang/Object]
+  + Class [java/lang/StringBuilder]
+  + Fieldref [com/google/android/apps/dashclock/api/a.a Z]
+  + Fieldref [com/google/android/apps/dashclock/api/a.b Lcom/google/android/apps/dashclock/api/a/c;]
+  + Fieldref [com/google/android/apps/dashclock/api/a.c Landroid/os/Looper;]
+  + Fieldref [com/google/android/apps/dashclock/api/a.d Landroid/os/Handler;]
+  + Fieldref [com/google/android/apps/dashclock/api/a.e Lcom/google/android/apps/dashclock/api/a/b;]
+  + Methodref [android/app/Service.<init> ()V]
+  + Methodref [android/app/Service.onCreate ()V]
+  + Methodref [android/os/Handler.<init> (Landroid/os/Looper;)V]
+  + Methodref [android/os/Handler.removeCallbacksAndMessages (Ljava/lang/Object;)V]
+  + Methodref [android/os/HandlerThread.<init> (Ljava/lang/String;)V]
+  + Methodref [android/os/HandlerThread.getLooper ()Landroid/os/Looper;]
+  + Methodref [android/os/HandlerThread.start ()V]
+  + Methodref [android/os/Looper.quit ()V]
+  + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I]
+  + Methodref [com/google/android/apps/dashclock/api/b.<init> (Lcom/google/android/apps/dashclock/api/a;)V]
+  + Methodref [java/lang/Class.getSimpleName ()Ljava/lang/String;]
+  + Methodref [java/lang/Object.getClass ()Ljava/lang/Class;]
+  + Methodref [java/lang/StringBuilder.<init> ()V]
+  + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+  + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
+  + InterfaceMethodref [com/google/android/apps/dashclock/api/a/c.a (Lcom/google/android/apps/dashclock/api/ExtensionData;)V]
+  + NameAndType [<init> ()V]
+  + NameAndType [<init> (Landroid/os/Looper;)V]
+  + NameAndType [<init> (Lcom/google/android/apps/dashclock/api/a;)V]
+  + NameAndType [<init> (Ljava/lang/String;)V]
+  + NameAndType [a (Lcom/google/android/apps/dashclock/api/ExtensionData;)V]
+  + NameAndType [a Z]
+  + NameAndType [append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+  + NameAndType [b Lcom/google/android/apps/dashclock/api/a/c;]
+  + NameAndType [c Landroid/os/Looper;]
+  + NameAndType [d Landroid/os/Handler;]
+  + NameAndType [e (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I]
+  + NameAndType [e Lcom/google/android/apps/dashclock/api/a/b;]
+  + NameAndType [getClass ()Ljava/lang/Class;]
+  + NameAndType [getLooper ()Landroid/os/Looper;]
+  + NameAndType [getSimpleName ()Ljava/lang/String;]
+  + NameAndType [onCreate ()V]
+  + NameAndType [quit ()V]
+  + NameAndType [removeCallbacksAndMessages (Ljava/lang/Object;)V]
+  + NameAndType [start ()V]
+  + NameAndType [toString ()Ljava/lang/String;]
+  + Utf8 [()Landroid/os/Looper;]
+  + Utf8 [()Ljava/lang/Class;]
+  + Utf8 [()Ljava/lang/String;]
+  + Utf8 [()V]
+  + Utf8 [(I)V]
+  + Utf8 [(Landroid/content/Intent;)Landroid/os/IBinder;]
+  + Utf8 [(Landroid/os/Looper;)V]
+  + Utf8 [(Lcom/google/android/apps/dashclock/api/ExtensionData;)V]
+  + Utf8 [(Lcom/google/android/apps/dashclock/api/a;)Landroid/os/Handler;]
+  + Utf8 [(Lcom/google/android/apps/dashclock/api/a;)V]
+  + Utf8 [(Lcom/google/android/apps/dashclock/api/a;)Z]
+  + Utf8 [(Lcom/google/android/apps/dashclock/api/a;Lcom/google/android/apps/dashclock/api/a/c;)Lcom/google/android/apps/dashclock/api/a/c;]
+  + Utf8 [(Lcom/google/android/apps/dashclock/api/a;Z)Z]
+  + Utf8 [(Ljava/lang/Object;)V]
+  + Utf8 [(Ljava/lang/String;)Ljava/lang/StringBuilder;]
+  + Utf8 [(Ljava/lang/String;)V]
+  + Utf8 [(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I]
+  + Utf8 [(Z)V]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [Couldn't publish updated extension data.]
+  + Utf8 [DashClockExtension]
+  + Utf8 [DashClockExtension:]
+  + Utf8 [Landroid/os/Handler;]
+  + Utf8 [Landroid/os/Looper;]
+  + Utf8 [Lcom/google/android/apps/dashclock/api/a/b;]
+  + Utf8 [Lcom/google/android/apps/dashclock/api/a/c;]
+  + Utf8 [StackMapTable]
+  + Utf8 [Z]
+  + Utf8 [a]
+  + Utf8 [android/app/Service]
+  + Utf8 [android/os/Handler]
+  + Utf8 [android/os/HandlerThread]
+  + Utf8 [android/os/Looper]
+  + Utf8 [android/os/RemoteException]
+  + Utf8 [android/util/Log]
+  + Utf8 [append]
+  + Utf8 [b]
+  + Utf8 [c]
+  + Utf8 [com/google/android/apps/dashclock/api/a]
+  + Utf8 [com/google/android/apps/dashclock/api/a/c]
+  + Utf8 [com/google/android/apps/dashclock/api/b]
+  + Utf8 [d]
+  + Utf8 [e]
+  + Utf8 [getClass]
+  + Utf8 [getLooper]
+  + Utf8 [getSimpleName]
+  + Utf8 [java/lang/Class]
+  + Utf8 [java/lang/Object]
+  + Utf8 [java/lang/StringBuilder]
+  + Utf8 [onBind]
+  + Utf8 [onCreate]
+  + Utf8 [onDestroy]
+  + Utf8 [quit]
+  + Utf8 [removeCallbacksAndMessages]
+  + Utf8 [start]
+  + Utf8 [toString]
+
+Fields (count = 5):
+  + Field:        a Z
+    Access flags: 0x2
+      = private boolean a
+  + Field:        b Lcom/google/android/apps/dashclock/api/a/c;
+    Access flags: 0x2
+      = private com.google.android.apps.dashclock.api.a.c b
+  + Field:        c Landroid/os/Looper;
+    Access flags: 0x42
+      = private volatile android.os.Looper c
+  + Field:        d Landroid/os/Handler;
+    Access flags: 0x42
+      = private volatile android.os.Handler d
+  + Field:        e Lcom/google/android/apps/dashclock/api/a/b;
+    Access flags: 0x2
+      = private com.google.android.apps.dashclock.api.a.b e
+
+Methods (count = 11):
+  - Method:       <init>()V
+    Access flags: 0x4
+      = protected a()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 22, locals = 1, stack = 4):
+      [0] aload_0 v0
+      [1] invokespecial #21
+        + Methodref [android/app/Service.<init> ()V]
+      [4] aload_0 v0
+      [5] iconst_0
+      [6] putfield #16
+        + Fieldref [com/google/android/apps/dashclock/api/a.a Z]
+      [9] aload_0 v0
+      [10] new #12
+        + Class [com/google/android/apps/dashclock/api/b]
+      [13] dup
+      [14] aload_0 v0
+      [15] invokespecial #30
+        + Methodref [com/google/android/apps/dashclock/api/b.<init> (Lcom/google/android/apps/dashclock/api/a;)V]
+      [18] putfield #20
+        + Fieldref [com/google/android/apps/dashclock/api/a.e Lcom/google/android/apps/dashclock/api/a/b;]
+      [21] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onCreate()V
+    Access flags: 0x1
+      = public void onCreate()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 65, locals = 2, stack = 4):
+      [0] aload_0 v0
+      [1] invokespecial #22
+        + Methodref [android/app/Service.onCreate ()V]
+      [4] new #6
+        + Class [android/os/HandlerThread]
+      [7] dup
+      [8] new #15
+        + Class [java/lang/StringBuilder]
+      [11] dup
+      [12] invokespecial #33
+        + Methodref [java/lang/StringBuilder.<init> ()V]
+      [15] ldc #3
+        + String [DashClockExtension:]
+      [17] invokevirtual #34
+        + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+      [20] aload_0 v0
+      [21] invokevirtual #32
+        + Methodref [java/lang/Object.getClass ()Ljava/lang/Class;]
+      [24] invokevirtual #31
+        + Methodref [java/lang/Class.getSimpleName ()Ljava/lang/String;]
+      [27] invokevirtual #34
+        + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+      [30] invokevirtual #35
+        + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
+      [33] invokespecial #25
+        + Methodref [android/os/HandlerThread.<init> (Ljava/lang/String;)V]
+      [36] astore_1 v1
+      [37] aload_1 v1
+      [38] invokevirtual #27
+        + Methodref [android/os/HandlerThread.start ()V]
+      [41] aload_0 v0
+      [42] aload_1 v1
+      [43] invokevirtual #26
+        + Methodref [android/os/HandlerThread.getLooper ()Landroid/os/Looper;]
+      [46] putfield #18
+        + Fieldref [com/google/android/apps/dashclock/api/a.c Landroid/os/Looper;]
+      [49] aload_0 v0
+      [50] new #5
+        + Class [android/os/Handler]
+      [53] dup
+      [54] aload_0 v0
+      [55] getfield #18
+        + Fieldref [com/google/android/apps/dashclock/api/a.c Landroid/os/Looper;]
+      [58] invokespecial #23
+        + Methodref [android/os/Handler.<init> (Landroid/os/Looper;)V]
+      [61] putfield #19
+        + Fieldref [com/google/android/apps/dashclock/api/a.d Landroid/os/Handler;]
+      [64] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onDestroy()V
+    Access flags: 0x1
+      = public void onDestroy()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 16, locals = 1, stack = 2):
+      [0] aload_0 v0
+      [1] getfield #19
+        + Fieldref [com/google/android/apps/dashclock/api/a.d Landroid/os/Handler;]
+      [4] aconst_null
+      [5] invokevirtual #24
+        + Methodref [android/os/Handler.removeCallbacksAndMessages (Ljava/lang/Object;)V]
+      [8] aload_0 v0
+      [9] getfield #18
+        + Fieldref [com/google/android/apps/dashclock/api/a.c Landroid/os/Looper;]
+      [12] invokevirtual #28
+        + Methodref [android/os/Looper.quit ()V]
+      [15] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onBind(Landroid/content/Intent;)Landroid/os/IBinder;
+    Access flags: 0x11
+      = public final android.os.IBinder onBind(android.content.Intent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 2, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #20
+        + Fieldref [com/google/android/apps/dashclock/api/a.e Lcom/google/android/apps/dashclock/api/a/b;]
+      [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Z)V
+    Access flags: 0x4
+      = protected void a(boolean)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 1, locals = 2, stack = 0):
+      [0] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(I)V
+    Access flags: 0x404
+      = protected abstract void a(int)
+  + Method:       a(Lcom/google/android/apps/dashclock/api/ExtensionData;)V
+    Access flags: 0x14
+      = protected final void a(com.google.android.apps.dashclock.api.ExtensionData)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 24, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] getfield #17
+        + Fieldref [com/google/android/apps/dashclock/api/a.b Lcom/google/android/apps/dashclock/api/a/c;]
+      [4] aload_1 v1
+      [5] invokeinterface #36
+        + InterfaceMethodref [com/google/android/apps/dashclock/api/a/c.a (Lcom/google/android/apps/dashclock/api/ExtensionData;)V]
+      [10] goto +13 (target=23)
+      [13] astore_2 v2
+      [14] ldc #2
+        + String [DashClockExtension]
+      [16] ldc #1
+        + String [Couldn't publish updated extension data.]
+      [18] aload_2 v2
+      [19] invokestatic #29
+        + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I]
+      [22] pop
+      [23] return
+      Code attribute exceptions (count = 1):
+      - ExceptionInfo (0 -> 10: 13):
+      + Class [android/os/RemoteException]
+      Code attribute attributes (attribute count = 1):
+      + Stack map table attribute (count = 2):
+        - [13] Var: ..., Stack: [a:android/os/RemoteException]
+        - [23] Var: ..., Stack: (empty)
+  + Method:       a(Lcom/google/android/apps/dashclock/api/a;Lcom/google/android/apps/dashclock/api/a/c;)Lcom/google/android/apps/dashclock/api/a/c;
+    Access flags: 0x1008
+      = static synthetic com.google.android.apps.dashclock.api.a.c a(com.google.android.apps.dashclock.api.a,com.google.android.apps.dashclock.api.a.c)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 7, locals = 2, stack = 3):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] dup_x1
+      [3] putfield #17
+        + Fieldref [com/google/android/apps/dashclock/api/a.b Lcom/google/android/apps/dashclock/api/a/c;]
+      [6] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Lcom/google/android/apps/dashclock/api/a;)Z
+    Access flags: 0x1008
+      = static synthetic boolean a(com.google.android.apps.dashclock.api.a)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #16
+        + Fieldref [com/google/android/apps/dashclock/api/a.a Z]
+      [4] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Lcom/google/android/apps/dashclock/api/a;Z)Z
+    Access flags: 0x1008
+      = static synthetic boolean a(com.google.android.apps.dashclock.api.a,boolean)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 7, locals = 2, stack = 3):
+      [0] aload_0 v0
+      [1] iload_1 v1
+      [2] dup_x1
+      [3] putfield #16
+        + Fieldref [com/google/android/apps/dashclock/api/a.a Z]
+      [6] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       b(Lcom/google/android/apps/dashclock/api/a;)Landroid/os/Handler;
+    Access flags: 0x1008
+      = static synthetic android.os.Handler b(com.google.android.apps.dashclock.api.a)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #19
+        + Fieldref [com/google/android/apps/dashclock/api/a.d Landroid/os/Handler;]
+      [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: com/google/android/apps/dashclock/api/b
+  Superclass:    com/google/android/apps/dashclock/api/a/b
+  Major version: 0x32
+  Minor version: 0x0
+  Access flags:  0x20
+    = class com.google.android.apps.dashclock.api.b extends com.google.android.apps.dashclock.api.a.b
+
+Interfaces (count = 0):
+
+Constant Pool (count = 60):
+  + String [Caller does not have the READ_EXTENSION_DATA permission.]
+  + String [com.google.android.apps.dashclock.permission.READ_EXTENSION_DATA]
+  + Class [android/os/Handler]
+  + Class [com/google/android/apps/dashclock/api/a]
+  + Class [com/google/android/apps/dashclock/api/a/b]
+  + Class [com/google/android/apps/dashclock/api/b]
+  + Class [com/google/android/apps/dashclock/api/c]
+  + Class [java/lang/SecurityException]
+  + Fieldref [com/google/android/apps/dashclock/api/b.a Lcom/google/android/apps/dashclock/api/a;]
+  + Methodref [android/os/Handler.post (Ljava/lang/Runnable;)Z]
+  + Methodref [com/google/android/apps/dashclock/api/a.a (Lcom/google/android/apps/dashclock/api/a;)Z]
+  + Methodref [com/google/android/apps/dashclock/api/a.a (Lcom/google/android/apps/dashclock/api/a;Lcom/google/android/apps/dashclock/api/a/c;)Lcom/google/android/apps/dashclock/api/a/c;]
+  + Methodref [com/google/android/apps/dashclock/api/a.a (Lcom/google/android/apps/dashclock/api/a;Z)Z]
+  + Methodref [com/google/android/apps/dashclock/api/a.a (Z)V]
+  + Methodref [com/google/android/apps/dashclock/api/a.b (Lcom/google/android/apps/dashclock/api/a;)Landroid/os/Handler;]
+  + Methodref [com/google/android/apps/dashclock/api/a.checkCallingOrSelfPermission (Ljava/lang/String;)I]
+  + Methodref [com/google/android/apps/dashclock/api/a/b.<init> ()V]
+  + Methodref [com/google/android/apps/dashclock/api/c.<init> (Lcom/google/android/apps/dashclock/api/b;I)V]
+  + Methodref [java/lang/SecurityException.<init> (Ljava/lang/String;)V]
+  + NameAndType [<init> ()V]
+  + NameAndType [<init> (Lcom/google/android/apps/dashclock/api/b;I)V]
+  + NameAndType [<init> (Ljava/lang/String;)V]
+  + NameAndType [a (Lcom/google/android/apps/dashclock/api/a;)Z]
+  + NameAndType [a (Lcom/google/android/apps/dashclock/api/a;Lcom/google/android/apps/dashclock/api/a/c;)Lcom/google/android/apps/dashclock/api/a/c;]
+  + NameAndType [a (Lcom/google/android/apps/dashclock/api/a;Z)Z]
+  + NameAndType [a (Z)V]
+  + NameAndType [a Lcom/google/android/apps/dashclock/api/a;]
+  + NameAndType [b (Lcom/google/android/apps/dashclock/api/a;)Landroid/os/Handler;]
+  + NameAndType [checkCallingOrSelfPermission (Ljava/lang/String;)I]
+  + NameAndType [post (Ljava/lang/Runnable;)Z]
+  + Utf8 [()V]
+  + Utf8 [(I)V]
+  + Utf8 [(Lcom/google/android/apps/dashclock/api/a/c;Z)V]
+  + Utf8 [(Lcom/google/android/apps/dashclock/api/a;)Landroid/os/Handler;]
+  + Utf8 [(Lcom/google/android/apps/dashclock/api/a;)V]
+  + Utf8 [(Lcom/google/android/apps/dashclock/api/a;)Z]
+  + Utf8 [(Lcom/google/android/apps/dashclock/api/a;Lcom/google/android/apps/dashclock/api/a/c;)Lcom/google/android/apps/dashclock/api/a/c;]
+  + Utf8 [(Lcom/google/android/apps/dashclock/api/a;Z)Z]
+  + Utf8 [(Lcom/google/android/apps/dashclock/api/b;I)V]
+  + Utf8 [(Ljava/lang/Runnable;)Z]
+  + Utf8 [(Ljava/lang/String;)I]
+  + Utf8 [(Ljava/lang/String;)V]
+  + Utf8 [(Z)V]
+  + Utf8 [<init>]
+  + Utf8 [Caller does not have the READ_EXTENSION_DATA permission.]
+  + Utf8 [Code]
+  + Utf8 [Lcom/google/android/apps/dashclock/api/a;]
+  + Utf8 [StackMapTable]
+  + Utf8 [a]
+  + Utf8 [android/os/Handler]
+  + Utf8 [b]
+  + Utf8 [checkCallingOrSelfPermission]
+  + Utf8 [com.google.android.apps.dashclock.permission.READ_EXTENSION_DATA]
+  + Utf8 [com/google/android/apps/dashclock/api/a]
+  + Utf8 [com/google/android/apps/dashclock/api/a/b]
+  + Utf8 [com/google/android/apps/dashclock/api/b]
+  + Utf8 [com/google/android/apps/dashclock/api/c]
+  + Utf8 [java/lang/SecurityException]
+  + Utf8 [post]
+
+Fields (count = 1):
+  + Field:        a Lcom/google/android/apps/dashclock/api/a;
+    Access flags: 0x1010
+      = final synthetic com.google.android.apps.dashclock.api.a a
+
+Methods (count = 3):
+  - Method:       <init>(Lcom/google/android/apps/dashclock/api/a;)V
+    Access flags: 0x0
+      = b(com.google.android.apps.dashclock.api.a)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] putfield #9
+        + Fieldref [com/google/android/apps/dashclock/api/b.a Lcom/google/android/apps/dashclock/api/a;]
+      [5] aload_0 v0
+      [6] invokespecial #17
+        + Methodref [com/google/android/apps/dashclock/api/a/b.<init> ()V]
+      [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Lcom/google/android/apps/dashclock/api/a/c;Z)V
+    Access flags: 0x1
+      = public void a(com.google.android.apps.dashclock.api.a.c,boolean)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 59, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] getfield #9
+        + Fieldref [com/google/android/apps/dashclock/api/b.a Lcom/google/android/apps/dashclock/api/a;]
+      [4] ldc #2
+        + String [com.google.android.apps.dashclock.permission.READ_EXTENSION_DATA]
+      [6] invokevirtual #16
+        + Methodref [com/google/android/apps/dashclock/api/a.checkCallingOrSelfPermission (Ljava/lang/String;)I]
+      [9] ifeq +13 (target=22)
+      [12] new #8
+        + Class [java/lang/SecurityException]
+      [15] dup
+      [16] ldc #1
+        + String [Caller does not have the READ_EXTENSION_DATA permission.]
+      [18] invokespecial #19
+        + Methodref [java/lang/SecurityException.<init> (Ljava/lang/String;)V]
+      [21] athrow
+      [22] aload_0 v0
+      [23] getfield #9
+        + Fieldref [com/google/android/apps/dashclock/api/b.a Lcom/google/android/apps/dashclock/api/a;]
+      [26] aload_1 v1
+      [27] invokestatic #12
+        + Methodref [com/google/android/apps/dashclock/api/a.a (Lcom/google/android/apps/dashclock/api/a;Lcom/google/android/apps/dashclock/api/a/c;)Lcom/google/android/apps/dashclock/api/a/c;]
+      [30] pop
+      [31] aload_0 v0
+      [32] getfield #9
+        + Fieldref [com/google/android/apps/dashclock/api/b.a Lcom/google/android/apps/dashclock/api/a;]
+      [35] invokestatic #11
+        + Methodref [com/google/android/apps/dashclock/api/a.a (Lcom/google/android/apps/dashclock/api/a;)Z]
+      [38] ifne +20 (target=58)
+      [41] aload_0 v0
+      [42] getfield #9
+        + Fieldref [com/google/android/apps/dashclock/api/b.a Lcom/google/android/apps/dashclock/api/a;]
+      [45] iload_2 v2
+      [46] invokevirtual #14
+        + Methodref [com/google/android/apps/dashclock/api/a.a (Z)V]
+      [49] aload_0 v0
+      [50] getfield #9
+        + Fieldref [com/google/android/apps/dashclock/api/b.a Lcom/google/android/apps/dashclock/api/a;]
+      [53] iconst_1
+      [54] invokestatic #13
+        + Methodref [com/google/android/apps/dashclock/api/a.a (Lcom/google/android/apps/dashclock/api/a;Z)Z]
+      [57] pop
+      [58] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 1):
+      + Stack map table attribute (count = 2):
+        - [22] Var: ..., Stack: (empty)
+        - [58] Var: ..., Stack: (empty)
+  + Method:       a(I)V
+    Access flags: 0x1
+      = public void a(int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 54, locals = 2, stack = 5):
+      [0] aload_0 v0
+      [1] getfield #9
+        + Fieldref [com/google/android/apps/dashclock/api/b.a Lcom/google/android/apps/dashclock/api/a;]
+      [4] ldc #2
+        + String [com.google.android.apps.dashclock.permission.READ_EXTENSION_DATA]
+      [6] invokevirtual #16
+        + Methodref [com/google/android/apps/dashclock/api/a.checkCallingOrSelfPermission (Ljava/lang/String;)I]
+      [9] ifeq +13 (target=22)
+      [12] new #8
+        + Class [java/lang/SecurityException]
+      [15] dup
+      [16] ldc #1
+        + String [Caller does not have the READ_EXTENSION_DATA permission.]
+      [18] invokespecial #19
+        + Methodref [java/lang/SecurityException.<init> (Ljava/lang/String;)V]
+      [21] athrow
+      [22] aload_0 v0
+      [23] getfield #9
+        + Fieldref [com/google/android/apps/dashclock/api/b.a Lcom/google/android/apps/dashclock/api/a;]
+      [26] invokestatic #11
+        + Methodref [com/google/android/apps/dashclock/api/a.a (Lcom/google/android/apps/dashclock/api/a;)Z]
+      [29] ifne +4 (target=33)
+      [32] return
+      [33] aload_0 v0
+      [34] getfield #9
+        + Fieldref [com/google/android/apps/dashclock/api/b.a Lcom/google/android/apps/dashclock/api/a;]
+      [37] invokestatic #15
+        + Methodref [com/google/android/apps/dashclock/api/a.b (Lcom/google/android/apps/dashclock/api/a;)Landroid/os/Handler;]
+      [40] new #7
+        + Class [com/google/android/apps/dashclock/api/c]
+      [43] dup
+      [44] aload_0 v0
+      [45] iload_1 v1
+      [46] invokespecial #18
+        + Methodref [com/google/android/apps/dashclock/api/c.<init> (Lcom/google/android/apps/dashclock/api/b;I)V]
+      [49] invokevirtual #10
+        + Methodref [android/os/Handler.post (Ljava/lang/Runnable;)Z]
+      [52] pop
+      [53] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 1):
+      + Stack map table attribute (count = 2):
+        - [22] Var: ..., Stack: (empty)
+        - [33] Var: ..., Stack: (empty)
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: com/google/android/apps/dashclock/api/c
+  Superclass:    java/lang/Object
+  Major version: 0x32
+  Minor version: 0x0
+  Access flags:  0x20
+    = class com.google.android.apps.dashclock.api.c extends java.lang.Object
+
+Interfaces (count = 1):
+  + Class [java/lang/Runnable]
+
+Constant Pool (count = 32):
+  + Class [com/google/android/apps/dashclock/api/a]
+  + Class [com/google/android/apps/dashclock/api/b]
+  + Class [com/google/android/apps/dashclock/api/c]
+  + Class [java/lang/Object]
+  + Class [java/lang/Runnable]
+  + Fieldref [com/google/android/apps/dashclock/api/b.a Lcom/google/android/apps/dashclock/api/a;]
+  + Fieldref [com/google/android/apps/dashclock/api/c.a I]
+  + Fieldref [com/google/android/apps/dashclock/api/c.b Lcom/google/android/apps/dashclock/api/b;]
+  + Methodref [com/google/android/apps/dashclock/api/a.a (I)V]
+  + Methodref [java/lang/Object.<init> ()V]
+  + NameAndType [<init> ()V]
+  + NameAndType [a (I)V]
+  + NameAndType [a I]
+  + NameAndType [a Lcom/google/android/apps/dashclock/api/a;]
+  + NameAndType [b Lcom/google/android/apps/dashclock/api/b;]
+  + Utf8 [()V]
+  + Utf8 [(I)V]
+  + Utf8 [(Lcom/google/android/apps/dashclock/api/b;I)V]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [I]
+  + Utf8 [Lcom/google/android/apps/dashclock/api/a;]
+  + Utf8 [Lcom/google/android/apps/dashclock/api/b;]
+  + Utf8 [a]
+  + Utf8 [b]
+  + Utf8 [com/google/android/apps/dashclock/api/a]
+  + Utf8 [com/google/android/apps/dashclock/api/b]
+  + Utf8 [com/google/android/apps/dashclock/api/c]
+  + Utf8 [java/lang/Object]
+  + Utf8 [java/lang/Runnable]
+  + Utf8 [run]
+
+Fields (count = 2):
+  + Field:        a I
+    Access flags: 0x1010
+      = final synthetic int a
+  + Field:        b Lcom/google/android/apps/dashclock/api/b;
+    Access flags: 0x1010
+      = final synthetic com.google.android.apps.dashclock.api.b b
+
+Methods (count = 2):
+  - Method:       <init>(Lcom/google/android/apps/dashclock/api/b;I)V
+    Access flags: 0x0
+      = c(com.google.android.apps.dashclock.api.b,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 15, locals = 3, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] putfield #8
+        + Fieldref [com/google/android/apps/dashclock/api/c.b Lcom/google/android/apps/dashclock/api/b;]
+      [5] aload_0 v0
+      [6] iload_2 v2
+      [7] putfield #7
+        + Fieldref [com/google/android/apps/dashclock/api/c.a I]
+      [10] aload_0 v0
+      [11] invokespecial #10
+        + Methodref [java/lang/Object.<init> ()V]
+      [14] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       run()V
+    Access flags: 0x1
+      = public void run()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 15, locals = 1, stack = 2):
+      [0] aload_0 v0
+      [1] getfield #8
+        + Fieldref [com/google/android/apps/dashclock/api/c.b Lcom/google/android/apps/dashclock/api/b;]
+      [4] getfield #6
+        + Fieldref [com/google/android/apps/dashclock/api/b.a Lcom/google/android/apps/dashclock/api/a;]
+      [7] aload_0 v0
+      [8] getfield #7
+        + Fieldref [com/google/android/apps/dashclock/api/c.a I]
+      [11] invokevirtual #9
+        + Methodref [com/google/android/apps/dashclock/api/a.a (I)V]
+      [14] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: com/google/android/apps/dashclock/api/ExtensionData
+  Superclass:    java/lang/Object
+  Major version: 0x32
+  Minor version: 0x0
+  Access flags:  0x21
+    = public class com.google.android.apps.dashclock.api.ExtensionData extends java.lang.Object
+
+Interfaces (count = 1):
+  + Class [android/os/Parcelable]
+
+Constant Pool (count = 112):
+  + String []
+  + Class [android/content/Intent]
+  + Class [android/os/Parcel]
+  + Class [android/os/Parcelable]
+  + Class [android/text/TextUtils]
+  + Class [com/google/android/apps/dashclock/api/ExtensionData]
+  + Class [com/google/android/apps/dashclock/api/d]
+  + Class [java/lang/ClassCastException]
+  + Class [java/lang/Object]
+  + Class [java/lang/String]
+  + Class [java/net/URISyntaxException]
+  + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.CREATOR Landroid/os/Parcelable$Creator;]
+  + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.a Z]
+  + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.b I]
+  + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.c Ljava/lang/String;]
+  + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.d Ljava/lang/String;]
+  + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.e Ljava/lang/String;]
+  + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.f Landroid/content/Intent;]
+  + Methodref [android/content/Intent.parseUri (Ljava/lang/String;I)Landroid/content/Intent;]
+  + Methodref [android/content/Intent.toUri (I)Ljava/lang/String;]
+  + Methodref [android/os/Parcel.dataPosition ()I]
+  + Methodref [android/os/Parcel.readInt ()I]
+  + Methodref [android/os/Parcel.readString ()Ljava/lang/String;]
+  + Methodref [android/os/Parcel.setDataPosition (I)V]
+  + Methodref [android/os/Parcel.writeInt (I)V]
+  + Methodref [android/os/Parcel.writeString (Ljava/lang/String;)V]
+  + Methodref [android/text/TextUtils.equals (Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z]
+  + Methodref [android/text/TextUtils.isEmpty (Ljava/lang/CharSequence;)Z]
+  + Methodref [com/google/android/apps/dashclock/api/ExtensionData.<init> (Landroid/os/Parcel;)V]
+  + Methodref [com/google/android/apps/dashclock/api/ExtensionData.a (Landroid/content/Intent;Landroid/content/Intent;)Z]
+  + Methodref [com/google/android/apps/dashclock/api/d.<init> ()V]
+  + Methodref [java/lang/Object.<init> ()V]
+  + Methodref [java/lang/Object.equals (Ljava/lang/Object;)Z]
+  + NameAndType [<init> ()V]
+  + NameAndType [<init> (Landroid/os/Parcel;)V]
+  + NameAndType [CREATOR Landroid/os/Parcelable$Creator;]
+  + NameAndType [a (Landroid/content/Intent;Landroid/content/Intent;)Z]
+  + NameAndType [a Z]
+  + NameAndType [b I]
+  + NameAndType [c Ljava/lang/String;]
+  + NameAndType [d Ljava/lang/String;]
+  + NameAndType [dataPosition ()I]
+  + NameAndType [e Ljava/lang/String;]
+  + NameAndType [equals (Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z]
+  + NameAndType [equals (Ljava/lang/Object;)Z]
+  + NameAndType [f Landroid/content/Intent;]
+  + NameAndType [isEmpty (Ljava/lang/CharSequence;)Z]
+  + NameAndType [parseUri (Ljava/lang/String;I)Landroid/content/Intent;]
+  + NameAndType [readInt ()I]
+  + NameAndType [readString ()Ljava/lang/String;]
+  + NameAndType [setDataPosition (I)V]
+  + NameAndType [toUri (I)Ljava/lang/String;]
+  + NameAndType [writeInt (I)V]
+  + NameAndType [writeString (Ljava/lang/String;)V]
+  + Utf8 []
+  + Utf8 [()I]
+  + Utf8 [()Ljava/lang/String;]
+  + Utf8 [()V]
+  + Utf8 [(I)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + Utf8 [(I)Ljava/lang/String;]
+  + Utf8 [(I)V]
+  + Utf8 [(Landroid/content/Intent;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + Utf8 [(Landroid/content/Intent;Landroid/content/Intent;)Z]
+  + Utf8 [(Landroid/os/Parcel;)V]
+  + Utf8 [(Landroid/os/Parcel;I)V]
+  + Utf8 [(Landroid/os/Parcel;Lcom/google/android/apps/dashclock/api/d;)V]
+  + Utf8 [(Ljava/lang/CharSequence;)Z]
+  + Utf8 [(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z]
+  + Utf8 [(Ljava/lang/Object;)Z]
+  + Utf8 [(Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + Utf8 [(Ljava/lang/String;)V]
+  + Utf8 [(Ljava/lang/String;I)Landroid/content/Intent;]
+  + Utf8 [(Z)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + Utf8 [<clinit>]
+  + Utf8 [<init>]
+  + Utf8 [CREATOR]
+  + Utf8 [Code]
+  + Utf8 [I]
+  + Utf8 [Landroid/content/Intent;]
+  + Utf8 [Landroid/os/Parcelable$Creator;]
+  + Utf8 [Ljava/lang/String;]
+  + Utf8 [StackMapTable]
+  + Utf8 [Z]
+  + Utf8 [a]
+  + Utf8 [android/content/Intent]
+  + Utf8 [android/os/Parcel]
+  + Utf8 [android/os/Parcelable]
+  + Utf8 [android/text/TextUtils]
+  + Utf8 [b]
+  + Utf8 [c]
+  + Utf8 [com/google/android/apps/dashclock/api/ExtensionData]
+  + Utf8 [com/google/android/apps/dashclock/api/d]
+  + Utf8 [d]
+  + Utf8 [dataPosition]
+  + Utf8 [describeContents]
+  + Utf8 [e]
+  + Utf8 [equals]
+  + Utf8 [f]
+  + Utf8 [isEmpty]
+  + Utf8 [java/lang/ClassCastException]
+  + Utf8 [java/lang/Object]
+  + Utf8 [java/lang/String]
+  + Utf8 [java/net/URISyntaxException]
+  + Utf8 [parseUri]
+  + Utf8 [readInt]
+  + Utf8 [readString]
+  + Utf8 [setDataPosition]
+  + Utf8 [toUri]
+  + Utf8 [writeInt]
+  + Utf8 [writeString]
+  + Utf8 [writeToParcel]
+
+Fields (count = 7):
+  + Field:        a Z
+    Access flags: 0x2
+      = private boolean a
+  + Field:        b I
+    Access flags: 0x2
+      = private int b
+  + Field:        c Ljava/lang/String;
+    Access flags: 0x2
+      = private java.lang.String c
+  + Field:        d Ljava/lang/String;
+    Access flags: 0x2
+      = private java.lang.String d
+  + Field:        e Ljava/lang/String;
+    Access flags: 0x2
+      = private java.lang.String e
+  + Field:        f Landroid/content/Intent;
+    Access flags: 0x2
+      = private android.content.Intent f
+  + Field:        CREATOR Landroid/os/Parcelable$Creator;
+    Access flags: 0x19
+      = public static final android.os.Parcelable$Creator CREATOR
+
+Methods (count = 14):
+  - Method:       <init>()V
+    Access flags: 0x1
+      = public ExtensionData()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 35, locals = 1, stack = 2):
+      [0] aload_0 v0
+      [1] invokespecial #32
+        + Methodref [java/lang/Object.<init> ()V]
+      [4] aload_0 v0
+      [5] iconst_0
+      [6] putfield #13
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.a Z]
+      [9] aload_0 v0
+      [10] iconst_0
+      [11] putfield #14
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.b I]
+      [14] aload_0 v0
+      [15] aconst_null
+      [16] putfield #15
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.c Ljava/lang/String;]
+      [19] aload_0 v0
+      [20] aconst_null
+      [21] putfield #16
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.d Ljava/lang/String;]
+      [24] aload_0 v0
+      [25] aconst_null
+      [26] putfield #17
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.e Ljava/lang/String;]
+      [29] aload_0 v0
+      [30] aconst_null
+      [31] putfield #18
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.f Landroid/content/Intent;]
+      [34] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Z)Lcom/google/android/apps/dashclock/api/ExtensionData;
+    Access flags: 0x1
+      = public com.google.android.apps.dashclock.api.ExtensionData a(boolean)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 7, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] iload_1 v1
+      [2] putfield #13
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.a Z]
+      [5] aload_0 v0
+      [6] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(I)Lcom/google/android/apps/dashclock/api/ExtensionData;
+    Access flags: 0x1
+      = public com.google.android.apps.dashclock.api.ExtensionData a(int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 7, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] iload_1 v1
+      [2] putfield #14
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.b I]
+      [5] aload_0 v0
+      [6] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;
+    Access flags: 0x1
+      = public com.google.android.apps.dashclock.api.ExtensionData a(java.lang.String)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 7, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] putfield #15
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.c Ljava/lang/String;]
+      [5] aload_0 v0
+      [6] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       b(Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;
+    Access flags: 0x1
+      = public com.google.android.apps.dashclock.api.ExtensionData b(java.lang.String)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 7, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] putfield #16
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.d Ljava/lang/String;]
+      [5] aload_0 v0
+      [6] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       c(Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;
+    Access flags: 0x1
+      = public com.google.android.apps.dashclock.api.ExtensionData c(java.lang.String)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 7, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] putfield #17
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.e Ljava/lang/String;]
+      [5] aload_0 v0
+      [6] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Landroid/content/Intent;)Lcom/google/android/apps/dashclock/api/ExtensionData;
+    Access flags: 0x1
+      = public com.google.android.apps.dashclock.api.ExtensionData a(android.content.Intent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 7, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] putfield #18
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.f Landroid/content/Intent;]
+      [5] aload_0 v0
+      [6] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  - Method:       <init>(Landroid/os/Parcel;)V
+    Access flags: 0x2
+      = private ExtensionData(android.os.Parcel)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 173, locals = 5, stack = 4):
+      [0] aload_0 v0
+      [1] invokespecial #32
+        + Methodref [java/lang/Object.<init> ()V]
+      [4] aload_0 v0
+      [5] iconst_0
+      [6] putfield #13
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.a Z]
+      [9] aload_0 v0
+      [10] iconst_0
+      [11] putfield #14
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.b I]
+      [14] aload_0 v0
+      [15] aconst_null
+      [16] putfield #15
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.c Ljava/lang/String;]
+      [19] aload_0 v0
+      [20] aconst_null
+      [21] putfield #16
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.d Ljava/lang/String;]
+      [24] aload_0 v0
+      [25] aconst_null
+      [26] putfield #17
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.e Ljava/lang/String;]
+      [29] aload_0 v0
+      [30] aconst_null
+      [31] putfield #18
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.f Landroid/content/Intent;]
+      [34] aload_1 v1
+      [35] invokevirtual #22
+        + Methodref [android/os/Parcel.readInt ()I]
+      [38] istore_2 v2
+      [39] aload_1 v1
+      [40] invokevirtual #22
+        + Methodref [android/os/Parcel.readInt ()I]
+      [43] istore_3 v3
+      [44] iload_2 v2
+      [45] iconst_1
+      [46] ificmplt +113 (target=159)
+      [49] aload_0 v0
+      [50] aload_1 v1
+      [51] invokevirtual #22
+        + Methodref [android/os/Parcel.readInt ()I]
+      [54] ifeq +7 (target=61)
+      [57] iconst_1
+      [58] goto +4 (target=62)
+      [61] iconst_0
+      [62] putfield #13
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.a Z]
+      [65] aload_0 v0
+      [66] aload_1 v1
+      [67] invokevirtual #22
+        + Methodref [android/os/Parcel.readInt ()I]
+      [70] putfield #14
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.b I]
+      [73] aload_0 v0
+      [74] aload_1 v1
+      [75] invokevirtual #23
+        + Methodref [android/os/Parcel.readString ()Ljava/lang/String;]
+      [78] putfield #15
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.c Ljava/lang/String;]
+      [81] aload_0 v0
+      [82] getfield #15
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.c Ljava/lang/String;]
+      [85] invokestatic #28
+        + Methodref [android/text/TextUtils.isEmpty (Ljava/lang/CharSequence;)Z]
+      [88] ifeq +8 (target=96)
+      [91] aload_0 v0
+      [92] aconst_null
+      [93] putfield #15
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.c Ljava/lang/String;]
+      [96] aload_0 v0
+      [97] aload_1 v1
+      [98] invokevirtual #23
+        + Methodref [android/os/Parcel.readString ()Ljava/lang/String;]
+      [101] putfield #16
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.d Ljava/lang/String;]
+      [104] aload_0 v0
+      [105] getfield #16
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.d Ljava/lang/String;]
+      [108] invokestatic #28
+        + Methodref [android/text/TextUtils.isEmpty (Ljava/lang/CharSequence;)Z]
+      [111] ifeq +8 (target=119)
+      [114] aload_0 v0
+      [115] aconst_null
+      [116] putfield #16
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.d Ljava/lang/String;]
+      [119] aload_0 v0
+      [120] aload_1 v1
+      [121] invokevirtual #23
+        + Methodref [android/os/Parcel.readString ()Ljava/lang/String;]
+      [124] putfield #17
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.e Ljava/lang/String;]
+      [127] aload_0 v0
+      [128] getfield #17
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.e Ljava/lang/String;]
+      [131] invokestatic #28
+        + Methodref [android/text/TextUtils.isEmpty (Ljava/lang/CharSequence;)Z]
+      [134] ifeq +8 (target=142)
+      [137] aload_0 v0
+      [138] aconst_null
+      [139] putfield #17
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.e Ljava/lang/String;]
+      [142] aload_0 v0
+      [143] aload_1 v1
+      [144] invokevirtual #23
+        + Methodref [android/os/Parcel.readString ()Ljava/lang/String;]
+      [147] iconst_0
+      [148] invokestatic #19
+        + Methodref [android/content/Intent.parseUri (Ljava/lang/String;I)Landroid/content/Intent;]
+      [151] putfield #18
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.f Landroid/content/Intent;]
+      [154] goto +5 (target=159)
+      [157] astore v4
+      [159] aload_1 v1
+      [160] aload_1 v1
+      [161] invokevirtual #21
+        + Methodref [android/os/Parcel.dataPosition ()I]
+      [164] bipush 6
+      [166] iload_3 v3
+      [167] isub
+      [168] iadd
+      [169] invokevirtual #24
+        + Methodref [android/os/Parcel.setDataPosition (I)V]
+      [172] return
+      Code attribute exceptions (count = 1):
+      - ExceptionInfo (142 -> 154: 157):
+      + Class [java/net/URISyntaxException]
+      Code attribute attributes (attribute count = 1):
+      + Stack map table attribute (count = 7):
+        - [61] Var: [a:com/google/android/apps/dashclock/api/ExtensionData][a:android/os/Parcel][i][i], Stack: [a:com/google/android/apps/dashclock/api/ExtensionData]
+        - [62] Var: [a:com/google/android/apps/dashclock/api/ExtensionData][a:android/os/Parcel][i][i], Stack: [a:com/google/android/apps/dashclock/api/ExtensionData][i]
+        - [96] Var: ..., Stack: (empty)
+        - [119] Var: ..., Stack: (empty)
+        - [142] Var: ..., Stack: (empty)
+        - [157] Var: ..., Stack: [a:java/net/URISyntaxException]
+        - [159] Var: ..., Stack: (empty)
+  + Method:       writeToParcel(Landroid/os/Parcel;I)V
+    Access flags: 0x1
+      = public void writeToParcel(android.os.Parcel,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 129, locals = 3, stack = 3):
+      [0] aload_1 v1
+      [1] iconst_1
+      [2] invokevirtual #25
+        + Methodref [android/os/Parcel.writeInt (I)V]
+      [5] aload_1 v1
+      [6] bipush 6
+      [8] invokevirtual #25
+        + Methodref [android/os/Parcel.writeInt (I)V]
+      [11] aload_1 v1
+      [12] aload_0 v0
+      [13] getfield #13
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.a Z]
+      [16] ifeq +7 (target=23)
+      [19] iconst_1
+      [20] goto +4 (target=24)
+      [23] iconst_0
+      [24] invokevirtual #25
+        + Methodref [android/os/Parcel.writeInt (I)V]
+      [27] aload_1 v1
+      [28] aload_0 v0
+      [29] getfield #14
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.b I]
+      [32] invokevirtual #25
+        + Methodref [android/os/Parcel.writeInt (I)V]
+      [35] aload_1 v1
+      [36] aload_0 v0
+      [37] getfield #15
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.c Ljava/lang/String;]
+      [40] invokestatic #28
+        + Methodref [android/text/TextUtils.isEmpty (Ljava/lang/CharSequence;)Z]
+      [43] ifeq +8 (target=51)
+      [46] ldc #1
+        + String []
+      [48] goto +7 (target=55)
+      [51] aload_0 v0
+      [52] getfield #15
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.c Ljava/lang/String;]
+      [55] invokevirtual #26
+        + Methodref [android/os/Parcel.writeString (Ljava/lang/String;)V]
+      [58] aload_1 v1
+      [59] aload_0 v0
+      [60] getfield #16
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.d Ljava/lang/String;]
+      [63] invokestatic #28
+        + Methodref [android/text/TextUtils.isEmpty (Ljava/lang/CharSequence;)Z]
+      [66] ifeq +8 (target=74)
+      [69] ldc #1
+        + String []
+      [71] goto +7 (target=78)
+      [74] aload_0 v0
+      [75] getfield #16
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.d Ljava/lang/String;]
+      [78] invokevirtual #26
+        + Methodref [android/os/Parcel.writeString (Ljava/lang/String;)V]
+      [81] aload_1 v1
+      [82] aload_0 v0
+      [83] getfield #17
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.e Ljava/lang/String;]
+      [86] invokestatic #28
+        + Methodref [android/text/TextUtils.isEmpty (Ljava/lang/CharSequence;)Z]
+      [89] ifeq +8 (target=97)
+      [92] ldc #1
+        + String []
+      [94] goto +7 (target=101)
+      [97] aload_0 v0
+      [98] getfield #17
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.e Ljava/lang/String;]
+      [101] invokevirtual #26
+        + Methodref [android/os/Parcel.writeString (Ljava/lang/String;)V]
+      [104] aload_1 v1
+      [105] aload_0 v0
+      [106] getfield #18
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.f Landroid/content/Intent;]
+      [109] ifnonnull +8 (target=117)
+      [112] ldc #1
+        + String []
+      [114] goto +11 (target=125)
+      [117] aload_0 v0
+      [118] getfield #18
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.f Landroid/content/Intent;]
+      [121] iconst_0
+      [122] invokevirtual #20
+        + Methodref [android/content/Intent.toUri (I)Ljava/lang/String;]
+      [125] invokevirtual #26
+        + Methodref [android/os/Parcel.writeString (Ljava/lang/String;)V]
+      [128] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 1):
+      + Stack map table attribute (count = 10):
+        - [23] Var: ..., Stack: [a:android/os/Parcel]
+        - [24] Var: [a:com/google/android/apps/dashclock/api/ExtensionData][a:android/os/Parcel][i], Stack: [a:android/os/Parcel][i]
+        - [51] Var: ..., Stack: [a:android/os/Parcel]
+        - [55] Var: [a:com/google/android/apps/dashclock/api/ExtensionData][a:android/os/Parcel][i], Stack: [a:android/os/Parcel][a:java/lang/String]
+        - [74] Var: ..., Stack: [a:android/os/Parcel]
+        - [78] Var: [a:com/google/android/apps/dashclock/api/ExtensionData][a:android/os/Parcel][i], Stack: [a:android/os/Parcel][a:java/lang/String]
+        - [97] Var: ..., Stack: [a:android/os/Parcel]
+        - [101] Var: [a:com/google/android/apps/dashclock/api/ExtensionData][a:android/os/Parcel][i], Stack: [a:android/os/Parcel][a:java/lang/String]
+        - [117] Var: ..., Stack: [a:android/os/Parcel]
+        - [125] Var: [a:com/google/android/apps/dashclock/api/ExtensionData][a:android/os/Parcel][i], Stack: [a:android/os/Parcel][a:java/lang/String]
+  + Method:       describeContents()I
+    Access flags: 0x1
+      = public int describeContents()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 2, locals = 1, stack = 1):
+      [0] iconst_0
+      [1] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       equals(Ljava/lang/Object;)Z
+    Access flags: 0x1
+      = public boolean equals(java.lang.Object)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 98, locals = 3, stack = 2):
+      [0] aload_1 v1
+      [1] ifnonnull +5 (target=6)
+      [4] iconst_0
+      [5] ireturn
+      [6] aload_1 v1
+      [7] checkcast #6
+        + Class [com/google/android/apps/dashclock/api/ExtensionData]
+      [10] astore_2 v2
+      [11] aload_2 v2
+      [12] getfield #13
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.a Z]
+      [15] aload_0 v0
+      [16] getfield #13
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.a Z]
+      [19] ificmpne +74 (target=93)
+      [22] aload_2 v2
+      [23] getfield #14
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.b I]
+      [26] aload_0 v0
+      [27] getfield #14
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.b I]
+      [30] ificmpne +63 (target=93)
+      [33] aload_2 v2
+      [34] getfield #15
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.c Ljava/lang/String;]
+      [37] aload_0 v0
+      [38] getfield #15
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.c Ljava/lang/String;]
+      [41] invokestatic #27
+        + Methodref [android/text/TextUtils.equals (Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z]
+      [44] ifeq +49 (target=93)
+      [47] aload_2 v2
+      [48] getfield #16
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.d Ljava/lang/String;]
+      [51] aload_0 v0
+      [52] getfield #16
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.d Ljava/lang/String;]
+      [55] invokestatic #27
+        + Methodref [android/text/TextUtils.equals (Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z]
+      [58] ifeq +35 (target=93)
+      [61] aload_2 v2
+      [62] getfield #17
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.e Ljava/lang/String;]
+      [65] aload_0 v0
+      [66] getfield #17
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.e Ljava/lang/String;]
+      [69] invokestatic #27
+        + Methodref [android/text/TextUtils.equals (Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z]
+      [72] ifeq +21 (target=93)
+      [75] aload_2 v2
+      [76] getfield #18
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.f Landroid/content/Intent;]
+      [79] aload_0 v0
+      [80] getfield #18
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.f Landroid/content/Intent;]
+      [83] invokestatic #30
+        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.a (Landroid/content/Intent;Landroid/content/Intent;)Z]
+      [86] ifeq +7 (target=93)
+      [89] iconst_1
+      [90] goto +4 (target=94)
+      [93] iconst_0
+      [94] ireturn
+      [95] astore_2 v2
+      [96] iconst_0
+      [97] ireturn
+      Code attribute exceptions (count = 1):
+      - ExceptionInfo (6 -> 94: 95):
+      + Class [java/lang/ClassCastException]
+      Code attribute attributes (attribute count = 1):
+      + Stack map table attribute (count = 4):
+        - [6] Var: ..., Stack: (empty)
+        - [93] Var: ...[a:com/google/android/apps/dashclock/api/ExtensionData], Stack: (empty)
+        - [94] Var: ..., Stack: [i]
+        - [95] Var: [a:com/google/android/apps/dashclock/api/ExtensionData][a:java/lang/Object], Stack: [a:java/lang/ClassCastException]
+  + Method:       a(Landroid/content/Intent;Landroid/content/Intent;)Z
+    Access flags: 0xa
+      = private static boolean a(android.content.Intent,android.content.Intent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 25, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] ifnull +7 (target=8)
+      [4] aload_1 v1
+      [5] ifnonnull +14 (target=19)
+      [8] aload_0 v0
+      [9] aload_1 v1
+      [10] ifacmpne +7 (target=17)
+      [13] iconst_1
+      [14] goto +4 (target=18)
+      [17] iconst_0
+      [18] ireturn
+      [19] aload_0 v0
+      [20] aload_1 v1
+      [21] invokevirtual #33
+        + Methodref [java/lang/Object.equals (Ljava/lang/Object;)Z]
+      [24] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 1):
+      + Stack map table attribute (count = 4):
+        - [8] Var: ..., Stack: (empty)
+        - [17] Var: ..., Stack: (empty)
+        - [18] Var: ..., Stack: [i]
+        - [19] Var: ..., Stack: (empty)
+  - Method:       <init>(Landroid/os/Parcel;Lcom/google/android/apps/dashclock/api/d;)V
+    Access flags: 0x1000
+      = synthetic ExtensionData(android.os.Parcel,com.google.android.apps.dashclock.api.d)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 6, locals = 3, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] invokespecial #29
+        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.<init> (Landroid/os/Parcel;)V]
+      [5] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  - Method:       <clinit>()V
+    Access flags: 0x8
+      = static void <clinit>()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 11, locals = 0, stack = 2):
+      [0] new #7
+        + Class [com/google/android/apps/dashclock/api/d]
+      [3] dup
+      [4] invokespecial #31
+        + Methodref [com/google/android/apps/dashclock/api/d.<init> ()V]
+      [7] putstatic #12
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.CREATOR Landroid/os/Parcelable$Creator;]
+      [10] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: com/google/android/apps/dashclock/api/d
+  Superclass:    java/lang/Object
+  Major version: 0x32
+  Minor version: 0x0
+  Access flags:  0x30
+    = final class com.google.android.apps.dashclock.api.d extends java.lang.Object
+
+Interfaces (count = 1):
+  + Class [android/os/Parcelable$Creator]
+
+Constant Pool (count = 28):
+  + Class [android/os/Parcelable$Creator]
+  + Class [com/google/android/apps/dashclock/api/ExtensionData]
+  + Class [com/google/android/apps/dashclock/api/d]
+  + Class [java/lang/Object]
+  + Methodref [com/google/android/apps/dashclock/api/ExtensionData.<init> (Landroid/os/Parcel;Lcom/google/android/apps/dashclock/api/d;)V]
+  + Methodref [com/google/android/apps/dashclock/api/d.a (I)[Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + Methodref [com/google/android/apps/dashclock/api/d.a (Landroid/os/Parcel;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + Methodref [java/lang/Object.<init> ()V]
+  + NameAndType [<init> ()V]
+  + NameAndType [<init> (Landroid/os/Parcel;Lcom/google/android/apps/dashclock/api/d;)V]
+  + NameAndType [a (I)[Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + NameAndType [a (Landroid/os/Parcel;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + Utf8 [()V]
+  + Utf8 [(I)[Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + Utf8 [(I)[Ljava/lang/Object;]
+  + Utf8 [(Landroid/os/Parcel;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + Utf8 [(Landroid/os/Parcel;)Ljava/lang/Object;]
+  + Utf8 [(Landroid/os/Parcel;Lcom/google/android/apps/dashclock/api/d;)V]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [a]
+  + Utf8 [android/os/Parcelable$Creator]
+  + Utf8 [com/google/android/apps/dashclock/api/ExtensionData]
+  + Utf8 [com/google/android/apps/dashclock/api/d]
+  + Utf8 [createFromParcel]
+  + Utf8 [java/lang/Object]
+  + Utf8 [newArray]
+
+Fields (count = 0):
+
+Methods (count = 5):
+  - Method:       <init>()V
+    Access flags: 0x0
+      = d()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] invokespecial #8
+        + Methodref [java/lang/Object.<init> ()V]
+      [4] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Landroid/os/Parcel;)Lcom/google/android/apps/dashclock/api/ExtensionData;
+    Access flags: 0x1
+      = public com.google.android.apps.dashclock.api.ExtensionData a(android.os.Parcel)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 2, stack = 4):
+      [0] new #2
+        + Class [com/google/android/apps/dashclock/api/ExtensionData]
+      [3] dup
+      [4] aload_1 v1
+      [5] aconst_null
+      [6] invokespecial #5
+        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.<init> (Landroid/os/Parcel;Lcom/google/android/apps/dashclock/api/d;)V]
+      [9] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(I)[Lcom/google/android/apps/dashclock/api/ExtensionData;
+    Access flags: 0x1
+      = public com.google.android.apps.dashclock.api.ExtensionData[] a(int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 2, stack = 1):
+      [0] iload_1 v1
+      [1] anewarray #2
+        + Class [com/google/android/apps/dashclock/api/ExtensionData]
+      [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       newArray(I)[Ljava/lang/Object;
+    Access flags: 0x1001
+      = public synthetic java.lang.Object[] newArray(int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 6, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] iload_1 v1
+      [2] invokevirtual #6
+        + Methodref [com/google/android/apps/dashclock/api/d.a (I)[Lcom/google/android/apps/dashclock/api/ExtensionData;]
+      [5] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+    Access flags: 0x1001
+      = public synthetic java.lang.Object createFromParcel(android.os.Parcel)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 6, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] invokevirtual #7
+        + Methodref [com/google/android/apps/dashclock/api/d.a (Landroid/os/Parcel;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+      [5] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: com/google/android/apps/dashclock/api/a/a
+  Superclass:    java/lang/Object
+  Major version: 0x32
+  Minor version: 0x0
+  Access flags:  0x601
+    = public interface com.google.android.apps.dashclock.api.a.a extends java.lang.Object
+
+Interfaces (count = 1):
+  + Class [android/os/IInterface]
+
+Constant Pool (count = 10):
+  + Class [android/os/IInterface]
+  + Class [com/google/android/apps/dashclock/api/a/a]
+  + Class [java/lang/Object]
+  + Utf8 [(I)V]
+  + Utf8 [(Lcom/google/android/apps/dashclock/api/a/c;Z)V]
+  + Utf8 [a]
+  + Utf8 [android/os/IInterface]
+  + Utf8 [com/google/android/apps/dashclock/api/a/a]
+  + Utf8 [java/lang/Object]
+
+Fields (count = 0):
+
+Methods (count = 2):
+  + Method:       a(Lcom/google/android/apps/dashclock/api/a/c;Z)V
+    Access flags: 0x401
+      = public abstract void a(com.google.android.apps.dashclock.api.a.c,boolean)
+  + Method:       a(I)V
+    Access flags: 0x401
+      = public abstract void a(int)
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: com/google/android/apps/dashclock/api/a/b
+  Superclass:    android/os/Binder
+  Major version: 0x32
+  Minor version: 0x0
+  Access flags:  0x421
+    = public abstract class com.google.android.apps.dashclock.api.a.b extends android.os.Binder
+
+Interfaces (count = 1):
+  + Class [com/google/android/apps/dashclock/api/a/a]
+
+Constant Pool (count = 55):
+  + String [com.google.android.apps.dashclock.api.internal.IExtension]
+  + Class [android/os/Binder]
+  + Class [android/os/Parcel]
+  + Class [com/google/android/apps/dashclock/api/a/a]
+  + Class [com/google/android/apps/dashclock/api/a/b]
+  + Class [com/google/android/apps/dashclock/api/a/c]
+  + Class [com/google/android/apps/dashclock/api/a/d]
+  + Methodref [android/os/Binder.<init> ()V]
+  + Methodref [android/os/Binder.onTransact (ILandroid/os/Parcel;Landroid/os/Parcel;I)Z]
+  + Methodref [android/os/Parcel.enforceInterface (Ljava/lang/String;)V]
+  + Methodref [android/os/Parcel.readInt ()I]
+  + Methodref [android/os/Parcel.readStrongBinder ()Landroid/os/IBinder;]
+  + Methodref [android/os/Parcel.writeString (Ljava/lang/String;)V]
+  + Methodref [com/google/android/apps/dashclock/api/a/b.a (I)V]
+  + Methodref [com/google/android/apps/dashclock/api/a/b.a (Lcom/google/android/apps/dashclock/api/a/c;Z)V]
+  + Methodref [com/google/android/apps/dashclock/api/a/b.attachInterface (Landroid/os/IInterface;Ljava/lang/String;)V]
+  + Methodref [com/google/android/apps/dashclock/api/a/d.a (Landroid/os/IBinder;)Lcom/google/android/apps/dashclock/api/a/c;]
+  + NameAndType [<init> ()V]
+  + NameAndType [a (I)V]
+  + NameAndType [a (Landroid/os/IBinder;)Lcom/google/android/apps/dashclock/api/a/c;]
+  + NameAndType [a (Lcom/google/android/apps/dashclock/api/a/c;Z)V]
+  + NameAndType [attachInterface (Landroid/os/IInterface;Ljava/lang/String;)V]
+  + NameAndType [enforceInterface (Ljava/lang/String;)V]
+  + NameAndType [onTransact (ILandroid/os/Parcel;Landroid/os/Parcel;I)Z]
+  + NameAndType [readInt ()I]
+  + NameAndType [readStrongBinder ()Landroid/os/IBinder;]
+  + NameAndType [writeString (Ljava/lang/String;)V]
+  + Utf8 [()I]
+  + Utf8 [()Landroid/os/IBinder;]
+  + Utf8 [()V]
+  + Utf8 [(I)V]
+  + Utf8 [(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z]
+  + Utf8 [(Landroid/os/IBinder;)Lcom/google/android/apps/dashclock/api/a/c;]
+  + Utf8 [(Landroid/os/IInterface;Ljava/lang/String;)V]
+  + Utf8 [(Lcom/google/android/apps/dashclock/api/a/c;Z)V]
+  + Utf8 [(Ljava/lang/String;)V]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [StackMapTable]
+  + Utf8 [a]
+  + Utf8 [android/os/Binder]
+  + Utf8 [android/os/Parcel]
+  + Utf8 [asBinder]
+  + Utf8 [attachInterface]
+  + Utf8 [com.google.android.apps.dashclock.api.internal.IExtension]
+  + Utf8 [com/google/android/apps/dashclock/api/a/a]
+  + Utf8 [com/google/android/apps/dashclock/api/a/b]
+  + Utf8 [com/google/android/apps/dashclock/api/a/c]
+  + Utf8 [com/google/android/apps/dashclock/api/a/d]
+  + Utf8 [enforceInterface]
+  + Utf8 [onTransact]
+  + Utf8 [readInt]
+  + Utf8 [readStrongBinder]
+  + Utf8 [writeString]
+
+Fields (count = 0):
+
+Methods (count = 3):
+  - Method:       <init>()V
+    Access flags: 0x1
+      = public b()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 12, locals = 1, stack = 3):
+      [0] aload_0 v0
+      [1] invokespecial #8
+        + Methodref [android/os/Binder.<init> ()V]
+      [4] aload_0 v0
+      [5] aload_0 v0
+      [6] ldc #1
+        + String [com.google.android.apps.dashclock.api.internal.IExtension]
+      [8] invokevirtual #16
+        + Methodref [com/google/android/apps/dashclock/api/a/b.attachInterface (Landroid/os/IInterface;Ljava/lang/String;)V]
+      [11] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       asBinder()Landroid/os/IBinder;
+    Access flags: 0x1
+      = public android.os.IBinder asBinder()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 2, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
+    Access flags: 0x1
+      = public boolean onTransact(int,android.os.Parcel,android.os.Parcel,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 114, locals = 7, stack = 5):
+      [0] iload_1 v1
+      [1] lookupswitch (3 offsets, default=103) (target=104)
+        1: offset = 43, target = 44
+        2: offset = 83, target = 84
+        1598968902: offset = 35, target = 36
+        default: offset = 103, target = 104
+      [36] aload_3 v3
+      [37] ldc #1
+        + String [com.google.android.apps.dashclock.api.internal.IExtension]
+      [39] invokevirtual #13
+        + Methodref [android/os/Parcel.writeString (Ljava/lang/String;)V]
+      [42] iconst_1
+      [43] ireturn
+      [44] aload_2 v2
+      [45] ldc #1
+        + String [com.google.android.apps.dashclock.api.internal.IExtension]
+      [47] invokevirtual #10
+        + Methodref [android/os/Parcel.enforceInterface (Ljava/lang/String;)V]
+      [50] aload_2 v2
+      [51] invokevirtual #12
+        + Methodref [android/os/Parcel.readStrongBinder ()Landroid/os/IBinder;]
+      [54] invokestatic #17
+        + Methodref [com/google/android/apps/dashclock/api/a/d.a (Landroid/os/IBinder;)Lcom/google/android/apps/dashclock/api/a/c;]
+      [57] astore v5
+      [59] iconst_0
+      [60] aload_2 v2
+      [61] invokevirtual #11
+        + Methodref [android/os/Parcel.readInt ()I]
+      [64] ificmpeq +7 (target=71)
+      [67] iconst_1
+      [68] goto +4 (target=72)
+      [71] iconst_0
+      [72] istore v6
+      [74] aload_0 v0
+      [75] aload v5
+      [77] iload v6
+      [79] invokevirtual #15
+        + Methodref [com/google/android/apps/dashclock/api/a/b.a (Lcom/google/android/apps/dashclock/api/a/c;Z)V]
+      [82] iconst_1
+      [83] ireturn
+      [84] aload_2 v2
+      [85] ldc #1
+        + String [com.google.android.apps.dashclock.api.internal.IExtension]
+      [87] invokevirtual #10
+        + Methodref [android/os/Parcel.enforceInterface (Ljava/lang/String;)V]
+      [90] aload_2 v2
+      [91] invokevirtual #11
+        + Methodref [android/os/Parcel.readInt ()I]
+      [94] istore v5
+      [96] aload_0 v0
+      [97] iload v5
+      [99] invokevirtual #14
+        + Methodref [com/google/android/apps/dashclock/api/a/b.a (I)V]
+      [102] iconst_1
+      [103] ireturn
+      [104] aload_0 v0
+      [105] iload_1 v1
+      [106] aload_2 v2
+      [107] aload_3 v3
+      [108] iload v4
+      [110] invokespecial #9
+        + Methodref [android/os/Binder.onTransact (ILandroid/os/Parcel;Landroid/os/Parcel;I)Z]
+      [113] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 1):
+      + Stack map table attribute (count = 6):
+        - [36] Var: ..., Stack: (empty)
+        - [44] Var: ..., Stack: (empty)
+        - [71] Var: ...[a:com/google/android/apps/dashclock/api/a/c], Stack: (empty)
+        - [72] Var: ..., Stack: [i]
+        - [84] Var: -1, Stack: (empty)
+        - [104] Var: ..., Stack: (empty)
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: com/google/android/apps/dashclock/api/a/c
+  Superclass:    java/lang/Object
+  Major version: 0x32
+  Minor version: 0x0
+  Access flags:  0x601
+    = public interface com.google.android.apps.dashclock.api.a.c extends java.lang.Object
+
+Interfaces (count = 1):
+  + Class [android/os/IInterface]
+
+Constant Pool (count = 11):
+  + Class [android/os/IInterface]
+  + Class [com/google/android/apps/dashclock/api/a/c]
+  + Class [java/lang/Object]
+  + Utf8 [(Lcom/google/android/apps/dashclock/api/ExtensionData;)V]
+  + Utf8 [(Z)V]
+  + Utf8 [([Ljava/lang/String;)V]
+  + Utf8 [a]
+  + Utf8 [android/os/IInterface]
+  + Utf8 [com/google/android/apps/dashclock/api/a/c]
+  + Utf8 [java/lang/Object]
+
+Fields (count = 0):
+
+Methods (count = 3):
+  + Method:       a(Lcom/google/android/apps/dashclock/api/ExtensionData;)V
+    Access flags: 0x401
+      = public abstract void a(com.google.android.apps.dashclock.api.ExtensionData)
+  + Method:       a([Ljava/lang/String;)V
+    Access flags: 0x401
+      = public abstract void a(java.lang.String[])
+  + Method:       a(Z)V
+    Access flags: 0x401
+      = public abstract void a(boolean)
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: com/google/android/apps/dashclock/api/a/d
+  Superclass:    android/os/Binder
+  Major version: 0x32
+  Minor version: 0x0
+  Access flags:  0x421
+    = public abstract class com.google.android.apps.dashclock.api.a.d extends android.os.Binder
+
+Interfaces (count = 1):
+  + Class [com/google/android/apps/dashclock/api/a/c]
+
+Constant Pool (count = 69):
+  + String [com.google.android.apps.dashclock.api.internal.IExtensionHost]
+  + Class [android/os/Binder]
+  + Class [android/os/IBinder]
+  + Class [android/os/IInterface]
+  + Class [android/os/Parcel]
+  + Class [android/os/Parcelable$Creator]
+  + Class [com/google/android/apps/dashclock/api/ExtensionData]
+  + Class [com/google/android/apps/dashclock/api/a/c]
+  + Class [com/google/android/apps/dashclock/api/a/d]
+  + Class [com/google/android/apps/dashclock/api/a/e]
+  + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.CREATOR Landroid/os/Parcelable$Creator;]
+  + Methodref [android/os/Binder.onTransact (ILandroid/os/Parcel;Landroid/os/Parcel;I)Z]
+  + Methodref [android/os/Parcel.createStringArray ()[Ljava/lang/String;]
+  + Methodref [android/os/Parcel.enforceInterface (Ljava/lang/String;)V]
+  + Methodref [android/os/Parcel.readInt ()I]
+  + Methodref [android/os/Parcel.writeString (Ljava/lang/String;)V]
+  + Methodref [com/google/android/apps/dashclock/api/a/d.a (Lcom/google/android/apps/dashclock/api/ExtensionData;)V]
+  + Methodref [com/google/android/apps/dashclock/api/a/d.a (Z)V]
+  + Methodref [com/google/android/apps/dashclock/api/a/d.a ([Ljava/lang/String;)V]
+  + Methodref [com/google/android/apps/dashclock/api/a/e.<init> (Landroid/os/IBinder;)V]
+  + InterfaceMethodref [android/os/IBinder.queryLocalInterface (Ljava/lang/String;)Landroid/os/IInterface;]
+  + InterfaceMethodref [android/os/Parcelable$Creator.createFromParcel (Landroid/os/Parcel;)Ljava/lang/Object;]
+  + NameAndType [<init> (Landroid/os/IBinder;)V]
+  + NameAndType [CREATOR Landroid/os/Parcelable$Creator;]
+  + NameAndType [a (Lcom/google/android/apps/dashclock/api/ExtensionData;)V]
+  + NameAndType [a (Z)V]
+  + NameAndType [a ([Ljava/lang/String;)V]
+  + NameAndType [createFromParcel (Landroid/os/Parcel;)Ljava/lang/Object;]
+  + NameAndType [createStringArray ()[Ljava/lang/String;]
+  + NameAndType [enforceInterface (Ljava/lang/String;)V]
+  + NameAndType [onTransact (ILandroid/os/Parcel;Landroid/os/Parcel;I)Z]
+  + NameAndType [queryLocalInterface (Ljava/lang/String;)Landroid/os/IInterface;]
+  + NameAndType [readInt ()I]
+  + NameAndType [writeString (Ljava/lang/String;)V]
+  + Utf8 [()I]
+  + Utf8 [()[Ljava/lang/String;]
+  + Utf8 [(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z]
+  + Utf8 [(Landroid/os/IBinder;)Lcom/google/android/apps/dashclock/api/a/c;]
+  + Utf8 [(Landroid/os/IBinder;)V]
+  + Utf8 [(Landroid/os/Parcel;)Ljava/lang/Object;]
+  + Utf8 [(Lcom/google/android/apps/dashclock/api/ExtensionData;)V]
+  + Utf8 [(Ljava/lang/String;)Landroid/os/IInterface;]
+  + Utf8 [(Ljava/lang/String;)V]
+  + Utf8 [(Z)V]
+  + Utf8 [([Ljava/lang/String;)V]
+  + Utf8 [<init>]
+  + Utf8 [CREATOR]
+  + Utf8 [Code]
+  + Utf8 [Landroid/os/Parcelable$Creator;]
+  + Utf8 [StackMapTable]
+  + Utf8 [a]
+  + Utf8 [android/os/Binder]
+  + Utf8 [android/os/IBinder]
+  + Utf8 [android/os/IInterface]
+  + Utf8 [android/os/Parcel]
+  + Utf8 [android/os/Parcelable$Creator]
+  + Utf8 [com.google.android.apps.dashclock.api.internal.IExtensionHost]
+  + Utf8 [com/google/android/apps/dashclock/api/ExtensionData]
+  + Utf8 [com/google/android/apps/dashclock/api/a/c]
+  + Utf8 [com/google/android/apps/dashclock/api/a/d]
+  + Utf8 [com/google/android/apps/dashclock/api/a/e]
+  + Utf8 [createFromParcel]
+  + Utf8 [createStringArray]
+  + Utf8 [enforceInterface]
+  + Utf8 [onTransact]
+  + Utf8 [queryLocalInterface]
+  + Utf8 [readInt]
+  + Utf8 [writeString]
+
+Fields (count = 0):
+
+Methods (count = 2):
+  + Method:       a(Landroid/os/IBinder;)Lcom/google/android/apps/dashclock/api/a/c;
+    Access flags: 0x9
+      = public static com.google.android.apps.dashclock.api.a.c a(android.os.IBinder)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 40, locals = 2, stack = 3):
+      [0] aload_0 v0
+      [1] ifnonnull +5 (target=6)
+      [4] aconst_null
+      [5] areturn
+      [6] aload_0 v0
+      [7] ldc #1
+        + String [com.google.android.apps.dashclock.api.internal.IExtensionHost]
+      [9] invokeinterface #21
+        + InterfaceMethodref [android/os/IBinder.queryLocalInterface (Ljava/lang/String;)Landroid/os/IInterface;]
+      [14] astore_1 v1
+      [15] aload_1 v1
+      [16] ifnull +15 (target=31)
+      [19] aload_1 v1
+      [20] instanceof #8
+        + Class [com/google/android/apps/dashclock/api/a/c]
+      [23] ifeq +8 (target=31)
+      [26] aload_1 v1
+      [27] checkcast #8
+        + Class [com/google/android/apps/dashclock/api/a/c]
+      [30] areturn
+      [31] new #10
+        + Class [com/google/android/apps/dashclock/api/a/e]
+      [34] dup
+      [35] aload_0 v0
+      [36] invokespecial #20
+        + Methodref [com/google/android/apps/dashclock/api/a/e.<init> (Landroid/os/IBinder;)V]
+      [39] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 1):
+      + Stack map table attribute (count = 2):
+        - [6] Var: ..., Stack: (empty)
+        - [31] Var: ...[a:android/os/IInterface], Stack: (empty)
+  + Method:       onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
+    Access flags: 0x1
+      = public boolean onTransact(int,android.os.Parcel,android.os.Parcel,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 153, locals = 6, stack = 5):
+      [0] iload_1 v1
+      [1] lookupswitch (4 offsets, default=142) (target=143)
+        1: offset = 51, target = 52
+        2: offset = 93, target = 94
+        3: offset = 113, target = 114
+        1598968902: offset = 43, target = 44
+        default: offset = 142, target = 143
+      [44] aload_3 v3
+      [45] ldc #1
+        + String [com.google.android.apps.dashclock.api.internal.IExtensionHost]
+      [47] invokevirtual #16
+        + Methodref [android/os/Parcel.writeString (Ljava/lang/String;)V]
+      [50] iconst_1
+      [51] ireturn
+      [52] aload_2 v2
+      [53] ldc #1
+        + String [com.google.android.apps.dashclock.api.internal.IExtensionHost]
+      [55] invokevirtual #14
+        + Methodref [android/os/Parcel.enforceInterface (Ljava/lang/String;)V]
+      [58] iconst_0
+      [59] aload_2 v2
+      [60] invokevirtual #15
+        + Methodref [android/os/Parcel.readInt ()I]
+      [63] ificmpeq +20 (target=83)
+      [66] getstatic #11
+        + Fieldref [com/google/android/apps/dashclock/api/ExtensionData.CREATOR Landroid/os/Parcelable$Creator;]
+      [69] aload_2 v2
+      [70] invokeinterface #22
+        + InterfaceMethodref [android/os/Parcelable$Creator.createFromParcel (Landroid/os/Parcel;)Ljava/lang/Object;]
+      [75] checkcast #7
+        + Class [com/google/android/apps/dashclock/api/ExtensionData]
+      [78] astore v5
+      [80] goto +6 (target=86)
+      [83] aconst_null
+      [84] astore v5
+      [86] aload_0 v0
+      [87] aload v5
+      [89] invokevirtual #17
+        + Methodref [com/google/android/apps/dashclock/api/a/d.a (Lcom/google/android/apps/dashclock/api/ExtensionData;)V]
+      [92] iconst_1
+      [93] ireturn
+      [94] aload_2 v2
+      [95] ldc #1
+        + String [com.google.android.apps.dashclock.api.internal.IExtensionHost]
+      [97] invokevirtual #14
+        + Methodref [android/os/Parcel.enforceInterface (Ljava/lang/String;)V]
+      [100] aload_2 v2
+      [101] invokevirtual #13
+        + Methodref [android/os/Parcel.createStringArray ()[Ljava/lang/String;]
+      [104] astore v5
+      [106] aload_0 v0
+      [107] aload v5
+      [109] invokevirtual #19
+        + Methodref [com/google/android/apps/dashclock/api/a/d.a ([Ljava/lang/String;)V]
+      [112] iconst_1
+      [113] ireturn
+      [114] aload_2 v2
+      [115] ldc #1
+        + String [com.google.android.apps.dashclock.api.internal.IExtensionHost]
+      [117] invokevirtual #14
+        + Methodref [android/os/Parcel.enforceInterface (Ljava/lang/String;)V]
+      [120] iconst_0
+      [121] aload_2 v2
+      [122] invokevirtual #15
+        + Methodref [android/os/Parcel.readInt ()I]
+      [125] ificmpeq +7 (target=132)
+      [128] iconst_1
+      [129] goto +4 (target=133)
+      [132] iconst_0
+      [133] istore v5
+      [135] aload_0 v0
+      [136] iload v5
+      [138] invokevirtual #18
+        + Methodref [com/google/android/apps/dashclock/api/a/d.a (Z)V]
+      [141] iconst_1
+      [142] ireturn
+      [143] aload_0 v0
+      [144] iload_1 v1
+      [145] aload_2 v2
+      [146] aload_3 v3
+      [147] iload v4
+      [149] invokespecial #12
+        + Methodref [android/os/Binder.onTransact (ILandroid/os/Parcel;Landroid/os/Parcel;I)Z]
+      [152] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 1):
+      + Stack map table attribute (count = 9):
+        - [44] Var: ..., Stack: (empty)
+        - [52] Var: ..., Stack: (empty)
+        - [83] Var: ..., Stack: (empty)
+        - [86] Var: ...[a:com/google/android/apps/dashclock/api/ExtensionData], Stack: (empty)
+        - [94] Var: -1, Stack: (empty)
+        - [114] Var: ..., Stack: (empty)
+        - [132] Var: ..., Stack: (empty)
+        - [133] Var: ..., Stack: [i]
+        - [143] Var: ..., Stack: (empty)
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: com/google/android/apps/dashclock/api/a/e
+  Superclass:    java/lang/Object
+  Major version: 0x32
+  Minor version: 0x0
+  Access flags:  0x20
+    = class com.google.android.apps.dashclock.api.a.e extends java.lang.Object
+
+Interfaces (count = 1):
+  + Class [com/google/android/apps/dashclock/api/a/c]
+
+Constant Pool (count = 61):
+  + String [com.google.android.apps.dashclock.api.internal.IExtensionHost]
+  + Class [[Ljava/lang/String;]
+  + Class [android/os/IBinder]
+  + Class [android/os/Parcel]
+  + Class [com/google/android/apps/dashclock/api/ExtensionData]
+  + Class [com/google/android/apps/dashclock/api/a/c]
+  + Class [com/google/android/apps/dashclock/api/a/e]
+  + Class [java/lang/Object]
+  + Class [java/lang/Throwable]
+  + Fieldref [com/google/android/apps/dashclock/api/a/e.a Landroid/os/IBinder;]
+  + Methodref [android/os/Parcel.obtain ()Landroid/os/Parcel;]
+  + Methodref [android/os/Parcel.recycle ()V]
+  + Methodref [android/os/Parcel.writeInt (I)V]
+  + Methodref [android/os/Parcel.writeInterfaceToken (Ljava/lang/String;)V]
+  + Methodref [android/os/Parcel.writeStringArray ([Ljava/lang/String;)V]
+  + Methodref [com/google/android/apps/dashclock/api/ExtensionData.writeToParcel (Landroid/os/Parcel;I)V]
+  + Methodref [java/lang/Object.<init> ()V]
+  + InterfaceMethodref [android/os/IBinder.transact (ILandroid/os/Parcel;Landroid/os/Parcel;I)Z]
+  + NameAndType [<init> ()V]
+  + NameAndType [a Landroid/os/IBinder;]
+  + NameAndType [obtain ()Landroid/os/Parcel;]
+  + NameAndType [recycle ()V]
+  + NameAndType [transact (ILandroid/os/Parcel;Landroid/os/Parcel;I)Z]
+  + NameAndType [writeInt (I)V]
+  + NameAndType [writeInterfaceToken (Ljava/lang/String;)V]
+  + NameAndType [writeStringArray ([Ljava/lang/String;)V]
+  + NameAndType [writeToParcel (Landroid/os/Parcel;I)V]
+  + Utf8 [()Landroid/os/IBinder;]
+  + Utf8 [()Landroid/os/Parcel;]
+  + Utf8 [()V]
+  + Utf8 [(I)V]
+  + Utf8 [(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z]
+  + Utf8 [(Landroid/os/IBinder;)V]
+  + Utf8 [(Landroid/os/Parcel;I)V]
+  + Utf8 [(Lcom/google/android/apps/dashclock/api/ExtensionData;)V]
+  + Utf8 [(Ljava/lang/String;)V]
+  + Utf8 [(Z)V]
+  + Utf8 [([Ljava/lang/String;)V]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [Landroid/os/IBinder;]
+  + Utf8 [StackMapTable]
+  + Utf8 [[Ljava/lang/String;]
+  + Utf8 [a]
+  + Utf8 [android/os/IBinder]
+  + Utf8 [android/os/Parcel]
+  + Utf8 [asBinder]
+  + Utf8 [com.google.android.apps.dashclock.api.internal.IExtensionHost]
+  + Utf8 [com/google/android/apps/dashclock/api/ExtensionData]
+  + Utf8 [com/google/android/apps/dashclock/api/a/c]
+  + Utf8 [com/google/android/apps/dashclock/api/a/e]
+  + Utf8 [java/lang/Object]
+  + Utf8 [java/lang/Throwable]
+  + Utf8 [obtain]
+  + Utf8 [recycle]
+  + Utf8 [transact]
+  + Utf8 [writeInt]
+  + Utf8 [writeInterfaceToken]
+  + Utf8 [writeStringArray]
+  + Utf8 [writeToParcel]
+
+Fields (count = 1):
+  + Field:        a Landroid/os/IBinder;
+    Access flags: 0x2
+      = private android.os.IBinder a
+
+Methods (count = 5):
+  - Method:       <init>(Landroid/os/IBinder;)V
+    Access flags: 0x0
+      = e(android.os.IBinder)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] invokespecial #17
+        + Methodref [java/lang/Object.<init> ()V]
+      [4] aload_0 v0
+      [5] aload_1 v1
+      [6] putfield #10
+        + Fieldref [com/google/android/apps/dashclock/api/a/e.a Landroid/os/IBinder;]
+      [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       asBinder()Landroid/os/IBinder;
+    Access flags: 0x1
+      = public android.os.IBinder asBinder()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #10
+        + Fieldref [com/google/android/apps/dashclock/api/a/e.a Landroid/os/IBinder;]
+      [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Lcom/google/android/apps/dashclock/api/ExtensionData;)V
+    Access flags: 0x1
+      = public void a(com.google.android.apps.dashclock.api.ExtensionData)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 62, locals = 4, stack = 5):
+      [0] invokestatic #11
+        + Methodref [android/os/Parcel.obtain ()Landroid/os/Parcel;]
+      [3] astore_2 v2
+      [4] aload_2 v2
+      [5] ldc #1
+        + String [com.google.android.apps.dashclock.api.internal.IExtensionHost]
+      [7] invokevirtual #14
+        + Methodref [android/os/Parcel.writeInterfaceToken (Ljava/lang/String;)V]
+      [10] aload_1 v1
+      [11] ifnull +17 (target=28)
+      [14] aload_2 v2
+      [15] iconst_1
+      [16] invokevirtual #13
+        + Methodref [android/os/Parcel.writeInt (I)V]
+      [19] aload_1 v1
+      [20] aload_2 v2
+      [21] iconst_0
+      [22] invokevirtual #16
+        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.writeToParcel (Landroid/os/Parcel;I)V]
+      [25] goto +8 (target=33)
+      [28] aload_2 v2
+      [29] iconst_0
+      [30] invokevirtual #13
+        + Methodref [android/os/Parcel.writeInt (I)V]
+      [33] aload_0 v0
+      [34] getfield #10
+        + Fieldref [com/google/android/apps/dashclock/api/a/e.a Landroid/os/IBinder;]
+      [37] iconst_1
+      [38] aload_2 v2
+      [39] aconst_null
+      [40] iconst_1
+      [41] invokeinterface #18
+        + InterfaceMethodref [android/os/IBinder.transact (ILandroid/os/Parcel;Landroid/os/Parcel;I)Z]
+      [46] pop
+      [47] aload_2 v2
+      [48] invokevirtual #12
+        + Methodref [android/os/Parcel.recycle ()V]
+      [51] goto +10 (target=61)
+      [54] astore_3 v3
+      [55] aload_2 v2
+      [56] invokevirtual #12
+        + Methodref [android/os/Parcel.recycle ()V]
+      [59] aload_3 v3
+      [60] athrow
+      [61] return
+      Code attribute exceptions (count = 2):
+      - ExceptionInfo (4 -> 47: 54):
+      - ExceptionInfo (54 -> 55: 54):
+      Code attribute attributes (attribute count = 1):
+      + Stack map table attribute (count = 4):
+        - [28] Var: ...[a:android/os/Parcel], Stack: (empty)
+        - [33] Var: ..., Stack: (empty)
+        - [54] Var: ..., Stack: [a:java/lang/Throwable]
+        - [61] Var: ..., Stack: (empty)
+  + Method:       a([Ljava/lang/String;)V
+    Access flags: 0x1
+      = public void a(java.lang.String[])
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 44, locals = 4, stack = 5):
+      [0] invokestatic #11
+        + Methodref [android/os/Parcel.obtain ()Landroid/os/Parcel;]
+      [3] astore_2 v2
+      [4] aload_2 v2
+      [5] ldc #1
+        + String [com.google.android.apps.dashclock.api.internal.IExtensionHost]
+      [7] invokevirtual #14
+        + Methodref [android/os/Parcel.writeInterfaceToken (Ljava/lang/String;)V]
+      [10] aload_2 v2
+      [11] aload_1 v1
+      [12] invokevirtual #15
+        + Methodref [android/os/Parcel.writeStringArray ([Ljava/lang/String;)V]
+      [15] aload_0 v0
+      [16] getfield #10
+        + Fieldref [com/google/android/apps/dashclock/api/a/e.a Landroid/os/IBinder;]
+      [19] iconst_2
+      [20] aload_2 v2
+      [21] aconst_null
+      [22] iconst_1
+      [23] invokeinterface #18
+        + InterfaceMethodref [android/os/IBinder.transact (ILandroid/os/Parcel;Landroid/os/Parcel;I)Z]
+      [28] pop
+      [29] aload_2 v2
+      [30] invokevirtual #12
+        + Methodref [android/os/Parcel.recycle ()V]
+      [33] goto +10 (target=43)
+      [36] astore_3 v3
+      [37] aload_2 v2
+      [38] invokevirtual #12
+        + Methodref [android/os/Parcel.recycle ()V]
+      [41] aload_3 v3
+      [42] athrow
+      [43] return
+      Code attribute exceptions (count = 2):
+      - ExceptionInfo (4 -> 29: 36):
+      - ExceptionInfo (36 -> 37: 36):
+      Code attribute attributes (attribute count = 1):
+      + Stack map table attribute (count = 2):
+        - [36] Var: [a:com/google/android/apps/dashclock/api/a/e][a:[Ljava/lang/String;][a:android/os/Parcel], Stack: [a:java/lang/Throwable]
+        - [43] Var: ..., Stack: (empty)
+  + Method:       a(Z)V
+    Access flags: 0x1
+      = public void a(boolean)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 52, locals = 4, stack = 5):
+      [0] invokestatic #11
+        + Methodref [android/os/Parcel.obtain ()Landroid/os/Parcel;]
+      [3] astore_2 v2
+      [4] aload_2 v2
+      [5] ldc #1
+        + String [com.google.android.apps.dashclock.api.internal.IExtensionHost]
+      [7] invokevirtual #14
+        + Methodref [android/os/Parcel.writeInterfaceToken (Ljava/lang/String;)V]
+      [10] aload_2 v2
+      [11] iload_1 v1
+      [12] ifeq +7 (target=19)
+      [15] iconst_1
+      [16] goto +4 (target=20)
+      [19] iconst_0
+      [20] invokevirtual #13
+        + Methodref [android/os/Parcel.writeInt (I)V]
+      [23] aload_0 v0
+      [24] getfield #10
+        + Fieldref [com/google/android/apps/dashclock/api/a/e.a Landroid/os/IBinder;]
+      [27] iconst_3
+      [28] aload_2 v2
+      [29] aconst_null
+      [30] iconst_1
+      [31] invokeinterface #18
+        + InterfaceMethodref [android/os/IBinder.transact (ILandroid/os/Parcel;Landroid/os/Parcel;I)Z]
+      [36] pop
+      [37] aload_2 v2
+      [38] invokevirtual #12
+        + Methodref [android/os/Parcel.recycle ()V]
+      [41] goto +10 (target=51)
+      [44] astore_3 v3
+      [45] aload_2 v2
+      [46] invokevirtual #12
+        + Methodref [android/os/Parcel.recycle ()V]
+      [49] aload_3 v3
+      [50] athrow
+      [51] return
+      Code attribute exceptions (count = 2):
+      - ExceptionInfo (4 -> 37: 44):
+      - ExceptionInfo (44 -> 45: 44):
+      Code attribute attributes (attribute count = 1):
+      + Stack map table attribute (count = 4):
+        - [19] Var: [a:com/google/android/apps/dashclock/api/a/e][i][a:android/os/Parcel], Stack: [a:android/os/Parcel]
+        - [20] Var: [a:com/google/android/apps/dashclock/api/a/e][i][a:android/os/Parcel], Stack: [a:android/os/Parcel][i]
+        - [44] Var: ..., Stack: [a:java/lang/Throwable]
+        - [51] Var: ..., Stack: (empty)
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
 + Program class: com/halcyonwaves/apps/energize/ApplicationCore
   Superclass:    android/app/Application
   Major version: 0x32
@@ -59493,6 +61621,140 @@ Methods (count = 5):
       + Stack map table attribute (count = 2):
         - [12] Var: ..., Stack: [a:com/halcyonwaves/apps/energize/CustomViewPager]
         - [13] Var: [a:com/halcyonwaves/apps/energize/CustomViewPager], Stack: [a:com/halcyonwaves/apps/energize/CustomViewPager][i]
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: com/halcyonwaves/apps/energize/EnergizeExtension
+  Superclass:    com/google/android/apps/dashclock/api/a
+  Major version: 0x32
+  Minor version: 0x0
+  Access flags:  0x21
+    = public class com.halcyonwaves.apps.energize.EnergizeExtension extends com.google.android.apps.dashclock.api.a
+
+Interfaces (count = 0):
+
+Constant Pool (count = 58):
+  + Integer [2130837504]
+  + String [Hello]
+  + String [Hello, world!]
+  + String [This is an example.]
+  + String [android.intent.action.VIEW]
+  + String [http://www.google.com]
+  + Class [android/content/Intent]
+  + Class [android/net/Uri]
+  + Class [com/google/android/apps/dashclock/api/ExtensionData]
+  + Class [com/google/android/apps/dashclock/api/a]
+  + Class [com/halcyonwaves/apps/energize/EnergizeExtension]
+  + Methodref [android/content/Intent.<init> (Ljava/lang/String;Landroid/net/Uri;)V]
+  + Methodref [android/net/Uri.parse (Ljava/lang/String;)Landroid/net/Uri;]
+  + Methodref [com/google/android/apps/dashclock/api/ExtensionData.<init> ()V]
+  + Methodref [com/google/android/apps/dashclock/api/ExtensionData.a (I)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + Methodref [com/google/android/apps/dashclock/api/ExtensionData.a (Landroid/content/Intent;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + Methodref [com/google/android/apps/dashclock/api/ExtensionData.a (Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + Methodref [com/google/android/apps/dashclock/api/ExtensionData.a (Z)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + Methodref [com/google/android/apps/dashclock/api/ExtensionData.b (Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + Methodref [com/google/android/apps/dashclock/api/ExtensionData.c (Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + Methodref [com/google/android/apps/dashclock/api/a.<init> ()V]
+  + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.a (Lcom/google/android/apps/dashclock/api/ExtensionData;)V]
+  + NameAndType [<init> ()V]
+  + NameAndType [<init> (Ljava/lang/String;Landroid/net/Uri;)V]
+  + NameAndType [a (I)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + NameAndType [a (Landroid/content/Intent;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + NameAndType [a (Lcom/google/android/apps/dashclock/api/ExtensionData;)V]
+  + NameAndType [a (Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + NameAndType [a (Z)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + NameAndType [b (Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + NameAndType [c (Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + NameAndType [parse (Ljava/lang/String;)Landroid/net/Uri;]
+  + Utf8 [()V]
+  + Utf8 [(I)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + Utf8 [(I)V]
+  + Utf8 [(Landroid/content/Intent;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + Utf8 [(Lcom/google/android/apps/dashclock/api/ExtensionData;)V]
+  + Utf8 [(Ljava/lang/String;)Landroid/net/Uri;]
+  + Utf8 [(Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + Utf8 [(Ljava/lang/String;Landroid/net/Uri;)V]
+  + Utf8 [(Z)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [Hello]
+  + Utf8 [Hello, world!]
+  + Utf8 [This is an example.]
+  + Utf8 [a]
+  + Utf8 [android.intent.action.VIEW]
+  + Utf8 [android/content/Intent]
+  + Utf8 [android/net/Uri]
+  + Utf8 [b]
+  + Utf8 [c]
+  + Utf8 [com/google/android/apps/dashclock/api/ExtensionData]
+  + Utf8 [com/google/android/apps/dashclock/api/a]
+  + Utf8 [com/halcyonwaves/apps/energize/EnergizeExtension]
+  + Utf8 [http://www.google.com]
+  + Utf8 [parse]
+
+Fields (count = 0):
+
+Methods (count = 2):
+  - Method:       <init>()V
+    Access flags: 0x1
+      = public EnergizeExtension()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] invokespecial #21
+        + Methodref [com/google/android/apps/dashclock/api/a.<init> ()V]
+      [4] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(I)V
+    Access flags: 0x4
+      = protected void a(int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 53, locals = 2, stack = 6):
+      [0] aload_0 v0
+      [1] new #9
+        + Class [com/google/android/apps/dashclock/api/ExtensionData]
+      [4] dup
+      [5] invokespecial #14
+        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.<init> ()V]
+      [8] iconst_1
+      [9] invokevirtual #18
+        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.a (Z)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+      [12] ldc #1
+        + Integer [2130837504]
+      [14] invokevirtual #15
+        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.a (I)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+      [17] ldc #2
+        + String [Hello]
+      [19] invokevirtual #17
+        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.a (Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+      [22] ldc #3
+        + String [Hello, world!]
+      [24] invokevirtual #19
+        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.b (Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+      [27] ldc #4
+        + String [This is an example.]
+      [29] invokevirtual #20
+        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.c (Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+      [32] new #7
+        + Class [android/content/Intent]
+      [35] dup
+      [36] ldc #5
+        + String [android.intent.action.VIEW]
+      [38] ldc #6
+        + String [http://www.google.com]
+      [40] invokestatic #13
+        + Methodref [android/net/Uri.parse (Ljava/lang/String;)Landroid/net/Uri;]
+      [43] invokespecial #12
+        + Methodref [android/content/Intent.<init> (Ljava/lang/String;Landroid/net/Uri;)V]
+      [46] invokevirtual #16
+        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.a (Landroid/content/Intent;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+      [49] invokevirtual #22
+        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.a (Lcom/google/android/apps/dashclock/api/ExtensionData;)V]
+      [52] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
 
 Class file attributes (count = 0):
 
@@ -63847,7 +66109,7 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 337):
+Constant Pool (count = 341):
   + Integer [2130903046]
   + Integer [2131034129]
   + Integer [2131034132]
@@ -63861,6 +66123,7 @@ Constant Pool (count = 337):
   + String [-]
   + String [Device brand: ]
   + String [Device model name: ]
+  + String [Failed to query the current time estimation.]
   + String [OverviewFragment]
   + String [android.intent.action.BATTERY_CHANGED]
   + String [asus]
@@ -63936,6 +66199,7 @@ Constant Pool (count = 337):
   + Methodref [android/support/v4/app/h.getApplicationContext ()Landroid/content/Context;]
   + Methodref [android/support/v4/app/h.registerReceiver (Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;]
   + Methodref [android/support/v4/app/h.unbindService (Landroid/content/ServiceConnection;)V]
+  + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;)I]
   + Methodref [android/util/Log.v (Ljava/lang/String;Ljava/lang/String;)I]
   + Methodref [android/view/LayoutInflater.inflate (ILandroid/view/ViewGroup;Z)Landroid/view/View;]
   + Methodref [android/view/View.findViewById (I)Landroid/view/View;]
@@ -64000,6 +66264,7 @@ Constant Pool (count = 337):
   + NameAndType [close ()V]
   + NameAndType [compareToIgnoreCase (Ljava/lang/String;)I]
   + NameAndType [currentTimeMillis ()J]
+  + NameAndType [e (Ljava/lang/String;Ljava/lang/String;)I]
   + NameAndType [e I]
   + NameAndType [f I]
   + NameAndType [findViewById (I)Landroid/view/View;]
@@ -64081,6 +66346,7 @@ Constant Pool (count = 337):
   + Utf8 [DEVICE]
   + Utf8 [Device brand: ]
   + Utf8 [Device model name: ]
+  + Utf8 [Failed to query the current time estimation.]
   + Utf8 [I]
   + Utf8 [Landroid/content/ServiceConnection;]
   + Utf8 [Landroid/content/SharedPreferences;]
@@ -64224,66 +66490,66 @@ Methods (count = 18):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 81, locals = 1, stack = 6):
       [0] aload_0 v0
-      [1] invokespecial #85
+      [1] invokespecial #86
         + Methodref [android/support/v4/app/Fragment.<init> ()V]
       [4] aload_0 v0
       [5] aconst_null
-      [6] putfield #67
+      [6] putfield #68
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.P Landroid/os/Messenger;]
       [9] aload_0 v0
-      [10] new #44
+      [10] new #45
         + Class [com/halcyonwaves/apps/energize/fragments/b]
       [13] dup
       [14] aload_0 v0
-      [15] invokespecial #107
+      [15] invokespecial #109
         + Methodref [com/halcyonwaves/apps/energize/fragments/b.<init> (Lcom/halcyonwaves/apps/energize/fragments/OverviewFragment;)V]
-      [18] putfield #68
+      [18] putfield #69
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.Q Landroid/content/ServiceConnection;]
       [21] aload_0 v0
-      [22] new #31
+      [22] new #32
         + Class [android/os/Messenger]
       [25] dup
-      [26] new #46
+      [26] new #47
         + Class [com/halcyonwaves/apps/energize/fragments/d]
       [29] dup
       [30] aload_0 v0
-      [31] invokespecial #109
+      [31] invokespecial #111
         + Methodref [com/halcyonwaves/apps/energize/fragments/d.<init> (Lcom/halcyonwaves/apps/energize/fragments/OverviewFragment;)V]
-      [34] invokespecial #82
+      [34] invokespecial #83
         + Methodref [android/os/Messenger.<init> (Landroid/os/Handler;)V]
-      [37] putfield #69
+      [37] putfield #70
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.R Landroid/os/Messenger;]
       [40] aload_0 v0
       [41] aconst_null
-      [42] putfield #70
+      [42] putfield #71
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.S Landroid/content/SharedPreferences;]
       [45] aload_0 v0
       [46] aconst_null
-      [47] putfield #71
+      [47] putfield #72
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.T Landroid/widget/TextView;]
       [50] aload_0 v0
       [51] aconst_null
-      [52] putfield #72
+      [52] putfield #73
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.U Landroid/widget/TextView;]
       [55] aload_0 v0
       [56] aconst_null
-      [57] putfield #73
+      [57] putfield #74
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.V Landroid/widget/TextView;]
       [60] aload_0 v0
       [61] aconst_null
-      [62] putfield #74
+      [62] putfield #75
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.W Landroid/widget/TextView;]
       [65] aload_0 v0
       [66] aconst_null
-      [67] putfield #75
+      [67] putfield #76
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.X Landroid/widget/TextView;]
       [70] aload_0 v0
       [71] aconst_null
-      [72] putfield #76
+      [72] putfield #77
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.Y Landroid/widget/TextView;]
       [75] aload_0 v0
       [76] aconst_null
-      [77] putfield #77
+      [77] putfield #78
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.Z Landroid/widget/TextView;]
       [80] return
       Code attribute exceptions (count = 0):
@@ -64294,23 +66560,23 @@ Methods (count = 18):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 27, locals = 1, stack = 5):
       [0] aload_0 v0
-      [1] invokevirtual #105
+      [1] invokevirtual #107
         + Methodref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.b ()Landroid/support/v4/app/h;]
-      [4] new #24
+      [4] new #25
         + Class [android/content/Intent]
       [7] dup
       [8] aload_0 v0
-      [9] invokevirtual #105
+      [9] invokevirtual #107
         + Methodref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.b ()Landroid/support/v4/app/h;]
-      [12] ldc #47
+      [12] ldc #48
         + Class [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService]
-      [14] invokespecial #78
+      [14] invokespecial #79
         + Methodref [android/content/Intent.<init> (Landroid/content/Context;Ljava/lang/Class;)V]
       [17] aload_0 v0
-      [18] getfield #68
+      [18] getfield #69
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.Q Landroid/content/ServiceConnection;]
       [21] iconst_1
-      [22] invokevirtual #88
+      [22] invokevirtual #89
         + Methodref [android/support/v4/app/h.bindService (Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z]
       [25] pop
       [26] return
@@ -64322,39 +66588,39 @@ Methods (count = 18):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 50, locals = 2, stack = 2):
       [0] aload_0 v0
-      [1] getfield #67
+      [1] getfield #68
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.P Landroid/os/Messenger;]
       [4] ifnull +29 (target=33)
       [7] aconst_null
       [8] iconst_2
-      [9] invokestatic #81
+      [9] invokestatic #82
         + Methodref [android/os/Message.obtain (Landroid/os/Handler;I)Landroid/os/Message;]
       [12] astore_1 v1
       [13] aload_1 v1
       [14] aload_0 v0
-      [15] getfield #69
+      [15] getfield #70
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.R Landroid/os/Messenger;]
-      [18] putfield #64
+      [18] putfield #65
         + Fieldref [android/os/Message.replyTo Landroid/os/Messenger;]
       [21] aload_0 v0
-      [22] getfield #67
+      [22] getfield #68
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.P Landroid/os/Messenger;]
       [25] aload_1 v1
-      [26] invokevirtual #83
+      [26] invokevirtual #84
         + Methodref [android/os/Messenger.send (Landroid/os/Message;)V]
       [29] goto +4 (target=33)
       [32] astore_1 v1
       [33] aload_0 v0
-      [34] invokevirtual #105
+      [34] invokevirtual #107
         + Methodref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.b ()Landroid/support/v4/app/h;]
       [37] aload_0 v0
-      [38] getfield #68
+      [38] getfield #69
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.Q Landroid/content/ServiceConnection;]
-      [41] invokevirtual #91
+      [41] invokevirtual #92
         + Methodref [android/support/v4/app/h.unbindService (Landroid/content/ServiceConnection;)V]
       [44] aload_0 v0
       [45] aconst_null
-      [46] putfield #67
+      [46] putfield #68
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.P Landroid/os/Messenger;]
       [49] return
       Code attribute exceptions (count = 1):
@@ -64368,16 +66634,47 @@ Methods (count = 18):
     Access flags: 0x1
       = public void i()
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 9, locals = 1, stack = 1):
+    + Code attribute instructions (code length = 43, locals = 2, stack = 2):
       [0] aload_0 v0
-      [1] invokespecial #86
+      [1] invokespecial #87
         + Methodref [android/support/v4/app/Fragment.i ()V]
       [4] aload_0 v0
-      [5] invokespecial #101
+      [5] invokespecial #103
         + Methodref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.B ()V]
-      [8] return
-      Code attribute exceptions (count = 0):
-      Code attribute attributes (attribute count = 0):
+      [8] aconst_null
+      [9] iconst_5
+      [10] invokestatic #82
+        + Methodref [android/os/Message.obtain (Landroid/os/Handler;I)Landroid/os/Message;]
+      [13] astore_1 v1
+      [14] aload_1 v1
+      [15] aload_0 v0
+      [16] getfield #70
+        + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.R Landroid/os/Messenger;]
+      [19] putfield #65
+        + Fieldref [android/os/Message.replyTo Landroid/os/Messenger;]
+      [22] aload_0 v0
+      [23] getfield #68
+        + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.P Landroid/os/Messenger;]
+      [26] aload_1 v1
+      [27] invokevirtual #84
+        + Methodref [android/os/Messenger.send (Landroid/os/Message;)V]
+      [30] goto +12 (target=42)
+      [33] astore_1 v1
+      [34] ldc #15
+        + String [OverviewFragment]
+      [36] ldc #14
+        + String [Failed to query the current time estimation.]
+      [38] invokestatic #93
+        + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;)I]
+      [41] pop
+      [42] return
+      Code attribute exceptions (count = 1):
+      - ExceptionInfo (8 -> 30: 33):
+      + Class [android/os/RemoteException]
+      Code attribute attributes (attribute count = 1):
+      + Stack map table attribute (count = 2):
+        - [33] Var: ..., Stack: [a:android/os/RemoteException]
+        - [42] Var: ..., Stack: (empty)
   + Method:       a(Landroid/view/LayoutInflater;Landroid/view/ViewGroup;Landroid/os/Bundle;)Landroid/view/View;
     Access flags: 0x1
       = public android.view.View a(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle)
@@ -64385,145 +66682,145 @@ Methods (count = 18):
     + Code attribute instructions (code length = 454, locals = 18, stack = 8):
       [0] aload_0 v0
       [1] aload_0 v0
-      [2] invokevirtual #105
+      [2] invokevirtual #107
         + Methodref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.b ()Landroid/support/v4/app/h;]
-      [5] invokevirtual #89
+      [5] invokevirtual #90
         + Methodref [android/support/v4/app/h.getApplicationContext ()Landroid/content/Context;]
-      [8] invokestatic #84
+      [8] invokestatic #85
         + Methodref [android/preference/PreferenceManager.getDefaultSharedPreferences (Landroid/content/Context;)Landroid/content/SharedPreferences;]
-      [11] putfield #70
+      [11] putfield #71
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.S Landroid/content/SharedPreferences;]
       [14] aload_1 v1
       [15] ldc #1
         + Integer [2130903046]
       [17] aload_2 v2
       [18] iconst_0
-      [19] invokevirtual #93
+      [19] invokevirtual #95
         + Methodref [android/view/LayoutInflater.inflate (ILandroid/view/ViewGroup;Z)Landroid/view/View;]
       [22] astore v4
       [24] aload_0 v0
       [25] aload v4
       [27] ldc #2
         + Integer [2131034129]
-      [29] invokevirtual #94
+      [29] invokevirtual #96
         + Methodref [android/view/View.findViewById (I)Landroid/view/View;]
-      [32] checkcast #40
+      [32] checkcast #41
         + Class [android/widget/TextView]
-      [35] putfield #72
+      [35] putfield #73
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.U Landroid/widget/TextView;]
       [38] aload_0 v0
       [39] aload v4
       [41] ldc #8
         + Integer [2131034140]
-      [43] invokevirtual #94
+      [43] invokevirtual #96
         + Methodref [android/view/View.findViewById (I)Landroid/view/View;]
-      [46] checkcast #40
+      [46] checkcast #41
         + Class [android/widget/TextView]
-      [49] putfield #73
+      [49] putfield #74
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.V Landroid/widget/TextView;]
       [52] aload_0 v0
       [53] aload v4
       [55] ldc #7
         + Integer [2131034139]
-      [57] invokevirtual #94
+      [57] invokevirtual #96
         + Methodref [android/view/View.findViewById (I)Landroid/view/View;]
-      [60] checkcast #40
+      [60] checkcast #41
         + Class [android/widget/TextView]
-      [63] putfield #74
+      [63] putfield #75
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.W Landroid/widget/TextView;]
       [66] aload_0 v0
       [67] aload v4
       [69] ldc #3
         + Integer [2131034132]
-      [71] invokevirtual #94
+      [71] invokevirtual #96
         + Methodref [android/view/View.findViewById (I)Landroid/view/View;]
-      [74] checkcast #40
+      [74] checkcast #41
         + Class [android/widget/TextView]
-      [77] putfield #71
+      [77] putfield #72
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.T Landroid/widget/TextView;]
       [80] aload_0 v0
       [81] aload v4
       [83] ldc #4
         + Integer [2131034134]
-      [85] invokevirtual #94
+      [85] invokevirtual #96
         + Methodref [android/view/View.findViewById (I)Landroid/view/View;]
-      [88] checkcast #40
+      [88] checkcast #41
         + Class [android/widget/TextView]
-      [91] putfield #76
+      [91] putfield #77
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.Y Landroid/widget/TextView;]
       [94] aload_0 v0
       [95] aload v4
       [97] ldc #5
         + Integer [2131034136]
-      [99] invokevirtual #94
+      [99] invokevirtual #96
         + Methodref [android/view/View.findViewById (I)Landroid/view/View;]
-      [102] checkcast #40
+      [102] checkcast #41
         + Class [android/widget/TextView]
-      [105] putfield #77
+      [105] putfield #78
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.Z Landroid/widget/TextView;]
       [108] aload_0 v0
       [109] aload v4
       [111] ldc #6
         + Integer [2131034138]
-      [113] invokevirtual #94
+      [113] invokevirtual #96
         + Methodref [android/view/View.findViewById (I)Landroid/view/View;]
-      [116] checkcast #40
+      [116] checkcast #41
         + Class [android/widget/TextView]
-      [119] putfield #75
+      [119] putfield #76
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.X Landroid/widget/TextView;]
-      [122] new #41
+      [122] new #42
         + Class [com/halcyonwaves/apps/energize/a/a]
       [125] dup
       [126] aload_0 v0
-      [127] invokevirtual #105
+      [127] invokevirtual #107
         + Methodref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.b ()Landroid/support/v4/app/h;]
-      [130] invokevirtual #89
+      [130] invokevirtual #90
         + Methodref [android/support/v4/app/h.getApplicationContext ()Landroid/content/Context;]
-      [133] invokespecial #97
+      [133] invokespecial #99
         + Methodref [com/halcyonwaves/apps/energize/a/a.<init> (Landroid/content/Context;)V]
       [136] astore v5
       [138] aload v5
-      [140] invokevirtual #99
+      [140] invokevirtual #101
         + Methodref [com/halcyonwaves/apps/energize/a/a.getReadableDatabase ()Landroid/database/sqlite/SQLiteDatabase;]
       [143] astore v6
       [145] aload v6
-      [147] ldc #20
+      [147] ldc #21
         + String [powerEvents]
       [149] iconst_1
-      [150] anewarray #52
+      [150] anewarray #53
         + Class [java/lang/String]
       [153] dup
       [154] iconst_0
-      [155] ldc #17
+      [155] ldc #18
         + String [eventTime]
       [157] aastore
-      [158] ldc #19
+      [158] ldc #20
         + String [isCharging = 0]
       [160] aconst_null
       [161] aconst_null
       [162] aconst_null
-      [163] ldc #18
+      [163] ldc #19
         + String [eventTime DESC]
-      [165] invokevirtual #80
+      [165] invokevirtual #81
         + Methodref [android/database/sqlite/SQLiteDatabase.query (Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;]
       [168] astore v7
       [170] aload v7
-      [172] invokeinterface #124
+      [172] invokeinterface #126
         + InterfaceMethodref [android/database/Cursor.moveToFirst ()Z]
       [177] ifeq +118 (target=295)
       [180] aload v7
       [182] aload v7
-      [184] ldc #17
+      [184] ldc #18
         + String [eventTime]
-      [186] invokeinterface #122
+      [186] invokeinterface #124
         + InterfaceMethodref [android/database/Cursor.getColumnIndex (Ljava/lang/String;)I]
-      [191] invokeinterface #123
+      [191] invokeinterface #125
         + InterfaceMethodref [android/database/Cursor.getInt (I)I]
       [196] i2l
       [197] lstore v8
-      [199] invokestatic #121
+      [199] invokestatic #123
         + Methodref [java/lang/System.currentTimeMillis ()J]
-      [202] ldc2_w #57
+      [202] ldc2_w #58
         + Long [1000]
       [205] ldiv
       [206] lstore v10
@@ -64531,10 +66828,10 @@ Methods (count = 18):
       [210] lload v8
       [212] lsub
       [213] l2d
-      [214] ldc2_w #59
+      [214] ldc2_w #60
         + Double [60.0]
       [217] ddiv
-      [218] invokestatic #113
+      [218] invokestatic #115
         + Methodref [java/lang/Math.round (D)J]
       [221] lstore v12
       [223] lload v12
@@ -64543,10 +66840,10 @@ Methods (count = 18):
       [227] ifle +17 (target=244)
       [230] lload v12
       [232] l2d
-      [233] ldc2_w #59
+      [233] ldc2_w #60
         + Double [60.0]
       [236] ddiv
-      [237] invokestatic #112
+      [237] invokestatic #114
         + Methodref [java/lang/Math.floor (D)D]
       [240] d2i
       [241] goto +4 (target=245)
@@ -64554,47 +66851,47 @@ Methods (count = 18):
       [245] i2l
       [246] lstore v14
       [248] lload v12
-      [250] ldc2_w #55
+      [250] ldc2_w #56
         + Long [60]
       [253] lload v14
       [255] lmul
       [256] lsub
       [257] lstore v16
       [259] aload_0 v0
-      [260] getfield #77
+      [260] getfield #78
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.Z Landroid/widget/TextView;]
       [263] aload_0 v0
       [264] ldc #10
         + Integer [2131492907]
       [266] iconst_2
-      [267] anewarray #51
+      [267] anewarray #52
         + Class [java/lang/Object]
       [270] dup
       [271] iconst_0
       [272] lload v14
-      [274] invokestatic #111
+      [274] invokestatic #113
         + Methodref [java/lang/Long.valueOf (J)Ljava/lang/Long;]
       [277] aastore
       [278] dup
       [279] iconst_1
       [280] lload v16
-      [282] invokestatic #111
+      [282] invokestatic #113
         + Methodref [java/lang/Long.valueOf (J)Ljava/lang/Long;]
       [285] aastore
-      [286] invokevirtual #103
+      [286] invokevirtual #105
         + Methodref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.a (I[Ljava/lang/Object;)Ljava/lang/String;]
-      [289] invokevirtual #95
+      [289] invokevirtual #97
         + Methodref [android/widget/TextView.setText (Ljava/lang/CharSequence;)V]
       [292] goto +12 (target=304)
       [295] aload_0 v0
-      [296] getfield #77
+      [296] getfield #78
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.Z Landroid/widget/TextView;]
       [299] ldc #11
         + String [-]
-      [301] invokevirtual #95
+      [301] invokevirtual #97
         + Methodref [android/widget/TextView.setText (Ljava/lang/CharSequence;)V]
       [304] aload v5
-      [306] invokevirtual #98
+      [306] invokevirtual #100
         + Methodref [com/halcyonwaves/apps/energize/a/a.close ()V]
       [309] aconst_null
       [310] astore v6
@@ -64602,74 +66899,74 @@ Methods (count = 18):
       [313] astore v5
       [315] iconst_0
       [316] istore v8
-      [318] getstatic #61
+      [318] getstatic #62
         + Fieldref [android/os/Build.BRAND Ljava/lang/String;]
-      [321] ldc #16
+      [321] ldc #17
         + String [asus]
-      [323] invokevirtual #114
+      [323] invokevirtual #116
         + Methodref [java/lang/String.compareToIgnoreCase (Ljava/lang/String;)I]
       [326] ifne +96 (target=422)
-      [329] ldc #14
+      [329] ldc #15
         + String [OverviewFragment]
-      [331] new #53
+      [331] new #54
         + Class [java/lang/StringBuilder]
       [334] dup
       [335] ldc #12
         + String [Device brand: ]
-      [337] invokespecial #118
+      [337] invokespecial #120
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
-      [340] getstatic #61
+      [340] getstatic #62
         + Fieldref [android/os/Build.BRAND Ljava/lang/String;]
-      [343] invokevirtual #119
+      [343] invokevirtual #121
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [346] invokevirtual #120
+      [346] invokevirtual #122
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
-      [349] invokestatic #92
+      [349] invokestatic #94
         + Methodref [android/util/Log.v (Ljava/lang/String;Ljava/lang/String;)I]
       [352] pop
-      [353] getstatic #62
+      [353] getstatic #63
         + Fieldref [android/os/Build.DEVICE Ljava/lang/String;]
-      [356] invokevirtual #117
+      [356] invokevirtual #119
         + Methodref [java/lang/String.toLowerCase ()Ljava/lang/String;]
-      [359] ldc #21
+      [359] ldc #22
         + String [tf201]
-      [361] invokevirtual #116
+      [361] invokevirtual #118
         + Methodref [java/lang/String.startsWith (Ljava/lang/String;)Z]
       [364] ifne +31 (target=395)
-      [367] getstatic #62
+      [367] getstatic #63
         + Fieldref [android/os/Build.DEVICE Ljava/lang/String;]
-      [370] invokevirtual #117
+      [370] invokevirtual #119
         + Methodref [java/lang/String.toLowerCase ()Ljava/lang/String;]
-      [373] ldc #22
+      [373] ldc #23
         + String [tf300]
-      [375] invokevirtual #116
+      [375] invokevirtual #118
         + Methodref [java/lang/String.startsWith (Ljava/lang/String;)Z]
       [378] ifne +17 (target=395)
-      [381] getstatic #62
+      [381] getstatic #63
         + Fieldref [android/os/Build.DEVICE Ljava/lang/String;]
-      [384] invokevirtual #117
+      [384] invokevirtual #119
         + Methodref [java/lang/String.toLowerCase ()Ljava/lang/String;]
-      [387] ldc #23
+      [387] ldc #24
         + String [tf700]
-      [389] invokevirtual #116
+      [389] invokevirtual #118
         + Methodref [java/lang/String.startsWith (Ljava/lang/String;)Z]
       [392] ifeq +30 (target=422)
-      [395] ldc #14
+      [395] ldc #15
         + String [OverviewFragment]
-      [397] new #53
+      [397] new #54
         + Class [java/lang/StringBuilder]
       [400] dup
       [401] ldc #13
         + String [Device model name: ]
-      [403] invokespecial #118
+      [403] invokespecial #120
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
-      [406] getstatic #63
+      [406] getstatic #64
         + Fieldref [android/os/Build.MODEL Ljava/lang/String;]
-      [409] invokevirtual #119
+      [409] invokevirtual #121
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [412] invokevirtual #120
+      [412] invokevirtual #122
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
-      [415] invokestatic #92
+      [415] invokestatic #94
         + Methodref [android/util/Log.v (Ljava/lang/String;Ljava/lang/String;)I]
       [418] pop
       [419] iconst_1
@@ -64677,22 +66974,22 @@ Methods (count = 18):
       [422] iload v8
       [424] ifne +19 (target=443)
       [427] aload_0 v0
-      [428] getfield #74
+      [428] getfield #75
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.W Landroid/widget/TextView;]
       [431] iconst_4
-      [432] invokevirtual #96
+      [432] invokevirtual #98
         + Methodref [android/widget/TextView.setVisibility (I)V]
       [435] aload_0 v0
-      [436] getfield #73
+      [436] getfield #74
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.V Landroid/widget/TextView;]
       [439] iconst_4
-      [440] invokevirtual #96
+      [440] invokevirtual #98
         + Methodref [android/widget/TextView.setVisibility (I)V]
       [443] aload_0 v0
-      [444] invokespecial #106
+      [444] invokespecial #108
         + Methodref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.z ()V]
       [447] aload_0 v0
-      [448] invokespecial #101
+      [448] invokespecial #103
         + Methodref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.B ()V]
       [451] aload v4
       [453] areturn
@@ -64711,27 +67008,27 @@ Methods (count = 18):
       = private void B()
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 30, locals = 3, stack = 3):
-      [0] new #45
+      [0] new #46
         + Class [com/halcyonwaves/apps/energize/fragments/c]
       [3] dup
       [4] aload_0 v0
-      [5] invokespecial #108
+      [5] invokespecial #110
         + Methodref [com/halcyonwaves/apps/energize/fragments/c.<init> (Lcom/halcyonwaves/apps/energize/fragments/OverviewFragment;)V]
       [8] astore_1 v1
-      [9] new #25
+      [9] new #26
         + Class [android/content/IntentFilter]
       [12] dup
-      [13] ldc #15
+      [13] ldc #16
         + String [android.intent.action.BATTERY_CHANGED]
-      [15] invokespecial #79
+      [15] invokespecial #80
         + Methodref [android/content/IntentFilter.<init> (Ljava/lang/String;)V]
       [18] astore_2 v2
       [19] aload_0 v0
-      [20] invokevirtual #105
+      [20] invokevirtual #107
         + Methodref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.b ()Landroid/support/v4/app/h;]
       [23] aload_1 v1
       [24] aload_2 v2
-      [25] invokevirtual #90
+      [25] invokevirtual #91
         + Methodref [android/support/v4/app/h.registerReceiver (Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;]
       [28] pop
       [29] return
@@ -64743,10 +67040,10 @@ Methods (count = 18):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 9, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] invokespecial #87
+      [1] invokespecial #88
         + Methodref [android/support/v4/app/Fragment.l ()V]
       [4] aload_0 v0
-      [5] invokespecial #100
+      [5] invokespecial #102
         + Methodref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.A ()V]
       [8] return
       Code attribute exceptions (count = 0):
@@ -64757,35 +67054,35 @@ Methods (count = 18):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 41, locals = 2, stack = 6):
       [0] aload_0 v0
-      [1] getfield #75
+      [1] getfield #76
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.X Landroid/widget/TextView;]
       [4] aload_0 v0
       [5] ldc #9
         + Integer [2131492905]
-      [7] invokevirtual #102
+      [7] invokevirtual #104
         + Methodref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.a (I)Ljava/lang/String;]
       [10] iconst_2
-      [11] anewarray #51
+      [11] anewarray #52
         + Class [java/lang/Object]
       [14] dup
       [15] iconst_0
       [16] aload_1 v1
-      [17] getfield #65
+      [17] getfield #66
         + Fieldref [com/halcyonwaves/apps/energize/c/b.e I]
-      [20] invokestatic #110
+      [20] invokestatic #112
         + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
       [23] aastore
       [24] dup
       [25] iconst_1
       [26] aload_1 v1
-      [27] getfield #66
+      [27] getfield #67
         + Fieldref [com/halcyonwaves/apps/energize/c/b.f I]
-      [30] invokestatic #110
+      [30] invokestatic #112
         + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
       [33] aastore
-      [34] invokestatic #115
+      [34] invokestatic #117
         + Methodref [java/lang/String.format (Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
-      [37] invokevirtual #95
+      [37] invokevirtual #97
         + Methodref [android/widget/TextView.setText (Ljava/lang/CharSequence;)V]
       [40] return
       Code attribute exceptions (count = 0):
@@ -64797,7 +67094,7 @@ Methods (count = 18):
     + Code attribute instructions (code length = 6, locals = 2, stack = 2):
       [0] aload_0 v0
       [1] aload_1 v1
-      [2] putfield #67
+      [2] putfield #68
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.P Landroid/os/Messenger;]
       [5] return
       Code attribute exceptions (count = 0):
@@ -64808,7 +67105,7 @@ Methods (count = 18):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #69
+      [1] getfield #70
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.R Landroid/os/Messenger;]
       [4] areturn
       Code attribute exceptions (count = 0):
@@ -64819,7 +67116,7 @@ Methods (count = 18):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #67
+      [1] getfield #68
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.P Landroid/os/Messenger;]
       [4] areturn
       Code attribute exceptions (count = 0):
@@ -64831,7 +67128,7 @@ Methods (count = 18):
     + Code attribute instructions (code length = 6, locals = 2, stack = 2):
       [0] aload_0 v0
       [1] aload_1 v1
-      [2] invokespecial #104
+      [2] invokespecial #106
         + Methodref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.a (Lcom/halcyonwaves/apps/energize/c/b;)V]
       [5] return
       Code attribute exceptions (count = 0):
@@ -64842,7 +67139,7 @@ Methods (count = 18):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #77
+      [1] getfield #78
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.Z Landroid/widget/TextView;]
       [4] areturn
       Code attribute exceptions (count = 0):
@@ -64853,7 +67150,7 @@ Methods (count = 18):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #71
+      [1] getfield #72
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.T Landroid/widget/TextView;]
       [4] areturn
       Code attribute exceptions (count = 0):
@@ -64864,7 +67161,7 @@ Methods (count = 18):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #72
+      [1] getfield #73
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.U Landroid/widget/TextView;]
       [4] areturn
       Code attribute exceptions (count = 0):
@@ -64875,7 +67172,7 @@ Methods (count = 18):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #73
+      [1] getfield #74
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.V Landroid/widget/TextView;]
       [4] areturn
       Code attribute exceptions (count = 0):
@@ -64886,7 +67183,7 @@ Methods (count = 18):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #70
+      [1] getfield #71
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.S Landroid/content/SharedPreferences;]
       [4] areturn
       Code attribute exceptions (count = 0):
@@ -64897,7 +67194,7 @@ Methods (count = 18):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #76
+      [1] getfield #77
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.Y Landroid/widget/TextView;]
       [4] areturn
       Code attribute exceptions (count = 0):

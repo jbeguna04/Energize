@@ -66,6 +66,9 @@ android.support.v4.widget.SlidingPaneLayout: void setShadowDrawable(android.grap
 android.support.v4.widget.SlidingPaneLayout: void setShadowResource(int)
 android.support.v4.widget.SlidingPaneLayout$SavedState
 android.support.v4.widget.SlidingPaneLayout$SavedState: android.os.Parcelable$Creator CREATOR
+com.google.android.apps.dashclock.api.DashClockExtension: DashClockExtension()
+com.google.android.apps.dashclock.api.ExtensionData
+com.google.android.apps.dashclock.api.ExtensionData: android.os.Parcelable$Creator CREATOR
 com.halcyonwaves.apps.energize.ApplicationCore
 com.halcyonwaves.apps.energize.ApplicationCore: ApplicationCore()
 com.halcyonwaves.apps.energize.BatteryStateDisplayActivity
@@ -73,6 +76,8 @@ com.halcyonwaves.apps.energize.BatteryStateDisplayActivity: BatteryStateDisplayA
 com.halcyonwaves.apps.energize.CustomViewPager
 com.halcyonwaves.apps.energize.CustomViewPager: CustomViewPager(android.content.Context,android.util.AttributeSet)
 com.halcyonwaves.apps.energize.CustomViewPager: void setPagingEnabled(boolean)
+com.halcyonwaves.apps.energize.EnergizeExtension
+com.halcyonwaves.apps.energize.EnergizeExtension: EnergizeExtension()
 com.halcyonwaves.apps.energize.R$array: int pref_list_batteryestimationmethod_names
 com.halcyonwaves.apps.energize.R$array: int pref_list_batteryestimationmethod_values
 com.halcyonwaves.apps.energize.R$array: int pref_list_temperature_unit

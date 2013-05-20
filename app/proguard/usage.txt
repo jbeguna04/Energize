@@ -1134,6 +1134,58 @@ android.support.v4.widget.ViewDragHelper:
 android.support.v4.widget.ViewDragHelper$2
 android.support.v4.widget.ViewDragHelper$Callback:
     148:148:public ViewDragHelper$Callback()
+com.google.android.apps.dashclock.api.DashClockExtension:
+    private static final java.lang.String TAG
+    public static final int UPDATE_REASON_UNKNOWN
+    public static final int UPDATE_REASON_INITIAL
+    public static final int UPDATE_REASON_PERIODIC
+    public static final int UPDATE_REASON_SETTINGS_CHANGED
+    public static final int UPDATE_REASON_CONTENT_CHANGED
+    public static final int UPDATE_REASON_SCREEN_ON
+    public static final java.lang.String ACTION_EXTENSION
+    public static final java.lang.String PERMISSION_READ_EXTENSION_DATA
+    302:306:protected final void addWatchContentUris(java.lang.String[])
+    319:323:protected final void setUpdateWhenScreenOn(boolean)
+com.google.android.apps.dashclock.api.ExtensionData:
+    public static final int PARCELABLE_VERSION
+    public static final int PARCELABLE_SIZE
+    private static final java.lang.String KEY_VISIBLE
+    private static final java.lang.String KEY_ICON
+    private static final java.lang.String KEY_STATUS
+    private static final java.lang.String KEY_EXPANDED_TITLE
+    private static final java.lang.String KEY_EXPANDED_BODY
+    private static final java.lang.String KEY_CLICK_INTENT
+    public static final int MAX_STATUS_LENGTH
+    public static final int MAX_EXPANDED_TITLE_LENGTH
+    public static final int MAX_EXPANDED_BODY_LENGTH
+    118:118:public boolean visible()
+    135:135:public int icon()
+    154:154:public java.lang.String status()
+    174:174:public java.lang.String expandedTitle()
+    192:192:public java.lang.String expandedBody()
+    212:212:public android.content.Intent clickIntent()
+    230:237:public org.json.JSONObject serialize()
+    245:254:public void deserialize(org.json.JSONObject)
+    260:267:public android.os.Bundle toBundle()
+    275:284:public void fromBundle(android.os.Bundle)
+    388:391:public static boolean equals(com.google.android.apps.dashclock.api.ExtensionData,com.google.android.apps.dashclock.api.ExtensionData)
+    400:409:public void clean()
+com.google.android.apps.dashclock.api.dummy.BuildConfig
+com.google.android.apps.dashclock.api.internal.IExtension$Stub:
+    private static final java.lang.String DESCRIPTOR
+    static final int TRANSACTION_onInitialize
+    static final int TRANSACTION_onUpdate
+    23:30:public static com.google.android.apps.dashclock.api.internal.IExtension asInterface(android.os.IBinder)
+com.google.android.apps.dashclock.api.internal.IExtension$Stub$Proxy
+com.google.android.apps.dashclock.api.internal.IExtensionHost$Stub:
+    private static final java.lang.String DESCRIPTOR
+    static final int TRANSACTION_publishUpdate
+    static final int TRANSACTION_addWatchContentUris
+    static final int TRANSACTION_setUpdateWhenScreenOn
+    14:16:public IExtensionHost$Stub()
+    34:34:public android.os.IBinder asBinder()
+com.google.android.apps.dashclock.api.internal.IExtensionHost$Stub$Proxy:
+    90:90:public java.lang.String getInterfaceDescriptor()
 com.halcyonwaves.apps.energize.ApplicationCore:
     private static final java.lang.String TAG
 com.halcyonwaves.apps.energize.BatteryStateDisplayActivity:

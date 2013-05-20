@@ -1574,6 +1574,72 @@ android.support.v4.widget.ViewDragHelper$Callback -> android.support.v4.widget.a
     boolean tryCaptureView(android.view.View,int) -> a
     int clampViewPositionHorizontal(android.view.View,int,int) -> a
     int clampViewPositionVertical(android.view.View,int,int) -> b
+com.google.android.apps.dashclock.api.DashClockExtension -> com.google.android.apps.dashclock.api.a:
+    boolean mInitialized -> a
+    com.google.android.apps.dashclock.api.internal.IExtensionHost mHost -> b
+    android.os.Looper mServiceLooper -> c
+    android.os.Handler mServiceHandler -> d
+    com.google.android.apps.dashclock.api.internal.IExtension$Stub mBinder -> e
+    void onCreate() -> onCreate
+    void onDestroy() -> onDestroy
+    android.os.IBinder onBind(android.content.Intent) -> onBind
+    void onInitialize(boolean) -> a
+    void onUpdateData(int) -> a
+    void publishUpdate(com.google.android.apps.dashclock.api.ExtensionData) -> a
+    com.google.android.apps.dashclock.api.internal.IExtensionHost access$002(com.google.android.apps.dashclock.api.DashClockExtension,com.google.android.apps.dashclock.api.internal.IExtensionHost) -> a
+    boolean access$100(com.google.android.apps.dashclock.api.DashClockExtension) -> a
+    boolean access$102(com.google.android.apps.dashclock.api.DashClockExtension,boolean) -> a
+    android.os.Handler access$200(com.google.android.apps.dashclock.api.DashClockExtension) -> b
+com.google.android.apps.dashclock.api.DashClockExtension$1 -> com.google.android.apps.dashclock.api.b:
+    com.google.android.apps.dashclock.api.DashClockExtension this$0 -> a
+    void onInitialize(com.google.android.apps.dashclock.api.internal.IExtensionHost,boolean) -> a
+    void onUpdate(int) -> a
+com.google.android.apps.dashclock.api.DashClockExtension$1$1 -> com.google.android.apps.dashclock.api.c:
+    int val$reason -> a
+    com.google.android.apps.dashclock.api.DashClockExtension$1 this$1 -> b
+    void run() -> run
+com.google.android.apps.dashclock.api.ExtensionData -> com.google.android.apps.dashclock.api.ExtensionData:
+    boolean mVisible -> a
+    int mIcon -> b
+    java.lang.String mStatus -> c
+    java.lang.String mExpandedTitle -> d
+    java.lang.String mExpandedBody -> e
+    android.content.Intent mClickIntent -> f
+    android.os.Parcelable$Creator CREATOR -> CREATOR
+    com.google.android.apps.dashclock.api.ExtensionData visible(boolean) -> a
+    com.google.android.apps.dashclock.api.ExtensionData icon(int) -> a
+    com.google.android.apps.dashclock.api.ExtensionData status(java.lang.String) -> a
+    com.google.android.apps.dashclock.api.ExtensionData expandedTitle(java.lang.String) -> b
+    com.google.android.apps.dashclock.api.ExtensionData expandedBody(java.lang.String) -> c
+    com.google.android.apps.dashclock.api.ExtensionData clickIntent(android.content.Intent) -> a
+    void writeToParcel(android.os.Parcel,int) -> writeToParcel
+    int describeContents() -> describeContents
+    boolean equals(java.lang.Object) -> equals
+    boolean intentEquals(android.content.Intent,android.content.Intent) -> a
+com.google.android.apps.dashclock.api.ExtensionData$1 -> com.google.android.apps.dashclock.api.d:
+    com.google.android.apps.dashclock.api.ExtensionData createFromParcel(android.os.Parcel) -> a
+    com.google.android.apps.dashclock.api.ExtensionData[] newArray(int) -> a
+    java.lang.Object[] newArray(int) -> newArray
+    java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
+com.google.android.apps.dashclock.api.internal.IExtension -> com.google.android.apps.dashclock.api.a.a:
+    void onInitialize(com.google.android.apps.dashclock.api.internal.IExtensionHost,boolean) -> a
+    void onUpdate(int) -> a
+com.google.android.apps.dashclock.api.internal.IExtension$Stub -> com.google.android.apps.dashclock.api.a.b:
+    android.os.IBinder asBinder() -> asBinder
+    boolean onTransact(int,android.os.Parcel,android.os.Parcel,int) -> onTransact
+com.google.android.apps.dashclock.api.internal.IExtensionHost -> com.google.android.apps.dashclock.api.a.c:
+    void publishUpdate(com.google.android.apps.dashclock.api.ExtensionData) -> a
+    void addWatchContentUris(java.lang.String[]) -> a
+    void setUpdateWhenScreenOn(boolean) -> a
+com.google.android.apps.dashclock.api.internal.IExtensionHost$Stub -> com.google.android.apps.dashclock.api.a.d:
+    com.google.android.apps.dashclock.api.internal.IExtensionHost asInterface(android.os.IBinder) -> a
+    boolean onTransact(int,android.os.Parcel,android.os.Parcel,int) -> onTransact
+com.google.android.apps.dashclock.api.internal.IExtensionHost$Stub$Proxy -> com.google.android.apps.dashclock.api.a.e:
+    android.os.IBinder mRemote -> a
+    android.os.IBinder asBinder() -> asBinder
+    void publishUpdate(com.google.android.apps.dashclock.api.ExtensionData) -> a
+    void addWatchContentUris(java.lang.String[]) -> a
+    void setUpdateWhenScreenOn(boolean) -> a
 com.halcyonwaves.apps.energize.ApplicationCore -> com.halcyonwaves.apps.energize.ApplicationCore:
     void onCreate() -> onCreate
     boolean isServiceRunning(android.content.Context,java.lang.String) -> a
@@ -1593,6 +1659,8 @@ com.halcyonwaves.apps.energize.CustomViewPager -> com.halcyonwaves.apps.energize
     boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
     void setPagingEnabled(boolean) -> setPagingEnabled
     void togglePagingEnabled() -> j
+com.halcyonwaves.apps.energize.EnergizeExtension -> com.halcyonwaves.apps.energize.EnergizeExtension:
+    void onUpdateData(int) -> a
 com.halcyonwaves.apps.energize.MainFragmentPagerAdapter -> com.halcyonwaves.apps.energize.b:
     android.content.Context appContext -> a
     int getCount() -> b
