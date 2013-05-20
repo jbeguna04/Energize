@@ -122,9 +122,20 @@ public class OverviewFragment extends Fragment {
 	@Override
 	public void onResume() {
 		super.onResume();
+
+		// update the basic information about the battery
 		this.updateBatteryInformation();
+
+		// query the remaining time
+		try {
+			final Message msg2 = Message.obtain(null,MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME);
+			msg2.replyTo = OverviewFragment.this.monitorServiceMessanger;
+			this.monitorService.send(msg2);
+		} catch (RemoteException e) {
+			Log.e(OverviewFragment.TAG,"Failed to query the current time estimation.");
+		}
 	}
-	
+
 	@Override
 	public View onCreateView( final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState ) {
 		this.sharedPref = PreferenceManager.getDefaultSharedPreferences( this.getActivity().getApplicationContext() );
