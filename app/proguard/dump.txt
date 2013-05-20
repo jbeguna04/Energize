@@ -61634,20 +61634,17 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 58):
+Constant Pool (count = 54):
   + Integer [2130837504]
   + String [Hello]
   + String [Hello, world!]
   + String [This is an example.]
-  + String [android.intent.action.VIEW]
-  + String [http://www.google.com]
   + Class [android/content/Intent]
-  + Class [android/net/Uri]
   + Class [com/google/android/apps/dashclock/api/ExtensionData]
   + Class [com/google/android/apps/dashclock/api/a]
+  + Class [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity]
   + Class [com/halcyonwaves/apps/energize/EnergizeExtension]
-  + Methodref [android/content/Intent.<init> (Ljava/lang/String;Landroid/net/Uri;)V]
-  + Methodref [android/net/Uri.parse (Ljava/lang/String;)Landroid/net/Uri;]
+  + Methodref [android/content/Intent.<init> (Landroid/content/Context;Ljava/lang/Class;)V]
   + Methodref [com/google/android/apps/dashclock/api/ExtensionData.<init> ()V]
   + Methodref [com/google/android/apps/dashclock/api/ExtensionData.a (I)Lcom/google/android/apps/dashclock/api/ExtensionData;]
   + Methodref [com/google/android/apps/dashclock/api/ExtensionData.a (Landroid/content/Intent;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
@@ -61657,8 +61654,9 @@ Constant Pool (count = 58):
   + Methodref [com/google/android/apps/dashclock/api/ExtensionData.c (Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
   + Methodref [com/google/android/apps/dashclock/api/a.<init> ()V]
   + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.a (Lcom/google/android/apps/dashclock/api/ExtensionData;)V]
+  + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.getApplicationContext ()Landroid/content/Context;]
   + NameAndType [<init> ()V]
-  + NameAndType [<init> (Ljava/lang/String;Landroid/net/Uri;)V]
+  + NameAndType [<init> (Landroid/content/Context;Ljava/lang/Class;)V]
   + NameAndType [a (I)Lcom/google/android/apps/dashclock/api/ExtensionData;]
   + NameAndType [a (Landroid/content/Intent;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
   + NameAndType [a (Lcom/google/android/apps/dashclock/api/ExtensionData;)V]
@@ -61666,15 +61664,15 @@ Constant Pool (count = 58):
   + NameAndType [a (Z)Lcom/google/android/apps/dashclock/api/ExtensionData;]
   + NameAndType [b (Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
   + NameAndType [c (Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
-  + NameAndType [parse (Ljava/lang/String;)Landroid/net/Uri;]
+  + NameAndType [getApplicationContext ()Landroid/content/Context;]
+  + Utf8 [()Landroid/content/Context;]
   + Utf8 [()V]
   + Utf8 [(I)Lcom/google/android/apps/dashclock/api/ExtensionData;]
   + Utf8 [(I)V]
+  + Utf8 [(Landroid/content/Context;Ljava/lang/Class;)V]
   + Utf8 [(Landroid/content/Intent;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
   + Utf8 [(Lcom/google/android/apps/dashclock/api/ExtensionData;)V]
-  + Utf8 [(Ljava/lang/String;)Landroid/net/Uri;]
   + Utf8 [(Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
-  + Utf8 [(Ljava/lang/String;Landroid/net/Uri;)V]
   + Utf8 [(Z)Lcom/google/android/apps/dashclock/api/ExtensionData;]
   + Utf8 [<init>]
   + Utf8 [Code]
@@ -61682,16 +61680,14 @@ Constant Pool (count = 58):
   + Utf8 [Hello, world!]
   + Utf8 [This is an example.]
   + Utf8 [a]
-  + Utf8 [android.intent.action.VIEW]
   + Utf8 [android/content/Intent]
-  + Utf8 [android/net/Uri]
   + Utf8 [b]
   + Utf8 [c]
   + Utf8 [com/google/android/apps/dashclock/api/ExtensionData]
   + Utf8 [com/google/android/apps/dashclock/api/a]
+  + Utf8 [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity]
   + Utf8 [com/halcyonwaves/apps/energize/EnergizeExtension]
-  + Utf8 [http://www.google.com]
-  + Utf8 [parse]
+  + Utf8 [getApplicationContext]
 
 Fields (count = 0):
 
@@ -61702,7 +61698,7 @@ Methods (count = 2):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] invokespecial #21
+      [1] invokespecial #18
         + Methodref [com/google/android/apps/dashclock/api/a.<init> ()V]
       [4] return
       Code attribute exceptions (count = 0):
@@ -61711,48 +61707,47 @@ Methods (count = 2):
     Access flags: 0x4
       = protected void a(int)
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 53, locals = 2, stack = 6):
+    + Code attribute instructions (code length = 52, locals = 2, stack = 6):
       [0] aload_0 v0
-      [1] new #9
+      [1] new #6
         + Class [com/google/android/apps/dashclock/api/ExtensionData]
       [4] dup
-      [5] invokespecial #14
+      [5] invokespecial #11
         + Methodref [com/google/android/apps/dashclock/api/ExtensionData.<init> ()V]
       [8] iconst_1
-      [9] invokevirtual #18
+      [9] invokevirtual #15
         + Methodref [com/google/android/apps/dashclock/api/ExtensionData.a (Z)Lcom/google/android/apps/dashclock/api/ExtensionData;]
       [12] ldc #1
         + Integer [2130837504]
-      [14] invokevirtual #15
+      [14] invokevirtual #12
         + Methodref [com/google/android/apps/dashclock/api/ExtensionData.a (I)Lcom/google/android/apps/dashclock/api/ExtensionData;]
       [17] ldc #2
         + String [Hello]
-      [19] invokevirtual #17
+      [19] invokevirtual #14
         + Methodref [com/google/android/apps/dashclock/api/ExtensionData.a (Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
       [22] ldc #3
         + String [Hello, world!]
-      [24] invokevirtual #19
+      [24] invokevirtual #16
         + Methodref [com/google/android/apps/dashclock/api/ExtensionData.b (Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
       [27] ldc #4
         + String [This is an example.]
-      [29] invokevirtual #20
+      [29] invokevirtual #17
         + Methodref [com/google/android/apps/dashclock/api/ExtensionData.c (Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
-      [32] new #7
+      [32] new #5
         + Class [android/content/Intent]
       [35] dup
-      [36] ldc #5
-        + String [android.intent.action.VIEW]
-      [38] ldc #6
-        + String [http://www.google.com]
-      [40] invokestatic #13
-        + Methodref [android/net/Uri.parse (Ljava/lang/String;)Landroid/net/Uri;]
-      [43] invokespecial #12
-        + Methodref [android/content/Intent.<init> (Ljava/lang/String;Landroid/net/Uri;)V]
-      [46] invokevirtual #16
+      [36] aload_0 v0
+      [37] invokevirtual #20
+        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.getApplicationContext ()Landroid/content/Context;]
+      [40] ldc #8
+        + Class [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity]
+      [42] invokespecial #10
+        + Methodref [android/content/Intent.<init> (Landroid/content/Context;Ljava/lang/Class;)V]
+      [45] invokevirtual #13
         + Methodref [com/google/android/apps/dashclock/api/ExtensionData.a (Landroid/content/Intent;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
-      [49] invokevirtual #22
+      [48] invokevirtual #19
         + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.a (Lcom/google/android/apps/dashclock/api/ExtensionData;)V]
-      [52] return
+      [51] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
 
