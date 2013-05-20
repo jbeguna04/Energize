@@ -1586,6 +1586,7 @@ com.google.android.apps.dashclock.api.DashClockExtension -> com.google.android.a
     void onInitialize(boolean) -> a
     void onUpdateData(int) -> a
     void publishUpdate(com.google.android.apps.dashclock.api.ExtensionData) -> a
+    void setUpdateWhenScreenOn(boolean) -> b
     com.google.android.apps.dashclock.api.internal.IExtensionHost access$002(com.google.android.apps.dashclock.api.DashClockExtension,com.google.android.apps.dashclock.api.internal.IExtensionHost) -> a
     boolean access$100(com.google.android.apps.dashclock.api.DashClockExtension) -> a
     boolean access$102(com.google.android.apps.dashclock.api.DashClockExtension,boolean) -> a
@@ -1660,8 +1661,36 @@ com.halcyonwaves.apps.energize.CustomViewPager -> com.halcyonwaves.apps.energize
     void setPagingEnabled(boolean) -> setPagingEnabled
     void togglePagingEnabled() -> j
 com.halcyonwaves.apps.energize.EnergizeExtension -> com.halcyonwaves.apps.energize.EnergizeExtension:
+    int percentageLoaded -> a
+    com.halcyonwaves.apps.energize.estimators.EstimationResult remainingTimeEstimation -> b
+    android.os.Messenger monitorService -> c
+    android.content.ServiceConnection monitorServiceConnection -> d
+    android.os.Messenger monitorServiceMessanger -> e
+    void doBindService() -> a
+    void onInitialize(boolean) -> a
+    int onStartCommand(android.content.Intent,int,int) -> onStartCommand
+    void updateBatteryInformation() -> b
+    void sendPublishedData() -> c
+    void onDestroy() -> onDestroy
     void onUpdateData(int) -> a
-com.halcyonwaves.apps.energize.MainFragmentPagerAdapter -> com.halcyonwaves.apps.energize.b:
+    void access$0(com.halcyonwaves.apps.energize.EnergizeExtension,android.os.Messenger) -> a
+    android.os.Messenger access$1(com.halcyonwaves.apps.energize.EnergizeExtension) -> a
+    android.os.Messenger access$2(com.halcyonwaves.apps.energize.EnergizeExtension) -> b
+    void access$3(com.halcyonwaves.apps.energize.EnergizeExtension,com.halcyonwaves.apps.energize.estimators.EstimationResult) -> a
+    com.halcyonwaves.apps.energize.estimators.EstimationResult access$4(com.halcyonwaves.apps.energize.EnergizeExtension) -> c
+    void access$5(com.halcyonwaves.apps.energize.EnergizeExtension) -> d
+    void access$6(com.halcyonwaves.apps.energize.EnergizeExtension,int) -> a
+com.halcyonwaves.apps.energize.EnergizeExtension$1 -> com.halcyonwaves.apps.energize.b:
+    com.halcyonwaves.apps.energize.EnergizeExtension this$0 -> a
+    void onServiceConnected(android.content.ComponentName,android.os.IBinder) -> onServiceConnected
+    void onServiceDisconnected(android.content.ComponentName) -> onServiceDisconnected
+com.halcyonwaves.apps.energize.EnergizeExtension$2 -> com.halcyonwaves.apps.energize.c:
+    com.halcyonwaves.apps.energize.EnergizeExtension this$0 -> a
+    void onReceive(android.content.Context,android.content.Intent) -> onReceive
+com.halcyonwaves.apps.energize.EnergizeExtension$IncomingHandler -> com.halcyonwaves.apps.energize.d:
+    com.halcyonwaves.apps.energize.EnergizeExtension this$0 -> a
+    void handleMessage(android.os.Message) -> handleMessage
+com.halcyonwaves.apps.energize.MainFragmentPagerAdapter -> com.halcyonwaves.apps.energize.e:
     android.content.Context appContext -> a
     int getCount() -> b
     android.support.v4.app.Fragment getItem(int) -> a

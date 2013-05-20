@@ -1145,7 +1145,6 @@ com.google.android.apps.dashclock.api.DashClockExtension:
     public static final java.lang.String ACTION_EXTENSION
     public static final java.lang.String PERMISSION_READ_EXTENSION_DATA
     302:306:protected final void addWatchContentUris(java.lang.String[])
-    319:323:protected final void setUpdateWhenScreenOn(boolean)
 com.google.android.apps.dashclock.api.ExtensionData:
     public static final int PARCELABLE_VERSION
     public static final int PARCELABLE_SIZE
@@ -1193,6 +1192,9 @@ com.halcyonwaves.apps.energize.BatteryStateDisplayActivity:
 com.halcyonwaves.apps.energize.BatteryStateDisplayActivity$2
 com.halcyonwaves.apps.energize.BuildConfig
 com.halcyonwaves.apps.energize.Consts
+com.halcyonwaves.apps.energize.EnergizeExtension:
+    private static final java.lang.String TAG
+    89:99:private void doUnbindService()
 com.halcyonwaves.apps.energize.MainFragmentPagerAdapter:
     private static final java.lang.String TAG
 com.halcyonwaves.apps.energize.R

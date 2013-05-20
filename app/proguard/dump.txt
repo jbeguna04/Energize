@@ -58579,8 +58579,9 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 114):
+Constant Pool (count = 118):
   + String [Couldn't publish updated extension data.]
+  + String [Couldn't set the extension to update upon ACTION_SCREEN_ON.]
   + String [DashClockExtension]
   + String [DashClockExtension:]
   + Class [android/app/Service]
@@ -58616,11 +58617,13 @@ Constant Pool (count = 114):
   + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
   + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
   + InterfaceMethodref [com/google/android/apps/dashclock/api/a/c.a (Lcom/google/android/apps/dashclock/api/ExtensionData;)V]
+  + InterfaceMethodref [com/google/android/apps/dashclock/api/a/c.a (Z)V]
   + NameAndType [<init> ()V]
   + NameAndType [<init> (Landroid/os/Looper;)V]
   + NameAndType [<init> (Lcom/google/android/apps/dashclock/api/a;)V]
   + NameAndType [<init> (Ljava/lang/String;)V]
   + NameAndType [a (Lcom/google/android/apps/dashclock/api/ExtensionData;)V]
+  + NameAndType [a (Z)V]
   + NameAndType [a Z]
   + NameAndType [append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
   + NameAndType [b Lcom/google/android/apps/dashclock/api/a/c;]
@@ -58657,6 +58660,7 @@ Constant Pool (count = 114):
   + Utf8 [<init>]
   + Utf8 [Code]
   + Utf8 [Couldn't publish updated extension data.]
+  + Utf8 [Couldn't set the extension to update upon ACTION_SCREEN_ON.]
   + Utf8 [DashClockExtension]
   + Utf8 [DashClockExtension:]
   + Utf8 [Landroid/os/Handler;]
@@ -58711,27 +58715,27 @@ Fields (count = 5):
     Access flags: 0x2
       = private com.google.android.apps.dashclock.api.a.b e
 
-Methods (count = 11):
+Methods (count = 12):
   - Method:       <init>()V
     Access flags: 0x4
       = protected a()
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 22, locals = 1, stack = 4):
       [0] aload_0 v0
-      [1] invokespecial #21
+      [1] invokespecial #22
         + Methodref [android/app/Service.<init> ()V]
       [4] aload_0 v0
       [5] iconst_0
-      [6] putfield #16
+      [6] putfield #17
         + Fieldref [com/google/android/apps/dashclock/api/a.a Z]
       [9] aload_0 v0
-      [10] new #12
+      [10] new #13
         + Class [com/google/android/apps/dashclock/api/b]
       [13] dup
       [14] aload_0 v0
-      [15] invokespecial #30
+      [15] invokespecial #31
         + Methodref [com/google/android/apps/dashclock/api/b.<init> (Lcom/google/android/apps/dashclock/api/a;)V]
-      [18] putfield #20
+      [18] putfield #21
         + Fieldref [com/google/android/apps/dashclock/api/a.e Lcom/google/android/apps/dashclock/api/a/b;]
       [21] return
       Code attribute exceptions (count = 0):
@@ -58742,51 +58746,51 @@ Methods (count = 11):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 65, locals = 2, stack = 4):
       [0] aload_0 v0
-      [1] invokespecial #22
+      [1] invokespecial #23
         + Methodref [android/app/Service.onCreate ()V]
-      [4] new #6
+      [4] new #7
         + Class [android/os/HandlerThread]
       [7] dup
-      [8] new #15
+      [8] new #16
         + Class [java/lang/StringBuilder]
       [11] dup
-      [12] invokespecial #33
+      [12] invokespecial #34
         + Methodref [java/lang/StringBuilder.<init> ()V]
-      [15] ldc #3
+      [15] ldc #4
         + String [DashClockExtension:]
-      [17] invokevirtual #34
+      [17] invokevirtual #35
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
       [20] aload_0 v0
-      [21] invokevirtual #32
+      [21] invokevirtual #33
         + Methodref [java/lang/Object.getClass ()Ljava/lang/Class;]
-      [24] invokevirtual #31
+      [24] invokevirtual #32
         + Methodref [java/lang/Class.getSimpleName ()Ljava/lang/String;]
-      [27] invokevirtual #34
+      [27] invokevirtual #35
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [30] invokevirtual #35
+      [30] invokevirtual #36
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
-      [33] invokespecial #25
+      [33] invokespecial #26
         + Methodref [android/os/HandlerThread.<init> (Ljava/lang/String;)V]
       [36] astore_1 v1
       [37] aload_1 v1
-      [38] invokevirtual #27
+      [38] invokevirtual #28
         + Methodref [android/os/HandlerThread.start ()V]
       [41] aload_0 v0
       [42] aload_1 v1
-      [43] invokevirtual #26
+      [43] invokevirtual #27
         + Methodref [android/os/HandlerThread.getLooper ()Landroid/os/Looper;]
-      [46] putfield #18
+      [46] putfield #19
         + Fieldref [com/google/android/apps/dashclock/api/a.c Landroid/os/Looper;]
       [49] aload_0 v0
-      [50] new #5
+      [50] new #6
         + Class [android/os/Handler]
       [53] dup
       [54] aload_0 v0
-      [55] getfield #18
+      [55] getfield #19
         + Fieldref [com/google/android/apps/dashclock/api/a.c Landroid/os/Looper;]
-      [58] invokespecial #23
+      [58] invokespecial #24
         + Methodref [android/os/Handler.<init> (Landroid/os/Looper;)V]
-      [61] putfield #19
+      [61] putfield #20
         + Fieldref [com/google/android/apps/dashclock/api/a.d Landroid/os/Handler;]
       [64] return
       Code attribute exceptions (count = 0):
@@ -58797,15 +58801,15 @@ Methods (count = 11):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 16, locals = 1, stack = 2):
       [0] aload_0 v0
-      [1] getfield #19
+      [1] getfield #20
         + Fieldref [com/google/android/apps/dashclock/api/a.d Landroid/os/Handler;]
       [4] aconst_null
-      [5] invokevirtual #24
+      [5] invokevirtual #25
         + Methodref [android/os/Handler.removeCallbacksAndMessages (Ljava/lang/Object;)V]
       [8] aload_0 v0
-      [9] getfield #18
+      [9] getfield #19
         + Fieldref [com/google/android/apps/dashclock/api/a.c Landroid/os/Looper;]
-      [12] invokevirtual #28
+      [12] invokevirtual #29
         + Methodref [android/os/Looper.quit ()V]
       [15] return
       Code attribute exceptions (count = 0):
@@ -58816,7 +58820,7 @@ Methods (count = 11):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 2, stack = 1):
       [0] aload_0 v0
-      [1] getfield #20
+      [1] getfield #21
         + Fieldref [com/google/android/apps/dashclock/api/a.e Lcom/google/android/apps/dashclock/api/a/b;]
       [4] areturn
       Code attribute exceptions (count = 0):
@@ -58838,19 +58842,48 @@ Methods (count = 11):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 24, locals = 3, stack = 3):
       [0] aload_0 v0
-      [1] getfield #17
+      [1] getfield #18
         + Fieldref [com/google/android/apps/dashclock/api/a.b Lcom/google/android/apps/dashclock/api/a/c;]
       [4] aload_1 v1
-      [5] invokeinterface #36
+      [5] invokeinterface #37
         + InterfaceMethodref [com/google/android/apps/dashclock/api/a/c.a (Lcom/google/android/apps/dashclock/api/ExtensionData;)V]
       [10] goto +13 (target=23)
       [13] astore_2 v2
-      [14] ldc #2
+      [14] ldc #3
         + String [DashClockExtension]
       [16] ldc #1
         + String [Couldn't publish updated extension data.]
       [18] aload_2 v2
-      [19] invokestatic #29
+      [19] invokestatic #30
+        + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I]
+      [22] pop
+      [23] return
+      Code attribute exceptions (count = 1):
+      - ExceptionInfo (0 -> 10: 13):
+      + Class [android/os/RemoteException]
+      Code attribute attributes (attribute count = 1):
+      + Stack map table attribute (count = 2):
+        - [13] Var: ..., Stack: [a:android/os/RemoteException]
+        - [23] Var: ..., Stack: (empty)
+  + Method:       b(Z)V
+    Access flags: 0x14
+      = protected final void b(boolean)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 24, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] getfield #18
+        + Fieldref [com/google/android/apps/dashclock/api/a.b Lcom/google/android/apps/dashclock/api/a/c;]
+      [4] iload_1 v1
+      [5] invokeinterface #38
+        + InterfaceMethodref [com/google/android/apps/dashclock/api/a/c.a (Z)V]
+      [10] goto +13 (target=23)
+      [13] astore_2 v2
+      [14] ldc #3
+        + String [DashClockExtension]
+      [16] ldc #2
+        + String [Couldn't set the extension to update upon ACTION_SCREEN_ON.]
+      [18] aload_2 v2
+      [19] invokestatic #30
         + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I]
       [22] pop
       [23] return
@@ -58869,7 +58902,7 @@ Methods (count = 11):
       [0] aload_0 v0
       [1] aload_1 v1
       [2] dup_x1
-      [3] putfield #17
+      [3] putfield #18
         + Fieldref [com/google/android/apps/dashclock/api/a.b Lcom/google/android/apps/dashclock/api/a/c;]
       [6] areturn
       Code attribute exceptions (count = 0):
@@ -58880,7 +58913,7 @@ Methods (count = 11):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #16
+      [1] getfield #17
         + Fieldref [com/google/android/apps/dashclock/api/a.a Z]
       [4] ireturn
       Code attribute exceptions (count = 0):
@@ -58893,7 +58926,7 @@ Methods (count = 11):
       [0] aload_0 v0
       [1] iload_1 v1
       [2] dup_x1
-      [3] putfield #16
+      [3] putfield #17
         + Fieldref [com/google/android/apps/dashclock/api/a.a Z]
       [6] ireturn
       Code attribute exceptions (count = 0):
@@ -58904,7 +58937,7 @@ Methods (count = 11):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #19
+      [1] getfield #20
         + Fieldref [com/google/android/apps/dashclock/api/a.d Landroid/os/Handler;]
       [4] areturn
       Code attribute exceptions (count = 0):
@@ -60918,9 +60951,9 @@ Constant Pool (count = 212):
   + Class [com/halcyonwaves/apps/energize/CustomViewPager]
   + Class [com/halcyonwaves/apps/energize/SettingsActivity]
   + Class [com/halcyonwaves/apps/energize/a]
-  + Class [com/halcyonwaves/apps/energize/b]
   + Class [com/halcyonwaves/apps/energize/b/a]
   + Class [com/halcyonwaves/apps/energize/b/d]
+  + Class [com/halcyonwaves/apps/energize/e]
   + Class [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService]
   + Class [com/viewpagerindicator/TitlePageIndicator]
   + Class [java/lang/Class]
@@ -60957,11 +60990,11 @@ Constant Pool (count = 212):
   + Methodref [com/halcyonwaves/apps/energize/CustomViewPager.j ()V]
   + Methodref [com/halcyonwaves/apps/energize/CustomViewPager.setAdapter (Landroid/support/v4/view/ae;)V]
   + Methodref [com/halcyonwaves/apps/energize/a.<init> (Lcom/halcyonwaves/apps/energize/BatteryStateDisplayActivity;)V]
-  + Methodref [com/halcyonwaves/apps/energize/b.<init> (Landroid/content/Context;Landroid/support/v4/app/n;)V]
   + Methodref [com/halcyonwaves/apps/energize/b/a.<init> ()V]
   + Methodref [com/halcyonwaves/apps/energize/b/a.show (Landroid/app/FragmentManager;Ljava/lang/String;)V]
   + Methodref [com/halcyonwaves/apps/energize/b/d.<init> (Landroid/app/Activity;)V]
   + Methodref [com/halcyonwaves/apps/energize/b/d.b ()V]
+  + Methodref [com/halcyonwaves/apps/energize/e.<init> (Landroid/content/Context;Landroid/support/v4/app/n;)V]
   + Methodref [com/viewpagerindicator/TitlePageIndicator.setViewPager (Landroid/support/v4/view/ViewPager;)V]
   + Methodref [java/lang/Class.getName ()Ljava/lang/String;]
   + InterfaceMethodref [android/view/MenuItem.getItemId ()I]
@@ -61064,9 +61097,9 @@ Constant Pool (count = 212):
   + Utf8 [com/halcyonwaves/apps/energize/CustomViewPager]
   + Utf8 [com/halcyonwaves/apps/energize/SettingsActivity]
   + Utf8 [com/halcyonwaves/apps/energize/a]
-  + Utf8 [com/halcyonwaves/apps/energize/b]
   + Utf8 [com/halcyonwaves/apps/energize/b/a]
   + Utf8 [com/halcyonwaves/apps/energize/b/d]
+  + Utf8 [com/halcyonwaves/apps/energize/e]
   + Utf8 [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService]
   + Utf8 [com/viewpagerindicator/TitlePageIndicator]
   + Utf8 [create]
@@ -61226,8 +61259,8 @@ Methods (count = 6):
       [126] aload_0 v0
       [127] getfield #36
         + Fieldref [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity.n Lcom/halcyonwaves/apps/energize/CustomViewPager;]
-      [130] new #30
-        + Class [com/halcyonwaves/apps/energize/b]
+      [130] new #32
+        + Class [com/halcyonwaves/apps/energize/e]
       [133] dup
       [134] aload_0 v0
       [135] invokevirtual #60
@@ -61235,8 +61268,8 @@ Methods (count = 6):
       [138] aload_0 v0
       [139] invokevirtual #56
         + Methodref [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity.e ()Landroid/support/v4/app/n;]
-      [142] invokespecial #69
-        + Methodref [com/halcyonwaves/apps/energize/b.<init> (Landroid/content/Context;Landroid/support/v4/app/n;)V]
+      [142] invokespecial #73
+        + Methodref [com/halcyonwaves/apps/energize/e.<init> (Landroid/content/Context;Landroid/support/v4/app/n;)V]
       [145] invokevirtual #67
         + Methodref [com/halcyonwaves/apps/energize/CustomViewPager.setAdapter (Landroid/support/v4/view/ae;)V]
       [148] aload_0 v0
@@ -61253,15 +61286,15 @@ Methods (count = 6):
         + Fieldref [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity.n Lcom/halcyonwaves/apps/energize/CustomViewPager;]
       [165] invokevirtual #74
         + Methodref [com/viewpagerindicator/TitlePageIndicator.setViewPager (Landroid/support/v4/view/ViewPager;)V]
-      [168] new #32
+      [168] new #31
         + Class [com/halcyonwaves/apps/energize/b/d]
       [171] dup
       [172] aload_0 v0
-      [173] invokespecial #72
+      [173] invokespecial #71
         + Methodref [com/halcyonwaves/apps/energize/b/d.<init> (Landroid/app/Activity;)V]
       [176] astore v5
       [178] aload v5
-      [180] invokevirtual #73
+      [180] invokevirtual #72
         + Methodref [com/halcyonwaves/apps/energize/b/d.b ()V]
       [183] return
       Code attribute exceptions (count = 0):
@@ -61347,10 +61380,10 @@ Methods (count = 6):
       = private void f()
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 19, locals = 2, stack = 3):
-      [0] new #31
+      [0] new #30
         + Class [com/halcyonwaves/apps/energize/b/a]
       [3] dup
-      [4] invokespecial #70
+      [4] invokespecial #69
         + Methodref [com/halcyonwaves/apps/energize/b/a.<init> ()V]
       [7] astore_1 v1
       [8] aload_1 v1
@@ -61359,7 +61392,7 @@ Methods (count = 6):
         + Methodref [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity.getFragmentManager ()Landroid/app/FragmentManager;]
       [13] ldc #12
         + String [fragment_about]
-      [15] invokevirtual #71
+      [15] invokevirtual #70
         + Methodref [com/halcyonwaves/apps/energize/b/a.show (Landroid/app/FragmentManager;Ljava/lang/String;)V]
       [18] return
       Code attribute exceptions (count = 0):
@@ -61634,17 +61667,59 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 54):
+Constant Pool (count = 208):
   + Integer [2130837504]
-  + String [Hello]
-  + String [Hello, world!]
-  + String [This is an example.]
+  + Integer [2131492875]
+  + Integer [2131492876]
+  + Integer [2131492897]
+  + String [%]
+  + String [Constructing and sending DashClock widget update...]
+  + String [EnergizeExtension]
+  + String [Failed to query the current time estimation.]
+  + String [No monitor service connected, trying to bind service!]
+  + String [Update requested... ]
+  + String [android.intent.action.BATTERY_CHANGED]
+  + Class [android/content/Context]
   + Class [android/content/Intent]
+  + Class [android/content/IntentFilter]
+  + Class [android/os/Message]
+  + Class [android/os/Messenger]
+  + Class [android/os/RemoteException]
+  + Class [android/util/Log]
   + Class [com/google/android/apps/dashclock/api/ExtensionData]
   + Class [com/google/android/apps/dashclock/api/a]
   + Class [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity]
   + Class [com/halcyonwaves/apps/energize/EnergizeExtension]
+  + Class [com/halcyonwaves/apps/energize/b]
+  + Class [com/halcyonwaves/apps/energize/c]
+  + Class [com/halcyonwaves/apps/energize/c/b]
+  + Class [com/halcyonwaves/apps/energize/d]
+  + Class [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService]
+  + Class [java/lang/Integer]
+  + Class [java/lang/Object]
+  + Class [java/lang/String]
+  + Class [java/lang/StringBuilder]
+  + Fieldref [android/os/Message.replyTo Landroid/os/Messenger;]
+  + Fieldref [com/halcyonwaves/apps/energize/EnergizeExtension.a I]
+  + Fieldref [com/halcyonwaves/apps/energize/EnergizeExtension.b Lcom/halcyonwaves/apps/energize/c/b;]
+  + Fieldref [com/halcyonwaves/apps/energize/EnergizeExtension.c Landroid/os/Messenger;]
+  + Fieldref [com/halcyonwaves/apps/energize/EnergizeExtension.d Landroid/content/ServiceConnection;]
+  + Fieldref [com/halcyonwaves/apps/energize/EnergizeExtension.e Landroid/os/Messenger;]
+  + Fieldref [com/halcyonwaves/apps/energize/c/b.b Z]
+  + Fieldref [com/halcyonwaves/apps/energize/c/b.e I]
+  + Fieldref [com/halcyonwaves/apps/energize/c/b.f I]
+  + Methodref [android/content/Context.bindService (Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z]
+  + Methodref [android/content/Context.getString (I)Ljava/lang/String;]
+  + Methodref [android/content/Context.registerReceiver (Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;]
   + Methodref [android/content/Intent.<init> (Landroid/content/Context;Ljava/lang/Class;)V]
+  + Methodref [android/content/IntentFilter.<init> (Ljava/lang/String;)V]
+  + Methodref [android/os/Message.obtain (Landroid/os/Handler;I)Landroid/os/Message;]
+  + Methodref [android/os/Messenger.<init> (Landroid/os/Handler;)V]
+  + Methodref [android/os/Messenger.send (Landroid/os/Message;)V]
+  + Methodref [android/util/Log.d (Ljava/lang/String;Ljava/lang/String;)I]
+  + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;)I]
+  + Methodref [android/util/Log.i (Ljava/lang/String;Ljava/lang/String;)I]
+  + Methodref [android/util/Log.w (Ljava/lang/String;Ljava/lang/String;)I]
   + Methodref [com/google/android/apps/dashclock/api/ExtensionData.<init> ()V]
   + Methodref [com/google/android/apps/dashclock/api/ExtensionData.a (I)Lcom/google/android/apps/dashclock/api/ExtensionData;]
   + Methodref [com/google/android/apps/dashclock/api/ExtensionData.a (Landroid/content/Intent;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
@@ -61653,53 +61728,574 @@ Constant Pool (count = 54):
   + Methodref [com/google/android/apps/dashclock/api/ExtensionData.b (Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
   + Methodref [com/google/android/apps/dashclock/api/ExtensionData.c (Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
   + Methodref [com/google/android/apps/dashclock/api/a.<init> ()V]
+  + Methodref [com/google/android/apps/dashclock/api/a.a (Z)V]
+  + Methodref [com/google/android/apps/dashclock/api/a.onDestroy ()V]
+  + Methodref [com/google/android/apps/dashclock/api/a.onStartCommand (Landroid/content/Intent;II)I]
+  + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.a ()V]
   + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.a (Lcom/google/android/apps/dashclock/api/ExtensionData;)V]
+  + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.b ()V]
+  + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.b (Z)V]
+  + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.c ()V]
   + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.getApplicationContext ()Landroid/content/Context;]
+  + Methodref [com/halcyonwaves/apps/energize/b.<init> (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)V]
+  + Methodref [com/halcyonwaves/apps/energize/c.<init> (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)V]
+  + Methodref [com/halcyonwaves/apps/energize/c/b.<init> ()V]
+  + Methodref [com/halcyonwaves/apps/energize/d.<init> (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)V]
+  + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
+  + Methodref [java/lang/String.format (Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
+  + Methodref [java/lang/String.valueOf (I)Ljava/lang/String;]
+  + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
+  + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+  + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
   + NameAndType [<init> ()V]
   + NameAndType [<init> (Landroid/content/Context;Ljava/lang/Class;)V]
+  + NameAndType [<init> (Landroid/os/Handler;)V]
+  + NameAndType [<init> (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)V]
+  + NameAndType [<init> (Ljava/lang/String;)V]
+  + NameAndType [a ()V]
   + NameAndType [a (I)Lcom/google/android/apps/dashclock/api/ExtensionData;]
   + NameAndType [a (Landroid/content/Intent;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
   + NameAndType [a (Lcom/google/android/apps/dashclock/api/ExtensionData;)V]
   + NameAndType [a (Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
   + NameAndType [a (Z)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + NameAndType [a (Z)V]
+  + NameAndType [a I]
+  + NameAndType [append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+  + NameAndType [b ()V]
   + NameAndType [b (Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + NameAndType [b (Z)V]
+  + NameAndType [b Lcom/halcyonwaves/apps/energize/c/b;]
+  + NameAndType [b Z]
+  + NameAndType [bindService (Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z]
+  + NameAndType [c ()V]
   + NameAndType [c (Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + NameAndType [c Landroid/os/Messenger;]
+  + NameAndType [d (Ljava/lang/String;Ljava/lang/String;)I]
+  + NameAndType [d Landroid/content/ServiceConnection;]
+  + NameAndType [e (Ljava/lang/String;Ljava/lang/String;)I]
+  + NameAndType [e I]
+  + NameAndType [e Landroid/os/Messenger;]
+  + NameAndType [f I]
+  + NameAndType [format (Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
   + NameAndType [getApplicationContext ()Landroid/content/Context;]
+  + NameAndType [getString (I)Ljava/lang/String;]
+  + NameAndType [i (Ljava/lang/String;Ljava/lang/String;)I]
+  + NameAndType [obtain (Landroid/os/Handler;I)Landroid/os/Message;]
+  + NameAndType [onDestroy ()V]
+  + NameAndType [onStartCommand (Landroid/content/Intent;II)I]
+  + NameAndType [registerReceiver (Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;]
+  + NameAndType [replyTo Landroid/os/Messenger;]
+  + NameAndType [send (Landroid/os/Message;)V]
+  + NameAndType [toString ()Ljava/lang/String;]
+  + NameAndType [valueOf (I)Ljava/lang/Integer;]
+  + NameAndType [valueOf (I)Ljava/lang/String;]
+  + NameAndType [w (Ljava/lang/String;Ljava/lang/String;)I]
+  + Utf8 [%]
   + Utf8 [()Landroid/content/Context;]
+  + Utf8 [()Ljava/lang/String;]
   + Utf8 [()V]
   + Utf8 [(I)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + Utf8 [(I)Ljava/lang/Integer;]
+  + Utf8 [(I)Ljava/lang/String;]
   + Utf8 [(I)V]
+  + Utf8 [(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;]
   + Utf8 [(Landroid/content/Context;Ljava/lang/Class;)V]
   + Utf8 [(Landroid/content/Intent;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + Utf8 [(Landroid/content/Intent;II)I]
+  + Utf8 [(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z]
+  + Utf8 [(Landroid/os/Handler;)V]
+  + Utf8 [(Landroid/os/Handler;I)Landroid/os/Message;]
+  + Utf8 [(Landroid/os/Message;)V]
   + Utf8 [(Lcom/google/android/apps/dashclock/api/ExtensionData;)V]
+  + Utf8 [(Lcom/halcyonwaves/apps/energize/EnergizeExtension;)Landroid/os/Messenger;]
+  + Utf8 [(Lcom/halcyonwaves/apps/energize/EnergizeExtension;)Lcom/halcyonwaves/apps/energize/c/b;]
+  + Utf8 [(Lcom/halcyonwaves/apps/energize/EnergizeExtension;)V]
+  + Utf8 [(Lcom/halcyonwaves/apps/energize/EnergizeExtension;I)V]
+  + Utf8 [(Lcom/halcyonwaves/apps/energize/EnergizeExtension;Landroid/os/Messenger;)V]
+  + Utf8 [(Lcom/halcyonwaves/apps/energize/EnergizeExtension;Lcom/halcyonwaves/apps/energize/c/b;)V]
   + Utf8 [(Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + Utf8 [(Ljava/lang/String;)Ljava/lang/StringBuilder;]
+  + Utf8 [(Ljava/lang/String;)V]
+  + Utf8 [(Ljava/lang/String;Ljava/lang/String;)I]
+  + Utf8 [(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
   + Utf8 [(Z)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+  + Utf8 [(Z)V]
   + Utf8 [<init>]
   + Utf8 [Code]
-  + Utf8 [Hello]
-  + Utf8 [Hello, world!]
-  + Utf8 [This is an example.]
+  + Utf8 [Constructing and sending DashClock widget update...]
+  + Utf8 [EnergizeExtension]
+  + Utf8 [Failed to query the current time estimation.]
+  + Utf8 [I]
+  + Utf8 [Landroid/content/ServiceConnection;]
+  + Utf8 [Landroid/os/Messenger;]
+  + Utf8 [Lcom/halcyonwaves/apps/energize/c/b;]
+  + Utf8 [No monitor service connected, trying to bind service!]
+  + Utf8 [StackMapTable]
+  + Utf8 [Update requested... ]
+  + Utf8 [Z]
   + Utf8 [a]
+  + Utf8 [android.intent.action.BATTERY_CHANGED]
+  + Utf8 [android/content/Context]
   + Utf8 [android/content/Intent]
+  + Utf8 [android/content/IntentFilter]
+  + Utf8 [android/os/Message]
+  + Utf8 [android/os/Messenger]
+  + Utf8 [android/os/RemoteException]
+  + Utf8 [android/util/Log]
+  + Utf8 [append]
   + Utf8 [b]
+  + Utf8 [bindService]
   + Utf8 [c]
   + Utf8 [com/google/android/apps/dashclock/api/ExtensionData]
   + Utf8 [com/google/android/apps/dashclock/api/a]
   + Utf8 [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity]
   + Utf8 [com/halcyonwaves/apps/energize/EnergizeExtension]
+  + Utf8 [com/halcyonwaves/apps/energize/b]
+  + Utf8 [com/halcyonwaves/apps/energize/c]
+  + Utf8 [com/halcyonwaves/apps/energize/c/b]
+  + Utf8 [com/halcyonwaves/apps/energize/d]
+  + Utf8 [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService]
+  + Utf8 [d]
+  + Utf8 [e]
+  + Utf8 [f]
+  + Utf8 [format]
   + Utf8 [getApplicationContext]
+  + Utf8 [getString]
+  + Utf8 [i]
+  + Utf8 [java/lang/Integer]
+  + Utf8 [java/lang/Object]
+  + Utf8 [java/lang/String]
+  + Utf8 [java/lang/StringBuilder]
+  + Utf8 [obtain]
+  + Utf8 [onDestroy]
+  + Utf8 [onStartCommand]
+  + Utf8 [registerReceiver]
+  + Utf8 [replyTo]
+  + Utf8 [send]
+  + Utf8 [toString]
+  + Utf8 [valueOf]
+  + Utf8 [w]
 
-Fields (count = 0):
+Fields (count = 5):
+  + Field:        a I
+    Access flags: 0x2
+      = private int a
+  + Field:        b Lcom/halcyonwaves/apps/energize/c/b;
+    Access flags: 0x2
+      = private com.halcyonwaves.apps.energize.c.b b
+  + Field:        c Landroid/os/Messenger;
+    Access flags: 0x2
+      = private android.os.Messenger c
+  + Field:        d Landroid/content/ServiceConnection;
+    Access flags: 0x12
+      = private final android.content.ServiceConnection d
+  + Field:        e Landroid/os/Messenger;
+    Access flags: 0x12
+      = private final android.os.Messenger e
 
-Methods (count = 2):
+Methods (count = 15):
   - Method:       <init>()V
     Access flags: 0x1
       = public EnergizeExtension()
     Class member attributes (count = 1):
+    + Code attribute instructions (code length = 57, locals = 1, stack = 6):
+      [0] aload_0 v0
+      [1] invokespecial #60
+        + Methodref [com/google/android/apps/dashclock/api/a.<init> ()V]
+      [4] aload_0 v0
+      [5] iconst_0
+      [6] putfield #33
+        + Fieldref [com/halcyonwaves/apps/energize/EnergizeExtension.a I]
+      [9] aload_0 v0
+      [10] new #25
+        + Class [com/halcyonwaves/apps/energize/c/b]
+      [13] dup
+      [14] invokespecial #72
+        + Methodref [com/halcyonwaves/apps/energize/c/b.<init> ()V]
+      [17] putfield #34
+        + Fieldref [com/halcyonwaves/apps/energize/EnergizeExtension.b Lcom/halcyonwaves/apps/energize/c/b;]
+      [20] aload_0 v0
+      [21] aconst_null
+      [22] putfield #35
+        + Fieldref [com/halcyonwaves/apps/energize/EnergizeExtension.c Landroid/os/Messenger;]
+      [25] aload_0 v0
+      [26] new #23
+        + Class [com/halcyonwaves/apps/energize/b]
+      [29] dup
+      [30] aload_0 v0
+      [31] invokespecial #70
+        + Methodref [com/halcyonwaves/apps/energize/b.<init> (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)V]
+      [34] putfield #36
+        + Fieldref [com/halcyonwaves/apps/energize/EnergizeExtension.d Landroid/content/ServiceConnection;]
+      [37] aload_0 v0
+      [38] new #16
+        + Class [android/os/Messenger]
+      [41] dup
+      [42] new #26
+        + Class [com/halcyonwaves/apps/energize/d]
+      [45] dup
+      [46] aload_0 v0
+      [47] invokespecial #73
+        + Methodref [com/halcyonwaves/apps/energize/d.<init> (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)V]
+      [50] invokespecial #47
+        + Methodref [android/os/Messenger.<init> (Landroid/os/Handler;)V]
+      [53] putfield #37
+        + Fieldref [com/halcyonwaves/apps/energize/EnergizeExtension.e Landroid/os/Messenger;]
+      [56] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a()V
+    Access flags: 0x2
+      = private void a()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 27, locals = 1, stack = 5):
+      [0] aload_0 v0
+      [1] invokevirtual #69
+        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.getApplicationContext ()Landroid/content/Context;]
+      [4] new #13
+        + Class [android/content/Intent]
+      [7] dup
+      [8] aload_0 v0
+      [9] invokevirtual #69
+        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.getApplicationContext ()Landroid/content/Context;]
+      [12] ldc #27
+        + Class [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService]
+      [14] invokespecial #44
+        + Methodref [android/content/Intent.<init> (Landroid/content/Context;Ljava/lang/Class;)V]
+      [17] aload_0 v0
+      [18] getfield #36
+        + Fieldref [com/halcyonwaves/apps/energize/EnergizeExtension.d Landroid/content/ServiceConnection;]
+      [21] iconst_1
+      [22] invokevirtual #41
+        + Methodref [android/content/Context.bindService (Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z]
+      [25] pop
+      [26] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Z)V
+    Access flags: 0x4
+      = protected void a(boolean)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 11, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] iconst_1
+      [2] invokevirtual #67
+        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.b (Z)V]
+      [5] aload_0 v0
+      [6] iload_1 v1
+      [7] invokespecial #61
+        + Methodref [com/google/android/apps/dashclock/api/a.a (Z)V]
+      [10] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onStartCommand(Landroid/content/Intent;II)I
+    Access flags: 0x1
+      = public int onStartCommand(android.content.Intent,int,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 16, locals = 4, stack = 4):
+      [0] aload_0 v0
+      [1] invokespecial #64
+        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.a ()V]
+      [4] aload_0 v0
+      [5] invokespecial #66
+        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.b ()V]
+      [8] aload_0 v0
+      [9] aload_1 v1
+      [10] iload_2 v2
+      [11] iload_3 v3
+      [12] invokespecial #63
+        + Methodref [com/google/android/apps/dashclock/api/a.onStartCommand (Landroid/content/Intent;II)I]
+      [15] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       b()V
+    Access flags: 0x2
+      = private void b()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 86, locals = 3, stack = 3):
+      [0] aload_0 v0
+      [1] getfield #35
+        + Fieldref [com/halcyonwaves/apps/energize/EnergizeExtension.c Landroid/os/Messenger;]
+      [4] ifnull +28 (target=32)
+      [7] aconst_null
+      [8] iconst_5
+      [9] invokestatic #46
+        + Methodref [android/os/Message.obtain (Landroid/os/Handler;I)Landroid/os/Message;]
+      [12] astore_1 v1
+      [13] aload_1 v1
+      [14] aload_0 v0
+      [15] getfield #37
+        + Fieldref [com/halcyonwaves/apps/energize/EnergizeExtension.e Landroid/os/Messenger;]
+      [18] putfield #32
+        + Fieldref [android/os/Message.replyTo Landroid/os/Messenger;]
+      [21] aload_0 v0
+      [22] getfield #35
+        + Fieldref [com/halcyonwaves/apps/energize/EnergizeExtension.c Landroid/os/Messenger;]
+      [25] aload_1 v1
+      [26] invokevirtual #48
+        + Methodref [android/os/Messenger.send (Landroid/os/Message;)V]
+      [29] goto +27 (target=56)
+      [32] ldc #7
+        + String [EnergizeExtension]
+      [34] ldc #9
+        + String [No monitor service connected, trying to bind service!]
+      [36] invokestatic #52
+        + Methodref [android/util/Log.w (Ljava/lang/String;Ljava/lang/String;)I]
+      [39] pop
+      [40] aload_0 v0
+      [41] invokespecial #64
+        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.a ()V]
+      [44] goto +12 (target=56)
+      [47] astore_1 v1
+      [48] ldc #7
+        + String [EnergizeExtension]
+      [50] ldc #8
+        + String [Failed to query the current time estimation.]
+      [52] invokestatic #50
+        + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;)I]
+      [55] pop
+      [56] new #24
+        + Class [com/halcyonwaves/apps/energize/c]
+      [59] dup
+      [60] aload_0 v0
+      [61] invokespecial #71
+        + Methodref [com/halcyonwaves/apps/energize/c.<init> (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)V]
+      [64] astore_1 v1
+      [65] new #14
+        + Class [android/content/IntentFilter]
+      [68] dup
+      [69] ldc #11
+        + String [android.intent.action.BATTERY_CHANGED]
+      [71] invokespecial #45
+        + Methodref [android/content/IntentFilter.<init> (Ljava/lang/String;)V]
+      [74] astore_2 v2
+      [75] aload_0 v0
+      [76] invokevirtual #69
+        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.getApplicationContext ()Landroid/content/Context;]
+      [79] aload_1 v1
+      [80] aload_2 v2
+      [81] invokevirtual #43
+        + Methodref [android/content/Context.registerReceiver (Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;]
+      [84] pop
+      [85] return
+      Code attribute exceptions (count = 1):
+      - ExceptionInfo (0 -> 44: 47):
+      + Class [android/os/RemoteException]
+      Code attribute attributes (attribute count = 1):
+      + Stack map table attribute (count = 3):
+        - [32] Var: ..., Stack: (empty)
+        - [47] Var: ..., Stack: [a:android/os/RemoteException]
+        - [56] Var: ..., Stack: (empty)
+  + Method:       c()V
+    Access flags: 0x2
+      = private void c()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 259, locals = 1, stack = 7):
+      [0] ldc #7
+        + String [EnergizeExtension]
+      [2] ldc #6
+        + String [Constructing and sending DashClock widget update...]
+      [4] invokestatic #49
+        + Methodref [android/util/Log.d (Ljava/lang/String;Ljava/lang/String;)I]
+      [7] pop
+      [8] aload_0 v0
+      [9] getfield #34
+        + Fieldref [com/halcyonwaves/apps/energize/EnergizeExtension.b Lcom/halcyonwaves/apps/energize/c/b;]
+      [12] getfield #38
+        + Fieldref [com/halcyonwaves/apps/energize/c/b.b Z]
+      [15] ifeq +141 (target=156)
+      [18] aload_0 v0
+      [19] new #19
+        + Class [com/google/android/apps/dashclock/api/ExtensionData]
+      [22] dup
+      [23] invokespecial #53
+        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.<init> ()V]
+      [26] iconst_1
+      [27] invokevirtual #57
+        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.a (Z)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+      [30] ldc #1
+        + Integer [2130837504]
+      [32] invokevirtual #54
+        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.a (I)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+      [35] new #31
+        + Class [java/lang/StringBuilder]
+      [38] dup
+      [39] aload_0 v0
+      [40] getfield #33
+        + Fieldref [com/halcyonwaves/apps/energize/EnergizeExtension.a I]
+      [43] invokestatic #76
+        + Methodref [java/lang/String.valueOf (I)Ljava/lang/String;]
+      [46] invokespecial #77
+        + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
+      [49] ldc #5
+        + String [%]
+      [51] invokevirtual #78
+        + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+      [54] invokevirtual #79
+        + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
+      [57] invokevirtual #56
+        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.a (Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+      [60] aload_0 v0
+      [61] invokevirtual #69
+        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.getApplicationContext ()Landroid/content/Context;]
+      [64] ldc #4
+        + Integer [2131492897]
+      [66] invokevirtual #42
+        + Methodref [android/content/Context.getString (I)Ljava/lang/String;]
+      [69] iconst_1
+      [70] anewarray #29
+        + Class [java/lang/Object]
+      [73] dup
+      [74] iconst_0
+      [75] aload_0 v0
+      [76] getfield #33
+        + Fieldref [com/halcyonwaves/apps/energize/EnergizeExtension.a I]
+      [79] invokestatic #74
+        + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
+      [82] aastore
+      [83] invokestatic #75
+        + Methodref [java/lang/String.format (Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
+      [86] invokevirtual #58
+        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.b (Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+      [89] aload_0 v0
+      [90] invokevirtual #69
+        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.getApplicationContext ()Landroid/content/Context;]
+      [93] ldc #2
+        + Integer [2131492875]
+      [95] invokevirtual #42
+        + Methodref [android/content/Context.getString (I)Ljava/lang/String;]
+      [98] iconst_2
+      [99] anewarray #29
+        + Class [java/lang/Object]
+      [102] dup
+      [103] iconst_0
+      [104] aload_0 v0
+      [105] getfield #34
+        + Fieldref [com/halcyonwaves/apps/energize/EnergizeExtension.b Lcom/halcyonwaves/apps/energize/c/b;]
+      [108] getfield #39
+        + Fieldref [com/halcyonwaves/apps/energize/c/b.e I]
+      [111] invokestatic #74
+        + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
+      [114] aastore
+      [115] dup
+      [116] iconst_1
+      [117] aload_0 v0
+      [118] getfield #34
+        + Fieldref [com/halcyonwaves/apps/energize/EnergizeExtension.b Lcom/halcyonwaves/apps/energize/c/b;]
+      [121] getfield #40
+        + Fieldref [com/halcyonwaves/apps/energize/c/b.f I]
+      [124] invokestatic #74
+        + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
+      [127] aastore
+      [128] invokestatic #75
+        + Methodref [java/lang/String.format (Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
+      [131] invokevirtual #59
+        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.c (Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+      [134] new #13
+        + Class [android/content/Intent]
+      [137] dup
+      [138] aload_0 v0
+      [139] invokevirtual #69
+        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.getApplicationContext ()Landroid/content/Context;]
+      [142] ldc #21
+        + Class [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity]
+      [144] invokespecial #44
+        + Methodref [android/content/Intent.<init> (Landroid/content/Context;Ljava/lang/Class;)V]
+      [147] invokevirtual #55
+        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.a (Landroid/content/Intent;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+      [150] invokevirtual #65
+        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.a (Lcom/google/android/apps/dashclock/api/ExtensionData;)V]
+      [153] goto +105 (target=258)
+      [156] aload_0 v0
+      [157] new #19
+        + Class [com/google/android/apps/dashclock/api/ExtensionData]
+      [160] dup
+      [161] invokespecial #53
+        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.<init> ()V]
+      [164] iconst_1
+      [165] invokevirtual #57
+        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.a (Z)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+      [168] ldc #1
+        + Integer [2130837504]
+      [170] invokevirtual #54
+        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.a (I)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+      [173] new #31
+        + Class [java/lang/StringBuilder]
+      [176] dup
+      [177] aload_0 v0
+      [178] getfield #33
+        + Fieldref [com/halcyonwaves/apps/energize/EnergizeExtension.a I]
+      [181] invokestatic #76
+        + Methodref [java/lang/String.valueOf (I)Ljava/lang/String;]
+      [184] invokespecial #77
+        + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
+      [187] ldc #5
+        + String [%]
+      [189] invokevirtual #78
+        + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+      [192] invokevirtual #79
+        + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
+      [195] invokevirtual #56
+        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.a (Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+      [198] aload_0 v0
+      [199] invokevirtual #69
+        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.getApplicationContext ()Landroid/content/Context;]
+      [202] ldc #4
+        + Integer [2131492897]
+      [204] invokevirtual #42
+        + Methodref [android/content/Context.getString (I)Ljava/lang/String;]
+      [207] iconst_1
+      [208] anewarray #29
+        + Class [java/lang/Object]
+      [211] dup
+      [212] iconst_0
+      [213] aload_0 v0
+      [214] getfield #33
+        + Fieldref [com/halcyonwaves/apps/energize/EnergizeExtension.a I]
+      [217] invokestatic #74
+        + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
+      [220] aastore
+      [221] invokestatic #75
+        + Methodref [java/lang/String.format (Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
+      [224] invokevirtual #58
+        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.b (Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+      [227] aload_0 v0
+      [228] invokevirtual #69
+        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.getApplicationContext ()Landroid/content/Context;]
+      [231] ldc #3
+        + Integer [2131492876]
+      [233] invokevirtual #42
+        + Methodref [android/content/Context.getString (I)Ljava/lang/String;]
+      [236] invokevirtual #59
+        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.c (Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+      [239] new #13
+        + Class [android/content/Intent]
+      [242] dup
+      [243] aload_0 v0
+      [244] invokevirtual #69
+        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.getApplicationContext ()Landroid/content/Context;]
+      [247] ldc #21
+        + Class [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity]
+      [249] invokespecial #44
+        + Methodref [android/content/Intent.<init> (Landroid/content/Context;Ljava/lang/Class;)V]
+      [252] invokevirtual #55
+        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.a (Landroid/content/Intent;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
+      [255] invokevirtual #65
+        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.a (Lcom/google/android/apps/dashclock/api/ExtensionData;)V]
+      [258] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 1):
+      + Stack map table attribute (count = 2):
+        - [156] Var: ..., Stack: (empty)
+        - [258] Var: ..., Stack: (empty)
+  + Method:       onDestroy()V
+    Access flags: 0x1
+      = public void onDestroy()
+    Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] invokespecial #18
-        + Methodref [com/google/android/apps/dashclock/api/a.<init> ()V]
+      [1] invokespecial #62
+        + Methodref [com/google/android/apps/dashclock/api/a.onDestroy ()V]
       [4] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
@@ -61707,47 +62303,98 @@ Methods (count = 2):
     Access flags: 0x4
       = protected void a(int)
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 52, locals = 2, stack = 6):
+    + Code attribute instructions (code length = 13, locals = 2, stack = 2):
+      [0] ldc #7
+        + String [EnergizeExtension]
+      [2] ldc #10
+        + String [Update requested... ]
+      [4] invokestatic #51
+        + Methodref [android/util/Log.i (Ljava/lang/String;Ljava/lang/String;)I]
+      [7] pop
+      [8] aload_0 v0
+      [9] invokespecial #66
+        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.b ()V]
+      [12] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Lcom/halcyonwaves/apps/energize/EnergizeExtension;Landroid/os/Messenger;)V
+    Access flags: 0x1008
+      = static synthetic void a(com.halcyonwaves.apps.energize.EnergizeExtension,android.os.Messenger)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 6, locals = 2, stack = 2):
       [0] aload_0 v0
-      [1] new #6
-        + Class [com/google/android/apps/dashclock/api/ExtensionData]
-      [4] dup
-      [5] invokespecial #11
-        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.<init> ()V]
-      [8] iconst_1
-      [9] invokevirtual #15
-        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.a (Z)Lcom/google/android/apps/dashclock/api/ExtensionData;]
-      [12] ldc #1
-        + Integer [2130837504]
-      [14] invokevirtual #12
-        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.a (I)Lcom/google/android/apps/dashclock/api/ExtensionData;]
-      [17] ldc #2
-        + String [Hello]
-      [19] invokevirtual #14
-        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.a (Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
-      [22] ldc #3
-        + String [Hello, world!]
-      [24] invokevirtual #16
-        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.b (Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
-      [27] ldc #4
-        + String [This is an example.]
-      [29] invokevirtual #17
-        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.c (Ljava/lang/String;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
-      [32] new #5
-        + Class [android/content/Intent]
-      [35] dup
-      [36] aload_0 v0
-      [37] invokevirtual #20
-        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.getApplicationContext ()Landroid/content/Context;]
-      [40] ldc #8
-        + Class [com/halcyonwaves/apps/energize/BatteryStateDisplayActivity]
-      [42] invokespecial #10
-        + Methodref [android/content/Intent.<init> (Landroid/content/Context;Ljava/lang/Class;)V]
-      [45] invokevirtual #13
-        + Methodref [com/google/android/apps/dashclock/api/ExtensionData.a (Landroid/content/Intent;)Lcom/google/android/apps/dashclock/api/ExtensionData;]
-      [48] invokevirtual #19
-        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.a (Lcom/google/android/apps/dashclock/api/ExtensionData;)V]
-      [51] return
+      [1] aload_1 v1
+      [2] putfield #35
+        + Fieldref [com/halcyonwaves/apps/energize/EnergizeExtension.c Landroid/os/Messenger;]
+      [5] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Lcom/halcyonwaves/apps/energize/EnergizeExtension;)Landroid/os/Messenger;
+    Access flags: 0x1008
+      = static synthetic android.os.Messenger a(com.halcyonwaves.apps.energize.EnergizeExtension)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #37
+        + Fieldref [com/halcyonwaves/apps/energize/EnergizeExtension.e Landroid/os/Messenger;]
+      [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       b(Lcom/halcyonwaves/apps/energize/EnergizeExtension;)Landroid/os/Messenger;
+    Access flags: 0x1008
+      = static synthetic android.os.Messenger b(com.halcyonwaves.apps.energize.EnergizeExtension)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #35
+        + Fieldref [com/halcyonwaves/apps/energize/EnergizeExtension.c Landroid/os/Messenger;]
+      [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Lcom/halcyonwaves/apps/energize/EnergizeExtension;Lcom/halcyonwaves/apps/energize/c/b;)V
+    Access flags: 0x1008
+      = static synthetic void a(com.halcyonwaves.apps.energize.EnergizeExtension,com.halcyonwaves.apps.energize.c.b)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 6, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] putfield #34
+        + Fieldref [com/halcyonwaves/apps/energize/EnergizeExtension.b Lcom/halcyonwaves/apps/energize/c/b;]
+      [5] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       c(Lcom/halcyonwaves/apps/energize/EnergizeExtension;)Lcom/halcyonwaves/apps/energize/c/b;
+    Access flags: 0x1008
+      = static synthetic com.halcyonwaves.apps.energize.c.b c(com.halcyonwaves.apps.energize.EnergizeExtension)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #34
+        + Fieldref [com/halcyonwaves/apps/energize/EnergizeExtension.b Lcom/halcyonwaves/apps/energize/c/b;]
+      [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       d(Lcom/halcyonwaves/apps/energize/EnergizeExtension;)V
+    Access flags: 0x1008
+      = static synthetic void d(com.halcyonwaves.apps.energize.EnergizeExtension)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] invokespecial #68
+        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.c ()V]
+      [4] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Lcom/halcyonwaves/apps/energize/EnergizeExtension;I)V
+    Access flags: 0x1008
+      = static synthetic void a(com.halcyonwaves.apps.energize.EnergizeExtension,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 6, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] iload_1 v1
+      [2] putfield #33
+        + Fieldref [com/halcyonwaves/apps/energize/EnergizeExtension.a I]
+      [5] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
 
@@ -61755,11 +62402,598 @@ Class file attributes (count = 0):
 
 _____________________________________________________________________
 + Program class: com/halcyonwaves/apps/energize/b
+  Superclass:    java/lang/Object
+  Major version: 0x32
+  Minor version: 0x0
+  Access flags:  0x20
+    = class com.halcyonwaves.apps.energize.b extends java.lang.Object
+
+Interfaces (count = 1):
+  + Class [android/content/ServiceConnection]
+
+Constant Pool (count = 69):
+  + String [EnergizeExtension]
+  + String [Failed to connect to the battery monitoring service!]
+  + String [Trying to connect to the battery monitoring service...]
+  + Class [android/content/ServiceConnection]
+  + Class [android/os/Message]
+  + Class [android/os/Messenger]
+  + Class [android/os/RemoteException]
+  + Class [android/util/Log]
+  + Class [com/halcyonwaves/apps/energize/EnergizeExtension]
+  + Class [com/halcyonwaves/apps/energize/b]
+  + Class [java/lang/Object]
+  + Fieldref [android/os/Message.replyTo Landroid/os/Messenger;]
+  + Fieldref [com/halcyonwaves/apps/energize/b.a Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
+  + Methodref [android/os/Message.obtain (Landroid/os/Handler;I)Landroid/os/Message;]
+  + Methodref [android/os/Messenger.<init> (Landroid/os/IBinder;)V]
+  + Methodref [android/os/Messenger.send (Landroid/os/Message;)V]
+  + Methodref [android/util/Log.d (Ljava/lang/String;Ljava/lang/String;)I]
+  + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;)I]
+  + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.a (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)Landroid/os/Messenger;]
+  + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.a (Lcom/halcyonwaves/apps/energize/EnergizeExtension;Landroid/os/Messenger;)V]
+  + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.b (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)Landroid/os/Messenger;]
+  + Methodref [java/lang/Object.<init> ()V]
+  + NameAndType [<init> ()V]
+  + NameAndType [<init> (Landroid/os/IBinder;)V]
+  + NameAndType [a (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)Landroid/os/Messenger;]
+  + NameAndType [a (Lcom/halcyonwaves/apps/energize/EnergizeExtension;Landroid/os/Messenger;)V]
+  + NameAndType [a Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
+  + NameAndType [b (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)Landroid/os/Messenger;]
+  + NameAndType [d (Ljava/lang/String;Ljava/lang/String;)I]
+  + NameAndType [e (Ljava/lang/String;Ljava/lang/String;)I]
+  + NameAndType [obtain (Landroid/os/Handler;I)Landroid/os/Message;]
+  + NameAndType [replyTo Landroid/os/Messenger;]
+  + NameAndType [send (Landroid/os/Message;)V]
+  + Utf8 [()V]
+  + Utf8 [(Landroid/content/ComponentName;)V]
+  + Utf8 [(Landroid/content/ComponentName;Landroid/os/IBinder;)V]
+  + Utf8 [(Landroid/os/Handler;I)Landroid/os/Message;]
+  + Utf8 [(Landroid/os/IBinder;)V]
+  + Utf8 [(Landroid/os/Message;)V]
+  + Utf8 [(Lcom/halcyonwaves/apps/energize/EnergizeExtension;)Landroid/os/Messenger;]
+  + Utf8 [(Lcom/halcyonwaves/apps/energize/EnergizeExtension;)V]
+  + Utf8 [(Lcom/halcyonwaves/apps/energize/EnergizeExtension;Landroid/os/Messenger;)V]
+  + Utf8 [(Ljava/lang/String;Ljava/lang/String;)I]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [EnergizeExtension]
+  + Utf8 [Failed to connect to the battery monitoring service!]
+  + Utf8 [Landroid/os/Messenger;]
+  + Utf8 [Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
+  + Utf8 [StackMapTable]
+  + Utf8 [Trying to connect to the battery monitoring service...]
+  + Utf8 [a]
+  + Utf8 [android/content/ServiceConnection]
+  + Utf8 [android/os/Message]
+  + Utf8 [android/os/Messenger]
+  + Utf8 [android/os/RemoteException]
+  + Utf8 [android/util/Log]
+  + Utf8 [b]
+  + Utf8 [com/halcyonwaves/apps/energize/EnergizeExtension]
+  + Utf8 [com/halcyonwaves/apps/energize/b]
+  + Utf8 [d]
+  + Utf8 [e]
+  + Utf8 [java/lang/Object]
+  + Utf8 [obtain]
+  + Utf8 [onServiceConnected]
+  + Utf8 [onServiceDisconnected]
+  + Utf8 [replyTo]
+  + Utf8 [send]
+
+Fields (count = 1):
+  + Field:        a Lcom/halcyonwaves/apps/energize/EnergizeExtension;
+    Access flags: 0x1010
+      = final synthetic com.halcyonwaves.apps.energize.EnergizeExtension a
+
+Methods (count = 3):
+  - Method:       <init>(Lcom/halcyonwaves/apps/energize/EnergizeExtension;)V
+    Access flags: 0x0
+      = b(com.halcyonwaves.apps.energize.EnergizeExtension)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] putfield #13
+        + Fieldref [com/halcyonwaves/apps/energize/b.a Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
+      [5] aload_0 v0
+      [6] invokespecial #22
+        + Methodref [java/lang/Object.<init> ()V]
+      [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onServiceConnected(Landroid/content/ComponentName;Landroid/os/IBinder;)V
+    Access flags: 0x1
+      = public void onServiceConnected(android.content.ComponentName,android.os.IBinder)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 64, locals = 4, stack = 4):
+      [0] aload_0 v0
+      [1] getfield #13
+        + Fieldref [com/halcyonwaves/apps/energize/b.a Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
+      [4] new #6
+        + Class [android/os/Messenger]
+      [7] dup
+      [8] aload_2 v2
+      [9] invokespecial #15
+        + Methodref [android/os/Messenger.<init> (Landroid/os/IBinder;)V]
+      [12] invokestatic #20
+        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.a (Lcom/halcyonwaves/apps/energize/EnergizeExtension;Landroid/os/Messenger;)V]
+      [15] ldc #1
+        + String [EnergizeExtension]
+      [17] ldc #3
+        + String [Trying to connect to the battery monitoring service...]
+      [19] invokestatic #17
+        + Methodref [android/util/Log.d (Ljava/lang/String;Ljava/lang/String;)I]
+      [22] pop
+      [23] aconst_null
+      [24] iconst_1
+      [25] invokestatic #14
+        + Methodref [android/os/Message.obtain (Landroid/os/Handler;I)Landroid/os/Message;]
+      [28] astore_3 v3
+      [29] aload_3 v3
+      [30] aload_0 v0
+      [31] getfield #13
+        + Fieldref [com/halcyonwaves/apps/energize/b.a Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
+      [34] invokestatic #19
+        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.a (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)Landroid/os/Messenger;]
+      [37] putfield #12
+        + Fieldref [android/os/Message.replyTo Landroid/os/Messenger;]
+      [40] aload_0 v0
+      [41] getfield #13
+        + Fieldref [com/halcyonwaves/apps/energize/b.a Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
+      [44] invokestatic #21
+        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.b (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)Landroid/os/Messenger;]
+      [47] aload_3 v3
+      [48] invokevirtual #16
+        + Methodref [android/os/Messenger.send (Landroid/os/Message;)V]
+      [51] goto +12 (target=63)
+      [54] astore_3 v3
+      [55] ldc #1
+        + String [EnergizeExtension]
+      [57] ldc #2
+        + String [Failed to connect to the battery monitoring service!]
+      [59] invokestatic #18
+        + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;)I]
+      [62] pop
+      [63] return
+      Code attribute exceptions (count = 1):
+      - ExceptionInfo (15 -> 51: 54):
+      + Class [android/os/RemoteException]
+      Code attribute attributes (attribute count = 1):
+      + Stack map table attribute (count = 2):
+        - [54] Var: ..., Stack: [a:android/os/RemoteException]
+        - [63] Var: ..., Stack: (empty)
+  + Method:       onServiceDisconnected(Landroid/content/ComponentName;)V
+    Access flags: 0x1
+      = public void onServiceDisconnected(android.content.ComponentName)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 9, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] getfield #13
+        + Fieldref [com/halcyonwaves/apps/energize/b.a Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
+      [4] aconst_null
+      [5] invokestatic #20
+        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.a (Lcom/halcyonwaves/apps/energize/EnergizeExtension;Landroid/os/Messenger;)V]
+      [8] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: com/halcyonwaves/apps/energize/c
+  Superclass:    android/content/BroadcastReceiver
+  Major version: 0x32
+  Minor version: 0x0
+  Access flags:  0x20
+    = class com.halcyonwaves.apps.energize.c extends android.content.BroadcastReceiver
+
+Interfaces (count = 0):
+
+Constant Pool (count = 59):
+  + String [EnergizeExtension]
+  + String [The fragment was in an illegal state while it received the battery information. This should be handled in a different (and better way), The exception message was: ]
+  + String [Updating the DashClock widget (basic information).]
+  + String [level]
+  + String [scale]
+  + Class [android/content/BroadcastReceiver]
+  + Class [android/content/Context]
+  + Class [android/content/Intent]
+  + Class [android/util/Log]
+  + Class [com/halcyonwaves/apps/energize/EnergizeExtension]
+  + Class [com/halcyonwaves/apps/energize/c]
+  + Class [java/lang/IllegalStateException]
+  + Fieldref [com/halcyonwaves/apps/energize/c.a Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
+  + Methodref [android/content/BroadcastReceiver.<init> ()V]
+  + Methodref [android/content/Context.unregisterReceiver (Landroid/content/BroadcastReceiver;)V]
+  + Methodref [android/content/Intent.getIntExtra (Ljava/lang/String;I)I]
+  + Methodref [android/util/Log.d (Ljava/lang/String;Ljava/lang/String;)I]
+  + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I]
+  + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.a (Lcom/halcyonwaves/apps/energize/EnergizeExtension;I)V]
+  + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.d (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)V]
+  + NameAndType [<init> ()V]
+  + NameAndType [a (Lcom/halcyonwaves/apps/energize/EnergizeExtension;I)V]
+  + NameAndType [a Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
+  + NameAndType [d (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)V]
+  + NameAndType [d (Ljava/lang/String;Ljava/lang/String;)I]
+  + NameAndType [e (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I]
+  + NameAndType [getIntExtra (Ljava/lang/String;I)I]
+  + NameAndType [unregisterReceiver (Landroid/content/BroadcastReceiver;)V]
+  + Utf8 [()V]
+  + Utf8 [(Landroid/content/BroadcastReceiver;)V]
+  + Utf8 [(Landroid/content/Context;Landroid/content/Intent;)V]
+  + Utf8 [(Lcom/halcyonwaves/apps/energize/EnergizeExtension;)V]
+  + Utf8 [(Lcom/halcyonwaves/apps/energize/EnergizeExtension;I)V]
+  + Utf8 [(Ljava/lang/String;I)I]
+  + Utf8 [(Ljava/lang/String;Ljava/lang/String;)I]
+  + Utf8 [(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [EnergizeExtension]
+  + Utf8 [Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
+  + Utf8 [StackMapTable]
+  + Utf8 [The fragment was in an illegal state while it received the battery information. This should be handled in a different (and better way), The exception message was: ]
+  + Utf8 [Updating the DashClock widget (basic information).]
+  + Utf8 [a]
+  + Utf8 [android/content/BroadcastReceiver]
+  + Utf8 [android/content/Context]
+  + Utf8 [android/content/Intent]
+  + Utf8 [android/util/Log]
+  + Utf8 [com/halcyonwaves/apps/energize/EnergizeExtension]
+  + Utf8 [com/halcyonwaves/apps/energize/c]
+  + Utf8 [d]
+  + Utf8 [e]
+  + Utf8 [getIntExtra]
+  + Utf8 [java/lang/IllegalStateException]
+  + Utf8 [level]
+  + Utf8 [onReceive]
+  + Utf8 [scale]
+  + Utf8 [unregisterReceiver]
+
+Fields (count = 1):
+  + Field:        a Lcom/halcyonwaves/apps/energize/EnergizeExtension;
+    Access flags: 0x1010
+      = final synthetic com.halcyonwaves.apps.energize.EnergizeExtension a
+
+Methods (count = 2):
+  - Method:       <init>(Lcom/halcyonwaves/apps/energize/EnergizeExtension;)V
+    Access flags: 0x0
+      = c(com.halcyonwaves.apps.energize.EnergizeExtension)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] putfield #13
+        + Fieldref [com/halcyonwaves/apps/energize/c.a Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
+      [5] aload_0 v0
+      [6] invokespecial #14
+        + Methodref [android/content/BroadcastReceiver.<init> ()V]
+      [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onReceive(Landroid/content/Context;Landroid/content/Intent;)V
+    Access flags: 0x1
+      = public void onReceive(android.content.Context,android.content.Intent)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 81, locals = 6, stack = 3):
+      [0] aload_1 v1
+      [1] aload_0 v0
+      [2] invokevirtual #15
+        + Methodref [android/content/Context.unregisterReceiver (Landroid/content/BroadcastReceiver;)V]
+      [5] aload_2 v2
+      [6] ldc #4
+        + String [level]
+      [8] iconst_m1
+      [9] invokevirtual #16
+        + Methodref [android/content/Intent.getIntExtra (Ljava/lang/String;I)I]
+      [12] istore_3 v3
+      [13] aload_2 v2
+      [14] ldc #5
+        + String [scale]
+      [16] iconst_m1
+      [17] invokevirtual #16
+        + Methodref [android/content/Intent.getIntExtra (Ljava/lang/String;I)I]
+      [20] istore v4
+      [22] iconst_m1
+      [23] istore v5
+      [25] iload_3 v3
+      [26] iflt +17 (target=43)
+      [29] iload v4
+      [31] ifle +12 (target=43)
+      [34] iload_3 v3
+      [35] bipush 100
+      [37] imul
+      [38] iload v4
+      [40] idiv
+      [41] istore v5
+      [43] ldc #1
+        + String [EnergizeExtension]
+      [45] ldc #3
+        + String [Updating the DashClock widget (basic information).]
+      [47] invokestatic #17
+        + Methodref [android/util/Log.d (Ljava/lang/String;Ljava/lang/String;)I]
+      [50] pop
+      [51] aload_0 v0
+      [52] getfield #13
+        + Fieldref [com/halcyonwaves/apps/energize/c.a Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
+      [55] iload v5
+      [57] invokestatic #19
+        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.a (Lcom/halcyonwaves/apps/energize/EnergizeExtension;I)V]
+      [60] aload_0 v0
+      [61] getfield #13
+        + Fieldref [com/halcyonwaves/apps/energize/c.a Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
+      [64] invokestatic #20
+        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.d (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)V]
+      [67] goto +13 (target=80)
+      [70] astore_3 v3
+      [71] ldc #1
+        + String [EnergizeExtension]
+      [73] ldc #2
+        + String [The fragment was in an illegal state while it received the battery information. This should be handled in a different (and better way), The exception message was: ]
+      [75] aload_3 v3
+      [76] invokestatic #18
+        + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I]
+      [79] pop
+      [80] return
+      Code attribute exceptions (count = 1):
+      - ExceptionInfo (0 -> 67: 70):
+      + Class [java/lang/IllegalStateException]
+      Code attribute attributes (attribute count = 1):
+      + Stack map table attribute (count = 3):
+        - [43] Var: ...[i][i][i], Stack: (empty)
+        - [70] Var: [a:com/halcyonwaves/apps/energize/c][a:android/content/Context][a:android/content/Intent], Stack: [a:java/lang/IllegalStateException]
+        - [80] Var: ..., Stack: (empty)
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: com/halcyonwaves/apps/energize/d
+  Superclass:    android/os/Handler
+  Major version: 0x32
+  Minor version: 0x0
+  Access flags:  0x20
+    = class com.halcyonwaves.apps.energize.d extends android.os.Handler
+
+Interfaces (count = 0):
+
+Constant Pool (count = 92):
+  + String [EnergizeExtension]
+  + String [Failed to query the current time estimation.]
+  + String [Received an time estimation of %d minutes.]
+  + String [Tried to query the remaining time but the monitor service was not available!]
+  + Class [android/os/Handler]
+  + Class [android/os/Message]
+  + Class [android/os/Messenger]
+  + Class [android/os/RemoteException]
+  + Class [android/util/Log]
+  + Class [com/halcyonwaves/apps/energize/EnergizeExtension]
+  + Class [com/halcyonwaves/apps/energize/c/b]
+  + Class [com/halcyonwaves/apps/energize/d]
+  + Class [java/lang/Object]
+  + Class [java/lang/String]
+  + Fieldref [android/os/Message.replyTo Landroid/os/Messenger;]
+  + Fieldref [android/os/Message.what I]
+  + Fieldref [com/halcyonwaves/apps/energize/d.a Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
+  + Methodref [android/os/Handler.<init> ()V]
+  + Methodref [android/os/Handler.handleMessage (Landroid/os/Message;)V]
+  + Methodref [android/os/Message.getData ()Landroid/os/Bundle;]
+  + Methodref [android/os/Message.obtain (Landroid/os/Handler;I)Landroid/os/Message;]
+  + Methodref [android/os/Messenger.send (Landroid/os/Message;)V]
+  + Methodref [android/util/Log.d (Ljava/lang/String;Ljava/lang/String;)I]
+  + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;)I]
+  + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.a (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)Landroid/os/Messenger;]
+  + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.a (Lcom/halcyonwaves/apps/energize/EnergizeExtension;Lcom/halcyonwaves/apps/energize/c/b;)V]
+  + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.b (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)Landroid/os/Messenger;]
+  + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.c (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)Lcom/halcyonwaves/apps/energize/c/b;]
+  + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.d (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)V]
+  + Methodref [com/halcyonwaves/apps/energize/c/b.a (Landroid/os/Bundle;)Lcom/halcyonwaves/apps/energize/c/b;]
+  + Methodref [java/lang/String.format (Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
+  + NameAndType [<init> ()V]
+  + NameAndType [a (Landroid/os/Bundle;)Lcom/halcyonwaves/apps/energize/c/b;]
+  + NameAndType [a (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)Landroid/os/Messenger;]
+  + NameAndType [a (Lcom/halcyonwaves/apps/energize/EnergizeExtension;Lcom/halcyonwaves/apps/energize/c/b;)V]
+  + NameAndType [a Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
+  + NameAndType [b (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)Landroid/os/Messenger;]
+  + NameAndType [c (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)Lcom/halcyonwaves/apps/energize/c/b;]
+  + NameAndType [d (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)V]
+  + NameAndType [d (Ljava/lang/String;Ljava/lang/String;)I]
+  + NameAndType [e (Ljava/lang/String;Ljava/lang/String;)I]
+  + NameAndType [format (Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
+  + NameAndType [getData ()Landroid/os/Bundle;]
+  + NameAndType [handleMessage (Landroid/os/Message;)V]
+  + NameAndType [obtain (Landroid/os/Handler;I)Landroid/os/Message;]
+  + NameAndType [replyTo Landroid/os/Messenger;]
+  + NameAndType [send (Landroid/os/Message;)V]
+  + NameAndType [what I]
+  + Utf8 [()Landroid/os/Bundle;]
+  + Utf8 [()V]
+  + Utf8 [(Landroid/os/Bundle;)Lcom/halcyonwaves/apps/energize/c/b;]
+  + Utf8 [(Landroid/os/Handler;I)Landroid/os/Message;]
+  + Utf8 [(Landroid/os/Message;)V]
+  + Utf8 [(Lcom/halcyonwaves/apps/energize/EnergizeExtension;)Landroid/os/Messenger;]
+  + Utf8 [(Lcom/halcyonwaves/apps/energize/EnergizeExtension;)Lcom/halcyonwaves/apps/energize/c/b;]
+  + Utf8 [(Lcom/halcyonwaves/apps/energize/EnergizeExtension;)V]
+  + Utf8 [(Lcom/halcyonwaves/apps/energize/EnergizeExtension;Lcom/halcyonwaves/apps/energize/c/b;)V]
+  + Utf8 [(Ljava/lang/String;Ljava/lang/String;)I]
+  + Utf8 [(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [EnergizeExtension]
+  + Utf8 [Failed to query the current time estimation.]
+  + Utf8 [I]
+  + Utf8 [Landroid/os/Messenger;]
+  + Utf8 [Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
+  + Utf8 [Received an time estimation of %d minutes.]
+  + Utf8 [StackMapTable]
+  + Utf8 [Tried to query the remaining time but the monitor service was not available!]
+  + Utf8 [a]
+  + Utf8 [android/os/Handler]
+  + Utf8 [android/os/Message]
+  + Utf8 [android/os/Messenger]
+  + Utf8 [android/os/RemoteException]
+  + Utf8 [android/util/Log]
+  + Utf8 [b]
+  + Utf8 [c]
+  + Utf8 [com/halcyonwaves/apps/energize/EnergizeExtension]
+  + Utf8 [com/halcyonwaves/apps/energize/c/b]
+  + Utf8 [com/halcyonwaves/apps/energize/d]
+  + Utf8 [d]
+  + Utf8 [e]
+  + Utf8 [format]
+  + Utf8 [getData]
+  + Utf8 [handleMessage]
+  + Utf8 [java/lang/Object]
+  + Utf8 [java/lang/String]
+  + Utf8 [obtain]
+  + Utf8 [replyTo]
+  + Utf8 [send]
+  + Utf8 [what]
+
+Fields (count = 1):
+  + Field:        a Lcom/halcyonwaves/apps/energize/EnergizeExtension;
+    Access flags: 0x1010
+      = final synthetic com.halcyonwaves.apps.energize.EnergizeExtension a
+
+Methods (count = 2):
+  - Method:       <init>(Lcom/halcyonwaves/apps/energize/EnergizeExtension;)V
+    Access flags: 0x0
+      = d(com.halcyonwaves.apps.energize.EnergizeExtension)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] putfield #17
+        + Fieldref [com/halcyonwaves/apps/energize/d.a Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
+      [5] aload_0 v0
+      [6] invokespecial #18
+        + Methodref [android/os/Handler.<init> ()V]
+      [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       handleMessage(Landroid/os/Message;)V
+    Access flags: 0x1
+      = public void handleMessage(android.os.Message)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 157, locals = 3, stack = 6):
+      [0] aload_1 v1
+      [1] getfield #16
+        + Fieldref [android/os/Message.what I]
+      [4] tableswitch (5 offsets, default=147) (target=151)
+        1: offset = 36, target = 40
+        2: offset = 147, target = 151
+        3: offset = 147, target = 151
+        4: offset = 147, target = 151
+        5: offset = 98, target = 102
+        default: offset = 147, target = 151
+      [40] aload_0 v0
+      [41] getfield #17
+        + Fieldref [com/halcyonwaves/apps/energize/d.a Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
+      [44] invokestatic #27
+        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.b (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)Landroid/os/Messenger;]
+      [47] ifnonnull +12 (target=59)
+      [50] ldc #1
+        + String [EnergizeExtension]
+      [52] ldc #4
+        + String [Tried to query the remaining time but the monitor service was not available!]
+      [54] invokestatic #24
+        + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;)I]
+      [57] pop
+      [58] return
+      [59] aconst_null
+      [60] iconst_5
+      [61] invokestatic #21
+        + Methodref [android/os/Message.obtain (Landroid/os/Handler;I)Landroid/os/Message;]
+      [64] astore_2 v2
+      [65] aload_2 v2
+      [66] aload_0 v0
+      [67] getfield #17
+        + Fieldref [com/halcyonwaves/apps/energize/d.a Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
+      [70] invokestatic #25
+        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.a (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)Landroid/os/Messenger;]
+      [73] putfield #15
+        + Fieldref [android/os/Message.replyTo Landroid/os/Messenger;]
+      [76] aload_0 v0
+      [77] getfield #17
+        + Fieldref [com/halcyonwaves/apps/energize/d.a Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
+      [80] invokestatic #27
+        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.b (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)Landroid/os/Messenger;]
+      [83] aload_2 v2
+      [84] invokevirtual #22
+        + Methodref [android/os/Messenger.send (Landroid/os/Message;)V]
+      [87] goto +69 (target=156)
+      [90] astore_2 v2
+      [91] ldc #1
+        + String [EnergizeExtension]
+      [93] ldc #2
+        + String [Failed to query the current time estimation.]
+      [95] invokestatic #24
+        + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;)I]
+      [98] pop
+      [99] goto +57 (target=156)
+      [102] aload_0 v0
+      [103] getfield #17
+        + Fieldref [com/halcyonwaves/apps/energize/d.a Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
+      [106] aload_1 v1
+      [107] invokevirtual #20
+        + Methodref [android/os/Message.getData ()Landroid/os/Bundle;]
+      [110] invokestatic #30
+        + Methodref [com/halcyonwaves/apps/energize/c/b.a (Landroid/os/Bundle;)Lcom/halcyonwaves/apps/energize/c/b;]
+      [113] invokestatic #26
+        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.a (Lcom/halcyonwaves/apps/energize/EnergizeExtension;Lcom/halcyonwaves/apps/energize/c/b;)V]
+      [116] ldc #1
+        + String [EnergizeExtension]
+      [118] ldc #3
+        + String [Received an time estimation of %d minutes.]
+      [120] iconst_1
+      [121] anewarray #13
+        + Class [java/lang/Object]
+      [124] dup
+      [125] iconst_0
+      [126] aload_0 v0
+      [127] getfield #17
+        + Fieldref [com/halcyonwaves/apps/energize/d.a Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
+      [130] invokestatic #28
+        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.c (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)Lcom/halcyonwaves/apps/energize/c/b;]
+      [133] aastore
+      [134] invokestatic #31
+        + Methodref [java/lang/String.format (Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
+      [137] invokestatic #23
+        + Methodref [android/util/Log.d (Ljava/lang/String;Ljava/lang/String;)I]
+      [140] pop
+      [141] aload_0 v0
+      [142] getfield #17
+        + Fieldref [com/halcyonwaves/apps/energize/d.a Lcom/halcyonwaves/apps/energize/EnergizeExtension;]
+      [145] invokestatic #29
+        + Methodref [com/halcyonwaves/apps/energize/EnergizeExtension.d (Lcom/halcyonwaves/apps/energize/EnergizeExtension;)V]
+      [148] goto +8 (target=156)
+      [151] aload_0 v0
+      [152] aload_1 v1
+      [153] invokespecial #19
+        + Methodref [android/os/Handler.handleMessage (Landroid/os/Message;)V]
+      [156] return
+      Code attribute exceptions (count = 2):
+      - ExceptionInfo (40 -> 58: 90):
+      + Class [android/os/RemoteException]
+      - ExceptionInfo (59 -> 87: 90):
+      + Class [android/os/RemoteException]
+      Code attribute attributes (attribute count = 1):
+      + Stack map table attribute (count = 6):
+        - [40] Var: ..., Stack: (empty)
+        - [59] Var: ..., Stack: (empty)
+        - [90] Var: ..., Stack: [a:android/os/RemoteException]
+        - [102] Var: ..., Stack: (empty)
+        - [151] Var: ..., Stack: (empty)
+        - [156] Var: ..., Stack: (empty)
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: com/halcyonwaves/apps/energize/e
   Superclass:    android/support/v4/app/t
   Major version: 0x32
   Minor version: 0x0
   Access flags:  0x21
-    = public class com.halcyonwaves.apps.energize.b extends android.support.v4.app.t
+    = public class com.halcyonwaves.apps.energize.e extends android.support.v4.app.t
 
 Interfaces (count = 0):
 
@@ -61774,12 +63008,12 @@ Constant Pool (count = 68):
   + Class [android/content/Context]
   + Class [android/support/v4/app/t]
   + Class [android/util/Log]
-  + Class [com/halcyonwaves/apps/energize/b]
+  + Class [com/halcyonwaves/apps/energize/e]
   + Class [com/halcyonwaves/apps/energize/fragments/BatteryCapacityGraphFragment]
   + Class [com/halcyonwaves/apps/energize/fragments/OverviewFragment]
   + Class [com/halcyonwaves/apps/energize/fragments/TemperatureGraphFragment]
   + Class [java/lang/StringBuilder]
-  + Fieldref [com/halcyonwaves/apps/energize/b.a Landroid/content/Context;]
+  + Fieldref [com/halcyonwaves/apps/energize/e.a Landroid/content/Context;]
   + Methodref [android/content/Context.getString (I)Ljava/lang/String;]
   + Methodref [android/support/v4/app/t.<init> (Landroid/support/v4/app/n;)V]
   + Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;)I]
@@ -61823,7 +63057,7 @@ Constant Pool (count = 68):
   + Utf8 [append]
   + Utf8 [b]
   + Utf8 [c]
-  + Utf8 [com/halcyonwaves/apps/energize/b]
+  + Utf8 [com/halcyonwaves/apps/energize/e]
   + Utf8 [com/halcyonwaves/apps/energize/fragments/BatteryCapacityGraphFragment]
   + Utf8 [com/halcyonwaves/apps/energize/fragments/OverviewFragment]
   + Utf8 [com/halcyonwaves/apps/energize/fragments/TemperatureGraphFragment]
@@ -61840,7 +63074,7 @@ Fields (count = 1):
 Methods (count = 4):
   - Method:       <init>(Landroid/content/Context;Landroid/support/v4/app/n;)V
     Access flags: 0x1
-      = public b(android.content.Context,android.support.v4.app.n)
+      = public e(android.content.Context,android.support.v4.app.n)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 16, locals = 3, stack = 2):
       [0] aload_0 v0
@@ -61850,11 +63084,11 @@ Methods (count = 4):
       [5] aload_0 v0
       [6] aconst_null
       [7] putfield #16
-        + Fieldref [com/halcyonwaves/apps/energize/b.a Landroid/content/Context;]
+        + Fieldref [com/halcyonwaves/apps/energize/e.a Landroid/content/Context;]
       [10] aload_0 v0
       [11] aload_1 v1
       [12] putfield #16
-        + Fieldref [com/halcyonwaves/apps/energize/b.a Landroid/content/Context;]
+        + Fieldref [com/halcyonwaves/apps/energize/e.a Landroid/content/Context;]
       [15] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
@@ -61935,7 +63169,7 @@ Methods (count = 4):
         default: offset = 57, target = 58
       [28] aload_0 v0
       [29] getfield #16
-        + Fieldref [com/halcyonwaves/apps/energize/b.a Landroid/content/Context;]
+        + Fieldref [com/halcyonwaves/apps/energize/e.a Landroid/content/Context;]
       [32] ldc #1
         + Integer [2131492890]
       [34] invokevirtual #17
@@ -61943,7 +63177,7 @@ Methods (count = 4):
       [37] areturn
       [38] aload_0 v0
       [39] getfield #16
-        + Fieldref [com/halcyonwaves/apps/energize/b.a Landroid/content/Context;]
+        + Fieldref [com/halcyonwaves/apps/energize/e.a Landroid/content/Context;]
       [42] ldc #2
         + Integer [2131492891]
       [44] invokevirtual #17
@@ -61951,7 +63185,7 @@ Methods (count = 4):
       [47] areturn
       [48] aload_0 v0
       [49] getfield #16
-        + Fieldref [com/halcyonwaves/apps/energize/b.a Landroid/content/Context;]
+        + Fieldref [com/halcyonwaves/apps/energize/e.a Landroid/content/Context;]
       [52] ldc #3
         + Integer [2131492892]
       [54] invokevirtual #17
@@ -66113,8 +67347,8 @@ Constant Pool (count = 341):
   + Integer [2131034138]
   + Integer [2131034139]
   + Integer [2131034140]
-  + Integer [2131492905]
-  + Integer [2131492907]
+  + Integer [2131492906]
+  + Integer [2131492908]
   + String [-]
   + String [Device brand: ]
   + String [Device model name: ]
@@ -66861,7 +68095,7 @@ Methods (count = 18):
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.Z Landroid/widget/TextView;]
       [263] aload_0 v0
       [264] ldc #10
-        + Integer [2131492907]
+        + Integer [2131492908]
       [266] iconst_2
       [267] anewarray #52
         + Class [java/lang/Object]
@@ -67057,7 +68291,7 @@ Methods (count = 18):
         + Fieldref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.X Landroid/widget/TextView;]
       [4] aload_0 v0
       [5] ldc #9
-        + Integer [2131492905]
+        + Integer [2131492906]
       [7] invokevirtual #104
         + Methodref [com/halcyonwaves/apps/energize/fragments/OverviewFragment.a (I)Ljava/lang/String;]
       [10] iconst_2
@@ -67396,8 +68630,8 @@ Constant Pool (count = 145):
   + Integer [2131492879]
   + Integer [2131492880]
   + Integer [2131492881]
-  + Integer [2131492910]
   + Integer [2131492911]
+  + Integer [2131492912]
   + Float [1.8]
   + Float [10.0]
   + Float [32.0]
@@ -67787,7 +69021,7 @@ Methods (count = 2):
       [337] getfield #38
         + Fieldref [com/halcyonwaves/apps/energize/fragments/c.a Lcom/halcyonwaves/apps/energize/fragments/OverviewFragment;]
       [340] ldc #5
-        + Integer [2131492910]
+        + Integer [2131492911]
       [342] iconst_1
       [343] anewarray #35
         + Class [java/lang/Object]
@@ -67825,7 +69059,7 @@ Methods (count = 2):
       [391] getfield #38
         + Fieldref [com/halcyonwaves/apps/energize/fragments/c.a Lcom/halcyonwaves/apps/energize/fragments/OverviewFragment;]
       [394] ldc #6
-        + Integer [2131492911]
+        + Integer [2131492912]
       [396] iconst_1
       [397] anewarray #35
         + Class [java/lang/Object]
@@ -68998,9 +70232,9 @@ _____________________________________________________________________
 Interfaces (count = 0):
 
 Constant Pool (count = 104):
-  + Integer [2131492910]
   + Integer [2131492911]
   + Integer [2131492912]
+  + Integer [2131492913]
   + String [Celsius]
   + String [HH:mm]
   + String [N/A]
@@ -69205,7 +70439,7 @@ Methods (count = 3):
       [125] getfield #24
         + Fieldref [com/halcyonwaves/apps/energize/fragments/e.a Lcom/halcyonwaves/apps/energize/fragments/TemperatureGraphFragment;]
       [128] ldc #1
-        + Integer [2131492910]
+        + Integer [2131492911]
       [130] iconst_1
       [131] anewarray #18
         + Class [java/lang/Object]
@@ -69222,7 +70456,7 @@ Methods (count = 3):
       [146] getfield #24
         + Fieldref [com/halcyonwaves/apps/energize/fragments/e.a Lcom/halcyonwaves/apps/energize/fragments/TemperatureGraphFragment;]
       [149] ldc #2
-        + Integer [2131492911]
+        + Integer [2131492912]
       [151] iconst_1
       [152] anewarray #18
         + Class [java/lang/Object]
@@ -69239,7 +70473,7 @@ Methods (count = 3):
       [167] getfield #24
         + Fieldref [com/halcyonwaves/apps/energize/fragments/e.a Lcom/halcyonwaves/apps/energize/fragments/TemperatureGraphFragment;]
       [170] ldc #3
-        + Integer [2131492912]
+        + Integer [2131492913]
       [172] iconst_1
       [173] anewarray #18
         + Class [java/lang/Object]
@@ -71105,8 +72339,8 @@ Interfaces (count = 1):
   + Class [android/content/SharedPreferences$OnSharedPreferenceChangeListener]
 
 Constant Pool (count = 468):
-  + Integer [2130837504]
   + Integer [2130837505]
+  + Integer [2130837506]
   + Integer [2130903049]
   + Integer [2131034143]
   + Integer [2131034144]
@@ -71117,7 +72351,7 @@ Constant Pool (count = 468):
   + Integer [2131492875]
   + Integer [2131492876]
   + Integer [2131492877]
-  + Integer [2131492908]
+  + Integer [2131492909]
   + String [Cannot open an input and/or outpout file. The exception message was: ]
   + String [Failed to log the event that the power cord was plugged in or unplugged.]
   + String [I/O error during copying the database.]
@@ -72339,7 +73573,7 @@ Methods (count = 14):
       [77] pop
       [78] aload_2 v2
       [79] ldc #1
-        + Integer [2130837504]
+        + Integer [2130837505]
       [81] invokevirtual #130
         + Methodref [android/support/v4/app/ai.a (I)Landroid/support/v4/app/ai;]
       [84] pop
@@ -72419,7 +73653,7 @@ Methods (count = 14):
       [179] pop
       [180] aload_3 v3
       [181] ldc #2
-        + Integer [2130837505]
+        + Integer [2130837506]
       [183] aload_1 v1
       [184] getfield #89
         + Fieldref [com/halcyonwaves/apps/energize/c/b.c I]
@@ -72642,7 +73876,7 @@ Methods (count = 14):
         + Integer [2131034145]
       [145] aload_0 v0
       [146] ldc #13
-        + Integer [2131492908]
+        + Integer [2131492909]
       [148] invokevirtual #152
         + Methodref [com/halcyonwaves/apps/energize/services/MonitorBatteryStateService.getString (I)Ljava/lang/String;]
       [151] iconst_2

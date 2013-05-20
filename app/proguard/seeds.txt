@@ -150,6 +150,7 @@ com.halcyonwaves.apps.energize.R$dimen: int default_title_indicator_footer_paddi
 com.halcyonwaves.apps.energize.R$dimen: int default_title_indicator_text_size
 com.halcyonwaves.apps.energize.R$dimen: int default_title_indicator_title_padding
 com.halcyonwaves.apps.energize.R$dimen: int default_title_indicator_top_padding
+com.halcyonwaves.apps.energize.R$drawable: int ic_battery
 com.halcyonwaves.apps.energize.R$drawable: int ic_launcher
 com.halcyonwaves.apps.energize.R$drawable: int ic_stat_00_pct_charged
 com.halcyonwaves.apps.energize.R$drawable: int ic_stat_01_pct_charged
@@ -325,6 +326,8 @@ com.halcyonwaves.apps.energize.R$string: int battery_state_full
 com.halcyonwaves.apps.energize.R$string: int battery_state_unknown
 com.halcyonwaves.apps.energize.R$string: int btn_close_about_dialog
 com.halcyonwaves.apps.energize.R$string: int button_rate_app
+com.halcyonwaves.apps.energize.R$string: int dc_widget_charged_long
+com.halcyonwaves.apps.energize.R$string: int dc_widget_desc
 com.halcyonwaves.apps.energize.R$string: int dialog_text_appiconlicense
 com.halcyonwaves.apps.energize.R$string: int dialog_text_cleardb_successfull
 com.halcyonwaves.apps.energize.R$string: int dialog_text_copydb_successfull
