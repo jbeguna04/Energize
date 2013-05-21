@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
-<release version="0.9" versioncode="90" releasedate="2013-XX-XX">
+<release version="0.9" versioncode="97" releasedate="2013-05-21">
+<change>Added support for the DashClock widget</change>
 <change>Fixed a bug which caused that the fragments were not updated if the application was paused and then resumed</change>
-<change>Added support for the DashClock widget </change>
-<change>Started to reorganize the code to be easier build with the Android Studio</change>
+<change>Fixed some minor performance issues</change>
 </release>
 <release version="0.8.9" versioncode="89" releasedate="2013-04-11">
 <change>Added support for Kelvin as a temperature in the drawn graph (requested feature)</change>

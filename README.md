@@ -45,7 +45,7 @@ As soon as the used strings is nearly fixed, you can help us on our project page
 The application icon is based upon the [Android Robot][3] logo made by Google Inc. This logo is licensed under the terms of the [Creative Commons Attribution license][4]. The battery icon was designed by the authors of the [GNOME High contrast icon set][5] and is licensed under the terms of the [GNU Lesser General Public License][6].
 
 ## Changelog
-### Version 0.9 (Code: *90*, Released on: ***2013-XX-XX***) - [Changes][32]
+### Version 0.9 (Code: *97*, Released on: ***2013-05-21***) - [Changes][32]
 * Added support for the DashClock widget
 * Fixed a bug which caused that the fragments were not updated if the application was paused and then resumed
 * Fixed some minor performance issues
