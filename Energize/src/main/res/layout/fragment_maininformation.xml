@@ -1,112 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="15dp"
-    android:paddingRight="15dp" >
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal" >
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textview_text_current_charginglvl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:text="000"
-                android:textSize="35pt"
-                tools:ignore="HardcodedText" />
+                    android:id="@+id/textview_text_current_charginglvl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="000"
+                    android:textSize="35pt"
+                    tools:ignore="HardcodedText"/>
 
             <TextView
-                android:id="@+id/textview_label_current_charginglvl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:text="%"
-                android:textSize="20pt"
-                tools:ignore="HardcodedText" />
+                    android:id="@+id/textview_label_current_charginglvl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="%"
+                    android:textSize="20pt"
+                    tools:ignore="HardcodedText"/>
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textview_label_current_chargingstate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/textview_label_current_chargingstate"
-            android:textStyle="bold" />
+                android:id="@+id/textview_label_current_chargingstate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/textview_label_current_chargingstate"
+                android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/textview_text_current_chargingstate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:paddingLeft="15dp" />
+                android:id="@+id/textview_text_current_chargingstate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"/>
 
         <TextView
-            android:id="@+id/textview_label_temperature"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/textview_label_temperature"
-            android:textStyle="bold" />
+                android:id="@+id/textview_label_temperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/textview_label_temperature"
+                android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/textview_text_temperature"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:paddingLeft="15dp" />
+                android:id="@+id/textview_text_temperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"/>
 
         <TextView
-            android:id="@+id/textview_label_timeonbattery"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/textview_label_timeonbattery"
-            android:textStyle="bold" />
+                android:id="@+id/textview_label_timeonbattery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/textview_label_timeonbattery"
+                android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/textview_text_timeonbattery"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:paddingLeft="15dp" />
+                android:id="@+id/textview_text_timeonbattery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"/>
 
         <TextView
-            android:id="@+id/textview_label_remainingtime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/textview_label_remainingtime"
-            android:textStyle="bold" />
+                android:id="@+id/textview_label_remainingtime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/textview_label_remainingtime"
+                android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/textview_text_remainingtime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:paddingLeft="15dp"
-            android:text="-"
-            tools:ignore="HardcodedText" />
+                android:id="@+id/textview_text_remainingtime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:text="-"
+                tools:ignore="HardcodedText"/>
 
         <TextView
-            android:id="@+id/textview_label_current_charginglvl_asusdock"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/textview_label_charginglvl_asusdock"
-            android:textStyle="bold" />
+                android:id="@+id/textview_label_current_charginglvl_asusdock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/textview_label_charginglvl_asusdock"
+                android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/textview_text_current_charginglvl_asusdock"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:paddingLeft="15dp" />
+                android:id="@+id/textview_text_current_charginglvl_asusdock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"/>
     </LinearLayout>
 
 </ScrollView>

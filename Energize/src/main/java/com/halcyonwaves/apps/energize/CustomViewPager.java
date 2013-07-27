@@ -6,43 +6,41 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 /**
- * 
  * @author Santiago Valdarrama
- *
  */
 public class CustomViewPager extends ViewPager {
 
-	private boolean enabled;
+    private boolean enabled;
 
-	public CustomViewPager( final Context context, final AttributeSet attrs ) {
-		super( context, attrs );
-		this.enabled = true;
-	}
+    public CustomViewPager(final Context context, final AttributeSet attrs) {
+        super(context, attrs);
+        this.enabled = true;
+    }
 
-	@Override
-	public boolean onInterceptTouchEvent( final MotionEvent event ) {
-		if( this.enabled ) {
-			return super.onInterceptTouchEvent( event );
-		}
+    @Override
+    public boolean onInterceptTouchEvent(final MotionEvent event) {
+        if (this.enabled) {
+            return super.onInterceptTouchEvent(event);
+        }
 
-		return false;
-	}
+        return false;
+    }
 
-	@Override
-	public boolean onTouchEvent( final MotionEvent event ) {
-		if( this.enabled ) {
-			return super.onTouchEvent( event );
-		}
+    @Override
+    public boolean onTouchEvent(final MotionEvent event) {
+        if (this.enabled) {
+            return super.onTouchEvent(event);
+        }
 
-		return false;
-	}
+        return false;
+    }
 
-	public void setPagingEnabled( final boolean enabled ) {
-		this.enabled = enabled;
-	}
+    public void setPagingEnabled(final boolean enabled) {
+        this.enabled = enabled;
+    }
 
-	public void togglePagingEnabled() {
-		this.enabled = !this.enabled;
+    public void togglePagingEnabled() {
+        this.enabled = !this.enabled;
 
-	}
+    }
 }

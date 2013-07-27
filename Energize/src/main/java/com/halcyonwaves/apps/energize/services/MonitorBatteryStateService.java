@@ -1,12 +1,5 @@
 package com.halcyonwaves.apps.energize.services;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -45,335 +38,342 @@ import com.halcyonwaves.apps.energize.receivers.PowerSupplyPluggedInReceiver;
 import com.halcyonwaves.apps.energize.receivers.PowerSupplyPulledOffReceiver;
 import com.halcyonwaves.apps.energize.widgets.SimpleBatteryWidget;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+
 public class MonitorBatteryStateService extends Service implements OnSharedPreferenceChangeListener {
 
-	private class IncomingHandler extends Handler {
+    private class IncomingHandler extends Handler {
 
-		@Override
-		public void handleMessage( final Message msg ) {
-			switch( msg.what ) {
-				case MonitorBatteryStateService.MSG_REGISTER_CLIENT:
-					Log.d( MonitorBatteryStateService.TAG, "Registering new client to the battery monitoring service..." );
-					MonitorBatteryStateService.this.connectedClients.add( msg.replyTo );
-					try {
-						msg.replyTo.send( Message.obtain( null, MonitorBatteryStateService.MSG_REGISTER_CLIENT ) );
-					} catch( final RemoteException e ) {
-						Log.e( MonitorBatteryStateService.TAG, "Failed to tell the client that the client was successfully registered." );
-					} catch( final NullPointerException e ) {
-						Log.e( MonitorBatteryStateService.TAG, "Failed to tell the client that the client was successfully registered (NullPointerException)." );
-					}
-					break;
-				case MonitorBatteryStateService.MSG_UNREGISTER_CLIENT:
-					Log.d( MonitorBatteryStateService.TAG, "Unregistering client from the battery monitoring service..." );
-					MonitorBatteryStateService.this.connectedClients.remove( msg.replyTo );
-					try {
-						msg.replyTo.send( Message.obtain( null, MonitorBatteryStateService.MSG_UNREGISTER_CLIENT ) );
-					} catch( final RemoteException e ) {
-						Log.e( MonitorBatteryStateService.TAG, "Failed to tell the client that the client was successfully unregistered." );
-					} catch( final NullPointerException e ) {
-						Log.e( MonitorBatteryStateService.TAG, "Failed to tell the client that the client was successfully unregistered (NullPointerException)." );
-					}
-					break;
-				case MonitorBatteryStateService.MSG_CLEAR_STATISTICS:
-					Log.d( MonitorBatteryStateService.TAG, "Clearing battery statistics database..." );
-					try {
-						MonitorBatteryStateService.this.batteryStatisticsDatabase.delete( PowerEventsTable.TABLE_NAME, null, null );
-						MonitorBatteryStateService.this.batteryStatisticsDatabase.delete( RawBatteryStatisicsTable.TABLE_NAME, null, null );
-						msg.replyTo.send( Message.obtain( null, MonitorBatteryStateService.MSG_CLEAR_STATISTICS ) );
-					} catch( final RemoteException e ) {
-						Log.e( MonitorBatteryStateService.TAG, "Failed to clear battery statistics database!" );
-					} catch( final NullPointerException e ) {
-						Log.e( MonitorBatteryStateService.TAG, "Failed to clear battery statistics database (NullPointerException)!" );
-					}
-					break;
-				case MonitorBatteryStateService.MSG_COPY_DB_TO_SDCARD:
-					Log.d( MonitorBatteryStateService.TAG, "Copying battery statistics database..." );
-					try {
-						MonitorBatteryStateService.this.copyDatabaseToSDCard();
-						msg.replyTo.send( Message.obtain( null, MonitorBatteryStateService.MSG_COPY_DB_TO_SDCARD ) );
-					} catch( final RemoteException e ) {
-						Log.e( MonitorBatteryStateService.TAG, "Failed to copy battery statistics database!" );
-					} catch( final NullPointerException e ) {
-						Log.e( MonitorBatteryStateService.TAG, "Failed to copy battery statistics database (NullPointerException)!" );
-					}
-					break;
-				case MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME:
-					Log.d( MonitorBatteryStateService.TAG, "Sending remaining time..." );
-					try {
+        @Override
+        public void handleMessage(final Message msg) {
+            switch (msg.what) {
+                case MonitorBatteryStateService.MSG_REGISTER_CLIENT:
+                    Log.d(MonitorBatteryStateService.TAG, "Registering new client to the battery monitoring service...");
+                    MonitorBatteryStateService.this.connectedClients.add(msg.replyTo);
+                    try {
+                        msg.replyTo.send(Message.obtain(null, MonitorBatteryStateService.MSG_REGISTER_CLIENT));
+                    } catch (final RemoteException e) {
+                        Log.e(MonitorBatteryStateService.TAG, "Failed to tell the client that the client was successfully registered.");
+                    } catch (final NullPointerException e) {
+                        Log.e(MonitorBatteryStateService.TAG, "Failed to tell the client that the client was successfully registered (NullPointerException).");
+                    }
+                    break;
+                case MonitorBatteryStateService.MSG_UNREGISTER_CLIENT:
+                    Log.d(MonitorBatteryStateService.TAG, "Unregistering client from the battery monitoring service...");
+                    MonitorBatteryStateService.this.connectedClients.remove(msg.replyTo);
+                    try {
+                        msg.replyTo.send(Message.obtain(null, MonitorBatteryStateService.MSG_UNREGISTER_CLIENT));
+                    } catch (final RemoteException e) {
+                        Log.e(MonitorBatteryStateService.TAG, "Failed to tell the client that the client was successfully unregistered.");
+                    } catch (final NullPointerException e) {
+                        Log.e(MonitorBatteryStateService.TAG, "Failed to tell the client that the client was successfully unregistered (NullPointerException).");
+                    }
+                    break;
+                case MonitorBatteryStateService.MSG_CLEAR_STATISTICS:
+                    Log.d(MonitorBatteryStateService.TAG, "Clearing battery statistics database...");
+                    try {
+                        MonitorBatteryStateService.this.batteryStatisticsDatabase.delete(PowerEventsTable.TABLE_NAME, null, null);
+                        MonitorBatteryStateService.this.batteryStatisticsDatabase.delete(RawBatteryStatisicsTable.TABLE_NAME, null, null);
+                        msg.replyTo.send(Message.obtain(null, MonitorBatteryStateService.MSG_CLEAR_STATISTICS));
+                    } catch (final RemoteException e) {
+                        Log.e(MonitorBatteryStateService.TAG, "Failed to clear battery statistics database!");
+                    } catch (final NullPointerException e) {
+                        Log.e(MonitorBatteryStateService.TAG, "Failed to clear battery statistics database (NullPointerException)!");
+                    }
+                    break;
+                case MonitorBatteryStateService.MSG_COPY_DB_TO_SDCARD:
+                    Log.d(MonitorBatteryStateService.TAG, "Copying battery statistics database...");
+                    try {
+                        MonitorBatteryStateService.this.copyDatabaseToSDCard();
+                        msg.replyTo.send(Message.obtain(null, MonitorBatteryStateService.MSG_COPY_DB_TO_SDCARD));
+                    } catch (final RemoteException e) {
+                        Log.e(MonitorBatteryStateService.TAG, "Failed to copy battery statistics database!");
+                    } catch (final NullPointerException e) {
+                        Log.e(MonitorBatteryStateService.TAG, "Failed to copy battery statistics database (NullPointerException)!");
+                    }
+                    break;
+                case MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME:
+                    Log.d(MonitorBatteryStateService.TAG, "Sending remaining time...");
+                    try {
 
-						// request the current time estimate and package it to send it to the requesting object
-						final EstimationResult estimation = BatteryEstimationMgr.getEstimation( MonitorBatteryStateService.this.getApplicationContext() );
-						final Bundle returningData = estimation.toBundle();
+                        // request the current time estimate and package it to send it to the requesting object
+                        final EstimationResult estimation = BatteryEstimationMgr.getEstimation(MonitorBatteryStateService.this.getApplicationContext());
+                        final Bundle returningData = estimation.toBundle();
 
-						// prepare the message which should be send to the requesting object
-						final Message returningMessage = Message.obtain( null, MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME );
-						returningMessage.setData( returningData );
+                        // prepare the message which should be send to the requesting object
+                        final Message returningMessage = Message.obtain(null, MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME);
+                        returningMessage.setData(returningData);
 
-						// reply with the time estimation
-						msg.replyTo.send( returningMessage );
-					} catch( final RemoteException e ) {
-						Log.e( MonitorBatteryStateService.TAG, "Failed so send the time estimation to the requesting object." );
-					} catch( final NullPointerException e ) {
-						Log.e( MonitorBatteryStateService.TAG, "Failed so send the time estimation to the requesting object (NullPointerException)." );
-					}
-					break;
-				case MonitorBatteryStateService.MSG_UPDATE_WIDGETS:
-					Log.d( MonitorBatteryStateService.TAG, "Updating widgets..." );
-					MonitorBatteryStateService.this.showNewPercentageNotification();
-					break;
-				default:
-					super.handleMessage( msg );
-			}
-		}
-	}
+                        // reply with the time estimation
+                        msg.replyTo.send(returningMessage);
+                    } catch (final RemoteException e) {
+                        Log.e(MonitorBatteryStateService.TAG, "Failed so send the time estimation to the requesting object.");
+                    } catch (final NullPointerException e) {
+                        Log.e(MonitorBatteryStateService.TAG, "Failed so send the time estimation to the requesting object (NullPointerException).");
+                    }
+                    break;
+                case MonitorBatteryStateService.MSG_UPDATE_WIDGETS:
+                    Log.d(MonitorBatteryStateService.TAG, "Updating widgets...");
+                    MonitorBatteryStateService.this.showNewPercentageNotification();
+                    break;
+                default:
+                    super.handleMessage(msg);
+            }
+        }
+    }
 
-	public static final int MSG_CLEAR_STATISTICS = 3;
-	public static final int MSG_COPY_DB_TO_SDCARD = 4;
-	public static final int MSG_REGISTER_CLIENT = 1;
-	public static final int MSG_REQUEST_REMAINING_TIME = 5;
-	public static final int MSG_UNREGISTER_CLIENT = 2;
-	public static final int MSG_UPDATE_WIDGETS = 6;
+    public static final int MSG_CLEAR_STATISTICS = 3;
+    public static final int MSG_COPY_DB_TO_SDCARD = 4;
+    public static final int MSG_REGISTER_CLIENT = 1;
+    public static final int MSG_REQUEST_REMAINING_TIME = 5;
+    public static final int MSG_UNREGISTER_CLIENT = 2;
+    public static final int MSG_UPDATE_WIDGETS = 6;
 
-	private static final int MY_NOTIFICATION_ID = 1;
+    private static final int MY_NOTIFICATION_ID = 1;
 
-	private static final String TAG = "MonitorBatteryStateService";
-	private SharedPreferences appPreferences = null;
-	private BatteryChangedReceiver batteryChangedReceiver = null;
-	private BatteryStatisticsDatabaseOpenHelper batteryDbOpenHelper = null;
-	private SQLiteDatabase batteryStatisticsDatabase = null;
-	private final ArrayList< Messenger > connectedClients = new ArrayList< Messenger >();
-	private Notification myNotification = null;
-	private NotificationManager notificationManager = null;
-	private PowerSupplyPluggedInReceiver powerPluggedInReceiver = null;
-	private PowerSupplyPulledOffReceiver powerUnpluggedReceiver = null;
+    private static final String TAG = "MonitorBatteryStateService";
+    private SharedPreferences appPreferences = null;
+    private BatteryChangedReceiver batteryChangedReceiver = null;
+    private BatteryStatisticsDatabaseOpenHelper batteryDbOpenHelper = null;
+    private SQLiteDatabase batteryStatisticsDatabase = null;
+    private final ArrayList<Messenger> connectedClients = new ArrayList<Messenger>();
+    private Notification myNotification = null;
+    private NotificationManager notificationManager = null;
+    private PowerSupplyPluggedInReceiver powerPluggedInReceiver = null;
+    private PowerSupplyPulledOffReceiver powerUnpluggedReceiver = null;
 
-	private final Messenger serviceMessenger = new Messenger( new IncomingHandler() );
+    private final Messenger serviceMessenger = new Messenger(new IncomingHandler());
 
-	private void copyDatabaseToSDCard() {
-		final File extStorePath = Environment.getExternalStorageDirectory();
+    private void copyDatabaseToSDCard() {
+        final File extStorePath = Environment.getExternalStorageDirectory();
 
-		// close the database before copying it
-		this.batteryStatisticsDatabase.close();
+        // close the database before copying it
+        this.batteryStatisticsDatabase.close();
 
-		// get a correct input and output stream
-		try {
-			final FileInputStream in = new FileInputStream( new File( this.batteryStatisticsDatabase.getPath() ) );
-			final FileOutputStream out = new FileOutputStream( extStorePath.getAbsolutePath() + File.separator + "energizeStatisticcs.db" );
+        // get a correct input and output stream
+        try {
+            final FileInputStream in = new FileInputStream(new File(this.batteryStatisticsDatabase.getPath()));
+            final FileOutputStream out = new FileOutputStream(extStorePath.getAbsolutePath() + File.separator + "energizeStatisticcs.db");
 
-			// copy the database to the SD card
-			final byte[] buffer = new byte[ 1024 ];
-			int read;
-			while( (read = in.read( buffer )) != -1 ) {
-				out.write( buffer, 0, read );
-			}
+            // copy the database to the SD card
+            final byte[] buffer = new byte[1024];
+            int read;
+            while ((read = in.read(buffer)) != -1) {
+                out.write(buffer, 0, read);
+            }
 
-			// close the streams again
-			out.flush();
-			out.close();
-			in.close();
-		} catch( final FileNotFoundException e ) {
-			Log.e( MonitorBatteryStateService.TAG, "Cannot open an input and/or outpout file. The exception message was: " + e.getMessage() );
-		} catch( final IOException e ) {
-			Log.e( MonitorBatteryStateService.TAG, "I/O error during copying the database." );
-		} finally {
-			// the last step is to reopen the database
-			this.batteryStatisticsDatabase = this.batteryDbOpenHelper.getWritableDatabase();
-		}
+            // close the streams again
+            out.flush();
+            out.close();
+            in.close();
+        } catch (final FileNotFoundException e) {
+            Log.e(MonitorBatteryStateService.TAG, "Cannot open an input and/or outpout file. The exception message was: " + e.getMessage());
+        } catch (final IOException e) {
+            Log.e(MonitorBatteryStateService.TAG, "I/O error during copying the database.");
+        } finally {
+            // the last step is to reopen the database
+            this.batteryStatisticsDatabase = this.batteryDbOpenHelper.getWritableDatabase();
+        }
 
-	}
+    }
 
-	public void insertPowerSupplyChangeEvent( final boolean isChargingNow ) {
-		final ContentValues values = new ContentValues();
-		final long currentUnixTime = System.currentTimeMillis() / 1000;
-		values.put( PowerEventsTable.COLUMN_EVENT_TIME, currentUnixTime );
-		values.put( PowerEventsTable.COLUMN_BATTERY_IS_CHARGING, isChargingNow ? PowerEventsTable.POWER_EVENT_IS_CHARGING : PowerEventsTable.POWER_EVENT_IS_NOT_CHARGING );
-		if( -1 == this.batteryStatisticsDatabase.insert( PowerEventsTable.TABLE_NAME, null, values ) ) {
-			Log.e( MonitorBatteryStateService.TAG, "Failed to log the event that the power cord was plugged in or unplugged." );
-		} else {
-			Log.v( MonitorBatteryStateService.TAG, "Successfully inserted a power cord plugging event into the database." );
-		}
-	}
+    public void insertPowerSupplyChangeEvent(final boolean isChargingNow) {
+        final ContentValues values = new ContentValues();
+        final long currentUnixTime = System.currentTimeMillis() / 1000;
+        values.put(PowerEventsTable.COLUMN_EVENT_TIME, currentUnixTime);
+        values.put(PowerEventsTable.COLUMN_BATTERY_IS_CHARGING, isChargingNow ? PowerEventsTable.POWER_EVENT_IS_CHARGING : PowerEventsTable.POWER_EVENT_IS_NOT_CHARGING);
+        if (-1 == this.batteryStatisticsDatabase.insert(PowerEventsTable.TABLE_NAME, null, values)) {
+            Log.e(MonitorBatteryStateService.TAG, "Failed to log the event that the power cord was plugged in or unplugged.");
+        } else {
+            Log.v(MonitorBatteryStateService.TAG, "Successfully inserted a power cord plugging event into the database.");
+        }
+    }
 
-	public void insertPowerValue( final int powerSource, final int scale, final int level, final int temprature ) {
-		// if the database is not open, skip the insertion process
-		if( (null == this.batteryStatisticsDatabase) || !this.batteryStatisticsDatabase.isOpen() ) {
-			Log.e( MonitorBatteryStateService.TAG, "Tried to insert a dataset into a closed database, skipping..." );
-			return;
-		}
+    public void insertPowerValue(final int powerSource, final int scale, final int level, final int temprature) {
+        // if the database is not open, skip the insertion process
+        if ((null == this.batteryStatisticsDatabase) || !this.batteryStatisticsDatabase.isOpen()) {
+            Log.e(MonitorBatteryStateService.TAG, "Tried to insert a dataset into a closed database, skipping...");
+            return;
+        }
 
-		// get the last entry we made on our database, if the entries are the same we want to insert, skip the insertion process
-		final Cursor lastEntryMadeCursor = this.batteryStatisticsDatabase.query( RawBatteryStatisicsTable.TABLE_NAME, new String[] { RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL }, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " DESC" );
+        // get the last entry we made on our database, if the entries are the same we want to insert, skip the insertion process
+        final Cursor lastEntryMadeCursor = this.batteryStatisticsDatabase.query(RawBatteryStatisicsTable.TABLE_NAME, new String[]{RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL}, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " DESC");
 
-		// if the level changed, we can insert the entry into our database
-		if( !lastEntryMadeCursor.moveToFirst() || (level != lastEntryMadeCursor.getInt( lastEntryMadeCursor.getColumnIndex( RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL ) )) ) {
-			final long currentUnixTime = System.currentTimeMillis() / 1000;
-			final ContentValues values = new ContentValues();
-			values.put( RawBatteryStatisicsTable.COLUMN_EVENT_TIME, currentUnixTime );
-			values.put( RawBatteryStatisicsTable.COLUMN_CHARGING_STATE, powerSource );
-			values.put( RawBatteryStatisicsTable.COLUMN_CHARGING_SCALE, scale );
-			values.put( RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL, level );
-			values.put( RawBatteryStatisicsTable.COLUMN_BATTERY_TEMPRATURE, temprature );
-			this.batteryStatisticsDatabase.insert( RawBatteryStatisicsTable.TABLE_NAME, null, values );
-		}
+        // if the level changed, we can insert the entry into our database
+        if (!lastEntryMadeCursor.moveToFirst() || (level != lastEntryMadeCursor.getInt(lastEntryMadeCursor.getColumnIndex(RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL)))) {
+            final long currentUnixTime = System.currentTimeMillis() / 1000;
+            final ContentValues values = new ContentValues();
+            values.put(RawBatteryStatisicsTable.COLUMN_EVENT_TIME, currentUnixTime);
+            values.put(RawBatteryStatisicsTable.COLUMN_CHARGING_STATE, powerSource);
+            values.put(RawBatteryStatisicsTable.COLUMN_CHARGING_SCALE, scale);
+            values.put(RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL, level);
+            values.put(RawBatteryStatisicsTable.COLUMN_BATTERY_TEMPRATURE, temprature);
+            this.batteryStatisticsDatabase.insert(RawBatteryStatisicsTable.TABLE_NAME, null, values);
+        }
 
-		// close the database cursor again
-		lastEntryMadeCursor.close();
+        // close the database cursor again
+        lastEntryMadeCursor.close();
 
-		// show the notification
-		this.showNewPercentageNotification();
-	}
+        // show the notification
+        this.showNewPercentageNotification();
+    }
 
-	@Override
-	public IBinder onBind( final Intent intent ) {
-		return this.serviceMessenger.getBinder();
-	}
+    @Override
+    public IBinder onBind(final Intent intent) {
+        return this.serviceMessenger.getBinder();
+    }
 
-	@Override
-	public void onDestroy() {
-		if( null != this.batteryDbOpenHelper ) {
-			this.batteryDbOpenHelper.close();
-			this.batteryStatisticsDatabase = null;
-		}
-		super.onDestroy();
-	}
+    @Override
+    public void onDestroy() {
+        if (null != this.batteryDbOpenHelper) {
+            this.batteryDbOpenHelper.close();
+            this.batteryStatisticsDatabase = null;
+        }
+        super.onDestroy();
+    }
 
-	public void onSharedPreferenceChanged( final SharedPreferences sharedPreferences, final String key ) {
-		if( 0 == key.compareTo( "advance.show_notification_bar" ) ) {
-			final boolean showShowIcon = sharedPreferences.getBoolean( "advance.show_notification_bar", true );
-			Log.v( MonitorBatteryStateService.TAG, "Notification icon setting chaanged to: " + showShowIcon );
-			if( !showShowIcon ) {
-				this.notificationManager.cancel( MonitorBatteryStateService.MY_NOTIFICATION_ID );
-				this.myNotification = null;
-			} else {
-				this.showNewPercentageNotification();
-			}
-		}
-	}
+    public void onSharedPreferenceChanged(final SharedPreferences sharedPreferences, final String key) {
+        if (0 == key.compareTo("advance.show_notification_bar")) {
+            final boolean showShowIcon = sharedPreferences.getBoolean("advance.show_notification_bar", true);
+            Log.v(MonitorBatteryStateService.TAG, "Notification icon setting chaanged to: " + showShowIcon);
+            if (!showShowIcon) {
+                this.notificationManager.cancel(MonitorBatteryStateService.MY_NOTIFICATION_ID);
+                this.myNotification = null;
+            } else {
+                this.showNewPercentageNotification();
+            }
+        }
+    }
 
-	@Override
-	public int onStartCommand( final Intent intent, final int flags, final int startid ) {
-		//
-		Log.v( MonitorBatteryStateService.TAG, "Starting service for collecting battery statistics..." );
+    @Override
+    public int onStartCommand(final Intent intent, final int flags, final int startid) {
+        //
+        Log.v(MonitorBatteryStateService.TAG, "Starting service for collecting battery statistics...");
 
-		//
-		this.appPreferences = PreferenceManager.getDefaultSharedPreferences( this.getApplicationContext() );
-		this.appPreferences.registerOnSharedPreferenceChangeListener( this );
+        //
+        this.appPreferences = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
+        this.appPreferences.registerOnSharedPreferenceChangeListener(this);
 
-		//
-		this.notificationManager = (NotificationManager) this.getSystemService( Context.NOTIFICATION_SERVICE );
+        //
+        this.notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
 
-		//
-		this.batteryDbOpenHelper = new BatteryStatisticsDatabaseOpenHelper( this.getApplicationContext() );
-		this.batteryStatisticsDatabase = this.batteryDbOpenHelper.getWritableDatabase();
+        //
+        this.batteryDbOpenHelper = new BatteryStatisticsDatabaseOpenHelper(this.getApplicationContext());
+        this.batteryStatisticsDatabase = this.batteryDbOpenHelper.getWritableDatabase();
 
-		//
-		this.batteryChangedReceiver = new BatteryChangedReceiver( this );
-		this.registerReceiver( this.batteryChangedReceiver, new IntentFilter( Intent.ACTION_BATTERY_CHANGED ) );
+        //
+        this.batteryChangedReceiver = new BatteryChangedReceiver(this);
+        this.registerReceiver(this.batteryChangedReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
 
-		//
-		this.powerPluggedInReceiver = new PowerSupplyPluggedInReceiver( this );
-		this.powerUnpluggedReceiver = new PowerSupplyPulledOffReceiver( this );
-		this.registerReceiver( this.powerPluggedInReceiver, new IntentFilter( Intent.ACTION_POWER_CONNECTED ) );
-		this.registerReceiver( this.powerUnpluggedReceiver, new IntentFilter( Intent.ACTION_POWER_DISCONNECTED ) );
+        //
+        this.powerPluggedInReceiver = new PowerSupplyPluggedInReceiver(this);
+        this.powerUnpluggedReceiver = new PowerSupplyPulledOffReceiver(this);
+        this.registerReceiver(this.powerPluggedInReceiver, new IntentFilter(Intent.ACTION_POWER_CONNECTED));
+        this.registerReceiver(this.powerUnpluggedReceiver, new IntentFilter(Intent.ACTION_POWER_DISCONNECTED));
 
-		//
-		Log.v( MonitorBatteryStateService.TAG, "Service successfully started" );
-		return Service.START_STICKY;
-	}
+        //
+        Log.v(MonitorBatteryStateService.TAG, "Service successfully started");
+        return Service.START_STICKY;
+    }
 
-	private void showNewPercentageNotification() {
-		// query the current estimation values
-		final EstimationResult estimation = BatteryEstimationMgr.getEstimation( this.getApplicationContext() );
+    private void showNewPercentageNotification() {
+        // query the current estimation values
+        final EstimationResult estimation = BatteryEstimationMgr.getEstimation(this.getApplicationContext());
 
-		// update all widgets
-		this.updateWidgetContent( estimation );
-		
-		// if we should not show the notification, skip the method here
-		if( !this.appPreferences.getBoolean( "advance.show_notification_bar", true ) ) {
-			return;
-		}
+        // update all widgets
+        this.updateWidgetContent(estimation);
 
-		// be sure that it is a valid percentage
-		if( !estimation.isValid ) {
-			Log.w( MonitorBatteryStateService.TAG, "The application tried to show an invalid loading level. Showing a placeholder!" );
+        // if we should not show the notification, skip the method here
+        if (!this.appPreferences.getBoolean("advance.show_notification_bar", true)) {
+            return;
+        }
 
-			// build a basic notification indicating that there is not enough information to show up an estimate
-			final NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder( this.getApplicationContext() );
-			notificationBuilder.setContentTitle( this.getString( R.string.notification_title_missingstatistics ) );
-			notificationBuilder.setContentText( this.getString( R.string.notification_text_missingstatistics ) );
-			notificationBuilder.setSmallIcon( R.drawable.ic_launcher );
-			notificationBuilder.setOngoing( true );
-			notificationBuilder.setContentIntent( PendingIntent.getActivity( this.getApplicationContext(), 0, new Intent( this.getApplicationContext(), BatteryStateDisplayActivity.class ), 0 ) );
-			notificationBuilder.setPriority( NotificationCompat.PRIORITY_LOW );
+        // be sure that it is a valid percentage
+        if (!estimation.isValid) {
+            Log.w(MonitorBatteryStateService.TAG, "The application tried to show an invalid loading level. Showing a placeholder!");
 
-			// show up the notification we just set up
-			this.myNotification = notificationBuilder.build();
-			this.notificationManager.notify( MonitorBatteryStateService.MY_NOTIFICATION_ID, this.myNotification );
+            // build a basic notification indicating that there is not enough information to show up an estimate
+            final NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this.getApplicationContext());
+            notificationBuilder.setContentTitle(this.getString(R.string.notification_title_missingstatistics));
+            notificationBuilder.setContentText(this.getString(R.string.notification_text_missingstatistics));
+            notificationBuilder.setSmallIcon(R.drawable.ic_launcher);
+            notificationBuilder.setOngoing(true);
+            notificationBuilder.setContentIntent(PendingIntent.getActivity(this.getApplicationContext(), 0, new Intent(this.getApplicationContext(), BatteryStateDisplayActivity.class), 0));
+            notificationBuilder.setPriority(NotificationCompat.PRIORITY_LOW);
 
-			// skip the rest of the application code
-			return;
-		}
+            // show up the notification we just set up
+            this.myNotification = notificationBuilder.build();
+            this.notificationManager.notify(MonitorBatteryStateService.MY_NOTIFICATION_ID, this.myNotification);
 
-		// determine the correct title string for the notification
-		int notificationTitleId = R.string.notification_title_discharges;
-		if( estimation.charging ) {
-			notificationTitleId = R.string.notification_title_charges;
-		}
+            // skip the rest of the application code
+            return;
+        }
 
-		// prepare the notification object
-		final NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder( this.getApplicationContext() );
-		notificationBuilder.setContentTitle( this.getString( notificationTitleId ) );
-		notificationBuilder.setSmallIcon( R.drawable.ic_stat_00_pct_charged + estimation.level );
-		notificationBuilder.setOngoing( true );
-		notificationBuilder.setContentIntent( PendingIntent.getActivity( this.getApplicationContext(), 0, new Intent( this.getApplicationContext(), BatteryStateDisplayActivity.class ), 0 ) );
-		notificationBuilder.setPriority( NotificationCompat.PRIORITY_LOW );
+        // determine the correct title string for the notification
+        int notificationTitleId = R.string.notification_title_discharges;
+        if (estimation.charging) {
+            notificationTitleId = R.string.notification_title_charges;
+        }
 
-		// if the capacity reaches 15%, use a high priority
-		if( estimation.level <= 15 ) {
-			notificationBuilder.setPriority( NotificationCompat.PRIORITY_HIGH );
-		}
+        // prepare the notification object
+        final NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this.getApplicationContext());
+        notificationBuilder.setContentTitle(this.getString(notificationTitleId));
+        notificationBuilder.setSmallIcon(R.drawable.ic_stat_00_pct_charged + estimation.level);
+        notificationBuilder.setOngoing(true);
+        notificationBuilder.setContentIntent(PendingIntent.getActivity(this.getApplicationContext(), 0, new Intent(this.getApplicationContext(), BatteryStateDisplayActivity.class), 0));
+        notificationBuilder.setPriority(NotificationCompat.PRIORITY_LOW);
 
-		// show the notification
-		if( estimation.remainingMinutes <= -1 ) {
-			notificationBuilder.setContentText( this.getString( R.string.notification_text_estimate_na ) );
-		} else {
-			notificationBuilder.setContentText( this.getString( R.string.notification_text_estimate, estimation.remainingHours, estimation.remainingMinutes ) );
-		}
+        // if the capacity reaches 15%, use a high priority
+        if (estimation.level <= 15) {
+            notificationBuilder.setPriority(NotificationCompat.PRIORITY_HIGH);
+        }
 
-		// get the created notification and show it
-		this.myNotification = notificationBuilder.build();
-		this.notificationManager.notify( MonitorBatteryStateService.MY_NOTIFICATION_ID, this.myNotification );
-	}
+        // show the notification
+        if (estimation.remainingMinutes <= -1) {
+            notificationBuilder.setContentText(this.getString(R.string.notification_text_estimate_na));
+        } else {
+            notificationBuilder.setContentText(this.getString(R.string.notification_text_estimate, estimation.remainingHours, estimation.remainingMinutes));
+        }
 
-	private void updateWidgetContent( final EstimationResult estimation ) {
-		final AppWidgetManager appWidgetManager = AppWidgetManager.getInstance( this.getApplicationContext() );
+        // get the created notification and show it
+        this.myNotification = notificationBuilder.build();
+        this.notificationManager.notify(MonitorBatteryStateService.MY_NOTIFICATION_ID, this.myNotification);
+    }
 
-		final ComponentName thisWidget = new ComponentName( this.getApplicationContext(), SimpleBatteryWidget.class );
-		final int[] allWidgetIds = appWidgetManager.getAppWidgetIds( thisWidget );
+    private void updateWidgetContent(final EstimationResult estimation) {
+        final AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this.getApplicationContext());
 
-		// determine the correct title string for the notification
-		int notificationTitleId = R.string.notification_title_discharges;
-		if( estimation.charging ) {
-			notificationTitleId = R.string.notification_title_charges;
-		}
-		final String widgetTitle = this.getApplicationContext().getString( notificationTitleId );
+        final ComponentName thisWidget = new ComponentName(this.getApplicationContext(), SimpleBatteryWidget.class);
+        final int[] allWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
 
-		for( final int widgetId : allWidgetIds ) {
+        // determine the correct title string for the notification
+        int notificationTitleId = R.string.notification_title_discharges;
+        if (estimation.charging) {
+            notificationTitleId = R.string.notification_title_charges;
+        }
+        final String widgetTitle = this.getApplicationContext().getString(notificationTitleId);
 
-			// get the view of the widget we want to update
-			final RemoteViews remoteViews = new RemoteViews( this.getApplicationContext().getPackageName(), R.layout.widget_simplebattery );
+        for (final int widgetId : allWidgetIds) {
 
-			// update the content of the widget
-			remoteViews.setTextViewText( R.id.simplewidget_current_charginglvl, String.valueOf( estimation.level ) );
-			remoteViews.setTextViewText( R.id.simplewidget_current_chargingstate, widgetTitle );
-			if( estimation.remainingMinutes <= -1 ) {
-				remoteViews.setTextViewText( R.id.simplewidget_remaining_time, this.getString( R.string.notification_text_estimate_na ) );
-			} else {
-				remoteViews.setTextViewText( R.id.simplewidget_remaining_time, String.format( this.getString( R.string.simplewidget_textview_remainingtime ), estimation.remainingHours, estimation.remainingMinutes ) );
-			}
+            // get the view of the widget we want to update
+            final RemoteViews remoteViews = new RemoteViews(this.getApplicationContext().getPackageName(), R.layout.widget_simplebattery);
 
-			// tell the widget manager to update the widget
-			appWidgetManager.updateAppWidget( widgetId, remoteViews );
-		}
-	}
+            // update the content of the widget
+            remoteViews.setTextViewText(R.id.simplewidget_current_charginglvl, String.valueOf(estimation.level));
+            remoteViews.setTextViewText(R.id.simplewidget_current_chargingstate, widgetTitle);
+            if (estimation.remainingMinutes <= -1) {
+                remoteViews.setTextViewText(R.id.simplewidget_remaining_time, this.getString(R.string.notification_text_estimate_na));
+            } else {
+                remoteViews.setTextViewText(R.id.simplewidget_remaining_time, String.format(this.getString(R.string.simplewidget_textview_remainingtime), estimation.remainingHours, estimation.remainingMinutes));
+            }
+
+            // tell the widget manager to update the widget
+            appWidgetManager.updateAppWidget(widgetId, remoteViews);
+        }
+    }
 }
