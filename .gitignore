@@ -1,3 +1,6 @@
+# a list of libraries which will be fetched by gradle
+Energize/libs/android-support-v4.jar
+
 # built application files
 *.apk
 *.ap_
