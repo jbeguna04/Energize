@@ -12,47 +12,47 @@ import com.halcyonwaves.apps.energize.fragments.TemperatureGraphFragment;
 
 public class MainFragmentPagerAdapter extends FragmentPagerAdapter {
 
-    private static final String TAG = "MainFragmentPagerAdapter";
-    private Context appContext = null;
+	private static final String TAG = "MainFragmentPagerAdapter";
+	private Context appContext = null;
 
-    public MainFragmentPagerAdapter(final Context context, final FragmentManager fm) {
-        super(fm);
-        this.appContext = context;
-    }
+	public MainFragmentPagerAdapter( final Context context, final FragmentManager fm ) {
+		super( fm );
+		this.appContext = context;
+	}
 
-    @Override
-    public int getCount() {
-        return 3;
-    }
+	@Override
+	public int getCount() {
+		return 3;
+	}
 
-    @Override
-    public Fragment getItem(final int position) {
-        switch (position) {
-            case 0:
-                return new OverviewFragment();
-            case 1:
-                return new BatteryCapacityGraphFragment();
-            case 2:
-                return new TemperatureGraphFragment();
-            default:
-                Log.e(MainFragmentPagerAdapter.TAG, "Application requested an non-existing fragment: " + position);
-                return null;
-        }
-    }
+	@Override
+	public Fragment getItem( final int position ) {
+		switch ( position ) {
+			case 0:
+				return new OverviewFragment();
+			case 1:
+				return new BatteryCapacityGraphFragment();
+			case 2:
+				return new TemperatureGraphFragment();
+			default:
+				Log.e( MainFragmentPagerAdapter.TAG, "Application requested an non-existing fragment: " + position );
+				return null;
+		}
+	}
 
-    @Override
-    public CharSequence getPageTitle(final int position) {
-        switch (position) {
-            case 0:
-                return this.appContext.getString(R.string.fragment_title_overview);
-            case 1:
-                return this.appContext.getString(R.string.fragment_title_batterygraph);
-            case 2:
-                return this.appContext.getString(R.string.fragment_title_temperaturegraph);
-            default:
-                Log.e(MainFragmentPagerAdapter.TAG, "Application requested an non-existing fragment title: " + position);
-                return "";
-        }
-    }
+	@Override
+	public CharSequence getPageTitle( final int position ) {
+		switch ( position ) {
+			case 0:
+				return this.appContext.getString( R.string.fragment_title_overview );
+			case 1:
+				return this.appContext.getString( R.string.fragment_title_batterygraph );
+			case 2:
+				return this.appContext.getString( R.string.fragment_title_temperaturegraph );
+			default:
+				Log.e( MainFragmentPagerAdapter.TAG, "Application requested an non-existing fragment title: " + position );
+				return "";
+		}
+	}
 
 }

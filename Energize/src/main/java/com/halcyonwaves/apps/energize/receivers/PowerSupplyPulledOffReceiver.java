@@ -9,18 +9,18 @@ import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
 
 public class PowerSupplyPulledOffReceiver extends BroadcastReceiver {
 
-    private final static String TAG = "PowerSupplyPulledOffReceiver";
+	private final static String TAG = "PowerSupplyPulledOffReceiver";
 
-    private MonitorBatteryStateService service = null;
+	private MonitorBatteryStateService service = null;
 
-    public PowerSupplyPulledOffReceiver(final MonitorBatteryStateService service) {
-        this.service = service;
-    }
+	public PowerSupplyPulledOffReceiver( final MonitorBatteryStateService service ) {
+		this.service = service;
+	}
 
-    @Override
-    public void onReceive(final Context context, final Intent intent) {
-        Log.v(PowerSupplyPulledOffReceiver.TAG, "An external power supply was unplugged!");
-        this.service.insertPowerSupplyChangeEvent(false);
-    }
+	@Override
+	public void onReceive( final Context context, final Intent intent ) {
+		Log.v( PowerSupplyPulledOffReceiver.TAG, "An external power supply was unplugged!" );
+		this.service.insertPowerSupplyChangeEvent( false );
+	}
 
 }

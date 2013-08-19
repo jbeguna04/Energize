@@ -18,46 +18,46 @@ import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
 
 public class SimpleBatteryWidget extends AppWidgetProvider {
 
-    private final static String TAG = "SimpleBatteryWidget";
+	private final static String TAG = "SimpleBatteryWidget";
 
-    @Override
-    public void onUpdate(final Context context, final AppWidgetManager appWidgetManager, final int[] appWidgetIds) {
-        final int N = appWidgetIds.length;
+	@Override
+	public void onUpdate( final Context context, final AppWidgetManager appWidgetManager, final int[] appWidgetIds ) {
+		final int N = appWidgetIds.length;
 
-        // try to get a connection to the service
-        final IBinder service = this.peekService(context.getApplicationContext(), new Intent(context.getApplicationContext(), MonitorBatteryStateService.class));
-        if (null != service) {
-            try {
-                // get a messenger to the service and prepare the update request message
-                final Messenger serviceMessenger = new Messenger(service);
-                final Message msg = Message.obtain(null, MonitorBatteryStateService.MSG_UPDATE_WIDGETS);
+		// try to get a connection to the service
+		final IBinder service = this.peekService( context.getApplicationContext(), new Intent( context.getApplicationContext(), MonitorBatteryStateService.class ) );
+		if ( null != service ) {
+			try {
+				// get a messenger to the service and prepare the update request message
+				final Messenger serviceMessenger = new Messenger( service );
+				final Message msg = Message.obtain( null, MonitorBatteryStateService.MSG_UPDATE_WIDGETS );
 
-                // send the update request to the service
-                serviceMessenger.send(msg);
-            } catch (final RemoteException e) {
-                Log.e(SimpleBatteryWidget.TAG, "Failed to ask the service to update all widgets!");
-            }
-        }
+				// send the update request to the service
+				serviceMessenger.send( msg );
+			} catch ( final RemoteException e ) {
+				Log.e( SimpleBatteryWidget.TAG, "Failed to ask the service to update all widgets!" );
+			}
+		}
 
-        // Perform this loop procedure for each App Widget that belongs to this provider
-        for (int i = 0; i < N; i++) {
-            final int appWidgetId = appWidgetIds[i];
+		// Perform this loop procedure for each App Widget that belongs to this provider
+		for ( int i = 0; i < N; i++ ) {
+			final int appWidgetId = appWidgetIds[ i ];
 
-            //
-            final Intent intent = new Intent(context, BatteryStateDisplayActivity.class);
+			//
+			final Intent intent = new Intent( context, BatteryStateDisplayActivity.class );
 
-            //
-            final PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+			//
+			final PendingIntent pendingIntent = PendingIntent.getActivity( context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT );
 
-            // Get the layout for the App Widget and attach an on-click listener to the button
-            final RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_simplebattery);
-            views.setOnClickPendingIntent(R.id.widget_simplewidget_layout, pendingIntent);
+			// Get the layout for the App Widget and attach an on-click listener to the button
+			final RemoteViews views = new RemoteViews( context.getPackageName(), R.layout.widget_simplebattery );
+			views.setOnClickPendingIntent( R.id.widget_simplewidget_layout, pendingIntent );
 
-            // Tell the AppWidgetManager to perform an update on the current App Widget
-            appWidgetManager.updateAppWidget(appWidgetId, views);
-        }
+			// Tell the AppWidgetManager to perform an update on the current App Widget
+			appWidgetManager.updateAppWidget( appWidgetId, views );
+		}
 
-        //
-        super.onUpdate(context, appWidgetManager, appWidgetIds);
-    }
+		//
+		super.onUpdate( context, appWidgetManager, appWidgetIds );
+	}
 }

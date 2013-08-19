@@ -23,129 +23,129 @@ import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
 
 public class UnifiedPreferenceFragment extends PreferenceFragment {
 
-    class IncomingHandler extends Handler {
+	class IncomingHandler extends Handler {
 
-        @Override
-        public void handleMessage(final Message msg) {
-            switch (msg.what) {
-                case MonitorBatteryStateService.MSG_CLEAR_STATISTICS:
-                    final AlertDialog.Builder builder = new AlertDialog.Builder(UnifiedPreferenceFragment.this.getActivity());
+		@Override
+		public void handleMessage( final Message msg ) {
+			switch ( msg.what ) {
+				case MonitorBatteryStateService.MSG_CLEAR_STATISTICS:
+					final AlertDialog.Builder builder = new AlertDialog.Builder( UnifiedPreferenceFragment.this.getActivity() );
 
-                    builder.setTitle(R.string.dialog_title_cleardb_successfull).setMessage(R.string.dialog_text_cleardb_successfull).setPositiveButton(android.R.string.ok, new OnClickListener() {
+					builder.setTitle( R.string.dialog_title_cleardb_successfull ).setMessage( R.string.dialog_text_cleardb_successfull ).setPositiveButton( android.R.string.ok, new OnClickListener() {
 
-                        public void onClick(final DialogInterface dialog, final int which) {
-                            dialog.dismiss();
+						public void onClick( final DialogInterface dialog, final int which ) {
+							dialog.dismiss();
 
-                        }
-                    });
-                    builder.create().show();
-                    // TODO: show notification
-                    break;
-                case MonitorBatteryStateService.MSG_COPY_DB_TO_SDCARD:
-                    final AlertDialog.Builder builderCopy = new AlertDialog.Builder(UnifiedPreferenceFragment.this.getActivity());
+						}
+					} );
+					builder.create().show();
+					// TODO: show notification
+					break;
+				case MonitorBatteryStateService.MSG_COPY_DB_TO_SDCARD:
+					final AlertDialog.Builder builderCopy = new AlertDialog.Builder( UnifiedPreferenceFragment.this.getActivity() );
 
-                    builderCopy.setTitle(R.string.dialog_title_copydb_successfull).setMessage(R.string.dialog_text_copydb_successfull).setPositiveButton(android.R.string.ok, new OnClickListener() {
+					builderCopy.setTitle( R.string.dialog_title_copydb_successfull ).setMessage( R.string.dialog_text_copydb_successfull ).setPositiveButton( android.R.string.ok, new OnClickListener() {
 
-                        public void onClick(final DialogInterface dialog, final int which) {
-                            dialog.dismiss();
+						public void onClick( final DialogInterface dialog, final int which ) {
+							dialog.dismiss();
 
-                        }
-                    });
-                    builderCopy.create().show();
-                    // TODO: show notification
-                    break;
-                default:
-                    super.handleMessage(msg);
-            }
-        }
-    }
+						}
+					} );
+					builderCopy.create().show();
+					// TODO: show notification
+					break;
+				default:
+					super.handleMessage( msg );
+			}
+		}
+	}
 
-    private final static String TAG = "UnifiedPreferenceFragment";
-    private Preference copyDatabaseToSdPreference = null;
-    private Messenger monitorService = null;
+	private final static String TAG = "UnifiedPreferenceFragment";
+	private Preference copyDatabaseToSdPreference = null;
+	private Messenger monitorService = null;
 
-    private final ServiceConnection monitorServiceConnection = new ServiceConnection() {
+	private final ServiceConnection monitorServiceConnection = new ServiceConnection() {
 
-        public void onServiceConnected(final ComponentName className, final IBinder service) {
-            UnifiedPreferenceFragment.this.monitorService = new Messenger(service);
-            try {
-                Log.d(UnifiedPreferenceFragment.TAG, "Trying to connect to the battery monitoring service...");
-                final Message msg = Message.obtain(null, MonitorBatteryStateService.MSG_REGISTER_CLIENT);
-                msg.replyTo = UnifiedPreferenceFragment.this.monitorServiceMessanger;
-                UnifiedPreferenceFragment.this.monitorService.send(msg);
-            } catch (final RemoteException e) {
-                Log.e(UnifiedPreferenceFragment.TAG, "Failed to connect to the battery monitoring service!");
-            }
-        }
+		public void onServiceConnected( final ComponentName className, final IBinder service ) {
+			UnifiedPreferenceFragment.this.monitorService = new Messenger( service );
+			try {
+				Log.d( UnifiedPreferenceFragment.TAG, "Trying to connect to the battery monitoring service..." );
+				final Message msg = Message.obtain( null, MonitorBatteryStateService.MSG_REGISTER_CLIENT );
+				msg.replyTo = UnifiedPreferenceFragment.this.monitorServiceMessanger;
+				UnifiedPreferenceFragment.this.monitorService.send( msg );
+			} catch ( final RemoteException e ) {
+				Log.e( UnifiedPreferenceFragment.TAG, "Failed to connect to the battery monitoring service!" );
+			}
+		}
 
-        public void onServiceDisconnected(final ComponentName className) {
-            UnifiedPreferenceFragment.this.monitorService = null;
-        }
-    };
+		public void onServiceDisconnected( final ComponentName className ) {
+			UnifiedPreferenceFragment.this.monitorService = null;
+		}
+	};
 
-    private final Messenger monitorServiceMessanger = new Messenger(new IncomingHandler());
-    private Preference sendDatabasePreference = null;
+	private final Messenger monitorServiceMessanger = new Messenger( new IncomingHandler() );
+	private Preference sendDatabasePreference = null;
 
-    private void doBindService() {
-        this.getActivity().bindService(new Intent(this.getActivity(), MonitorBatteryStateService.class), this.monitorServiceConnection, Context.BIND_AUTO_CREATE);
-    }
+	private void doBindService() {
+		this.getActivity().bindService( new Intent( this.getActivity(), MonitorBatteryStateService.class ), this.monitorServiceConnection, Context.BIND_AUTO_CREATE );
+	}
 
-    private void doUnbindService() {
-        if (this.monitorService != null) {
-            try {
-                final Message msg = Message.obtain(null, MonitorBatteryStateService.MSG_UNREGISTER_CLIENT);
-                msg.replyTo = this.monitorServiceMessanger;
-                this.monitorService.send(msg);
-            } catch (final RemoteException e) {
-            }
-        }
-        this.getActivity().unbindService(this.monitorServiceConnection);
-        this.monitorService = null;
-    }
+	private void doUnbindService() {
+		if ( this.monitorService != null ) {
+			try {
+				final Message msg = Message.obtain( null, MonitorBatteryStateService.MSG_UNREGISTER_CLIENT );
+				msg.replyTo = this.monitorServiceMessanger;
+				this.monitorService.send( msg );
+			} catch ( final RemoteException e ) {
+			}
+		}
+		this.getActivity().unbindService( this.monitorServiceConnection );
+		this.monitorService = null;
+	}
 
-    @Override
-    public void onCreate(final Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        this.addPreferencesFromResource(R.xml.pref_unified);
+	@Override
+	public void onCreate( final Bundle savedInstanceState ) {
+		super.onCreate( savedInstanceState );
+		this.addPreferencesFromResource( R.xml.pref_unified );
 
-        this.copyDatabaseToSdPreference = this.findPreference("debug.copydb2sd");
-        this.copyDatabaseToSdPreference.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+		this.copyDatabaseToSdPreference = this.findPreference( "debug.copydb2sd" );
+		this.copyDatabaseToSdPreference.setOnPreferenceClickListener( new OnPreferenceClickListener() {
 
-            public boolean onPreferenceClick(final Preference preference) {
-                Log.v(UnifiedPreferenceFragment.TAG, "Copying current statistics databse to sdcard...");
-                try {
-                    final Message msg = Message.obtain(null, MonitorBatteryStateService.MSG_COPY_DB_TO_SDCARD);
-                    msg.replyTo = UnifiedPreferenceFragment.this.monitorServiceMessanger;
-                    UnifiedPreferenceFragment.this.monitorService.send(msg);
-                } catch (final RemoteException e) {
-                    Log.e(UnifiedPreferenceFragment.TAG, "Failed to copy the battery statistics database to the sdcard!");
-                }
-                return false;
-            }
-        });
+			public boolean onPreferenceClick( final Preference preference ) {
+				Log.v( UnifiedPreferenceFragment.TAG, "Copying current statistics databse to sdcard..." );
+				try {
+					final Message msg = Message.obtain( null, MonitorBatteryStateService.MSG_COPY_DB_TO_SDCARD );
+					msg.replyTo = UnifiedPreferenceFragment.this.monitorServiceMessanger;
+					UnifiedPreferenceFragment.this.monitorService.send( msg );
+				} catch ( final RemoteException e ) {
+					Log.e( UnifiedPreferenceFragment.TAG, "Failed to copy the battery statistics database to the sdcard!" );
+				}
+				return false;
+			}
+		} );
 
-        this.sendDatabasePreference = this.findPreference("batstatistics.cleardb");
-        this.sendDatabasePreference.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+		this.sendDatabasePreference = this.findPreference( "batstatistics.cleardb" );
+		this.sendDatabasePreference.setOnPreferenceClickListener( new OnPreferenceClickListener() {
 
-            public boolean onPreferenceClick(final Preference preference) {
-                Log.v(UnifiedPreferenceFragment.TAG, "Clearing battery statistics database...");
-                try {
-                    final Message msg = Message.obtain(null, MonitorBatteryStateService.MSG_CLEAR_STATISTICS);
-                    msg.replyTo = UnifiedPreferenceFragment.this.monitorServiceMessanger;
-                    UnifiedPreferenceFragment.this.monitorService.send(msg);
-                } catch (final RemoteException e) {
-                    Log.e(UnifiedPreferenceFragment.TAG, "Failed to clear the battery statistics database!");
-                }
-                return false;
-            }
-        });
+			public boolean onPreferenceClick( final Preference preference ) {
+				Log.v( UnifiedPreferenceFragment.TAG, "Clearing battery statistics database..." );
+				try {
+					final Message msg = Message.obtain( null, MonitorBatteryStateService.MSG_CLEAR_STATISTICS );
+					msg.replyTo = UnifiedPreferenceFragment.this.monitorServiceMessanger;
+					UnifiedPreferenceFragment.this.monitorService.send( msg );
+				} catch ( final RemoteException e ) {
+					Log.e( UnifiedPreferenceFragment.TAG, "Failed to clear the battery statistics database!" );
+				}
+				return false;
+			}
+		} );
 
-        this.doBindService();
-    }
+		this.doBindService();
+	}
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        this.doUnbindService();
-    }
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		this.doUnbindService();
+	}
 }
