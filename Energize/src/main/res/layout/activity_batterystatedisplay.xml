@@ -1,18 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+<android.support.v4.widget.DrawerLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
-    <com.viewpagerindicator.TitlePageIndicator
-            android:id="@+id/vp_fragment_titles"
-            android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
-            android:padding="10dip"/>
+    <FrameLayout
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+    </FrameLayout>
 
-    <com.halcyonwaves.apps.energize.CustomViewPager
-            android:id="@+id/vp_fragment_pager"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
-</LinearLayout>
+    <ListView
+            android:id="@+id/drawer"
+            android:layout_width="240dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="#FFF"
+            android:choiceMode="singleChoice"/>
+
+</android.support.v4.widget.DrawerLayout>
