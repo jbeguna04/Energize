@@ -2,9 +2,13 @@
 <resources>
     <string-array name="navigation_titles">
         <item>Overview</item>
+        <item>Battery graph</item>
+        <item>Temperature graph</item>
     </string-array>
 
     <string-array name="navigation_classes">
         <item>com.halcyonwaves.apps.energize.fragments.OverviewFragment</item>
+        <item>com.halcyonwaves.apps.energize.fragments.BatteryCapacityGraphFragment</item>
+        <item>com.halcyonwaves.apps.energize.fragments.TemperatureGraphFragment</item>
     </string-array>
 </resources>
