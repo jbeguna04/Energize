@@ -1,6 +1,3 @@
-# a list of libraries which will be fetched by gradle
-Energize/libs/android-support-v4.jar
-
 # built application files
 *.apk
 *.ap_
@@ -14,42 +11,17 @@ Energize/libs/android-support-v4.jar
 # generated files
 bin/
 gen/
+*/build
 
 # Local configuration file (sdk path, etc)
 local.properties
 
 # Eclipse project files
+*.iwx
 .classpath
 .project
-
-# Android Studio
-.idea/
 .gradle
-/*/local.properties
-/*/out
-/*/build
-/*/*/build
-/*/*/production
-*.iml
-*.iws
-*.ipr
-*~
-*.swp
+.idea/workspace.xml
 
 # MacOS X files
 .DS_Store
-
-# Thumbnails
-._*
-
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes1
-
-#
-# vim stuff
-#
-.*.sw[a-z]
-*.un~
-Session.vim
-*~
