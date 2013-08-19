@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="navigation_titles">
+        <item>Overview</item>
+    </string-array>
+
+    <string-array name="navigation_classes">
+        <item>com.halcoynwaves.apps.energize.fragments.OverviewFragment</item>
+    </string-array>
+</resources>
