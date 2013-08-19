@@ -45,6 +45,11 @@ As soon as the used strings is nearly fixed, you can help us on our project page
 The application icon is based upon the [Android Robot][3] logo made by Google Inc. This logo is licensed under the terms of the [Creative Commons Attribution license][4]. The battery icon was designed by the authors of the [GNOME High contrast icon set][5] and is licensed under the terms of the [GNU Lesser General Public License][6].
 
 ## Changelog
+### Version 1.0 (Code: *XXX*, Released on: ***2013-XX-XX***) - [Changes][34]
+* Complete redesign of the application
+* Removed the special functions for ASUS Tablets
+* Fixed bugs which caused an application crash
+
 ### Version 0.9.1 (Code: *102*, Released on: ***2013-07-28***) - [Changes][33]
 * Modified the code-base to be compiled with the Android Studio
 * Updated the used version of the ViewPagerIndicator library
