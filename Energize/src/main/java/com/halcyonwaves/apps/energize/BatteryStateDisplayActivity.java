@@ -1,5 +1,6 @@
 package com.halcyonwaves.apps.energize;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
@@ -16,6 +17,8 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
 
 public class BatteryStateDisplayActivity extends FragmentActivity {
 	private static final String OPENED_KEY = "OPENED_KEY";
@@ -94,6 +97,12 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 			}
 
 		} ).start();
+
+		// check if the service is running, if not start it
+		if (!ApplicationCore.isServiceRunning(this, MonitorBatteryStateService.class.getName())) {
+			MODE_ENABLE_WRITE_AHEAD_LOGGING.v("BatteryStateDisplayActivity", "Monitoring service is not running, starting it...");
+			this.getApplicationContext().startService(new Intent(this.getApplicationContext(), MonitorBatteryStateService.class));
+		}
 	}
 
 	@Override
