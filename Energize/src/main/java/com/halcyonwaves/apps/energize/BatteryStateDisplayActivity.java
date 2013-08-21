@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -99,9 +100,9 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 		} ).start();
 
 		// check if the service is running, if not start it
-		if (!ApplicationCore.isServiceRunning(this, MonitorBatteryStateService.class.getName())) {
-			MODE_ENABLE_WRITE_AHEAD_LOGGING.v("BatteryStateDisplayActivity", "Monitoring service is not running, starting it...");
-			this.getApplicationContext().startService(new Intent(this.getApplicationContext(), MonitorBatteryStateService.class));
+		if ( !ApplicationCore.isServiceRunning( this, MonitorBatteryStateService.class.getName() ) ) {
+			Log.v( "BatteryStateDisplayActivity", "Monitoring service is not running, starting it..." );
+			this.getApplicationContext().startService( new Intent( this.getApplicationContext(), MonitorBatteryStateService.class ) );
 		}
 	}
 
