@@ -3,6 +3,7 @@ package com.halcyonwaves.apps.energize;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -31,6 +32,10 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 	@Override
 	protected void onCreate( Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
+
+		// set the default preferences
+		PreferenceManager.setDefaultValues( this, R.xml.pref_unified, false );
+
 		setContentView( R.layout.activity_batterystatedisplay );
 		names = getResources().getStringArray( R.array.navigation_titles );
 		classes = getResources().getStringArray( R.array.navigation_classes );
