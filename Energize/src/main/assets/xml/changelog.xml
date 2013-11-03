@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
+<release version="0.9.2" versioncode="106" releasedate="2013-11-03">
+<change>Updated the GraphView library from version 3.0 to version 3.1</change>
+<change>The app is now build against the Android 4.4 SDK</change>
+<change>Fixed some possible app crashes</change>
+</release>
 <release version="0.9.1" versioncode="102" releasedate="2013-07-28">
 <change>Modified the code-base to be compiled with the Android Studio</change>
 <change>Updated the used version of the ViewPagerIndicator library</change>
