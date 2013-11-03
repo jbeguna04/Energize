@@ -8,7 +8,7 @@
     <!-- define which OS and screen requirement this application has -->
     <uses-sdk
             android:minSdkVersion="14"
-            android:targetSdkVersion="18"/>
+            android:targetSdkVersion="19"/>
 
     <supports-screens
             android:largeScreens="true"
