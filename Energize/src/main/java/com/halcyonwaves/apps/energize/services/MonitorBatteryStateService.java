@@ -36,7 +36,6 @@ import com.halcyonwaves.apps.energize.estimators.EstimationResult;
 import com.halcyonwaves.apps.energize.receivers.BatteryChangedReceiver;
 import com.halcyonwaves.apps.energize.receivers.PowerSupplyPluggedInReceiver;
 import com.halcyonwaves.apps.energize.receivers.PowerSupplyPulledOffReceiver;
-import com.halcyonwaves.apps.energize.widgets.SimpleBatteryWidget;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -285,9 +284,6 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 		// query the current estimation values
 		final EstimationResult estimation = BatteryEstimationMgr.getEstimation( this.getApplicationContext() );
 
-		// update all widgets
-		this.updateWidgetContent( estimation );
-
 		// if we should not show the notification, skip the method here
 		if ( !this.appPreferences.getBoolean( "advance.show_notification_bar", true ) ) {
 			return;
@@ -343,37 +339,5 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 		// get the created notification and show it
 		this.myNotification = notificationBuilder.build();
 		this.notificationManager.notify( MonitorBatteryStateService.MY_NOTIFICATION_ID, this.myNotification );
-	}
-
-	private void updateWidgetContent( final EstimationResult estimation ) {
-		final AppWidgetManager appWidgetManager = AppWidgetManager.getInstance( this.getApplicationContext() );
-
-		final ComponentName thisWidget = new ComponentName( this.getApplicationContext(), SimpleBatteryWidget.class );
-		final int[] allWidgetIds = appWidgetManager.getAppWidgetIds( thisWidget );
-
-		// determine the correct title string for the notification
-		int notificationTitleId = R.string.notification_title_discharges;
-		if ( estimation.charging ) {
-			notificationTitleId = R.string.notification_title_charges;
-		}
-		final String widgetTitle = this.getApplicationContext().getString( notificationTitleId );
-
-		for ( final int widgetId : allWidgetIds ) {
-
-			// get the view of the widget we want to update
-			final RemoteViews remoteViews = new RemoteViews( this.getApplicationContext().getPackageName(), R.layout.widget_simplebattery );
-
-			// update the content of the widget
-			remoteViews.setTextViewText( R.id.simplewidget_current_charginglvl, String.valueOf( estimation.level ) );
-			remoteViews.setTextViewText( R.id.simplewidget_current_chargingstate, widgetTitle );
-			if ( estimation.remainingMinutes <= -1 ) {
-				remoteViews.setTextViewText( R.id.simplewidget_remaining_time, this.getString( R.string.notification_text_estimate_na ) );
-			} else {
-				remoteViews.setTextViewText( R.id.simplewidget_remaining_time, String.format( this.getString( R.string.simplewidget_textview_remainingtime ), estimation.remainingHours, estimation.remainingMinutes ) );
-			}
-
-			// tell the widget manager to update the widget
-			appWidgetManager.updateAppWidget( widgetId, remoteViews );
-		}
 	}
 }

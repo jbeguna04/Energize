@@ -78,20 +78,6 @@
         </receiver>
         -->
 
-
-        <!-- define our widget we are exporting with this app -->
-        <receiver
-                android:name="com.halcyonwaves.apps.energize.widgets.SimpleBatteryWidget"
-                android:exported="false">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
-            </intent-filter>
-
-            <meta-data
-                    android:name="android.appwidget.provider"
-                    android:resource="@xml/widgetprov_simplewidget"/>
-        </receiver>
-
         <!-- define the main activity which will be displayed if the user selects the launcher item -->
         <activity
                 android:name="com.halcyonwaves.apps.energize.BatteryStateDisplayActivity"
