@@ -91,7 +91,7 @@
 
         <!-- define the preference activity we want to show -->
         <activity android:name="com.halcyonwaves.apps.energize.SettingsActivity"/>
-        
+
     </application>
 
 </manifest>
