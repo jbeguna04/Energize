@@ -20,6 +20,7 @@ import com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable;
 import com.jjoe64.graphview.GraphView.GraphViewData;
 import com.jjoe64.graphview.GraphViewSeries;
 import com.jjoe64.graphview.GraphViewSeries.GraphViewSeriesStyle;
+import com.jjoe64.graphview.GraphViewStyle;
 import com.jjoe64.graphview.LineGraphView;
 
 import java.text.SimpleDateFormat;
@@ -138,6 +139,10 @@ public class TemperatureGraphFragment extends Fragment {
 		this.graphView.setScrollable( true );
 		this.graphView.setScalable( true );
 		this.graphView.setDrawBackground( false );
+		GraphViewStyle gws = this.graphView.getGraphViewStyle();
+		gws.setHorizontalLabelsColor( Color.BLACK );
+		gws.setVerticalLabelsColor( Color.BLACK );
+		this.graphView.setGraphViewStyle( gws );
 		this.updateGraph();
 		final LinearLayout layout = (LinearLayout) inflatedView.findViewById( R.id.layout_graph_view_temperature );
 		layout.addView( this.graphView );

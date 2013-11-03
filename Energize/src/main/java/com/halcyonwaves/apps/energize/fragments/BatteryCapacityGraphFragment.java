@@ -2,6 +2,7 @@ package com.halcyonwaves.apps.energize.fragments;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Pair;
@@ -15,6 +16,7 @@ import com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelp
 import com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable;
 import com.jjoe64.graphview.GraphView.GraphViewData;
 import com.jjoe64.graphview.GraphViewSeries;
+import com.jjoe64.graphview.GraphViewStyle;
 import com.jjoe64.graphview.LineGraphView;
 
 import java.text.SimpleDateFormat;
@@ -93,6 +95,10 @@ public class BatteryCapacityGraphFragment extends Fragment {
 		this.graphView.setManualYAxis( true );
 		this.graphView.setDrawBackground( false );
 		this.graphView.setManualYAxisBounds( 100.0, 0.0 );
+		GraphViewStyle gws = this.graphView.getGraphViewStyle();
+		gws.setHorizontalLabelsColor( Color.BLACK );
+		gws.setVerticalLabelsColor( Color.BLACK );
+		this.graphView.setGraphViewStyle( gws );
 		this.updateGraph();
 		final LinearLayout layout = (LinearLayout) inflatedView.findViewById( R.id.layout_graph_view );
 		layout.addView( this.graphView );
