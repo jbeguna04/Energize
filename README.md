@@ -49,6 +49,8 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
 * Complete redesign of the application
 * Removed the special functions for ASUS Tablets
 * Fixed bugs which caused an application crash
+* Changed the database access method for better performance
+* Made some optimizations for Android 4.4
 
 ### Version 0.9.1 (Code: *102*, Released on: ***2013-07-28***) - [Changes][33]
 * Modified the code-base to be compiled with the Android Studio
