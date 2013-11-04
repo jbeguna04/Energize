@@ -3,7 +3,7 @@
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/Energize/build/exploded-bundles/ComViewpagerindicatorLibrary242SNAPSHOT.aar/classes.jar!/" />
       <root url="jar://$PROJECT_DIR$/Energize/build/exploded-bundles/ComViewpagerindicatorLibrary242SNAPSHOT.aar/classes.jar!/" />
-      <root url="jar://$PROJECT_DIR$/Energize/build/exploded-bundles/ComViewpagerindicatorLibrary242SNAPSHOT.aar/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/Energize/build/exploded-bundles/ComViewpagerindicatorLibrary242SNAPSHOT.aar/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
