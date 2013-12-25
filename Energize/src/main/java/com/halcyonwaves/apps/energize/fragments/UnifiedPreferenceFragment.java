@@ -92,7 +92,7 @@ public class UnifiedPreferenceFragment extends PreferenceFragment {
 		try {
 			PackageInfo packageInfo = this.getActivity().getPackageManager().getPackageInfo( this.getActivity().getPackageName(), 0 );
 			return packageInfo.versionName + " (" + packageInfo.versionCode + ")";
-		} catch( PackageManager.NameNotFoundException e ) {
+		} catch ( PackageManager.NameNotFoundException e ) {
 			Log.e( UnifiedPreferenceFragment.TAG, "Package name not found", e );
 		}
 		return "N/A";
