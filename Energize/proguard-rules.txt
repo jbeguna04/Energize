@@ -16,6 +16,9 @@
 #   public *;
 #}
 
+-keep public class * extends android.support.v4.app.FragmentActivity
+-keep public class * extends android.support.v4.app.Fragment
+
 -keep class * extends java.util.ListResourceBundle {
     protected Object[][] getContents();
 }
