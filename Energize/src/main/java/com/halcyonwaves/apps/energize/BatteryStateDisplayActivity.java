@@ -125,6 +125,13 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 	public boolean onOptionsItemSelected( MenuItem item ) {
 		if ( drawerToggle.onOptionsItemSelected( item ) ) {
 			return true;
+		} else {
+			switch( item.getItemId() ) {
+				case R.id.menu_preferences:
+					Intent settingsIntent = new Intent( this, SettingsActivity.class );
+					this.startActivity( settingsIntent );
+					return true;
+			}
 		}
 		return super.onOptionsItemSelected( item );
 	}
