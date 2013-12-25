@@ -63,7 +63,6 @@ public class UnifiedPreferenceFragment extends PreferenceFragment {
 	}
 
 	private final static String TAG = "UnifiedPreferenceFragment";
-	private Preference copyDatabaseToSdPreference = null;
 	private Messenger monitorService = null;
 
 	private final ServiceConnection monitorServiceConnection = new ServiceConnection() {
@@ -122,22 +121,6 @@ public class UnifiedPreferenceFragment extends PreferenceFragment {
 
 		Preference appVersion = this.findPreference( "developer.appVersion" );
 		appVersion.setSummary( this.getSoftwareVersion() );
-
-		this.copyDatabaseToSdPreference = this.findPreference( "debug.copydb2sd" );
-		this.copyDatabaseToSdPreference.setOnPreferenceClickListener( new OnPreferenceClickListener() {
-
-			public boolean onPreferenceClick( final Preference preference ) {
-				Log.v( UnifiedPreferenceFragment.TAG, "Copying current statistics databse to sdcard..." );
-				try {
-					final Message msg = Message.obtain( null, MonitorBatteryStateService.MSG_COPY_DB_TO_SDCARD );
-					msg.replyTo = UnifiedPreferenceFragment.this.monitorServiceMessanger;
-					UnifiedPreferenceFragment.this.monitorService.send( msg );
-				} catch ( final RemoteException e ) {
-					Log.e( UnifiedPreferenceFragment.TAG, "Failed to copy the battery statistics database to the sdcard!" );
-				}
-				return false;
-			}
-		} );
 
 		this.sendDatabasePreference = this.findPreference( "batstatistics.cleardb" );
 		this.sendDatabasePreference.setOnPreferenceClickListener( new OnPreferenceClickListener() {
