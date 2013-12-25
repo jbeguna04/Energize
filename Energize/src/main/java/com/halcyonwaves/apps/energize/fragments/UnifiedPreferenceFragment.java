@@ -7,6 +7,8 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -86,6 +88,16 @@ public class UnifiedPreferenceFragment extends PreferenceFragment {
 	private final Messenger monitorServiceMessanger = new Messenger( new IncomingHandler() );
 	private Preference sendDatabasePreference = null;
 
+	private String getSoftwareVersion() {
+		try {
+			PackageInfo packageInfo = this.getActivity().getPackageManager().getPackageInfo( this.getActivity().getPackageName(), 0 );
+			return packageInfo.versionName + " (" + packageInfo.versionCode + ")";
+		} catch( PackageManager.NameNotFoundException e ) {
+			Log.e( UnifiedPreferenceFragment.TAG, "Package name not found", e );
+		}
+		return "N/A";
+	}
+
 	private void doBindService() {
 		this.getActivity().bindService( new Intent( this.getActivity(), MonitorBatteryStateService.class ), this.monitorServiceConnection, Context.BIND_AUTO_CREATE );
 	}
@@ -107,6 +119,9 @@ public class UnifiedPreferenceFragment extends PreferenceFragment {
 	public void onCreate( final Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
 		this.addPreferencesFromResource( R.xml.pref_unified );
+
+		Preference appVersion = this.findPreference( "developer.appVersion" );
+		appVersion.setSummary( this.getSoftwareVersion() );
 
 		this.copyDatabaseToSdPreference = this.findPreference( "debug.copydb2sd" );
 		this.copyDatabaseToSdPreference.setOnPreferenceClickListener( new OnPreferenceClickListener() {

@@ -35,5 +35,11 @@
                 android:summary="Copy the current statistics database"
                 android:title="Copy database to SD-Card"/>
     </PreferenceCategory>
+    <PreferenceCategory android:title="Developer">
+        <Preference
+                android:key="developer.appVersion"
+                android:summary="N/A"
+                android:title="Version"/>
+    </PreferenceCategory>
 
 </PreferenceScreen>
