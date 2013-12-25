@@ -130,6 +130,12 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 	}
 
 	@Override
+	public boolean onCreateOptionsMenu( Menu menu ) {
+		this.getMenuInflater().inflate( R.menu.menu_main, menu );
+		return true;
+	}
+
+	@Override
 	public boolean onPrepareOptionsMenu( Menu menu ) {
 		if ( drawer != null && navList != null ) {
 			MenuItem item = null; //menu.findItem(R.id.add);
