@@ -19,6 +19,7 @@ public final class EstimationResult {
 	public final int minutes;
 	public final int remainingHours;
 	public final int remainingMinutes;
+
 	public EstimationResult() {
 		this.minutes = -1;
 		this.level = -1;
