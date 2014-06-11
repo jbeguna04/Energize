@@ -4,13 +4,10 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,9 +15,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.halcyonwaves.apps.energize.dialogs.ChangeLogDialog;
@@ -46,48 +40,6 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 		PreferenceManager.setDefaultValues( this, R.xml.pref_unified, false );
 
 		setContentView( R.layout.activity_batterystatedisplay );
-		names = getResources().getStringArray( R.array.navigation_titles );
-		classes = getResources().getStringArray( R.array.navigation_classes );
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>( getActionBar().getThemedContext(), android.R.layout.simple_list_item_1, names );
-
-		drawer = (DrawerLayout) findViewById( R.id.drawer_layout );
-		navList = (ListView) findViewById( R.id.drawer );
-		navList.setAdapter( adapter );
-		drawerToggle = new ActionBarDrawerToggle( this, drawer, R.drawable.ic_drawer, R.string.open, R.string.close ) {
-			@Override
-			public void onDrawerClosed( View drawerView ) {
-				super.onDrawerClosed( drawerView );
-				updateContent();
-				invalidateOptionsMenu();
-				if ( opened != null && opened == false ) {
-					opened = true;
-					if ( prefs != null ) {
-						Editor editor = prefs.edit();
-						editor.putBoolean( OPENED_KEY, true );
-						editor.apply();
-					}
-				}
-			}
-
-			@Override
-			public void onDrawerOpened( View drawerView ) {
-				super.onDrawerOpened( drawerView );
-				getActionBar().setTitle( R.string.app_name );
-				invalidateOptionsMenu();
-			}
-		};
-		drawer.setDrawerListener( drawerToggle );
-
-		navList.setOnItemClickListener( new OnItemClickListener() {
-
-			@Override
-			public void onItemClick( AdapterView<?> parent, View view, final int pos, long id ) {
-				selection = pos;
-				drawer.closeDrawer( navList );
-			}
-		} );
-
-		updateContent();
 		getActionBar().setDisplayHomeAsUpEnabled( true );
 		getActionBar().setHomeButtonEnabled( true );
 
@@ -116,22 +68,12 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 	}
 
 	@Override
-	protected void onPostCreate( Bundle savedInstanceState ) {
-		super.onPostCreate( savedInstanceState );
-		drawerToggle.syncState();
-	}
-
-	@Override
 	public boolean onOptionsItemSelected( MenuItem item ) {
-		if ( drawerToggle.onOptionsItemSelected( item ) ) {
-			return true;
-		} else {
-			switch ( item.getItemId() ) {
-				case R.id.menu_preferences:
-					Intent settingsIntent = new Intent( this, SettingsActivity.class );
-					this.startActivity( settingsIntent );
-					return true;
-			}
+		switch ( item.getItemId() ) {
+			case R.id.menu_preferences:
+				Intent settingsIntent = new Intent( this, SettingsActivity.class );
+				this.startActivity( settingsIntent );
+				return true;
 		}
 		return super.onOptionsItemSelected( item );
 	}
@@ -140,27 +82,6 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 	public boolean onCreateOptionsMenu( Menu menu ) {
 		this.getMenuInflater().inflate( R.menu.menu_main, menu );
 		return true;
-	}
-
-	@Override
-	public boolean onPrepareOptionsMenu( Menu menu ) {
-		if ( drawer != null && navList != null ) {
-			MenuItem item = null; //menu.findItem(R.id.add);
-			if ( item != null ) {
-				item.setVisible( !drawer.isDrawerOpen( navList ) );
-			}
-		}
-		return super.onPrepareOptionsMenu( menu );
-	}
-
-	private void updateContent() {
-		getActionBar().setTitle( names[ selection ] );
-		if ( selection != oldSelection ) {
-			FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
-			tx.replace( R.id.main, Fragment.instantiate( BatteryStateDisplayActivity.this, classes[ selection ] ) );
-			tx.commit();
-			oldSelection = selection;
-		}
 	}
 
 	private void showWhatsNewDialog() {
