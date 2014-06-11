@@ -53,7 +53,7 @@ dependencies {
 }
 
 // define the properties file where the requred information are stored
-signingProperties = System.getenv('HOME') + "energize.signingconfig"
+signingProperties = System.getenv('HOME') + "/energize.signingconfig"
 
 // now determine the correct signing configuration for the release build of the APK
 if (project.hasProperty("signingProperties") && new File(project.property("signingProperties")).exists()) {
