@@ -50,7 +50,8 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
 * Removed the special functions for ASUS Tablets
 * Fixed bugs which caused an application crash
 * Changed the database access method for better performance
-* Made some optimizations for Android 4.4
+* Removed a lot of old code and dependencies to 3rd party libraries
+* Made a few optimizations for Android 4.4
 
 ### Version 0.9.2 (Code: *106*, Released on: ***2013-11-04***) - [Changes][34]
 * Updated the GraphView library from version 3.0 to version 3.1
