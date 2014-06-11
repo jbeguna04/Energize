@@ -61,12 +61,6 @@
     <string name="textview_text_temperature_kelvin">%.1f °K</string>
     <string name="btn_close_about_dialog">Close the dialog</string>
     <string name="textview_or_close_the_app_label">or</string>
-    <string name="dlg_title_appcrash">The app crashed</string>
-    <string name="dlg_msg_appcrash">Sorry, but it seems that there is a bug in the application which
-        caused it to crash right now. Please help me fix this bug as soon as possible by sending me
-        a crash report via email. This report does NOT contain any private data and is deleted as
-        soon as the bug is fixed.
-    </string>
     <string name="dc_widget_desc">Shows the current battery charging state and an estimate for the
         remaining battery time.
     </string>
