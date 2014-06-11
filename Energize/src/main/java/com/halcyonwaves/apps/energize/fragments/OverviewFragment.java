@@ -11,7 +11,6 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.BatteryManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -58,8 +57,6 @@ public class OverviewFragment extends Fragment {
 	private SharedPreferences sharedPref = null;
 	private TextView textViewCurrentChargingState = null;
 	private TextView textViewCurrentLoadingLevel = null;
-	private TextView textViewCurrentLoadingLevelAsusDock = null;
-	private TextView textViewCurrentLoadingLevelAsusDockLabel = null;
 	private TextView textViewRemainingTime = null;
 	private TextView textViewTemp = null;
 	private TextView textViewTimeOnBattery = null;
@@ -110,8 +107,6 @@ public class OverviewFragment extends Fragment {
 
 		// get the handles to some important controls
 		this.textViewCurrentLoadingLevel = (TextView) inflatedView.findViewById( R.id.textview_text_current_charginglvl );
-		this.textViewCurrentLoadingLevelAsusDock = (TextView) inflatedView.findViewById( R.id.textview_text_current_charginglvl_asusdock );
-		this.textViewCurrentLoadingLevelAsusDockLabel = (TextView) inflatedView.findViewById( R.id.textview_label_current_charginglvl_asusdock );
 		this.textViewCurrentChargingState = (TextView) inflatedView.findViewById( R.id.textview_text_current_chargingstate );
 		this.textViewTemp = (TextView) inflatedView.findViewById( R.id.textview_text_temperature );
 		this.textViewTimeOnBattery = (TextView) inflatedView.findViewById( R.id.textview_text_timeonbattery );
@@ -134,22 +129,6 @@ public class OverviewFragment extends Fragment {
 		batteryDbHelper.close();
 		batteryDB = null;
 		batteryDbHelper = null;
-
-		// check if it can be possible that there is a additional battery dock
-		boolean possibleAsusDock = false;
-		if ( 0 == Build.BRAND.compareToIgnoreCase( "asus" ) ) {
-			Log.v( OverviewFragment.TAG, "Device brand: " + Build.BRAND );
-			if ( Build.DEVICE.toLowerCase().startsWith( "tf201" ) || Build.DEVICE.toLowerCase().startsWith( "tf300" ) || Build.DEVICE.toLowerCase().startsWith( "tf700" ) ) {
-				Log.v( OverviewFragment.TAG, "Device model name: " + Build.MODEL );
-				possibleAsusDock = true;
-			}
-		}
-
-		// set the visibility to invisible if no dock was found
-		if ( !possibleAsusDock ) {
-			this.textViewCurrentLoadingLevelAsusDockLabel.setVisibility( View.INVISIBLE );
-			this.textViewCurrentLoadingLevelAsusDock.setVisibility( View.INVISIBLE );
-		}
 
 		// bind to the service and ask for the current time estimation
 		this.doBindService();
@@ -183,10 +162,6 @@ public class OverviewFragment extends Fragment {
 						OverviewFragment.this.textViewTimeOnBattery.setText( "-" );
 					}
 
-					// get the charging state and level for the keyboard dock of the ASUS Transformer Pad series
-					final int dockStatus = intent.getIntExtra( "dock_status", -1 );
-					final int dockLevel = intent.getIntExtra( "dock_level", -1 );
-
 					// do a potential level scaling (most of the times not required, but to be sure)
 					int level = -1;
 					if ( ( rawlevel >= 0 ) && ( scale > 0 ) ) {
@@ -210,11 +185,6 @@ public class OverviewFragment extends Fragment {
 					}
 
 					OverviewFragment.this.textViewCurrentLoadingLevel.setText( level + "" ); // TODO
-					if ( dockStatus == 1 ) {
-						OverviewFragment.this.textViewCurrentLoadingLevelAsusDock.setText( "-" ); // undocked
-					} else {
-						OverviewFragment.this.textViewCurrentLoadingLevelAsusDock.setText( dockLevel + " %" ); // TODO
-					}
 
 					final String prefUsedUnit = OverviewFragment.this.sharedPref.getString( "display.temperature_unit", "Celsius" );
 					if ( prefUsedUnit.compareToIgnoreCase( "celsius" ) == 0 ) {

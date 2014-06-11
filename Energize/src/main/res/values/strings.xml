@@ -55,7 +55,6 @@
     <string name="textview_label_timeonbattery">Time on battery:</string>
     <string name="textview_text_timeonbattery">%1$d hour(s) and %2$d minute(s)</string>
     <string name="simplewidget_textview_remainingtime">%1$d hour(s) and %2$d minute(s)</string>
-    <string name="textview_label_charginglvl_asusdock">ASUS Transformer Pad Dock capacity:</string>
     <string name="textview_text_temperature_celsius">%.1f °C</string>
     <string name="textview_text_temperature_fahrenheit">%.1f °F</string>
     <string name="textview_text_temperature_kelvin">%.1f °K</string>
