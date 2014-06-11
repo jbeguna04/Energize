@@ -26,7 +26,7 @@ android {
 
         release {
             storeFile file("***")
-            keyAlias "energize"
+            keyAlias "***"
             storePassword "***"
             keyPassword "***"
         }
@@ -52,17 +52,22 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 
-task askForPasswords << {
-    def storePw = new String(System.console().readPassword("\nKeystore password: "))
-    def keyPw = new String(System.console().readPassword("\nKey password: "))
+// define the properties file where the requred information are stored
+signingProperties = System.getenv('HOME') + "energize.signingconfig"
 
-    android.signingConfigs.release.storePassword = storePw
-    android.signingConfigs.release.keyPassword = keyPw
-    android.signingConfigs.release.storeFile = file(System.getenv('ANDROID_KEYSTORE'))
-}
+// now determine the correct signing configuration for the release build of the APK
+if (project.hasProperty("signingProperties") && new File(project.property("signingProperties")).exists()) {
+    Properties props = new Properties()
+    props.load(new FileInputStream(file(project.property("signingProperties"))))
 
-tasks.whenTaskAdded { theTask ->
-    if (theTask.name.equals("packageRelease")) {
-        theTask.dependsOn "askForPasswords"
+    android {
+        signingConfigs {
+            release {
+                storeFile file(props['keystore'])
+                keyAlias props['keystore.alias']
+                storePassword props['keystore.storepassword']
+                keyPassword props['keystore.keypassword']
+            }
+        }
     }
 }
