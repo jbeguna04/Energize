@@ -93,6 +93,12 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 	}
 
 	@Override
+	public boolean onPrepareOptionsMenu( Menu menu ) {
+		final boolean drawerOpen = this.mDrawerLayout.isDrawerOpen( this.mDrawerList );
+		return super.onPrepareOptionsMenu( menu );
+	}
+
+	@Override
 	protected void onPostCreate( Bundle savedInstanceState ) {
 		super.onPostCreate( savedInstanceState );
 		this.mDrawerToggle.syncState(); // sync. the toggle state after onRestoreInstanceState has occurred.
@@ -112,6 +118,10 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 
 	@Override
 	public boolean onOptionsItemSelected( MenuItem item ) {
+		// the action bar home/up action should open or close the drawer. ActionBarDrawerToggle will take care of this.
+		if ( this.mDrawerToggle.onOptionsItemSelected( item ) ) {
+			return true;
+		}
 		switch ( item.getItemId() ) {
 			case R.id.menu_preferences:
 				Intent settingsIntent = new Intent( this, SettingsActivity.class );
