@@ -29,11 +29,11 @@
                 android:summary="@string/pref_summary_clearstatsdb"
                 android:title="@string/pref_title_clearstatsdb"/>
     </PreferenceCategory>
-    <PreferenceCategory android:title="Debug">
+    <PreferenceCategory android:title="Developer">
         <Preference
-                android:key="debug.copydb2sd"
-                android:summary="Copy the current statistics database"
-                android:title="Copy database to SD-Card"/>
+                android:key="developer.appVersion"
+                android:summary="N/A"
+                android:title="Version"/>
     </PreferenceCategory>
 
 </PreferenceScreen>

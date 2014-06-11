@@ -8,10 +8,10 @@ import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
 
-    @Override
-    public void onReceive(final Context context, final Intent intent) {
-        // start the monitoring service
-        context.startService(new Intent(context, MonitorBatteryStateService.class));
-    }
+	@Override
+	public void onReceive( final Context context, final Intent intent ) {
+		// start the monitoring service
+		context.startService( new Intent( context, MonitorBatteryStateService.class ) );
+	}
 
 }

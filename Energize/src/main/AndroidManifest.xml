@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.halcyonwaves.apps.energize"
-          android:installLocation="internalOnly"
-          android:versionCode="106"
-          android:versionName="0.9.2">
+          android:installLocation="internalOnly">
 
     <!-- define which OS and screen requirement this application has -->
     <uses-sdk
@@ -27,7 +25,7 @@
             android:hardwareAccelerated="true"
             android:icon="@drawable/ic_launcher"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.Holo"
+            android:theme="@android:style/Theme.Holo.Light"
             android:name=".ApplicationCore">
 
         <!-- define the  services we have implemented -->
@@ -78,20 +76,6 @@
         </receiver>
         -->
 
-
-        <!-- define our widget we are exporting with this app -->
-        <receiver
-                android:name="com.halcyonwaves.apps.energize.widgets.SimpleBatteryWidget"
-                android:exported="false">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
-            </intent-filter>
-
-            <meta-data
-                    android:name="android.appwidget.provider"
-                    android:resource="@xml/widgetprov_simplewidget"/>
-        </receiver>
-
         <!-- define the main activity which will be displayed if the user selects the launcher item -->
         <activity
                 android:name="com.halcyonwaves.apps.energize.BatteryStateDisplayActivity"
@@ -104,13 +88,14 @@
         </activity>
 
         <!-- define the preference activity we want to show -->
-        <activity android:name="com.halcyonwaves.apps.energize.SettingsActivity"/>
         <activity
-                android:name="org.acra.CrashReportDialog"
-                android:excludeFromRecents="true"
-                android:finishOnTaskLaunch="true"
-                android:launchMode="singleInstance"
-                android:theme="@android:style/Theme.Holo.Dialog"/>
+                android:name="com.halcyonwaves.apps.energize.SettingsActivity"
+                android:parentActivityName="com.halcyonwaves.apps.energize.BatteryStateDisplayActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.halcyonwaves.apps.energize.BatteryStateDisplayActivity"/>
+        </activity>
+
     </application>
 
 </manifest>

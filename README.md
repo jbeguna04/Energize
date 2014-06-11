@@ -45,6 +45,13 @@ As soon as the used strings is nearly fixed, you can help us on our project page
 The application icon is based upon the [Android Robot][3] logo made by Google Inc. This logo is licensed under the terms of the [Creative Commons Attribution license][4]. The battery icon was designed by the authors of the [GNOME High contrast icon set][5] and is licensed under the terms of the [GNU Lesser General Public License][6].
 
 ## Changelog
+### Version 1.0 (Code: *XXX*, Released on: ***2014-XX-XX***) - [Changes][35]
+* Complete redesign of the application
+* Removed the special functions for ASUS Tablets
+* Fixed bugs which caused an application crash
+* Changed the database access method for better performance
+* Made some optimizations for Android 4.4
+
 ### Version 0.9.2 (Code: *106*, Released on: ***2013-11-04***) - [Changes][34]
 * Updated the GraphView library from version 3.0 to version 3.1
 * The app is now build against the Android 4.4 SDK
@@ -229,4 +236,4 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
  [31]: https://github.com/thuetz/Energize/compare/v0.8.8...v0.8.9
  [32]: https://github.com/thuetz/Energize/compare/v0.8.9...v0.9 
  [33]: https://github.com/thuetz/Energize/compare/v0.9...v0.9.1
- [33]: https://github.com/thuetz/Energize/compare/v0.9.1...v0.9.2
+ [34]: https://github.com/thuetz/Energize/compare/v0.9.1...v0.9.2

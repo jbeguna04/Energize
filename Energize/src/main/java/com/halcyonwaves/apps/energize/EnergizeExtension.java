@@ -21,168 +21,166 @@ import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
 
 public class EnergizeExtension extends DashClockExtension {
 
-    private static final String TAG = "EnergizeExtension";
-    private int percentageLoaded = 0;
-    private EstimationResult remainingTimeEstimation = new EstimationResult();
+	private static final String TAG = "EnergizeExtension";
+	private final Messenger monitorServiceMessanger = new Messenger( new IncomingHandler() );
+	private int percentageLoaded = 0;
+	private EstimationResult remainingTimeEstimation = new EstimationResult();
+	private Messenger monitorService = null;
 
-    class IncomingHandler extends Handler {
+	private final ServiceConnection monitorServiceConnection = new ServiceConnection() {
 
-        @Override
-        public void handleMessage(final Message msg) {
-            switch (msg.what) {
-                case MonitorBatteryStateService.MSG_REGISTER_CLIENT:
-                    // since the client is now registered, we can ask the service about the remaining time we have
-                    try {
-                        // be sure that the monitor service is available, sometimes (I don't know why) this is not the case
-                        if (null == EnergizeExtension.this.monitorService) {
-                            Log.e(EnergizeExtension.TAG, "Tried to query the remaining time but the monitor service was not available!");
-                            return;
-                        }
+		public void onServiceConnected( final ComponentName className, final IBinder service ) {
+			EnergizeExtension.this.monitorService = new Messenger( service );
+			try {
+				Log.d( EnergizeExtension.TAG, "Trying to connect to the battery monitoring service..." );
+				final Message msg = Message.obtain( null, MonitorBatteryStateService.MSG_REGISTER_CLIENT );
+				msg.replyTo = EnergizeExtension.this.monitorServiceMessanger;
+				EnergizeExtension.this.monitorService.send( msg );
+			} catch ( final RemoteException e ) {
+				Log.e( EnergizeExtension.TAG, "Failed to connect to the battery monitoring service!" );
+			}
+		}
 
-                        // query the remaining time
-                        final Message msg2 = Message.obtain(null, MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME);
-                        msg2.replyTo = EnergizeExtension.this.monitorServiceMessanger;
-                        EnergizeExtension.this.monitorService.send(msg2);
-                    } catch (final RemoteException e1) {
-                        Log.e(EnergizeExtension.TAG, "Failed to query the current time estimation.");
-                    }
-                    break;
-                case MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME:
-                    EnergizeExtension.this.remainingTimeEstimation = EstimationResult.fromBundle(msg.getData());
-                    Log.d(EnergizeExtension.TAG, String.format("Received an time estimation of %d minutes.", EnergizeExtension.this.remainingTimeEstimation.minutes));
-                    EnergizeExtension.this.sendPublishedData();
-                    break;
-                default:
-                    super.handleMessage(msg);
-            }
-        }
-    }
+		public void onServiceDisconnected( final ComponentName className ) {
+			EnergizeExtension.this.monitorService = null;
+		}
+	};
 
-    private Messenger monitorService = null;
+	private void doBindService() {
+		this.getApplicationContext().bindService( new Intent( this.getApplicationContext(), MonitorBatteryStateService.class ), this.monitorServiceConnection, Context.BIND_AUTO_CREATE );
+	}
 
-    private final ServiceConnection monitorServiceConnection = new ServiceConnection() {
+	private void doUnbindService() {
+		if ( this.monitorService != null ) {
+			try {
+				final Message msg = Message.obtain( null, MonitorBatteryStateService.MSG_UNREGISTER_CLIENT );
+				msg.replyTo = this.monitorServiceMessanger;
+				this.monitorService.send( msg );
+			} catch ( final RemoteException e ) {
+			}
+		}
+		this.getApplicationContext().unbindService( this.monitorServiceConnection );
+		this.monitorService = null;
+	}
 
-        public void onServiceConnected(final ComponentName className, final IBinder service) {
-            EnergizeExtension.this.monitorService = new Messenger(service);
-            try {
-                Log.d(EnergizeExtension.TAG, "Trying to connect to the battery monitoring service...");
-                final Message msg = Message.obtain(null, MonitorBatteryStateService.MSG_REGISTER_CLIENT);
-                msg.replyTo = EnergizeExtension.this.monitorServiceMessanger;
-                EnergizeExtension.this.monitorService.send(msg);
-            } catch (final RemoteException e) {
-                Log.e(EnergizeExtension.TAG, "Failed to connect to the battery monitoring service!");
-            }
-        }
+	@Override
+	protected void onInitialize( boolean isReconnect ) {
+		this.setUpdateWhenScreenOn( true );
+		super.onInitialize( isReconnect );
+	}
 
-        public void onServiceDisconnected(final ComponentName className) {
-            EnergizeExtension.this.monitorService = null;
-        }
-    };
+	@Override
+	public int onStartCommand( Intent intent, int flags, int startId ) {
+		//
+		this.doBindService();
 
-    private final Messenger monitorServiceMessanger = new Messenger(new IncomingHandler());
+		//
+		this.updateBatteryInformation();
 
-    private void doBindService() {
-        this.getApplicationContext().bindService(new Intent(this.getApplicationContext(), MonitorBatteryStateService.class), this.monitorServiceConnection, Context.BIND_AUTO_CREATE);
-    }
+		//
+		return super.onStartCommand( intent, flags, startId );
+	}
 
-    private void doUnbindService() {
-        if (this.monitorService != null) {
-            try {
-                final Message msg = Message.obtain(null, MonitorBatteryStateService.MSG_UNREGISTER_CLIENT);
-                msg.replyTo = this.monitorServiceMessanger;
-                this.monitorService.send(msg);
-            } catch (final RemoteException e) {
-            }
-        }
-        this.getApplicationContext().unbindService(this.monitorServiceConnection);
-        this.monitorService = null;
-    }
+	private void updateBatteryInformation() {
+		// query the remaining time
+		try {
+			if ( this.monitorService != null ) {
+				final Message msg2 = Message.obtain( null, MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME );
+				msg2.replyTo = EnergizeExtension.this.monitorServiceMessanger;
+				this.monitorService.send( msg2 );
+			} else {
+				Log.w( EnergizeExtension.TAG, "No monitor service connected, trying to bind service!" );
+				this.doBindService();
+			}
+		} catch ( RemoteException e ) {
+			Log.e( EnergizeExtension.TAG, "Failed to query the current time estimation." );
+		}
 
-    @Override
-    protected void onInitialize(boolean isReconnect) {
-        this.setUpdateWhenScreenOn(true);
-        super.onInitialize(isReconnect);
-    }
+		// get the current battery state and show it on the main activity
+		final BroadcastReceiver batteryLevelReceiver = new BroadcastReceiver() {
 
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        //
-        this.doBindService();
+			@Override
+			public void onReceive( final Context context, final Intent intent ) {
+				try {
+					// ensure that we're not updating this receiver anymore (to save battery)
+					context.unregisterReceiver( this );
 
-        //
-        this.updateBatteryInformation();
+					// get some important values into local variables
+					final int rawlevel = intent.getIntExtra( BatteryManager.EXTRA_LEVEL, -1 );
+					final int scale = intent.getIntExtra( BatteryManager.EXTRA_SCALE, -1 );
 
-        //
-        return super.onStartCommand(intent, flags, startId);
-    }
+					// do a potential level scaling (most of the times not required, but to be sure)
+					int level = -1;
+					if ( ( rawlevel >= 0 ) && ( scale > 0 ) ) {
+						level = ( rawlevel * 100 ) / scale;
+					}
 
-    private void updateBatteryInformation() {
-        // query the remaining time
-        try {
-            if (this.monitorService != null) {
-                final Message msg2 = Message.obtain(null, MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME);
-                msg2.replyTo = EnergizeExtension.this.monitorServiceMessanger;
-                this.monitorService.send(msg2);
-            } else {
-                Log.w(EnergizeExtension.TAG, "No monitor service connected, trying to bind service!");
-                this.doBindService();
-            }
-        } catch (RemoteException e) {
-            Log.e(EnergizeExtension.TAG, "Failed to query the current time estimation.");
-        }
+					Log.d( EnergizeExtension.TAG, "Updating the DashClock widget (basic information)." );
+					EnergizeExtension.this.percentageLoaded = level;
+					EnergizeExtension.this.sendPublishedData();
+				} catch ( final IllegalStateException e ) {
+					Log.e( EnergizeExtension.TAG, "The fragment was in an illegal state while it received the battery information. This should be handled in a different (and better way), The exception message was: ", e ); // TODO
+				}
+			}
+		};
+		final IntentFilter batteryLevelFilter = new IntentFilter( Intent.ACTION_BATTERY_CHANGED );
+		this.getApplicationContext().registerReceiver( batteryLevelReceiver, batteryLevelFilter );
+	}
 
-        // get the current battery state and show it on the main activity
-        final BroadcastReceiver batteryLevelReceiver = new BroadcastReceiver() {
+	private void sendPublishedData() {
+		Log.d( EnergizeExtension.TAG, "Constructing and sending DashClock widget update..." );
 
-            @Override
-            public void onReceive(final Context context, final Intent intent) {
-                try {
-                    // ensure that we're not updating this receiver anymore (to save battery)
-                    context.unregisterReceiver(this);
+		//
+		if ( this.remainingTimeEstimation.isValid ) {
+			this.publishUpdate( new ExtensionData().visible( true ).icon( R.drawable.ic_battery ).status( this.percentageLoaded + "%" ).expandedTitle( String.format( this.getApplicationContext().getString( R.string.dc_widget_charged_long ), this.percentageLoaded ) ).expandedBody( String.format( EnergizeExtension.this.getApplicationContext().getString( R.string.notification_text_estimate ), remainingTimeEstimation.remainingHours, remainingTimeEstimation.remainingMinutes ) ).clickIntent( new Intent( this.getApplicationContext(), BatteryStateDisplayActivity.class ) ) );
+		} else {
+			this.publishUpdate( new ExtensionData().visible( true ).icon( R.drawable.ic_battery ).status( this.percentageLoaded + "%" ).expandedTitle( String.format( this.getApplicationContext().getString( R.string.dc_widget_charged_long ), this.percentageLoaded ) ).expandedBody( EnergizeExtension.this.getApplicationContext().getString( R.string.notification_text_estimate_na ) ).clickIntent( new Intent( this.getApplicationContext(), BatteryStateDisplayActivity.class ) ) );
+		}
+	}
 
-                    // get some important values into local variables
-                    final int rawlevel = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
-                    final int scale = intent.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
+	@Override
+	public void onDestroy() {
+		//this.doUnbindService();
+		super.onDestroy();
+	}
 
-                    // do a potential level scaling (most of the times not required, but to be sure)
-                    int level = -1;
-                    if ((rawlevel >= 0) && (scale > 0)) {
-                        level = (rawlevel * 100) / scale;
-                    }
+	protected void onUpdateData( int reason ) {
+		Log.i( EnergizeExtension.TAG, "Update requested... " );
+		this.updateBatteryInformation();
+		//this.publishUpdate(this.currentExtensionData);
+	}
 
-                    Log.d(EnergizeExtension.TAG, "Updating the DashClock widget (basic information).");
-                    EnergizeExtension.this.percentageLoaded = level;
-                    EnergizeExtension.this.sendPublishedData();
-                } catch (final IllegalStateException e) {
-                    Log.e(EnergizeExtension.TAG, "The fragment was in an illegal state while it received the battery information. This should be handled in a different (and better way), The exception message was: ", e); // TODO
-                }
-            }
-        };
-        final IntentFilter batteryLevelFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
-        this.getApplicationContext().registerReceiver(batteryLevelReceiver, batteryLevelFilter);
-    }
+	class IncomingHandler extends Handler {
 
-    private void sendPublishedData() {
-        Log.d(EnergizeExtension.TAG, "Constructing and sending DashClock widget update...");
+		@Override
+		public void handleMessage( final Message msg ) {
+			switch ( msg.what ) {
+				case MonitorBatteryStateService.MSG_REGISTER_CLIENT:
+					// since the client is now registered, we can ask the service about the remaining time we have
+					try {
+						// be sure that the monitor service is available, sometimes (I don't know why) this is not the case
+						if ( null == EnergizeExtension.this.monitorService ) {
+							Log.e( EnergizeExtension.TAG, "Tried to query the remaining time but the monitor service was not available!" );
+							return;
+						}
 
-        //
-        if (this.remainingTimeEstimation.isValid) {
-            this.publishUpdate(new ExtensionData().visible(true).icon(R.drawable.ic_battery).status(this.percentageLoaded + "%").expandedTitle(String.format(this.getApplicationContext().getString(R.string.dc_widget_charged_long), this.percentageLoaded)).expandedBody(String.format(EnergizeExtension.this.getApplicationContext().getString(R.string.notification_text_estimate), remainingTimeEstimation.remainingHours, remainingTimeEstimation.remainingMinutes)).clickIntent(new Intent(this.getApplicationContext(), BatteryStateDisplayActivity.class)));
-        } else {
-            this.publishUpdate(new ExtensionData().visible(true).icon(R.drawable.ic_battery).status(this.percentageLoaded + "%").expandedTitle(String.format(this.getApplicationContext().getString(R.string.dc_widget_charged_long), this.percentageLoaded)).expandedBody(EnergizeExtension.this.getApplicationContext().getString(R.string.notification_text_estimate_na)).clickIntent(new Intent(this.getApplicationContext(), BatteryStateDisplayActivity.class)));
-        }
-    }
-
-    @Override
-    public void onDestroy() {
-        //this.doUnbindService();
-        super.onDestroy();
-    }
-
-    protected void onUpdateData(int reason) {
-        Log.i(EnergizeExtension.TAG, "Update requested... ");
-        this.updateBatteryInformation();
-        //this.publishUpdate(this.currentExtensionData);
-    }
+						// query the remaining time
+						final Message msg2 = Message.obtain( null, MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME );
+						msg2.replyTo = EnergizeExtension.this.monitorServiceMessanger;
+						EnergizeExtension.this.monitorService.send( msg2 );
+					} catch ( final RemoteException e1 ) {
+						Log.e( EnergizeExtension.TAG, "Failed to query the current time estimation." );
+					}
+					break;
+				case MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME:
+					EnergizeExtension.this.remainingTimeEstimation = EstimationResult.fromBundle( msg.getData() );
+					Log.d( EnergizeExtension.TAG, String.format( "Received an time estimation of %d minutes.", EnergizeExtension.this.remainingTimeEstimation.minutes ) );
+					EnergizeExtension.this.sendPublishedData();
+					break;
+				default:
+					super.handleMessage( msg );
+			}
+		}
+	}
 
 }
