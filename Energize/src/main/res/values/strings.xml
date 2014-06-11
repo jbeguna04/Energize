@@ -64,6 +64,13 @@
     <string name="dc_widget_desc">Shows the current battery charging state and an estimate for the
         remaining battery time.
     </string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <array name="app_categories_array">
+        <item>Overview</item>
+        <item>Charging graph</item>
+        <item>Temperature graph</item>
+    </array>
 
 
 </resources>

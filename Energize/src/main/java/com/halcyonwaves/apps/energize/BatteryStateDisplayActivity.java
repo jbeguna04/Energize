@@ -1,47 +1,81 @@
 package com.halcyonwaves.apps.energize;
 
 import android.app.AlertDialog;
-import android.app.FragmentTransaction;
+import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.halcyonwaves.apps.energize.dialogs.ChangeLogDialog;
+import com.halcyonwaves.apps.energize.fragments.BatteryCapacityGraphFragment;
 import com.halcyonwaves.apps.energize.fragments.OverviewFragment;
+import com.halcyonwaves.apps.energize.fragments.TemperatureGraphFragment;
 import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
 
 public class BatteryStateDisplayActivity extends FragmentActivity {
-	private static final String OPENED_KEY = "OPENED_KEY";
-	private int selection = 0;
-	private int oldSelection = -1;
-	private String[] names = null;
-	private String[] classes = null;
-	private SharedPreferences prefs = null;
-	private Boolean opened = null;
+	private CharSequence mTitle;
+	private CharSequence mDrawerTitle;
+	private DrawerLayout mDrawerLayout;
+	private ListView mDrawerList;
+	private ActionBarDrawerToggle mDrawerToggle;
+	private String[] mAppCategories;
 
 	@Override
 	protected void onCreate( Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
 		this.setContentView( R.layout.activity_batterystatedisplay );
 
-		// start the first fragment we want to see after the application has started
-		FragmentTransaction transaction = this.getFragmentManager().beginTransaction();
-		OverviewFragment newFragment = new OverviewFragment();
-		transaction.replace( R.id.main, newFragment );
-		transaction.addToBackStack( null );
-		transaction.commit();
-
 		// set the default preferences
 		PreferenceManager.setDefaultValues( this, R.xml.pref_unified, false );
+
+		//
+		this.mTitle = this.mDrawerTitle = this.getTitle();
+		this.mAppCategories = this.getResources().getStringArray( R.array.app_categories_array );
+		this.mDrawerLayout = (DrawerLayout) this.findViewById( R.id.drawer_layout );
+		this.mDrawerList = (ListView) this.findViewById( R.id.left_drawer );
+
+		// set a custom shadow that overlays the main content when the drawer opens
+		this.mDrawerLayout.setDrawerShadow( R.drawable.drawer_shadow, GravityCompat.START );
+
+		// set up the drawer's list view with items and click listener
+		this.mDrawerList.setAdapter( new ArrayAdapter<String>( this, R.layout.drawer_list_item, this.mAppCategories ) );
+		this.mDrawerList.setOnItemClickListener( new DrawerItemClickListener() );
+
+		// ActionBarDrawerToggle ties together the the proper interactions
+		// between the sliding drawer and the action bar app icon
+		this.mDrawerToggle = new ActionBarDrawerToggle( this, this.mDrawerLayout, R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close ) {
+			public void onDrawerClosed( View view ) {
+				BatteryStateDisplayActivity.this.getActionBar().setTitle( BatteryStateDisplayActivity.this.mTitle );
+				BatteryStateDisplayActivity.this.invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+			}
+
+			public void onDrawerOpened( View drawerView ) {
+				BatteryStateDisplayActivity.this.getActionBar().setTitle( BatteryStateDisplayActivity.this.mDrawerTitle );
+				BatteryStateDisplayActivity.this.invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+			}
+		};
+		this.mDrawerLayout.setDrawerListener( this.mDrawerToggle );
+
+		// however, if we're being restored from a previous state, then we don't need to do anything and should return or else
+		// we could end up with overlapping fragments
+		if ( savedInstanceState == null ) {
+			this.selectItem( 0 );
+		}
 
 		// enable the action bar button for navigation
 		this.getActionBar().setDisplayHomeAsUpEnabled( true );
@@ -56,6 +90,24 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 		// show the changelog dialog
 		ChangeLogDialog changeDlg = new ChangeLogDialog( this );
 		changeDlg.show();
+	}
+
+	@Override
+	protected void onPostCreate( Bundle savedInstanceState ) {
+		super.onPostCreate( savedInstanceState );
+		this.mDrawerToggle.syncState(); // sync. the toggle state after onRestoreInstanceState has occurred.
+	}
+
+	@Override
+	public void onConfigurationChanged( Configuration newConfig ) {
+		super.onConfigurationChanged( newConfig );
+		this.mDrawerToggle.onConfigurationChanged( newConfig ); // pass any configuration change to the drawer toggles
+	}
+
+	@Override
+	public void setTitle( CharSequence title ) {
+		this.mTitle = title;
+		this.getActionBar().setTitle( this.mTitle );
 	}
 
 	@Override
@@ -93,5 +145,44 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 		} );
 
 		builder.create().show();
+	}
+
+	private void selectItem( int position ) {
+		// check that the activity is using the layout version with the fragment_container FrameLayout (the one-pane layout)
+		if ( this.findViewById( R.id.fragment_container ) != null ) {
+
+			// create a new Fragment to be placed in the activity layout
+			Fragment firstFragment = null;
+			switch ( position ) {
+				case 1:
+					firstFragment = new BatteryCapacityGraphFragment();
+					break;
+				case 2:
+					firstFragment = new TemperatureGraphFragment();
+					break;
+				case 0:
+				default:
+					firstFragment = new OverviewFragment();
+					break;
+			}
+
+			// in case this activity was started with special instructions from an  Intent, pass the Intent's extras to the fragment as arguments
+			firstFragment.setArguments( this.getIntent().getExtras() );
+
+			// add the fragment to the 'fragment_container' FrameLayout
+			this.getFragmentManager().beginTransaction().replace( R.id.fragment_container, firstFragment ).commit();
+		}
+
+		// update selected item and title, then close the drawer
+		this.mDrawerList.setItemChecked( position, true );
+		this.setTitle( this.mAppCategories[ position ] );
+		this.mDrawerLayout.closeDrawer( mDrawerList );
+	}
+
+	private class DrawerItemClickListener implements ListView.OnItemClickListener {
+		@Override
+		public void onItemClick( AdapterView<?> parent, View view, int position, long id ) {
+			BatteryStateDisplayActivity.this.selectItem( position );
+		}
 	}
 }
