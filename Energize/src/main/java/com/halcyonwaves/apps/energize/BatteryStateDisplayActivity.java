@@ -1,23 +1,22 @@
 package com.halcyonwaves.apps.energize;
 
 import android.app.AlertDialog;
+import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
-import android.widget.ListView;
 
 import com.halcyonwaves.apps.energize.dialogs.ChangeLogDialog;
+import com.halcyonwaves.apps.energize.fragments.OverviewFragment;
 import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
 
 public class BatteryStateDisplayActivity extends FragmentActivity {
@@ -26,35 +25,27 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 	private int oldSelection = -1;
 	private String[] names = null;
 	private String[] classes = null;
-	private ActionBarDrawerToggle drawerToggle = null;
-	private DrawerLayout drawer = null;
-	private ListView navList = null;
 	private SharedPreferences prefs = null;
 	private Boolean opened = null;
 
 	@Override
 	protected void onCreate( Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
+		this.setContentView( R.layout.activity_batterystatedisplay );
+
+		// start the first fragment we want to see after the application has started
+		FragmentTransaction transaction = this.getFragmentManager().beginTransaction();
+		OverviewFragment newFragment = new OverviewFragment();
+		transaction.replace( R.id.main, newFragment );
+		transaction.addToBackStack( null );
+		transaction.commit();
 
 		// set the default preferences
 		PreferenceManager.setDefaultValues( this, R.xml.pref_unified, false );
 
-		setContentView( R.layout.activity_batterystatedisplay );
-		getActionBar().setDisplayHomeAsUpEnabled( true );
-		getActionBar().setHomeButtonEnabled( true );
-
-		new Thread( new Runnable() {
-
-			@Override
-			public void run() {
-				prefs = getPreferences( MODE_PRIVATE );
-				opened = prefs.getBoolean( OPENED_KEY, false );
-				if ( opened == false ) {
-					drawer.openDrawer( navList );
-				}
-			}
-
-		} ).start();
+		// enable the action bar button for navigation
+		this.getActionBar().setDisplayHomeAsUpEnabled( true );
+		this.getActionBar().setHomeButtonEnabled( true );
 
 		// check if the service is running, if not start it
 		if ( !ApplicationCore.isServiceRunning( this, MonitorBatteryStateService.class.getName() ) ) {
