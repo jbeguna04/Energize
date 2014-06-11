@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
-    <release version="1.0" versioncode="" releasedate="2014-XX-XX">
+    <release version="1.0" versioncode="110" releasedate="2014-06-11">
         <change>Complete redesign of the application</change>
         <change>Removed the special functions for ASUS Tablets</change>
         <change>Fixed bugs which caused an application crash</change>
         <change>Changed the database access method for better performance</change>
         <change>Removed a lot of old code and dependencies to 3rd party libraries</change>
-        <change>Made a few optimizations for Android 4.4</change>
+        <change>A few optimizations for Android 4.4</change>
     </release>
     <release version="0.9.2" versioncode="106" releasedate="2013-11-04">
         <change>Updated the GraphView library from version 3.0 to version 3.1</change>
