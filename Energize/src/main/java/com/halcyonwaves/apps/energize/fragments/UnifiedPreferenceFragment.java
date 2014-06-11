@@ -25,44 +25,8 @@ import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
 
 public class UnifiedPreferenceFragment extends PreferenceFragment {
 
-	class IncomingHandler extends Handler {
-
-		@Override
-		public void handleMessage( final Message msg ) {
-			switch ( msg.what ) {
-				case MonitorBatteryStateService.MSG_CLEAR_STATISTICS:
-					final AlertDialog.Builder builder = new AlertDialog.Builder( UnifiedPreferenceFragment.this.getActivity() );
-
-					builder.setTitle( R.string.dialog_title_cleardb_successfull ).setMessage( R.string.dialog_text_cleardb_successfull ).setPositiveButton( android.R.string.ok, new OnClickListener() {
-
-						public void onClick( final DialogInterface dialog, final int which ) {
-							dialog.dismiss();
-
-						}
-					} );
-					builder.create().show();
-					// TODO: show notification
-					break;
-				case MonitorBatteryStateService.MSG_COPY_DB_TO_SDCARD:
-					final AlertDialog.Builder builderCopy = new AlertDialog.Builder( UnifiedPreferenceFragment.this.getActivity() );
-
-					builderCopy.setTitle( R.string.dialog_title_copydb_successfull ).setMessage( R.string.dialog_text_copydb_successfull ).setPositiveButton( android.R.string.ok, new OnClickListener() {
-
-						public void onClick( final DialogInterface dialog, final int which ) {
-							dialog.dismiss();
-
-						}
-					} );
-					builderCopy.create().show();
-					// TODO: show notification
-					break;
-				default:
-					super.handleMessage( msg );
-			}
-		}
-	}
-
 	private final static String TAG = "UnifiedPreferenceFragment";
+	private final Messenger monitorServiceMessanger = new Messenger( new IncomingHandler() );
 	private Messenger monitorService = null;
 
 	private final ServiceConnection monitorServiceConnection = new ServiceConnection() {
@@ -83,8 +47,6 @@ public class UnifiedPreferenceFragment extends PreferenceFragment {
 			UnifiedPreferenceFragment.this.monitorService = null;
 		}
 	};
-
-	private final Messenger monitorServiceMessanger = new Messenger( new IncomingHandler() );
 	private Preference sendDatabasePreference = null;
 
 	private String getSoftwareVersion() {
@@ -145,5 +107,42 @@ public class UnifiedPreferenceFragment extends PreferenceFragment {
 	public void onDestroy() {
 		super.onDestroy();
 		this.doUnbindService();
+	}
+
+	class IncomingHandler extends Handler {
+
+		@Override
+		public void handleMessage( final Message msg ) {
+			switch ( msg.what ) {
+				case MonitorBatteryStateService.MSG_CLEAR_STATISTICS:
+					final AlertDialog.Builder builder = new AlertDialog.Builder( UnifiedPreferenceFragment.this.getActivity() );
+
+					builder.setTitle( R.string.dialog_title_cleardb_successfull ).setMessage( R.string.dialog_text_cleardb_successfull ).setPositiveButton( android.R.string.ok, new OnClickListener() {
+
+						public void onClick( final DialogInterface dialog, final int which ) {
+							dialog.dismiss();
+
+						}
+					} );
+					builder.create().show();
+					// TODO: show notification
+					break;
+				case MonitorBatteryStateService.MSG_COPY_DB_TO_SDCARD:
+					final AlertDialog.Builder builderCopy = new AlertDialog.Builder( UnifiedPreferenceFragment.this.getActivity() );
+
+					builderCopy.setTitle( R.string.dialog_title_copydb_successfull ).setMessage( R.string.dialog_text_copydb_successfull ).setPositiveButton( android.R.string.ok, new OnClickListener() {
+
+						public void onClick( final DialogInterface dialog, final int which ) {
+							dialog.dismiss();
+
+						}
+					} );
+					builderCopy.create().show();
+					// TODO: show notification
+					break;
+				default:
+					super.handleMessage( msg );
+			}
+		}
 	}
 }

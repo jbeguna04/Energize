@@ -29,12 +29,6 @@ import java.util.Date;
 
 public class TemperatureGraphFragment extends Fragment {
 
-	private enum TemperatureUnit {
-		TemperatureUnitCelsius,
-		TemperatureUnitFahrenheit,
-		TemperatureUnitKelvin
-	}
-
 	private static final String TAG = "TemperatureGraphFragment";
 	private SharedPreferences sharedPref = null;
 	private LineGraphView graphView = null;
@@ -167,5 +161,11 @@ public class TemperatureGraphFragment extends Fragment {
 			this.graphView.setViewPort( ( currentTime - 86400 ), 86400 );
 		}
 		this.seriesSet = true;
+	}
+
+	private enum TemperatureUnit {
+		TemperatureUnitCelsius,
+		TemperatureUnitFahrenheit,
+		TemperatureUnitKelvin
 	}
 }

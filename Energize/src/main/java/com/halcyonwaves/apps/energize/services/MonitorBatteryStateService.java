@@ -43,107 +43,24 @@ import java.util.ArrayList;
 
 public class MonitorBatteryStateService extends Service implements OnSharedPreferenceChangeListener {
 
-	private class IncomingHandler extends Handler {
-
-		@Override
-		public void handleMessage( final Message msg ) {
-			switch ( msg.what ) {
-				case MonitorBatteryStateService.MSG_REGISTER_CLIENT:
-					Log.d( MonitorBatteryStateService.TAG, "Registering new client to the battery monitoring service..." );
-					MonitorBatteryStateService.this.connectedClients.add( msg.replyTo );
-					try {
-						msg.replyTo.send( Message.obtain( null, MonitorBatteryStateService.MSG_REGISTER_CLIENT ) );
-					} catch ( final RemoteException e ) {
-						Log.e( MonitorBatteryStateService.TAG, "Failed to tell the client that the client was successfully registered." );
-					} catch ( final NullPointerException e ) {
-						Log.e( MonitorBatteryStateService.TAG, "Failed to tell the client that the client was successfully registered (NullPointerException)." );
-					}
-					break;
-				case MonitorBatteryStateService.MSG_UNREGISTER_CLIENT:
-					Log.d( MonitorBatteryStateService.TAG, "Unregistering client from the battery monitoring service..." );
-					MonitorBatteryStateService.this.connectedClients.remove( msg.replyTo );
-					try {
-						msg.replyTo.send( Message.obtain( null, MonitorBatteryStateService.MSG_UNREGISTER_CLIENT ) );
-					} catch ( final RemoteException e ) {
-						Log.e( MonitorBatteryStateService.TAG, "Failed to tell the client that the client was successfully unregistered." );
-					} catch ( final NullPointerException e ) {
-						Log.e( MonitorBatteryStateService.TAG, "Failed to tell the client that the client was successfully unregistered (NullPointerException)." );
-					}
-					break;
-				case MonitorBatteryStateService.MSG_CLEAR_STATISTICS:
-					Log.d( MonitorBatteryStateService.TAG, "Clearing battery statistics database..." );
-					try {
-						MonitorBatteryStateService.this.batteryStatisticsDatabase.delete( PowerEventsTable.TABLE_NAME, null, null );
-						MonitorBatteryStateService.this.batteryStatisticsDatabase.delete( RawBatteryStatisicsTable.TABLE_NAME, null, null );
-						msg.replyTo.send( Message.obtain( null, MonitorBatteryStateService.MSG_CLEAR_STATISTICS ) );
-					} catch ( final RemoteException e ) {
-						Log.e( MonitorBatteryStateService.TAG, "Failed to clear battery statistics database!" );
-					} catch ( final NullPointerException e ) {
-						Log.e( MonitorBatteryStateService.TAG, "Failed to clear battery statistics database (NullPointerException)!" );
-					}
-					break;
-				case MonitorBatteryStateService.MSG_COPY_DB_TO_SDCARD:
-					Log.d( MonitorBatteryStateService.TAG, "Copying battery statistics database..." );
-					try {
-						MonitorBatteryStateService.this.copyDatabaseToSDCard();
-						msg.replyTo.send( Message.obtain( null, MonitorBatteryStateService.MSG_COPY_DB_TO_SDCARD ) );
-					} catch ( final RemoteException e ) {
-						Log.e( MonitorBatteryStateService.TAG, "Failed to copy battery statistics database!" );
-					} catch ( final NullPointerException e ) {
-						Log.e( MonitorBatteryStateService.TAG, "Failed to copy battery statistics database (NullPointerException)!" );
-					}
-					break;
-				case MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME:
-					Log.d( MonitorBatteryStateService.TAG, "Sending remaining time..." );
-					try {
-
-						// request the current time estimate and package it to send it to the requesting object
-						final EstimationResult estimation = BatteryEstimationMgr.getEstimation( MonitorBatteryStateService.this.getApplicationContext() );
-						final Bundle returningData = estimation.toBundle();
-
-						// prepare the message which should be send to the requesting object
-						final Message returningMessage = Message.obtain( null, MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME );
-						returningMessage.setData( returningData );
-
-						// reply with the time estimation
-						msg.replyTo.send( returningMessage );
-					} catch ( final RemoteException e ) {
-						Log.e( MonitorBatteryStateService.TAG, "Failed so send the time estimation to the requesting object." );
-					} catch ( final NullPointerException e ) {
-						Log.e( MonitorBatteryStateService.TAG, "Failed so send the time estimation to the requesting object (NullPointerException)." );
-					}
-					break;
-				case MonitorBatteryStateService.MSG_UPDATE_WIDGETS:
-					Log.d( MonitorBatteryStateService.TAG, "Updating widgets..." );
-					MonitorBatteryStateService.this.showNewPercentageNotification();
-					break;
-				default:
-					super.handleMessage( msg );
-			}
-		}
-	}
-
 	public static final int MSG_CLEAR_STATISTICS = 3;
 	public static final int MSG_COPY_DB_TO_SDCARD = 4;
 	public static final int MSG_REGISTER_CLIENT = 1;
 	public static final int MSG_REQUEST_REMAINING_TIME = 5;
 	public static final int MSG_UNREGISTER_CLIENT = 2;
 	public static final int MSG_UPDATE_WIDGETS = 6;
-
 	private static final int MY_NOTIFICATION_ID = 1;
-
 	private static final String TAG = "MonitorBatteryStateService";
+	private final ArrayList<Messenger> connectedClients = new ArrayList<Messenger>();
+	private final Messenger serviceMessenger = new Messenger( new IncomingHandler() );
 	private SharedPreferences appPreferences = null;
 	private BatteryChangedReceiver batteryChangedReceiver = null;
 	private BatteryStatisticsDatabaseOpenHelper batteryDbOpenHelper = null;
 	private SQLiteDatabase batteryStatisticsDatabase = null;
-	private final ArrayList<Messenger> connectedClients = new ArrayList<Messenger>();
 	private Notification myNotification = null;
 	private NotificationManager notificationManager = null;
 	private PowerSupplyPluggedInReceiver powerPluggedInReceiver = null;
 	private PowerSupplyPulledOffReceiver powerUnpluggedReceiver = null;
-
-	private final Messenger serviceMessenger = new Messenger( new IncomingHandler() );
 
 	private void copyDatabaseToSDCard() {
 		final File extStorePath = Environment.getExternalStorageDirectory();
@@ -336,5 +253,85 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 		// get the created notification and show it
 		this.myNotification = notificationBuilder.build();
 		this.notificationManager.notify( MonitorBatteryStateService.MY_NOTIFICATION_ID, this.myNotification );
+	}
+
+	private class IncomingHandler extends Handler {
+
+		@Override
+		public void handleMessage( final Message msg ) {
+			switch ( msg.what ) {
+				case MonitorBatteryStateService.MSG_REGISTER_CLIENT:
+					Log.d( MonitorBatteryStateService.TAG, "Registering new client to the battery monitoring service..." );
+					MonitorBatteryStateService.this.connectedClients.add( msg.replyTo );
+					try {
+						msg.replyTo.send( Message.obtain( null, MonitorBatteryStateService.MSG_REGISTER_CLIENT ) );
+					} catch ( final RemoteException e ) {
+						Log.e( MonitorBatteryStateService.TAG, "Failed to tell the client that the client was successfully registered." );
+					} catch ( final NullPointerException e ) {
+						Log.e( MonitorBatteryStateService.TAG, "Failed to tell the client that the client was successfully registered (NullPointerException)." );
+					}
+					break;
+				case MonitorBatteryStateService.MSG_UNREGISTER_CLIENT:
+					Log.d( MonitorBatteryStateService.TAG, "Unregistering client from the battery monitoring service..." );
+					MonitorBatteryStateService.this.connectedClients.remove( msg.replyTo );
+					try {
+						msg.replyTo.send( Message.obtain( null, MonitorBatteryStateService.MSG_UNREGISTER_CLIENT ) );
+					} catch ( final RemoteException e ) {
+						Log.e( MonitorBatteryStateService.TAG, "Failed to tell the client that the client was successfully unregistered." );
+					} catch ( final NullPointerException e ) {
+						Log.e( MonitorBatteryStateService.TAG, "Failed to tell the client that the client was successfully unregistered (NullPointerException)." );
+					}
+					break;
+				case MonitorBatteryStateService.MSG_CLEAR_STATISTICS:
+					Log.d( MonitorBatteryStateService.TAG, "Clearing battery statistics database..." );
+					try {
+						MonitorBatteryStateService.this.batteryStatisticsDatabase.delete( PowerEventsTable.TABLE_NAME, null, null );
+						MonitorBatteryStateService.this.batteryStatisticsDatabase.delete( RawBatteryStatisicsTable.TABLE_NAME, null, null );
+						msg.replyTo.send( Message.obtain( null, MonitorBatteryStateService.MSG_CLEAR_STATISTICS ) );
+					} catch ( final RemoteException e ) {
+						Log.e( MonitorBatteryStateService.TAG, "Failed to clear battery statistics database!" );
+					} catch ( final NullPointerException e ) {
+						Log.e( MonitorBatteryStateService.TAG, "Failed to clear battery statistics database (NullPointerException)!" );
+					}
+					break;
+				case MonitorBatteryStateService.MSG_COPY_DB_TO_SDCARD:
+					Log.d( MonitorBatteryStateService.TAG, "Copying battery statistics database..." );
+					try {
+						MonitorBatteryStateService.this.copyDatabaseToSDCard();
+						msg.replyTo.send( Message.obtain( null, MonitorBatteryStateService.MSG_COPY_DB_TO_SDCARD ) );
+					} catch ( final RemoteException e ) {
+						Log.e( MonitorBatteryStateService.TAG, "Failed to copy battery statistics database!" );
+					} catch ( final NullPointerException e ) {
+						Log.e( MonitorBatteryStateService.TAG, "Failed to copy battery statistics database (NullPointerException)!" );
+					}
+					break;
+				case MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME:
+					Log.d( MonitorBatteryStateService.TAG, "Sending remaining time..." );
+					try {
+
+						// request the current time estimate and package it to send it to the requesting object
+						final EstimationResult estimation = BatteryEstimationMgr.getEstimation( MonitorBatteryStateService.this.getApplicationContext() );
+						final Bundle returningData = estimation.toBundle();
+
+						// prepare the message which should be send to the requesting object
+						final Message returningMessage = Message.obtain( null, MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME );
+						returningMessage.setData( returningData );
+
+						// reply with the time estimation
+						msg.replyTo.send( returningMessage );
+					} catch ( final RemoteException e ) {
+						Log.e( MonitorBatteryStateService.TAG, "Failed so send the time estimation to the requesting object." );
+					} catch ( final NullPointerException e ) {
+						Log.e( MonitorBatteryStateService.TAG, "Failed so send the time estimation to the requesting object (NullPointerException)." );
+					}
+					break;
+				case MonitorBatteryStateService.MSG_UPDATE_WIDGETS:
+					Log.d( MonitorBatteryStateService.TAG, "Updating widgets..." );
+					MonitorBatteryStateService.this.showNewPercentageNotification();
+					break;
+				default:
+					super.handleMessage( msg );
+			}
+		}
 	}
 }

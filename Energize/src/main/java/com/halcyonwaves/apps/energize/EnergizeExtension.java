@@ -22,42 +22,9 @@ import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
 public class EnergizeExtension extends DashClockExtension {
 
 	private static final String TAG = "EnergizeExtension";
+	private final Messenger monitorServiceMessanger = new Messenger( new IncomingHandler() );
 	private int percentageLoaded = 0;
 	private EstimationResult remainingTimeEstimation = new EstimationResult();
-
-	class IncomingHandler extends Handler {
-
-		@Override
-		public void handleMessage( final Message msg ) {
-			switch ( msg.what ) {
-				case MonitorBatteryStateService.MSG_REGISTER_CLIENT:
-					// since the client is now registered, we can ask the service about the remaining time we have
-					try {
-						// be sure that the monitor service is available, sometimes (I don't know why) this is not the case
-						if ( null == EnergizeExtension.this.monitorService ) {
-							Log.e( EnergizeExtension.TAG, "Tried to query the remaining time but the monitor service was not available!" );
-							return;
-						}
-
-						// query the remaining time
-						final Message msg2 = Message.obtain( null, MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME );
-						msg2.replyTo = EnergizeExtension.this.monitorServiceMessanger;
-						EnergizeExtension.this.monitorService.send( msg2 );
-					} catch ( final RemoteException e1 ) {
-						Log.e( EnergizeExtension.TAG, "Failed to query the current time estimation." );
-					}
-					break;
-				case MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME:
-					EnergizeExtension.this.remainingTimeEstimation = EstimationResult.fromBundle( msg.getData() );
-					Log.d( EnergizeExtension.TAG, String.format( "Received an time estimation of %d minutes.", EnergizeExtension.this.remainingTimeEstimation.minutes ) );
-					EnergizeExtension.this.sendPublishedData();
-					break;
-				default:
-					super.handleMessage( msg );
-			}
-		}
-	}
-
 	private Messenger monitorService = null;
 
 	private final ServiceConnection monitorServiceConnection = new ServiceConnection() {
@@ -78,8 +45,6 @@ public class EnergizeExtension extends DashClockExtension {
 			EnergizeExtension.this.monitorService = null;
 		}
 	};
-
-	private final Messenger monitorServiceMessanger = new Messenger( new IncomingHandler() );
 
 	private void doBindService() {
 		this.getApplicationContext().bindService( new Intent( this.getApplicationContext(), MonitorBatteryStateService.class ), this.monitorServiceConnection, Context.BIND_AUTO_CREATE );
@@ -183,6 +148,39 @@ public class EnergizeExtension extends DashClockExtension {
 		Log.i( EnergizeExtension.TAG, "Update requested... " );
 		this.updateBatteryInformation();
 		//this.publishUpdate(this.currentExtensionData);
+	}
+
+	class IncomingHandler extends Handler {
+
+		@Override
+		public void handleMessage( final Message msg ) {
+			switch ( msg.what ) {
+				case MonitorBatteryStateService.MSG_REGISTER_CLIENT:
+					// since the client is now registered, we can ask the service about the remaining time we have
+					try {
+						// be sure that the monitor service is available, sometimes (I don't know why) this is not the case
+						if ( null == EnergizeExtension.this.monitorService ) {
+							Log.e( EnergizeExtension.TAG, "Tried to query the remaining time but the monitor service was not available!" );
+							return;
+						}
+
+						// query the remaining time
+						final Message msg2 = Message.obtain( null, MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME );
+						msg2.replyTo = EnergizeExtension.this.monitorServiceMessanger;
+						EnergizeExtension.this.monitorService.send( msg2 );
+					} catch ( final RemoteException e1 ) {
+						Log.e( EnergizeExtension.TAG, "Failed to query the current time estimation." );
+					}
+					break;
+				case MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME:
+					EnergizeExtension.this.remainingTimeEstimation = EstimationResult.fromBundle( msg.getData() );
+					Log.d( EnergizeExtension.TAG, String.format( "Received an time estimation of %d minutes.", EnergizeExtension.this.remainingTimeEstimation.minutes ) );
+					EnergizeExtension.this.sendPublishedData();
+					break;
+				default:
+					super.handleMessage( msg );
+			}
+		}
 	}
 
 }

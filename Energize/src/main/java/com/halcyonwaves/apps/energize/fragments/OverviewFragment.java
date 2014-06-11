@@ -34,40 +34,7 @@ import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
 public class OverviewFragment extends Fragment {
 
 	private static final String TAG = "OverviewFragment";
-
-	class IncomingHandler extends Handler {
-
-		@Override
-		public void handleMessage( final Message msg ) {
-			switch ( msg.what ) {
-				case MonitorBatteryStateService.MSG_REGISTER_CLIENT:
-					// since the client is now registered, we can ask the service about the remaining time we have
-					try {
-						// be sure that the monitor service is available, sometimes (I don't know why) this is not the case
-						if ( null == OverviewFragment.this.monitorService ) {
-							Log.e( OverviewFragment.TAG, "Tried to query the remaining time but the monitor service was not available!" );
-							return;
-						}
-
-						// query the remaining time
-						final Message msg2 = Message.obtain( null, MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME );
-						msg2.replyTo = OverviewFragment.this.monitorServiceMessanger;
-						OverviewFragment.this.monitorService.send( msg2 );
-					} catch ( final RemoteException e1 ) {
-						Log.e( OverviewFragment.TAG, "Failed to query the current time estimation." );
-					}
-					break;
-				case MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME:
-					final EstimationResult remainingTimeEstimation = EstimationResult.fromBundle( msg.getData() );
-					Log.d( OverviewFragment.TAG, String.format( "Received an time estimation of %d minutes.", remainingTimeEstimation.minutes ) );
-					OverviewFragment.this.updateEstimationLabel( remainingTimeEstimation );
-					break;
-				default:
-					super.handleMessage( msg );
-			}
-		}
-	}
-
+	private final Messenger monitorServiceMessanger = new Messenger( new IncomingHandler() );
 	private Messenger monitorService = null;
 
 	private final ServiceConnection monitorServiceConnection = new ServiceConnection() {
@@ -88,20 +55,15 @@ public class OverviewFragment extends Fragment {
 			OverviewFragment.this.monitorService = null;
 		}
 	};
-
-	private final Messenger monitorServiceMessanger = new Messenger( new IncomingHandler() );
-
 	private SharedPreferences sharedPref = null;
-
 	private TextView textViewCurrentChargingState = null;
-
 	private TextView textViewCurrentLoadingLevel = null;
 	private TextView textViewCurrentLoadingLevelAsusDock = null;
 	private TextView textViewCurrentLoadingLevelAsusDockLabel = null;
 	private TextView textViewRemainingTime = null;
 	private TextView textViewTemp = null;
-	;
 	private TextView textViewTimeOnBattery = null;
+	;
 
 	private void doBindService() {
 		this.getActivity().bindService( new Intent( this.getActivity(), MonitorBatteryStateService.class ), this.monitorServiceConnection, Context.BIND_AUTO_CREATE );
@@ -278,5 +240,38 @@ public class OverviewFragment extends Fragment {
 
 	private void updateEstimationLabel( final EstimationResult estimation ) {
 		this.textViewRemainingTime.setText( String.format( this.getString( R.string.textview_text_remainingtime ), estimation.remainingHours, estimation.remainingMinutes ) );
+	}
+
+	class IncomingHandler extends Handler {
+
+		@Override
+		public void handleMessage( final Message msg ) {
+			switch ( msg.what ) {
+				case MonitorBatteryStateService.MSG_REGISTER_CLIENT:
+					// since the client is now registered, we can ask the service about the remaining time we have
+					try {
+						// be sure that the monitor service is available, sometimes (I don't know why) this is not the case
+						if ( null == OverviewFragment.this.monitorService ) {
+							Log.e( OverviewFragment.TAG, "Tried to query the remaining time but the monitor service was not available!" );
+							return;
+						}
+
+						// query the remaining time
+						final Message msg2 = Message.obtain( null, MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME );
+						msg2.replyTo = OverviewFragment.this.monitorServiceMessanger;
+						OverviewFragment.this.monitorService.send( msg2 );
+					} catch ( final RemoteException e1 ) {
+						Log.e( OverviewFragment.TAG, "Failed to query the current time estimation." );
+					}
+					break;
+				case MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME:
+					final EstimationResult remainingTimeEstimation = EstimationResult.fromBundle( msg.getData() );
+					Log.d( OverviewFragment.TAG, String.format( "Received an time estimation of %d minutes.", remainingTimeEstimation.minutes ) );
+					OverviewFragment.this.updateEstimationLabel( remainingTimeEstimation );
+					break;
+				default:
+					super.handleMessage( msg );
+			}
+		}
 	}
 }

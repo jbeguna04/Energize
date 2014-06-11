@@ -47,6 +47,29 @@ public class ChangeLogDialog {
 		this.rootActivity = context;
 	}
 
+	private static Calendar getDatePart( Date date ) {
+		Calendar cal = Calendar.getInstance();       // get calendar instance
+		cal.setTime( date );
+		cal.set( Calendar.HOUR_OF_DAY, 0 );            // set hour to midnight
+		cal.set( Calendar.MINUTE, 0 );                 // set minute in hour
+		cal.set( Calendar.SECOND, 0 );                 // set second in minute
+		cal.set( Calendar.MILLISECOND, 0 );            // set millisecond in second
+
+		return cal;                                  // return the date part
+	}
+
+	private static int daysBetween( Date startDate, Date endDate ) {
+		Calendar sDate = getDatePart( startDate );
+		Calendar eDate = getDatePart( endDate );
+
+		int daysBetween = 0;
+		while ( sDate.before( eDate ) ) {
+			sDate.add( Calendar.DAY_OF_MONTH, 1 );
+			daysBetween++;
+		}
+		return daysBetween;
+	}
+
 	private String getApplicationVersion() {
 		try {
 			final PackageInfo packageInfo = this.rootActivity.getPackageManager().getPackageInfo( this.rootActivity.getPackageName(), 0 );
@@ -104,29 +127,6 @@ public class ChangeLogDialog {
 		}
 		_Result = _Result + "</body></html>";
 		return _Result;
-	}
-
-	private static Calendar getDatePart( Date date ) {
-		Calendar cal = Calendar.getInstance();       // get calendar instance
-		cal.setTime( date );
-		cal.set( Calendar.HOUR_OF_DAY, 0 );            // set hour to midnight
-		cal.set( Calendar.MINUTE, 0 );                 // set minute in hour
-		cal.set( Calendar.SECOND, 0 );                 // set second in minute
-		cal.set( Calendar.MILLISECOND, 0 );            // set millisecond in second
-
-		return cal;                                  // return the date part
-	}
-
-	private static int daysBetween( Date startDate, Date endDate ) {
-		Calendar sDate = getDatePart( startDate );
-		Calendar eDate = getDatePart( endDate );
-
-		int daysBetween = 0;
-		while ( sDate.before( eDate ) ) {
-			sDate.add( Calendar.DAY_OF_MONTH, 1 );
-			daysBetween++;
-		}
-		return daysBetween;
 	}
 
 	public void markDialogAsAlreadyDisplayed() {

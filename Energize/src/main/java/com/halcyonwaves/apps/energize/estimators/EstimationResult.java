@@ -13,6 +13,30 @@ import android.os.Bundle;
  */
 public final class EstimationResult {
 
+	public final boolean charging;
+	public final boolean isValid;
+	public final int level;
+	public final int minutes;
+	public final int remainingHours;
+	public final int remainingMinutes;
+	public EstimationResult() {
+		this.minutes = -1;
+		this.level = -1;
+		this.charging = false;
+		this.isValid = false;
+		this.remainingHours = -1;
+		this.remainingMinutes = -1;
+	}
+
+	public EstimationResult( final int minutes, final int level, final boolean charging ) {
+		this.minutes = minutes;
+		this.level = level;
+		this.charging = charging;
+		this.isValid = true;
+		this.remainingHours = this.minutes > 0 ? (int) Math.floor( this.minutes / 60.0 ) : 0;
+		this.remainingMinutes = this.minutes - ( 60 * this.remainingHours );
+	}
+
 	/**
 	 * Reconstructs and instance of this class based on the data stored
 	 * in the supplied Bundle.
@@ -31,32 +55,6 @@ public final class EstimationResult {
 		} else {
 			return new EstimationResult();
 		}
-	}
-
-	public final boolean charging;
-	public final boolean isValid;
-	public final int level;
-
-	public final int minutes;
-	public final int remainingHours;
-	public final int remainingMinutes;
-
-	public EstimationResult() {
-		this.minutes = -1;
-		this.level = -1;
-		this.charging = false;
-		this.isValid = false;
-		this.remainingHours = -1;
-		this.remainingMinutes = -1;
-	}
-
-	public EstimationResult( final int minutes, final int level, final boolean charging ) {
-		this.minutes = minutes;
-		this.level = level;
-		this.charging = charging;
-		this.isValid = true;
-		this.remainingHours = this.minutes > 0 ? (int) Math.floor( this.minutes / 60.0 ) : 0;
-		this.remainingMinutes = this.minutes - ( 60 * this.remainingHours );
 	}
 
 	/**

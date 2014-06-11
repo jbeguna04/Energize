@@ -12,11 +12,6 @@ public class ApplicationCore extends Application {
 
 	private static final String TAG = "ApplicationCore";
 
-	@Override
-	public void onCreate() {
-		super.onCreate();
-	}
-
 	public static boolean isServiceRunning( final Context ctx, final String serviceName ) {
 		Log.v( ApplicationCore.TAG, "Checking if the monitoring service is running or not..." );
 		boolean serviceRunning = false;
@@ -31,5 +26,10 @@ public class ApplicationCore extends Application {
 			}
 		}
 		return serviceRunning;
+	}
+
+	@Override
+	public void onCreate() {
+		super.onCreate();
 	}
 }
