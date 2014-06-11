@@ -71,8 +71,8 @@ tasks.whenTaskAdded { theTask ->
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:13.0.+'
-    compile files('libs/dashclock-api-r1.1.jar')
+    compile 'com.android.support:support-v4:19.0.+'
+    compile files('libs/dashclock-api-r2.0.jar')
     compile files('libs/GraphView-3.1.jar')
     compile 'com.viewpagerindicator:library:2.4.2-SNAPSHOT'
 }
