@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
-    <release version="1.0" versioncode="110" releasedate="2014-06-11">
+    <release version="1.0" versioncode="111" releasedate="2014-06-11">
         <change>Complete redesign of the application</change>
         <change>Removed the special functions for ASUS Tablets</change>
         <change>Fixed bugs which caused an application crash</change>
