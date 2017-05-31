@@ -3,11 +3,6 @@
           package="com.halcyonwaves.apps.energize"
           android:installLocation="internalOnly">
 
-    <!-- define which OS and screen requirement this application has -->
-    <uses-sdk
-            android:minSdkVersion="14"
-            android:targetSdkVersion="19"/>
-
     <supports-screens
             android:largeScreens="true"
             android:normalScreens="true"
@@ -15,7 +10,6 @@
             android:xlargeScreens="true"/>
 
     <!-- list all permissions we need to run this application -->
-    <uses-permission android:name="com.android.vending.BILLING"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
@@ -32,11 +26,6 @@
         <service
                 android:name="com.halcyonwaves.apps.energize.services.MonitorBatteryStateService"
                 android:exported="false"/>
-        <!--
-             <service
-            android:name="com.halcyonwaves.apps.energize.services.BillingService"
-            android:exported="false" />
-        -->
         <service
                 android:name=".EnergizeExtension"
                 android:icon="@drawable/ic_battery"
@@ -62,19 +51,6 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
-
-        <!-- register a receiver for handling the in-app billing responses -->
-        <!--
-        <receiver
-            android:name="com.halcyonwaves.apps.energize.receivers.BillingReceiver"
-            android:exported="false" >
-            <intent-filter>
-                <action android:name="com.android.vending.billing.IN_APP_NOTIFY" />
-                <action android:name="com.android.vending.billing.RESPONSE_CODE" />
-                <action android:name="com.android.vending.billing.PURCHASE_STATE_CHANGED" />
-            </intent-filter>
-        </receiver>
-        -->
 
         <!-- define the main activity which will be displayed if the user selects the launcher item -->
         <activity
