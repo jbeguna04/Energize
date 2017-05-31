@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-	compileSdkVersion 18
+	compileSdkVersion 21
 	buildToolsVersion "25.0.3"
 	defaultConfig {
 		applicationId "com.halcyonwaves.apps.energize"
-		minSdkVersion 14
-		targetSdkVersion 18
+		minSdkVersion 21
+		targetSdkVersion 21
 		versionCode 113
 		versionName "1.1"
 		testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -24,6 +24,6 @@ dependencies {
 	androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
 		exclude group: 'com.android.support', module: 'support-annotations'
 	})
-	compile 'com.android.support:support-v4:18.0.+'
+	compile 'com.android.support:support-v4:21.0.3'
 	testCompile 'junit:junit:4.12'
 }
