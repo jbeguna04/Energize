@@ -48,6 +48,7 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
 ### Version 1.1 (Code: *113*, Released on: ***2017-06-XX***) - [Changes][36]
 * Switched to the latest version of the build tools
 * The app is now building against the Android 5.0 SDK (API Level 21)
+* Updated the design of the app to Material Design
 
 ### Version 1.0 (Code: *112*, Released on: ***2014-06-12***) - [Changes][35]
 * Complete redesign of the application
