@@ -133,7 +133,7 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 
 	@Override
 	public boolean onCreateOptionsMenu( Menu menu ) {
-		this.getMenuInflater().inflate( R.menu.menu_main, menu );
+		this.getMenuInflater().inflate( R.menu.activity_main_menu, menu );
 		return true;
 	}
 
