@@ -48,8 +48,9 @@
 
         <!-- define the main activity which will be displayed if the user selects the launcher item -->
         <activity
-                android:name="com.halcyonwaves.apps.energize.BatteryStateDisplayActivity"
-                android:label="@string/app_name">
+                android:name="com.halcyonwaves.apps.energize.MainActivity"
+                android:label="@string/app_name"
+                android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -60,10 +61,10 @@
         <!-- define the preference activity we want to show -->
         <activity
                 android:name="com.halcyonwaves.apps.energize.SettingsActivity"
-                android:parentActivityName="com.halcyonwaves.apps.energize.BatteryStateDisplayActivity">
+                android:parentActivityName="com.halcyonwaves.apps.energize.MainActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="com.halcyonwaves.apps.energize.BatteryStateDisplayActivity"/>
+                    android:value="com.halcyonwaves.apps.energize.MainActivity"/>
         </activity>
 
     </application>
