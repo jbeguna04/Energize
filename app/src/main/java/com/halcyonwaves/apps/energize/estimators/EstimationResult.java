@@ -29,13 +29,13 @@ public final class EstimationResult {
 		this.remainingMinutes = -1;
 	}
 
-	public EstimationResult( final int minutes, final int level, final boolean charging ) {
+	public EstimationResult(final int minutes, final int level, final boolean charging) {
 		this.minutes = minutes;
 		this.level = level;
 		this.charging = charging;
 		this.isValid = true;
-		this.remainingHours = this.minutes > 0 ? (int) Math.floor( this.minutes / 60.0 ) : 0;
-		this.remainingMinutes = this.minutes - ( 60 * this.remainingHours );
+		this.remainingHours = this.minutes > 0 ? (int) Math.floor(this.minutes / 60.0) : 0;
+		this.remainingMinutes = this.minutes - (60 * this.remainingHours);
 	}
 
 	/**
@@ -46,13 +46,13 @@ public final class EstimationResult {
 	 * @return An instance of this class based on the Bundle data.
 	 * @since 0.8
 	 */
-	public static EstimationResult fromBundle( final Bundle from ) {
-		final boolean charging = from.getBoolean( "charging" );
-		final boolean valid = from.getBoolean( "isValid" );
-		final int lvl = from.getInt( "level", 0 );
-		final int min = from.getInt( "minutes", 0 );
-		if ( valid ) {
-			return new EstimationResult( min, lvl, charging );
+	public static EstimationResult fromBundle(final Bundle from) {
+		final boolean charging = from.getBoolean("charging");
+		final boolean valid = from.getBoolean("isValid");
+		final int lvl = from.getInt("level", 0);
+		final int min = from.getInt("minutes", 0);
+		if (valid) {
+			return new EstimationResult(min, lvl, charging);
 		} else {
 			return new EstimationResult();
 		}
@@ -67,12 +67,12 @@ public final class EstimationResult {
 	 */
 	public Bundle toBundle() {
 		final Bundle returnBundle = new Bundle();
-		returnBundle.putBoolean( "charging", this.charging );
-		returnBundle.putBoolean( "isValid", this.isValid );
-		returnBundle.putInt( "level", this.level );
-		returnBundle.putInt( "minutes", this.minutes );
-		returnBundle.putInt( "remainingHours", this.remainingHours );
-		returnBundle.putInt( "remainingMinutes", this.remainingMinutes );
+		returnBundle.putBoolean("charging", this.charging);
+		returnBundle.putBoolean("isValid", this.isValid);
+		returnBundle.putInt("level", this.level);
+		returnBundle.putInt("minutes", this.minutes);
+		returnBundle.putInt("remainingHours", this.remainingHours);
+		returnBundle.putInt("remainingMinutes", this.remainingMinutes);
 		return returnBundle;
 	}
 

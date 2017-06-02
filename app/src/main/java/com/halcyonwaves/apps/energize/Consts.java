@@ -1,6 +1,7 @@
 package com.halcyonwaves.apps.energize;
 
 public class Consts {
+
 	/**
 	 * This preference key stores the application version code when the changelog was displayed the last time.
 	 */

@@ -1,72 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.halcyonwaves.apps.energize"
-          android:installLocation="internalOnly">
+	package="com.halcyonwaves.apps.energize"
+	android:installLocation="internalOnly">
 
-    <!-- list all permissions we need to run this application -->
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<!-- list all permissions we need to run this application -->
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
-    <!-- define the content of this application -->
-    <application
-            android:allowBackup="false"
-            android:hardwareAccelerated="true"
-            android:icon="@drawable/ic_launcher"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme"
-            android:name=".ApplicationCore">
+	<!-- define the content of this application -->
+	<application
+		android:allowBackup="false"
+		android:hardwareAccelerated="true"
+		android:icon="@drawable/ic_launcher"
+		android:label="@string/app_name"
+		android:name=".ApplicationCore"
+		android:theme="@style/AppTheme">
 
-        <!-- define the  services we have implemented -->
-        <service
-                android:name="com.halcyonwaves.apps.energize.services.MonitorBatteryStateService"
-                android:exported="false"/>
-        <service
-                android:name=".EnergizeExtension"
-                android:icon="@drawable/ic_battery"
-                android:label="@string/app_name"
-                android:permission="com.google.android.apps.dashclock.permission.READ_EXTENSION_DATA">
-            <intent-filter>
-                <action android:name="com.google.android.apps.dashclock.Extension"/>
-            </intent-filter>
+		<!-- define the  services we have implemented -->
+		<service
+			android:exported="false"
+			android:name="com.halcyonwaves.apps.energize.services.MonitorBatteryStateService"/>
+		<service
+			android:icon="@drawable/ic_battery"
+			android:label="@string/app_name"
+			android:name=".EnergizeExtension"
+			android:permission="com.google.android.apps.dashclock.permission.READ_EXTENSION_DATA">
+			<intent-filter>
+				<action android:name="com.google.android.apps.dashclock.Extension"/>
+			</intent-filter>
 
-            <meta-data
-                    android:name="protocolVersion"
-                    android:value="1"/>
-            <meta-data
-                    android:name="description"
-                    android:value="@string/dc_widget_desc"/>
-        </service>
+			<meta-data
+				android:name="protocolVersion"
+				android:value="1"/>
+			<meta-data
+				android:name="description"
+				android:value="@string/dc_widget_desc"/>
+		</service>
 
-        <!-- register a receiver which gets called after the device booted up -->
-        <receiver
-                android:name="com.halcyonwaves.apps.energize.receivers.BootCompletedReceiver"
-                android:exported="false">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
-            </intent-filter>
-        </receiver>
+		<!-- register a receiver which gets called after the device booted up -->
+		<receiver
+			android:exported="false"
+			android:name="com.halcyonwaves.apps.energize.receivers.BootCompletedReceiver">
+			<intent-filter>
+				<action android:name="android.intent.action.BOOT_COMPLETED"/>
+			</intent-filter>
+		</receiver>
 
-        <!-- define the main activity which will be displayed if the user selects the launcher item -->
-        <activity
-                android:name="com.halcyonwaves.apps.energize.MainActivity"
-                android:label="@string/app_name"
-                android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+		<!-- define the main activity which will be displayed if the user selects the launcher item -->
+		<activity
+			android:label="@string/app_name"
+			android:name="com.halcyonwaves.apps.energize.MainActivity"
+			android:theme="@style/AppTheme.NoActionBar">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
+				<category android:name="android.intent.category.LAUNCHER"/>
+			</intent-filter>
+		</activity>
 
-        <!-- define the preference activity we want to show -->
-        <activity
-                android:name="com.halcyonwaves.apps.energize.SettingsActivity"
-                android:parentActivityName="com.halcyonwaves.apps.energize.MainActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value="com.halcyonwaves.apps.energize.MainActivity"/>
-        </activity>
+		<!-- define the preference activity we want to show -->
+		<activity
+			android:name="com.halcyonwaves.apps.energize.SettingsActivity"
+			android:parentActivityName="com.halcyonwaves.apps.energize.MainActivity">
+			<meta-data
+				android:name="android.support.PARENT_ACTIVITY"
+				android:value="com.halcyonwaves.apps.energize.MainActivity"/>
+		</activity>
 
-    </application>
+	</application>
 
 </manifest>
