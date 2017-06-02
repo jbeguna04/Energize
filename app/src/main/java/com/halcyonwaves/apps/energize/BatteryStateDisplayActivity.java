@@ -116,27 +116,6 @@ public class BatteryStateDisplayActivity extends FragmentActivity {
 		this.getActionBar().setTitle( this.mTitle );
 	}
 
-	@Override
-	public boolean onOptionsItemSelected( MenuItem item ) {
-		// the action bar home/up action should open or close the drawer. ActionBarDrawerToggle will take care of this.
-		if ( this.mDrawerToggle.onOptionsItemSelected( item ) ) {
-			return true;
-		}
-		switch ( item.getItemId() ) {
-			case R.id.menu_preferences:
-				Intent settingsIntent = new Intent( this, SettingsActivity.class );
-				this.startActivity( settingsIntent );
-				return true;
-		}
-		return super.onOptionsItemSelected( item );
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu( Menu menu ) {
-		this.getMenuInflater().inflate( R.menu.activity_main_menu, menu );
-		return true;
-	}
-
 	private void showWhatsNewDialog() {
 		final LayoutInflater inflater = LayoutInflater.from( this );
 
