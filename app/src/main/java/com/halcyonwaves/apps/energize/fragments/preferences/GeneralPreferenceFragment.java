@@ -69,7 +69,7 @@ public class GeneralPreferenceFragment extends PreferenceFragment {
 	public void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.addPreferencesFromResource(R.xml.pref_general);
-		
+
 		Preference sendDatabasePreference = this.findPreference("batstatistics.cleardb");
 		sendDatabasePreference.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 
