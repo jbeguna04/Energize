@@ -13,7 +13,9 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
-import com.halcyonwaves.apps.energize.fragments.preferences.UnifiedPreferenceFragment;
+import com.halcyonwaves.apps.energize.fragments.preferences.AboutPreferenceFragment;
+import com.halcyonwaves.apps.energize.fragments.preferences.GeneralPreferenceFragment;
+import com.halcyonwaves.apps.energize.fragments.preferences.NotificationsPreferenceFragment;
 import java.util.List;
 
 public class SettingsActivity extends AppCompatPreferenceActivity {
@@ -130,6 +132,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 	 */
 	protected boolean isValidFragment(String fragmentName) {
 		return PreferenceFragment.class.getName().equals(fragmentName)
-				|| UnifiedPreferenceFragment.class.getName().equals(fragmentName);
+				|| GeneralPreferenceFragment.class.getName().equals(fragmentName)
+				|| NotificationsPreferenceFragment.class.getName().equals(fragmentName)
+				|| AboutPreferenceFragment.class.getName().equals(fragmentName);
 	}
 }

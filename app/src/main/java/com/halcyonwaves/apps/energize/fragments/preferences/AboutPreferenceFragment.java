@@ -25,28 +25,28 @@ import com.halcyonwaves.apps.energize.R;
 import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class UnifiedPreferenceFragment extends PreferenceFragment {
+public class AboutPreferenceFragment extends PreferenceFragment {
 
-	private final static String TAG = "UnifiedPreference";
+	private final static String TAG = "AboutPreference";
 	private final Messenger monitorServiceMessanger = new Messenger(new IncomingHandler());
 	private Messenger monitorService = null;
 
 	private final ServiceConnection monitorServiceConnection = new ServiceConnection() {
 
 		public void onServiceConnected(final ComponentName className, final IBinder service) {
-			UnifiedPreferenceFragment.this.monitorService = new Messenger(service);
+			AboutPreferenceFragment.this.monitorService = new Messenger(service);
 			try {
-				Log.d(UnifiedPreferenceFragment.TAG, "Trying to connect to the battery monitoring service...");
+				Log.d(AboutPreferenceFragment.TAG, "Trying to connect to the battery monitoring service...");
 				final Message msg = Message.obtain(null, MonitorBatteryStateService.MSG_REGISTER_CLIENT);
-				msg.replyTo = UnifiedPreferenceFragment.this.monitorServiceMessanger;
-				UnifiedPreferenceFragment.this.monitorService.send(msg);
+				msg.replyTo = AboutPreferenceFragment.this.monitorServiceMessanger;
+				AboutPreferenceFragment.this.monitorService.send(msg);
 			} catch (final RemoteException e) {
-				Log.e(UnifiedPreferenceFragment.TAG, "Failed to connect to the battery monitoring service!");
+				Log.e(AboutPreferenceFragment.TAG, "Failed to connect to the battery monitoring service!");
 			}
 		}
 
 		public void onServiceDisconnected(final ComponentName className) {
-			UnifiedPreferenceFragment.this.monitorService = null;
+			AboutPreferenceFragment.this.monitorService = null;
 		}
 	};
 
@@ -55,7 +55,7 @@ public class UnifiedPreferenceFragment extends PreferenceFragment {
 			PackageInfo packageInfo = this.getActivity().getPackageManager().getPackageInfo(this.getActivity().getPackageName(), 0);
 			return packageInfo.versionName + " (" + packageInfo.versionCode + ")";
 		} catch (PackageManager.NameNotFoundException e) {
-			Log.e(UnifiedPreferenceFragment.TAG, "Package name not found", e);
+			Log.e(AboutPreferenceFragment.TAG, "Package name not found", e);
 		}
 		return "N/A";
 	}
@@ -80,7 +80,7 @@ public class UnifiedPreferenceFragment extends PreferenceFragment {
 	@Override
 	public void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		this.addPreferencesFromResource(R.xml.pref_unified);
+		this.addPreferencesFromResource(R.xml.pref_about);
 
 		Preference appVersion = this.findPreference("developer.appVersion");
 		appVersion.setSummary(this.getSoftwareVersion());
@@ -89,13 +89,13 @@ public class UnifiedPreferenceFragment extends PreferenceFragment {
 		sendDatabasePreference.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 
 			public boolean onPreferenceClick(final Preference preference) {
-				Log.v(UnifiedPreferenceFragment.TAG, "Clearing battery statistics database...");
+				Log.v(AboutPreferenceFragment.TAG, "Clearing battery statistics database...");
 				try {
 					final Message msg = Message.obtain(null, MonitorBatteryStateService.MSG_CLEAR_STATISTICS);
-					msg.replyTo = UnifiedPreferenceFragment.this.monitorServiceMessanger;
-					UnifiedPreferenceFragment.this.monitorService.send(msg);
+					msg.replyTo = AboutPreferenceFragment.this.monitorServiceMessanger;
+					AboutPreferenceFragment.this.monitorService.send(msg);
 				} catch (final RemoteException e) {
-					Log.e(UnifiedPreferenceFragment.TAG, "Failed to clear the battery statistics database!");
+					Log.e(AboutPreferenceFragment.TAG, "Failed to clear the battery statistics database!");
 				}
 				return false;
 			}
@@ -116,7 +116,7 @@ public class UnifiedPreferenceFragment extends PreferenceFragment {
 		public void handleMessage(final Message msg) {
 			switch (msg.what) {
 				case MonitorBatteryStateService.MSG_CLEAR_STATISTICS:
-					final AlertDialog.Builder builder = new AlertDialog.Builder(UnifiedPreferenceFragment.this.getActivity());
+					final AlertDialog.Builder builder = new AlertDialog.Builder(AboutPreferenceFragment.this.getActivity());
 
 					builder.setTitle(R.string.dialog_title_cleardb_successfull).setMessage(R.string.dialog_text_cleardb_successfull).setPositiveButton(android.R.string.ok, new OnClickListener() {
 
@@ -129,7 +129,7 @@ public class UnifiedPreferenceFragment extends PreferenceFragment {
 					// TODO: show notification
 					break;
 				case MonitorBatteryStateService.MSG_COPY_DB_TO_SDCARD:
-					final AlertDialog.Builder builderCopy = new AlertDialog.Builder(UnifiedPreferenceFragment.this.getActivity());
+					final AlertDialog.Builder builderCopy = new AlertDialog.Builder(AboutPreferenceFragment.this.getActivity());
 
 					builderCopy.setTitle(R.string.dialog_title_copydb_successfull).setMessage(R.string.dialog_text_copydb_successfull).setPositiveButton(android.R.string.ok, new OnClickListener() {
 
