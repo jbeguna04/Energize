@@ -13,7 +13,7 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
-import com.halcyonwaves.apps.energize.fragments.UnifiedPreferenceFragment;
+import com.halcyonwaves.apps.energize.fragments.preferences.UnifiedPreferenceFragment;
 import java.util.List;
 
 public class SettingsActivity extends AppCompatPreferenceActivity {

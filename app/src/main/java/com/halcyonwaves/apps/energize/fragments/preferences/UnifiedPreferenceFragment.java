@@ -1,4 +1,4 @@
-package com.halcyonwaves.apps.energize.fragments;
+package com.halcyonwaves.apps.energize.fragments.preferences;
 
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
