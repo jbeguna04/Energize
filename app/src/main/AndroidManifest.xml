@@ -22,7 +22,7 @@
 			android:exported="false"
 			android:name=".services.MonitorBatteryStateService"/>
 		<service
-			android:icon="@drawable/ic_battery"
+			android:icon="@drawable/ic_battery_charging_full_black_24dp"
 			android:label="@string/app_name"
 			android:name=".EnergizeExtension"
 			android:permission="com.google.android.apps.dashclock.permission.READ_EXTENSION_DATA">
