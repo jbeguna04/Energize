@@ -1,5 +1,6 @@
 package com.halcyonwaves.apps.energize.fragments;
 
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.Context;
@@ -9,6 +10,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -22,9 +24,10 @@ import android.util.Log;
 import com.halcyonwaves.apps.energize.R;
 import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
 
+@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class UnifiedPreferenceFragment extends PreferenceFragment {
 
-	private final static String TAG = "UnifiedPreferenceFragment";
+	private final static String TAG = "UnifiedPreference";
 	private final Messenger monitorServiceMessanger = new Messenger(new IncomingHandler());
 	private Messenger monitorService = null;
 
@@ -46,7 +49,6 @@ public class UnifiedPreferenceFragment extends PreferenceFragment {
 			UnifiedPreferenceFragment.this.monitorService = null;
 		}
 	};
-	private Preference sendDatabasePreference = null;
 
 	private String getSoftwareVersion() {
 		try {
@@ -83,8 +85,8 @@ public class UnifiedPreferenceFragment extends PreferenceFragment {
 		Preference appVersion = this.findPreference("developer.appVersion");
 		appVersion.setSummary(this.getSoftwareVersion());
 
-		this.sendDatabasePreference = this.findPreference("batstatistics.cleardb");
-		this.sendDatabasePreference.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+		Preference sendDatabasePreference = this.findPreference("batstatistics.cleardb");
+		sendDatabasePreference.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 
 			public boolean onPreferenceClick(final Preference preference) {
 				Log.v(UnifiedPreferenceFragment.TAG, "Clearing battery statistics database...");
@@ -108,7 +110,7 @@ public class UnifiedPreferenceFragment extends PreferenceFragment {
 		this.doUnbindService();
 	}
 
-	class IncomingHandler extends Handler {
+	private /*static*/ class IncomingHandler extends Handler {
 
 		@Override
 		public void handleMessage(final Message msg) {
