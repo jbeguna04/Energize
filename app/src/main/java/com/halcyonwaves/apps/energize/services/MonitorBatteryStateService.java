@@ -23,7 +23,7 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
-import com.halcyonwaves.apps.energize.BatteryStateDisplayActivity;
+import com.halcyonwaves.apps.energize.MainActivity;
 import com.halcyonwaves.apps.energize.R;
 import com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper;
 import com.halcyonwaves.apps.energize.database.PowerEventsTable;
@@ -213,7 +213,7 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 			notificationBuilder.setContentText( this.getString( R.string.notification_text_missingstatistics ) );
 			notificationBuilder.setSmallIcon( R.drawable.ic_launcher );
 			notificationBuilder.setOngoing( true );
-			notificationBuilder.setContentIntent( PendingIntent.getActivity( this.getApplicationContext(), 0, new Intent( this.getApplicationContext(), BatteryStateDisplayActivity.class ), 0 ) );
+			notificationBuilder.setContentIntent( PendingIntent.getActivity( this.getApplicationContext(), 0, new Intent( this.getApplicationContext(), MainActivity.class ), 0 ) );
 			notificationBuilder.setPriority( NotificationCompat.PRIORITY_LOW );
 
 			// show up the notification we just set up
@@ -235,7 +235,7 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 		notificationBuilder.setContentTitle( this.getString( notificationTitleId ) );
 		notificationBuilder.setSmallIcon( R.drawable.ic_stat_00_pct_charged + estimation.level );
 		notificationBuilder.setOngoing( true );
-		notificationBuilder.setContentIntent( PendingIntent.getActivity( this.getApplicationContext(), 0, new Intent( this.getApplicationContext(), BatteryStateDisplayActivity.class ), 0 ) );
+		notificationBuilder.setContentIntent( PendingIntent.getActivity( this.getApplicationContext(), 0, new Intent( this.getApplicationContext(), MainActivity.class ), 0 ) );
 		notificationBuilder.setPriority( NotificationCompat.PRIORITY_LOW );
 
 		// if the capacity reaches 15%, use a high priority

@@ -3,6 +3,7 @@ package com.halcyonwaves.apps.energize;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -10,7 +11,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import com.halcyonwaves.apps.energize.dialogs.ChangeLogDialog;
 import com.halcyonwaves.apps.energize.fragments.BatteryCapacityGraphFragment;
@@ -20,6 +20,8 @@ import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
 
 public class MainActivity extends AppCompatActivity
 		implements NavigationView.OnNavigationItemSelectedListener {
+
+	private static final String TAG = "MainActivity";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +41,7 @@ public class MainActivity extends AppCompatActivity
 
 		// check if the service is running, if not start it
 		if (!ApplicationCore.isServiceRunning(this, MonitorBatteryStateService.class.getName())) {
-			Log.v("BatteryStateDisplayActivity", "Monitoring service is not running, starting it...");
+			Log.v(MainActivity.TAG, "Monitoring service is not running, starting it...");
 			this.getApplicationContext().startService(new Intent(this.getApplicationContext(), MonitorBatteryStateService.class));
 		}
 
@@ -61,9 +63,8 @@ public class MainActivity extends AppCompatActivity
 		}
 	}
 
-	@SuppressWarnings("StatementWithEmptyBody")
 	@Override
-	public boolean onNavigationItemSelected(MenuItem item) {
+	public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 		// Handle navigation view item clicks here.
 		int id = item.getItemId();
 

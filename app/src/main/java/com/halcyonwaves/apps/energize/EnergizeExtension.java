@@ -132,9 +132,9 @@ public class EnergizeExtension extends DashClockExtension {
 
 		//
 		if ( this.remainingTimeEstimation.isValid ) {
-			this.publishUpdate( new ExtensionData().visible( true ).icon( R.drawable.ic_battery ).status( this.percentageLoaded + "%" ).expandedTitle( String.format( this.getApplicationContext().getString( R.string.dc_widget_charged_long ), this.percentageLoaded ) ).expandedBody( String.format( EnergizeExtension.this.getApplicationContext().getString( R.string.notification_text_estimate ), remainingTimeEstimation.remainingHours, remainingTimeEstimation.remainingMinutes ) ).clickIntent( new Intent( this.getApplicationContext(), BatteryStateDisplayActivity.class ) ) );
+			this.publishUpdate( new ExtensionData().visible( true ).icon( R.drawable.ic_battery ).status( this.percentageLoaded + "%" ).expandedTitle( String.format( this.getApplicationContext().getString( R.string.dc_widget_charged_long ), this.percentageLoaded ) ).expandedBody( String.format( EnergizeExtension.this.getApplicationContext().getString( R.string.notification_text_estimate ), remainingTimeEstimation.remainingHours, remainingTimeEstimation.remainingMinutes ) ).clickIntent( new Intent( this.getApplicationContext(), MainActivity.class ) ) );
 		} else {
-			this.publishUpdate( new ExtensionData().visible( true ).icon( R.drawable.ic_battery ).status( this.percentageLoaded + "%" ).expandedTitle( String.format( this.getApplicationContext().getString( R.string.dc_widget_charged_long ), this.percentageLoaded ) ).expandedBody( EnergizeExtension.this.getApplicationContext().getString( R.string.notification_text_estimate_na ) ).clickIntent( new Intent( this.getApplicationContext(), BatteryStateDisplayActivity.class ) ) );
+			this.publishUpdate( new ExtensionData().visible( true ).icon( R.drawable.ic_battery ).status( this.percentageLoaded + "%" ).expandedTitle( String.format( this.getApplicationContext().getString( R.string.dc_widget_charged_long ), this.percentageLoaded ) ).expandedBody( EnergizeExtension.this.getApplicationContext().getString( R.string.notification_text_estimate_na ) ).clickIntent( new Intent( this.getApplicationContext(), MainActivity.class ) ) );
 		}
 	}
 
