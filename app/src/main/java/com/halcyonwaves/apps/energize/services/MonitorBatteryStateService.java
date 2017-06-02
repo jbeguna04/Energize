@@ -227,7 +227,7 @@ public class MonitorBatteryStateService extends Service implements OnSharedPrefe
 		// prepare the notification object
 		final NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this.getApplicationContext());
 		notificationBuilder.setContentTitle(this.getString(notificationTitleId));
-		notificationBuilder.setSmallIcon(R.drawable.ic_stat_00_pct_charged + estimation.level);
+		notificationBuilder.setSmallIcon(R.mipmap.ic_stat_00_pct_charged + estimation.level);
 		notificationBuilder.setOngoing(true);
 		notificationBuilder.setContentIntent(PendingIntent.getActivity(this.getApplicationContext(), 0, new Intent(this.getApplicationContext(), MainActivity.class), 0));
 		notificationBuilder.setPriority(NotificationCompat.PRIORITY_LOW);
