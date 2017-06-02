@@ -1,43 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-	<PreferenceCategory android:title="General">
-		<SwitchPreference
-			android:defaultValue="true"
-			android:key="advance.show_notification_bar"
-			android:title="@string/pref_title_show_notification_bar"/>
-
-		<ListPreference
-			android:defaultValue="@string/pref_list_temperature_unit_value_celsius"
-			android:entries="@array/pref_list_temperature_unit_names"
-			android:entryValues="@array/pref_list_temperature_unit"
-			android:key="display.temperature_unit"
-			android:summary="@string/pref_summary_temperature_unit"
-			android:title="@string/pref_title_temperature_unit"/>
-	</PreferenceCategory>
-	<PreferenceCategory android:title="Statistics">
-		<ListPreference
-			android:defaultValue="@string/pref_list_batteryestimationmethod_value_lastnchangeestimate"
-			android:entries="@array/pref_list_batteryestimationmethod_names"
-			android:entryValues="@array/pref_list_batteryestimationmethod_values"
-			android:key="batstatistics.usedestimator"
-			android:summary="@string/pref_summary_change_batteryestimation"
-			android:title="@string/pref_title_change_batteryestimation"/>
-
-		<Preference
-			android:key="batstatistics.cleardb"
-			android:summary="@string/pref_summary_clearstatsdb"
-			android:title="@string/pref_title_clearstatsdb"/>
-	</PreferenceCategory>
-	<PreferenceCategory android:title="Developer">
-		<Preference
-			android:key="developer.appVersion"
-			android:summary="N/A"
-			android:title="Version"/>
-		<Preference
-			android:key="developer.aboutApp"
-			android:summary="@string/pref_about_summary"
-			android:title="@string/pref_about_title"/>
-	</PreferenceCategory>
+	<Preference
+		android:key="developer.appVersion"
+		android:summary="N/A"
+		android:title="Version"/>
+	<Preference
+		android:key="developer.aboutApp"
+		android:summary="@string/pref_about_summary"
+		android:title="@string/pref_about_title"/>
 
 </PreferenceScreen>
