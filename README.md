@@ -10,11 +10,11 @@ For building the application by yourself follow the following steps:
   1. Clone the application repository
 
           git clone https://github.com/thuetz/Energize.git
-       
+
   2. Change into the cloned directory
 
           cd Energize
-          
+
   3. Initialize and update the submodules
 
           git submodule init
@@ -45,10 +45,12 @@ As soon as the used strings is nearly fixed, you can help us on our project page
 The application icon is based upon the [Android Robot][3] logo made by Google Inc. This logo is licensed under the terms of the [Creative Commons Attribution license][4]. The battery icon was designed by the authors of the [GNOME High contrast icon set][5] and is licensed under the terms of the [GNU Lesser General Public License][6].
 
 ## Changelog
-### Version 1.1 (Code: *113*, Released on: ***2017-06-XX***) - [Changes][36]
-* Switched to the latest version of the build tools
-* The app is now building against the Android 5.0 SDK (API Level 21)
+### Version 2.0 (Code: *200*, Released on: ***2017-06-XX***) - [Changes][36]
+* Switched to the latest version of the Android build tools and SDKs
 * Updated the design of the app to Material Design
+* Removed a lot of old and now unused resources
+* Remove permissions which are not required anymore
+* Lowered the required Android version to Android 4.1 (Jelly Bean)
 
 ### Version 1.0 (Code: *112*, Released on: ***2014-06-12***) - [Changes][35]
 * Complete redesign of the application
@@ -95,7 +97,7 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
 * Fixed a smaller bug in the old estimation algorithm
 * Fixed a bug that the widget was requesting more space then required
 * Removed the option to turn-off the automatic service start after the device has finished booting (because it is essential)
-* Removed the theme support because it was buggy not not really useful 
+* Removed the theme support because it was buggy not not really useful
 * Fixed two bugs which caused the application to crash with a null-pointer exception
 
 ### Version 0.8.2 (Code: *82*, Released on: ***2012-11-07***) - [Changes][26]
@@ -128,11 +130,11 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
 
 ### Version 0.7 (Code: *70*, Released on: ***2012-09-19***) - [Changes][21]
 * Basic support for Asus Transformer Pad Prime/TF300/Infinity dock battery capacity (showing the current capacity; not used for estimation)
-* Added a basic first version of a separate tablet layout which uses the display more efficiently 
+* Added a basic first version of a separate tablet layout which uses the display more efficiently
 * Rewrote the architecture for estimating the remaining time on battery to support more sophisticated algorithms in the future
 * On Jelly Bean (Android 4.1) devices the status message in the notification bar gets an higher priority as soon as the capacity decreases below 15%
 * Fixed some design issues on devices with a smaller display
-* Fixed several smaller performance issues detected by an code analysis via Lint 
+* Fixed several smaller performance issues detected by an code analysis via Lint
 * Fixed a bug which caused that sometimes the "no estimation available" message was displayed even if it was possible to estimate the remaining time
 * Extended the statistics database with a table which logs the AC plugging events (power cord plugged in or unplugged)
 * Added a label to the overview which displays the time the device is on battery power
@@ -141,7 +143,7 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
 * Disabled the background color of the battery capacity graph (it caused a graphical glitch)
 * The battery capacity graph and the temperature graph will just show the last 24 hours of the logged information
 * Done an automated code cleanup to be more resource efficient
- 
+
 ### Version 0.6.3 (Code: *63*, Released on: ***2012-08-22***) - [Changes][19]
 * Fixed a bug which caused an application crash while rotating the view
 * Fixed a bug which caused that the battery temperature was not logged
@@ -217,30 +219,30 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
  [6]: http://www.gnu.org/licenses/lgpl.html
  [7]: http://www.eclipse.org/
  [8]: https://play.google.com/store/apps/details?id=com.halcyonwaves.apps.energize
- [9]: https://github.com/thuetz/Energize/compare/v0.0.1...v0.0.2 
- [10]: https://github.com/thuetz/Energize/compare/v0.0.2...v0.1 
- [11]: https://github.com/thuetz/Energize/compare/v0.1...v0.1.2 
- [12]: https://github.com/thuetz/Energize/compare/v0.1.2...v0.1.3 
+ [9]: https://github.com/thuetz/Energize/compare/v0.0.1...v0.0.2
+ [10]: https://github.com/thuetz/Energize/compare/v0.0.2...v0.1
+ [11]: https://github.com/thuetz/Energize/compare/v0.1...v0.1.2
+ [12]: https://github.com/thuetz/Energize/compare/v0.1.2...v0.1.3
  [13]: https://github.com/thuetz/Energize/compare/v0.1.3...v0.2
- [14]: https://github.com/thuetz/Energize/compare/v0.2...v0.3 
- [15]: https://github.com/thuetz/Energize/compare/v0.3...v0.4 
- [16]: https://github.com/thuetz/Energize/compare/v0.4...v0.4.1 
- [17]: https://github.com/thuetz/Energize/compare/v0.4.1...v0.5 
- [18]: https://github.com/thuetz/Energize/compare/v0.5...v0.6 
- [19]: https://github.com/thuetz/Energize/compare/v0.6...v0.6.3 
- [20]: https://github.com/thuetz/Energize/compare/v0.6.3...v0.6.4 
- [21]: https://github.com/thuetz/Energize/compare/v0.6.4...v0.7 
- [22]: https://github.com/thuetz/Energize/compare/v0.7...v0.7.2 
- [23]: https://github.com/thuetz/Energize/compare/v0.7.2...v0.7.3 
+ [14]: https://github.com/thuetz/Energize/compare/v0.2...v0.3
+ [15]: https://github.com/thuetz/Energize/compare/v0.3...v0.4
+ [16]: https://github.com/thuetz/Energize/compare/v0.4...v0.4.1
+ [17]: https://github.com/thuetz/Energize/compare/v0.4.1...v0.5
+ [18]: https://github.com/thuetz/Energize/compare/v0.5...v0.6
+ [19]: https://github.com/thuetz/Energize/compare/v0.6...v0.6.3
+ [20]: https://github.com/thuetz/Energize/compare/v0.6.3...v0.6.4
+ [21]: https://github.com/thuetz/Energize/compare/v0.6.4...v0.7
+ [22]: https://github.com/thuetz/Energize/compare/v0.7...v0.7.2
+ [23]: https://github.com/thuetz/Energize/compare/v0.7.2...v0.7.3
  [24]: https://github.com/thuetz/Energize/compare/v0.7.3...v0.8
- [25]: https://github.com/thuetz/Energize/compare/v0.8...v0.8.1 
- [26]: https://github.com/thuetz/Energize/compare/v0.8.1...v0.8.2 
- [27]: https://github.com/thuetz/Energize/compare/v0.8.2...v0.8.5 
- [28]: https://github.com/thuetz/Energize/compare/v0.8.5...v0.8.6 
+ [25]: https://github.com/thuetz/Energize/compare/v0.8...v0.8.1
+ [26]: https://github.com/thuetz/Energize/compare/v0.8.1...v0.8.2
+ [27]: https://github.com/thuetz/Energize/compare/v0.8.2...v0.8.5
+ [28]: https://github.com/thuetz/Energize/compare/v0.8.5...v0.8.6
  [29]: https://github.com/thuetz/Energize/compare/v0.8.6...v0.8.7
  [30]: https://github.com/thuetz/Energize/compare/v0.8.7...v0.8.8
  [31]: https://github.com/thuetz/Energize/compare/v0.8.8...v0.8.9
- [32]: https://github.com/thuetz/Energize/compare/v0.8.9...v0.9 
+ [32]: https://github.com/thuetz/Energize/compare/v0.8.9...v0.9
  [33]: https://github.com/thuetz/Energize/compare/v0.9...v0.9.1
  [34]: https://github.com/thuetz/Energize/compare/v0.9.1...v0.9.2
  [35]: https://github.com/thuetz/Energize/compare/v0.9.1...v1.0
