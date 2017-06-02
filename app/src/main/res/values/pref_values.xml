@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="pref_list_batteryestimationmethod_values">
-        <item>LastChangeEstimate</item>
-        <item>LastNChangeEstimate</item>
-    </string-array>
-    <string-array name="pref_list_temperature_unit">
-        <item>Celsius</item>
-        <item>Fahrenheit</item>
-        <item>Kelvin</item>
-    </string-array>
+	<string name="pref_list_temperature_unit_value_celsius">Celsius</string>
+	<string name="pref_list_temperature_unit_value_fahrenheit">Fahrenheit</string>
+	<string name="pref_list_temperature_unit_value_kelvin">Kelvin</string>
+	<string name="pref_list_batteryestimationmethod_value_lastchangeestimate">LastChangeEstimate</string>
+	<string name="pref_list_batteryestimationmethod_value_lastnchangeestimate">LastNChangeEstimate</string>
+	<string-array name="pref_list_batteryestimationmethod_values">
+		<item>@string/pref_list_batteryestimationmethod_value_lastchangeestimate</item>
+		<item>@string/pref_list_batteryestimationmethod_value_lastnchangeestimate</item>
+	</string-array>
+	<string-array name="pref_list_temperature_unit">
+		<item>@string/pref_list_temperature_unit_value_celsius</item>
+		<item>@string/pref_list_temperature_unit_value_fahrenheit</item>
+		<item>@string/pref_list_temperature_unit_value_kelvin</item>
+	</string-array>
 </resources>
