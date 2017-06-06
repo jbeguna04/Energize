@@ -55,6 +55,32 @@
 	<!-- About... settings -->
 	<string name="pref_header_about">About…</string>
 
+	<string name="notification_title_missingstatistics">Too less statistics</string>
+	<string name="notification_title_charges">Battery charges</string>
+	<string name="notification_title_discharges">Battery discharges</string>
+	<string name="notification_text_estimate">%1$d hour(s) and %2$d minute(s) remaining</string>
+	<string name="notification_text_estimate_na">Estimation currently not available</string>
+	<string name="notification_text_missingstatistics">Please wait some more minutes</string>
 
+
+	<string name="pref_title_show_notification_bar">Status bar icon</string>
+	<string name="pref_title_change_batteryestimation">Battery estimation method</string>
+	<string name="pref_summary_change_batteryestimation">Method: %1$s</string>
+	<string name="pref_title_temperature_unit">Temperature unit</string>
+	<string name="pref_summary_temperature_unit">Used unit: %1$s</string>
+	<string name="pref_title_clearstatsdb">Clear statistics database</string>
+	<string name="pref_summary_clearstatsdb">Clears the recorded battery events</string>
+	<string name="pref_about_summary">Show more information about the app</string>
+	<string name="pref_about_title">About…</string>
+	<string-array name="pref_list_temperature_unit_names">
+		<item>Celsius</item>
+		<item>Fahrenheit</item>
+		<item>Kelvin</item>
+	</string-array>
+	<string-array name="pref_list_batteryestimationmethod_names">
+		<item>Last change period (inaccurate)</item>
+		<item>Last n-change periods (bit inaccurate)</item>
+		<item>Heuristic estimation</item>
+	</string-array>
 
 </resources>
