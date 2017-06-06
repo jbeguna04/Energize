@@ -3,8 +3,8 @@
 
 	<string name="app_name" translatable="false">Energize</string>
 	<string name="battery_state_charging">Charging</string>
-	<string name="battery_state_discharging">Discharging</string>
-	<string name="battery_state_full">Full</string>
+	<string name="battery_state_discharging">Not charging (battery in use)</string>
+	<string name="battery_state_full">Battery completely charged</string>
 	<string name="battery_state_unknown">Unknown</string>
 	<string name="textview_label_current_chargingstate">Charging state:</string>
 	<string name="dialog_title_cleardb_successfull">Database cleared</string>
@@ -46,8 +46,8 @@
 
 	<!-- Text for notifications -->
 	<string name="notification_title_missingstatistics">Too less statistics</string>
-	<string name="notification_title_charges">Battery charges</string>
-	<string name="notification_title_discharges">Battery discharges</string>
+	<string name="notification_title_charges">Battery is charging</string>
+	<string name="notification_title_discharges">On battery</string>
 	<string name="notification_text_estimate">%1$d hour(s) and %2$d minute(s) remaining</string>
 	<string name="notification_text_estimate_na">Estimation currently not available</string>
 	<string name="notification_text_missingstatistics">Please wait some more minutes</string>
