@@ -50,6 +50,7 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
 * Fix the back arrow in the settings categories to go back to the correct page
 * Fix the axes of the battery graph to always show 0% - 100%
 * Add the missing 'About this app' dialog in the settings
+* Add a German translation of the app
 * Minified the build APK
 
 ### Version 2.0 (Code: *200*, Released on: ***2017-06-06***) - [Changes][36]
