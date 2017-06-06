@@ -47,6 +47,7 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
 ## Changelog
 ### Version 2.0 (Code: *200*, Released on: ***2017-XX-XX***) - [Changes][37]
 * Add a new estimation method which seems to be better
+* Minified the build APK
 
 ### Version 2.0 (Code: *200*, Released on: ***2017-06-06***) - [Changes][36]
 * Switched to the latest version of the Android build tools and SDKs
