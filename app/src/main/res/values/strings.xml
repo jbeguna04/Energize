@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-	<string name="app_name">Energize</string>
+	<string name="app_name" translatable="false">Energize</string>
 	<string name="battery_state_charging">Charging</string>
 	<string name="battery_state_discharging">Discharging</string>
 	<string name="battery_state_full">Full</string>
@@ -32,9 +32,9 @@
 	<string name="textview_text_remainingtime">%1$d hour(s) and %2$d minute(s)</string>
 	<string name="textview_label_timeonbattery">Time on battery:</string>
 	<string name="textview_text_timeonbattery">%1$d hour(s) and %2$d minute(s)</string>
-	<string name="textview_text_temperature_celsius">%.1f °C</string>
-	<string name="textview_text_temperature_fahrenheit">%.1f °F</string>
-	<string name="textview_text_temperature_kelvin">%.1f °K</string>
+	<string name="textview_text_temperature_celsius" translatable="false">%.1f °C</string>
+	<string name="textview_text_temperature_fahrenheit" translatable="false">%.1f °F</string>
+	<string name="textview_text_temperature_kelvin" translatable="false">%.1f °K</string>
 	<string name="btn_close_about_dialog">Close the dialog</string>
 	<string name="textview_or_close_the_app_label">or</string>
 	<string name="dc_widget_desc">Shows the current battery charging state and an estimate for the
@@ -55,6 +55,7 @@
 	<!-- About... settings -->
 	<string name="pref_header_about">About…</string>
 
+	<!-- Text for notifications -->
 	<string name="notification_title_missingstatistics">Too less statistics</string>
 	<string name="notification_title_charges">Battery charges</string>
 	<string name="notification_title_discharges">Battery discharges</string>
