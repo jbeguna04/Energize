@@ -45,8 +45,11 @@ As soon as the used strings is nearly fixed, you can help us on our project page
 The application icon is based upon the [Android Robot][3] logo made by Google Inc. This logo is licensed under the terms of the [Creative Commons Attribution license][4]. The battery icon was designed by the authors of the [GNOME High contrast icon set][5] and is licensed under the terms of the [GNU Lesser General Public License][6].
 
 ## Changelog
-### Version 2.0 (Code: *200*, Released on: ***2017-XX-XX***) - [Changes][37]
+### Version 2.1 (Code: *2XX*, Released on: ***2017-XX-XX***) - [Changes][37]
 * Add a new estimation method which seems to be better
+* Fix the back arrow in the settings categories to go back to the correct page
+* Fix the axes of the battery graph to always show 0% - 100%
+* Add the missing 'About this app' dialog in the settings
 * Minified the build APK
 
 ### Version 2.0 (Code: *200*, Released on: ***2017-06-06***) - [Changes][36]
