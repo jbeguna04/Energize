@@ -18,6 +18,8 @@ public class BatteryEstimationMgr {
 			return SimpleEstimationAlgorithm.getEstimation(context);
 		} else if (0 == "LastNChangeEstimate".compareToIgnoreCase(estimationMethod)) {
 			return SimpleEstimationAlgorithm2.getEstimation(context);
+		} else if (0 == "HeuristicEstimate".compareToIgnoreCase(estimationMethod)) {
+			return HeuristicEstimationAlgorithm.getEstimation(context);
 		}
 
 		// it seems that no time estimator could be initialized
