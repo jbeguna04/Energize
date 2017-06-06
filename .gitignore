@@ -31,6 +31,8 @@ local.properties
 .idea/modules.xml
 .idea/scopes/
 .idea/vcs.xml
+.idea/markdown-navigator/
+.idea/markdown-navigator.xml
 *.iml
 
 # MacOS X files
