@@ -3,17 +3,23 @@ package com.halcyonwaves.apps.energize;
 import static java.text.MessageFormat.format;
 
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.halcyonwaves.apps.energize.dialogs.ChangeLogDialog;
 import com.halcyonwaves.apps.energize.fragments.BatteryCapacityGraphFragment;
 import com.halcyonwaves.apps.energize.fragments.OverviewFragment;
@@ -54,14 +60,46 @@ public class MainActivity extends AppCompatActivity
 		// ensure the first item will be displayed
 		selectItem(0);
 
-		//
-		if (!wasInstalledViaPlaystore()) {
-			// TODO: show infos to the user
+		// if the app was not installed via the PlayStore, show a notice
+		if (!wasInstalledViaPlaystore() && !playstoreNoteAlreadyDisplayed()) {
+			Snackbar snackbar = Snackbar.make(findViewById(R.id.fragment_container), R.string.snackbar_not_installed_via_playstore_text, Snackbar.LENGTH_INDEFINITE);
+			snackbar.setAction(R.string.snackbar_not_installed_via_playstore_action, new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+					alertDialog.setTitle(R.string.alertdialog_not_via_playstore_title);
+					alertDialog.setMessage(getString(R.string.alertdialog_not_via_playstore_text));
+					alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.alertdialog_not_via_playstore_button_go_to_playstore),
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog, int which) {
+									dialog.dismiss();
+									try {
+										startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.halcyonwaves.apps.energize")));
+									} catch (android.content.ActivityNotFoundException anfe) {
+										startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.halcyonwaves.apps.energize")));
+									}
+								}
+							});
+					alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.alertdialog_not_via_playstore_button_dismiss),
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog, int which) {
+									dialog.dismiss();
+									// TODO: ensure the snackbar will not be shown again
+								}
+							});
+					alertDialog.show();
+				}
+			});
+			snackbar.show();
 		}
 	}
 
 	private static String defaultIfNull(final String inputValue, final String defaultValue) {
 		return (null == inputValue || "null".equals(inputValue)) ? defaultValue : inputValue;
+	}
+
+	private boolean playstoreNoteAlreadyDisplayed() {
+		return false; // TODO: implement this
 	}
 
 	private boolean wasInstalledViaPlaystore() {
