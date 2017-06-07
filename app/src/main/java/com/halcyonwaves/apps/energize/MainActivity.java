@@ -74,9 +74,9 @@ public class MainActivity extends AppCompatActivity
 								public void onClick(DialogInterface dialog, int which) {
 									dialog.dismiss();
 									try {
-										startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.halcyonwaves.apps.energize")));
+										startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + BuildConfig.APPLICATION_ID)));
 									} catch (android.content.ActivityNotFoundException anfe) {
-										startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.halcyonwaves.apps.energize")));
+										startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID)));
 									}
 								}
 							});
