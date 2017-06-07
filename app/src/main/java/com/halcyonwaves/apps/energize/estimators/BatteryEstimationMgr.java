@@ -12,7 +12,7 @@ public class BatteryEstimationMgr {
 
 	public static EstimationResult getEstimation(final Context context) {
 		final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-		final String estimationMethod = prefs.getString("batstatistics.usedestimator", "");
+		final String estimationMethod = prefs.getString("batstatistics.usedestimator", "NO_PREFERENCE_FOUND");
 
 		final String lastChangeEstimate = context.getString(R.string.pref_list_batteryestimationmethod_value_lastchangeestimate);
 		final String heuristicEstimate = context.getString(R.string.pref_list_batteryestimationmethod_value_heuristicestimate);
