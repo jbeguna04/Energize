@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
+	<release releasedate="2017-06-07" version="2.0.1" versioncode="203">
+		<change>Fix a bug which caused that the battery estimator was not set correctly on initial install</change>
+		<change>Update the license file</change>
+	</release>
 	<release releasedate="2017-06-06" version="2.0" versioncode="200">
 		<change>Switched to the latest version of the Android build tools and SDKs</change>
 		<change>Updated the design of the app to Material Design</change>
