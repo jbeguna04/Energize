@@ -3,7 +3,7 @@
 
 	<PreferenceCategory android:title="General">
 		<ListPreference
-			android:defaultValue="@string/pref_list_temperature_unit_value_celsius"
+			android:defaultValue="@string/pref_list_temperature_unit_value_and_title_celsius"
 			android:entries="@array/pref_list_temperature_unit_names"
 			android:entryValues="@array/pref_list_temperature_unit"
 			android:key="display.temperature_unit"

@@ -16,7 +16,6 @@
 	<string name="dialog_text_copydb_successfull">The battery statistics database was successfully
         copied to your SD card.
     </string>
-	<string name="dc_widget_charged_long">%1$d%% charged</string>
 	<string name="textview_label_temperature">Battery temperature:</string>
 	<string name="textview_label_remainingtime">Remaining time:</string>
 	<string name="textview_text_remainingtime">%1$d hour(s) and %2$d minute(s)</string>
@@ -25,12 +24,15 @@
 	<string name="textview_text_temperature_celsius" translatable="false" formatted="true">%.1f °C</string>
 	<string name="textview_text_temperature_fahrenheit" translatable="false" formatted="true">%.1f °F</string>
 	<string name="textview_text_temperature_kelvin" translatable="false" formatted="true">%.1f °K</string>
+
+	<string name="navigation_drawer_open">Open navigation drawer</string>
+	<string name="navigation_drawer_close">Close navigation drawer</string>
+
+	<!-- CATEGORY: String related to the DashClock extension -->
+	<string name="dc_widget_charged_long" formatted="true">%1$d%% charged</string>
 	<string name="dc_widget_desc">Shows the current battery charging state and an estimate for the
         remaining battery time.
     </string>
-	<string name="navigation_drawer_open">Open</string>
-	<string name="navigation_drawer_close">Close</string>
-
 
 	<!-- CATEGORY: Text for notifications -->
 	<string name="notification_title_missingstatistics">Too less statistics</string>
@@ -62,9 +64,9 @@
 	<string name="pref_about_title">About…</string>
 
 	<string-array name="pref_list_temperature_unit_names">
-		<item>Celsius</item>
-		<item>Fahrenheit</item>
-		<item>Kelvin</item>
+		<item>@string/pref_list_temperature_unit_value_and_title_celsius</item>
+		<item>@string/pref_list_temperature_unit_value_and_title_fahrenheit</item>
+		<item>@string/pref_list_temperature_unit_value_and_title_kelvin</item>
 	</string-array>
 	<string-array name="pref_list_batteryestimationmethod_names">
 		<item>Last change period (inaccurate)</item>
@@ -72,10 +74,10 @@
 		<item>Heuristic estimation</item>
 	</string-array>
 
-	<!-- CATEGORY: The actual values for preferences where the user has the choise between different settings -->
-	<string name="pref_list_temperature_unit_value_celsius" translatable="false">Celsius</string>
-	<string name="pref_list_temperature_unit_value_fahrenheit" translatable="false">Fahrenheit</string>
-	<string name="pref_list_temperature_unit_value_kelvin" translatable="false">Kelvin</string>
+	<!-- CATEGORY: The actual values for preferences where the user has the choice between different settings -->
+	<string name="pref_list_temperature_unit_value_and_title_celsius" translatable="false">Celsius</string>
+	<string name="pref_list_temperature_unit_value_and_title_fahrenheit" translatable="false">Fahrenheit</string>
+	<string name="pref_list_temperature_unit_value_and_title_kelvin" translatable="false">Kelvin</string>
 	<string name="pref_list_batteryestimationmethod_value_lastchangeestimate" translatable="false">LastChangeEstimate</string>
 	<string name="pref_list_batteryestimationmethod_value_lastnchangeestimate" translatable="false">LastNChangeEstimate</string>
 	<string name="pref_list_batteryestimationmethod_value_heuristicestimate" translatable="false">HeuristicEstimate</string>
@@ -85,8 +87,8 @@
 		<item>@string/pref_list_batteryestimationmethod_value_heuristicestimate</item>
 	</string-array>
 	<string-array name="pref_list_temperature_unit">
-		<item>@string/pref_list_temperature_unit_value_celsius</item>
-		<item>@string/pref_list_temperature_unit_value_fahrenheit</item>
-		<item>@string/pref_list_temperature_unit_value_kelvin</item>
+		<item>@string/pref_list_temperature_unit_value_and_title_celsius</item>
+		<item>@string/pref_list_temperature_unit_value_and_title_fahrenheit</item>
+		<item>@string/pref_list_temperature_unit_value_and_title_kelvin</item>
 	</string-array>
 </resources>
