@@ -1,5 +1,7 @@
 package com.halcyonwaves.apps.energize;
 
+import static java.text.MessageFormat.format;
+
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -51,6 +53,21 @@ public class MainActivity extends AppCompatActivity
 
 		// ensure the first item will be displayed
 		selectItem(0);
+
+		//
+		if (!wasInstalledViaPlaystore()) {
+			// TODO: show infos to the user
+		}
+	}
+
+	private static String defaultIfNull(final String inputValue, final String defaultValue) {
+		return (null == inputValue || "null".equals(inputValue)) ? defaultValue : inputValue;
+	}
+
+	private boolean wasInstalledViaPlaystore() {
+		final String installerPackageName = defaultIfNull(this.getPackageManager().getInstallerPackageName(this.getPackageName()), "Unknown");
+		Log.i(TAG, format("The package was installed via: {0}", installerPackageName));
+		return "com.android.vending".equals(installerPackageName);
 	}
 
 	@Override
