@@ -25,6 +25,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.halcyonwaves.apps.energize.R;
 import com.halcyonwaves.apps.energize.animations.WaveView;
+import com.halcyonwaves.apps.energize.animations.WaveView.ShapeType;
 import com.halcyonwaves.apps.energize.animations.WaveViewHelper;
 import com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper;
 import com.halcyonwaves.apps.energize.database.PowerEventsTable;
@@ -150,6 +151,18 @@ public class OverviewFragment extends Fragment {
 
 		//
 		WaveView waveView = (WaveView) inflatedView.findViewById(R.id.wave);
+		final int frontWaveColor;
+		final int backWaveColor;
+		if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+			frontWaveColor = getResources().getColor(R.color.colorPrimaryDark, null);
+			backWaveColor = getResources().getColor(R.color.colorPrimary, null);
+		} else {
+			frontWaveColor = getResources().getColor(R.color.colorPrimaryDark);
+			backWaveColor = getResources().getColor(R.color.colorPrimary);
+		}
+		waveView.setShapeType(ShapeType.CIRCLE);
+		waveView.setWaveColor(backWaveColor, frontWaveColor);
+		waveView.setBorder(5, frontWaveColor);
 		waveViewHelper = new WaveViewHelper(waveView);
 
 		// return the inflated view
