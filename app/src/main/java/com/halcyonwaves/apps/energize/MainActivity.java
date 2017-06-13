@@ -3,10 +3,13 @@ package com.halcyonwaves.apps.energize;
 import static java.text.MessageFormat.format;
 
 import android.app.Fragment;
+import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.pm.ActivityInfo;
+import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -28,6 +31,7 @@ import com.halcyonwaves.apps.energize.fragments.BatteryCapacityGraphFragment;
 import com.halcyonwaves.apps.energize.fragments.OverviewFragment;
 import com.halcyonwaves.apps.energize.fragments.TemperatureGraphFragment;
 import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
 		implements NavigationView.OnNavigationItemSelectedListener {
@@ -82,11 +86,7 @@ public class MainActivity extends AppCompatActivity
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog, int which) {
 									dialog.dismiss();
-									try {
-										startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + BuildConfig.APPLICATION_ID)));
-									} catch (android.content.ActivityNotFoundException anfe) {
-										startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID)));
-									}
+									MainActivity.this.startPlayStore();
 								}
 							});
 					alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.alertdialog_not_via_playstore_button_dismiss),
@@ -106,6 +106,34 @@ public class MainActivity extends AppCompatActivity
 		}
 	}
 
+	private void startPlayStore() {
+		Intent rateIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + BuildConfig.APPLICATION_ID));
+		boolean marketFound = false;
+
+		final List<ResolveInfo> otherApps = this.getApplicationContext().getPackageManager().queryIntentActivities(rateIntent, 0);
+		for (ResolveInfo otherApp : otherApps) {
+			if (otherApp.activityInfo.applicationInfo.packageName.equals("com.android.vending")) {
+
+				ActivityInfo otherAppActivity = otherApp.activityInfo;
+				ComponentName componentName = new ComponentName(otherAppActivity.applicationInfo.packageName, otherAppActivity.name);
+				rateIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				rateIntent.addFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+				rateIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				rateIntent.setComponent(componentName);
+				this.getApplicationContext().startActivity(rateIntent);
+				marketFound = true;
+				break;
+
+			}
+		}
+
+		// if GP not present on device, open web browser
+		if (!marketFound) {
+			Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID));
+			this.getApplicationContext().startActivity(webIntent);
+		}
+	}
+
 	private static String defaultIfNull(final String inputValue, final String defaultValue) {
 		return (null == inputValue || "null".equals(inputValue)) ? defaultValue : inputValue;
 	}
@@ -114,7 +142,8 @@ public class MainActivity extends AppCompatActivity
 		final SharedPreferences appPreferences = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
 		final int lastTimeDisplayed = appPreferences.getInt(Consts.PREFERENCE_PLAYSTORE_NOTICE_DISPLAYED_LAST_TIME, -1);
 
-		return -1 != lastTimeDisplayed;
+		//return -1 != lastTimeDisplayed;
+		return false;
 	}
 
 	private boolean wasInstalledViaPlaystore() {
