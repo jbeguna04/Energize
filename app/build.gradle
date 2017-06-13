@@ -7,11 +7,11 @@ android {
 		applicationId "com.halcyonwaves.apps.energize"
 		minSdkVersion 14
 		targetSdkVersion 25
-		versionCode 205
+		versionCode 206
 		versionName "2.1"
 		testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 		vectorDrawables.useSupportLibrary = true
-		versionNameSuffix 'alpha4'
+		versionNameSuffix 'alpha5'
 	}
 	buildTypes {
 		release {
