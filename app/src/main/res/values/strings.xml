@@ -50,6 +50,17 @@
 	<string name="notification_text_estimate_na">Estimation currently not available</string>
 	<string name="notification_text_missingstatistics">Please wait some more minutes</string>
 
+	<!-- CATEGORY: Text for app shortcuts -->
+	<string name="shortcut_overview_disabled">Overview disabled</string>
+	<string name="shortcut_overview_short">Overview</string>
+	<string name="shortcut_overview_long">@string/shortcut_overview_short</string>
+	<string name="shortcut_battery_disabled">Battery disabled</string>
+	<string name="shortcut_battery_short">Battery</string>
+	<string name="shortcut_battery_long">@string/shortcut_battery_short</string>
+	<string name="shortcut_temperature_disabled">Temperature disabled</string>
+	<string name="shortcut_temperature_short">Temperature</string>
+	<string name="shortcut_temperature_long">@string/shortcut_temperature_short</string>
+
 	<!-- CATEGORY: Strings related to Settings -->
 	<string name="title_activity_settings">Settings</string>
 

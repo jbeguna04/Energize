@@ -57,8 +57,14 @@ public class MainActivity extends AppCompatActivity
 		ChangeLogDialog changeDlg = new ChangeLogDialog(this);
 		changeDlg.show();
 
-		// ensure the first item will be displayed
-		selectItem(0);
+		// ensure the correct item will be displayed
+		if ("com.halcyonwaves.apps.energize.fragments.BatteryCapacityGraphFragment".equals(getIntent().getAction())) {
+			selectItem(1);
+		} else if ("com.halcyonwaves.apps.energize.fragments.TemperatureGraphFragment".equals(getIntent().getAction())) {
+			selectItem(2);
+		} else {
+			selectItem(0);
+		}
 
 		// if the app was not installed via the PlayStore, show a notice
 		if (!wasInstalledViaPlaystore() && !playstoreNoteAlreadyDisplayed()) {
