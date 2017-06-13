@@ -15,7 +15,6 @@ public class BatteryEstimationMgr {
 		final String estimationMethod = prefs.getString("batstatistics.usedestimator", "NO_PREFERENCE_FOUND");
 
 		final String lastChangeEstimate = context.getString(R.string.pref_list_batteryestimationmethod_value_lastchangeestimate);
-		final String heuristicEstimate = context.getString(R.string.pref_list_batteryestimationmethod_value_heuristicestimate);
 		final String lastNChangeEstimate = context.getString(R.string.pref_list_batteryestimationmethod_value_lastnchangeestimate);
 
 		// obtain the estimation from the estimator the user selected
@@ -23,8 +22,6 @@ public class BatteryEstimationMgr {
 			return SimpleEstimationAlgorithm.getEstimation(context);
 		} else if (0 == lastNChangeEstimate.compareToIgnoreCase(estimationMethod)) {
 			return SimpleEstimationAlgorithm2.getEstimation(context);
-		} else if (0 == heuristicEstimate.compareToIgnoreCase(estimationMethod)) {
-			return HeuristicEstimationAlgorithm.getEstimation(context);
 		}
 
 		// it seems that no time estimator could be initialized
