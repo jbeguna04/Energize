@@ -213,7 +213,11 @@ public class OverviewFragment extends Fragment {
 							break;
 					}
 
-					OverviewFragment.this.textViewCurrentLoadingLevel.setText(level + ""); // TODO
+					//
+					OverviewFragment.this.textViewCurrentLoadingLevel.setText(level + "");
+
+					//
+					waveViewHelper.setBatteryPercentage(level);
 
 					final String prefUsedUnit = OverviewFragment.this.sharedPref.getString("display.temperature_unit", "Celsius");
 					if (prefUsedUnit.compareToIgnoreCase("celsius") == 0) {
