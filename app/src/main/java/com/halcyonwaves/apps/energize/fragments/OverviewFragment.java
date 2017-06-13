@@ -24,6 +24,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.halcyonwaves.apps.energize.R;
+import com.halcyonwaves.apps.energize.animations.WaveView;
+import com.halcyonwaves.apps.energize.animations.WaveViewHelper;
 import com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper;
 import com.halcyonwaves.apps.energize.database.PowerEventsTable;
 import com.halcyonwaves.apps.energize.estimators.EstimationResult;
@@ -59,6 +61,7 @@ public class OverviewFragment extends Fragment {
 	private TextView textViewRemainingTime = null;
 	private TextView textViewTemp = null;
 	private TextView textViewTimeOnBattery = null;
+	private WaveViewHelper waveViewHelper = null;
 	;
 
 	private void doBindService() {
@@ -95,6 +98,15 @@ public class OverviewFragment extends Fragment {
 		} catch (RemoteException e) {
 			Log.e(OverviewFragment.TAG, "Failed to query the current time estimation.");
 		}
+
+		//
+		waveViewHelper.start();
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		waveViewHelper.cancel();
 	}
 
 	@Override
@@ -135,6 +147,10 @@ public class OverviewFragment extends Fragment {
 
 		//
 		this.updateBatteryInformation();
+
+		//
+		WaveView waveView = (WaveView) inflatedView.findViewById(R.id.wave);
+		waveViewHelper = new WaveViewHelper(waveView);
 
 		// return the inflated view
 		return inflatedView;
