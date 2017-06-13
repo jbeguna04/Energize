@@ -5,8 +5,11 @@ import static java.text.MessageFormat.format;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -90,7 +93,10 @@ public class MainActivity extends AppCompatActivity
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog, int which) {
 									dialog.dismiss();
-									// TODO: ensure the snackbar will not be shown again
+									final SharedPreferences appPreferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this.getApplicationContext());
+									Editor prefEditor = appPreferences.edit();
+									prefEditor.putInt(Consts.PREFERENCE_PLAYSTORE_NOTICE_DISPLAYED_LAST_TIME, 1);
+									prefEditor.apply();
 								}
 							});
 					alertDialog.show();
@@ -105,7 +111,10 @@ public class MainActivity extends AppCompatActivity
 	}
 
 	private boolean playstoreNoteAlreadyDisplayed() {
-		return false; // TODO: implement this
+		final SharedPreferences appPreferences = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
+		final int lastTimeDisplayed = appPreferences.getInt(Consts.PREFERENCE_PLAYSTORE_NOTICE_DISPLAYED_LAST_TIME, -1);
+
+		return -1 != lastTimeDisplayed;
 	}
 
 	private boolean wasInstalledViaPlaystore() {
