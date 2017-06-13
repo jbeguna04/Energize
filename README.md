@@ -54,6 +54,7 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
 * Add the missing 'About this app' dialog in the settings
 * Add a German translation of the app
 * Refined the used colors for the theme of the app
+* Redesigned the application icon according to the new color scheme
 * Minified the build APK
 
 ### Version 2.0 (Code: *200*, Released on: ***2017-06-06***) - [Changes][36]
