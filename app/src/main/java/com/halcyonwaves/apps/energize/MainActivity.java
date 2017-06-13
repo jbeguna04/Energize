@@ -142,8 +142,7 @@ public class MainActivity extends AppCompatActivity
 		final SharedPreferences appPreferences = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
 		final int lastTimeDisplayed = appPreferences.getInt(Consts.PREFERENCE_PLAYSTORE_NOTICE_DISPLAYED_LAST_TIME, -1);
 
-		//return -1 != lastTimeDisplayed;
-		return false;
+		return -1 != lastTimeDisplayed;
 	}
 
 	private boolean wasInstalledViaPlaystore() {
