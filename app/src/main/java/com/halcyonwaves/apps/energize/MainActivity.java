@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity
 				rateIntent.addFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
 				rateIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				rateIntent.setComponent(componentName);
-				this.getApplicationContext().startActivity(rateIntent);
+				this.startActivity(rateIntent);
 				marketFound = true;
 				break;
 
@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity
 		// if GP not present on device, open web browser
 		if (!marketFound) {
 			Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID));
-			this.getApplicationContext().startActivity(webIntent);
+			this.startActivity(webIntent);
 		}
 	}
 
