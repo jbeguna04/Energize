@@ -66,11 +66,11 @@ public class MainActivity extends AppCompatActivity
 
 		// ensure the correct item will be displayed
 		if ("com.halcyonwaves.apps.energize.fragments.BatteryCapacityGraphFragment".equals(getIntent().getAction())) {
-			selectItem(1);
+			navigationView.getMenu().performIdentifierAction(R.id.nav_battery_graph, 0);
 		} else if ("com.halcyonwaves.apps.energize.fragments.TemperatureGraphFragment".equals(getIntent().getAction())) {
-			selectItem(2);
+			navigationView.getMenu().performIdentifierAction(R.id.nav_temperature_graph, 0);
 		} else {
-			selectItem(0);
+			navigationView.getMenu().performIdentifierAction(R.id.nav_overview, 0);
 		}
 
 		// if the app was not installed via the PlayStore, show a notice
@@ -175,6 +175,13 @@ public class MainActivity extends AppCompatActivity
 		} else if (id == R.id.nav_settings) {
 			Intent settingsIntent = new Intent(this, SettingsActivity.class);
 			startActivity(settingsIntent);
+		}
+
+		// checking if the item is in checked state or not, if not set it to checked state.
+		if (item.isChecked()) {
+			item.setChecked(false);
+		} else {
+			item.setChecked(true);
 		}
 
 		DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
