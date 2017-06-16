@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity
 
 		// if the app was not installed via the PlayStore, show a notice
 		if (!wasInstalledViaPlaystore() && !playstoreNoteAlreadyDisplayed()) {
-			Snackbar snackbar = Snackbar.make(findViewById(R.id.fragment_container), R.string.snackbar_not_installed_via_playstore_text, Snackbar.LENGTH_INDEFINITE);
+			Snackbar snackbar = Snackbar.make(findViewById(R.id.content_coordinator_layout), R.string.snackbar_not_installed_via_playstore_text, Snackbar.LENGTH_INDEFINITE);
 			snackbar.setAction(R.string.snackbar_not_installed_via_playstore_action, new OnClickListener() {
 				@Override
 				public void onClick(View v) {
