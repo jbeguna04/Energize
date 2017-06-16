@@ -2,6 +2,12 @@
 <changelog>
 	<release
 		releasedate="2017-06-16"
+		version="2.1.1"
+		versioncode="211">
+		<change>Fix an ArrayOutOfBounds error</change>
+	</release>
+	<release
+		releasedate="2017-06-16"
 		version="2.1"
 		versioncode="210">
 		<change>Fix the back arrow in the settings categories to go back to the correct page</change>
