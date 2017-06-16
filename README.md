@@ -45,6 +45,9 @@ As soon as the used strings is nearly fixed, you can help us on our project page
 The application icon is based upon the [Android Robot][3] logo made by Google Inc. This logo is licensed under the terms of the [Creative Commons Attribution license][4]. The battery icon was designed by the authors of the [GNOME High contrast icon set][5] and is licensed under the terms of the [GNU Lesser General Public License][6].
 
 ## Changelog
+### Version 2.1.1 (Code: *211*, Released on: ***2017-06-16***) - [Changes][39]
+* Fix an ArrayOutOfBounds error
+
 ### Version 2.1 (Code: *210*, Released on: ***2017-06-16***) - [Changes][38]
 * Fix the back arrow in the settings categories to go back to the correct page
 * Fix the axes of the battery graph to always show 0% - 100%
@@ -264,3 +267,4 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
  [36]: https://github.com/thuetz/Energize/compare/v1.0...v2.0
  [37]: https://github.com/thuetz/Energize/compare/v2.0...v2.0.1
  [38]: https://github.com/thuetz/Energize/compare/v2.0.1...v2.1
+ [39]: https://github.com/thuetz/Energize/compare/v2.1...v2.1.1
