@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import com.halcyonwaves.apps.energize.R;
 import com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper;
 import com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable;
+import com.jjoe64.graphview.CustomLabelFormatter;
 import com.jjoe64.graphview.GraphView.GraphViewData;
 import com.jjoe64.graphview.GraphViewSeries;
 import com.jjoe64.graphview.GraphViewSeries.GraphViewSeriesStyle;
@@ -24,13 +25,13 @@ import com.jjoe64.graphview.LineGraphView;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 public class TemperatureGraphFragment extends Fragment {
 
-	private static final String TAG = "TemperatureGraphFragment";
+	private static final String TAG = "TempGraphFrag";
 	private SharedPreferences sharedPref = null;
 	private LineGraphView graphView = null;
-	private boolean seriesSet = false;
 
 	private Pair<GraphViewSeries, Long> getBatteryStatisticData() {
 		BatteryStatisticsDatabaseOpenHelper batteryDbOpenHelper = new BatteryStatisticsDatabaseOpenHelper(this.getActivity().getApplicationContext());
@@ -38,7 +39,7 @@ public class TemperatureGraphFragment extends Fragment {
 		Cursor lastEntryMadeCursor = batteryStatisticsDatabase
 				.query(RawBatteryStatisicsTable.TABLE_NAME, new String[]{RawBatteryStatisicsTable.COLUMN_EVENT_TIME, RawBatteryStatisicsTable.COLUMN_BATTERY_TEMPRATURE}, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " ASC");
 
-		final ArrayList<GraphViewData> graphViewData = new ArrayList<GraphViewData>();
+		final ArrayList<GraphViewData> graphViewData = new ArrayList<>();
 
 		//
 		final int columnIndexEventTime = lastEntryMadeCursor.getColumnIndex(RawBatteryStatisicsTable.COLUMN_EVENT_TIME);
@@ -78,10 +79,7 @@ public class TemperatureGraphFragment extends Fragment {
 
 		// close our connection to the database
 		lastEntryMadeCursor.close();
-		lastEntryMadeCursor = null;
 		batteryDbOpenHelper.close();
-		batteryStatisticsDatabase = null;
-		batteryDbOpenHelper = null;
 
 		// convert the array to an array and return the view series
 		if (graphViewData.size() == 0) {
@@ -89,7 +87,7 @@ public class TemperatureGraphFragment extends Fragment {
 		}
 		final GraphViewData convertedDataset[] = new GraphViewData[graphViewData.size()];
 		graphViewData.toArray(convertedDataset);
-		return new Pair<GraphViewSeries, Long>(new GraphViewSeries("", new GraphViewSeriesStyle(Color.rgb(255, 0, 0), 3), convertedDataset), oldtestTime);
+		return new Pair<>(new GraphViewSeries("", new GraphViewSeriesStyle(Color.rgb(255, 0, 0), 3), convertedDataset), oldtestTime);
 	}
 
 	@Override
@@ -97,38 +95,8 @@ public class TemperatureGraphFragment extends Fragment {
 		this.sharedPref = PreferenceManager.getDefaultSharedPreferences(this.getActivity().getApplicationContext());
 		final View inflatedView = inflater.inflate(R.layout.fragment_temperaturegraph, container, false);
 
-		this.graphView = new LineGraphView(this.getActivity().getApplicationContext(), "") {
-
-			@Override
-			protected String formatLabel(final double value, final boolean isValueX) {
-				if (isValueX) {
-					final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
-					return dateFormat.format(new Date((long) value * 1000));
-				} else {
-					//
-					TemperatureUnit usedUnit = TemperatureUnit.TemperatureUnitCelsius;
-					final String prefUsedUnit = TemperatureGraphFragment.this.sharedPref.getString("display.temperature_unit", "Celsius");
-					if (prefUsedUnit.compareToIgnoreCase("fahrenheit") == 0) {
-						usedUnit = TemperatureUnit.TemperatureUnitFahrenheit;
-					} else if (prefUsedUnit.compareToIgnoreCase("kelvin") == 0) {
-						usedUnit = TemperatureUnit.TemperatureUnitKelvin;
-					}
-
-					//
-					switch (usedUnit) {
-						case TemperatureUnitCelsius:
-							return TemperatureGraphFragment.this.getString(R.string.textview_text_temperature_celsius, value);
-						case TemperatureUnitFahrenheit:
-							return TemperatureGraphFragment.this.getString(R.string.textview_text_temperature_fahrenheit, value);
-						case TemperatureUnitKelvin:
-							return TemperatureGraphFragment.this.getString(R.string.textview_text_temperature_kelvin, value);
-					}
-
-					//
-					return "N/A";
-				}
-			}
-		};
+		this.graphView = new LineGraphView(this.getActivity().getApplicationContext(), "");
+		this.graphView.setCustomLabelFormatter(new TemperatureGraphLabelFormatter());
 		this.graphView.setScrollable(true);
 		this.graphView.setScalable(true);
 		this.graphView.setDrawBackground(false);
@@ -151,20 +119,49 @@ public class TemperatureGraphFragment extends Fragment {
 
 	private void updateGraph() {
 		final Pair<GraphViewSeries, Long> dataSet = this.getBatteryStatisticData();
-		if (this.seriesSet) {
-			//TODO: this.graphView.removeSeries( 0 );
-		}
 		final Long currentTime = System.currentTimeMillis() / 1000L;
 		this.graphView.addSeries(dataSet.first);
 		if ((dataSet.second + 86400L) < currentTime) {
 			this.graphView.setViewPort((currentTime - 86400), 86400);
 		}
-		this.seriesSet = true;
 	}
 
 	private enum TemperatureUnit {
 		TemperatureUnitCelsius,
 		TemperatureUnitFahrenheit,
 		TemperatureUnitKelvin
+	}
+
+	private class TemperatureGraphLabelFormatter implements CustomLabelFormatter {
+
+		@Override
+		public String formatLabel(double value, boolean isValueX) {
+			if (isValueX) {
+				final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm", Locale.US);
+				return dateFormat.format(new Date((long) value * 1000));
+			} else {
+				//
+				TemperatureUnit usedUnit = TemperatureUnit.TemperatureUnitCelsius;
+				final String prefUsedUnit = TemperatureGraphFragment.this.sharedPref.getString("display.temperature_unit", "Celsius");
+				if (prefUsedUnit.compareToIgnoreCase("fahrenheit") == 0) {
+					usedUnit = TemperatureUnit.TemperatureUnitFahrenheit;
+				} else if (prefUsedUnit.compareToIgnoreCase("kelvin") == 0) {
+					usedUnit = TemperatureUnit.TemperatureUnitKelvin;
+				}
+
+				//
+				switch (usedUnit) {
+					case TemperatureUnitCelsius:
+						return TemperatureGraphFragment.this.getString(R.string.textview_text_temperature_celsius, value);
+					case TemperatureUnitFahrenheit:
+						return TemperatureGraphFragment.this.getString(R.string.textview_text_temperature_fahrenheit, value);
+					case TemperatureUnitKelvin:
+						return TemperatureGraphFragment.this.getString(R.string.textview_text_temperature_kelvin, value);
+				}
+
+				//
+				return "N/A";
+			}
+		}
 	}
 }
