@@ -56,7 +56,7 @@ public class EnergizeExtension extends DashClockExtension {
 				final Message msg = Message.obtain(null, MonitorBatteryStateService.MSG_UNREGISTER_CLIENT);
 				msg.replyTo = this.monitorServiceMessanger;
 				this.monitorService.send(msg);
-			} catch (final RemoteException e) {
+			} catch (final RemoteException ignored) {
 			}
 		}
 		this.getApplicationContext().unbindService(this.monitorServiceConnection);
@@ -161,7 +161,7 @@ public class EnergizeExtension extends DashClockExtension {
 
 		private WeakReference<EnergizeExtension> energizeExtensionWeakReference;
 
-		public IncomingHandler(WeakReference<EnergizeExtension> weakReference) {
+		IncomingHandler(WeakReference<EnergizeExtension> weakReference) {
 			energizeExtensionWeakReference = weakReference;
 		}
 

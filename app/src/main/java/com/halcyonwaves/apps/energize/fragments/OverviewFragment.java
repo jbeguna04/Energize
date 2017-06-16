@@ -31,11 +31,12 @@ import com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelp
 import com.halcyonwaves.apps.energize.database.PowerEventsTable;
 import com.halcyonwaves.apps.energize.estimators.EstimationResult;
 import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
+import java.lang.ref.WeakReference;
 
 public class OverviewFragment extends Fragment {
 
 	private static final String TAG = "OverviewFragment";
-	private final Messenger monitorServiceMessanger = new Messenger(new IncomingHandler());
+	private final Messenger monitorServiceMessanger = new Messenger(new IncomingHandler(new WeakReference<OverviewFragment>(this)));
 	private Messenger monitorService = null;
 
 	private final ServiceConnection monitorServiceConnection = new ServiceConnection() {
@@ -76,7 +77,7 @@ public class OverviewFragment extends Fragment {
 				final Message msg = Message.obtain(null, MonitorBatteryStateService.MSG_UNREGISTER_CLIENT);
 				msg.replyTo = this.monitorServiceMessanger;
 				this.monitorService.send(msg);
-			} catch (final RemoteException e) {
+			} catch (final RemoteException ignored) {
 			}
 		}
 		this.getActivity().unbindService(this.monitorServiceConnection);
@@ -158,6 +159,7 @@ public class OverviewFragment extends Fragment {
 		} else {
 			this.textViewTimeOnBattery.setText("-");
 		}
+		queryCursor.close();
 		batteryDbHelper.close();
 
 		// bind to the service and ask for the current time estimation
@@ -273,7 +275,12 @@ public class OverviewFragment extends Fragment {
 		this.textViewRemainingTime.setText(String.format(this.getString(R.string.textview_text_remainingtime), estimation.remainingHours, estimation.remainingMinutes));
 	}
 
-	class IncomingHandler extends Handler {
+	private static class IncomingHandler extends Handler {
+		private WeakReference<OverviewFragment> overviewFragmentWeakReference;
+
+		IncomingHandler(WeakReference<OverviewFragment> weakReference) {
+			overviewFragmentWeakReference = weakReference;
+		}
 
 		@Override
 		public void handleMessage(final Message msg) {
@@ -282,15 +289,15 @@ public class OverviewFragment extends Fragment {
 					// since the client is now registered, we can ask the service about the remaining time we have
 					try {
 						// be sure that the monitor service is available, sometimes (I don't know why) this is not the case
-						if (null == OverviewFragment.this.monitorService) {
+						if (null == overviewFragmentWeakReference || null == overviewFragmentWeakReference.get().monitorService) {
 							Log.e(OverviewFragment.TAG, "Tried to query the remaining time but the monitor service was not available!");
 							return;
 						}
 
 						// query the remaining time
 						final Message msg2 = Message.obtain(null, MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME);
-						msg2.replyTo = OverviewFragment.this.monitorServiceMessanger;
-						OverviewFragment.this.monitorService.send(msg2);
+						msg2.replyTo =  overviewFragmentWeakReference.get().monitorServiceMessanger;
+						overviewFragmentWeakReference.get().monitorService.send(msg2);
 					} catch (final RemoteException e1) {
 						Log.e(OverviewFragment.TAG, "Failed to query the current time estimation.");
 					}
@@ -298,7 +305,7 @@ public class OverviewFragment extends Fragment {
 				case MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME:
 					final EstimationResult remainingTimeEstimation = EstimationResult.fromBundle(msg.getData());
 					Log.d(OverviewFragment.TAG, String.format("Received an time estimation of %d minutes.", remainingTimeEstimation.minutes));
-					OverviewFragment.this.updateEstimationLabel(remainingTimeEstimation);
+					overviewFragmentWeakReference.get().updateEstimationLabel(remainingTimeEstimation);
 					break;
 				default:
 					super.handleMessage(msg);
