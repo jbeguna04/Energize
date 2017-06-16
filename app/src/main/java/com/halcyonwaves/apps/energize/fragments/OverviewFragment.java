@@ -36,7 +36,7 @@ import java.lang.ref.WeakReference;
 public class OverviewFragment extends Fragment {
 
 	private static final String TAG = "OverviewFragment";
-	private final Messenger monitorServiceMessanger = new Messenger(new IncomingHandler(new WeakReference<OverviewFragment>(this)));
+	private final Messenger monitorServiceMessanger = new Messenger(new IncomingHandler(new WeakReference<>(this)));
 	private Messenger monitorService = null;
 
 	private final ServiceConnection monitorServiceConnection = new ServiceConnection() {
@@ -104,8 +104,8 @@ public class OverviewFragment extends Fragment {
 
 		//
 		final boolean shouldShowAnimation = sharedPref.getBoolean("display.show_battery_animation", true);
-		if(null != waveViewHelper) {
-			if(shouldShowAnimation) {
+		if (null != waveViewHelper) {
+			if (shouldShowAnimation) {
 				waveViewHelper.start();
 			} else {
 				waveViewHelper.cancel();
@@ -114,7 +114,7 @@ public class OverviewFragment extends Fragment {
 			}
 		} else {
 			Log.d(TAG, "onResume: should show animation = " + shouldShowAnimation);
-			if(shouldShowAnimation) {
+			if (shouldShowAnimation) {
 				initializeBatteryAnimation(waveView);
 				waveViewHelper.setBatteryPercentage(batteryChargingLevel);
 				waveViewHelper.start();
@@ -125,7 +125,7 @@ public class OverviewFragment extends Fragment {
 	@Override
 	public void onPause() {
 		super.onPause();
-		if(null != waveViewHelper) {
+		if (null != waveViewHelper) {
 			waveViewHelper.cancel();
 		}
 	}
@@ -170,7 +170,7 @@ public class OverviewFragment extends Fragment {
 
 		//
 		waveView = (WaveView) inflatedView.findViewById(R.id.wave);
-		if(sharedPref.getBoolean("display.show_battery_animation", true)) {
+		if (sharedPref.getBoolean("display.show_battery_animation", true)) {
 			initializeBatteryAnimation(waveView);
 		} else {
 			waveView.setVisibility(View.GONE);
@@ -242,10 +242,10 @@ public class OverviewFragment extends Fragment {
 					}
 
 					//
-					OverviewFragment.this.textViewCurrentLoadingLevel.setText(batteryChargingLevel + "");
+					OverviewFragment.this.textViewCurrentLoadingLevel.setText(String.valueOf(batteryChargingLevel));
 
 					//
-					if(null != waveViewHelper) {
+					if (null != waveViewHelper) {
 						waveViewHelper.setBatteryPercentage(batteryChargingLevel);
 					}
 
@@ -276,6 +276,7 @@ public class OverviewFragment extends Fragment {
 	}
 
 	private static class IncomingHandler extends Handler {
+
 		private WeakReference<OverviewFragment> overviewFragmentWeakReference;
 
 		IncomingHandler(WeakReference<OverviewFragment> weakReference) {
@@ -296,7 +297,7 @@ public class OverviewFragment extends Fragment {
 
 						// query the remaining time
 						final Message msg2 = Message.obtain(null, MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME);
-						msg2.replyTo =  overviewFragmentWeakReference.get().monitorServiceMessanger;
+						msg2.replyTo = overviewFragmentWeakReference.get().monitorServiceMessanger;
 						overviewFragmentWeakReference.get().monitorService.send(msg2);
 					} catch (final RemoteException e1) {
 						Log.e(OverviewFragment.TAG, "Failed to query the current time estimation.");

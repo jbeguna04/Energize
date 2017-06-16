@@ -22,7 +22,7 @@ import java.lang.ref.WeakReference;
 public class EnergizeExtension extends DashClockExtension {
 
 	private static final String TAG = "EnergizeExtension";
-	private final Messenger monitorServiceMessanger = new Messenger(new IncomingHandler(new WeakReference(this)));
+	private final Messenger monitorServiceMessanger = new Messenger(new IncomingHandler(new WeakReference<>(this)));
 	private int percentageLoaded = 0;
 	private EstimationResult remainingTimeEstimation = new EstimationResult();
 	private Messenger monitorService = null;
@@ -48,19 +48,6 @@ public class EnergizeExtension extends DashClockExtension {
 
 	private void doBindService() {
 		this.getApplicationContext().bindService(new Intent(this.getApplicationContext(), MonitorBatteryStateService.class), this.monitorServiceConnection, Context.BIND_AUTO_CREATE);
-	}
-
-	private void doUnbindService() {
-		if (this.monitorService != null) {
-			try {
-				final Message msg = Message.obtain(null, MonitorBatteryStateService.MSG_UNREGISTER_CLIENT);
-				msg.replyTo = this.monitorServiceMessanger;
-				this.monitorService.send(msg);
-			} catch (final RemoteException ignored) {
-			}
-		}
-		this.getApplicationContext().unbindService(this.monitorServiceConnection);
-		this.monitorService = null;
 	}
 
 	@Override
