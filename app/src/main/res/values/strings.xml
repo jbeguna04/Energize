@@ -18,9 +18,9 @@
     </string>
 	<string name="textview_label_temperature">Battery temperature:</string>
 	<string name="textview_label_remainingtime">Remaining time:</string>
-	<string name="textview_text_remainingtime">%1$d hour(s) and %2$d minute(s)</string>
+	<string formatted="true" name="textview_text_remainingtime">%1$d hour(s) and %2$d minute(s)</string>
 	<string name="textview_label_timeonbattery">Time on battery:</string>
-	<string name="textview_text_timeonbattery">%1$d hour(s) and %2$d minute(s)</string>
+	<string formatted="true" name="textview_text_timeonbattery">%1$d hour(s) and %2$d minute(s)</string>
 	<string formatted="true" name="textview_text_temperature_celsius" translatable="false">%.1f °C</string>
 	<string formatted="true" name="textview_text_temperature_fahrenheit" translatable="false">%.1f °F</string>
 	<string formatted="true" name="textview_text_temperature_kelvin" translatable="false">%.1f °K</string>
@@ -46,7 +46,7 @@
 	<string name="notification_title_missingstatistics">Too less statistics</string>
 	<string name="notification_title_charges">Battery is charging</string>
 	<string name="notification_title_discharges">On battery</string>
-	<string name="notification_text_estimate">%1$d hour(s) and %2$d minute(s) remaining</string>
+	<string formatted="true" name="notification_text_estimate">%1$d hour(s) and %2$d minute(s) remaining</string>
 	<string name="notification_text_estimate_na">Estimation currently not available</string>
 	<string name="notification_text_missingstatistics">Please wait some more minutes</string>
 
@@ -69,9 +69,9 @@
 	<string name="pref_title_clearstatsdb">Clear statistics database</string>
 	<string name="pref_summary_clearstatsdb">Clears the recorded battery events</string>
 	<string name="pref_title_change_batteryestimation">Battery estimation method</string>
-	<string name="pref_summary_change_batteryestimation">Method: %1$s</string>
+	<string formatted="true" name="pref_summary_change_batteryestimation">Method: %1$s</string>
 	<string name="pref_title_temperature_unit">Temperature unit</string>
-	<string name="pref_summary_temperature_unit">Used unit: %1$s</string>
+	<string formatted="true" name="pref_summary_temperature_unit">Used unit: %1$s</string>
 	<string name="pref_title_show_battery_animation">Show battery animation</string>
 	<string name="pref_summary_on_show_battery_animation">Display the battery animation on the overview screen</string>
 	<string name="pref_summary_off_show_battery_animation">Do not display the battery animation on the overview screen</string>
@@ -87,7 +87,7 @@
 	<string name="pref_about_summary">Show more information about the app</string>
 	<string name="pref_about_title">About…</string>
 	<string name="pref_about_dialog_title">About Energize %s</string>
-	<string name="pref_about_dialog_license" translatable="false">Copyright (C) 2012-2017 Tim Hütz\n\nEnergize is licensed under the GNU General Public License v3.0\n\nThe battery animation on the overview screen was developed by gelitenight and is licensed under the Apache License, Version 2.0.\n\nGraphView library (for drawing all charts) was developed by Jonas Gehring and is licensed under the Apache License, Version 2.0.\n\nThe TIMPER logging library was developed by Jake Wharton and is licensed under the Apache License, Version 2.0.</string>
+	<string name="pref_about_dialog_license" translatable="false">Copyright (C) 2012-2017 Tim Hütz\n\nEnergize is licensed under the GNU General Public License v3.0.\n\nThe battery animation on the overview screen was developed by gelitenight and is licensed under the Apache License, Version 2.0.\n\nGraphView library (for drawing all charts) was developed by Jonas Gehring and is licensed under the Apache License, Version 2.0.\n\nThe TIMBER logging library was developed by Jake Wharton and is licensed under the Apache License, Version 2.0.</string>
 	<string name="pref_about_dialog_button_negative">Close</string>
 
 	<string-array name="pref_list_temperature_unit_names">

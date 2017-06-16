@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="battery_state_charging">Ladevorgang</string>
+	<string name="battery_state_discharging">Nicht im Ladevorgang (Batterie wird verwendet)</string>
+	<string name="battery_state_full">Batterie komplett aufgeladen</string>
+	<string name="battery_state_unknown">Unbekannt</string>
+	<string name="dialog_title_cleardb_successfull">Datenbank gelöscht</string>
+	<string name="dialog_title_copydb_successfull">Datenbank kopiert</string>
+	<string name="textview_label_temperature">Temperatur der Batterie:</string>
+	<string name="textview_label_remainingtime">Verbleibende Zeit:</string>
+	<string formatted="true" name="textview_text_remainingtime">%1$d Stunde(n) und %2$d Minute(n)</string>
+	<string name="textview_label_timeonbattery">Dauer der Batterieverwendung:</string>
+	<string formatted="true" name="textview_text_timeonbattery">%1$d Stunde(n) und %2$d Minute(n)</string>
+	<string name="navigation_drawer_open">Navigation öffnen</string>
+	<string name="navigation_drawer_close">Navigation schließen</string>
+	<string name="snackbar_not_installed_via_playstore_text">Nicht über den Google PlayStore installiert.</string>
+	<string name="snackbar_not_installed_via_playstore_action">Mehr Infos</string>
+	<string name="alertdialog_not_via_playstore_button_go_to_playstore">PlayStore öffnen</string>
+	<string name="alertdialog_not_via_playstore_button_dismiss">Meldung ausblenden</string>
+	<string formatted="true" name="dc_widget_charged_long">%1$d%% geladen</string>
+	<string name="notification_title_missingstatistics">Zu wenig Statistik</string>
+	<string name="notification_title_charges">Batterie lädt</string>
+	<string name="notification_text_missingstatistics">Bitte warten Sie noch einige Minuten</string>
+	<string name="shortcut_overview_disabled">Übersicht deaktiviert</string>
+	<string name="shortcut_overview_short">Übersicht</string>
+	<string name="shortcut_battery_short">Batterie</string>
+	<string name="shortcut_temperature_short">Temperatur</string>
+	<string name="title_activity_settings">Einstellungen</string>
+	<string name="pref_header_general">Allgemein</string>
+	<string name="pref_title_show_battery_animation">Batterie-Animation anzeigen</string>
+	<string name="pref_summary_on_show_battery_animation">Batterie-Animation auf dem Übersichtsbildschirm anzeigen</string>
+	<string name="pref_summary_off_show_battery_animation">Batterie-Animation nicht auf dem Übersichtsbildschirm anzeigen</string>
+	<string name="pref_header_notifications">Benachrichtigungen</string>
+	<string name="pref_title_show_notification_bar">Icon in der Statusbar</string>
+	<string name="pref_summary_on_show_notification_bar">Informationen zur Batterie permanent in den Benachrichtigungen anzeigen</string>
+	<string name="pref_summary_off_show_notification_bar">Informationen zur Batterie nicht permanent in den Benachrichtigungen anzeigen</string>
+	<string name="pref_header_about">Über…</string>
+	<string name="pref_about_title">Über…</string>
+	<string name="pref_about_dialog_button_negative">Schließen</string>
+</resources>
