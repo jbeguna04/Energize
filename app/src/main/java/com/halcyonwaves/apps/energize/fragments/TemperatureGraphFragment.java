@@ -16,12 +16,13 @@ import android.widget.LinearLayout;
 import com.halcyonwaves.apps.energize.R;
 import com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper;
 import com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable;
-import com.jjoe64.graphview.CustomLabelFormatter;
 import com.jjoe64.graphview.GraphView.GraphViewData;
 import com.jjoe64.graphview.GraphViewSeries;
 import com.jjoe64.graphview.GraphViewSeries.GraphViewSeriesStyle;
 import com.jjoe64.graphview.GraphViewStyle;
+import com.jjoe64.graphview.LabelFormatter;
 import com.jjoe64.graphview.LineGraphView;
+import com.jjoe64.graphview.Viewport;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -132,7 +133,7 @@ public class TemperatureGraphFragment extends Fragment {
 		TemperatureUnitKelvin
 	}
 
-	private class TemperatureGraphLabelFormatter implements CustomLabelFormatter {
+	private class TemperatureGraphLabelFormatter implements LabelFormatter {
 
 		@Override
 		public String formatLabel(double value, boolean isValueX) {
@@ -162,6 +163,11 @@ public class TemperatureGraphFragment extends Fragment {
 				//
 				return "N/A";
 			}
+		}
+
+		@Override
+		public void setViewport(Viewport viewport) {
+			// TODO: this
 		}
 	}
 }

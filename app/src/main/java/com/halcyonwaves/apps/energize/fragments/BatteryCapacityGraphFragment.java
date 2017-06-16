@@ -13,11 +13,12 @@ import android.widget.LinearLayout;
 import com.halcyonwaves.apps.energize.R;
 import com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper;
 import com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable;
-import com.jjoe64.graphview.CustomLabelFormatter;
 import com.jjoe64.graphview.GraphView.GraphViewData;
 import com.jjoe64.graphview.GraphViewSeries;
 import com.jjoe64.graphview.GraphViewStyle;
+import com.jjoe64.graphview.LabelFormatter;
 import com.jjoe64.graphview.LineGraphView;
+import com.jjoe64.graphview.Viewport;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -102,7 +103,7 @@ public class BatteryCapacityGraphFragment extends Fragment {
 		}
 	}
 
-	private class TimeLabelFormatter implements CustomLabelFormatter {
+	private class TimeLabelFormatter implements LabelFormatter {
 
 		@Override
 		public String formatLabel(double value, boolean isValueX) {
@@ -112,6 +113,11 @@ public class BatteryCapacityGraphFragment extends Fragment {
 			}
 
 			return String.valueOf(value);
+		}
+
+		@Override
+		public void setViewport(Viewport viewport) {
+			// TODO:
 		}
 	}
 }
