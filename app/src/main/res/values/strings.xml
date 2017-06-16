@@ -98,7 +98,6 @@
 	<string-array name="pref_list_batteryestimationmethod_names">
 		<item>Last change period (inaccurate)</item>
 		<item>Last n-change periods (bit inaccurate)</item>
-		<item>Heuristic estimation</item>
 	</string-array>
 
 	<!-- CATEGORY: The actual values for preferences where the user has the choice between different settings -->
