@@ -87,7 +87,7 @@
 	<string name="pref_about_summary">Show more information about the app</string>
 	<string name="pref_about_title">About…</string>
 	<string name="pref_about_dialog_title">About Energize %s</string>
-	<string name="pref_about_dialog_license" translatable="false">Copyright (C) 2012-2017 Tim Hütz\n\nEnergize is licensed under the GNU General Public License v3.0\n\nGraphView library (for drawing all charts) was developed by Jonas Gehring and is licensed under the Apache License, Version 2.0.\n\nThe TIMPER logging library was developed by Jake Wharton and is licensed under the Apache License, Version 2.0.</string>
+	<string name="pref_about_dialog_license" translatable="false">Copyright (C) 2012-2017 Tim Hütz\n\nEnergize is licensed under the GNU General Public License v3.0\n\nThe battery animation on the overview screen was developed by gelitenight and is licensed under the Apache License, Version 2.0.\n\nGraphView library (for drawing all charts) was developed by Jonas Gehring and is licensed under the Apache License, Version 2.0.\n\nThe TIMPER logging library was developed by Jake Wharton and is licensed under the Apache License, Version 2.0.</string>
 	<string name="pref_about_dialog_button_negative">Close</string>
 
 	<string-array name="pref_list_temperature_unit_names">
