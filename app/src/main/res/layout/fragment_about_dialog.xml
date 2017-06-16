@@ -8,9 +8,7 @@
 	<TextView
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginTop="15dp"
-		android:layout_marginLeft="15dp"
-		android:layout_marginRight="15dp"
+		android:layout_margin="15dp"
 		android:gravity="start"
 		android:text="@string/pref_about_dialog_license"/>
 
