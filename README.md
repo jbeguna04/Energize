@@ -45,6 +45,17 @@ As soon as the used strings is nearly fixed, you can help us on our project page
 The application icon is based upon the [Android Robot][3] logo made by Google Inc. This logo is licensed under the terms of the [Creative Commons Attribution license][4]. The battery icon was designed by the authors of the [GNOME High contrast icon set][5] and is licensed under the terms of the [GNU Lesser General Public License][6].
 
 ## Changelog
+### Version 2.1 (Code: *210*, Released on: ***2017-06-16***) - [Changes][38]
+* Fix the back arrow in the settings categories to go back to the correct page
+* Fix the axes of the battery graph to always show 0% - 100%
+* Fix the logic to as the user for the required permissions
+* Add app shortcuts for devices running Android 7.1 and higher
+* Add a new animation to the main activity representing the current battery state
+* Add the missing 'About this app' dialog in the settings
+* Refined the used colors for the theme of the app
+* Redesigned the application icon according to the new color scheme
+* Minified the build APK
+
 ### Version 2.0.1 (Code: *203*, Released on: ***2017-06-07***) - [Changes][37]
 * Fix a bug which caused that the battery estimator was not set correctly on initial install
 * Update the license file
@@ -252,3 +263,4 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
  [35]: https://github.com/thuetz/Energize/compare/v0.9.1...v1.0
  [36]: https://github.com/thuetz/Energize/compare/v1.0...v2.0
  [37]: https://github.com/thuetz/Energize/compare/v2.0...v2.0.1
+ [38]: https://github.com/thuetz/Energize/compare/v2.0.1...v2.1

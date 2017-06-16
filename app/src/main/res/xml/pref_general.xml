@@ -3,12 +3,18 @@
 
 	<PreferenceCategory android:title="General">
 		<ListPreference
-			android:defaultValue="@string/pref_list_temperature_unit_value_celsius"
+			android:defaultValue="@string/pref_list_temperature_unit_value_and_title_celsius"
 			android:entries="@array/pref_list_temperature_unit_names"
 			android:entryValues="@array/pref_list_temperature_unit"
 			android:key="display.temperature_unit"
 			android:summary="@string/pref_summary_temperature_unit"
 			android:title="@string/pref_title_temperature_unit"/>
+		<SwitchPreference
+			android:defaultValue="true"
+			android:key="display.show_battery_animation"
+			android:title="@string/pref_title_show_battery_animation"
+			android:summaryOn="@string/pref_summary_on_show_battery_animation"
+			android:summaryOff="@string/pref_summary_off_show_battery_animation"/>
 	</PreferenceCategory>
 	<PreferenceCategory android:title="Statistics">
 		<ListPreference

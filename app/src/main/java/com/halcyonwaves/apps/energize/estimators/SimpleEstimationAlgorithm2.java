@@ -28,7 +28,7 @@ public class SimpleEstimationAlgorithm2 {
 	/**
 	 * This tag is used when writing information to the log file of the device.
 	 */
-	private final static String TAG = "SimpleEstimationAlgorithm2";
+	private final static String TAG = "SimpleEstimationAlg2";
 
 	/**
 	 * This method tries to calculate the current time estimation based

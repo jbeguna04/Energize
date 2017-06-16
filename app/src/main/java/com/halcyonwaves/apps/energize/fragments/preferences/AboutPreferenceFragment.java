@@ -6,9 +6,11 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.Preference;
+import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceFragment;
 import android.util.Log;
 import com.halcyonwaves.apps.energize.R;
+import com.halcyonwaves.apps.energize.dialogs.AboutDialog;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class AboutPreferenceFragment extends PreferenceFragment {
@@ -32,5 +34,15 @@ public class AboutPreferenceFragment extends PreferenceFragment {
 
 		Preference appVersion = this.findPreference("developer.appVersion");
 		appVersion.setSummary(this.getSoftwareVersion());
+
+		Preference aboutPreference = this.findPreference("developer.aboutApp");
+		aboutPreference.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+			@Override
+			public boolean onPreferenceClick(Preference preference) {
+				AboutDialog aboutDialog = new AboutDialog();
+				aboutDialog.show(getFragmentManager(), "dialog");
+				return false;
+			}
+		});
 	}
 }

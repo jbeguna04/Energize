@@ -17,11 +17,12 @@ import com.google.android.apps.dashclock.api.DashClockExtension;
 import com.google.android.apps.dashclock.api.ExtensionData;
 import com.halcyonwaves.apps.energize.estimators.EstimationResult;
 import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
+import java.lang.ref.WeakReference;
 
 public class EnergizeExtension extends DashClockExtension {
 
 	private static final String TAG = "EnergizeExtension";
-	private final Messenger monitorServiceMessanger = new Messenger(new IncomingHandler());
+	private final Messenger monitorServiceMessanger = new Messenger(new IncomingHandler(new WeakReference<>(this)));
 	private int percentageLoaded = 0;
 	private EstimationResult remainingTimeEstimation = new EstimationResult();
 	private Messenger monitorService = null;
@@ -47,19 +48,6 @@ public class EnergizeExtension extends DashClockExtension {
 
 	private void doBindService() {
 		this.getApplicationContext().bindService(new Intent(this.getApplicationContext(), MonitorBatteryStateService.class), this.monitorServiceConnection, Context.BIND_AUTO_CREATE);
-	}
-
-	private void doUnbindService() {
-		if (this.monitorService != null) {
-			try {
-				final Message msg = Message.obtain(null, MonitorBatteryStateService.MSG_UNREGISTER_CLIENT);
-				msg.replyTo = this.monitorServiceMessanger;
-				this.monitorService.send(msg);
-			} catch (final RemoteException e) {
-			}
-		}
-		this.getApplicationContext().unbindService(this.monitorServiceConnection);
-		this.monitorService = null;
 	}
 
 	@Override
@@ -132,12 +120,14 @@ public class EnergizeExtension extends DashClockExtension {
 		//
 		if (this.remainingTimeEstimation.isValid) {
 			this.publishUpdate(
-					new ExtensionData().visible(true).icon(R.drawable.ic_battery_charging_full_black_24dp).status(this.percentageLoaded + "%").expandedTitle(String.format(this.getApplicationContext().getString(R.string.dc_widget_charged_long), this.percentageLoaded))
+					new ExtensionData().visible(true).icon(R.drawable.ic_battery_charging_full_black_24dp).status(this.percentageLoaded + "%")
+							.expandedTitle(String.format(this.getApplicationContext().getString(R.string.dc_widget_charged_long), this.percentageLoaded))
 							.expandedBody(String.format(EnergizeExtension.this.getApplicationContext().getString(R.string.notification_text_estimate), remainingTimeEstimation.remainingHours, remainingTimeEstimation.remainingMinutes))
 							.clickIntent(new Intent(this.getApplicationContext(), MainActivity.class)));
 		} else {
 			this.publishUpdate(
-					new ExtensionData().visible(true).icon(R.drawable.ic_battery_charging_full_black_24dp).status(this.percentageLoaded + "%").expandedTitle(String.format(this.getApplicationContext().getString(R.string.dc_widget_charged_long), this.percentageLoaded))
+					new ExtensionData().visible(true).icon(R.drawable.ic_battery_charging_full_black_24dp).status(this.percentageLoaded + "%")
+							.expandedTitle(String.format(this.getApplicationContext().getString(R.string.dc_widget_charged_long), this.percentageLoaded))
 							.expandedBody(EnergizeExtension.this.getApplicationContext().getString(R.string.notification_text_estimate_na)).clickIntent(new Intent(this.getApplicationContext(), MainActivity.class)));
 		}
 	}
@@ -154,7 +144,13 @@ public class EnergizeExtension extends DashClockExtension {
 		//this.publishUpdate(this.currentExtensionData);
 	}
 
-	class IncomingHandler extends Handler {
+	private static class IncomingHandler extends Handler {
+
+		private WeakReference<EnergizeExtension> energizeExtensionWeakReference;
+
+		IncomingHandler(WeakReference<EnergizeExtension> weakReference) {
+			energizeExtensionWeakReference = weakReference;
+		}
 
 		@Override
 		public void handleMessage(final Message msg) {
@@ -163,23 +159,27 @@ public class EnergizeExtension extends DashClockExtension {
 					// since the client is now registered, we can ask the service about the remaining time we have
 					try {
 						// be sure that the monitor service is available, sometimes (I don't know why) this is not the case
-						if (null == EnergizeExtension.this.monitorService) {
+						if (null == energizeExtensionWeakReference || null == energizeExtensionWeakReference.get().monitorService) {
 							Log.e(EnergizeExtension.TAG, "Tried to query the remaining time but the monitor service was not available!");
 							return;
 						}
 
 						// query the remaining time
 						final Message msg2 = Message.obtain(null, MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME);
-						msg2.replyTo = EnergizeExtension.this.monitorServiceMessanger;
-						EnergizeExtension.this.monitorService.send(msg2);
+						msg2.replyTo = energizeExtensionWeakReference.get().monitorServiceMessanger;
+						energizeExtensionWeakReference.get().monitorService.send(msg2);
 					} catch (final RemoteException e1) {
 						Log.e(EnergizeExtension.TAG, "Failed to query the current time estimation.");
 					}
 					break;
 				case MonitorBatteryStateService.MSG_REQUEST_REMAINING_TIME:
-					EnergizeExtension.this.remainingTimeEstimation = EstimationResult.fromBundle(msg.getData());
-					Log.d(EnergizeExtension.TAG, String.format("Received an time estimation of %d minutes.", EnergizeExtension.this.remainingTimeEstimation.minutes));
-					EnergizeExtension.this.sendPublishedData();
+					if (null == energizeExtensionWeakReference) {
+						Log.e(EnergizeExtension.TAG, "Tried to query the remaining time but the monitor service was not available!");
+						return;
+					}
+					energizeExtensionWeakReference.get().remainingTimeEstimation = EstimationResult.fromBundle(msg.getData());
+					Log.d(EnergizeExtension.TAG, String.format("Received an time estimation of %d minutes.", energizeExtensionWeakReference.get().remainingTimeEstimation.minutes));
+					energizeExtensionWeakReference.get().sendPublishedData();
 					break;
 				default:
 					super.handleMessage(msg);

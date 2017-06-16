@@ -1,22 +1,37 @@
 package com.halcyonwaves.apps.energize;
 
+import static java.text.MessageFormat.format;
+
 import android.app.Fragment;
+import android.content.ComponentName;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.pm.ActivityInfo;
+import android.content.pm.ResolveInfo;
+import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.halcyonwaves.apps.energize.dialogs.ChangeLogDialog;
 import com.halcyonwaves.apps.energize.fragments.BatteryCapacityGraphFragment;
 import com.halcyonwaves.apps.energize.fragments.OverviewFragment;
 import com.halcyonwaves.apps.energize.fragments.TemperatureGraphFragment;
 import com.halcyonwaves.apps.energize.services.MonitorBatteryStateService;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
 		implements NavigationView.OnNavigationItemSelectedListener {
@@ -49,8 +64,96 @@ public class MainActivity extends AppCompatActivity
 		ChangeLogDialog changeDlg = new ChangeLogDialog(this);
 		changeDlg.show();
 
-		// ensure the first item will be displayed
-		selectItem(0);
+		// ensure the correct item will be displayed
+		if ("com.halcyonwaves.apps.energize.fragments.BatteryCapacityGraphFragment".equals(getIntent().getAction())) {
+			navigationView.getMenu().performIdentifierAction(R.id.nav_battery_graph, 0);
+		} else if ("com.halcyonwaves.apps.energize.fragments.TemperatureGraphFragment".equals(getIntent().getAction())) {
+			navigationView.getMenu().performIdentifierAction(R.id.nav_temperature_graph, 0);
+		} else {
+			navigationView.getMenu().performIdentifierAction(R.id.nav_overview, 0);
+		}
+
+		// if the app was not installed via the PlayStore, show a notice
+		if (!wasInstalledViaPlaystore() && !playstoreNoteAlreadyDisplayed()) {
+			Snackbar snackbar = Snackbar.make(findViewById(R.id.content_coordinator_layout), R.string.snackbar_not_installed_via_playstore_text, Snackbar.LENGTH_INDEFINITE);
+			snackbar.setAction(R.string.snackbar_not_installed_via_playstore_action, new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+					alertDialog.setTitle(R.string.alertdialog_not_via_playstore_title);
+					alertDialog.setMessage(getString(R.string.alertdialog_not_via_playstore_text));
+					alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.alertdialog_not_via_playstore_button_go_to_playstore),
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog, int which) {
+									dialog.dismiss();
+									MainActivity.this.startPlayStore();
+									disableGooglePlayWarning();
+								}
+							});
+					alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.alertdialog_not_via_playstore_button_dismiss),
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog, int which) {
+									dialog.dismiss();
+									disableGooglePlayWarning();
+								}
+							});
+					alertDialog.show();
+				}
+			});
+			snackbar.show();
+		}
+	}
+
+	private void disableGooglePlayWarning() {
+		final SharedPreferences appPreferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this.getApplicationContext());
+		Editor prefEditor = appPreferences.edit();
+		prefEditor.putInt(Consts.PREFERENCE_PLAYSTORE_NOTICE_DISPLAYED_LAST_TIME, 1);
+		prefEditor.apply();
+	}
+
+	private void startPlayStore() {
+		Intent rateIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + BuildConfig.APPLICATION_ID));
+		boolean marketFound = false;
+
+		final List<ResolveInfo> otherApps = this.getApplicationContext().getPackageManager().queryIntentActivities(rateIntent, 0);
+		for (ResolveInfo otherApp : otherApps) {
+			if (otherApp.activityInfo.applicationInfo.packageName.equals("com.android.vending")) {
+
+				ActivityInfo otherAppActivity = otherApp.activityInfo;
+				ComponentName componentName = new ComponentName(otherAppActivity.applicationInfo.packageName, otherAppActivity.name);
+				rateIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				rateIntent.addFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+				rateIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				rateIntent.setComponent(componentName);
+				this.startActivity(rateIntent);
+				marketFound = true;
+				break;
+
+			}
+		}
+
+		// if GP not present on device, open web browser
+		if (!marketFound) {
+			Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID));
+			this.startActivity(webIntent);
+		}
+	}
+
+	private static String defaultIfNull(final String inputValue, final String defaultValue) {
+		return (null == inputValue || "null".equals(inputValue)) ? defaultValue : inputValue;
+	}
+
+	private boolean playstoreNoteAlreadyDisplayed() {
+		final SharedPreferences appPreferences = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
+		final int lastTimeDisplayed = appPreferences.getInt(Consts.PREFERENCE_PLAYSTORE_NOTICE_DISPLAYED_LAST_TIME, -1);
+
+		return -1 != lastTimeDisplayed;
+	}
+
+	private boolean wasInstalledViaPlaystore() {
+		final String installerPackageName = defaultIfNull(this.getPackageManager().getInstallerPackageName(this.getPackageName()), "Unknown");
+		Log.i(TAG, format("The package was installed via: {0}", installerPackageName));
+		return "com.android.vending".equals(installerPackageName);
 	}
 
 	@Override
@@ -77,6 +180,13 @@ public class MainActivity extends AppCompatActivity
 		} else if (id == R.id.nav_settings) {
 			Intent settingsIntent = new Intent(this, SettingsActivity.class);
 			startActivity(settingsIntent);
+		}
+
+		// checking if the item is in checked state or not, if not set it to checked state.
+		if (item.isChecked()) {
+			item.setChecked(false);
+		} else {
+			item.setChecked(true);
 		}
 
 		DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

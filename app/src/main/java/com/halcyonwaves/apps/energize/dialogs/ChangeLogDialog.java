@@ -19,6 +19,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -38,7 +39,7 @@ public class ChangeLogDialog {
 	static final private String TAG = "ChangeLogDialog";
 
 	private Activity rootActivity = null;
-	private SimpleDateFormat changelogDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	private SimpleDateFormat changelogDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
 
 	public ChangeLogDialog(final Activity context) {
 		this.rootActivity = context;
@@ -127,14 +128,12 @@ public class ChangeLogDialog {
 		return _Result;
 	}
 
-	public void markDialogAsAlreadyDisplayed() {
+	private void markDialogAsAlreadyDisplayed() {
 		final SharedPreferences appPreferences = PreferenceManager.getDefaultSharedPreferences(this.rootActivity.getApplicationContext());
 
-		//
 		Editor prefEditor = appPreferences.edit();
 		prefEditor.putInt(Consts.PREFERENCE_CHANGELOG_DISPLAYED_LAST_TIME, this.getApplicationVersionCode());
-		prefEditor.commit();
-		prefEditor = null;
+		prefEditor.apply();
 	}
 
 	private String parseChangelogReleaseTag(final XmlPullParser aXml) throws XmlPullParserException, IOException {

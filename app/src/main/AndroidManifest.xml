@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
 	package="com.halcyonwaves.apps.energize"
 	android:installLocation="internalOnly">
 
@@ -12,10 +13,11 @@
 		android:allowBackup="false"
 		android:hardwareAccelerated="true"
 		android:icon="@mipmap/ic_launcher"
-		android:roundIcon="@mipmap/ic_launcher_round"
 		android:label="@string/app_name"
 		android:name=".ApplicationCore"
-		android:theme="@style/AppTheme">
+		android:roundIcon="@mipmap/ic_launcher_round"
+		android:theme="@style/AppTheme"
+		tools:replace="android:allowBackup">
 
 		<!-- define the  services we have implemented -->
 		<service
@@ -57,6 +59,9 @@
 
 				<category android:name="android.intent.category.LAUNCHER"/>
 			</intent-filter>
+			<meta-data
+				android:name="android.app.shortcuts"
+				android:resource="@xml/shortcuts"/>
 		</activity>
 
 		<!-- define the preference activity we want to show -->

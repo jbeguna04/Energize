@@ -9,7 +9,7 @@ import com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable;
 
 public class SimpleEstimationAlgorithm {
 
-	private final static String TAG = "SimpleEstimationAlgorithm";
+	private final static String TAG = "SimpleEstimationAlg";
 
 	public static EstimationResult getEstimation(final Context context) {
 		BatteryStatisticsDatabaseOpenHelper batteryDbOpenHelper = new BatteryStatisticsDatabaseOpenHelper(context);

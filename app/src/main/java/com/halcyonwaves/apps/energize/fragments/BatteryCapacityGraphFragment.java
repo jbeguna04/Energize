@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import com.halcyonwaves.apps.energize.R;
 import com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper;
 import com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable;
+import com.jjoe64.graphview.CustomLabelFormatter;
 import com.jjoe64.graphview.GraphView.GraphViewData;
 import com.jjoe64.graphview.GraphViewSeries;
 import com.jjoe64.graphview.GraphViewStyle;
@@ -20,11 +21,11 @@ import com.jjoe64.graphview.LineGraphView;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 public class BatteryCapacityGraphFragment extends Fragment {
 
 	private LineGraphView graphView = null;
-	private boolean seriesSet = false;
 
 	private Pair<GraphViewSeries, Long> getBatteryStatisticData() {
 		BatteryStatisticsDatabaseOpenHelper batteryDbOpenHelper = new BatteryStatisticsDatabaseOpenHelper(this.getActivity().getApplicationContext());
@@ -32,7 +33,7 @@ public class BatteryCapacityGraphFragment extends Fragment {
 		Cursor lastEntryMadeCursor = batteryStatisticsDatabase
 				.query(RawBatteryStatisicsTable.TABLE_NAME, new String[]{RawBatteryStatisicsTable.COLUMN_EVENT_TIME, RawBatteryStatisicsTable.COLUMN_CHARGING_LEVEL}, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " ASC");
 
-		final ArrayList<GraphViewData> graphViewData = new ArrayList<GraphViewData>();
+		final ArrayList<GraphViewData> graphViewData = new ArrayList<>();
 
 		//
 		final int columnIndexEventTime = lastEntryMadeCursor.getColumnIndex(RawBatteryStatisicsTable.COLUMN_EVENT_TIME);
@@ -52,10 +53,7 @@ public class BatteryCapacityGraphFragment extends Fragment {
 
 		// close our connection to the database
 		lastEntryMadeCursor.close();
-		lastEntryMadeCursor = null;
 		batteryDbOpenHelper.close();
-		batteryStatisticsDatabase = null;
-		batteryDbOpenHelper = null;
 
 		// convert the array to an array and return the view series
 		if (graphViewData.size() == 0) {
@@ -63,7 +61,7 @@ public class BatteryCapacityGraphFragment extends Fragment {
 		}
 		final GraphViewData convertedDataset[] = new GraphViewData[graphViewData.size()];
 		graphViewData.toArray(convertedDataset);
-		return new Pair<GraphViewSeries, Long>(new GraphViewSeries(convertedDataset), oldtestTime);
+		return new Pair<>(new GraphViewSeries(convertedDataset), oldtestTime);
 	}
 
 	@Override
@@ -76,18 +74,8 @@ public class BatteryCapacityGraphFragment extends Fragment {
 	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
 		final View inflatedView = inflater.inflate(R.layout.fragment_batterycapacitygraph, container, false);
 
-		this.graphView = new LineGraphView(this.getActivity().getApplicationContext(), "") {
-
-			@Override
-			protected String formatLabel(final double value, final boolean isValueX) {
-				if (isValueX) {
-					final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
-					return dateFormat.format(new Date((long) value * 1000));
-				} else {
-					return super.formatLabel(value, isValueX); // let the y-value be normal-formatted
-				}
-			}
-		};
+		this.graphView = new LineGraphView(this.getActivity().getApplicationContext(), "");
+		this.graphView.setCustomLabelFormatter(new TimeLabelFormatter());
 		this.graphView.setVerticalLabels(new String[]{"100%", "90%", "80%", "70%", "60%", "50%", "40%", "30%", "20%", "10%", "0%"});
 		this.graphView.setScrollable(true);
 		this.graphView.setScalable(true);
@@ -108,13 +96,22 @@ public class BatteryCapacityGraphFragment extends Fragment {
 	private void updateGraph() {
 		final Pair<GraphViewSeries, Long> dataSet = this.getBatteryStatisticData();
 		final Long currentTime = System.currentTimeMillis() / 1000L;
-		if (this.seriesSet) {
-			//TODO: this.graphView.removeSeries( 0 );
-		}
 		this.graphView.addSeries(dataSet.first);
 		if ((dataSet.second + 86400L) < currentTime) {
 			this.graphView.setViewPort((currentTime - 86400), 86400);
 		}
-		this.seriesSet = true;
+	}
+
+	private class TimeLabelFormatter implements CustomLabelFormatter {
+
+		@Override
+		public String formatLabel(double value, boolean isValueX) {
+			if (isValueX) {
+				final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm", Locale.US);
+				return dateFormat.format(new Date((long) value * 1000));
+			}
+
+			return String.valueOf(value);
+		}
 	}
 }

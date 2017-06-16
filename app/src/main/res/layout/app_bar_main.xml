@@ -5,6 +5,7 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	android:id="@+id/content_coordinator_layout"
 	tools:context="com.halcyonwaves.apps.energize.MainActivity">
 
 	<android.support.design.widget.AppBarLayout
@@ -26,8 +27,8 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:layout_marginTop="?attr/actionBarSize"
+		android:layout_marginBottom="10dp"
 		android:layout_marginLeft="10dp"
-		android:layout_marginRight="10dp"
-		android:layout_marginBottom="10dp"/>
+		android:layout_marginRight="10dp"/>
 
 </android.support.design.widget.CoordinatorLayout>
