@@ -63,7 +63,8 @@ public class OverviewFragment extends Fragment {
 	private TextView textViewTemp = null;
 	private TextView textViewTimeOnBattery = null;
 	private WaveViewHelper waveViewHelper = null;
-	;
+	private WaveView waveView = null;
+	private int batteryChargingLevel = -1;
 
 	private void doBindService() {
 		this.getActivity().bindService(new Intent(this.getActivity(), MonitorBatteryStateService.class), this.monitorServiceConnection, Context.BIND_AUTO_CREATE);
@@ -101,13 +102,31 @@ public class OverviewFragment extends Fragment {
 		}
 
 		//
-		waveViewHelper.start();
+		final boolean shouldShowAnimation = sharedPref.getBoolean("display.show_battery_animation", true);
+		if(null != waveViewHelper) {
+			if(shouldShowAnimation) {
+				waveViewHelper.start();
+			} else {
+				waveViewHelper.cancel();
+				waveViewHelper = null;
+				waveView.setVisibility(View.GONE);
+			}
+		} else {
+			Log.d(TAG, "onResume: should show animation = " + shouldShowAnimation);
+			if(shouldShowAnimation) {
+				initializeBatteryAnimation(waveView);
+				waveViewHelper.setBatteryPercentage(batteryChargingLevel);
+				waveViewHelper.start();
+			}
+		}
 	}
 
 	@Override
 	public void onPause() {
 		super.onPause();
-		waveViewHelper.cancel();
+		if(null != waveViewHelper) {
+			waveViewHelper.cancel();
+		}
 	}
 
 	@Override
@@ -140,8 +159,6 @@ public class OverviewFragment extends Fragment {
 			this.textViewTimeOnBattery.setText("-");
 		}
 		batteryDbHelper.close();
-		batteryDB = null;
-		batteryDbHelper = null;
 
 		// bind to the service and ask for the current time estimation
 		this.doBindService();
@@ -150,7 +167,18 @@ public class OverviewFragment extends Fragment {
 		this.updateBatteryInformation();
 
 		//
-		WaveView waveView = (WaveView) inflatedView.findViewById(R.id.wave);
+		waveView = (WaveView) inflatedView.findViewById(R.id.wave);
+		if(sharedPref.getBoolean("display.show_battery_animation", true)) {
+			initializeBatteryAnimation(waveView);
+		} else {
+			waveView.setVisibility(View.GONE);
+		}
+
+		// return the inflated view
+		return inflatedView;
+	}
+
+	private void initializeBatteryAnimation(WaveView waveView) {
 		final int frontWaveColor;
 		final int backWaveColor;
 		if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
@@ -163,10 +191,8 @@ public class OverviewFragment extends Fragment {
 		waveView.setShapeType(ShapeType.CIRCLE);
 		waveView.setWaveColor(backWaveColor, frontWaveColor);
 		waveView.setBorder(5, frontWaveColor);
+		waveView.setVisibility(View.VISIBLE);
 		waveViewHelper = new WaveViewHelper(waveView);
-
-		// return the inflated view
-		return inflatedView;
 	}
 
 	private void updateBatteryInformation() {
@@ -192,9 +218,9 @@ public class OverviewFragment extends Fragment {
 					}
 
 					// do a potential level scaling (most of the times not required, but to be sure)
-					int level = -1;
+
 					if ((rawlevel >= 0) && (scale > 0)) {
-						level = (rawlevel * 100) / scale;
+						batteryChargingLevel = (rawlevel * 100) / scale;
 					}
 
 					// set the text for the state of he main battery
@@ -214,10 +240,12 @@ public class OverviewFragment extends Fragment {
 					}
 
 					//
-					OverviewFragment.this.textViewCurrentLoadingLevel.setText(level + "");
+					OverviewFragment.this.textViewCurrentLoadingLevel.setText(batteryChargingLevel + "");
 
 					//
-					waveViewHelper.setBatteryPercentage(level);
+					if(null != waveViewHelper) {
+						waveViewHelper.setBatteryPercentage(batteryChargingLevel);
+					}
 
 					final String prefUsedUnit = OverviewFragment.this.sharedPref.getString("display.temperature_unit", "Celsius");
 					if (prefUsedUnit.compareToIgnoreCase("celsius") == 0) {

@@ -72,6 +72,7 @@
 	<string name="pref_summary_change_batteryestimation">Method: %1$s</string>
 	<string name="pref_title_temperature_unit">Temperature unit</string>
 	<string name="pref_summary_temperature_unit">Used unit: %1$s</string>
+	<string name="pref_title_show_battery_animation">Show battery animation on overview</string>
 
 	<!-- Notification settings -->
 	<string name="pref_header_notifications">Notifications</string>
