@@ -4,6 +4,8 @@
 	<SwitchPreference
 		android:defaultValue="true"
 		android:key="advance.show_notification_bar"
-		android:title="@string/pref_title_show_notification_bar"/>
+		android:title="@string/pref_title_show_notification_bar"
+		android:summaryOn="@string/pref_summary_on_show_notification_bar"
+		android:summaryOff="@string/pref_summary_off_show_notification_bar"/>
 
 </PreferenceScreen>

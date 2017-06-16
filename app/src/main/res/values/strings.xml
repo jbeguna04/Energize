@@ -72,11 +72,15 @@
 	<string name="pref_summary_change_batteryestimation">Method: %1$s</string>
 	<string name="pref_title_temperature_unit">Temperature unit</string>
 	<string name="pref_summary_temperature_unit">Used unit: %1$s</string>
-	<string name="pref_title_show_battery_animation">Show battery animation on overview</string>
+	<string name="pref_title_show_battery_animation">Show battery animation</string>
+	<string name="pref_summary_on_show_battery_animation">Display the battery animation on the overview screen</string>
+	<string name="pref_summary_off_show_battery_animation">Do not display the battery animation on the overview screen</string>
 
 	<!-- Notification settings -->
 	<string name="pref_header_notifications">Notifications</string>
 	<string name="pref_title_show_notification_bar">Status bar icon</string>
+	<string name="pref_summary_on_show_notification_bar">Do show a permanent notification with battery information</string>
+	<string name="pref_summary_off_show_notification_bar">Do not show a permanent notification</string>
 
 	<!-- About... settings -->
 	<string name="pref_header_about">About…</string>

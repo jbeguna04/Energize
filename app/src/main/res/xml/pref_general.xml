@@ -12,7 +12,9 @@
 		<SwitchPreference
 			android:defaultValue="true"
 			android:key="display.show_battery_animation"
-			android:title="@string/pref_title_show_battery_animation" />
+			android:title="@string/pref_title_show_battery_animation"
+			android:summaryOn="@string/pref_summary_on_show_battery_animation"
+			android:summaryOff="@string/pref_summary_off_show_battery_animation"/>
 	</PreferenceCategory>
 	<PreferenceCategory android:title="Statistics">
 		<ListPreference
