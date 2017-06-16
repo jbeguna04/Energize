@@ -56,6 +56,10 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
 * Redesigned the application icon according to the new color scheme
 * Minified the build APK
 
+### Version 2.0.1 (Code: *203*, Released on: ***2017-06-07***) - [Changes][37]
+* Fix a bug which caused that the battery estimator was not set correctly on initial install
+* Update the license file
+
 ### Version 2.0 (Code: *200*, Released on: ***2017-06-06***) - [Changes][36]
 * Switched to the latest version of the Android build tools and SDKs
 * Updated the design of the app to Material Design
@@ -258,4 +262,5 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
  [34]: https://github.com/thuetz/Energize/compare/v0.9.1...v0.9.2
  [35]: https://github.com/thuetz/Energize/compare/v0.9.1...v1.0
  [36]: https://github.com/thuetz/Energize/compare/v1.0...v2.0
+ [37]: https://github.com/thuetz/Energize/compare/v2.0...v2.0.1
  [38]: https://github.com/thuetz/Energize/compare/v2.0.1...v2.1
