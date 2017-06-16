@@ -87,16 +87,14 @@ public class MainActivity extends AppCompatActivity
 								public void onClick(DialogInterface dialog, int which) {
 									dialog.dismiss();
 									MainActivity.this.startPlayStore();
+									disableGooglePlayWarning();
 								}
 							});
 					alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.alertdialog_not_via_playstore_button_dismiss),
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog, int which) {
 									dialog.dismiss();
-									final SharedPreferences appPreferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this.getApplicationContext());
-									Editor prefEditor = appPreferences.edit();
-									prefEditor.putInt(Consts.PREFERENCE_PLAYSTORE_NOTICE_DISPLAYED_LAST_TIME, 1);
-									prefEditor.apply();
+									disableGooglePlayWarning();
 								}
 							});
 					alertDialog.show();
@@ -104,6 +102,13 @@ public class MainActivity extends AppCompatActivity
 			});
 			snackbar.show();
 		}
+	}
+
+	private void disableGooglePlayWarning() {
+		final SharedPreferences appPreferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this.getApplicationContext());
+		Editor prefEditor = appPreferences.edit();
+		prefEditor.putInt(Consts.PREFERENCE_PLAYSTORE_NOTICE_DISPLAYED_LAST_TIME, 1);
+		prefEditor.apply();
 	}
 
 	private void startPlayStore() {
