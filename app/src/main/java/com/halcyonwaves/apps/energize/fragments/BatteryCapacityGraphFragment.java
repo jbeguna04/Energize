@@ -76,6 +76,7 @@ public class BatteryCapacityGraphFragment extends Fragment {
 	}
 
 	private void updateGraph() {
+		this.graphView.removeAllSeries();
 		this.graphView.addSeries(getBatteryStatisticData());
 	}
 
