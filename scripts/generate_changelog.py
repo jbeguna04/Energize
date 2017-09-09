@@ -14,9 +14,9 @@ releaseDateRegEx = re.compile( 'Released on\: \<strong\>\<em\>(\d\d\d\d\-(\d\d|X
 
 if __name__ == '__main__':
 	# setup the argument parser and do the parsing
-	argumentParser = ArgumentParser( description = 'Tool for extracting a changelog out of the README.md file.', epilog = 'This tool was written for Energize. Copyright (c) 2012 by Tim Huetz. Licenced under the terms of the GPLv3.' )
-	argumentParser.add_argument( 'inputFile', type = FileType( 'r', 0 ), help = 'the readme file from which the changelog should be extracted' )
-	argumentParser.add_argument( 'outputFile', type = FileType( 'w', 0 ), help = 'the file to write the HTML changelog to' )
+	argumentParser = ArgumentParser( description = 'Tool for extracting a changelog out of the README.md file.', epilog = 'This tool was written for Energize. Copyright (c) 2012 by Tim Huetz. Licensed under the terms of the GPLv3.' )
+	argumentParser.add_argument( 'inputFile', type = FileType( 'r' ), help = 'the readme file from which the changelog should be extracted' )
+	argumentParser.add_argument( 'outputFile', type = FileType( 'w' ), help = 'the file to write the HTML changelog to' )
 	parsedArguments = argumentParser.parse_args()
 
 	# check if all required arguments were passed to the application
@@ -29,17 +29,17 @@ if __name__ == '__main__':
 
 	# extract just the changelog information
 	try:
-		startIter = changelogMarkdownIdRegEx.finditer( text ).next()	
+		startIter = next(changelogMarkdownIdRegEx.finditer( text ))
 		changelogText = text[startIter.end():]
 	except StopIteration:
-		print "Could not find the changelog information in the supplied file. Skipping!"
+		print("Could not find the changelog information in the supplied file. Skipping!")
 		exit( -2 )
 
 	# convert the changelog into html to get the links set correctly
 	htmlChangelog = markdown2.markdown( changelogText )
 	parsedHtml = soup( htmlChangelog )
 
-	# find the facts about the version numbers denoted in the file 
+	# find the facts about the version numbers denoted in the file
 	foundVersionNumbers = versionNumberRegEx.findall( htmlChangelog )
 	foundVersionCodes = versionCodeRegEx.findall( htmlChangelog )
 	foundReleaseDates = releaseDateRegEx.findall( htmlChangelog )
