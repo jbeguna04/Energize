@@ -8,22 +8,18 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import com.halcyonwaves.apps.energize.R;
 import com.halcyonwaves.apps.energize.database.BatteryStatisticsDatabaseOpenHelper;
 import com.halcyonwaves.apps.energize.database.RawBatteryStatisicsTable;
-import com.jjoe64.graphview.CustomLabelFormatter;
-import com.jjoe64.graphview.GraphView.GraphViewData;
-import com.jjoe64.graphview.GraphViewSeries;
-import com.jjoe64.graphview.GraphViewSeries.GraphViewSeriesStyle;
-import com.jjoe64.graphview.GraphViewStyle;
-import com.jjoe64.graphview.LineGraphView;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.LabelFormatter;
+import com.jjoe64.graphview.Viewport;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -31,15 +27,15 @@ public class TemperatureGraphFragment extends Fragment {
 
 	private static final String TAG = "TempGraphFrag";
 	private SharedPreferences sharedPref = null;
-	private LineGraphView graphView = null;
+	private GraphView graphView = null;
 
-	private Pair<GraphViewSeries, Long> getBatteryStatisticData() {
+	private LineGraphSeries getBatteryStatisticData() {
+		LineGraphSeries<DataPoint> series = new LineGraphSeries<>();
+
 		BatteryStatisticsDatabaseOpenHelper batteryDbOpenHelper = new BatteryStatisticsDatabaseOpenHelper(this.getActivity().getApplicationContext());
 		SQLiteDatabase batteryStatisticsDatabase = batteryDbOpenHelper.getReadableDatabase();
 		Cursor lastEntryMadeCursor = batteryStatisticsDatabase
 				.query(RawBatteryStatisicsTable.TABLE_NAME, new String[]{RawBatteryStatisicsTable.COLUMN_EVENT_TIME, RawBatteryStatisicsTable.COLUMN_BATTERY_TEMPRATURE}, null, null, null, null, RawBatteryStatisicsTable.COLUMN_EVENT_TIME + " ASC");
-
-		final ArrayList<GraphViewData> graphViewData = new ArrayList<>();
 
 		//
 		final int columnIndexEventTime = lastEntryMadeCursor.getColumnIndex(RawBatteryStatisicsTable.COLUMN_EVENT_TIME);
@@ -54,59 +50,57 @@ public class TemperatureGraphFragment extends Fragment {
 			usedUnit = TemperatureUnit.TemperatureUnitKelvin;
 		}
 
-		//
 		lastEntryMadeCursor.moveToFirst();
-		Long oldtestTime = Long.MAX_VALUE;
+		double oldtestTime = Long.MAX_VALUE;
 		while (!lastEntryMadeCursor.isAfterLast()) {
 			Log.v(TemperatureGraphFragment.TAG, "Found a stored temperature: " + lastEntryMadeCursor.getInt(columnIndexChargingLevel));
-			final int currentTime = lastEntryMadeCursor.getInt(columnIndexEventTime);
+			final double currentTime = lastEntryMadeCursor.getInt(columnIndexEventTime);
 			if (currentTime < oldtestTime) {
 				oldtestTime = (long) currentTime;
 			}
+			final double temperatureConverted;
 			switch (usedUnit) {
 				case TemperatureUnitCelsius:
-					graphViewData.add(new GraphViewData(currentTime, lastEntryMadeCursor.getInt(columnIndexChargingLevel) / 10.0f));
+					temperatureConverted = lastEntryMadeCursor.getDouble(columnIndexChargingLevel) / 10.0;
 					break;
 				case TemperatureUnitFahrenheit:
-					graphViewData.add(new GraphViewData(currentTime, ((lastEntryMadeCursor.getInt(columnIndexChargingLevel) / 10.0f) * 1.8f) + 32.0f));
+					temperatureConverted = ((lastEntryMadeCursor.getDouble(columnIndexChargingLevel) / 10.0f) * 1.8f) + 32.0f;
 					break;
 				case TemperatureUnitKelvin:
-					graphViewData.add(new GraphViewData(currentTime, (lastEntryMadeCursor.getInt(columnIndexChargingLevel) / 10.0f) + 273.15f));
+					temperatureConverted = (lastEntryMadeCursor.getDouble(columnIndexChargingLevel) / 10.0f) + 273.15f;
 					break;
+				default:
+					temperatureConverted = 0.0;
 			}
+
+			series.appendData(
+					new DataPoint(currentTime, temperatureConverted),
+					true,
+					Integer.MAX_VALUE); // TODO: limit the amount of data points
 			lastEntryMadeCursor.moveToNext();
 		}
 
-		// close our connection to the database
 		lastEntryMadeCursor.close();
 		batteryDbOpenHelper.close();
 
-		// convert the array to an array and return the view series
-		if (graphViewData.size() == 0) {
-			graphViewData.add(new GraphViewData(0.0, 0.0));
-		}
-		final GraphViewData convertedDataset[] = new GraphViewData[graphViewData.size()];
-		graphViewData.toArray(convertedDataset);
-		return new Pair<>(new GraphViewSeries("", new GraphViewSeriesStyle(Color.rgb(255, 0, 0), 3), convertedDataset), oldtestTime);
+		series.setColor(Color.RED);
+
+		return series;
 	}
 
 	@Override
 	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
 		this.sharedPref = PreferenceManager.getDefaultSharedPreferences(this.getActivity().getApplicationContext());
 		final View inflatedView = inflater.inflate(R.layout.fragment_temperaturegraph, container, false);
+		this.graphView = inflatedView.findViewById(R.id.layout_graph_view_temperature);
 
-		this.graphView = new LineGraphView(this.getActivity().getApplicationContext(), "");
-		this.graphView.setCustomLabelFormatter(new TemperatureGraphLabelFormatter());
-		this.graphView.setScrollable(true);
-		this.graphView.setScalable(true);
-		this.graphView.setDrawBackground(false);
-		GraphViewStyle gws = this.graphView.getGraphViewStyle();
-		gws.setHorizontalLabelsColor(Color.BLACK);
-		gws.setVerticalLabelsColor(Color.BLACK);
-		this.graphView.setGraphViewStyle(gws);
-		this.updateGraph();
-		final LinearLayout layout = (LinearLayout) inflatedView.findViewById(R.id.layout_graph_view_temperature);
-		layout.addView(this.graphView);
+		final LineGraphSeries temperatureSeries = getBatteryStatisticData();
+		this.graphView.addSeries(temperatureSeries);
+		this.graphView.getViewport().setMinY(temperatureSeries.getLowestValueY() - 10.0);
+		this.graphView.getViewport().setMaxY(temperatureSeries.getHighestValueY() + 10.0);
+		this.graphView.getViewport().setYAxisBoundsManual(true);
+		this.graphView.getViewport().setScrollable(true);
+		this.graphView.getGridLabelRenderer().setLabelFormatter(new TemperatureGraphLabelFormatter());
 
 		return inflatedView;
 	}
@@ -118,12 +112,11 @@ public class TemperatureGraphFragment extends Fragment {
 	}
 
 	private void updateGraph() {
-		final Pair<GraphViewSeries, Long> dataSet = this.getBatteryStatisticData();
-		final Long currentTime = System.currentTimeMillis() / 1000L;
-		this.graphView.addSeries(dataSet.first);
-		if ((dataSet.second + 86400L) < currentTime) {
-			this.graphView.setViewPort((currentTime - 86400), 86400);
-		}
+		final LineGraphSeries temperatureSeries = getBatteryStatisticData();
+		this.graphView.removeAllSeries();
+		this.graphView.addSeries(temperatureSeries);
+		this.graphView.getViewport().setMinY(temperatureSeries.getLowestValueY() - 10.0);
+		this.graphView.getViewport().setMaxY(temperatureSeries.getHighestValueY() + 10.0);
 	}
 
 	private enum TemperatureUnit {
@@ -132,7 +125,7 @@ public class TemperatureGraphFragment extends Fragment {
 		TemperatureUnitKelvin
 	}
 
-	private class TemperatureGraphLabelFormatter implements CustomLabelFormatter {
+	private class TemperatureGraphLabelFormatter implements LabelFormatter {
 
 		@Override
 		public String formatLabel(double value, boolean isValueX) {
@@ -162,6 +155,11 @@ public class TemperatureGraphFragment extends Fragment {
 				//
 				return "N/A";
 			}
+		}
+
+		@Override
+		public void setViewport(Viewport viewport) {
+			// TODO: this
 		}
 	}
 }

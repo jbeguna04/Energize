@@ -7,6 +7,8 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import java.util.Iterator;
 import java.util.List;
+import timber.log.Timber;
+import timber.log.Timber.DebugTree;
 
 public class ApplicationCore extends Application {
 
@@ -31,6 +33,13 @@ public class ApplicationCore extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
+
+		// tell the app about the logger to use
+		if (BuildConfig.DEBUG) {
+			Timber.plant(new DebugTree());
+		} else {
+			// TODO: Timber.plant(new CrashReportingTree());
+		}
 
 		// set the default preferences
 		PreferenceManager.setDefaultValues(this, R.xml.pref_general, false);
