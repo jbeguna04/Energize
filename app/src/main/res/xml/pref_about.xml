@@ -9,5 +9,9 @@
 		android:key="developer.aboutApp"
 		android:summary="@string/pref_about_summary"
 		android:title="@string/pref_about_title"/>
+	<Preference
+		android:key="developer.about3rdPartyLibraries"
+		android:summary="@string/pref_about_3rd_party_summary"
+		android:title="@string/pref_about_3rd_party_title"/>
 
 </PreferenceScreen>

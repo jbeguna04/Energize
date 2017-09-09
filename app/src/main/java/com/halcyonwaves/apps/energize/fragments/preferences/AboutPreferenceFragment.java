@@ -1,6 +1,7 @@
 package com.halcyonwaves.apps.energize.fragments.preferences;
 
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -9,6 +10,8 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceFragment;
 import android.util.Log;
+
+import com.google.android.gms.oss.licenses.OssLicensesMenuActivity;
 import com.halcyonwaves.apps.energize.R;
 import com.halcyonwaves.apps.energize.dialogs.AboutDialog;
 
@@ -41,6 +44,18 @@ public class AboutPreferenceFragment extends PreferenceFragment {
 			public boolean onPreferenceClick(Preference preference) {
 				AboutDialog aboutDialog = new AboutDialog();
 				aboutDialog.show(getFragmentManager(), "dialog");
+				return false;
+			}
+		});
+
+		Preference about3rdPartyLibrariesPreference = this.findPreference("developer.about3rdPartyLibraries");
+		about3rdPartyLibrariesPreference.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+			@Override
+			public boolean onPreferenceClick(Preference preference) {
+				Intent intent = new Intent(AboutPreferenceFragment.this.getActivity(), OssLicensesMenuActivity.class);
+				String title = getString(R.string.pref_about_3rd_party_title);
+				intent.putExtra("title", title);
+				startActivity(intent);
 				return false;
 			}
 		});
