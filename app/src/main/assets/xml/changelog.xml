@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
+<release version="2.2.1" versioncode="221" releasedate="2018-01-09">
+<change>Update the app to the latest Android 8.1 release</change>
+<change>Update the used support libraries</change>
+</release>
 <release version="2.2" versioncode="220" releasedate="2017-09-09">
 <change>Update the app to the latest Android 8.0 release</change>
 <change>Add information about used OSS libraries</change>
