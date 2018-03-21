@@ -18,11 +18,8 @@ public class ApplicationCore extends Application {
 		Log.v(ApplicationCore.TAG, "Checking if the monitoring service is running or not...");
 		boolean serviceRunning = false;
 		final ActivityManager am = (ActivityManager) ctx.getSystemService(Context.ACTIVITY_SERVICE);
-		final List<ActivityManager.RunningServiceInfo> l = am.getRunningServices(50);
-		final Iterator<ActivityManager.RunningServiceInfo> i = l.iterator();
-		while (i.hasNext()) {
-			final ActivityManager.RunningServiceInfo runningServiceInfo = i.next();
-
+		final List<ActivityManager.RunningServiceInfo> runningServicesInfo = am.getRunningServices(50);
+		for (ActivityManager.RunningServiceInfo runningServiceInfo : runningServicesInfo) {
 			if (runningServiceInfo.service.getClassName().equals(serviceName) && runningServiceInfo.started) {
 				serviceRunning = true;
 			}
