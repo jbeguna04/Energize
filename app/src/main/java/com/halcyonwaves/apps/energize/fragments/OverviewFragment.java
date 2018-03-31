@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.BatteryManager;
@@ -104,8 +105,9 @@ public class OverviewFragment extends Fragment {
 
 		//
 		final boolean shouldShowAnimation = sharedPref.getBoolean("display.show_battery_animation", true);
+		final boolean isInLandscapeMode = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
 		if (null != waveViewHelper) {
-			if (shouldShowAnimation) {
+			if (shouldShowAnimation && !isInLandscapeMode) {
 				waveViewHelper.start();
 			} else {
 				waveViewHelper.cancel();
