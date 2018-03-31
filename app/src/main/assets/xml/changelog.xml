@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
+<release version="2.3" versioncode="230" releasedate="2018-04-XX">
+<change>Fix the bug that the animation in landscape mode hid all relevant information (issue no. 45)</change>
+<change>Fix the bug that when changing the device orientation the current menu selection was lost (issue no. 46)</change>
+<change>Update the used support libraries</change>
+</release>
 <release version="2.2.1" versioncode="221" releasedate="2018-01-09">
 <change>Update the app to the latest Android 8.1 release</change>
 <change>Update the used support libraries</change>
