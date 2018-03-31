@@ -32,6 +32,7 @@ local.properties
 .idea/modules.xml
 .idea/scopes/
 .idea/vcs.xml
+.idea/caches
 .idea/markdown-navigator/
 .idea/markdown-navigator.xml
 *.iml
