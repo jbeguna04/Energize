@@ -26,6 +26,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+
 import com.halcyonwaves.apps.energize.dialogs.ChangeLogDialog;
 import com.halcyonwaves.apps.energize.fragments.BatteryCapacityGraphFragment;
 import com.halcyonwaves.apps.energize.fragments.OverviewFragment;
@@ -37,6 +38,10 @@ public class MainActivity extends AppCompatActivity
 		implements NavigationView.OnNavigationItemSelectedListener {
 
 	private static final String TAG = "MainActivity";
+
+	private static final String LAST_FRAGMENT_BUNDLE_CONST = "LastFragmentPosition";
+
+	private int lastSelectedFragment = -1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -102,6 +107,27 @@ public class MainActivity extends AppCompatActivity
 			});
 			snackbar.show();
 		}
+	}
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		// store the last selected fragment
+		outState.putInt(LAST_FRAGMENT_BUNDLE_CONST, lastSelectedFragment);
+
+		// always call the superclass so it can save the view hierarchy state
+		super.onSaveInstanceState(outState);
+	}
+
+	@Override
+	protected void onRestoreInstanceState(Bundle savedInstanceState) {
+		// check whether we're recreating a previously destroyed instance
+		if (savedInstanceState != null) {
+			final int restoreFragmentId = savedInstanceState.getInt(LAST_FRAGMENT_BUNDLE_CONST);
+			selectItem(restoreFragmentId);
+		}
+
+		// always call the superclass so it can restore the view hierarchy state
+		super.onRestoreInstanceState(savedInstanceState);
 	}
 
 	private void disableGooglePlayWarning() {
@@ -218,6 +244,9 @@ public class MainActivity extends AppCompatActivity
 
 			// add the fragment to the 'fragment_container' FrameLayout
 			this.getFragmentManager().beginTransaction().replace(R.id.fragment_container, firstFragment).commit();
+
+			// store the last selected fragment
+			lastSelectedFragment = position;
 		}
 	}
 }
