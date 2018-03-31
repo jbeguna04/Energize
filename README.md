@@ -47,7 +47,7 @@ The application icon is based upon the [Android Robot][3] logo made by Google In
 ## Changelog
 ### Version 2.3 (Code: *XXX*, Released on: ***2018-04-XX***) - [Changes][42]
 * Fix the bug that the animation in landscape mode hid all relevant information (issue no. 45)
-* Fix the bug that when changing the device orientation the current menu selection was lost (issue no. 43)
+* Fix the bug that when changing the device orientation the current menu selection was lost (issue no. 46)
 * Update the used support libraries
 
 ### Version 2.2.1 (Code: *221*, Released on: ***2018-01-09***) - [Changes][41]
